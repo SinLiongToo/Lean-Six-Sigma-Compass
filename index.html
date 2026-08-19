@@ -515,6 +515,120 @@
   .oee-val-big{font-size:36px;font-weight:900;color:var(--amber);margin:8px 0 2px;}
   .oee-presets{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 
+  /* 360 Feedback Assessment Tool */
+  .fb360-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .fb360-layout { grid-template-columns: 1fr; }
+  }
+  table.fb360-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    min-width: 580px;
+  }
+  table.fb360-table th {
+    text-align: left;
+    padding: 10px 8px;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--line);
+  }
+  table.fb360-table td {
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  .fb360-input {
+    width: 54px;
+    text-align: center;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 5px 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .fb360-input:focus {
+    border-color: var(--amber);
+    outline: none;
+  }
+  .fb360-radar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .fb360-radar-svg {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    overflow: visible;
+  }
+  .fb360-radar-grid {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+    stroke-dasharray: 2 2;
+  }
+  .fb360-radar-axis {
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+  .fb360-radar-poly-self {
+    fill: rgba(245, 166, 35, 0.25);
+    stroke: #f5a623;
+    stroke-width: 2.2;
+    transition: all 0.3s ease;
+  }
+  .fb360-radar-poly-others {
+    fill: rgba(127, 181, 160, 0.25);
+    stroke: #7fb5a0;
+    stroke-width: 2.2;
+    transition: all 0.3s ease;
+  }
+  .fb360-insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  @media (max-width: 768px) {
+    .fb360-insights-grid { grid-template-columns: 1fr; }
+  }
+  .fb360-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .fb360-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fb360-card.blind-spot { border-left: 3px solid #e88d5a; }
+  .fb360-card.hidden-strength { border-left: 3px solid var(--sage); }
+  .fb360-card.aligned-strength { border-left: 3px solid var(--amber); }
+  .fb360-card.action-plan { border-left: 3px solid #60a5fa; grid-column: span 2; }
+  @media (max-width: 768px) {
+    .fb360-card.action-plan { grid-column: span 1; }
+  }
+
   /* Quiz Wizard */
   .quiz-container{
     max-width:600px;margin:0 auto;border:1px solid var(--panel-border);border-radius:16px;
@@ -2661,10 +2775,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       </section>
 
       <section class="section" data-section="calculators">
-        <h2><span class="zh">FMEA RPN | Pugh Matrix | OEE 模擬工具 | 5sAudit | RACI Matrix | 專案效益計算</span><span class="en">FMEA RPN | Pugh Matrix | OEE Simulator tool | 5sAudit | RACI Matrix | Cost Savings</span></h2>
+        <h2><span class="zh">FMEA RPN | Pugh Matrix | OEE 模擬工具 | 5sAudit | RACI Matrix | 專案效益計算 | 360° 回饋評估</span><span class="en">FMEA RPN | Pugh Matrix | OEE Simulator tool | 5sAudit | RACI Matrix | Cost Savings | 360° Feedback</span></h2>
         <p class="lead">
-          <span class="zh">動態計算 FMEA 的 RPN 值、編寫 Pugh 決策矩陣、模擬設備綜合效率 (OEE)、定義 RACI 分工矩陣，或分析專案財務節省效益。</span>
-          <span class="en">Calculate RPN values, build a Pugh decision matrix, simulate OEE, define a RACI responsibility matrix, or analyze project cost savings.</span>
+          <span class="zh">動態計算 FMEA 的 RPN 值、編寫 Pugh 決策矩陣、模擬設備綜合效率 (OEE)、定義 RACI 分工矩陣、分析專案財務節省，或以 360 度多維度雷達評估精實領導力。</span>
+          <span class="en">Calculate RPN values, build a Pugh decision matrix, simulate OEE, define a RACI matrix, analyze project cost savings, or evaluate Lean leadership via 360-degree feedback radar.</span>
         </p>
         
         <div class="calc-tabs">
@@ -2674,6 +2788,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <button class="calc-tab" id="tab5s">5S Audit</button>
           <button class="calc-tab" id="tabRaci">RACI Matrix</button>
           <button class="calc-tab" id="tabSavings">Cost Savings</button>
+          <button class="calc-tab" id="tabFeedback360">360° Feedback</button>
         </div>
 
         <!-- FMEA Panel -->
@@ -3144,6 +3259,79 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               <button class="demo-btn" id="savLoadPreset"><span class="zh">載入半導體 Dummy Wafer 案例</span><span class="en">Load Fab Dummy Wafer Case</span></button>
               <button class="demo-btn secondary" id="savExport"><span class="zh">匯出專案效益報表 (CSV)</span><span class="en">Export Savings Report (CSV)</span></button>
               <button class="demo-btn secondary" id="savReset"><span class="zh">重置數據</span><span class="en">Reset Form</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 360 Degree Feedback Panel -->
+        <div class="calc-panel" id="panelFeedback360">
+          <div class="calc-box">
+            <h3><span class="zh">360° 精實領導力與專案回饋評估工具</span><span class="en">360° Lean Leadership & Project Feedback Assessment</span></h3>
+            <p class="honesty-note" style="margin-bottom:16px;">
+              <span class="zh">360 度多維度回饋整合「自評 (Self)」、「直屬主管 (Manager)」、「同儕夥伴 (Peers)」與「現場部屬 (Reports)」四大評估視角，量化 5 大精實核心能力（滿分 5.0）。透過即時雷達圖與周哈里窗 (Johari Window) 演算法，精準定位「潛在盲點 (Blind Spots)」與「隱藏優勢 (Hidden Strengths)」，並產出客製化教練發展行動方針。</span>
+              <span class="en">Multi-rater 360° feedback integrates ratings across Self, Manager, Peers, and Direct Reports across 5 Lean core competencies (Scale 1.0-5.0). Real-time radar charts and Johari Window gap analytics identify blind spots, hidden strengths, and tailored coaching action plans.</span>
+            </p>
+
+            <div class="oee-presets" style="margin-bottom: 16px;">
+              <span style="font-size:12px; color:var(--muted); align-self:center; margin-right:4px;"><span class="zh">範例情境 (Presets)：</span><span class="en">Presets:</span></span>
+              <button class="demo-btn" style="padding:4px 10px; font-size:11.5px;" onclick="loadFb360Preset('blackbelt')"><span class="zh">🎯 資深黑帶專案經理 (Mock Fab Case)</span><span class="en">🎯 Senior Black Belt Leader</span></button>
+              <button class="demo-btn secondary" style="padding:4px 10px; font-size:11.5px;" onclick="loadFb360Preset('greenbelt')"><span class="zh">🌱 初階綠帶工程師 (High Potential)</span><span class="en">🌱 Junior Green Belt</span></button>
+              <button class="demo-btn secondary" style="padding:4px 10px; font-size:11.5px;" onclick="loadFb360Preset('balanced')"><span class="zh">⭐ 全方位精實主管 (Balanced Leader)</span><span class="en">⭐ Balanced Lean Leader</span></button>
+              <button class="demo-btn secondary" style="padding:4px 10px; font-size:11.5px;" onclick="loadFb360Preset('custom')"><span class="zh">🔄 清空自填</span><span class="en">🔄 Reset Blank</span></button>
+            </div>
+
+            <div class="fb360-layout">
+              <!-- Left Column: Ratings Table -->
+              <div>
+                <div class="fmea-table-wrap" style="margin-bottom: 10px;">
+                  <table class="fb360-table">
+                    <thead>
+                      <tr>
+                        <th style="width:38%;"><span class="zh">精實核心能力維度 (Competency)</span><span class="en">Core Competency Dimension</span></th>
+                        <th style="text-align:center; width:12%;"><span class="zh">自評</span><br><span class="en">Self</span></th>
+                        <th style="text-align:center; width:12%;"><span class="zh">主管</span><br><span class="en">Mgr</span></th>
+                        <th style="text-align:center; width:12%;"><span class="zh">同儕</span><br><span class="en">Peers</span></th>
+                        <th style="text-align:center; width:12%;"><span class="zh">部屬</span><br><span class="en">Reports</span></th>
+                        <th style="text-align:center; width:14%;"><span class="zh">他評均分</span><br><span class="en">Others Avg</span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="fb360TableBody"></tbody>
+                  </table>
+                </div>
+                <div style="font-size:11.5px; color:var(--muted); line-height:1.5;">
+                  <span class="zh">💡 評分量表 (1.0 - 5.0)：1=顯著不足, 2=偶爾展現, 3=符合標準, 4=熟練優秀, 5=標竿導師</span>
+                  <span class="en">💡 Rating Scale (1.0 - 5.0): 1=Needs Improvement, 2=Emerging, 3=Proficient, 4=Advanced, 5=Role Model</span>
+                </div>
+              </div>
+
+              <!-- Right Column: Visual Radar Chart & Summary Metrics -->
+              <div>
+                <div class="fb360-radar-wrap">
+                  <div style="font-weight:700; font-size:13.5px; margin-bottom:6px; display:flex; justify-content:space-between; width:100%; align-items:center;">
+                    <span><span class="zh">📊 360° 多維度能力雷達圖</span><span class="en">📊 Competency Radar Profile</span></span>
+                    <div style="font-size:11px; display:flex; gap:10px;">
+                      <span style="color:#f5a623;">● <span class="zh">自評 (Self)</span><span class="en">Self</span></span>
+                      <span style="color:#7fb5a0;">● <span class="zh">他評 (Others)</span><span class="en">Others Avg</span></span>
+                    </div>
+                  </div>
+                  <div id="fb360RadarContainer" style="width:100%; display:flex; justify-content:center;">
+                    <!-- SVG rendered dynamically -->
+                  </div>
+                  <div style="display:flex; justify-content:space-around; width:100%; margin-top:10px; border-top:1px dashed var(--line); padding-top:8px; font-size:12px;">
+                    <div><span class="zh">自評總分：</span><span class="en">Self Avg: </span><strong id="fb360SelfAvg" style="color:var(--amber);">0.0</strong></div>
+                    <div><span class="zh">他評總分：</span><span class="en">Others Avg: </span><strong id="fb360OthersAvg" style="color:var(--sage);">0.0</strong></div>
+                    <div><span class="zh">認知契合度：</span><span class="en">Alignment: </span><strong id="fb360FitIndex" style="color:var(--ink);">0%</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Diagnostic Insights & Coaching Recommendations -->
+            <div class="fb360-insights-grid" id="fb360InsightsContainer"></div>
+
+            <div class="demo-controls" style="margin-top:20px; justify-content: flex-start; gap: 8px;">
+              <button class="demo-btn" id="fb360ExportMd"><span class="zh">📄 匯出 360° 評估診斷報告 (Markdown)</span><span class="en">Export 360° Report (Markdown)</span></button>
+              <button class="demo-btn secondary" onclick="loadFb360Preset('blackbelt')"><span class="zh">🔄 重新整理回饋數據</span><span class="en">Refresh Feedback</span></button>
             </div>
           </div>
         </div>
@@ -5267,7 +5455,7 @@ const SECTIONS = [
   {id:'roadmap', zh:'導入路徑', en:'Roadmap'},
   {id:'cases', zh:'案例筆記', en:'Case Notes'},
   {id:'tools', zh:'實戰工具', en:'Tools'},
-  {id:'calculators', zh:'FMEA RPN | Pugh Matrix | OEE 模擬工具 | 5sAudit | RACI Matrix | 專案效益計算', en:'FMEA RPN | Pugh Matrix | OEE Simulator tool | 5sAudit | RACI Matrix | Cost Savings'},
+  {id:'calculators', zh:'FMEA RPN | Pugh Matrix | OEE 模擬工具 | 5sAudit | RACI Matrix | 專案效益計算 | 360° 回饋評估', en:'FMEA RPN | Pugh Matrix | OEE Simulator tool | 5sAudit | RACI Matrix | Cost Savings | 360° Feedback'},
   {id:'a3', zh:'A3 回饋報告', en:'A3 Report'},
   {id:'priority', zh:'任務優先評分', en:'Task Priority Scorer'},
   {id:'reqtrack', zh:'客戶需求追蹤', en:'Customer Requirement Tracker'},
@@ -10244,6 +10432,420 @@ function initSavings() {
   calculateSavings();
 }
 
+/* ==========================================================================
+   360-DEGREE FEEDBACK & LEAN LEADERSHIP ASSESSMENT TOOL
+   ========================================================================== */
+const FB360_DIMENSIONS = [
+  { id: 'D1', zh: '精實思維與現場主義', en: 'Lean Mindset & Gemba Spirit', desc_zh: '深入現場 (Gemba) 觀察真實流程、辨識八大浪費 (Muda)、推動 Kaizen 持續改善文化', desc_en: 'Go to Gemba, identify 8 wastes (Muda), drive continuous Kaizen culture' },
+  { id: 'D2', zh: '數據驅動與問題解決', en: 'Data-Driven Problem Solving', desc_zh: '運用客觀統計數據 (SPC/DOE/DMAIC 循環)、依靠事實與量化證據而非直覺經驗', desc_en: 'Apply statistics (SPC/DOE/DMAIC), rely on quantitative facts over intuition' },
+  { id: 'D3', zh: '跨部門協作與客戶之聲', en: 'Cross-Functional Collab & VoC', desc_zh: '破除組織穀倉 (Silo)、主動傾聽內部/外部客戶之聲 (VoC) 並對齊交付目標', desc_en: 'Break silos, capture Voice of Customer (VoC), and align cross-functional goals' },
+  { id: 'D4', zh: '教練輔導與尊重員工', en: 'Coaching & Respect for People', desc_zh: '賦能基層作業團隊、落實精實提問 (Kata Coaching)、建立心理安全感與無懲罰文化', desc_en: 'Empower frontline workers, practice Kata coaching, foster psychological safety' },
+  { id: 'D5', zh: '標準作業與落地紀律', en: 'Standard Work & Execution Discipline', desc_zh: '落實管制計畫 (Control Plan)、推行防呆 (Poka-Yoke) 與分層稽核 (Kamishibai) 確保成果不退步', desc_en: 'Execute Control Plans, implement Poka-Yoke and layered audits (Kamishibai) to sustain gains' }
+];
+
+const FB360_PRESETS = {
+  blackbelt: {
+    name_zh: '資深黑帶專案經理 (半導體廠實務範例)',
+    name_en: 'Senior Black Belt Project Leader (Fab Case)',
+    scores: [
+      { self: 4.6, mgr: 4.4, peers: 4.2, reports: 4.0 },
+      { self: 4.8, mgr: 4.7, peers: 4.6, reports: 4.3 },
+      { self: 3.8, mgr: 3.5, peers: 3.2, reports: 3.0 },
+      { self: 3.4, mgr: 3.2, peers: 2.9, reports: 2.6 },
+      { self: 4.7, mgr: 4.6, peers: 4.4, reports: 4.2 }
+    ]
+  },
+  greenbelt: {
+    name_zh: '初階綠帶工程師 (高潛力技術專才)',
+    name_en: 'Junior Green Belt Engineer (High Potential)',
+    scores: [
+      { self: 3.4, mgr: 4.2, peers: 4.4, reports: 4.3 },
+      { self: 3.6, mgr: 4.0, peers: 4.2, reports: 4.1 },
+      { self: 3.5, mgr: 4.2, peers: 4.5, reports: 4.4 },
+      { self: 3.2, mgr: 3.8, peers: 4.0, reports: 4.1 },
+      { self: 3.0, mgr: 3.4, peers: 3.5, reports: 3.3 }
+    ]
+  },
+  balanced: {
+    name_zh: '全方位精實主管 (標竿型領導者)',
+    name_en: 'Balanced Lean Leader (Role Model)',
+    scores: [
+      { self: 4.5, mgr: 4.6, peers: 4.4, reports: 4.5 },
+      { self: 4.4, mgr: 4.5, peers: 4.3, reports: 4.3 },
+      { self: 4.5, mgr: 4.4, peers: 4.5, reports: 4.6 },
+      { self: 4.6, mgr: 4.5, peers: 4.4, reports: 4.7 },
+      { self: 4.5, mgr: 4.6, peers: 4.4, reports: 4.5 }
+    ]
+  },
+  custom: {
+    name_zh: '自訂評估數據',
+    name_en: 'Custom Assessment',
+    scores: [
+      { self: 3.0, mgr: 3.0, peers: 3.0, reports: 3.0 },
+      { self: 3.0, mgr: 3.0, peers: 3.0, reports: 3.0 },
+      { self: 3.0, mgr: 3.0, peers: 3.0, reports: 3.0 },
+      { self: 3.0, mgr: 3.0, peers: 3.0, reports: 3.0 },
+      { self: 3.0, mgr: 3.0, peers: 3.0, reports: 3.0 }
+    ]
+  }
+};
+
+let fb360Scores = JSON.parse(JSON.stringify(FB360_PRESETS.blackbelt.scores));
+let fb360ActivePreset = 'blackbelt';
+
+function loadFb360Preset(presetKey) {
+  if (FB360_PRESETS[presetKey]) {
+    fb360ActivePreset = presetKey;
+    fb360Scores = JSON.parse(JSON.stringify(FB360_PRESETS[presetKey].scores));
+    renderFb360Table();
+    updateFb360Calculations();
+  }
+}
+
+function renderFb360Table() {
+  const tbody = document.getElementById('fb360TableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  FB360_DIMENSIONS.forEach((dim, idx) => {
+    const s = fb360Scores[idx];
+    const othersAvg = ((s.mgr + s.peers + s.reports) / 3).toFixed(2);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <strong style="color:var(--ink);">${dim.id}: <span class="zh">${dim.zh}</span><span class="en">${dim.en}</span></strong>
+        <div style="font-size:11px; color:var(--muted); line-height:1.3; margin-top:2px;">
+          <span class="zh">${dim.desc_zh}</span><span class="en">${dim.desc_en}</span>
+        </div>
+      </td>
+      <td style="text-align:center;">
+        <input type="number" step="0.1" min="1.0" max="5.0" class="fb360-input" value="${s.self.toFixed(1)}" onchange="onFb360ScoreChange(${idx}, 'self', this.value)">
+      </td>
+      <td style="text-align:center;">
+        <input type="number" step="0.1" min="1.0" max="5.0" class="fb360-input" value="${s.mgr.toFixed(1)}" onchange="onFb360ScoreChange(${idx}, 'mgr', this.value)">
+      </td>
+      <td style="text-align:center;">
+        <input type="number" step="0.1" min="1.0" max="5.0" class="fb360-input" value="${s.peers.toFixed(1)}" onchange="onFb360ScoreChange(${idx}, 'peers', this.value)">
+      </td>
+      <td style="text-align:center;">
+        <input type="number" step="0.1" min="1.0" max="5.0" class="fb360-input" value="${s.reports.toFixed(1)}" onchange="onFb360ScoreChange(${idx}, 'reports', this.value)">
+      </td>
+      <td style="text-align:center; font-weight:700; color:var(--sage); font-size:13px;" id="fb360OthersAvgRow_${idx}">
+        ${othersAvg}
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function onFb360ScoreChange(dimIdx, role, value) {
+  let val = parseFloat(value);
+  if (isNaN(val)) val = 3.0;
+  if (val < 1.0) val = 1.0;
+  if (val > 5.0) val = 5.0;
+  fb360Scores[dimIdx][role] = val;
+  
+  const s = fb360Scores[dimIdx];
+  const othersAvg = ((s.mgr + s.peers + s.reports) / 3).toFixed(2);
+  const rowEl = document.getElementById(`fb360OthersAvgRow_${dimIdx}`);
+  if (rowEl) rowEl.innerText = othersAvg;
+
+  updateFb360Calculations();
+}
+
+function updateFb360Calculations() {
+  let totalSelf = 0;
+  let totalOthers = 0;
+  let totalDiffSq = 0;
+
+  const othersAvgList = [];
+  const selfList = [];
+
+  fb360Scores.forEach((s, idx) => {
+    const oAvg = (s.mgr + s.peers + s.reports) / 3;
+    othersAvgList.push(oAvg);
+    selfList.push(s.self);
+    totalSelf += s.self;
+    totalOthers += oAvg;
+    totalDiffSq += Math.pow(s.self - oAvg, 2);
+  });
+
+  const avgSelf = (totalSelf / 5).toFixed(2);
+  const avgOthers = (totalOthers / 5).toFixed(2);
+  const rmse = Math.sqrt(totalDiffSq / 5);
+  const fitIndex = Math.max(0, Math.min(100, Math.round(100 - (rmse / 4) * 100)));
+
+  const selfAvgEl = document.getElementById('fb360SelfAvg');
+  const othersAvgEl = document.getElementById('fb360OthersAvg');
+  const fitIndexEl = document.getElementById('fb360FitIndex');
+  if (selfAvgEl) selfAvgEl.innerText = avgSelf;
+  if (othersAvgEl) othersAvgEl.innerText = avgOthers;
+  if (fitIndexEl) fitIndexEl.innerText = fitIndex + '%';
+
+  renderFb360Radar(selfList, othersAvgList);
+  renderFb360Insights(selfList, othersAvgList);
+}
+
+function renderFb360Radar(selfList, othersList) {
+  const container = document.getElementById('fb360RadarContainer');
+  if (!container) return;
+
+  const width = 300;
+  const height = 260;
+  const cx = 150;
+  const cy = 130;
+  const maxR = 90;
+  const levels = 5;
+  const numAxes = 5;
+
+  let svgHtml = `<svg viewBox="0 0 ${width} ${height}" class="fb360-radar-svg">`;
+
+  for (let l = 1; l <= levels; l++) {
+    const r = (l / levels) * maxR;
+    const points = [];
+    for (let i = 0; i < numAxes; i++) {
+      const angle = -Math.PI / 2 + i * (2 * Math.PI / numAxes);
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+    }
+    svgHtml += `<polygon points="${points.join(' ')}" class="fb360-radar-grid" />`;
+    const topY = cy - r;
+    svgHtml += `<text x="${cx + 3}" y="${topY + 3}" fill="var(--muted)" font-size="8" opacity="0.6">${l}</text>`;
+  }
+
+  for (let i = 0; i < numAxes; i++) {
+    const angle = -Math.PI / 2 + i * (2 * Math.PI / numAxes);
+    const x2 = cx + maxR * Math.cos(angle);
+    const y2 = cy + maxR * Math.sin(angle);
+    svgHtml += `<line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" class="fb360-radar-axis" />`;
+
+    const labelR = maxR + 18;
+    const lx = cx + labelR * Math.cos(angle);
+    const ly = cy + labelR * Math.sin(angle);
+    const textAnchor = Math.abs(Math.cos(angle)) < 0.15 ? 'middle' : (Math.cos(angle) > 0 ? 'start' : 'end');
+    const dimCode = FB360_DIMENSIONS[i].id;
+    svgHtml += `<text x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="${textAnchor}" fill="var(--ink)" font-size="10.5" font-weight="700">${dimCode}</text>`;
+  }
+
+  const selfPoints = [];
+  selfList.forEach((score, i) => {
+    const r = (Math.max(1, Math.min(5, score)) / levels) * maxR;
+    const angle = -Math.PI / 2 + i * (2 * Math.PI / numAxes);
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    selfPoints.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+  });
+  svgHtml += `<polygon points="${selfPoints.join(' ')}" class="fb360-radar-poly-self" />`;
+  selfPoints.forEach(p => {
+    const [px, py] = p.split(',');
+    svgHtml += `<circle cx="${px}" cy="${py}" r="3" fill="#f5a623" />`;
+  });
+
+  const othersPoints = [];
+  othersList.forEach((score, i) => {
+    const r = (Math.max(1, Math.min(5, score)) / levels) * maxR;
+    const angle = -Math.PI / 2 + i * (2 * Math.PI / numAxes);
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    othersPoints.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+  });
+  svgHtml += `<polygon points="${othersPoints.join(' ')}" class="fb360-radar-poly-others" />`;
+  othersPoints.forEach(p => {
+    const [px, py] = p.split(',');
+    svgHtml += `<circle cx="${px}" cy="${py}" r="3" fill="#7fb5a0" />`;
+  });
+
+  svgHtml += `</svg>`;
+  container.innerHTML = svgHtml;
+}
+
+function renderFb360Insights(selfList, othersList) {
+  const container = document.getElementById('fb360InsightsContainer');
+  if (!container) return;
+
+  const blindSpots = [];
+  const hiddenStrengths = [];
+  const alignedStrengths = [];
+  const developmentAreas = [];
+
+  FB360_DIMENSIONS.forEach((dim, idx) => {
+    const self = selfList[idx];
+    const others = othersList[idx];
+    const diff = self - others;
+
+    if (diff >= 0.55) {
+      blindSpots.push({ dim, self, others, diff });
+    } else if (diff <= -0.55) {
+      hiddenStrengths.push({ dim, self, others, diff });
+    } else if (self >= 4.0 && others >= 3.8) {
+      alignedStrengths.push({ dim, self, others });
+    } else if (self < 3.6 || others < 3.6) {
+      developmentAreas.push({ dim, self, others });
+    }
+  });
+
+  const adviceMap = {
+    'D1': {
+      zh: '每週安排固定 Gemba Walk 現場巡檢；主持跨工段 Kaizen 浪費辨識工作坊，親自傾聽一線作業員痛點。',
+      en: 'Schedule weekly Gemba Walks; facilitate Kaizen waste-hunting sessions to listen directly to operator pain points.'
+    },
+    'D2': {
+      zh: '建立標準化 SPC 即時監控看板；以統計假設檢定與 DOE 實驗取代憑經驗調機，用量化數據建立團隊信服度。',
+      en: 'Establish real-time SPC dashboards; replace intuitive adjustments with hypothesis testing and DOE to build data credibility.'
+    },
+    'D3': {
+      zh: '建立每週上下游 VoC 需求對齊短會；繪製跨部門 SIPOC 與價值流程圖 (VSM)，破除穀倉效應。',
+      en: 'Run weekly upstream/downstream VoC alignment standups; map cross-functional SIPOC & VSM to break organizational silos.'
+    },
+    'D4': {
+      zh: '導入豐田 Kata 教練提問法（問現況、目標、障礙、下一步）；建立「無處罰錯誤回報機制」，給予部屬充分心理安全感。',
+      en: 'Adopt Toyota Kata coaching routines (target, actual, obstacle, next step); enforce blameless reporting to foster psychological safety.'
+    },
+    'D5': {
+      zh: '落實 Control Plan 標準作業；推行實體防呆 (Poka-Yoke) 與 Kamishibai 分層稽核，確保改善成果永續固化。',
+      en: 'Strengthen Control Plans; deploy physical Poka-Yoke and Kamishibai layered audits to prevent process regression.'
+    }
+  };
+
+  let html = `
+    <div class="fb360-card blind-spot">
+      <h4>🚨 <span class="zh">潛在盲點區 (Blind Spots / Self > Others)</span><span class="en">Blind Spots (Self > Others)</span></h4>
+      ${blindSpots.length === 0 ? 
+        '<div style="color:var(--muted);"><span class="zh">無顯著盲點！自評與外部認知高度吻合。</span><span class="en">No significant blind spots detected! Accurate self-perception.</span></div>' : 
+        blindSpots.map(b => `
+          <div style="margin-bottom:8px;">
+            <strong>${b.dim.id} ${b.dim.zh}</strong> (自評 ${b.self.toFixed(1)} vs 他評 ${b.others.toFixed(2)} | 落差 +${b.diff.toFixed(2)}):
+            <div style="color:var(--muted); font-size:12px;"><span class="zh">外部團隊感受度低於個人預期，需主動向下溝通、加強傾聽與授權。</span><span class="en">Others perceive lower performance than your self-rating. Solicit candid upward feedback and clarify expectations.</span></div>
+          </div>
+        `).join('')
+      }
+    </div>
+
+    <div class="fb360-card hidden-strength">
+      <h4>✨ <span class="zh">隱藏優勢區 (Hidden Strengths / Others > Self)</span><span class="en">Hidden Strengths (Others > Self)</span></h4>
+      ${hiddenStrengths.length === 0 ? 
+        '<div style="color:var(--muted);"><span class="zh">自評客觀自信，無過度低估的隱藏優勢。</span><span class="en">Self-evaluation is well calibrated with peer recognition.</span></div>' : 
+        hiddenStrengths.map(h => `
+          <div style="margin-bottom:8px;">
+            <strong>${h.dim.id} ${h.dim.zh}</strong> (自評 ${h.self.toFixed(1)} vs 他評 ${h.others.toFixed(2)} | 潛力高估 +${Math.abs(h.diff).toFixed(2)}):
+            <div style="color:var(--muted); font-size:12px;"><span class="zh">團隊對此維度給予極高肯定！請更有自信發揮此項領導影響力，擔任導師。</span><span class="en">The team rates you higher than you rate yourself! Leverage this validated strength to mentor others.</span></div>
+          </div>
+        `).join('')
+      }
+    </div>
+
+    <div class="fb360-card aligned-strength">
+      <h4>🎯 <span class="zh">高度共識核心強項 (Aligned Core Strengths)</span><span class="en">Aligned Core Strengths</span></h4>
+      ${alignedStrengths.length === 0 ? 
+        '<div style="color:var(--muted);"><span class="zh">各維度仍在發展成長期，請持續聚焦關鍵能力深耕。</span><span class="en">Competencies are still developing; continue deliberate practice.</span></div>' : 
+        alignedStrengths.map(a => `
+          <div style="margin-bottom:6px;">
+            <strong>${a.dim.id} ${a.dim.zh}</strong> (自評 ${a.self.toFixed(1)} / 他評 ${a.others.toFixed(2)}):
+            <span style="color:var(--sage); font-size:12px;"> ✔ <span class="zh">公認的卓越標竿</span><span class="en">Recognized Benchmark</span></span>
+          </div>
+        `).join('')
+      }
+    </div>
+
+    <div class="fb360-card action-plan">
+      <h4>📋 <span class="zh">精實領導力客製化行動方案 (Personalized Coaching & Action Plan)</span><span class="en">Targeted Coaching Action Plan</span></h4>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:10px; margin-top:6px;">
+        ${FB360_DIMENSIONS.map((dim, idx) => {
+          const s = selfList[idx];
+          const o = othersList[idx];
+          const isPriority = (s - o >= 0.5) || o < 3.5 || s < 3.5;
+          const advice = adviceMap[dim.id];
+          return `
+            <div style="background:rgba(0,0,0,0.15); border-radius:8px; padding:8px 10px; border-top: 2px solid ${isPriority ? '#e88d5a' : 'var(--sage)'};">
+              <div style="font-weight:700; font-size:12.5px; margin-bottom:4px; display:flex; justify-content:space-between;">
+                <span>${dim.id}: ${dim.zh}</span>
+                <span style="color:${isPriority ? '#e88d5a' : 'var(--sage)'}; font-size:11px;">${isPriority ? '🔥 優先改善 / Priority' : '✅ 維持精進 / Maintain'}</span>
+              </div>
+              <div style="font-size:11.8px; color:var(--muted); line-height:1.45;">
+                <span class="zh">👉 ${advice.zh}</span>
+                <span class="en" style="display:block; margin-top:2px;">👉 ${advice.en}</span>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
+
+function exportFb360Markdown() {
+  let md = `# 360° 精實領導力與專案能力回饋評估報告 (360° Lean Leadership Feedback Report)\n\n`;
+  md += `**評估情境 (Preset / Context):** ${FB360_PRESETS[fb360ActivePreset] ? FB360_PRESETS[fb360ActivePreset].name_zh : '自訂評估'}\n`;
+  md += `**產出日期 (Date):** ${new Date().toISOString().slice(0, 10)}\n\n`;
+  md += `---\n\n`;
+
+  md += `## 1. 五大精實核心能力評分矩陣 (Competency Rating Matrix)\n\n`;
+  md += `| 維度代碼 | 核心能力維度 (Competency) | 自評 (Self) | 主管 (Mgr) | 同儕 (Peers) | 部屬 (Reports) | 他評均分 (Others Avg) | 落差 (Gap: Self - Others) |\n`;
+  md += `| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |\n`;
+
+  let totalSelf = 0;
+  let totalOthers = 0;
+
+  fb360Scores.forEach((s, idx) => {
+    const dim = FB360_DIMENSIONS[idx];
+    const oAvg = (s.mgr + s.peers + s.reports) / 3;
+    const gap = s.self - oAvg;
+    totalSelf += s.self;
+    totalOthers += oAvg;
+    md += `| ${dim.id} | ${dim.zh} (${dim.en}) | ${s.self.toFixed(1)} | ${s.mgr.toFixed(1)} | ${s.peers.toFixed(1)} | ${s.reports.toFixed(1)} | ${oAvg.toFixed(2)} | ${gap > 0 ? '+' : ''}${gap.toFixed(2)} |\n`;
+  });
+
+  const avgSelf = (totalSelf / 5).toFixed(2);
+  const avgOthers = (totalOthers / 5).toFixed(2);
+  md += `| **總平均** | **Overall Average** | **${avgSelf}** | - | - | - | **${avgOthers}** | **${(avgSelf - avgOthers > 0 ? '+' : '') + (avgSelf - avgOthers).toFixed(2)}** |\n\n`;
+
+  md += `## 2. 周哈里窗 (Johari Window) 診斷結果\n\n`;
+  FB360_DIMENSIONS.forEach((dim, idx) => {
+    const s = fb360Scores[idx].self;
+    const o = (fb360Scores[idx].mgr + fb360Scores[idx].peers + fb360Scores[idx].reports) / 3;
+    const diff = s - o;
+    if (diff >= 0.55) {
+      md += `- 🚨 **盲點提醒 [${dim.id} ${dim.zh}]**: 自評 (${s.toFixed(1)}) 高於他評 (${o.toFixed(2)}) 達 +${diff.toFixed(2)}。建議加強雙向溝通、傾聽現場團隊真實痛點。\n`;
+    } else if (diff <= -0.55) {
+      md += `- ✨ **隱藏優勢 [${dim.id} ${dim.zh}]**: 他評 (${o.toFixed(2)}) 高於自評 (${s.toFixed(1)}) 達 +${Math.abs(diff).toFixed(2)}。團隊對您的認可超越自身預期，可更自信擴大影響力。\n`;
+    } else if (s >= 4.0 && o >= 3.8) {
+      md += `- 🎯 **共識強項 [${dim.id} ${dim.zh}]**: 自評與他評均在 4.0 以上，為公認的精實標竿核心能力。\n`;
+    }
+  });
+
+  md += `\n## 3. 客製化行動方案與教練指引 (Action Plan & Coaching)\n\n`;
+  FB360_DIMENSIONS.forEach((dim, idx) => {
+    const s = fb360Scores[idx].self;
+    const o = (fb360Scores[idx].mgr + fb360Scores[idx].peers + fb360Scores[idx].reports) / 3;
+    md += `### ${dim.id}: ${dim.zh} (${dim.en})\n`;
+    md += `- **自評 / 他評**: ${s.toFixed(1)} / ${o.toFixed(2)}\n`;
+    md += `- **實務建議**: ${dim.desc_zh}\n\n`;
+  });
+
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `360_Feedback_Report_${new Date().toISOString().slice(0, 10)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function initFeedback360() {
+  renderFb360Table();
+  updateFb360Calculations();
+
+  const exportBtn = document.getElementById('fb360ExportMd');
+  if (exportBtn) {
+    exportBtn.onclick = exportFb360Markdown;
+  }
+}
+
 let meetState = {
   title: "",
   date: "",
@@ -11932,7 +12534,8 @@ function init(){
     'tabOee': 'panelOee',
     'tab5s': 'panel5s',
     'tabRaci': 'panelRaci',
-    'tabSavings': 'panelSavings'
+    'tabSavings': 'panelSavings',
+    'tabFeedback360': 'panelFeedback360'
   };
   Object.keys(calcTabs).forEach(tabId => {
     const tabEl = document.getElementById(tabId);
@@ -11991,6 +12594,9 @@ function init(){
 
   // Initialize Cost Savings Calculator Tool
   initSavings();
+
+  // Initialize 360 Feedback Assessment Tool
+  initFeedback360();
 
   // Initialize Priority Scorer
   initPriorityScorer();
