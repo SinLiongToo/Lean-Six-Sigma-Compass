@@ -5024,403 +5024,790 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       <section class="section" data-section="finance">
         <h2><span class="zh">財務分析與精實機會</span><span class="en">Financial Analysis & Lean Opportunities</span></h2>
         <p class="lead">
-          <span class="zh">從年度與季度財務數據出發，精確剖析成本結構，並以精實指標自動尋找改善機會點。</span>
-          <span class="en">Break down cost structures from annual or quarterly financials to target high-ROI Lean improvement opportunities.</span>
+          <span class="zh">從年度與季度財務數據出發，精確剖析成本結構、解讀財報健康指標，並以精實工具尋找高回報改善機會點。</span>
+          <span class="en">Break down cost structures, interpret annual/quarterly financial reports, and target high-ROI Lean improvement opportunities.</span>
         </p>
 
-        <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
-          <button class="ctrl-btn active" id="finPresetMfg"><span class="zh">載入典型製造業範例</span><span class="en">Load Classic Mfg</span></button>
-          <button class="ctrl-btn" id="finPresetSemi"><span class="zh">載入半導體高科技廠範例</span><span class="en">Load Semi Fab</span></button>
-          <button class="ctrl-btn" id="finPresetOem"><span class="zh">載入低毛利代工廠範例</span><span class="en">Load Low-Margin OEM</span></button>
+        <!-- Subtabs Navigation -->
+        <div class="calc-tabs" style="margin-bottom: 20px;">
+          <button class="calc-tab active" id="btnFinDiag" onclick="switchFinanceTab('diag')">
+            <span>📊</span>
+            <span class="zh">精實財務診斷與成本拆解</span>
+            <span class="en">Lean Financial Diagnosis & Cost Model</span>
+          </button>
+          <button class="calc-tab" id="btnFinGuide" onclick="switchFinanceTab('guide')">
+            <span>📑</span>
+            <span class="zh">年報與季報解讀指引 (財報分析)</span>
+            <span class="en">How to Read & Interpret Financial Reports</span>
+          </button>
         </div>
 
-        <div class="finance-grid">
-          <!-- Left: Input Form -->
-          <div class="finance-box">
+        <!-- Tab 1: Financials & Lean Diagnosis Content -->
+        <div id="finTabContentDiag">
+          <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="ctrl-btn active" id="finPresetMfg"><span class="zh">載入典型製造業範例</span><span class="en">Load Classic Mfg</span></button>
+            <button class="ctrl-btn" id="finPresetSemi"><span class="zh">載入半導體高科技廠範例</span><span class="en">Load Semi Fab</span></button>
+            <button class="ctrl-btn" id="finPresetOem"><span class="zh">載入低毛利代工廠範例</span><span class="en">Load Low-Margin OEM</span></button>
+          </div>
+
+          <div class="finance-grid">
+            <!-- Left: Input Form -->
+            <div class="finance-box">
+              <div class="finance-title-row">
+                <h3 style="margin:0; font-size:16px;"><span class="zh">營運財務與成本輸入</span><span class="en">Financials & Costs Input</span></h3>
+                <select id="finPeriodSelect" class="finance-input" style="width: auto; padding: 4px 8px; font-size:12px;">
+                  <option value="annual"><span class="zh">年度數據 (Annual)</span><span class="en">Annual</span></option>
+                  <option value="quarterly"><span class="zh">季度數據 (Quarterly)</span><span class="en">Quarterly</span></option>
+                </select>
+              </div>
+
+              <div class="finance-field">
+                <span class="finance-lbl"><span class="zh">營業收入 (Revenue)</span><span class="en">Revenue</span></span>
+                <input type="number" id="finRevenue" value="10000000" class="finance-input">
+              </div>
+
+              <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
+                <span class="zh">營業成本 (COGS) 拆解</span><span class="en">Cost of Goods Sold (COGS)</span>
+              </div>
+
+              <div class="finance-field">
+                <span class="finance-lbl"><span class="zh">直接材料 (Direct Materials)</span><span class="en">Direct Materials</span></span>
+                <input type="number" id="finMat" value="4500000" class="finance-input">
+              </div>
+
+              <div class="finance-field-row">
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">直接人工 (Direct Labor)</span><span class="en">Direct Labor</span></span>
+                  <input type="number" id="finLabor" value="1500000" class="finance-input">
+                </div>
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">製造費用 (Overheads)</span><span class="en">Mfg Overheads</span></span>
+                  <input type="number" id="finOverhead" value="1000000" class="finance-input">
+                </div>
+              </div>
+
+              <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
+                <span class="zh">營業費用 (OPEX) 拆解</span><span class="en">Operating Expenses (OPEX)</span>
+              </div>
+
+              <div class="finance-field">
+                <span class="finance-lbl"><span class="zh">品質成本：報廢與返工 (Scrap/Rework Cost)</span><span class="en">Quality Scrap/Rework Cost</span></span>
+                <input type="number" id="finQuality" value="600000" class="finance-input">
+              </div>
+
+              <div class="finance-field-row">
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">庫存持有與倉儲 (Inventory Cost)</span><span class="en">Inventory carrying</span></span>
+                  <input type="number" id="finInventory" value="400000" class="finance-input">
+                </div>
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">銷管及行政費用 (SG&A)</span><span class="en">SG&A Expenses</span></span>
+                  <input type="number" id="finSga" value="1000000" class="finance-input">
+                </div>
+              </div>
+
+              <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
+                <span class="zh">研發與人力 (R&D & Human Capital)</span><span class="en">R&D & Human Capital</span>
+              </div>
+
+              <div class="finance-field-row">
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">研發費用 (R&D Expense)</span><span class="en">R&D Expense</span></span>
+                  <input type="number" id="finRdExpense" value="500000" class="finance-input">
+                </div>
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">研發費用成長率 (R&D Exp Growth %)</span><span class="en">R&D Exp Growth %</span></span>
+                  <input type="number" id="finRdGrowth" value="5" class="finance-input">
+                </div>
+              </div>
+
+              <div class="finance-field-row">
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">員工人數 (Headcount)</span><span class="en">Headcount</span></span>
+                  <input type="number" id="finHeadcount" value="200" class="finance-input">
+                </div>
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">員工成長率 (Employee Growth %)</span><span class="en">Employee Growth %</span></span>
+                  <input type="number" id="finEmpGrowth" value="8" class="finance-input">
+                </div>
+              </div>
+
+              <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
+                <span class="zh">現金流與營運資金 (Cash Flow & CCC)</span><span class="en">Cash Flow & Working Capital</span>
+              </div>
+
+              <div class="finance-field-row">
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">營業現金流 (Operating Cash Flow)</span><span class="en">Operating Cash Flow</span></span>
+                  <input type="number" id="finOcf" value="1200000" class="finance-input">
+                </div>
+                <div class="finance-field">
+                  <span class="finance-lbl"><span class="zh">自由現金流 (Free Cash Flow)</span><span class="en">Free Cash Flow</span></span>
+                  <input type="number" id="finFcf" value="800000" class="finance-input">
+                </div>
+              </div>
+
+              <div class="finance-field">
+                <span class="finance-lbl"><span class="zh">現金循環週期 (Cash Conversion Cycle - CCC, 天)</span><span class="en">Cash Conversion Cycle (CCC, days)</span></span>
+                <input type="number" id="finCcc" value="90" class="finance-input">
+              </div>
+            </div>
+
+            <!-- Right: Visualizations & Analysis -->
+            <div class="finance-box">
+              <div class="finance-title-row">
+                <h3 style="margin:0; font-size:16px;"><span class="zh">財務績效與成本結構指標</span><span class="en">Financial Performance & Cost KPIs</span></h3>
+              </div>
+
+              <div class="finance-kpi-grid">
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">營業毛利率</span><span class="en">Gross Margin</span></span>
+                  <div class="finance-kpi-val" id="finKpiGross">30.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">營業利益率</span><span class="en">Operating Margin</span></span>
+                  <div class="finance-kpi-val" id="finKpiOpm">10.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">品質成本率</span><span class="en">CoQ %</span></span>
+                  <div class="finance-kpi-val" id="finKpiCoq">6.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">庫存成本率</span><span class="en">Inv %</span></span>
+                  <div class="finance-kpi-val" id="finKpiInv">4.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">研發費用率</span><span class="en">R&D Ratio</span></span>
+                  <div class="finance-kpi-val" id="finKpiRdRatio">5.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">費用vs人力成長差</span><span class="en">R&D vs HR Gap</span></span>
+                  <div class="finance-kpi-val" id="finKpiRdHrGap">-3.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">自由現金流率</span><span class="en">FCF Margin</span></span>
+                  <div class="finance-kpi-val" id="finKpiFcf">8.0%</div>
+                </div>
+                <div class="finance-kpi-card">
+                  <span class="finance-lbl"><span class="zh">現金循環週期</span><span class="en">CCC (Days)</span></span>
+                  <div class="finance-kpi-val" id="finKpiCcc">90d</div>
+                </div>
+              </div>
+
+              <div class="finance-chart-container" style="flex-direction: column;">
+                <canvas id="financeChart" style="max-height: 280px; max-width: 100%;"></canvas>
+                
+                <div class="finance-chart-note" style="margin-top: 15px; font-size: 11.5px; color: var(--muted); line-height: 1.6; border-top: 1px dashed var(--line); padding-top: 10px; width: 100%; text-align: left;">
+                  <span class="zh">💡 <strong>圖表邏輯說明</strong>：當「營業利益」為正數時，此圓餅圖以 <strong>100% 營業收入 (Revenue)</strong> 為基準，展現每 1 元收入中各項費用與最終淨利的分配佔比；若公司處於虧損狀態，圖表將自動切換為僅呈現 <strong>總營運成本 (Total Expenses)</strong> 的結構拆解。</span>
+                  <span class="en">💡 <strong>Chart Logic Note</strong>: When Operating Profit is positive, this chart represents <strong>100% of Revenue (Income)</strong>, illustrating how every dollar of income is split between expenses and profit. If in a loss state, the chart automatically switches to showing the breakdown of <strong>Total Expenses</strong>.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lean Opportunities diagnosis -->
+          <div class="finance-box finance-rec-section">
             <div class="finance-title-row">
-              <h3 style="margin:0; font-size:16px;"><span class="zh">營運財務與成本輸入</span><span class="en">Financials & Costs Input</span></h3>
-              <select id="finPeriodSelect" class="finance-input" style="width: auto; padding: 4px 8px; font-size:12px;">
-                <option value="annual"><span class="zh">年度數據 (Annual)</span><span class="en">Annual</span></option>
-                <option value="quarterly"><span class="zh">季度數據 (Quarterly)</span><span class="en">Quarterly</span></option>
-              </select>
+              <h3 style="margin:0; font-size:16px;"><span class="zh">🔬 精實改善機會診斷報告</span><span class="en">🔬 Lean Diagnostic & Improvement Plan</span></h3>
             </div>
+            <p style="font-size:13.5px; color:var(--muted); margin-bottom:18px;">
+              <span class="zh">系統根據您的成本結構佔比，自動識別出精實改善優先級最高之機會點（以 <span style="color:var(--amber); font-weight:700;">★</span> 標示），並推薦最合適的精實改善工具：</span>
+              <span class="en">Based on your cost structure, the system highlights the highest-priority Lean opportunities (marked with <span style="color:var(--amber); font-weight:700;">★</span>) and matching tools:</span>
+            </p>
 
-            <div class="finance-field">
-              <span class="finance-lbl"><span class="zh">營業收入 (Revenue)</span><span class="en">Revenue</span></span>
-              <input type="number" id="finRevenue" value="10000000" class="finance-input">
-            </div>
-
-            <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
-              <span class="zh">營業成本 (COGS) 拆解</span><span class="en">Cost of Goods Sold (COGS)</span>
-            </div>
-
-            <div class="finance-field">
-              <span class="finance-lbl"><span class="zh">直接材料 (Direct Materials)</span><span class="en">Direct Materials</span></span>
-              <input type="number" id="finMat" value="4500000" class="finance-input">
-            </div>
-
-            <div class="finance-field-row">
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">直接人工 (Direct Labor)</span><span class="en">Direct Labor</span></span>
-                <input type="number" id="finLabor" value="1500000" class="finance-input">
-              </div>
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">製造費用 (Overheads)</span><span class="en">Mfg Overheads</span></span>
-                <input type="number" id="finOverhead" value="1000000" class="finance-input">
-              </div>
-            </div>
-
-            <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
-              <span class="zh">營業費用 (OPEX) 拆解</span><span class="en">Operating Expenses (OPEX)</span>
-            </div>
-
-            <div class="finance-field">
-              <span class="finance-lbl"><span class="zh">品質成本：報廢與返工 (Scrap/Rework Cost)</span><span class="en">Quality Scrap/Rework Cost</span></span>
-              <input type="number" id="finQuality" value="600000" class="finance-input">
-            </div>
-
-            <div class="finance-field-row">
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">庫存持有與倉儲 (Inventory Cost)</span><span class="en">Inventory carrying</span></span>
-                <input type="number" id="finInventory" value="400000" class="finance-input">
-              </div>
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">銷管及行政費用 (SG&A)</span><span class="en">SG&A Expenses</span></span>
-                <input type="number" id="finSga" value="1000000" class="finance-input">
-              </div>
-            </div>
-
-            <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
-              <span class="zh">研發與人力 (R&D & Human Capital)</span><span class="en">R&D & Human Capital</span>
-            </div>
-
-            <div class="finance-field-row">
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">研發費用 (R&D Expense)</span><span class="en">R&D Expense</span></span>
-                <input type="number" id="finRdExpense" value="500000" class="finance-input">
-              </div>
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">研發費用成長率 (R&D Exp Growth %)</span><span class="en">R&D Exp Growth %</span></span>
-                <input type="number" id="finRdGrowth" value="5" class="finance-input">
-              </div>
-            </div>
-
-            <div class="finance-field-row">
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">員工人數 (Headcount)</span><span class="en">Headcount</span></span>
-                <input type="number" id="finHeadcount" value="200" class="finance-input">
-              </div>
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">員工成長率 (Employee Growth %)</span><span class="en">Employee Growth %</span></span>
-                <input type="number" id="finEmpGrowth" value="8" class="finance-input">
-              </div>
-            </div>
-
-            <div style="margin: 15px 0 8px; font-weight: 700; font-size: 13.5px; border-bottom: 1px solid var(--line); padding-bottom: 4px;">
-              <span class="zh">現金流與營運資金 (Cash Flow & CCC)</span><span class="en">Cash Flow & Working Capital</span>
-            </div>
-
-            <div class="finance-field-row">
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">營業現金流 (Operating Cash Flow)</span><span class="en">Operating Cash Flow</span></span>
-                <input type="number" id="finOcf" value="1200000" class="finance-input">
-              </div>
-              <div class="finance-field">
-                <span class="finance-lbl"><span class="zh">自由現金流 (Free Cash Flow)</span><span class="en">Free Cash Flow</span></span>
-                <input type="number" id="finFcf" value="800000" class="finance-input">
-              </div>
-            </div>
-
-            <div class="finance-field">
-              <span class="finance-lbl"><span class="zh">現金循環週期 (Cash Conversion Cycle - CCC, 天)</span><span class="en">Cash Conversion Cycle (CCC, days)</span></span>
-              <input type="number" id="finCcc" value="90" class="finance-input">
-            </div>
+            <div class="finance-rec-grid" id="financeRecGrid"></div>
           </div>
 
-          <!-- Right: Visualizations & Analysis -->
-          <div class="finance-box">
-            <div class="finance-title-row">
-              <h3 style="margin:0; font-size:16px;"><span class="zh">財務績效與成本結構指標</span><span class="en">Financial Performance & Cost KPIs</span></h3>
+          <!-- Semiconductor Gross Margin Benchmarks Section (Collapsible) -->
+          <div class="finance-box" style="margin-top: 20px;">
+            <div class="finance-title-row" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleBenchmarkSection()">
+              <h3 style="margin:0; font-size:15px; display: flex; align-items: center; gap: 8px;">
+                <span>📊</span>
+                <span class="zh">半導體毛利率行業基準 (YoY & 季度拆解)</span>
+                <span class="en">Semiconductor Gross Margin Benchmarks (YoY & Quarterly)</span>
+              </h3>
+              <span id="benchmarkToggleArrow" style="font-size: 14px; transition: transform 0.25s ease;">▼</span>
             </div>
+            
+            <div id="benchmarkContent" style="max-height: 0px; overflow: hidden; transition: max-height 0.3s ease-out; margin-top: 0;">
+              <div style="padding-top: 15px; border-top: 1px dashed var(--line); margin-top: 15px;">
+                <p style="font-size: 13px; color: var(--muted); margin-bottom: 15px;">
+                  <span class="zh">以下為全球領先半導體企業的營業毛利率指標及 2026 年最新季度 YoY 趨勢，可作為精實改善財務回報的評估基準：</span>
+                  <span class="en">Below are the YoY gross margin benchmarks and recent quarterly trends in 2026 for leading semiconductor companies to serve as a target baseline:</span>
+                </p>
+                
+                <!-- Benchmarks Table -->
+                <table class="toolmap" style="margin-bottom: 20px; font-size: 12.5px; width: 100%; border-collapse: collapse;">
+                  <thead>
+                    <tr>
+                      <th style="padding: 8px; text-align: left;"><span class="zh">商業模式 / 企業</span><span class="en">Model / Company</span></th>
+                      <th style="padding: 8px; text-align: left;"><span class="zh">毛利率基準</span><span class="en">Gross Margin Benchmark</span></th>
+                      <th style="padding: 8px; text-align: left;"><span class="zh">2026 季度與 YoY 趨勢</span><span class="en">2026 Quarterly & YoY Trends</span></th>
+                      <th style="padding: 8px; text-align: left;"><span class="zh">核心驅動因素</span><span class="en">Key Drivers</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Nvidia</strong> (Fabless)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">70% - 75%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 74.9% <span style="font-size:11px; color:var(--sage);">(YoY Peak)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 74.0% - 75.0%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">高智慧財產權 (IP) 價值、軟體鎖定 (CUDA) 及零晶圓廠製造負擔。</span><span class="en">High IP value, software lock-in (CUDA), asset-light design model.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>AMD</strong> (Fabless)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">48% - 53%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 53.5% <span style="font-size:11px; color:var(--sage);">(Non-GAAP)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 53.0% - 54.0% <span style="font-size:11px; color:var(--sage);">(AI chip ramp)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">AI 加速器 (Instinct MI300) 產能提升與伺服器 CPU 份額增加，帶動利潤率走高。</span><span class="en">AI accelerator ramp (Instinct MI300) and server CPU share gains driving margin expansion.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>MediaTek</strong> (Fabless)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">46% - 49%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 48.2%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 47.0% - 49.0%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">旗艦級天璣手機晶片 (Dimensity) 滲透率增加，且多元佈局車用與 ASIC 業務。</span><span class="en">Flagship Dimensity smartphone SoC market gains and expansion into automotive & ASIC.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>TSMC</strong> (Pure-Play Foundry)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">53% - 66%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 66.2%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 52.5% - 54.5% <span style="font-size:11px; color:var(--muted);">(Utility impact)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">先進製程節點 (3nm, 5nm) 的定價權、極致良率及晶圓代工龍頭規模。</span><span class="en">Advanced node premium pricing, premium yield rates, massive manufacturing scale.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>ASE</strong> (OSAT)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">16% - 19%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 15.7%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 16.5% - 18.0% <span style="font-size:11px; color:var(--sage);">(CoWoS pull-in)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">先進封裝 (CoWoS, SiP) 產能拉升，測試與封裝產能利用率回溫。</span><span class="en">Advanced packaging (CoWoS, SiP) capacity ramp and OSAT factory load recovery.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Advantest</strong> (Test Equipment)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">54% - 58%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 56.5%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 55.0% - 57.0% <span style="font-size:11px; color:var(--sage);">(AI chip demand)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">受惠於 AI 晶片 (GPU/ASIC) 及高頻寬記憶體 (HBM) 的自動化測試設備 (ATE) 需求。</span><span class="en">Benefiting from automated test equipment (ATE) demand for AI chips (GPUs/ASICs) and High Bandwidth Memory (HBM).</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Teradyne</strong> (Test Equipment)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">55% - 59%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 57.2%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 56.5% - 58.0% <span style="font-size:11px; color:var(--sage);">(HBM & SoC testing)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">受惠於高階系統單晶片 (SoC) 與高頻寬記憶體 (HBM) 測試設備需求，以及協作機器人 (Cobots) 的穩健成長。</span><span class="en">Driven by high-end SoC and HBM testing platform demand, coupled with steady growth in collaborative robotics (Universal Robots).</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>ASML</strong> (Equipment)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">50% - 55%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 51.0%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 54.0% <span style="font-size:11px; color:var(--sage);">(YoY recovery)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">獨家極紫外光 (EUV) 光刻系統獨占地位、機台升級與安裝基地服務收入。</span><span class="en">Monopoly on EUV systems, tool upgrades, and recurring service contract revenue.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>KLA</strong> (Equipment)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">59% - 62%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 61.5%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 60.5% - 62.0%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">半導體量測與缺陷檢測（Metrology）的寡占定位，受惠於製程複雜度攀升。</span><span class="en">Dominant position in process control and defect inspection, benefiting from rising process complexity.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Intel</strong> (IDM)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">40% - 45%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 41.0%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 40.4% <span style="font-size:11px; color:var(--sage);">(YoY up from 27.5% in Q2 25)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">受折舊與產能利用率波動影響大。近期得益於製程良率回升與晶圓代工拆分轉型。</span><span class="en">Highly sensitive to fab asset depreciation; turnaround driven by factory load & yield recovery.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Micron</strong> (IDM / Memory & Storage)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">45% - 85% <span style="font-size:11px; color:var(--sage);">(AI Cycle)</span></td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q2 FY26:</strong> 74.4% <span style="font-size:11px; color:var(--sage);">(Non-GAAP 74.9%)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q3 FY26:</strong> 84.6% <span style="font-size:11px; color:var(--sage);">(Non-GAAP 84.9%, HBM3E record)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q4 FY26 (Est):</strong> 85.0% - 86.5%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">受惠於 AI 伺服器對高頻寬記憶體 (HBM3E/HBM4) 與高階伺服器 DRAM 爆發性需求；HBM 晶圓消耗為傳統 3 倍造成產能排擠，推升高合約價與歷史級毛利率。</span><span class="en">Driven by explosive datacenter AI demand for HBM3E/HBM4 and high-density server DRAM; HBM's 3x wafer consumption tightens overall industry supply, fueling unprecedented pricing power and record margins.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>NXP</strong> (IDM / Auto & Industrial)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">56% - 59%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 56.2% <span style="font-size:11px; color:var(--muted);">(Non-GAAP 57.1%)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 57.3% <span style="font-size:11px; color:var(--sage);">(Non-GAAP 58.0%, YoY +150 bps)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 57.0% - 58.5%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">車用電子區域控制器 (S32 處理器)、ADAS 雷達與工業物聯網晶片具高技術門檻與客戶黏著度；以輕晶圓廠 (Fab-lite) 模式與靈活外包維持穩固毛利結構。</span><span class="en">High barriers and stickiness in automotive zonal processors (S32), ADAS radar, and industrial IoT microcontrollers; optimized fab-lite manufacturing model ensures resilient structural profitability.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Vishay</strong> (IDM / Discrete & Passives)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">22% - 28%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 21.0%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 23.3% <span style="font-size:11px; color:var(--sage);">(Adj 22.6%, YoY up from 19.5%)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q3 2026 (Est):</strong> 23.5% - 24.5% <span style="font-size:11px; color:var(--sage);">(Targeting 24%+)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">聚焦車用、工控與 AI 電源之分離式半導體 (MOSFETs/二極體) 與被動元件；推動「Vishay 3.0」擴產與 12 吋晶圓升級，產能利用率回升及 B/B 值走強帶動毛利復甦。</span><span class="en">Focus on automotive, industrial, and AI power discrete semiconductors (MOSFETs/diodes) & passive components; "Vishay 3.0" 12-inch fab expansion, factory load recovery, and strong book-to-bill driving margin turnaround.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Foxconn / Hon Hai</strong> (EMS / System Assembly)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">6.0% - 6.5%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 6.18%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 6.12% <span style="font-size:11px; color:var(--sage);">(AI server volume surge)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 6.1% - 6.4% <span style="font-size:11px; color:var(--muted);">(GB200 full rack ramp)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">具備極致垂直整合與全球供應鏈規模。受高價 AI 伺服器 (如 GB200 機櫃) 高營收之毛利稀釋影響，積極透過「3+3 轉型」及零組件自製率拉升結構性利潤。</span><span class="en">Unmatched global supply chain scale and vertical integration. High-value AI server (GB200 rack) volume brings massive revenue with gross margin dilution, offset by the "3+3" strategic transformation & higher component self-manufacturing.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Apple</strong> (Consumer Ecosystem & Custom Silicon)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">45% - 48%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 FY26:</strong> 46.9% <span style="font-size:11px; color:var(--sage);">(Services record)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 FY26:</strong> 46.3% <span style="font-size:11px; color:var(--muted);">(Products 39.0% / Services 74.5%)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 FY26 (Est):</strong> 46.0% - 47.5% <span style="font-size:11px; color:var(--sage);">(Apple Intelligence ramp)</span></div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">高毛利服務業務（Services 毛利率達 74%+）營收佔比持續推升；全面導入自研晶片 Apple Silicon (A/M 系列及 Private Cloud Compute 伺服器晶片) 消除外部採購溢價並達到極致軟硬整合，輔以頂級供應鏈定價與良率管控權。</span><span class="en">Expanding high-margin Services mix (~74%+ margin); full transition to proprietary Apple Silicon (A/M-series and Private Cloud Compute AI servers) eliminates merchant chip markups while maximizing hardware-software integration, backed by unmatched supply chain leverage.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Google (Alphabet)</strong> (Hyperscaler & Custom Silicon)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">58% - 63%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 62.45%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 61.65% <span style="font-size:11px; color:var(--sage);">(Cloud & Services scale)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 60.0% - 62.0%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">搜尋與數位廣告高毛利基底、Google Cloud 規模效益顯現；自研 TPU (v5/v6) 客製化晶片降低對第三方 GPU 依賴並優化雲端運算總擁有成本 (TCO)。</span><span class="en">High-margin Search/ad monetization and Google Cloud scale; proprietary TPU (v5/v6) custom silicon mitigates merchant GPU reliance and optimizes cloud compute TCO.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Meta</strong> (Hyperscaler & AI Silicon)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">80% - 83%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 81.85%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 81.37% <span style="font-size:11px; color:var(--sage);">(AI recommendation efficiency)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 81.0% - 82.5%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">極致的全球社群流量變現與極低邊際展示成本；大規模部署自研晶片 MTIA 與開源 Llama 模型生態系，大幅提升廣告推薦轉換率並壓低運算單位成本。</span><span class="en">Massive global social traffic monetization with ultra-low marginal delivery cost; large-scale deployment of in-house MTIA silicon & Llama models driving recommendation yield and compute efficiency.</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Amazon</strong> (Hyperscaler, AWS & Custom Silicon)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">48% - 53%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 51.8%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 52.3% <span style="font-size:11px; color:var(--sage);">(AWS & 3P services expansion)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 51.0% - 53.0%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">高毛利 AWS 雲端運算與第三方賣家服務佔比拉升；AWS 積極自研晶片 (Trainium2, Inferentia, Graviton4) 提供高性價比 AI 算力，優化資料中心成本結構。</span><span class="en">Higher revenue contribution from AWS and third-party seller services; rapid adoption of proprietary silicon (Trainium2, Inferentia, Graviton4) optimizing datacenter cost structure.</span></td>
+                    </tr>
+                    <tr style="border-bottom: none;">
+                      <td style="padding: 8px; vertical-align: top;"><strong>Palantir</strong> (Enterprise AI & Big Data Software)</td>
+                      <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">80% - 85%</td>
+                      <td style="padding: 8px; vertical-align: top;">
+                        <div><strong>Q1 2026:</strong> 82.5%</div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 84.7% <span style="font-size:11px; color:var(--sage);">(AIP Bootcamp expansion)</span></div>
+                        <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 84.0% - 86.0%</div>
+                      </td>
+                      <td style="padding: 8px; vertical-align: top;"><span class="zh">企業級 AI 平台 (AIP) 與國防／商業大數據平台 (Foundry/Gotham) 具極高智財權與訂閱邊際利潤；透過「AIP Bootcamp 密集訓練營」模式大幅縮短導入驗證週期，推升軟體擴展動能。</span><span class="en">High-margin enterprise AI platform (AIP) & defense/commercial data operating systems (Foundry/Gotham); "AIP Bootcamps" drastically accelerate sales cycles and recurring high-margin software subscriptions.</span></td>
+                    </tr>
+                  </tbody>
+                </table>
 
-            <div class="finance-kpi-grid">
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">營業毛利率</span><span class="en">Gross Margin</span></span>
-                <div class="finance-kpi-val" id="finKpiGross">30.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">營業利益率</span><span class="en">Operating Margin</span></span>
-                <div class="finance-kpi-val" id="finKpiOpm">10.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">品質成本率</span><span class="en">CoQ %</span></span>
-                <div class="finance-kpi-val" id="finKpiCoq">6.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">庫存成本率</span><span class="en">Inv %</span></span>
-                <div class="finance-kpi-val" id="finKpiInv">4.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">研發費用率</span><span class="en">R&D Ratio</span></span>
-                <div class="finance-kpi-val" id="finKpiRdRatio">5.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">費用vs人力成長差</span><span class="en">R&D vs HR Gap</span></span>
-                <div class="finance-kpi-val" id="finKpiRdHrGap">-3.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">自由現金流率</span><span class="en">FCF Margin</span></span>
-                <div class="finance-kpi-val" id="finKpiFcf">8.0%</div>
-              </div>
-              <div class="finance-kpi-card">
-                <span class="finance-lbl"><span class="zh">現金循環週期</span><span class="en">CCC (Days)</span></span>
-                <div class="finance-kpi-val" id="finKpiCcc">90d</div>
-              </div>
-            </div>
-
-            <div class="finance-chart-container" style="flex-direction: column;">
-              <canvas id="financeChart" style="max-height: 280px; max-width: 100%;"></canvas>
-              
-              <div class="finance-chart-note" style="margin-top: 15px; font-size: 11.5px; color: var(--muted); line-height: 1.6; border-top: 1px dashed var(--line); padding-top: 10px; width: 100%; text-align: left;">
-                <span class="zh">💡 <strong>圖表邏輯說明</strong>：當「營業利益」為正數時，此圓餅圖以 <strong>100% 營業收入 (Revenue)</strong> 為基準，展現每 1 元收入中各項費用與最終淨利的分配佔比；若公司處於虧損狀態，圖表將自動切換為僅呈現 <strong>總營運成本 (Total Expenses)</strong> 的結構拆解。</span>
-                <span class="en">💡 <strong>Chart Logic Note</strong>: When Operating Profit is positive, this chart represents <strong>100% of Revenue (Income)</strong>, illustrating how every dollar of income is split between expenses and profit. If in a loss state, the chart automatically switches to showing the breakdown of <strong>Total Expenses</strong>.</span>
+                <!-- Lean Link in Benchmarks -->
+                <div class="book-lean-connection" style="margin-top: 15px;">
+                  <div class="connection-title">💡 <span class="zh">精實六標準差與毛利率的關聯</span><span class="en">Lean Six Sigma & Margin Connection</span></div>
+                  <ul style="font-size: 12.5px; line-height: 1.6; margin: 8px 0 0 16px; padding: 0;">
+                    <li>
+                      <span class="zh"><strong>降低品質不良成本 (COPQ)</strong>：半導體製程極其複雜，良率 (Yield) 的 1% 波動常代表數百萬美元的損益。透過 <strong>SPC</strong> 與 <strong>DMAIC</strong> 專案控制製程漂移，直接降低報廢與返工成本，能立即拉升毛利率。</span>
+                      <span class="en"><strong>COPQ Reduction</strong>: Semiconductor steps are highly sensitive. A 1% yield shift equals millions in P&L. Controlling process drift via <strong>SPC</strong> and <strong>DMAIC</strong> directly cuts scrap costs, raising gross margin.</span>
+                    </li>
+                    <li style="margin-top: 8px;">
+                      <span class="zh"><strong>提高設備綜合效率 (OEE)</strong>：高精密設備（如 Scanner / Implanter）折舊高昂。運用 <strong>TPM</strong> 及 <strong>SMED (快速換線)</strong> 減少非預期停機，能有效分攤固定製造費用 (Overheads)。</span>
+                      <span class="en"><strong>OEE Improvement</strong>: Highly precise machinery carries massive depreciation. Running <strong>TPM</strong> and <strong>SMED</strong> to compress idle time spreads overheads across higher output volumes.</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- End Tab 1 (finTabContentDiag) -->
 
-        <!-- Lean Opportunities diagnosis -->
-        <div class="finance-box finance-rec-section">
-          <div class="finance-title-row">
-            <h3 style="margin:0; font-size:16px;"><span class="zh">🔬 精實改善機會診斷報告</span><span class="en">🔬 Lean Diagnostic & Improvement Plan</span></h3>
+        <!-- Tab 2: Financial Report Interpretation Guide Content -->
+        <div id="finTabContentGuide" style="display: none;">
+          <!-- Core Intro Banner -->
+          <div class="finance-box" style="margin-bottom: 20px; background: linear-gradient(135deg, rgba(230,165,30,0.07), rgba(46,134,193,0.07)); border-left: 4px solid var(--amber);">
+            <div style="display: flex; align-items: flex-start; gap: 14px;">
+              <span style="font-size: 26px; line-height: 1;">💎</span>
+              <div>
+                <h3 style="margin: 0 0 6px 0; font-size: 16px; color: var(--ink);">
+                  <span class="zh">企業營運與財報解讀核心哲學</span>
+                  <span class="en">Core Philosophy of Financial Statement Analysis</span>
+                </h3>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--muted);">
+                  <span class="zh">評估一家企業是否具備<strong>高效且可持續的營運體質 (Operating Efficiently & Sustainably)</strong>，核心在於深度分析其三大支柱能力：<strong>創造營收的能力 (Revenue Generation)</strong>、<strong>將帳面獲利轉化為真實現金的能力 (Cash Conversion)</strong> 以及 <strong>資本再投資效益 (Capital Reinvestment & ROIC)</strong>。</span>
+                  <span class="en">To evaluate whether a company is operating efficiently and sustainably, you need to analyze how well it <strong>generates revenue</strong>, <strong>converts profits into cash</strong>, and <strong>reinvests capital</strong>.</span>
+                </p>
+              </div>
+            </div>
           </div>
-          <p style="font-size:13.5px; color:var(--muted); margin-bottom:18px;">
-            <span class="zh">系統根據您的成本結構佔比，自動識別出精實改善優先級最高之機會點（以 <span style="color:var(--amber); font-weight:700;">★</span> 標示），並推薦最合適的精實改善工具：</span>
-            <span class="en">Based on your cost structure, the system highlights the highest-priority Lean opportunities (marked with <span style="color:var(--amber); font-weight:700;">★</span>) and matching tools:</span>
-          </p>
 
-          <div class="finance-rec-grid" id="financeRecGrid"></div>
-        </div>
+          <!-- Section 1: Core Financial Health Framework Table -->
+          <div class="finance-box" style="margin-bottom: 20px;">
+            <div class="finance-title-row" style="margin-bottom: 15px;">
+              <h3 style="margin:0; font-size:15.5px; display: flex; align-items: center; gap: 8px;">
+                <span>🛡️</span>
+                <span class="zh">核心財務健康分析架構 (Core Financial Health Framework)</span>
+                <span class="en">Core Financial Health Framework</span>
+              </h3>
+            </div>
+            
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 15px;">
+              <span class="zh">透過以下 5 大維度檢驗季度 (10-Q) 與年度 (10-K) 財報中的關鍵財務指標，快速辨識健康訊號與潛在營運紅旗：</span>
+              <span class="en">Examine key metrics across 5 dimensions in 10-Q & 10-K reports to identify healthy signals versus operational red flags:</span>
+            </p>
 
-        <!-- Semiconductor Gross Margin Benchmarks Section (Collapsible) -->
-        <div class="finance-box" style="margin-top: 20px;">
-          <div class="finance-title-row" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleBenchmarkSection()">
-            <h3 style="margin:0; font-size:15px; display: flex; align-items: center; gap: 8px;">
-              <span>📊</span>
-              <span class="zh">半導體毛利率行業基準 (YoY & 季度拆解)</span>
-              <span class="en">Semiconductor Gross Margin Benchmarks (YoY & Quarterly)</span>
-            </h3>
-            <span id="benchmarkToggleArrow" style="font-size: 14px; transition: transform 0.25s ease;">▼</span>
+            <table class="toolmap" style="font-size: 12.5px; width: 100%; border-collapse: collapse; margin-bottom: 10px;">
+              <thead>
+                <tr>
+                  <th style="padding: 10px 8px; text-align: left; width: 18%;"><span class="zh">評估維度</span><span class="en">Category</span></th>
+                  <th style="padding: 10px 8px; text-align: left; width: 24%;"><span class="zh">關鍵檢驗指標</span><span class="en">Key Metrics to Check</span></th>
+                  <th style="padding: 10px 8px; text-align: left; width: 29%;"><span class="zh">健康正向信號</span><span class="en">Healthy Signals</span></th>
+                  <th style="padding: 10px 8px; text-align: left; width: 29%;"><span class="zh">潛在警訊與紅旗</span><span class="en">Red Flags</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <strong><span class="zh">成長性與獲利品質</span><span class="en">Growth & Quality</span></strong>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <div style="font-weight:600; color:var(--amber);">Revenue Growth</div>
+                    <div>Gross Margin (毛利率)</div>
+                    <div>Operating Margin (營益率)</div>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh">毛利率持穩或持續走升，伴隨營收穩健成長；展現強大的產品定價權與供應鏈話語權。</span>
+                    <span class="en">Stable/expanding gross margins with steady top-line growth.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">營收表面增長但毛利率急跌（反映遭遇降價競爭、被供應商擠壓或產品缺乏護城河）。</span>
+                    <span class="en">Revenue growing while gross margin drops sharply (pricing pressure).</span>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <strong><span class="zh">現金轉化與含金量</span><span class="en">Cash Conversion</span></strong>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <div style="font-weight:600; color:var(--amber);">Operating Cash Flow (OCF)</div>
+                    <div>Free Cash Flow (FCF)</div>
+                    <div style="font-size:11px; color:var(--muted);">(OCF / Net Income Ratio)</div>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh"><strong>OCF &ge; 淨利 (Net Income)</strong>；產生充沛、正向且可高度預測的自由現金流 (FCF)。</span>
+                    <span class="en"><strong>OCF &ge; Net Income</strong>; positive, predictable FCF.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">帳面淨利為正，但 OCF 長期落後甚至為負（獲利品質極差，充斥未收現營收或存貨積壓）。</span>
+                    <span class="en">Net income positive, but OCF consistently negative (low earnings quality).</span>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <strong><span class="zh">資本效率與再投資</span><span class="en">Capital Efficiency</span></strong>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <div style="font-weight:600; color:var(--amber);">ROIC (投入資本回報率)</div>
+                    <div>ROE (股東權益報酬率)</div>
+                    <div style="font-size:11px; color:var(--muted);">(ROIC vs WACC Spread)</div>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh"><strong>ROIC 顯著超越加權資本成本 (WACC > ~8-10%)</strong>，為股東持續創造真實經濟價值 (EVA)。</span>
+                    <span class="en"><strong>ROIC significantly exceeding Cost of Capital (WACC > ~8–10%)</strong>.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">持續進行龐大資本支出 (CapEx) 或研發 (R&D)，但利潤率與資本回報率持續下滑。</span>
+                    <span class="en">High CapEx or R&D with declining returns/margins.</span>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <strong><span class="zh">資產負債表安全</span><span class="en">Balance Sheet Safety</span></strong>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <div style="font-weight:600; color:var(--amber);">Cash & ST Investments</div>
+                    <div>Net Debt / EBITDA</div>
+                    <div>Current Ratio (流動比率)</div>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh">維持淨現金 (Net Cash) 或 <strong>Net Debt/EBITDA &lt; 2.0x</strong>；流動比率 &gt; 1.2x，具備深厚安全邊際。</span>
+                    <span class="en">Net Cash or <strong>Net Debt/EBITDA &lt; 2.0x</strong>; Current Ratio &gt; 1.2x.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">短期到期債務龐大但現金庫存萎縮；流動性吃緊，面臨高息再融資或斷鏈風險。</span>
+                    <span class="en">High short-term debt due soon with shrinking cash reserves.</span>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: none;">
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <strong><span class="zh">營運生產力與精實周轉</span><span class="en">Operational Efficiency</span></strong>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <div style="font-weight:600; color:var(--amber);">Revenue per Employee (人均產值)</div>
+                    <div>DSO (應收帳款周轉天數)</div>
+                    <div>Inventory Turns / DIO (存貨周轉)</div>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh">人均營收穩步走揚；DSO 與存貨周轉週期維持在健康低位，營運資金周轉敏捷。</span>
+                    <span class="en">Increasing revenue/headcount; DSO and inventory cycles stable.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">員工人數激增但營收放緩（組織臃腫）；DSO 飆升（帳款收不回）、存貨暴增呆滯。</span>
+                    <span class="en">Headcount surging while revenue slows; rising DSO (uncollected receivables).</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          
-          <div id="benchmarkContent" style="max-height: 0px; overflow: hidden; transition: max-height 0.3s ease-out; margin-top: 0;">
-            <div style="padding-top: 15px; border-top: 1px dashed var(--line); margin-top: 15px;">
-              <p style="font-size: 13px; color: var(--muted); margin-bottom: 15px;">
-                <span class="zh">以下為全球領先半導體企業的營業毛利率指標及 2026 年最新季度 YoY 趨勢，可作為精實改善財務回報的評估基準：</span>
-                <span class="en">Below are the YoY gross margin benchmarks and recent quarterly trends in 2026 for leading semiconductor companies to serve as a target baseline:</span>
-              </p>
-              
-              <!-- Benchmarks Table -->
-              <table class="toolmap" style="margin-bottom: 20px; font-size: 12.5px; width: 100%; border-collapse: collapse;">
-                <thead>
-                  <tr>
-                    <th style="padding: 8px; text-align: left;"><span class="zh">商業模式 / 企業</span><span class="en">Model / Company</span></th>
-                    <th style="padding: 8px; text-align: left;"><span class="zh">毛利率基準</span><span class="en">Gross Margin Benchmark</span></th>
-                    <th style="padding: 8px; text-align: left;"><span class="zh">2026 季度與 YoY 趨勢</span><span class="en">2026 Quarterly & YoY Trends</span></th>
-                    <th style="padding: 8px; text-align: left;"><span class="zh">核心驅動因素</span><span class="en">Key Drivers</span></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Nvidia</strong> (Fabless)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">70% - 75%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 74.9% <span style="font-size:11px; color:var(--sage);">(YoY Peak)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 74.0% - 75.0%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">高智慧財產權 (IP) 價值、軟體鎖定 (CUDA) 及零晶圓廠製造負擔。</span><span class="en">High IP value, software lock-in (CUDA), asset-light design model.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>AMD</strong> (Fabless)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">48% - 53%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 53.5% <span style="font-size:11px; color:var(--sage);">(Non-GAAP)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 53.0% - 54.0% <span style="font-size:11px; color:var(--sage);">(AI chip ramp)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">AI 加速器 (Instinct MI300) 產能提升與伺服器 CPU 份額增加，帶動利潤率走高。</span><span class="en">AI accelerator ramp (Instinct MI300) and server CPU share gains driving margin expansion.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>MediaTek</strong> (Fabless)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">46% - 49%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 48.2%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 47.0% - 49.0%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">旗艦級天璣手機晶片 (Dimensity) 滲透率增加，且多元佈局車用與 ASIC 業務。</span><span class="en">Flagship Dimensity smartphone SoC market gains and expansion into automotive & ASIC.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>TSMC</strong> (Pure-Play Foundry)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">53% - 66%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 66.2%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 52.5% - 54.5% <span style="font-size:11px; color:var(--muted);">(Utility impact)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">先進製程節點 (3nm, 5nm) 的定價權、極致良率及晶圓代工龍頭規模。</span><span class="en">Advanced node premium pricing, premium yield rates, massive manufacturing scale.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>ASE</strong> (OSAT)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">16% - 19%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 15.7%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 16.5% - 18.0% <span style="font-size:11px; color:var(--sage);">(CoWoS pull-in)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">先進封裝 (CoWoS, SiP) 產能拉升，測試與封裝產能利用率回溫。</span><span class="en">Advanced packaging (CoWoS, SiP) capacity ramp and OSAT factory load recovery.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Advantest</strong> (Test Equipment)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">54% - 58%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 56.5%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 55.0% - 57.0% <span style="font-size:11px; color:var(--sage);">(AI chip demand)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">受惠於 AI 晶片 (GPU/ASIC) 及高頻寬記憶體 (HBM) 的自動化測試設備 (ATE) 需求。</span><span class="en">Benefiting from automated test equipment (ATE) demand for AI chips (GPUs/ASICs) and High Bandwidth Memory (HBM).</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Teradyne</strong> (Test Equipment)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">55% - 59%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 57.2%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 56.5% - 58.0% <span style="font-size:11px; color:var(--sage);">(HBM & SoC testing)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">受惠於高階系統單晶片 (SoC) 與高頻寬記憶體 (HBM) 測試設備需求，以及協作機器人 (Cobots) 的穩健成長。</span><span class="en">Driven by high-end SoC and HBM testing platform demand, coupled with steady growth in collaborative robotics (Universal Robots).</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>ASML</strong> (Equipment)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">50% - 55%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 51.0%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 54.0% <span style="font-size:11px; color:var(--sage);">(YoY recovery)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">獨家極紫外光 (EUV) 光刻系統獨占地位、機台升級與安裝基地服務收入。</span><span class="en">Monopoly on EUV systems, tool upgrades, and recurring service contract revenue.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>KLA</strong> (Equipment)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">59% - 62%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 61.5%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026 (Est):</strong> 60.5% - 62.0%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">半導體量測與缺陷檢測（Metrology）的寡占定位，受惠於製程複雜度攀升。</span><span class="en">Dominant position in process control and defect inspection, benefiting from rising process complexity.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Intel</strong> (IDM)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">40% - 45%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 41.0%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 40.4% <span style="font-size:11px; color:var(--sage);">(YoY up from 27.5% in Q2 25)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">受折舊與產能利用率波動影響大。近期得益於製程良率回升與晶圓代工拆分轉型。</span><span class="en">Highly sensitive to fab asset depreciation; turnaround driven by factory load & yield recovery.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Micron</strong> (IDM / Memory & Storage)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">45% - 85% <span style="font-size:11px; color:var(--sage);">(AI Cycle)</span></td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q2 FY26:</strong> 74.4% <span style="font-size:11px; color:var(--sage);">(Non-GAAP 74.9%)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q3 FY26:</strong> 84.6% <span style="font-size:11px; color:var(--sage);">(Non-GAAP 84.9%, HBM3E record)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q4 FY26 (Est):</strong> 85.0% - 86.5%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">受惠於 AI 伺服器對高頻寬記憶體 (HBM3E/HBM4) 與高階伺服器 DRAM 爆發性需求；HBM 晶圓消耗為傳統 3 倍造成產能排擠，推升高合約價與歷史級毛利率。</span><span class="en">Driven by explosive datacenter AI demand for HBM3E/HBM4 and high-density server DRAM; HBM's 3x wafer consumption tightens overall industry supply, fueling unprecedented pricing power and record margins.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>NXP</strong> (IDM / Auto & Industrial)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">56% - 59%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 56.2% <span style="font-size:11px; color:var(--muted);">(Non-GAAP 57.1%)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 57.3% <span style="font-size:11px; color:var(--sage);">(Non-GAAP 58.0%, YoY +150 bps)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 57.0% - 58.5%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">車用電子區域控制器 (S32 處理器)、ADAS 雷達與工業物聯網晶片具高技術門檻與客戶黏著度；以輕晶圓廠 (Fab-lite) 模式與靈活外包維持穩固毛利結構。</span><span class="en">High barriers and stickiness in automotive zonal processors (S32), ADAS radar, and industrial IoT microcontrollers; optimized fab-lite manufacturing model ensures resilient structural profitability.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Vishay</strong> (IDM / Discrete & Passives)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">22% - 28%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 21.0%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 23.3% <span style="font-size:11px; color:var(--sage);">(Adj 22.6%, YoY up from 19.5%)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q3 2026 (Est):</strong> 23.5% - 24.5% <span style="font-size:11px; color:var(--sage);">(Targeting 24%+)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">聚焦車用、工控與 AI 電源之分離式半導體 (MOSFETs/二極體) 與被動元件；推動「Vishay 3.0」擴產與 12 吋晶圓升級，產能利用率回升及 B/B 值走強帶動毛利復甦。</span><span class="en">Focus on automotive, industrial, and AI power discrete semiconductors (MOSFETs/diodes) & passive components; "Vishay 3.0" 12-inch fab expansion, factory load recovery, and strong book-to-bill driving margin turnaround.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Foxconn / Hon Hai</strong> (EMS / System Assembly)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">6.0% - 6.5%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 6.18%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 6.12% <span style="font-size:11px; color:var(--sage);">(AI server volume surge)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 6.1% - 6.4% <span style="font-size:11px; color:var(--muted);">(GB200 full rack ramp)</span></div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">具備極致垂直整合與全球供應鏈規模。受高價 AI 伺服器 (如 GB200 機櫃) 高營收之毛利稀釋影響，積極透過「3+3 轉型」及零組件自製率拉升結構性利潤。</span><span class="en">Unmatched global supply chain scale and vertical integration. High-value AI server (GB200 rack) volume brings massive revenue with gross margin dilution, offset by the "3+3" strategic transformation & higher component self-manufacturing.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Google (Alphabet)</strong> (Hyperscaler & Custom Silicon)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">58% - 63%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 62.45%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 61.65% <span style="font-size:11px; color:var(--sage);">(Cloud & Services scale)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 60.0% - 62.0%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">搜尋與數位廣告高毛利基底、Google Cloud 規模效益顯現；自研 TPU (v5/v6) 客製化晶片降低對第三方 GPU 依賴並優化雲端運算總擁有成本 (TCO)。</span><span class="en">High-margin Search/ad monetization and Google Cloud scale; proprietary TPU (v5/v6) custom silicon mitigates merchant GPU reliance and optimizes cloud compute TCO.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Meta</strong> (Hyperscaler & AI Silicon)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">80% - 83%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 81.85%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 81.37% <span style="font-size:11px; color:var(--sage);">(AI recommendation efficiency)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 81.0% - 82.5%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">極致的全球社群流量變現與極低邊際展示成本；大規模部署自研晶片 MTIA 與開源 Llama 模型生態系，大幅提升廣告推薦轉換率並壓低運算單位成本。</span><span class="en">Massive global social traffic monetization with ultra-low marginal delivery cost; large-scale deployment of in-house MTIA silicon & Llama models driving recommendation yield and compute efficiency.</span></td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid var(--line);">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Amazon</strong> (Hyperscaler, AWS & Custom Silicon)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">48% - 53%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 51.8%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 52.3% <span style="font-size:11px; color:var(--sage);">(AWS & 3P services expansion)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 51.0% - 53.0%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">高毛利 AWS 雲端運算與第三方賣家服務佔比拉升；AWS 積極自研晶片 (Trainium2, Inferentia, Graviton4) 提供高性價比 AI 算力，優化資料中心成本結構。</span><span class="en">Higher revenue contribution from AWS and third-party seller services; rapid adoption of proprietary silicon (Trainium2, Inferentia, Graviton4) optimizing datacenter cost structure.</span></td>
-                  </tr>
-                  <tr style="border-bottom: none;">
-                    <td style="padding: 8px; vertical-align: top;"><strong>Palantir</strong> (Enterprise AI & Big Data Software)</td>
-                    <td style="padding: 8px; vertical-align: top; color: var(--amber); font-weight: 700;">80% - 85%</td>
-                    <td style="padding: 8px; vertical-align: top;">
-                      <div><strong>Q1 2026:</strong> 82.5%</div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>Q2 2026:</strong> 84.7% <span style="font-size:11px; color:var(--sage);">(AIP Bootcamp expansion)</span></div>
-                      <div style="font-size: 11px; color: var(--muted);"><strong>H2 2026 (Est):</strong> 84.0% - 86.0%</div>
-                    </td>
-                    <td style="padding: 8px; vertical-align: top;"><span class="zh">企業級 AI 平台 (AIP) 與國防／商業大數據平台 (Foundry/Gotham) 具極高智財權與訂閱邊際利潤；透過「AIP Bootcamp 密集訓練營」模式大幅縮短導入驗證週期，推升軟體擴展動能。</span><span class="en">High-margin enterprise AI platform (AIP) & defense/commercial data operating systems (Foundry/Gotham); "AIP Bootcamps" drastically accelerate sales cycles and recurring high-margin software subscriptions.</span></td>
-                  </tr>
-                </tbody>
-              </table>
 
-              <!-- Lean Link in Benchmarks -->
-              <div class="book-lean-connection" style="margin-top: 15px;">
-                <div class="connection-title">💡 <span class="zh">精實六標準差與毛利率的關聯</span><span class="en">Lean Six Sigma & Margin Connection</span></div>
-                <ul style="font-size: 12.5px; line-height: 1.6; margin: 8px 0 0 16px; padding: 0;">
-                  <li>
-                    <span class="zh"><strong>降低品質不良成本 (COPQ)</strong>：半導體製程極其複雜，良率 (Yield) 的 1% 波動常代表數百萬美元的損益。透過 <strong>SPC</strong> 與 <strong>DMAIC</strong> 專案控制製程漂移，直接降低報廢與返工成本，能立即拉升毛利率。</span>
-                    <span class="en"><strong>COPQ Reduction</strong>: Semiconductor steps are highly sensitive. A 1% yield shift equals millions in P&L. Controlling process drift via <strong>SPC</strong> and <strong>DMAIC</strong> directly cuts scrap costs, raising gross margin.</span>
+          <!-- Section 2: Step-by-Step Evaluation Process -->
+          <div class="finance-box" style="margin-bottom: 20px;">
+            <div class="finance-title-row" style="margin-bottom: 15px;">
+              <h3 style="margin:0; font-size:15.5px; display: flex; align-items: center; gap: 8px;">
+                <span>🔍</span>
+                <span class="zh">四步解讀實戰流程 (Step-by-Step Evaluation Process)</span>
+                <span class="en">Step-by-Step Evaluation Process</span>
+              </h3>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+              <!-- Step 1 Card -->
+              <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 14px; position: relative; border-top: 3px solid #3b82f6;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="background: #3b82f6; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px;">Step 1</span>
+                  <h4 style="margin: 0; font-size: 14px; color: var(--ink);">
+                    <span class="zh">損益表審查 (獲利能力與競爭護城河)</span>
+                    <span class="en">Check the Income Statement (Profitability & Moat)</span>
+                  </h4>
+                </div>
+                <ul style="margin: 0 0 0 16px; padding: 0; font-size: 12.5px; line-height: 1.6; color: var(--ink);">
+                  <li style="margin-bottom: 8px;">
+                    <strong><span class="zh">營業毛利率 (Gross Margin)</span><span class="en">Gross Margin</span></strong>：
+                    <span class="zh">衡量競爭優勢與終端定價權。持穩或上升的毛利率代表上游供應商與同業競爭者無法壓縮公司的獲利空間（如台積電先進製程或輝達 AI 晶片）。</span>
+                    <span class="en">Measures competitive advantage and pricing power. Stable or rising gross margins indicate that suppliers or competitors aren't squeezing the company.</span>
                   </li>
-                  <li style="margin-top: 8px;">
-                    <span class="zh"><strong>提高設備綜合效率 (OEE)</strong>：高精密設備（如 Scanner / Implanter）折舊高昂。運用 <strong>TPM</strong> 及 <strong>SMED (快速換線)</strong> 減少非預期停機，能有效分攤固定製造費用 (Overheads)。</span>
-                    <span class="en"><strong>OEE Improvement</strong>: Highly precise machinery carries massive depreciation. Running <strong>TPM</strong> and <strong>SMED</strong> to compress idle time spreads overheads across higher output volumes.</span>
+                  <li>
+                    <strong><span class="zh">營運槓桿效益 (Operating Leverage)</span><span class="en">Operating Leverage</span></strong>：
+                    <span class="zh">比較銷管費用 (SG&A) 與研發費用 (R&D) 增速相較於營收增速。優質企業能以低於營收增幅的費用擴張規模，釋放可觀的營業利益率。</span>
+                    <span class="en">Compare SG&A (Selling, General & Administrative) and R&D growth to revenue growth. Healthy companies scale revenue faster than overhead costs.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Step 2 Card -->
+              <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 14px; position: relative; border-top: 3px solid var(--sage);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="background: var(--sage); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px;">Step 2</span>
+                  <h4 style="margin: 0; font-size: 14px; color: var(--ink);">
+                    <span class="zh">現金流量表對帳 (獲利的真實含金量)</span>
+                    <span class="en">Reconcile with Cash Flow Statement (True Reality)</span>
+                  </h4>
+                </div>
+                <ul style="margin: 0 0 0 16px; padding: 0; font-size: 12.5px; line-height: 1.6; color: var(--ink);">
+                  <li style="margin-bottom: 8px;">
+                    <strong><span class="zh">獲利品質檢驗 (Earnings Quality)</span><span class="en">Earnings Quality</span></strong>：
+                    <span class="zh">確保營業活動現金流 (OCF) 緊密貼合淨利 (Net Income)。若淨利上揚但 OCF 下滑，公司可能存在激進的未收現營收認列或應收帳款膨脹。</span>
+                    <span class="en">Ensure Operating Cash Flow tracks Net Income closely. If net income rises while OCF falls, the company may be recognizing revenue aggressively without collecting actual cash.</span>
+                  </li>
+                  <li>
+                    <strong><span class="zh">自由現金流創造力 (FCF Generation)</span><span class="en">FCF Generation</span></strong>：
+                    <span class="zh">計算公式：<code>自由現金流 (FCF) = 營業現金流 (OCF) - 資本支出 (CapEx)</code>。永續發展的卓越企業其股息派發、庫藏股回購與業務擴張均由充足的 FCF 支應，而非依賴發債借貸。</span>
+                    <span class="en">Calculate <code>Free Cash Flow = Operating Cash Flow - Capital Expenditures (CapEx)</code>. Sustainable companies fund their dividends, buybacks, and growth from FCF rather than debt.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Step 3 Card -->
+              <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 14px; position: relative; border-top: 3px solid var(--amber);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="background: var(--amber); color: var(--navy); font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">Step 3</span>
+                  <h4 style="margin: 0; font-size: 14px; color: var(--ink);">
+                    <span class="zh">資產負債表稽核 (償債能力與營運資金)</span>
+                    <span class="en">Audit the Balance Sheet (Solvency & Working Capital)</span>
+                  </h4>
+                </div>
+                <ul style="margin: 0 0 0 16px; padding: 0; font-size: 12.5px; line-height: 1.6; color: var(--ink);">
+                  <li style="margin-bottom: 8px;">
+                    <strong><span class="zh">營運資金陷阱 (Working Capital Traps)</span><span class="en">Working Capital Traps</span></strong>：
+                    <span class="zh">審視應收帳款 (AR) 與存貨 (Inventory)。若存貨或應收款增速顯著高於營收增速，意味著現金被鎖死在未售出庫存或未收回發票中，易衍生跌價與呆帳。</span>
+                    <span class="en">Look at Accounts Receivable and Inventory. If inventory or receivables grow significantly faster than sales, cash is getting locked up in unsold goods or unpaid invoices.</span>
+                  </li>
+                  <li>
+                    <strong><span class="zh">債務到期時間表 (Debt Maturity Profile)</span><span class="en">Debt Maturity Profile</span></strong>：
+                    <span class="zh">查閱長期借款附註，檢視未來 1~2 年內即將到期的本金償還金額與利率條件，對比帳上現金儲備與 FCF 創造力以確認償債無虞。</span>
+                    <span class="en">Review the notes on long-term debt to see when major principal repayments are due relative to cash holdings.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Step 4 Card -->
+              <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 14px; position: relative; border-top: 3px solid #8b5cf6;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="background: #8b5cf6; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px;">Step 4</span>
+                  <h4 style="margin: 0; font-size: 14px; color: var(--ink);">
+                    <span class="zh">營運生產力與管理層執行力評估</span>
+                    <span class="en">Assess Operational Productivity (Headcount & Execution)</span>
+                  </h4>
+                </div>
+                <ul style="margin: 0 0 0 16px; padding: 0; font-size: 12.5px; line-height: 1.6; color: var(--ink);">
+                  <li style="margin-bottom: 8px;">
+                    <strong><span class="zh">人均產值 (Revenue per Head)</span><span class="en">Revenue per Head</span></strong>：
+                    <span class="zh">總營收除以全職員工人數。若員工人數增加 30% 但營收僅成長 5%，代表組織內部產生嚴重冗員與效率拖累 (Organizational Drag)。</span>
+                    <span class="en">Divide total revenue by full-time headcount. If headcount jumps 30% while revenue only grows 5%, organizational drag is setting in.</span>
+                  </li>
+                  <li>
+                    <strong><span class="zh">管理層討論與分析 (MD&A Scan)</span><span class="en">Management Commentary (MD&A)</span></strong>：
+                    <span class="zh">細讀 10-K/10-Q 中的 MD&A 章節，檢視前瞻指引調整 (Guidance)、主要客戶集中度風險 (Customer Concentration) 與分部業務消長。</span>
+                    <span class="en">Scan the Management’s Discussion and Analysis section for guidance adjustments, customer concentration risks, or shifting segment revenues.</span>
                   </li>
                 </ul>
               </div>
             </div>
+
+            <!-- Lean Six Sigma Bridge in Guide -->
+            <div class="book-lean-connection" style="margin-top: 18px;">
+              <div class="connection-title">💡 <span class="zh">精實六標準差與財報健康指標的實戰對接</span><span class="en">Lean Six Sigma & Financial Statement Connection</span></div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 10px;">
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); border-radius: 6px; padding: 10px;">
+                  <div style="font-weight:700; color:var(--amber); font-size:12px; margin-bottom:4px;">
+                    <span class="zh">📦 資產負債表 ↔ 精實周轉率</span>
+                    <span class="en">📦 Balance Sheet ↔ Lean Velocity</span>
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh">透過 <strong>價值流程圖 (VSM)</strong>、<strong>看板系統 (Kanban)</strong> 與 <strong>JIT (即時生產)</strong> 壓縮 WIP 與庫存堆疊，直接降低營運資金佔用，縮短現金循環週期 (CCC)。</span>
+                    <span class="en">Apply <strong>VSM</strong>, <strong>Kanban</strong>, and <strong>JIT</strong> to compress WIP and buffer stocks, freeing trapped cash and shortening CCC.</span>
+                  </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); border-radius: 6px; padding: 10px;">
+                  <div style="font-weight:700; color:var(--amber); font-size:12px; margin-bottom:4px;">
+                    <span class="zh">🎯 損益表 COGS ↔ 品質不良成本 (COPQ)</span>
+                    <span class="en">🎯 Income Statement ↔ COPQ Reduction</span>
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh">運用 <strong>DMAIC</strong> 與 <strong>SPC 統計製程管制</strong> 消除製程漂移，減少報廢與重工，將品質成本率降低 2~5%，直接拉抬毛利率。</span>
+                    <span class="en">Deploy <strong>DMAIC</strong> and <strong>SPC</strong> to eradicate process drift, trimming scrap/rework to boost gross margin by 200-500 bps.</span>
+                  </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); border-radius: 6px; padding: 10px;">
+                  <div style="font-weight:700; color:var(--amber); font-size:12px; margin-bottom:4px;">
+                    <span class="zh">⚡ 現金流量表 CapEx ↔ 設備綜合效率 (OEE)</span>
+                    <span class="en">⚡ Cash Flow CapEx ↔ OEE & TPM</span>
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh">推動 <strong>TPM (全員生產維護)</strong> 與 <strong>SMED (快速換模)</strong> 釋放瓶頸機台隱性產能，避免過早投入鉅額 CapEx 採購新機台，最大化自由現金流 (FCF)。</span>
+                    <span class="en">Implement <strong>TPM</strong> & <strong>SMED</strong> to unlock hidden equipment capacity, deferring unnecessary CapEx and maximizing FCF.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Interactive Financial Health Checklist -->
+          <div class="finance-box">
+            <div class="finance-title-row" style="margin-bottom: 12px;">
+              <h3 style="margin:0; font-size:15.5px; display: flex; align-items: center; gap: 8px;">
+                <span>✅</span>
+                <span class="zh">財報健康快速自檢評分表 (Interactive Health Quick-Check)</span>
+                <span class="en">Interactive Financial Health Quick-Check</span>
+              </h3>
+            </div>
+
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 15px;">
+              <span class="zh">點選下方符合目標企業財報特徵的健康項目，系統將即時計算體質評分與精實評語：</span>
+              <span class="en">Check all applicable healthy traits for your target company to get an instant financial health score & verdict:</span>
+            </p>
+
+            <div style="display: grid; gap: 10px; margin-bottom: 15px;">
+              <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; cursor: pointer;">
+                <input type="checkbox" class="fin-health-check" onchange="calcFinHealthScore()" checked>
+                <span style="font-size: 13px; color: var(--ink);">
+                  <span class="zh"><strong>1. 成長與定價權</strong>：營業收入穩定增長，且毛利率持平或擴張 (Gross Margin stable or expanding)</span>
+                  <span class="en"><strong>1. Growth & Pricing Power</strong>: Revenue expanding with stable/rising Gross Margins</span>
+                </span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; cursor: pointer;">
+                <input type="checkbox" class="fin-health-check" onchange="calcFinHealthScore()" checked>
+                <span style="font-size: 13px; color: var(--ink);">
+                  <span class="zh"><strong>2. 現金含金量</strong>：營業現金流 (OCF) &ge; 淨利潤，且自由現金流 (FCF) 為正</span>
+                  <span class="en"><strong>2. High Cash Quality</strong>: Operating Cash Flow &ge; Net Income, with solid positive FCF</span>
+                </span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; cursor: pointer;">
+                <input type="checkbox" class="fin-health-check" onchange="calcFinHealthScore()" checked>
+                <span style="font-size: 13px; color: var(--ink);">
+                  <span class="zh"><strong>3. 資本效率</strong>：投入資本回報率 (ROIC) 顯著高於資本成本 (WACC > 8-10%)</span>
+                  <span class="en"><strong>3. Capital Efficiency</strong>: ROIC comfortably exceeds WACC (> 8-10%)</span>
+                </span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; cursor: pointer;">
+                <input type="checkbox" class="fin-health-check" onchange="calcFinHealthScore()" checked>
+                <span style="font-size: 13px; color: var(--ink);">
+                  <span class="zh"><strong>4. 資產負債表安全</strong>：具備淨現金或 Net Debt/EBITDA &lt; 2.0x，短期償債無虞</span>
+                  <span class="en"><strong>4. Balance Sheet Fortress</strong>: Net Cash or Net Debt/EBITDA &lt; 2.0x, minimal short-term debt risk</span>
+                </span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; cursor: pointer;">
+                <input type="checkbox" class="fin-health-check" onchange="calcFinHealthScore()" checked>
+                <span style="font-size: 13px; color: var(--ink);">
+                  <span class="zh"><strong>5. 營運生產力</strong>：人均營收穩步提升，應收帳款與存貨周轉天數 (DSO/DIO) 處於健康區間</span>
+                  <span class="en"><strong>5. Lean Productivity</strong>: Revenue per Head rising, DSO and inventory cycles well-controlled</span>
+                </span>
+              </label>
+            </div>
+
+            <div id="finHealthResultBox" style="padding: 12px 16px; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <span style="font-size: 14px; font-weight: 700; color: var(--ink);">
+                  <span class="zh">健康評分：</span><span class="en">Health Score:</span>
+                </span>
+                <span id="finHealthScoreDisplay" style="font-size: 18px; font-weight: 800; color: var(--sage); margin-left: 6px;">5 / 5 (100%)</span>
+              </div>
+              <div id="finHealthVerdictDisplay" style="font-size: 13px; font-weight: 600; color: var(--amber);">
+                <span class="zh">🌟 頂級體質：具備極強競爭護城河與高效現金轉化引擎</span>
+                <span class="en">🌟 Elite Health: Exceptional competitive moat & cash generation</span>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- End Tab 2 (finTabContentGuide) -->
       </section>
 
     </div>
@@ -11595,6 +11982,52 @@ function toggleBenchmarkSection() {
   } else {
     content.style.maxHeight = '0px';
     arrow.style.transform = 'rotate(0deg)';
+  }
+}
+
+function switchFinanceTab(tab) {
+  const btnDiag = document.getElementById('btnFinDiag');
+  const btnGuide = document.getElementById('btnFinGuide');
+  const diagContent = document.getElementById('finTabContentDiag');
+  const guideContent = document.getElementById('finTabContentGuide');
+  if (!btnDiag || !btnGuide || !diagContent || !guideContent) return;
+
+  if (tab === 'guide') {
+    btnDiag.classList.remove('active');
+    btnGuide.classList.add('active');
+    diagContent.style.display = 'none';
+    guideContent.style.display = 'block';
+  } else {
+    btnDiag.classList.add('active');
+    btnGuide.classList.remove('active');
+    diagContent.style.display = 'block';
+    guideContent.style.display = 'none';
+    if (typeof calculateFinance === 'function') calculateFinance();
+  }
+}
+
+function calcFinHealthScore() {
+  const checkboxes = document.querySelectorAll('.fin-health-check');
+  let checkedCount = 0;
+  checkboxes.forEach(cb => { if (cb.checked) checkedCount++; });
+  const total = checkboxes.length || 5;
+  const pct = Math.round((checkedCount / total) * 100);
+
+  const scoreEl = document.getElementById('finHealthScoreDisplay');
+  const verdictEl = document.getElementById('finHealthVerdictDisplay');
+  if (!scoreEl || !verdictEl) return;
+
+  scoreEl.textContent = `${checkedCount} / ${total} (${pct}%)`;
+
+  if (checkedCount === 5) {
+    scoreEl.style.color = 'var(--sage)';
+    verdictEl.innerHTML = `<span class="zh">🌟 頂級體質：具備極強競爭護城河與高效現金轉化引擎</span><span class="en">🌟 Elite Health: Strong moat & high-efficiency cash engine</span>`;
+  } else if (checkedCount >= 3) {
+    scoreEl.style.color = 'var(--amber)';
+    verdictEl.innerHTML = `<span class="zh">⚖️ 穩健體質：整體營運良好，但存在部分週轉或獲利瓶頸點</span><span class="en">⚖️ Resilient Health: Good fundamentals with minor working capital/margin bottlenecks</span>`;
+  } else {
+    scoreEl.style.color = 'var(--red)';
+    verdictEl.innerHTML = `<span class="zh">⚠️ 警訊體質：存在顯著營運資金鎖死、現金失血或定價權受侵蝕風險</span><span class="en">⚠️ Red Flag Alert: Significant cash burn, pricing pressure or working capital traps</span>`;
   }
 }
 
