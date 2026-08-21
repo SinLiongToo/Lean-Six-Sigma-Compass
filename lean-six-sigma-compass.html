@@ -3102,7 +3102,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <button class="calc-tab active" id="tabFmea">FMEA RPN</button>
           <button class="calc-tab" id="tabPugh">Pugh Matrix</button>
           <button class="calc-tab" id="tabOee">OEE Simulator</button>
-          <button class="calc-tab" id="tab5s">5S Audit</button>
+          <button class="calc-tab" id="tab5s">5S / 6S (EHS) Audit</button>
           <button class="calc-tab" id="tabRaci">RACI Matrix</button>
           <button class="calc-tab" id="tabSavings">Cost Savings</button>
           <button class="calc-tab" id="tabFeedback360">360° Feedback</button>
@@ -3347,13 +3347,20 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           </div>
         </div>
 
-        <!-- 5S Audit Panel -->
+        <!-- 5S / 6S Audit Panel -->
         <div class="calc-panel" id="panel5s">
           <div class="calc-box">
-            <h3><span class="zh">5S 現場稽核與評分工具</span><span class="en">5S Shop Floor Audit & Scoring Tool</span></h3>
-            <p class="honesty-note" style="margin-bottom:16px;">
-              <span class="zh">評分標準：1分-極差（混亂/髒污）；3分-合格（有基本標示/清潔）；5分-極佳（全面防呆/自律維持）。總分 25 分。</span>
-              <span class="en">Rating: 1-Poor (Messy/Dirty); 3-Pass (Basic labels/clean); 5-Excellent (Mistake-proof/Sustained). Max score: 25.</span>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+              <h3 style="margin:0;"><span class="zh">5S / 6S 現場稽核與環安衛 (EHS) 評分工具</span><span class="en">5S / 6S Shop Floor Audit & EHS Scoring Tool</span></h3>
+              <div style="display:flex; gap:6px;">
+                <button class="ctrl-btn active" id="btn5sMode5" style="padding:4px 10px; font-size:12px;"><span class="zh">標準 5S 模式</span><span class="en">Classic 5S</span></button>
+                <button class="ctrl-btn" id="btn5sMode6" style="padding:4px 10px; font-size:12px;"><span class="zh">6S / EHS 整合模式</span><span class="en">6S + EHS Mode</span></button>
+              </div>
+            </div>
+
+            <p class="honesty-note" id="note5sRating" style="margin-bottom:16px;">
+              <span class="zh">評分標準：1分-極差（混亂/髒污/安全隱患）；3分-合格（基本標示/清潔/符合EHS規定）；5分-極佳（全面防呆/自律維持/主動環安衛防護）。</span>
+              <span class="en">Rating: 1-Poor (Messy/Hazards); 3-Pass (Basic labels/Clean/EHS Compliant); 5-Excellent (Mistake-proofing/Sustained/Proactive EHS).</span>
             </p>
             <div class="oee-layout">
               <div>
@@ -3434,7 +3441,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                   </p>
                 </div>
                 <!-- 5S Shitsuke -->
-                <div class="s5-row" style="margin-bottom:18px; padding-bottom:4px;">
+                <div class="s5-row" id="row5sShitsuke" style="margin-bottom:18px; border-bottom: 1px dashed var(--line); padding-bottom:12px;">
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                     <strong style="color:var(--amber); font-size:13.5px;"><span class="zh">5S 素養 (Shitsuke / Sustain)</span><span class="en">5S Sustain (Shitsuke)</span></strong>
                     <div class="s5-rating" data-s="shitsuke">
@@ -3450,6 +3457,33 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                   <p style="margin:0; font-size:12px; color:var(--muted); line-height:1.5;">
                     <span class="zh"><b>現場檢查</b>：員工遵守紀律、穿戴防護具、主動維護標準並持續提出改善案，稽核成為日常習慣。</span>
                     <span class="en"><b>Audit Point</b>: Standard work habits built. Operators follow rules, wear PPE, perform self-audits, and proactively report anomalies.</span>
+                  </p>
+                </div>
+                <!-- 6S Safety & EHS -->
+                <div class="s5-row" id="row6sSafety" style="display:none; margin-bottom:18px; padding-bottom:4px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <strong style="color:var(--amber); font-size:13.5px;"><span class="zh">6S 安全與環安衛 (Safety & EHS)</span><span class="en">6S Safety & EHS</span></strong>
+                    <div class="s5-rating" data-s="safety">
+                      <select class="fmea-select s5-select" id="scoreSafety">
+                        <option value="1">1 分</option>
+                        <option value="2">2 分</option>
+                        <option value="3" selected>3 分</option>
+                        <option value="4">4 分</option>
+                        <option value="5">5 分</option>
+                      </select>
+                    </div>
+                  </div>
+                  <p style="margin:0; font-size:12px; color:var(--muted); line-height:1.5;">
+                    <span class="zh"><b>現場檢查 (環安衛三支柱)</b>：
+                      <br>• <strong>安全 (Safety)</strong>：全體配戴指定防護具 (PPE)、機械防護光柵正常、落實 LOTO 能量隔離、走道與消防設施無阻。
+                      <br>• <strong>環境 (Environment)</strong>：化學品 SDS/GHS 標示無誤、二次防洩漏盛盤完好、有害與一般廢棄物嚴格分類。
+                      <br>• <strong>健康 (Health)</strong>：通風/排氣正常、噪音管制合規、符合人因工學 (Ergonomics) 避免彎腰搬運重物傷害。
+                    </span>
+                    <span class="en"><b>Audit Point (EHS Pillars)</b>:
+                      <br>• <strong>Safety</strong>: Mandatory PPE worn, machine guards/interlocks functional, LOTO enforced, clear fire aisles.
+                      <br>• <strong>Environment</strong>: Chemical SDS/GHS labeling, spill secondary containment, strict waste segregation.
+                      <br>• <strong>Health</strong>: Adequate ventilation/lighting, noise controls, ergonomic setups preventing lifting strain.
+                    </span>
                   </p>
                 </div>
               </div>
@@ -3472,7 +3506,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
             </div>
             
             <div class="demo-controls" style="margin-top:16px;">
-              <button class="demo-btn" id="btnExport5s">📄 <span class="zh">匯出 5S 稽核單</span><span class="en">Export 5S Audit</span></button>
+              <button class="demo-btn" id="btnExport5s">📄 <span class="zh">匯出稽核單</span><span class="en">Export Audit Report</span></button>
             </div>
           </div>
         </div>
@@ -6053,7 +6087,185 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
             </div>
           </div>
 
-          <!-- Section 3: Interactive Financial Health Checklist -->
+          <!-- Section 3: GAAP vs. Non-GAAP Financial Reports Demystified -->
+          <div class="finance-box" style="margin-bottom: 20px;">
+            <div class="finance-title-row" style="margin-bottom: 15px;">
+              <h3 style="margin:0; font-size:15.5px; display: flex; align-items: center; gap: 8px;">
+                <span>⚖️</span>
+                <span class="zh">GAAP 與 Non-GAAP 財報深度解析與實戰解讀指南</span>
+                <span class="en">GAAP vs. Non-GAAP Financial Reports: Deep Dive & Practical Guide</span>
+              </h3>
+            </div>
+
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px; line-height: 1.6;">
+              <span class="zh">在科技、半導體與高成長產業的季度財報（如 10-Q、Earnings Release）中，企業常同時公佈 <strong>GAAP（一般公認會計原則）</strong> 與 <strong>Non-GAAP（調整後財務指標）</strong>。理解兩者的本質差異與調整邏輯，是精確洞察企業真實盈利能力、評估精實改善效益的關鍵基本功。</span>
+              <span class="en">In quarterly earnings (10-Q, Earnings Releases) across tech, semiconductor, and growth industries, companies routinely publish both <strong>GAAP (Generally Accepted Accounting Principles)</strong> and <strong>Non-GAAP (Adjusted)</strong> metrics. Mastering the difference is crucial for discerning true operating profitability and evaluating Lean financial impact.</span>
+            </p>
+
+            <!-- GAAP vs Non-GAAP Comparison Table -->
+            <table class="toolmap" style="font-size: 12.5px; width: 100%; border-collapse: collapse; margin-bottom: 18px;">
+              <thead>
+                <tr>
+                  <th style="padding: 10px 8px; text-align: left; width: 20%;"><span class="zh">比較維度</span><span class="en">Dimension</span></th>
+                  <th style="padding: 10px 8px; text-align: left; width: 40%;"><span class="zh">GAAP (一般公認會計原則)</span><span class="en">GAAP (Standard Accounting)</span></th>
+                  <th style="padding: 10px 8px; text-align: left; width: 40%;"><span class="zh">Non-GAAP (調整後自訂指標)</span><span class="en">Non-GAAP (Adjusted Metrics)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;"><strong><span class="zh">定義與標準</span><span class="en">Definition & Standards</span></strong></td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <span class="zh">嚴格遵循 SEC、FASB（或 IFRS）法定標準編製，具法律效力的官方財報。</span>
+                    <span class="en">Strictly follows SEC/FASB (or IFRS) rules; legally audited official standards.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <span class="zh">管理層自訂編製的補充指標（受 SEC Regulation G 規範，必須提供與 GAAP 的對帳表）。</span>
+                    <span class="en">Management-defined supplemental metrics (SEC Reg G requires GAAP reconciliation).</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;"><strong><span class="zh">主要目的</span><span class="en">Primary Purpose</span></strong></td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <span class="zh">提供高度標準化、具跨公司可比性、完整反映所有歷史收支與會計成本的結果。</span>
+                    <span class="en">Provides standardized, cross-company comparable reporting reflecting all accounting costs.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <span class="zh">剔除非現金、非經常性或併購等干擾，展現<strong>日常核心業務的持續營運體質 (Core Operating Performance)</strong>。</span>
+                    <span class="en">Eliminates non-cash or one-off items to showcase recurring <strong>core operational strength</strong>.</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;"><strong><span class="zh">常見指標形式</span><span class="en">Common Metrics</span></strong></td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <code>GAAP Net Income</code>, <code>GAAP EPS</code>, <code>Operating Margin</code>, <code>Gross Margin</code>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top;">
+                    <code>Non-GAAP EPS</code>, <code>Adjusted EBITDA</code>, <code>Non-GAAP Gross Margin</code>, <code>Adjusted Operating Income</code>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 8px; vertical-align: top;"><strong><span class="zh">核心優點</span><span class="en">Key Advantages</span></strong></td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh">公正客觀、不可隨意修改，真實記錄所有開銷（包括股權激勵與併購折舊代價）。</span>
+                    <span class="en">Objective, consistent, unalterable; records full economic costs including dilution and M&A.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--sage);">
+                    <span class="zh">平滑一次性巨額事件（如訴訟和解、廠房搬遷重組），更易觀察長期經營趨勢。</span>
+                    <span class="en">Smooths out volatile one-time shocks (litigation, plant moves) to reveal underlying trends.</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: none;">
+                  <td style="padding: 10px 8px; vertical-align: top;"><strong><span class="zh">潛在盲點與風險</span><span class="en">Pitfalls & Limitations</span></strong></td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">帳面可能被巨額無形資產攤銷或非現金項目扭曲，掩蓋核心業務的真實獲利增長。</span>
+                    <span class="en">May be distorted by legacy amortization or non-cash paper losses, obscuring core run-rate.</span>
+                  </td>
+                  <td style="padding: 10px 8px; vertical-align: top; color: var(--red);">
+                    <span class="zh">管理層可能「報喜不報憂」，將常態性營運成本包裝為「一次性重組」或過度剔除股權稀釋成本 (SBC)。</span>
+                    <span class="en">Management may cherry-pick, classifying recurring costs as "one-off" or ignoring real SBC dilution.</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- The Big 4 Adjustments Broken Down -->
+            <div style="margin-bottom: 18px;">
+              <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 6px;">
+                <span>🔬</span>
+                <span class="zh">Non-GAAP 最常見的 4 大調整項目與本質剖析</span>
+                <span class="en">The 4 Most Common Non-GAAP Adjustments Decoded</span>
+              </h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px;">
+                <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 12px; border-left: 3px solid var(--amber);">
+                  <div style="font-weight: 700; font-size: 13px; color: var(--amber); margin-bottom: 4px;">
+                    1. 股權激勵費用 (Stock-Based Compensation, SBC)
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh"><strong>為何調整：</strong>非現金支出，不直接消耗當期現金。<br><strong>⚠️ 解讀陷阱：</strong>SBC 是以<strong>稀釋現有股東權益</strong>為代價支付給核心研發與高管的「實質勞務報酬」！若公司 SBC 佔營收比重過高（>10-15%）且未透過自由現金流實施股票回購 (Buyback) 消除稀釋，Non-GAAP 獲利將被嚴重虛胖。</span>
+                    <span class="en"><strong>Why Adjusted:</strong> Non-cash expense.<br><strong>⚠️ Trap:</strong> SBC is real compensation paid via <strong>share dilution</strong>. If SBC is high (>10-15% of revenue) without FCF share buybacks to offset, Non-GAAP profits are cosmetically inflated.</span>
+                  </div>
+                </div>
+
+                <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 12px; border-left: 3px solid #3b82f6;">
+                  <div style="font-weight: 700; font-size: 13px; color: #3b82f6; margin-bottom: 4px;">
+                    2. 併購無形資產攤銷 (Amortization of Intangibles)
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh"><strong>為何調整：</strong>過去併購所產生的專利、客戶關係等會計帳面定期折舊，與日常製造營運無直接關聯。<br><strong>⚠️ 解讀陷阱：</strong>剔除是為了看本業利潤率（如 AMD 併購 Xilinx 後的大額攤銷）；但長期若頻繁發生商譽減損 (Impairment)，代表過去併購資本配置嚴重失策。</span>
+                    <span class="en"><strong>Why Adjusted:</strong> Non-cash accounting amortization from past M&A.<br><strong>⚠️ Trap:</strong> Helps evaluate core run-rate margins (e.g. AMD after Xilinx), but recurring impairments signal poor capital allocation.</span>
+                  </div>
+                </div>
+
+                <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 12px; border-left: 3px solid var(--sage);">
+                  <div style="font-weight: 700; font-size: 13px; color: var(--sage); margin-bottom: 4px;">
+                    3. 重組與精簡遣散成本 (Restructuring & Severance)
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh"><strong>為何調整：</strong>廠房整併、淘汰舊產線、組織精簡等一次性轉型開銷。<br><strong>⚠️ 解讀陷阱：</strong>若某家企業「年年重組、季季精簡」，則此項費用實質上已是經營常態，管理層有藉此粉飾 Non-GAAP 經常性支出的嫌疑。</span>
+                    <span class="en"><strong>Why Adjusted:</strong> One-off facility consolidation or severance fees.<br><strong>⚠️ Trap:</strong> If a company posts restructuring charges every single year, it is not one-off — it is an ongoing operating expense.</span>
+                  </div>
+                </div>
+
+                <div style="background: var(--panel); border: 1px solid var(--panel-border); border-radius: 8px; padding: 12px; border-left: 3px solid #8b5cf6;">
+                  <div style="font-weight: 700; font-size: 13px; color: #8b5cf6; margin-bottom: 4px;">
+                    4. 訴訟和解金與資產減損 (Litigation & Impairments)
+                  </div>
+                  <div style="font-size: 12px; line-height: 1.5; color: var(--ink);">
+                    <span class="zh"><strong>為何調整：</strong>偶發性專利侵權和解、監管罰款或呆滯機台設備一次性減記。<br><strong>⚠️ 解讀陷阱：</strong>雖然不反映未來經常性獲利，但大額和解與減損往往暴露出公司在製程品管、專利合規或資產投資上的歷史重大失誤。</span>
+                    <span class="en"><strong>Why Adjusted:</strong> Unpredictable legal settlements or one-time equipment write-downs.<br><strong>⚠️ Trap:</strong> While non-recurring, large write-offs highlight historical failures in IP or asset management.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4-Step Practical Verification Framework -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--panel-border); border-radius: 8px; padding: 14px; margin-bottom: 15px;">
+              <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 6px;">
+                <span>🎯</span>
+                <span class="zh">看懂 GAAP vs. Non-GAAP 的「四步實戰避坑法則」</span>
+                <span class="en">4-Step Practical Verification Framework</span>
+              </h4>
+              <ol style="margin: 0 0 0 18px; padding: 0; font-size: 12.5px; line-height: 1.7; color: var(--ink);">
+                <li>
+                  <strong><span class="zh">第一步：必查「GAAP 對帳調節表 (Reconciliation Table)」</span><span class="en">Step 1: Check the GAAP Reconciliation Table</span></strong>：
+                  <span class="zh">永遠不要只看新聞稿標題的 Non-GAAP EPS。翻到財報附錄，逐項檢查 GAAP 淨利到 Non-GAAP 淨利的加回項目到底有哪些。</span>
+                  <span class="en">Never rely solely on headline Non-GAAP EPS. Always review the itemized reconciliation table in the appendix.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">第二步：警惕「常態化的非經常性費用 (Recurring Non-Recurring Items)」</span><span class="en">Step 2: Spot Recurring "Non-Recurring" Costs</span></strong>：
+                  <span class="zh">若重組費、法律費用連續多個季度持續剔除，應將其還原為真實營運成本計算真實利潤率。</span>
+                  <span class="en">If restructuring charges appear for multiple consecutive quarters, treat them as true operational expenses.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">第三步：以「自由現金流 (FCF) 與股本稀釋率」作為終極裁判</span><span class="en">Step 3: Use FCF & Share Dilution as the Ultimate Truth</span></strong>：
+                  <span class="zh">GAAP 常被非現金折舊過度低估，Non-GAAP 則常被過度美化。<strong>自由現金流 (FCF = OCF - CapEx)</strong> 是檢驗真實現金含金量的照妖鏡；同時檢查<strong>稀釋後總股數 (Diluted Share Count)</strong> 是否逐年大幅增加。</span>
+                  <span class="en">GAAP can be overly conservative, while Non-GAAP is often overly rosy. <strong>Free Cash Flow (FCF = OCF - CapEx)</strong> and <strong>Diluted Share Count trends</strong> provide the objective reality check.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">第四步：同行橫向比較 (Peer Benchmarking)</span><span class="en">Step 4: Benchmark Against Industry Peers</span></strong>：
+                  <span class="zh">將同業（如 Nvidia vs. AMD、TSMC vs. Intel）放在同一標準下比較。例如台積電極少使用激進的 Non-GAAP 調整，指標透明度極高；而 Fabless 設計廠普遍有較高的 SBC 調整幅度。</span>
+                  <span class="en">Compare competitors on an apples-to-apples basis. Foundries like TSMC use minimal Non-GAAP adjustments, while fabless firms carry larger SBC spreads.</span>
+                </li>
+              </ol>
+            </div>
+
+            <!-- Lean Connection in GAAP vs Non-GAAP -->
+            <div class="book-lean-connection">
+              <div class="connection-title">💡 <span class="zh">精實六標準差視角：從現場改善消除對「會計調整」的依賴</span><span class="en">Lean Perspective: Eradicating Reliance on Accounting Adjustments</span></div>
+              <ul style="font-size: 12.5px; line-height: 1.6; margin: 8px 0 0 16px; padding: 0;">
+                <li>
+                  <span class="zh"><strong>真改善在 GAAP 與 Non-GAAP 皆無所遁形</strong>：透過 <strong>DMAIC</strong> 與 <strong>SPC</strong> 降低品質不良成本 (COPQ)，或藉由 <strong>TPM</strong> 提升 OEE，會直接減少損益表中的材料報廢與工時浪費，<strong>在 GAAP 與 Non-GAAP 財報上都會帶來扎實的毛利提升與現金流增長</strong>。</span>
+                  <span class="en"><strong>True Improvement Reflects Everywhere</strong>: Reducing COPQ via <strong>DMAIC/SPC</strong> and boosting OEE with <strong>TPM</strong> directly cuts material scrap and labor waste, delivering authentic gross margin & cash flow expansion across both GAAP and Non-GAAP.</span>
+                </li>
+                <li style="margin-top: 6px;">
+                  <span class="zh"><strong>Gemba 治本 vs. 財報治標</strong>：精實強調建立全員持續改善 (Kaizen) 文化，從製程源頭消除七大浪費，避免企業陷入「營運失控 ➔ 爆發危機 ➔ 巨額裁員重組 ➔ 在 Non-GAAP 中剔除費用粉飾」的惡性循環。</span>
+                  <span class="en"><strong>Root Cause at Gemba vs Cosmetic Fixes</strong>: Lean builds a proactive Kaizen culture to eliminate waste at the source, preventing the vicious cycle of "operational drift ➔ crisis ➔ costly restructuring ➔ masking via Non-GAAP exclusions".</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Section 4: Interactive Financial Health Checklist -->
           <div class="finance-box">
             <div class="finance-title-row" style="margin-bottom: 12px;">
               <h3 style="margin:0; font-size:15.5px; display: flex; align-items: center; gap: 8px;">
@@ -6646,12 +6858,12 @@ const DMAIC = [
 ];
 
 const TOOLS = [
-  {name:'5S 現場管理', pill:'white', pilltxt:'White/Yellow', phase_zh:'定義/衡量', phase_en:'Define/Measure',
-    zh:'整頓整理、目視化管理，建立標準工作紀律與整潔場所。',
-    en:'Sort, Straighten, Shine, Standardize, and Sustain; builds a visual and disciplined workspace.',
-    sc_zh:'量測儀器室混亂，尋找測試卡平均耗時 4 分鐘，導入 5S 定位標籤與影子板。',
-    sc_en:'Metrology bay tools disorganized; search time averaged 4 min. Shadows boards and label tags resolved it.',
-    sw:['Excel 5S 查核表']},
+  {name:'5S / 6S 現場管理與環安衛 (EHS)', pill:'white', pilltxt:'White/Yellow', phase_zh:'定義/衡量/改善', phase_en:'Define/Measure/Improve',
+    zh:'整理、整頓、清掃、清潔、素養，並整合安全與環境健康 (Safety & EHS)，建立防呆、零災害與高可視性作業現場。',
+    en:'Sort, Straighten, Shine, Standardize, Sustain, plus Safety & EHS; builds a visual, disciplined, and zero-accident workspace.',
+    sc_zh:'化學機械研磨 (CMP) 區化學品混放且測試治具雜亂，導入 6S + EHS 劃分酸鹼防洩漏槽、設置 SDS 標示與影子工具板。',
+    sc_en:'CMP chemical supply bay had mixed storage and tool clutter; implemented 6S + EHS with secondary containment, SDS labels, and shadow boards.',
+    sw:['Excel 5S/6S 查核表', 'EHS 安全檢核表']},
   {name:'VSM 價值流程圖', pill:'green', pilltxt:'Green/Black', phase_zh:'定義/衡量', phase_en:'Define/Measure',
     zh:'分析資訊流與物質流，識別流程中所有非增值浪費與瓶頸。',
     en:'Value Stream Mapping analyzes flow of materials and info to identify non-value added wastes.',
@@ -6993,6 +7205,12 @@ const REAL_CASES = [
     src:'https://www.investopedia.com/terms/w/worldcom.asp'}];
 
 const GLOSSARY = [
+  {zh:'EHS 環安衛', en:'EHS (Environment, Health and Safety)',
+    zh_d:'環境保護 (Environment)、職業健康 (Health) 與工作安全 (Safety) 的綜合管理體系（對應 ISO 14001 與 ISO 45001）。在精實生產中常與 5S 結合為「6S 管理」，強調消除人因疲勞、化學品洩漏與工安意外等非加值風險。',
+    en_d:'Environment, Health, and Safety management system (aligned with ISO 14001 & ISO 45001). Commonly integrated with 5S into "6S Management" in Lean to eliminate ergonomic strain, environmental spills, and safety incidents.'},
+  {zh:'6S 現場管理', en:'6S Workplace Organization (5S + Safety/EHS)',
+    zh_d:'在傳統 5S（整理、整頓、清掃、清潔、素養）基礎上加入第 6 個 S——「安全 (Safety & EHS)」。將個人防護 (PPE)、危害標示 (GHS)、能量隔離 (LOTO) 及人因工學全面融入日常現場標準作業。',
+    en_d:'Expands traditional 5S (Sort, Set in Order, Shine, Standardize, Sustain) with the 6th S: Safety & EHS. Embeds PPE, chemical hazard labeling, LOTO, and ergonomics directly into standard work.'},
   {zh:'Muda 浪費', en:'Muda (Waste)',
     zh_d:'精實生產中的無價值活動。包括經典的「七大浪費」：過量生產、等待、運輸、過度加工、庫存、動作、以及缺陷。',
     en_d:'Any non-value-added activity in a process. Includes the classic 7 wastes: Overproduction, Waiting, Transport, Extra processing, Inventory, Motion, and Defects.'},
@@ -9225,20 +9443,53 @@ function initOeeSimulator(){
   }
 }
 
-let s5Scores = { seiri: 3, seiton: 3, seiso: 3, seiketsu: 3, shitsuke: 3 };
+let s5Mode = '5s';
+let s5Scores = { seiri: 3, seiton: 3, seiso: 3, seiketsu: 3, shitsuke: 3, safety: 3 };
+
+function set5sMode(mode) {
+  s5Mode = mode;
+  const btn5 = document.getElementById('btn5sMode5');
+  const btn6 = document.getElementById('btn5sMode6');
+  const rowSafety = document.getElementById('row6sSafety');
+  const row5sShitsuke = document.getElementById('row5sShitsuke');
+  if(btn5 && btn6) {
+    if(mode === '6s') {
+      btn5.classList.remove('active');
+      btn6.classList.add('active');
+      if(rowSafety) rowSafety.style.display = 'block';
+      if(row5sShitsuke) {
+        row5sShitsuke.style.borderBottom = '1px dashed var(--line)';
+        row5sShitsuke.style.paddingBottom = '12px';
+      }
+    } else {
+      btn6.classList.remove('active');
+      btn5.classList.add('active');
+      if(rowSafety) rowSafety.style.display = 'none';
+      if(row5sShitsuke) {
+        row5sShitsuke.style.borderBottom = 'none';
+        row5sShitsuke.style.paddingBottom = '4px';
+      }
+    }
+  }
+  update5sScore();
+}
 
 function render5sChart() {
   const svg = document.getElementById('svg5s');
   if(!svg) return;
   const cx = 50, cy = 50, r = 32;
-  const labels = ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain'];
-  const zhLabels = ['整理', '整頓', '清掃', '清潔', '素養'];
+  const is6s = (s5Mode === '6s');
+  const count = is6s ? 6 : 5;
+  const labels = is6s ? ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain', 'Safety/EHS'] : ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain'];
+  const zhLabels = is6s ? ['整理', '整頓', '清掃', '清潔', '素養', '安全/EHS'] : ['整理', '整頓', '清掃', '清潔', '素養'];
+  const scoreKeys = is6s ? ['seiri', 'seiton', 'seiso', 'seiketsu', 'shitsuke', 'safety'] : ['seiri', 'seiton', 'seiso', 'seiketsu', 'shitsuke'];
+
   let gridPolygons = '';
   for(let j=1; j<=5; j++) {
     const rj = (r / 5) * j;
     const pts = [];
-    for(let i=0; i<5; i++) {
-      const angle = (Math.PI*2/5)*i - Math.PI/2;
+    for(let i=0; i<count; i++) {
+      const angle = (Math.PI*2/count)*i - Math.PI/2;
       const x = cx + rj * Math.cos(angle);
       const y = cy + rj * Math.sin(angle);
       pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
@@ -9246,35 +9497,37 @@ function render5sChart() {
     gridPolygons += `<polygon points="${pts.join(' ')}" fill="none" stroke="var(--line)" stroke-width="0.5"/>`;
   }
   let spokes = '';
-  for(let i=0; i<5; i++) {
-    const angle = (Math.PI*2/5)*i - Math.PI/2;
+  for(let i=0; i<count; i++) {
+    const angle = (Math.PI*2/count)*i - Math.PI/2;
     const x = cx + r * Math.cos(angle);
     const y = cy + r * Math.sin(angle);
     spokes += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--line)" stroke-width="0.5"/>`;
   }
-  const scoreKeys = ['seiri', 'seiton', 'seiso', 'seiketsu', 'shitsuke'];
+
   const valuePts = [];
   scoreKeys.forEach((key, i) => {
-    const score = s5Scores[key];
+    const score = s5Scores[key] || 3;
     const rVal = (r / 5) * score;
-    const angle = (Math.PI*2/5)*i - Math.PI/2;
+    const angle = (Math.PI*2/count)*i - Math.PI/2;
     const x = cx + rVal * Math.cos(angle);
     const y = cy + rVal * Math.sin(angle);
     valuePts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
   });
   const valPolygon = `<polygon points="${valuePts.join(' ')}" fill="rgba(245, 166, 35, 0.2)" stroke="var(--amber)" stroke-width="1.5"/>`;
+  
   let dots = '';
   scoreKeys.forEach((key, i) => {
-    const score = s5Scores[key];
+    const score = s5Scores[key] || 3;
     const rVal = (r / 5) * score;
-    const angle = (Math.PI*2/5)*i - Math.PI/2;
+    const angle = (Math.PI*2/count)*i - Math.PI/2;
     const x = cx + rVal * Math.cos(angle);
     const y = cy + rVal * Math.sin(angle);
     dots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2" fill="var(--amber)"/>`;
   });
+  
   let texts = '';
-  for(let i=0; i<5; i++) {
-    const angle = (Math.PI*2/5)*i - Math.PI/2;
+  for(let i=0; i<count; i++) {
+    const angle = (Math.PI*2/count)*i - Math.PI/2;
     const labelR = r + 10;
     const x = cx + labelR * Math.cos(angle);
     let y = cy + labelR * Math.sin(angle);
@@ -9282,20 +9535,25 @@ function render5sChart() {
     if (angle > 0 && angle < Math.PI) y += 3;
     const lang = state.lang;
     const txtVal = lang === 'zh' ? zhLabels[i] : labels[i];
-    texts += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" font-size="4.5" font-weight="800" fill="var(--muted)">${txtVal}</text>`;
+    texts += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" font-size="${is6s ? '4.0' : '4.5'}" font-weight="800" fill="var(--muted)">${txtVal}</text>`;
   }
   svg.innerHTML = gridPolygons + spokes + valPolygon + dots + texts;
 }
 
 function update5sScore() {
-  const total = s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke;
+  const is6s = (s5Mode === '6s');
+  const total = is6s 
+    ? (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke + s5Scores.safety)
+    : (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke);
+  const maxScore = is6s ? 30 : 25;
   const elVal = document.getElementById('val5sScore');
-  if(elVal) elVal.textContent = `${total} / 25`;
+  if(elVal) elVal.textContent = `${total} / ${maxScore}`;
   const elVerdict = document.getElementById('verdict5s');
   if(elVerdict) {
-    if(total >= 22) {
+    const ratio = total / maxScore;
+    if(ratio >= 0.86) {
       elVerdict.innerHTML = `<span class="zh" style="color:var(--sage); font-weight:800;">⭐ 自律卓越 (Sustained)</span><span class="en" style="color:var(--sage); font-weight:800;">⭐ Sustained</span>`;
-    } else if(total >= 15) {
+    } else if(ratio >= 0.6) {
       elVerdict.innerHTML = `<span class="zh" style="color:var(--amber); font-weight:800;">👍 合格維持 (Standard Met)</span><span class="en" style="color:var(--amber); font-weight:800;">👍 Standard Met</span>`;
     } else {
       elVerdict.innerHTML = `<span class="zh" style="color:#E88D5A; font-weight:800;">⚠️ 亟待改善 (Action Required)</span><span class="en" style="color:#E88D5A; font-weight:800;">⚠️ Action Required</span>`;
@@ -9334,10 +9592,16 @@ function update5sScore() {
         en: '❌ <b>5S Sustain Deficiency</b>: Compliance issues. Introduce <b>Layered Process Audits (LPA)</b> and morning team huddles.'
       });
     }
+    if(is6s && s5Scores.safety < 3) {
+      feedbackItems.push({
+        zh: '🚨 <b>6S 安全與環安衛 (EHS) 不足</b>：現場存在安全防護盲點、PPE 未確實穿戴、化學品 SDS/GHS 標示不明或人因工學風險。建議立即執行「風險評估 (Risk Assessment)」、落實 LOTO 能量隔離並檢查防洩漏盛盤。',
+        en: '🚨 <b>6S Safety & EHS Deficiency</b>: Potential hazards spotted (PPE compliance, chemical storage SDS/GHS, or ergonomic strain). Immediately conduct a Risk Assessment, enforce LOTO protocols, and verify secondary spill containment.'
+      });
+    }
     if(feedbackItems.length === 0) {
       feedbackItems.push({
-        zh: '🎉 <b>稽核表現優異！</b> 現場 5S 維持狀態良好，已進入常態標準化與自主維持階段。建議持續實施分層程序稽核 (LPA)，以維持自律。',
-        en: '🎉 <b>Excellent Audit Score!</b> 5S habits are well-established. Keep running Layered Process Audits (LPA) to maintain self-discipline.'
+        zh: `🎉 <b>稽核表現優異！</b> 現場 ${is6s ? '6S/EHS' : '5S'} 維持狀態良好，已進入常態標準化與自主維持階段。建議持續實施分層程序稽核 (LPA)，以維持自律。`,
+        en: `🎉 <b>Excellent Audit Score!</b> ${is6s ? '6S/EHS' : '5S'} habits are well-established. Keep running Layered Process Audits (LPA) to maintain self-discipline.`
       });
     }
     const lang = state.lang;
@@ -9349,7 +9613,7 @@ function update5sScore() {
 }
 
 function init5sTool() {
-  const ids = ['scoreSeiri', 'scoreSeiton', 'scoreSeiso', 'scoreSeiketsu', 'scoreShitsuke'];
+  const ids = ['scoreSeiri', 'scoreSeiton', 'scoreSeiso', 'scoreSeiketsu', 'scoreShitsuke', 'scoreSafety'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if(el) {
@@ -9360,17 +9624,27 @@ function init5sTool() {
       };
     }
   });
+
+  const btn5 = document.getElementById('btn5sMode5');
+  const btn6 = document.getElementById('btn5sMode6');
+  if(btn5) btn5.onclick = () => set5sMode('5s');
+  if(btn6) btn6.onclick = () => set5sMode('6s');
+
   const btnExport = document.getElementById('btnExport5s');
   if(btnExport) {
     btnExport.onclick = () => {
       const lang = state.lang;
-      const total = s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke;
+      const is6s = (s5Mode === '6s');
+      const maxScore = is6s ? 30 : 25;
+      const total = is6s 
+        ? (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke + s5Scores.safety)
+        : (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke);
       const now = new Date();
       const ds = now.toISOString().split('T')[0];
       let md = '';
       if(lang === 'zh') {
-        md += `# 5S 現場稽核評分單\n\n`;
-        md += `**稽核日期**：${ds}  |  **稽核總得分**：${total} / 25\n\n---\n\n`;
+        md += `# ${is6s ? '6S (5S + EHS 環安衛)' : '5S'} 現場稽核評分單\n\n`;
+        md += `**稽核日期**：${ds}  |  **稽核模式**：${is6s ? '6S / EHS 整合模式' : '標準 5S 模式'}  |  **稽核總得分**：${total} / ${maxScore}\n\n---\n\n`;
         md += `## 評分明細\n\n`;
         md += `| 面向 | 得分 | 現場要求指標 |\n`;
         md += `|---|---|---|\n`;
@@ -9378,8 +9652,11 @@ function init5sTool() {
         md += `| 2S 整頓 (Set in Order) | ${s5Scores.seiton} 分 | 定位、定量、定名，30秒內可找到物品 |\n`;
         md += `| 3S 清掃 (Shine) | ${s5Scores.seiso} 分 | 掃除髒污、漏油，根治洩漏源頭 |\n`;
         md += `| 4S 清潔 (Standardize) | ${s5Scores.seiketsu} 分 | 成果標準化，建立 SOP 與清掃檢核表 |\n`;
-        md += `| 5S 素養 (Sustain) | ${s5Scores.shitsuke} 分 | 全員遵守標準紀律，養成自主維護習慣 |\n\n`;
-        md += `## 診斷建議與改善對策\n\n`;
+        md += `| 5S 素養 (Sustain) | ${s5Scores.shitsuke} 分 | 全員遵守標準紀律，養成自主維護習慣 |\n`;
+        if(is6s) {
+          md += `| 6S 安全與環安衛 (Safety & EHS) | ${s5Scores.safety} 分 | PPE穿戴、LOTO隔離、SDS標示、人因工學防護 |\n`;
+        }
+        md += `\n## 診斷建議與改善對策\n\n`;
         const feedbackContainer = document.getElementById('feedback5s');
         if(feedbackContainer) {
           feedbackContainer.querySelectorAll('div').forEach(div => {
@@ -9387,8 +9664,8 @@ function init5sTool() {
           });
         }
       } else {
-        md += `# 5S Shop Floor Audit Sheet\n\n`;
-        md += `**Date**: ${ds}  |  **Total Score**: ${total} / 25\n\n---\n\n`;
+        md += `# ${is6s ? '6S (5S + Safety & EHS)' : '5S'} Shop Floor Audit Sheet\n\n`;
+        md += `**Date**: ${ds}  |  **Mode**: ${is6s ? '6S + EHS Mode' : 'Classic 5S'}  |  **Total Score**: ${total} / ${maxScore}\n\n---\n\n`;
         md += `## Score Details\n\n`;
         md += `| S Aspect | Score | Audit Criteria |\n`;
         md += `|---|---|---|\n`;
@@ -9396,8 +9673,11 @@ function init5sTool() {
         md += `| 2S Set in Order (Seiton) | ${s5Scores.seiton} / 5 | Label locations, limits, shadow boards |\n`;
         md += `| 3S Shine (Seiso) | ${s5Scores.seiso} / 5 | Clean dirt, oil leaks, identify sources |\n`;
         md += `| 4S Standardize (Seiketsu) | ${s5Scores.seiketsu} / 5 | Standardize schedules, SOPs, visual tools |\n`;
-        md += `| 5S Sustain (Shitsuke) | ${s5Scores.shitsuke} / 5 | Active audits, wearing PPE, routine compliance |\n\n`;
-        md += `## Diagnostic Recommendations\n\n`;
+        md += `| 5S Sustain (Shitsuke) | ${s5Scores.shitsuke} / 5 | Active audits, wearing PPE, routine compliance |\n`;
+        if(is6s) {
+          md += `| 6S Safety & EHS | ${s5Scores.safety} / 5 | PPE compliance, LOTO, chemical SDS/GHS, ergonomics |\n`;
+        }
+        md += `\n## Diagnostic Recommendations\n\n`;
         const feedbackContainer = document.getElementById('feedback5s');
         if(feedbackContainer) {
           feedbackContainer.querySelectorAll('div').forEach(div => {
@@ -9409,7 +9689,7 @@ function init5sTool() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `5S_Audit_Report_${ds}.md`;
+      a.download = `${is6s ? '6S_EHS' : '5S'}_Audit_Report_${ds}.md`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
