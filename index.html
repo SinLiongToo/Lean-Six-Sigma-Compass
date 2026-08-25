@@ -3457,6 +3457,223 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     }
   }
 
+
+  /* ==================== SAY NO / WORKPLACE DEFENSE SECTION ==================== */
+  .sayno-wrap { display: flex; flex-direction: column; gap: 22px; }
+  .sayno-banner {
+    background: rgba(245, 166, 35, 0.05);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  [data-theme="light"] .sayno-banner {
+    background: #fffbeb;
+    border-color: #fde68a;
+    border-left: 4px solid var(--amber);
+  }
+  .sayno-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .sayno-pillar-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: all 0.2s ease;
+  }
+  [data-theme="light"] .sayno-pillar-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .sayno-pillar-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+  }
+  .sayno-subtabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+  }
+  .sayno-tab-btn {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sayno-tab-btn:hover {
+    color: var(--ink);
+    border-color: var(--amber);
+  }
+  .sayno-tab-btn.active {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+    font-weight: 700;
+  }
+  .sayno-content-pane {
+    display: none;
+    animation: fade .25s ease;
+  }
+  .sayno-content-pane.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sayno-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .sayno-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  [data-theme="light"] .sayno-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+  .sayno-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  .sayno-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(245, 166, 35, 0.14);
+    color: var(--amber);
+  }
+  .sayno-meta-box {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  [data-theme="light"] .sayno-meta-box {
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .sayno-quote-box {
+    background: rgba(15, 27, 45, 0.35);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--sage);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  [data-theme="light"] .sayno-quote-box {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    border-left: 3px solid #15803d;
+  }
+  .sayno-copy-btn {
+    align-self: flex-start;
+    background: rgba(127, 181, 160, 0.15);
+    border: 1px solid rgba(127, 181, 160, 0.3);
+    color: var(--sage);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sayno-copy-btn:hover {
+    background: var(--sage);
+    color: var(--navy);
+  }
+  .sayno-generator-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  [data-theme="light"] .sayno-generator-box {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .sayno-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .sayno-select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .sayno-select:focus {
+    border-color: var(--amber);
+  }
+  .sayno-result-card {
+    background: rgba(245, 166, 35, 0.04);
+    border: 1px solid var(--amber);
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  [data-theme="light"] .sayno-result-card {
+    background: #fffdf5;
+  }
+
+
+  [data-theme="light"] .sayno-card,
+  [data-theme="light"] .sayno-generator-box,
+  [data-theme="light"] .sayno-pillar-card {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+
 </style>
 </head>
 <body data-theme="dark" lang-mode="zh">
@@ -5138,6 +5355,404 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      
+      <section class="section" data-section="sayno">
+        <h2><span class="zh">🛡️ 職場說不的藝術與防禦手冊</span><span class="en">🛡️ The Art of Saying No: Workplace Defense Playbook</span></h2>
+        <p class="lead">
+          <span class="zh">在職場中，真正的專業不僅在於「如何做好任務」，更在於「懂得在何時何地優雅且堅定地說不」。守住個人時間邊界、資產技術與職責防線，消除不合理的隱形勞動與背鍋陷阱。</span>
+          <span class="en">True workplace professionalism is not only knowing how to execute, but mastering when and how to gracefully yet firmly say "No". Protect your personal boundaries, assets, and schedule from scope creep and unwarranted blame.</span>
+        </p>
+
+        <div class="sayno-wrap">
+          <!-- Banner & Core Pillars -->
+          <div class="sayno-banner">
+            <div style="font-weight: 700; font-size: 14.5px; color: var(--amber); display: flex; align-items: center; gap: 8px;">
+              <span>💡 職場防身三大思維基石 (3 Core Pillars)</span>
+            </div>
+            <div class="sayno-pillars-grid">
+              <div class="sayno-pillar-card">
+                <div style="font-weight: 800; font-size: 13px; color: var(--amber); margin-bottom: 4px;">1. 拒絕「猴子轉移」</div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">別人的規劃不周（Poor Planning），絕不構成你的緊急事件（Emergency）。不隨便讓別人的任務跳上你的背。</span>
+                  <span class="en">Poor planning on someone else's part does not constitute an emergency on yours. Do not take monkeys onto your back.</span>
+                </div>
+              </div>
+              <div class="sayno-pillar-card">
+                <div style="font-weight: 800; font-size: 13px; color: var(--sage); margin-bottom: 4px;">2. 資安與合規防盾</div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">保護自費或自研私房工具，以「企業資安、授權法規、維護責任」等客觀制度為盾，不談個人情緒。</span>
+                  <span class="en">Protect personal scripts and tools using security, compliance, and maintenance overhead as objective shields.</span>
+                </div>
+              </div>
+              <div class="sayno-pillar-card">
+                <div style="font-weight: 800; font-size: 13px; color: #E88D5A; margin-bottom: 4px;">3. 優先級置換原則</div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">將私下的人情勒索，轉化為「主管對齊與排程調度」。要插隊可以，請先經主管協調調降現有專案。</span>
+                  <span class="en">Turn private peer pressure into transparent managerial alignment. Prioritize core delivery over favors.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-tabs -->
+          <div class="sayno-subtabs">
+            <button class="sayno-tab-btn active" onclick="switchSayNoTab('tab-lv1')">
+              <span>🌱</span><span class="zh">模組一：初階優雅婉拒 (會議/副手/諮詢)</span><span class="en">Level 1: Graceful Refusal</span>
+            </button>
+            <button class="sayno-tab-btn" onclick="switchSayNoTab('tab-lv2')">
+              <span>🔐</span><span class="zh">模組二：資產與合規防禦 (工具/腳本防掠奪)</span><span class="en">Level 2: Asset & Compliance Shield</span>
+            </button>
+            <button class="sayno-tab-btn" onclick="switchSayNoTab('tab-lv3')">
+              <span>🚒</span><span class="zh">模組三：突發救火與甩鍋防禦 (防背鍋/除猴子)</span><span class="en">Level 3: Firefighting & Blame Defense</span>
+            </button>
+            <button class="sayno-tab-btn" onclick="switchSayNoTab('tab-gen')">
+              <span>⚡</span><span class="zh">智能情境話術生成器</span><span class="en">Interactive Script Generator</span>
+            </button>
+            <button class="sayno-tab-btn" onclick="switchSayNoTab('tab-tactics')">
+              <span>🥋</span><span class="zh">現場太極與避坑手冊</span><span class="en">Tactical Defense Guide</span>
+            </button>
+          </div>
+
+          <!-- Tab 1: Level 1 Graceful Refusal (sayno.md) -->
+          <div class="sayno-content-pane active" id="sayno-pane-tab-lv1">
+            <div class="sayno-card-grid">
+              <!-- Strategy A -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge">策略 A｜借力使力型</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">推給專責窗口（捧專人防越俎代庖）</span><span class="en">Delegate to DRI (Avoid Redundancy)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">正式郵件、通訊軟體回覆老闆或跨部門會議召集人，邀約參加非主責之新技術/架構討論會。</span><span class="en">Formal invites to non-core advisory meetings.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">跨部門長官、老闆。搬出專責人員，名正言順將主導權歸位。</span><span class="en">Executives & meeting organizers.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「謝謝您的邀請。考量到目前團隊內已有專門負責 [主責領域/如AI] 規劃與落地的同仁/窗口，為了讓公司的資源與架構能維持一致的步調與決策效率，這部分由專職同仁來與老闆對齊會更加完整且聚焦。<br><br>為避免方向多頭馬車，本次會議我就先不列席，讓專業負責的同仁直接向老闆匯報，後續若有整體流程確定後的日常協作需求，我再全力配合。」</div>
+                  <div class="en">"Thank you for the invitation. Since our team already has dedicated DRIs leading this initiative, having them align directly with leadership ensures strategic consistency and decision efficiency. To avoid divergent directions, I will refrain from attending this session and leave the floor to the subject experts. I will gladly support standard execution once the company workflow is established."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Strategy B -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge">策略 B｜現有專案優先型</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">以核心交付為盾牌（工作量排程防禦）</span><span class="en">Core Delivery Priority (Capacity Shield)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">對方口頭探詢、想塞雜案或拉你當專案副手。</span><span class="en">Verbal solicitations, extra project sidekick duties.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">平級同事、其他課級主管。強調手上關鍵 KPI 交付排程緊湊。</span><span class="en">Peers and cross-team leads.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「感謝想到我。不過目前我手上的既有專案與進度排程比較滿，現階段需要全力專注在核心業務的交付上。<br><br>關於這項規劃，涉及較多架構與整體評估，建議回歸給目前主責的窗口來統籌評估會最合適。這次的討論會我就先專注在手邊的工作，不另外參與了，謝謝理解！」</div>
+                  <div class="en">"Thanks for keeping me in mind. However, my current pipeline and deliverable schedule are fully booked, requiring 100% focus on my core milestone deliverables. Given the architectural scope of this topic, delegating it to the primary DRI will yield the best results. I will focus on my current commitments for now. Thanks for your understanding!"</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Strategy C -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge">策略 C｜化繁為簡型</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">退居下游使用者（淡化個人能力與依賴）</span><span class="en">Downstream Consumer (Lower Expectations)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">對方聽說你私下懂一點，想找你去「聊聊/免費分享經驗」以試圖擴大期待。</span><span class="en">Informal probe for insights or unpaid tech consulting.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">想蹭免費諮詢者。將自己定位為純粹遵守規範的下游執行者。</span><span class="en">Opportunistic peers or cross-team managers.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「收到！不過我平常接觸的多半只是零碎的個人操作習慣，談不上能給公司層面作為策略建議。目前既然有專門的團隊在評估與推動方案，交給他們從公司規格與架構去做完整評估會精準很多。<br><br>策略方向的部分我就不參與討論了，等專責團隊未來規劃出標準流程與工具後，我再照著規範導入日常使用即可。」</div>
+                  <div class="en">"Understood! However, my personal exposure consists only of scattered individual habits, hardly suitable for enterprise-level strategic advisory. Since our dedicated team is already evaluating formal solutions, their holistic assessment will be much more rigorous. I'll pass on the strategy session and gladly adopt the official tools once released."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Level 2 Asset & Compliance Shield (say no2.md) -->
+          <div class="sayno-content-pane" id="sayno-pane-tab-lv2">
+            <div class="sayno-card-grid">
+              <!-- Strategy A -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(232,141,90,0.15); color: #E88D5A;">最強防盾｜資安與法規合規</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">非企業授權與資安風險（主管不敢強推）</span><span class="en">Security & Licensing Shield (Immunity Pass)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">對方要求你交出私人自費帳號、自研腳本或客製工作流給團隊無償使用。</span><span class="en">Demand to surrender personal scripts, tools or accounts.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">強勢主管或情勒同事。把個人資產上升至「企業資訊安全與授權合規」高度。</span><span class="en">Pushy managers or peers demanding private workflows.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「關於工具分享，我必須先說明清楚：我私下嘗試的只是<strong>個人付費的非企業版工具與零散測試環境</strong>。<br><br>這些設定完全<strong>未通過公司的資訊安全審查、合規驗證與商業授權規範</strong>。如果直接放到團隊或公司層面使用，會有潛在的資安漏洞與授權侵權風險。既然公司目前有專門負責的窗口，我非常建議由專責團隊評估採購標準的『企業級方案』，統一做資安控管與權限管理，這樣對公司與團隊才最有保障。」</div>
+                  <div class="en">"Regarding sharing these tools, I must clarify: what I tested privately are strictly personal, non-enterprise accounts and scattered test environments. They have NOT undergone company security vetting, compliance validation, or enterprise licensing. Deploying them team-wide introduces critical cybersecurity and IP infringement risks. I strongly recommend having our dedicated IT/AI team procure compliant enterprise solutions under standard governance."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Strategy B -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(127,181,160,0.15); color: var(--sage);">責任轉嫁｜維護成本防禦</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">點出巨額維護與教學代價（讓對方知難而退）</span><span class="en">Maintenance Overhead & Liability Transfer</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">對方輕描淡寫：「你就順手分享出來給大家都用一下，又不會少塊肉」。</span><span class="en">Downplaying requests as 'just a quick share'.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">貪圖便利者。直接公開後續教學、修Bug、環境相容性等沈重隱形成本。</span><span class="en">Free-riders seeking instant personal tools.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「我那套東西不是開箱即用的現成產品，而是針對我個人非常特殊的硬體環境、零碎資料和操作習慣寫的『個人實驗土炮解法』，穩定度很低。<br><br>如果要釋出給其他人用，需要花大量時間重構架構、寫操作手冊、做相容性測試，後續還得承擔系統維護與教學支援。以我目前手上的核心專案進度，我完全<strong>沒有頻寬能提供這些後續維護與技術支援</strong>。為了不影響大家的工作流程，還是要以專責團隊推出的官方方案為主。」</div>
+                  <div class="en">"That setup is not a turnkey product; it is an experimental, fragile script tailored exclusively to my specific local environment. Releasing it to others requires extensive refactoring, writing SOP documentation, cross-device testing, and ongoing bug maintenance. With my current milestone workload, I have zero bandwidth to provide support or maintenance. To safeguard everyone's workflow, we should rely on official enterprise solutions."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Strategy C -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge">會議太極｜終極被動防守</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">肉身出席，靈魂離線（三不原則自保）</span><span class="en">Physical Presence, Offline Soul (3-No Rule)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">主管動用行政權力強制你列席會議，試圖現場要你表態認領工作。</span><span class="en">Forced attendance by managerial decree.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">現場點名你的主管或主持者。不搶風頭、不攬責任、把球做給專責人員。</span><span class="en">Meeting organizers aiming to assign action items.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">
+                    <strong>1. 被點名意見時：</strong>「這題涉及到全公司整體架構，主要還是要看專責團隊目前的 Roadmap 走到哪裡，以他們的官方規劃為主。」<br>
+                    <strong>2. 被指派 Action Item 時：</strong>「目前我的主力都在 [手頭核心專案]，這部分如果需要我抽身支援，可能要請主管先幫我評估既有專案的優先級與排程調整。」<br>
+                    <strong>3. 捧專責人員：</strong>「[專責同事/團隊] 在這塊研究更全面，我很期待看他們的企業方案怎麼規劃。」
+                  </div>
+                  <div class="en">
+                    <strong>1. When polled:</strong> "This involves company-wide architecture; we should align with the official Roadmap laid out by our dedicated team."<br>
+                    <strong>2. When assigned actions:</strong> "My bandwidth is 100% committed to [Core Project]. If cross-support is required, please align with my manager to officially reprioritize my pipeline."<br>
+                    <strong>3. Passing the ball:</strong> "[DRI Name] has a much more comprehensive view on this; looking forward to their enterprise rollout."
+                  </div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Level 3 Firefighting & Blame Defense (say no3.md) -->
+          <div class="sayno-content-pane" id="sayno-pane-tab-lv3">
+            <div class="sayno-card-grid">
+              <!-- Strategy A -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(232,141,90,0.15); color: #E88D5A;">優先級置換｜向上管理盾牌</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">主管資源調度對齊（讓插隊付出代價）</span><span class="en">Managerial Prioritization Shield</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">跨部門或同事以「十萬火急」為由，要求你立刻放下手頭工作幫他擦屁股救火。</span><span class="en">Urgent requests to abandon duties and fix external issues.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">跨部門 PM 或急迫請求者。不當拒絕壞人，將決策權往上拋給直屬長官。</span><span class="en">Cross-functional PMs trying to offload urgent fire drills.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「理解這件事情的時效性非常緊迫。<br><br>不過我目前正在全力趕工 <strong>[當前核心專案名稱]</strong>，這是主管要求在 <strong>[交付時間點]</strong> 必須完成的最高優先級交付物。為了不擅自影響既定排程，若此緊急事項需要我抽身支援，建議您先與我的直屬主管 <strong>[主管名字]</strong> 對齊，評估是否能調降目前手頭專案的優先級。只要主管確認資源調配，我會依照排程全力配合。」</div>
+                  <div class="en">"I fully appreciate the urgency of this matter. However, I am currently sprint-delivering [Core Project Name], which is our top-priority commitment due on [Target Date]. To avoid jeopardizing pre-approved deliverables, please coordinate with my direct manager [Manager Name] to approve a priority shift. Once leadership aligns on resource reallocation, I will execute accordingly."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Strategy B -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(127,181,160,0.15); color: var(--sage);">流程與合規｜防背鍋防線</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">缺乏上下文與非標準變更（防修復變背鍋）</span><span class="en">Process Governance & Anti-Scapegoat Shield</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">對方要求你登入他負責的系統/代碼庫「順手修一下」或簽核他不熟的領域。</span><span class="en">Ad-hoc access requests to edit unfamiliar production systems.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">甩鍋型同事。點出缺乏全盤歷史與測試，倉促介入將產生更大系統災難。</span><span class="en">Coworkers attempting to transfer operational liability.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「非常同理你們面臨的時間壓力。<br><br>但因為這套業務邏輯/系統架構平時並非由我維護，我手邊缺乏完整的背景資訊、變更歷史與測試環境。若在緊急狀況下倉促介入調整，極易引發未知的連鎖反應與合規風險，反而可能讓問題更難釐清。建議還是回歸給該專案的主責同仁與原架構窗口，循標準的異常排查/緊急變更流程處理，對專案的穩定性才最具保障。」</div>
+                  <div class="en">"I empathize with your timeline pressure. However, as this architecture is outside my daily maintenance domain, I lack complete historical context, dependency mapping, and dedicated staging environments. Hasty interventions during an outage pose serious regression risks. It is safest to have the primary DRI handle this via standard incident change protocols."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Strategy C -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge">顧問式指路｜給釣竿不給魚</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">提供方向與文檔（絕不下場肉身代工）</span><span class="en">Consultative Guidance (Teach, Never Execute)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">同事拿著難題道德情勒：「你比較厲害，你順手幫我弄好不好？」</span><span class="en">Peer flattery: 'You are so good at this, can you just do it for me?'</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">依賴性高的同事。展現友善同理，提供線索與知識庫，堅決不碰鍵盤代打。</span><span class="en">Dependent colleagues seeking free execution.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「這問題確實棘手，我過去有遇過類似情況。<br><br>雖然我手頭進度滿檔無法親自幫忙排查，但我可以提供你兩個方向參考：第一可以先檢查 <strong>[A 模組/資料源]</strong> 的設定是否異常；第二可以參考內部知識庫 <strong>[文件名稱/連結]</strong> 的說明。你們可以先朝這兩條線索嘗試，相信依你們團隊的專業很快能定位出原因！」</div>
+                  <div class="en">"That is indeed a tricky issue; I encountered something similar previously. While my deliverable commitments prevent me from hands-on debugging, I can share two pointers: 1) Verify the configuration in [Module A], and 2) Check the troubleshooting guide in [Wiki Doc Link]. Follow those two leads—your team will resolve it quickly!"</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: Interactive Script Generator -->
+          <div class="sayno-content-pane" id="sayno-pane-tab-gen">
+            <div class="sayno-generator-box">
+              <div style="font-weight: 700; font-size: 15px; color: var(--amber); display: flex; align-items: center; gap: 8px;">
+                <span>⚡ 職場說不情境快篩與實戰話術生成器 (Interactive Strategy & Script Finder)</span>
+              </div>
+              <p style="font-size: 13px; color: var(--muted); margin: 0;">
+                <span class="zh">選擇您當前面臨的對象、遭遇的不合理要求與期望的防禦風格，系統將即時為您生成量身訂做的專業應對策略與話術範本：</span>
+                <span class="en">Select your target counterpart, request type, and desired defense style to generate customized refusal scripts:</span>
+              </p>
+
+              <div class="sayno-form-grid">
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    1. 施壓對象 / 角色 (Counterpart)
+                  </label>
+                  <select class="sayno-select" id="sayno-sel-target" onchange="generateSayNoScript()">
+                    <option value="manager">直屬長官 / 老闆 (Direct Manager)</option>
+                    <option value="cross_mgr">跨部門主管 / 高層 (Cross-team Director)</option>
+                    <option value="peer">強勢 / 習慣甩鍋同事 (Pushy / Free-riding Peer)</option>
+                    <option value="external">外部廠商 / 客戶窗口 (External Client / Vendor)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    2. 遭遇的要求 / 情境 (Request Type)
+                  </label>
+                  <select class="sayno-select" id="sayno-sel-req" onchange="generateSayNoScript()">
+                    <option value="meeting">臨時拉開會 / 兼任專案副手 (Meetings / Scope Creep)</option>
+                    <option value="tool">索取個人自研工具、帳號與腳本 (Private Tools / Scripts)</option>
+                    <option value="fire">他人專案出包要求緊急救急 (Outage Firefighting / Blame Trap)</option>
+                    <option value="housework">雜事分派 / 道德情勒 (Office Housework / Guilt Trip)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    3. 推薦防禦風格 (Defense Style)
+                  </label>
+                  <select class="sayno-select" id="sayno-sel-style" onchange="generateSayNoScript()">
+                    <option value="priority">向上管理與資源置換型 (Prioritization & Managerial Shield)</option>
+                    <option value="compliance">制度資安與合規防禦型 (Governance & Security Shield)</option>
+                    <option value="delegate">借力使力與推給專職型 (Delegate to Official DRI)</option>
+                    <option value="consult">顧問指路與給釣竿型 (Consultative Pointer / No Hands-on)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Dynamic Output Result Card -->
+              <div class="sayno-result-card" id="sayno-generated-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                  <span class="sayno-card-badge" id="sayno-res-badge">🎯 推薦策略：向上管理與優先級置換</span>
+                  <span style="font-size: 11.5px; color: var(--muted);" id="sayno-res-tag">防禦等級：⭐⭐⭐⭐ (堅定防守)</span>
+                </div>
+                <div style="font-size: 12.8px; color: var(--ink); line-height: 1.6;" id="sayno-res-analysis">
+                  <strong>核心防身邏輯：</strong>不直接當壞人拒絕，而是將對方的臨時要求拉升至「主管資源調配與排程衝突」層面。讓對方明白動用你的產能需要付出調降既有核心交付的代價。
+                </div>
+                <div class="sayno-quote-box" id="sayno-res-script">
+                  <div class="zh">「感謝您的詢問。目前我手頭正全力推進主管交辦的核心交付項目，時程非常緊湊。為確保公司關鍵專案不受影響，若此項目需要我抽身支援，建議請您先與我的主管 [主管姓名] 對齊資源與排程優先級，只要長官確認調整，我將全力配合。」</div>
+                  <div class="en">"Thank you for reaching out. I am currently sprint-delivering our primary project milestone under tight deadlines. To avoid impacting core deliverables, please align with my direct manager [Manager Name] on resource prioritization. Once approved, I will fully coordinate."</div>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                    <span>📋</span><span class="zh">一鍵複製此話術</span><span class="en">Copy Generated Script</span>
+                  </button>
+                  <span style="font-size: 11.5px; color: var(--muted);" id="sayno-res-tip">💡 現場避坑提示：切勿私下承諾「我下班幫你看一下」，一旦私下接手將失去主管防盾。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: Tactical Do's, Don'ts & Mindset -->
+          <div class="sayno-content-pane" id="sayno-pane-tab-tactics">
+            <div class="sayno-card-grid">
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(245,166,35,0.15); color: var(--amber);">現場作戰 01</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">破除通訊軟體的「偽緊急感」</span><span class="en">Defuse Instant Messaging Urgency</span></h3>
+                  </div>
+                </div>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>不要秒回：</strong>看到「在嗎？超急！」請刻意冷卻 15~30 分鐘，打破對方的即時情緒勒索。</li>
+                    <li><strong>非同步回覆：</strong>「剛在專注處理手頭專案交付，請直接發 Email 說明具體問題、影響範圍與主責窗口，我今天空檔時確認。」</li>
+                    <li><strong>留下記錄：</strong>任何口頭或私訊的要求，一律要求對方發出正會議題或 Email 留下審計足跡。</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(127,181,160,0.15); color: var(--sage);">現場作戰 02</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">實體走過來堵人的「冷卻三步法」</span><span class="en">In-Person Ambush Cooling Protocol</span></h3>
+                  </div>
+                </div>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>身體語言防守：</strong>身體不轉向對方、視線維持在自己螢幕，拿起手邊筆記本。</li>
+                    <li><strong>思緒防中斷：</strong>「我目前正處於關鍵程式碼/報告的邏輯推導節點，思緒不能中斷。」</li>
+                    <li><strong>轉移場地：</strong>「請先把問題發信給我，或等下午三點我有 10 分鐘空檔再看。」</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge" style="background: rgba(232,141,90,0.15); color: #E88D5A;">現場作戰 03</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">道德情勒回擊心法</span><span class="en">Countering Emotional & Teamwork Guilt</span></h3>
+                  </div>
+                </div>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>面對「大家都是一個 Team」：</strong>微笑回應：「正因為是團隊，更要確保每個人守好各自的守備位置與核心交付，這樣專案才不會連環脫鉤。」</li>
+                    <li><strong>面對「你比較厲害順手弄一下」：</strong>「正因為專業，才更清楚這件事背後的維護風險與架構責任，必須循正式流程評估。」</li>
+                    <li><strong>絕口不提個人私下工具：</strong>若被問到，微笑帶過：「那都只是隨手試試公開的基礎功能，企業落地還是要看專責團隊規範。」</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -7126,6 +7741,7 @@ const SECTIONS = [
   {id:'priority', zh:'任務優先評分', en:'Task Priority Scorer'},
   {id:'reqtrack', zh:'客戶需求追蹤', en:'Customer Requirement Tracker'},
   {id:'meeting', zh:'精實會議指南', en:'Lean Meeting Guidelines'},
+  {id:'sayno', zh:'職場說不的藝術與防禦手冊', en:'Art of Saying No: Workplace Defense'},
   {id:'books', zh:'相關推薦書籍', en:'Recommended Books'},
   {id:'fallacies', zh:'常見分析與認知謬誤', en:'Common Analytical & Cognitive Fallacies'},
   {id:'finance', zh:'財務分析與精實機會', en:'Financial Analysis & Lean Opportunities'},
@@ -15604,6 +16220,213 @@ function init(){
   };
 }
 init();
+
+
+
+/* ==================== SAY NO / WORKPLACE DEFENSE LOGIC ==================== */
+function switchSayNoTab(tabId) {
+  document.querySelectorAll('.sayno-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
+  });
+  document.querySelectorAll('.sayno-content-pane').forEach(pane => {
+    pane.classList.toggle('active', pane.id === 'sayno-pane-' + tabId);
+  });
+  if (tabId === 'tab-gen') {
+    generateSayNoScript();
+  }
+}
+
+function copySayNoText(btn) {
+  const card = btn.closest('.sayno-card') || btn.closest('.sayno-result-card');
+  if (!card) return;
+  const quoteBox = card.querySelector('.sayno-quote-box');
+  if (!quoteBox) return;
+  
+  const isEn = state.lang === 'en';
+  const targetEl = isEn ? (quoteBox.querySelector('.en') || quoteBox) : (quoteBox.querySelector('.zh') || quoteBox);
+  const textToCopy = targetEl.innerText || targetEl.textContent;
+
+  navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<span>✅</span><span class="zh">已複製話術！</span><span class="en">Copied!</span>';
+    btn.style.background = 'var(--amber)';
+    btn.style.color = 'var(--navy)';
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  }).catch(err => {
+    alert('複製失敗，請手動選取複製');
+  });
+}
+
+const SAYNO_TEMPLATES = {
+  manager: {
+    meeting: {
+      priority: {
+        badge: '🎯 策略：優先級置換與專注交付',
+        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
+        analysis: '對直屬主管絕不能生硬拒絕，而是主動展現『為了確保您交辦的最高優先級專案準時交付』的忠誠與專業態度，讓主管主動決定是否要調整排程。',
+        zh: '「老闆，目前我手頭全力在趕 [核心專案名稱]，目標是在 [時間點] 前完成交付。這場會議如果需要我列席，可能會擠壓到既定交付的進度。想向您確認：您會建議我維持原專案全力衝刺，還是先調整這項交付的優先級？」',
+        en: '"Boss, I am currently sprint-focusing on [Core Project Name] to hit the [Target Date] milestone. Attending this discussion will squeeze our primary delivery pipeline. Could you clarify whether you would prefer me to stay 100% focused on our core milestone, or reprioritize our timeline?"',
+        tip: '💡 避坑重點：主動提供 A/B 選擇權，把問題轉化為『如何保護您的專案』，主管通常會選擇保護核心專案。'
+      },
+      compliance: {
+        badge: '🛡️ 策略：客觀體制與專責分工',
+        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
+        analysis: '強調專責窗口的存在，避免部門多頭馬車，並保護主管團隊的專業邊界。',
+        zh: '「老闆，關於此議題目前已有 [專責團隊/同仁] 主導。由專職團隊直接對齊策略會更精準高效。為避免多頭馬車，建議本次會議由專責同仁主匯報即可，後續有落地執行需求我再配合。」',
+        en: '"Boss, [Dedicated Team/DRI] is already leading this initiative. Direct alignment through their dedicated stream ensures maximum clarity and efficiency. I suggest letting the DRI present to avoid redundant overhead, and I will support standard execution once workflows are set."',
+        tip: '💡 避坑重點：強調『避免多頭馬車』是高階主管最在意的組織效率。'
+      }
+    },
+    tool: {
+      compliance: {
+        badge: '🔐 策略：企業資安與合規防線',
+        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐⭐ (最強免死金牌)',
+        analysis: '直接點出個人工具未通過公司資安審查與商業授權，將私人資產問題上升至企業資安風險，主管絕對不敢強行背書推廣。',
+        zh: '「報告主管，我私下測試的只是個人帳號與零散腳本，未通過公司的資安檢驗與商業授權審查。若冒然推廣至團隊，可能引發潛在的資安漏洞與版權風險。建議由專責 IT 團隊評估標準企業級方案，對部門才是最安全的作法。」',
+        en: '"Regarding tool sharing, my personal scripts run on unverified personal environments without enterprise compliance or commercial licenses. Deploying them widely presents critical security and legal vulnerabilities. We should request official IT evaluation for standard enterprise tools to safeguard the department."',
+        tip: '💡 避坑重點：資安法規是企業紅線，任何主管都無法承擔因非授權工具出包的責任。'
+      }
+    },
+    fire: {
+      priority: {
+        badge: '🚒 策略：產能衝突與排程置換',
+        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
+        analysis: '當主管想塞其他人的緊急救火任務給你時，清楚呈現目前工時滿載，要求主管授權任務優先順序。',
+        zh: '「主管，我理解這項突發狀況很緊急。不過今天我預計要完成 [既定關鍵任務]，若臨時介入救火，原本的專案進度將順延 [X] 天。想請示主管是否核准暫停既定排程來支援這項緊急任務？」',
+        en: '"Manager, I recognize the urgency of this outage. However, I am scheduled to finish [Critical Deliverable] today. Intervening now will delay our main deliverable by [X] days. Could you confirm if you approve pausing our scheduled pipeline to absorb this fire drill?"',
+        tip: '💡 避坑重點：明確說出『延遲 X 天』的具體代價，讓主管自行權衡。'
+      }
+    },
+    housework: {
+      priority: {
+        badge: '📊 策略：專注高價值交付',
+        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
+        analysis: '對於非本職的打雜瑣事，以高價值核心專案產出為由婉拒，維持專業形象。',
+        zh: '「主管，目前我手頭幾項核心專案正進入關鍵產出期，為確保最重要的業務指標不受稀釋，這類行政協調事項建議依照標準流程或由助理窗口統籌，我全力專注在專案攻堅上。」',
+        en: '"Manager, my primary projects are in their critical delivery stage. To ensure our top KPI metrics are not diluted, I recommend routing these administrative tasks through standard coordination channels so I can remain 100% focused on core delivery."',
+        tip: '💡 避坑重點：將自己的時間定位為『高價值戰略資源』。'
+      }
+    }
+  },
+  cross_mgr: {
+    meeting: {
+      priority: {
+        badge: '📋 策略：跨部門主管協調防盾',
+        tag: '對象：跨部門主管 ｜ 防禦等級：⭐⭐⭐⭐⭐',
+        analysis: '面對跨部門長官，切勿自行承諾。將問題禮貌推回給雙方直屬主管，由長官之間去協調資源。',
+        zh: '「謝謝長官邀請。由於目前我手上的工作時程均由 [直屬主管姓名] 排定且進度緊湊，若有跨部門專案需我參與，可能要麻煩您先與我主管對齊資源調度，只要主管排定，我一定全力以赴。」',
+        en: '"Thank you for the invitation. Because my deliverables are tightly scheduled under [Manager Name], any cross-departmental commitments require managerial alignment. Please coordinate with my manager directly; once approved, I will fully support your initiative."',
+        tip: '💡 避坑重點：搬出直屬主管是跨部門溝通最堅固且禮貌的防火牆。'
+      }
+    },
+    fire: {
+      compliance: {
+        badge: '⚖️ 策略：權限邊界與責任歸屬',
+        tag: '對象：跨部門主管 ｜ 防禦等級：⭐⭐⭐⭐⭐',
+        analysis: '跨部門出包救火最容易成為替罪羊，堅持架構權限與變更流程。',
+        zh: '「非常同理貴團隊的時間壓力。但由於該系統架構平時非由我維護，缺乏完整的環境與歷史紀錄，倉促介入容易產生未知的連鎖異常。建議依正規異常升級流程由原主責團隊處理最為穩妥。」',
+        en: '"I understand your urgent timeline. However, since this system is not under my daily governance, intervening without complete architectural context poses serious regression risks. It is best handled by the primary DRI via formal incident escalation."',
+        tip: '💡 避坑重點：非自己主管的業務出包，切勿私下插手。'
+      }
+    }
+  },
+  peer: {
+    meeting: {
+      delegate: {
+        badge: '🤝 策略：專注本職與借力使力',
+        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐',
+        analysis: '平級同事拉你開會多半是為了分攤責任或湊人數，直接以時程滿檔婉拒。',
+        zh: '「感謝想到我！不過我手頭這個 Sprint 的排程很滿，沒辦法列席。這題你們直接找 [專責同事] 討論最專業，我就不湊熱鬧了，祝你們會議順利！」',
+        en: '"Thanks for thinking of me! However, my sprint capacity is completely booked. [DRI Name] is the subject expert on this—best to align with them directly. Good luck with the meeting!"',
+        tip: '💡 避坑重點：語氣輕鬆友善，但拒絕態度堅定。'
+      }
+    },
+    tool: {
+      compliance: {
+        badge: '🚫 策略：維護成本與實驗性免責',
+        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐⭐',
+        analysis: '面對想白嫖工具的同事，強調維護成本極高且容易出錯。',
+        zh: '「我那套只是土炮寫給自己環境用的零碎腳本，超級不穩定而且沒防呆。拿給別人用我還得花時間維護除錯，手頭真的完全沒頻寬支援，建議還是等公司官方的標準工具上線吧！」',
+        en: '"That is just a hacky personal script built strictly for my local setup; it is very fragile. Supporting it externally requires endless debugging bandwidth that I simply do not have. Best to wait for our official enterprise tools!"',
+        tip: '💡 避坑重點：自嘲工具『很爛很脆弱』，消滅對方的使用慾望。'
+      }
+    },
+    fire: {
+      consult: {
+        badge: '🎣 策略：給釣竿不給魚（顧問指路）',
+        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐⭐',
+        analysis: '同事出包情勒，可以友善指點排查方向，但絕不動手幫他寫或操作。',
+        zh: '「這問題確實棘手！我手頭專案死線在即沒辦法幫你排查，但我建議你先去查 [A 模組] 或看知識庫 [文檔連結]，過去類似問題都是那邊設定出錯。你照這方向試試看應該能解！」',
+        en: '"That sounds tough! I am racing against a hard deadline so I cannot debug it directly, but I suggest checking [Module A] or reviewing [Doc Link]. Previous incidents stemmed from there. Follow that clue and you will nail it!"',
+        tip: '💡 避坑重點：給予方向展現情義，堅決不動手保護邊界。'
+      }
+    },
+    housework: {
+      priority: {
+        badge: '🛑 策略：平等邊界與專業分工',
+        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐',
+        analysis: '拒絕被當成雜事垃圾桶，守住平級邊界。',
+        zh: '「這部分若需大家輪流分擔，建議我們在 Team Meeting 上定一個輪值表公開分配；若是專案常態行政，建議請主責 PM 統一協調，我目前專注在交付技術模組上。」',
+        en: '"If this is a shared team duty, let us establish a formal rotation schedule during our next team meeting. Otherwise, it should be coordinated by the lead PM so I can stay focused on engineering deliverables."',
+        tip: '💡 避坑重點：把私下推託變成『公開制度化』。'
+      }
+    }
+  },
+  external: {
+    meeting: {
+      compliance: {
+        badge: '📑 策略：合約範疇與正式窗口',
+        tag: '對象：外部廠商/客戶 ｜ 防禦等級：⭐⭐⭐⭐⭐',
+        analysis: '外部要求一律回歸合約範疇（SOW）與專案經理窗口。',
+        zh: '「感謝您的通知。根據雙方專案現階段的範疇定義（SOW），相關會議與需求變更需由我方專案窗口 [PM 姓名] 統一彙整與評估，我將依照雙方確認後的專案排程參與配合。」',
+        en: '"Thank you for reaching out. Per our current SOW and contract governance, all scope discussions must be coordinated through our lead PM [PM Name]. I will participate in accordance with the aligned project timeline."',
+        tip: '💡 避坑重點：切勿私下答應客戶或廠商合約外的額外要求。'
+      }
+    },
+    fire: {
+      compliance: {
+        badge: '📜 策略：SLA 與標準工單流程',
+        tag: '對象：外部廠商/客戶 ｜ 防禦等級：⭐⭐⭐⭐⭐',
+        analysis: '要求走正式 Issue Tracking 與 SLA 流程。',
+        zh: '「收到問題通報。為確保事件處理具備完整的追蹤紀錄與優先級管理，請您協助透過官方工單系統（Ticket）提交異常詳情，我們團隊將依據 SLA 標準流程儘速排查。」',
+        en: '"We acknowledge the reported issue. To ensure proper tracking and SLA management, please submit a formal ticket via our support portal. Our team will investigate per standard support protocols."',
+        tip: '💡 避坑重點：沒有 Ticket，就沒有維護責任。'
+      }
+    }
+  }
+};
+
+function generateSayNoScript() {
+  const target = document.getElementById('sayno-sel-target')?.value || 'manager';
+  const req = document.getElementById('sayno-sel-req')?.value || 'meeting';
+  const style = document.getElementById('sayno-sel-style')?.value || 'priority';
+
+  // Fallback lookup
+  let entry = (SAYNO_TEMPLATES[target] && SAYNO_TEMPLATES[target][req] && SAYNO_TEMPLATES[target][req][style])
+    || (SAYNO_TEMPLATES[target] && SAYNO_TEMPLATES[target][req] && Object.values(SAYNO_TEMPLATES[target][req])[0])
+    || (SAYNO_TEMPLATES[target] && Object.values(SAYNO_TEMPLATES[target])[0] && Object.values(Object.values(SAYNO_TEMPLATES[target])[0])[0])
+    || SAYNO_TEMPLATES.manager.meeting.priority;
+
+  const isEn = state.lang === 'en';
+
+  const badgeEl = document.getElementById('sayno-res-badge');
+  const tagEl = document.getElementById('sayno-res-tag');
+  const analysisEl = document.getElementById('sayno-res-analysis');
+  const scriptEl = document.getElementById('sayno-res-script');
+  const tipEl = document.getElementById('sayno-res-tip');
+
+  if (badgeEl) badgeEl.textContent = entry.badge;
+  if (tagEl) tagEl.textContent = entry.tag;
+  if (analysisEl) analysisEl.innerHTML = '<strong>' + (isEn ? 'Core Defense Strategy: ' : '核心防身邏輯：') + '</strong>' + entry.analysis;
+  if (scriptEl) {
+    scriptEl.innerHTML = `<div class="zh">${entry.zh}</div><div class="en">${entry.en}</div>`;
+  }
+  if (tipEl) tipEl.textContent = entry.tip;
+}
 
 </script>
 </body>
