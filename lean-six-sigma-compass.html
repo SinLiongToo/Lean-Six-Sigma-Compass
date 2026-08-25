@@ -12667,6 +12667,7 @@ let meetState = {
   title: "",
   date: "",
   attendees: "",
+  takeaway: "",
   agenda: [],
   actions: []
 };
@@ -12675,6 +12676,7 @@ const DEFAULT_MEET_STATE = {
   title: "晶圓製程 CD 變異改善對策會",
   date: new Date().toISOString().slice(0, 10),
   attendees: "Chen (GB), Wang (PM), Lin (Eng), Amanda (QA)",
+  takeaway: "鎖定顯著因子並於兩週內完成 3 批試產驗證。",
   agenda: [
     { topic: "開場與會前 One-page 默讀", time: 10, output: "與會者對齊現況數據與痛點" },
     { topic: "蝕刻參數 DOE 實驗結果討論", time: 20, output: "鎖定顯著因子與最佳區間" },
@@ -12816,10 +12818,16 @@ function deleteMeetActionRow(idx) {
 }
 
 function validateMeeting() {
-  const title = document.getElementById('meet-title').value.trim();
-  const date = document.getElementById('meet-date').value;
-  const attendeesInput = document.getElementById('meet-attendees').value.trim();
-  const takeaway = document.getElementById('meet-takeaway').value.trim();
+  const elTitle = document.getElementById('meet-title');
+  const elDate = document.getElementById('meet-date');
+  const elAtt = document.getElementById('meet-attendees');
+  const elTake = document.getElementById('meet-takeaway');
+  if (!elTitle || !elDate || !elAtt || !elTake) return;
+
+  const title = (elTitle.value || '').trim();
+  const date = elDate.value || '';
+  const attendeesInput = (elAtt.value || '').trim();
+  const takeaway = (elTake.value || '').trim();
   
   meetState.title = title;
   meetState.date = date;
@@ -12835,19 +12843,21 @@ function validateMeeting() {
   const chkPizza = document.getElementById('chk-pizza');
   const chkPizzaDetail = document.getElementById('chk-pizza-detail');
   
-  if (attCount === 0) {
-    chkPizza.className = 'a3-checklist-item fail';
-    chkPizzaDetail.innerHTML = lang === 'zh' ? '尚未填寫與會者人員' : 'No attendees entered yet';
-  } else if (attCount > 8) {
-    chkPizza.className = 'a3-checklist-item fail';
-    chkPizzaDetail.innerHTML = lang === 'zh' 
-      ? `⚠️ 人數偏多 (共 ${attCount} 人)，建議精簡至決策或執行核心人員以降低溝通成本。`
-      : `⚠️ Too many attendees (${attCount}). Recommend slimming down to <= 8 core members to cut overhead.`;
-  } else {
-    chkPizza.className = 'a3-checklist-item pass';
-    chkPizzaDetail.innerHTML = lang === 'zh'
-      ? `✓ 符合雙披薩原則 (共 ${attCount} 人)。溝通成本低，利於決策推進！`
-      : `✓ Two-Pizza Rule passed (${attCount} attendees). Low overhead, good for decision efficiency!`;
+  if (chkPizza && chkPizzaDetail) {
+    if (attCount === 0) {
+      chkPizza.className = 'a3-checklist-item fail';
+      chkPizzaDetail.innerHTML = lang === 'zh' ? '尚未填寫與會者人員' : 'No attendees entered yet';
+    } else if (attCount > 8) {
+      chkPizza.className = 'a3-checklist-item fail';
+      chkPizzaDetail.innerHTML = lang === 'zh' 
+        ? `⚠️ 人數偏多 (共 ${attCount} 人)，建議精簡至決策或執行核心人員以降低溝通成本。`
+        : `⚠️ Too many attendees (${attCount}). Recommend slimming down to <= 8 core members to cut overhead.`;
+    } else {
+      chkPizza.className = 'a3-checklist-item pass';
+      chkPizzaDetail.innerHTML = lang === 'zh'
+        ? `✓ 符合雙披薩原則 (共 ${attCount} 人)。溝通成本低，利於決策推進！`
+        : `✓ Two-Pizza Rule passed (${attCount} attendees). Low overhead, good for decision efficiency!`;
+    }
   }
 
   // 2. Timeboxing Check
@@ -12855,19 +12865,21 @@ function validateMeeting() {
   const chkTimebox = document.getElementById('chk-timebox');
   const chkTimeboxDetail = document.getElementById('chk-timebox-detail');
   
-  if (meetState.agenda.length === 0) {
-    chkTimebox.className = 'a3-checklist-item fail';
-    chkTimeboxDetail.innerHTML = lang === 'zh' ? '尚未建立議程項目' : 'No agenda items added yet';
-  } else if (totalMins > 60) {
-    chkTimebox.className = 'a3-checklist-item fail';
-    chkTimeboxDetail.innerHTML = lang === 'zh'
-      ? `⚠️ 總時長為 ${totalMins} 分鐘 (超出 60 分鐘上限)，請評估是否縮減範圍以防超時。`
-      : `⚠️ Total duration ${totalMins} mins exceeds the 60-min cap. Consider reducing scope.`;
-  } else {
-    chkTimebox.className = 'a3-checklist-item pass';
-    chkTimeboxDetail.innerHTML = lang === 'zh'
-      ? `✓ 總時長為 ${totalMins} 分鐘 (符合 60 分鐘以內高效會議規範)。`
-      : `✓ Total duration ${totalMins} mins is within the 60-min high-efficiency cap.`;
+  if (chkTimebox && chkTimeboxDetail) {
+    if (meetState.agenda.length === 0) {
+      chkTimebox.className = 'a3-checklist-item fail';
+      chkTimeboxDetail.innerHTML = lang === 'zh' ? '尚未建立議程項目' : 'No agenda items added yet';
+    } else if (totalMins > 60) {
+      chkTimebox.className = 'a3-checklist-item fail';
+      chkTimeboxDetail.innerHTML = lang === 'zh'
+        ? `⚠️ 總時長為 ${totalMins} 分鐘 (超出 60 分鐘上限)，請評估是否縮減範圍以防超時。`
+        : `⚠️ Total duration ${totalMins} mins exceeds the 60-min cap. Consider reducing scope.`;
+    } else {
+      chkTimebox.className = 'a3-checklist-item pass';
+      chkTimeboxDetail.innerHTML = lang === 'zh'
+        ? `✓ 總時長為 ${totalMins} 分鐘 (符合 60 分鐘以內高效會議規範)。`
+        : `✓ Total duration ${totalMins} mins is within the 60-min high-efficiency cap.`;
+    }
   }
 
   // 3. 3W & Single Owner Check
@@ -12884,30 +12896,32 @@ function validateMeeting() {
     }
     // Check if who has multiple names
     const ownerClean = a.who.trim();
-    if (/[，,\s/&、]/.test(ownerClean) || ownerClean.toLowerCase().includes('and')) {
+    if (/[,，\s/&、]/.test(ownerClean) || ownerClean.toLowerCase().includes('and')) {
       singleOwnerViolation = true;
       violationDetails.push(a.what || "Untitled Action");
     }
   });
 
-  if (!hasActions) {
-    chk3w.className = 'a3-checklist-item fail';
-    chk3wDetail.innerHTML = lang === 'zh' ? '尚未建立會後交辦事項' : 'No action items added yet';
-  } else if (!allComplete) {
-    chk3w.className = 'a3-checklist-item fail';
-    chk3wDetail.innerHTML = lang === 'zh'
-      ? '⚠️ 部份交辦事項的 What/Who/When 未填寫完整。'
-      : '⚠️ Some action items are missing What, Who, or When details.';
-  } else if (singleOwnerViolation) {
-    chk3w.className = 'a3-checklist-item fail';
-    chk3wDetail.innerHTML = lang === 'zh'
-      ? `⚠️ 負責人指派多人：${violationDetails.join(', ')}。3W 推進原則要求單一負責人，寫兩個人等於沒人負責！`
-      : `⚠️ Multiple owners assigned to: ${violationDetails.join(', ')}. LSS rules require a single DRI to ensure accountability!`;
-  } else {
-    chk3w.className = 'a3-checklist-item pass';
-    chk3wDetail.innerHTML = lang === 'zh'
-      ? '✓ 所有行動皆滿足 3W 推進原則，且皆指派單一負責人！'
-      : '✓ All action items satisfy the 3W rule and have a single DRI assigned!';
+  if (chk3w && chk3wDetail) {
+    if (!hasActions) {
+      chk3w.className = 'a3-checklist-item fail';
+      chk3wDetail.innerHTML = lang === 'zh' ? '尚未建立會後交辦事項' : 'No action items added yet';
+    } else if (!allComplete) {
+      chk3w.className = 'a3-checklist-item fail';
+      chk3wDetail.innerHTML = lang === 'zh'
+        ? '⚠️ 部份交辦事項的 What/Who/When 未填寫完整。'
+        : '⚠️ Some action items are missing What, Who, or When details.';
+    } else if (singleOwnerViolation) {
+      chk3w.className = 'a3-checklist-item fail';
+      chk3wDetail.innerHTML = lang === 'zh'
+        ? `⚠️ 負責人指派多人：${violationDetails.join(', ')}。3W 推進原則要求單一負責人，寫兩個人等於沒人負責！`
+        : `⚠️ Multiple owners assigned to: ${violationDetails.join(', ')}. LSS rules require a single DRI to ensure accountability!`;
+    } else {
+      chk3w.className = 'a3-checklist-item pass';
+      chk3wDetail.innerHTML = lang === 'zh'
+        ? '✓ 所有行動皆滿足 3W 推進原則，且皆指派單一負責人！'
+        : '✓ All action items satisfy the 3W rule and have a single DRI assigned!';
+    }
   }
 
   // 4. Generate Memo Markdown
@@ -12964,7 +12978,8 @@ function validateMeeting() {
     });
   }
 
-  document.getElementById('meet-memo-output').value = memo;
+  const outEl = document.getElementById('meet-memo-output');
+  if (outEl) outEl.value = memo;
 }
 
 function initMeeting() {
@@ -14421,156 +14436,6 @@ function resetExam() {
 }
 
 
-function init(){
-  // Initialize Exam Engine
-  initExamEngine();
-
-  // Wire up calculator tabs
-  const calcTabs = {
-    'tabFmea': 'panelFmea',
-    'tabPugh': 'panelPugh',
-    'tabOee': 'panelOee',
-    'tab5s': 'panel5s',
-    'tabRaci': 'panelRaci',
-    'tabSavings': 'panelSavings',
-    'tabFeedback360': 'panelFeedback360'
-  };
-  Object.keys(calcTabs).forEach(tabId => {
-    const tabEl = document.getElementById(tabId);
-    if(tabEl) {
-      tabEl.onclick = () => {
-        Object.keys(calcTabs).forEach(id => {
-          document.getElementById(id).classList.remove('active');
-          document.getElementById(calcTabs[id]).classList.remove('active');
-        });
-        tabEl.classList.add('active');
-        document.getElementById(calcTabs[tabId]).classList.add('active');
-      };
-    }
-  });
-
-  // Initialize FMEA rows
-  renderFmea();
-  const fmeaAddBtn = document.getElementById('fmeaAddRow');
-  if(fmeaAddBtn) {
-    fmeaAddBtn.onclick = () => {
-      fmeaRows.push({ step: '', failure: '', s: 5, o: 5, d: 5, action: '' });
-      renderFmea();
-    };
-  }
-
-  // Initialize Pugh matrix
-  renderPugh();
-  const pughAddBtn = document.getElementById('pughAddRow');
-  if(pughAddBtn) {
-    pughAddBtn.onclick = () => {
-      pughRows.push({ criterion: '', weight: 3, opt1: 0, opt2: 0, opt3: 0 });
-      renderPugh();
-    };
-  }
-  const pughResetBtn = document.getElementById('pughReset');
-  if(pughResetBtn) {
-    pughResetBtn.onclick = () => {
-      pughRows = [
-        { criterion: '建置費用與維護成本 (Cost)', weight: 4, opt1: 0, opt2: 0, opt3: 0 },
-        { criterion: '製程良率改善幅度 (Yield Impact)', weight: 5, opt1: 0, opt2: 0, opt3: 0 },
-        { criterion: '系統運行可靠度 (Reliability)', weight: 3, opt1: 0, opt2: 0, opt3: 0 },
-        { criterion: '操作與維護複雜度 (Complexity)', weight: 2, opt1: 0, opt2: 0, opt3: 0 }
-      ];
-      renderPugh();
-    };
-  }
-
-  // Initialize OEE simulator
-  initOeeSimulator();
-
-  // Initialize 5S tool
-  init5sTool();
-
-  // Initialize RACI Matrix Tool
-  initRaci();
-
-  // Initialize Cost Savings Calculator Tool
-  initSavings();
-
-  // Initialize 360 Feedback Assessment Tool
-  initFeedback360();
-
-  // Initialize Priority Scorer
-  initPriorityScorer();
-
-  // Initialize Requirement Tracker
-  initReqTrack();
-
-  // Initialize Meeting Assistant
-  initMeeting();
-
-  // Initialize Finance Section
-  initFinanceSection();
-
-  // Initialize Brainstorm & Visualization Section
-  initBrainstorm();
-  initAitechCompass();
-
-  loadState();
-  const toggleDmaicBtn = document.getElementById('toggleDmaic');
-  const toggleDmadvBtn = document.getElementById('toggleDmadv');
-  if(toggleDmaicBtn) {
-    toggleDmaicBtn.onclick = () => {
-      state.cycle = 'dmaic';
-      activeDmaic = 0;
-      saveState();
-      updateToggleButtons();
-      renderWheel();
-      renderDmaicDetail();
-    };
-  }
-  if(toggleDmadvBtn) {
-    toggleDmadvBtn.onclick = () => {
-      state.cycle = 'dmadv';
-      activeDmaic = 0;
-      saveState();
-      updateToggleButtons();
-      renderWheel();
-      renderDmaicDetail();
-    };
-  }
-  renderMindset();
-  renderBelt();
-  renderWheel();
-  renderDmaicDetail();
-  renderRoadmap();
-  renderTools();
-  renderDemoTabs();
-  renderDemoPanels();
-  renderCases();
-  renderRealCases();
-  renderGlossary();
-  renderA3Demo();
-  initQuiz();
-  initSearch();
-
-  // Wire A3 buttons
-  const a3ExpBtn = document.getElementById('a3ExportMd');
-  if(a3ExpBtn) a3ExpBtn.onclick = exportA3Markdown;
-  const a3RstBtn = document.getElementById('a3ResetBtn');
-  if(a3RstBtn) a3RstBtn.onclick = resetA3Form;
-
-  render();
-
-  document.getElementById('themeToggle').onclick=()=>{
-    state.theme = state.theme==='dark'?'light':'dark';
-    saveState(); render();
-  };
-  document.getElementById('langToggle').onclick=()=>{
-    state.lang = state.lang==='zh'?'en':'zh';
-    saveState(); render();
-  };
-}
-init();
-
-
-
 /* =======================================================
    Section 18: Tech, Semiconductor & AI History Compass JS
    ======================================================= */
@@ -15592,6 +15457,153 @@ function initAitechCompass() {
   aithShowTab(aithCurrentTab || 'explore');
 }
 
+function init(){
+  // Initialize Exam Engine
+  initExamEngine();
+
+  // Wire up calculator tabs
+  const calcTabs = {
+    'tabFmea': 'panelFmea',
+    'tabPugh': 'panelPugh',
+    'tabOee': 'panelOee',
+    'tab5s': 'panel5s',
+    'tabRaci': 'panelRaci',
+    'tabSavings': 'panelSavings',
+    'tabFeedback360': 'panelFeedback360'
+  };
+  Object.keys(calcTabs).forEach(tabId => {
+    const tabEl = document.getElementById(tabId);
+    if(tabEl) {
+      tabEl.onclick = () => {
+        Object.keys(calcTabs).forEach(id => {
+          document.getElementById(id).classList.remove('active');
+          document.getElementById(calcTabs[id]).classList.remove('active');
+        });
+        tabEl.classList.add('active');
+        document.getElementById(calcTabs[tabId]).classList.add('active');
+      };
+    }
+  });
+
+  // Initialize FMEA rows
+  renderFmea();
+  const fmeaAddBtn = document.getElementById('fmeaAddRow');
+  if(fmeaAddBtn) {
+    fmeaAddBtn.onclick = () => {
+      fmeaRows.push({ step: '', failure: '', s: 5, o: 5, d: 5, action: '' });
+      renderFmea();
+    };
+  }
+
+  // Initialize Pugh matrix
+  renderPugh();
+  const pughAddBtn = document.getElementById('pughAddRow');
+  if(pughAddBtn) {
+    pughAddBtn.onclick = () => {
+      pughRows.push({ criterion: '', weight: 3, opt1: 0, opt2: 0, opt3: 0 });
+      renderPugh();
+    };
+  }
+  const pughResetBtn = document.getElementById('pughReset');
+  if(pughResetBtn) {
+    pughResetBtn.onclick = () => {
+      pughRows = [
+        { criterion: '建置費用與維護成本 (Cost)', weight: 4, opt1: 0, opt2: 0, opt3: 0 },
+        { criterion: '製程良率改善幅度 (Yield Impact)', weight: 5, opt1: 0, opt2: 0, opt3: 0 },
+        { criterion: '系統運行可靠度 (Reliability)', weight: 3, opt1: 0, opt2: 0, opt3: 0 },
+        { criterion: '操作與維護複雜度 (Complexity)', weight: 2, opt1: 0, opt2: 0, opt3: 0 }
+      ];
+      renderPugh();
+    };
+  }
+
+  // Initialize OEE simulator
+  initOeeSimulator();
+
+  // Initialize 5S tool
+  init5sTool();
+
+  // Initialize RACI Matrix Tool
+  initRaci();
+
+  // Initialize Cost Savings Calculator Tool
+  initSavings();
+
+  // Initialize 360 Feedback Assessment Tool
+  initFeedback360();
+
+  // Initialize Priority Scorer
+  initPriorityScorer();
+
+  // Initialize Requirement Tracker
+  initReqTrack();
+
+  // Initialize Meeting Assistant
+  initMeeting();
+
+  // Initialize Finance Section
+  initFinanceSection();
+
+  // Initialize Brainstorm & Visualization Section
+  initBrainstorm();
+  initAitechCompass();
+
+  loadState();
+  const toggleDmaicBtn = document.getElementById('toggleDmaic');
+  const toggleDmadvBtn = document.getElementById('toggleDmadv');
+  if(toggleDmaicBtn) {
+    toggleDmaicBtn.onclick = () => {
+      state.cycle = 'dmaic';
+      activeDmaic = 0;
+      saveState();
+      updateToggleButtons();
+      renderWheel();
+      renderDmaicDetail();
+    };
+  }
+  if(toggleDmadvBtn) {
+    toggleDmadvBtn.onclick = () => {
+      state.cycle = 'dmadv';
+      activeDmaic = 0;
+      saveState();
+      updateToggleButtons();
+      renderWheel();
+      renderDmaicDetail();
+    };
+  }
+  renderMindset();
+  renderBelt();
+  renderWheel();
+  renderDmaicDetail();
+  renderRoadmap();
+  renderTools();
+  renderDemoTabs();
+  renderDemoPanels();
+  renderCases();
+  renderRealCases();
+  renderGlossary();
+  renderA3Demo();
+  initQuiz();
+  initSearch();
+
+  // Wire A3 buttons
+  const a3ExpBtn = document.getElementById('a3ExportMd');
+  if(a3ExpBtn) a3ExpBtn.onclick = exportA3Markdown;
+  const a3RstBtn = document.getElementById('a3ResetBtn');
+  if(a3RstBtn) a3RstBtn.onclick = resetA3Form;
+
+  render();
+
+  document.getElementById('themeToggle').onclick=()=>{
+    state.theme = state.theme==='dark'?'light':'dark';
+    saveState(); render();
+  };
+  document.getElementById('langToggle').onclick=()=>{
+    state.lang = state.lang==='zh'?'en':'zh';
+    saveState(); render();
+  };
+}
+init();
 
 </script>
 </body>
