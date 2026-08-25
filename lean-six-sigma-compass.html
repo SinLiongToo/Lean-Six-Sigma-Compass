@@ -3793,10 +3793,15 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
           <!-- 2. Mind Map Panel -->
           <div class="mm-section" id="secBsMm" style="display: none;">
-            <p class="honesty-note">
-              <span class="zh">💡 <b>操作說明</b>：點選心智圖節點的文字方塊，可直接編輯文字；點選懸浮顯示之「+」可新增子節點，「x」可刪除該節點分支。</span>
-              <span class="en">💡 <b>Instructions</b>: Click a node text field to edit inline. Hover and click "+" to add a child, or "x" to delete the branch.</span>
-            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <p class="honesty-note" style="margin: 0; flex: 1;">
+                <span class="zh">💡 <b>操作說明</b>：點選心智圖節點的文字方塊，可直接編輯文字；點選懸浮顯示之「+」可新增子節點，「x」可刪除該節點分支。包含完整的 5M/1E 核心構面分析。</span>
+                <span class="en">💡 <b>Instructions</b>: Click a node text field to edit inline. Hover and click "+" to add a child, or "x" to delete the branch. Covers complete 5M/1E root-cause dimensions.</span>
+              </p>
+              <button class="a3-export-btn secondary" onclick="resetMmState()" style="padding: 6px 12px; font-size: 12px; height: auto;">
+                🔄 <span class="zh">重置為 5M 範本</span><span class="en">Reset to 5M Template</span>
+              </button>
+            </div>
             <div class="mm-container" id="mmContainer">
               <!-- Visual mind map will render here -->
             </div>
@@ -12735,7 +12740,7 @@ const DEFAULT_KJ_NOTES = [
   { id: 2, text: "夜班疲勞操作，增加人為失誤率", group: "Man (人員)", color: "pink", rotation: 1 },
   { id: 3, text: "化學液供應閥門老化，流量波動大", group: "Machine (機台)", color: "blue", rotation: 3 },
   { id: 4, text: "感測器訊號線路雜訊干擾，造成假警報", group: "Machine (機台)", color: "blue", rotation: -1 },
-  { id: 5, text: "量測量具未定期校正，讀數產生漂移", group: "Material (物料)", color: "green", rotation: 2 },
+  { id: 5, text: "晶圓研磨液 (Slurry) 批次純度變異，造成研磨速率不均", group: "Material (物料)", color: "green", rotation: 2 },
   { id: 6, text: "無塵室溫濕度控制漂移，影響曝光精度", group: "Environment (環境)", color: "green", rotation: -3 },
   { id: 7, text: "用心智圖與魚骨圖分析梳理機台異常停機的可能原因", group: "Method (方法)", color: "yellow", rotation: 1 },
   { id: 8, text: "生產排程頻繁變動，增加人員換線負荷", group: "Method (方法)", color: "yellow", rotation: -2 }
@@ -12764,10 +12769,26 @@ const DEFAULT_MM_DATA = {
     },
     {
       id: "n3",
+      text: "物 (Material)",
+      children: [
+        { id: "n31", text: "原物料批次純度變異", children: [] },
+        { id: "n32", text: "化學品受潮或過期", children: [] }
+      ]
+    },
+    {
+      id: "n4",
       text: "法 (Method)",
       children: [
-        { id: "n31", text: "保養標準不一", children: [] },
-        { id: "n32", text: "參數配置無對稱驗證", children: [] }
+        { id: "n41", text: "保養標準不一", children: [] },
+        { id: "n42", text: "參數配置無對稱驗證", children: [] }
+      ]
+    },
+    {
+      id: "n5",
+      text: "環 (Environment)",
+      children: [
+        { id: "n51", text: "無塵室溫濕度波動", children: [] },
+        { id: "n52", text: "微振動與靜電干擾", children: [] }
       ]
     }
   ]
@@ -12887,11 +12908,30 @@ function saveMmState() {
   localStorage.setItem('lssMindMap', JSON.stringify(mmData));
 }
 
+function resetMmState() {
+  const msg = state.lang === 'zh' 
+    ? '確定要將心智圖重置為包含「人、機、物、法、環」的 5M/1E 預設範本嗎？' 
+    : 'Reset mind map to default 5M/1E root-cause template (Man, Machine, Material, Method, Environment)?';
+  if (confirm(msg)) {
+    mmData = JSON.parse(JSON.stringify(DEFAULT_MM_DATA));
+    saveMmState();
+    renderMindMap();
+  }
+}
+
 function loadMmState() {
   try {
     const saved = localStorage.getItem('lssMindMap');
     if (saved) {
-      mmData = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      const str = JSON.stringify(parsed);
+      // Auto-migrate if legacy 3-node structure was stored without Material / 物
+      if (!str.includes("Material") && !str.includes("物") && parsed.children && parsed.children.length === 3) {
+        mmData = JSON.parse(JSON.stringify(DEFAULT_MM_DATA));
+        saveMmState();
+      } else {
+        mmData = parsed;
+      }
     } else {
       mmData = JSON.parse(JSON.stringify(DEFAULT_MM_DATA));
     }
