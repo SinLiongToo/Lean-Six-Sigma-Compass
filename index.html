@@ -2853,6 +2853,610 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   [data-theme="light"] .sticky-note {
     box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12) !important;
   }
+
+  /* ==========================================
+     Tech, Semiconductor & AI History Compass
+     ========================================== */
+  .aith-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+  }
+  .aith-toptabs {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+  }
+  .aith-toptab {
+    padding: 10px 18px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 2px solid transparent;
+    user-select: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .aith-toptab:hover {
+    color: var(--ink);
+    background: rgba(245,166,35,0.06);
+  }
+  .aith-toptab.active {
+    color: var(--amber);
+    border-bottom-color: var(--amber);
+    background: rgba(245,166,35,0.12);
+  }
+
+  .aith-track-bar, .aith-topic-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    flex-wrap: wrap;
+  }
+  .aith-bar-label {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .aith-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .aith-chip {
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--line);
+    color: var(--muted);
+    background: transparent;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .aith-chip:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
+  .aith-tag-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .aith-tag-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 8px;
+    letter-spacing: 0.2px;
+  }
+
+  .aith-main-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+    min-height: 600px;
+  }
+
+  .aith-compass-panel {
+    width: 380px;
+    min-width: 300px;
+    flex-shrink: 0;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+  .aith-compass-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  svg.aith-compass {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+  .aith-ring-bg {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1.5;
+    opacity: 0.65;
+  }
+  .aith-node {
+    cursor: pointer;
+    transition: transform 0.18s ease;
+  }
+  .aith-node:hover {
+    transform: scale(1.08);
+  }
+  .aith-node circle.aith-dot {
+    stroke-width: 2;
+    transition: 0.2s;
+  }
+  .aith-node text {
+    font-size: 9.5px;
+    font-weight: 600;
+    fill: var(--ink);
+    pointer-events: none;
+  }
+  .aith-node .aith-yr {
+    font-size: 8px;
+    fill: var(--muted);
+    pointer-events: none;
+  }
+  .aith-center-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    fill: var(--ink);
+    text-anchor: middle;
+  }
+  .aith-center-sub {
+    font-size: 8.5px;
+    fill: var(--muted);
+    text-anchor: middle;
+  }
+  .aith-connector {
+    stroke: var(--line);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .aith-connector.active {
+    stroke: var(--amber);
+    stroke-width: 2.5;
+  }
+
+  .aith-stage-list {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .aith-stage-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12.5px;
+    color: var(--muted);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .aith-stage-item:hover {
+    background: rgba(245,166,35,0.08);
+    color: var(--ink);
+  }
+  .aith-stage-item.active {
+    background: rgba(245,166,35,0.14);
+    color: var(--ink);
+    border-color: var(--amber);
+    font-weight: 600;
+  }
+  .aith-stage-item .aith-swatch {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .aith-workspace {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .aith-workspace-inner {
+    max-width: 960px;
+  }
+  .aith-era-eyebrow {
+    color: var(--amber);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .aith-era-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 6px 0 4px;
+    color: var(--ink);
+  }
+  .aith-era-years {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+  .aith-era-summary {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .aith-grid-2 {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 18px;
+    margin-bottom: 22px;
+    align-items: start;
+  }
+  .aith-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .aith-card h3 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+  }
+  .aith-card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .aith-card ul li {
+    margin-bottom: 4px;
+  }
+
+  .aith-events {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .aith-event {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .aith-event:last-child {
+    border-bottom: none;
+  }
+  .aith-event .aith-yr {
+    font-weight: 700;
+    color: var(--amber);
+    font-size: 13px;
+  }
+  .aith-event .aith-desc {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .aith-event .aith-desc strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  .aith-figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .aith-pill {
+    background: rgba(15, 27, 45, 0.5);
+    color: var(--ink);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid var(--line);
+  }
+  [data-theme="light"] .aith-pill {
+    background: #f1f5f9;
+  }
+
+  .aith-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 26px;
+  }
+  .aith-nav-btn {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 9px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
+  }
+  .aith-nav-btn:hover:not([disabled]) {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  /* Timeline Tab */
+  .aith-timeline-wrap {
+    padding: 20px 10px;
+    max-width: 920px;
+  }
+  .aith-tl-item {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding-bottom: 30px;
+  }
+  .aith-tl-item:last-child {
+    padding-bottom: 0;
+  }
+  .aith-tl-line {
+    width: 2px;
+    background: var(--line);
+    position: absolute;
+    left: 6px;
+    top: 20px;
+    bottom: 0;
+  }
+  .aith-tl-item:last-child .aith-tl-line {
+    display: none;
+  }
+  .aith-tl-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+    z-index: 1;
+  }
+  .aith-tl-body h4 {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .aith-tl-body span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .aith-tl-body p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  /* Parallel View */
+  .aith-parallel-wrap {
+    padding: 16px 0;
+    overflow-x: auto;
+  }
+  .aith-parallel-legend {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .aith-parallel-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .aith-parallel-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .aith-parallel-chart {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .aith-parallel-track {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dashed var(--line);
+    height: 56px;
+  }
+  .aith-parallel-track-label {
+    position: sticky;
+    left: 0;
+    background: var(--panel);
+    z-index: 2;
+    width: 140px;
+    flex-shrink: 0;
+    padding: 8px 12px 8px 0;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .aith-parallel-track-lane {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    min-width: 1200px;
+  }
+  .aith-parallel-dot {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--panel);
+    transition: all 0.15s ease;
+  }
+  .aith-parallel-dot:hover {
+    transform: translate(-50%,-50%) scale(1.4);
+    z-index: 5;
+  }
+  .aith-parallel-axis-lane {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    min-width: 1200px;
+    border-bottom: 1px solid var(--line);
+  }
+  .aith-parallel-axis-tick {
+    position: absolute;
+    bottom: 4px;
+    font-size: 10.5px;
+    color: var(--muted);
+    transform: translateX(-50%);
+  }
+  .aith-parallel-detail {
+    margin-top: 18px;
+  }
+  .aith-parallel-detail h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+  }
+  .aith-parallel-detail p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* Find / Search */
+  .aith-find-wrap {
+    padding: 20px 0;
+  }
+  .aith-find-input {
+    width: 100%;
+    max-width: 680px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1.5px solid var(--line);
+    background: var(--panel);
+    color: var(--ink);
+    font-size: 14.5px;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .aith-find-input:focus {
+    border-color: var(--amber);
+  }
+  .aith-find-hint {
+    margin: 10px 0 0;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .aith-find-results {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 860px;
+  }
+  .aith-find-result {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .aith-find-result:hover {
+    border-color: var(--amber);
+    transform: translateX(3px);
+  }
+  .aith-find-result-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+  }
+  .aith-find-result-track {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .aith-find-result-era {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .aith-find-result-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .aith-find-result-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .aith-mobile-tabs {
+    display: none;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .aith-mobile-tabs .aith-mtab {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .aith-mobile-tabs .aith-mtab.active {
+    background: var(--amber);
+    color: #0b0f19;
+    border-color: var(--amber);
+  }
+
+  @media (max-width: 880px) {
+    .aith-main-layout {
+      flex-direction: column;
+    }
+    .aith-compass-panel {
+      display: none;
+    }
+    .aith-mobile-tabs {
+      display: flex;
+    }
+    .aith-grid-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
 </style>
 </head>
 <body data-theme="dark" lang-mode="zh">
@@ -6382,6 +6986,109 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
         <!-- End Tab 2 (finTabContentGuide) -->
       </section>
 
+      <!-- Section 18: Tech, Semiconductor & AI History Compass -->
+      <section class="section" data-section="aitech">
+        <h2>
+          <span class="zh">科技與半導體/AI 發展史羅盤</span>
+          <span class="en">Tech, Semiconductor & AI History Compass</span>
+        </h2>
+        <p class="lead">
+          <span class="zh">全方位梳理從 1940 年代至今的七大關鍵科技發展脈絡（人工智慧、計算架構、半導體製程與封裝測試、網際網路、通訊系統、儲存與記憶體、太空科技），提供跨軌道平行時間軸與全局多維搜尋。</span>
+          <span class="en">Mapping seven intertwined technology histories — AI, Computing, Semiconductors, Internet, Communications, Storage & Memory, and Space — from their origins to today, featuring a parallel timeline and global search.</span>
+        </p>
+
+        <div class="aith-container">
+          <!-- Top sub-navigation tabs -->
+          <div class="aith-toptabs">
+            <div class="aith-toptab active" data-tab="explore" onclick="aithShowTab('explore')">
+              <span class="zh">🧭 探索模式</span><span class="en">🧭 Explore</span>
+            </div>
+            <div class="aith-toptab" data-tab="timeline" onclick="aithShowTab('timeline')">
+              <span class="zh">📜 完整時間軸</span><span class="en">📜 Full Timeline</span>
+            </div>
+            <div class="aith-toptab" data-tab="parallel" onclick="aithShowTab('parallel')">
+              <span class="zh">🏊 平行軌道對照</span><span class="en">🏊 Parallel View</span>
+            </div>
+            <div class="aith-toptab" data-tab="find" onclick="aithShowTab('find')">
+              <span class="zh">🔍 全局搜尋</span><span class="en">🔍 Find</span>
+            </div>
+            <div class="aith-toptab" data-tab="help" onclick="aithShowTab('help')">
+              <span class="zh">📖 導覽說明</span><span class="en">📖 Help / Guide</span>
+            </div>
+          </div>
+
+          <!-- Track filter bar -->
+          <div class="aith-track-bar" id="aithTrackBar">
+            <span class="aith-bar-label"><span class="zh">軌道主題</span><span class="en">Track</span></span>
+            <div class="aith-chips" id="aithTrackChips"></div>
+          </div>
+
+          <!-- Topic filter bar -->
+          <div class="aith-topic-bar" id="aithTopicBar">
+            <span class="aith-bar-label"><span class="zh">技術領域</span><span class="en">Topics</span></span>
+            <div class="aith-chips" id="aithTopicChips"></div>
+          </div>
+
+          <!-- Mobile stage tabs -->
+          <div class="aith-mobile-tabs" id="aithMobileStageTabs"></div>
+
+          <!-- View 1: Explore View -->
+          <div class="aith-main-layout" id="aithViewExplore" style="display: flex;">
+            <div class="aith-compass-panel" id="aithViewExploreCompass">
+              <div class="aith-compass-title">
+                <span class="zh">時代羅盤 · 點擊階段切換</span>
+                <span class="en">Meta-Compass · Click Stage</span>
+              </div>
+              <svg class="aith-compass" viewBox="0 0 320 320" id="aithCompassSvg"></svg>
+              <div class="aith-stage-list" id="aithStageList"></div>
+            </div>
+
+            <div class="aith-workspace" id="aithViewExploreWorkspace"></div>
+          </div>
+
+          <!-- View 2: Timeline View -->
+          <div class="aith-timeline-wrap" id="aithViewTimeline" style="display: none;"></div>
+
+          <!-- View 3: Parallel View -->
+          <div class="aith-parallel-wrap" id="aithViewParallel" style="display: none;"></div>
+
+          <!-- View 4: Find / Search View -->
+          <div class="aith-find-wrap" id="aithViewFind" style="display: none;"></div>
+
+          <!-- View 5: Help / Guide View -->
+          <div class="help-wrap aith-help-wrap" id="aithViewHelp" style="display: none;">
+            <div class="aith-card" style="margin-bottom: 20px;">
+              <h3><span class="zh">科技發展史羅盤簡介</span><span class="en">Welcome to Tech History Compass</span></h3>
+              <p style="font-size: 14px; line-height: 1.7; color: var(--ink);">
+                <span class="zh">本模組系統化梳理了七大交織的技術歷史 — <b>人工智慧 (AI)</b>、<b>計算技術 (Computing)</b>、<b>半導體製程與封裝測試 (Semiconductors)</b>、<b>網際網路 (Internet)</b>、<b>通訊系統 (Communications)</b>、<b>儲存與記憶體 (Storage & Memory)</b> 以及 <b>太空科技 (Space)</b>。從 1940 年代甚至更早的起源至今，每一個時代皆以圓形羅盤展示其里程碑事件、關鍵突破、重要人物與實際產業應用。</span>
+                <span class="en">This tool maps seven intertwined technology histories — AI, Computing, Semiconductors, Internet, Communication Systems, Storage & Memory, and Space — from their 1940s (and earlier) origins to today. Each track uses the same structure: eras plotted on a circular compass, with events, breakthroughs, figures, and applications for each one.</span>
+              </p>
+            </div>
+
+            <div class="aith-card" style="margin-bottom: 20px;">
+              <h3><span class="zh">功能使用指南</span><span class="en">How to use it</span></h3>
+              <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8; color: var(--ink);">
+                <li><b>軌道切換 (Track Switcher)</b>：點選上方軌道標籤（AI History、Computing、Semiconductors、Internet、Communications、Storage & Memory、Space），依序探索各科技脈絡的時代演進。</li>
+                <li><b>時代羅盤 (Compass SVG)</b>：點選羅盤外環上的節點或下方列表，即可快速跳轉該時代的詳細資訊與突破分析。</li>
+                <li><b>平行軌道對照 (Parallel View)</b>：以 1940~2027 年的共同年份為 X 軸，將七大軌道以泳道圖並列呈現，直觀了解同一時期全球跨領域科技的共振與突破（點擊任一圓點可查看詳細說明）。</li>
+                <li><b>多維標籤過濾 (Topic Filters)</b>：點選晶片封裝 (Packaging)、測試 (Test)、微影 (Lithography)、視覺 (Vision)、NLP、機器人 (Robotics)、國防 (Defense)、自駕 (Autonomous Driving) 等標籤，高亮符合事件，非關聯事件自動淡出。</li>
+                <li><b>全局搜尋 (Find)</b>：在 Find 分頁或主介面 Ctrl+K 輸入關鍵字（公司名、技術、年份、人物），跨 7 大軌道全面檢索。</li>
+              </ul>
+            </div>
+
+            <div class="aith-card">
+              <h3><span class="zh">半導體製程、封裝與測試之戰略演進</span><span class="en">Semiconductor Focus: Process, Packaging & Test</span></h3>
+              <p style="font-size: 13.5px; line-height: 1.7; color: var(--ink);">
+                <span class="zh">在半導體軌道中，特別收錄了從早期晶圓針測（Wafer Probe）到 ATE、DFT/BIST，直至今日 2.5D/3D 異質整合（TSMC CoWoS-S/L/R、CoPoS 面板級封裝）、High-NA EUV 光刻微影演進，以及 Teradyne / Advantest 測試設備雙雄與 KLA 製程控制檢測之關鍵發展，忠實反映 AI 算力晶片時代「封裝與測試已與微影微縮並駕齊驅」之核心產業趨勢。</span>
+                <span class="en">The Semiconductor track highlights the full evolutionary path from wafer probe and early ATE to modern 2.5D/3D heterogeneous packaging (CoWoS, CoPoS), High-NA EUV lithography, and advanced system-level testing (SLT) / process control (KLA, Teradyne), reflecting modern AI chip industry realities.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
     </div>
   </div>
 
@@ -6423,6 +7130,7 @@ const SECTIONS = [
   {id:'fallacies', zh:'常見分析與認知謬誤', en:'Common Analytical & Cognitive Fallacies'},
   {id:'finance', zh:'財務分析與精實機會', en:'Financial Analysis & Lean Opportunities'},
   {id:'brainstorm', zh:'團隊腦力激盪與視覺化工具', en:'Team Brainstorming & Visual Tools'},
+  {id:'aitech', zh:'科技與半導體/AI 發展史羅盤', en:'Tech, Semiconductor & AI History Compass'},
   {id:'glossary', zh:'詞彙釋義', en:'Glossary'},
 ];
 
@@ -8161,6 +8869,9 @@ function render(){
   }
   if (state.section === 'finance' && typeof calculateFinance === 'function') {
     calculateFinance();
+  }
+  if (state.section === 'aitech' && typeof initAitechCompass === 'function') {
+    initAitechCompass();
   }
 }
 
@@ -13799,6 +14510,7 @@ function init(){
 
   // Initialize Brainstorm & Visualization Section
   initBrainstorm();
+  initAitechCompass();
 
   loadState();
   const toggleDmaicBtn = document.getElementById('toggleDmaic');
@@ -13856,6 +14568,1030 @@ function init(){
   };
 }
 init();
+
+
+
+/* =======================================================
+   Section 18: Tech, Semiconductor & AI History Compass JS
+   ======================================================= */
+
+const AI_ERAS = [
+  {
+    id:"foundations", label:"Foundations", years:"1940s–1950s", color:"#7FB5A0",
+    summary:"Before 'AI' had a name, mathematicians and engineers laid the theoretical groundwork: formal models of computation, neural analogies, and the provocative question of whether machines could think.",
+    events:[
+      {yr:"1943", title:"McCulloch–Pitts Neuron", desc:"First mathematical model of an artificial neuron, showing simple units could compute logical functions.", tags:[]},
+      {yr:"1950", title:"Turing's 'Computing Machinery and Intelligence'", desc:"Alan Turing proposes the Imitation Game (Turing Test) as a practical criterion for machine intelligence.", tags:["nlp"]},
+      {yr:"1951", title:"First neural network machine (SNARC)", desc:"Marvin Minsky and Dean Edmonds build an early neural-net learning machine using vacuum tubes.", tags:[]}
+    ],
+    figures:["Alan Turing","Warren McCulloch","Walter Pitts","Claude Shannon"],
+    breakthroughs:["Formal computation theory (Turing machine)","Neural analogy for computation","The 'can machines think?' framing"],
+    applications:["Cryptanalysis machines (Bombe) breaking wartime ciphers","Early game-playing programs (checkers, chess sketches)","Theoretical blueprints for general-purpose computers"]
+  },
+  {
+    id:"symbolic", label:"Symbolic AI (GOFAI)", years:"1956–1974", color:"#F5A623",
+    summary:"The field is formally named at Dartmouth. Researchers bet that intelligence could be captured through symbol manipulation and logical rules — producing early wins in games, theorem-proving, and natural language toys.",
+    events:[
+      {yr:"1956", title:"Dartmouth Workshop", desc:"John McCarthy coins the term 'Artificial Intelligence'; the field is formally launched.", tags:[]},
+      {yr:"1957", title:"Logic Theorist / General Problem Solver", desc:"Newell and Simon build programs that prove mathematical theorems using heuristic search.", tags:[]},
+      {yr:"1966", title:"ELIZA", desc:"Joseph Weizenbaum's chatbot simulates a Rogerian therapist using pattern matching, surprising users with its apparent understanding.", tags:["nlp"]},
+      {yr:"1969", title:"Perceptrons (Minsky & Papert)", desc:"A critical book shows single-layer perceptrons can't solve XOR, dampening enthusiasm for neural networks for over a decade.", tags:["vision"]},
+      {yr:"1972", title:"WABOT-1", desc:"Waseda University unveils the first full-scale 'intelligent' humanoid robot, able to walk, converse, and manipulate objects.", tags:["robotics"]}
+    ],
+    figures:["John McCarthy","Marvin Minsky","Allen Newell","Herbert Simon"],
+    breakthroughs:["Formal naming of the AI field","Heuristic search & symbolic logic systems","Early natural language pattern matching"],
+    applications:["Automated theorem provers for math research","ELIZA-style chat interfaces for early NLP demos","Robotic problem-solving (Shakey the robot at SRI)","Machine translation experiments (Georgetown-IBM)"]
+  },
+  {
+    id:"expert", label:"Expert Systems", years:"1974–1987", color:"#1E3A5F",
+    summary:"After the first AI winter begins, industry pivots to narrow, rule-based 'expert systems' that encode human specialist knowledge — commercially successful for a time, but brittle and expensive to maintain.",
+    events:[
+      {yr:"1972", title:"MYCIN", desc:"A rule-based system for diagnosing bacterial infections, one of the first serious medical expert systems.", tags:[]},
+      {yr:"1980", title:"XCON at DEC", desc:"Digital Equipment Corp deploys XCON to configure computer orders, saving millions and popularizing expert systems commercially.", tags:[]},
+      {yr:"1980s", title:"Rise of Lisp Machines", desc:"Specialized hardware built to run AI software efficiently, briefly a booming market.", tags:[]},
+      {yr:"1987", title:"Second AI Winter begins", desc:"The Lisp machine market collapses and expert-system limitations become apparent, triggering funding cuts.", tags:[]}
+    ],
+    figures:["Edward Feigenbaum","Randall Davis"],
+    breakthroughs:["Rule-based reasoning at commercial scale","Knowledge engineering as a discipline","Exposure of brittleness in hand-coded knowledge"],
+    applications:["Medical diagnosis support (MYCIN, INTERNIST-I)","Computer sales-order configuration (XCON/R1 at DEC)","Mineral exploration advisory (PROSPECTOR)","Financial and insurance underwriting rule engines"]
+  },
+  {
+    id:"revival", label:"Neural Revival", years:"1986–1997", color:"#7FB5A0",
+    summary:"Backpropagation re-legitimizes neural networks academically, while statistical and probabilistic methods quietly gain ground. The era closes with a symbolic milestone: a machine beats the world chess champion.",
+    events:[
+      {yr:"1986", title:"Backpropagation popularized", desc:"Rumelhart, Hinton, and Williams show multilayer networks can be trained effectively, reviving neural net research.", tags:[]},
+      {yr:"1989", title:"LeNet (LeCun)", desc:"Yann LeCun applies convolutional neural networks to handwritten digit recognition, a precursor to modern CNNs.", tags:["vision"]},
+      {yr:"1997", title:"Deep Blue beats Kasparov", desc:"IBM's Deep Blue defeats reigning world chess champion Garry Kasparov, a landmark for search-based AI.", tags:[]}
+    ],
+    figures:["Geoffrey Hinton","Yann LeCun","Yoshua Bengio"],
+    breakthroughs:["Backpropagation training","Convolutional neural networks","Search + brute-force compute proving competitive with humans"],
+    applications:["Handwritten digit / check reading (LeNet in banking)","Postal address & zip code recognition","Chess engines reaching grandmaster strength (Deep Blue)","Early speech recognition for dictation software"]
+  },
+  {
+    id:"ml", label:"Statistical Machine Learning", years:"1990s–2009", color:"#F5A623",
+    summary:"AI research shifts from hand-coded rules to learning patterns from data. Support vector machines, ensemble methods, and probabilistic graphical models dominate, powered by growing datasets and the early web.",
+    events:[
+      {yr:"1995", title:"Support Vector Machines mature", desc:"SVMs become a leading method for classification tasks, valued for strong theoretical guarantees.", tags:[]},
+      {yr:"2001", title:"Random Forests", desc:"Ensemble learning methods gain popularity for robust, practical predictive performance.", tags:[]},
+      {yr:"2002", title:"Roomba launches", desc:"iRobot brings autonomous, sensor-driven AI into ordinary homes for the first time as a mass-market product.", tags:["robotics"]},
+      {yr:"2004–05", title:"DARPA Grand Challenge", desc:"No team finishes the 2004 desert race; in 2005, Stanford's 'Stanley' wins using LiDAR-based perception, establishing LiDAR as the default sensor for autonomous-vehicle research.", tags:["autodrive","robotics","vision"]},
+      {yr:"2006", title:"'Deep Learning' term reintroduced", desc:"Hinton's work on deep belief networks reignites interest in many-layered neural networks.", tags:[]},
+      {yr:"2009", title:"Google starts self-driving car project", desc:"The project that becomes Waymo begins testing on public roads, betting on LiDAR plus radar and cameras for redundant, high-precision perception — a sensor-fusion approach later contrasted with Tesla's camera-only bet.", tags:["autodrive","robotics"]},
+      {yr:"2009", title:"ImageNet dataset released", desc:"Fei-Fei Li's large labeled image dataset sets the stage for the coming deep learning boom.", tags:["vision"]}
+    ],
+    figures:["Vladimir Vapnik","Leo Breiman","Fei-Fei Li"],
+    breakthroughs:["Data-driven learning over hand-coded rules","Large labeled datasets as infrastructure","Probabilistic and kernel methods"],
+    applications:["Spam filtering (Naive Bayes / SVM classifiers)","Credit scoring and fraud detection","Search engine ranking algorithms","Recommendation engines (Amazon, Netflix Prize era)"]
+  },
+  {
+    id:"deep", label:"Deep Learning Revolution", years:"2010–2016", color:"#1E3A5F",
+    summary:"GPUs make training large neural networks practical. A single competition result in 2012 convinces the field that deep, data-hungry networks outperform prior approaches by a wide margin, triggering an industry-wide pivot.",
+    events:[
+      {yr:"2011", title:"IBM Watson wins Jeopardy!", desc:"Watson defeats two of the show's greatest champions, demonstrating strong natural language question-answering to a mass audience.", tags:["nlp"]},
+      {yr:"2012", title:"AlexNet wins ImageNet", desc:"A deep convolutional network dramatically outperforms competitors, using GPUs for training — widely seen as deep learning's breakout moment.", tags:["vision"]},
+      {yr:"2012", title:"Google Now launches", desc:"Google's predictive assistant brings proactive, context-aware AI to everyday smartphone use.", tags:["nlp"]},
+      {yr:"2014", title:"Tesla Autopilot launches", desc:"Tesla ships driver-assistance using cameras and radar — no LiDAR — betting that vision-based neural networks can eventually match LiDAR-based perception at far lower hardware cost, diverging from the LiDAR-first approach favored by Waymo.", tags:["autodrive","vision"]},
+      {yr:"2014", title:"GANs introduced", desc:"Ian Goodfellow proposes Generative Adversarial Networks, enabling realistic synthetic image generation.", tags:["vision","generative"]},
+      {yr:"2014", title:"Seq2seq & attention emerge", desc:"Neural machine translation models begin outperforming traditional statistical translation.", tags:["nlp"]},
+      {yr:"2016", title:"AlphaGo beats Lee Sedol", desc:"DeepMind's AlphaGo defeats a top Go champion using deep reinforcement learning and tree search, years ahead of expert predictions.", tags:[]}
+    ],
+    figures:["Geoffrey Hinton","Ilya Sutskever","Ian Goodfellow","Demis Hassabis"],
+    breakthroughs:["GPU-accelerated deep learning at scale","Generative adversarial networks","Deep reinforcement learning mastering Go","Divergent sensor philosophies emerge in self-driving (LiDAR fusion vs. camera-first)"],
+    applications:["Photo tagging & facial recognition at consumer scale","Voice assistants (Siri, Google Assistant, Alexa)","Self-driving car perception stacks (LiDAR/radar/camera fusion at Waymo; camera+radar at Tesla)","Real-time machine translation (Google Neural MT)","Medical imaging diagnosis (diabetic retinopathy, skin cancer)"]
+  },
+  {
+    id:"transformer", label:"Transformers & LLMs", years:"2017–2021", color:"#F5A623",
+    summary:"A new architecture — the Transformer — replaces recurrence with attention, enabling far larger and more parallelizable language models. Pretraining on massive text corpora becomes the dominant paradigm.",
+    events:[
+      {yr:"2017", title:"'Attention Is All You Need'", desc:"Google researchers introduce the Transformer architecture, which becomes the backbone of nearly all modern large models.", tags:["nlp"]},
+      {yr:"2018", title:"BERT & GPT-1", desc:"Bidirectional and autoregressive pretraining approaches show large gains from self-supervised learning on text.", tags:["nlp"]},
+      {yr:"2018", title:"Google Duplex", desc:"An AI assistant demonstrates human-like phone conversations to book appointments, showcasing natural voice generation.", tags:["nlp"]},
+      {yr:"2019", title:"OpenAI Dactyl solves Rubik's Cube", desc:"A robotic hand trained with reinforcement learning manipulates a Rubik's Cube one-handed, showing progress in dexterous robotics.", tags:["robotics"]},
+      {yr:"2019", title:"GPT-2", desc:"OpenAI's larger language model raises early public attention to fluent machine-generated text, including debate over release.", tags:["nlp"]},
+      {yr:"2020", title:"GPT-3", desc:"A 175-billion parameter model demonstrates strong few-shot learning, fueling the modern 'scale is what matters' narrative.", tags:["nlp"]},
+      {yr:"2021", title:"Tesla removes radar, goes camera-only", desc:"Tesla eliminates radar in favor of 'Tesla Vision' — cameras and neural networks alone — sharpening the industry split between camera-only and LiDAR+radar sensor-fusion approaches to autonomy.", tags:["autodrive","vision"]}
+    ],
+    figures:["Ashish Vaswani (Transformer team)","Jacob Devlin","OpenAI research team"],
+    breakthroughs:["Self-attention architecture","Large-scale self-supervised pretraining","Few-shot / in-context learning"],
+    applications:["Search engine query understanding (BERT in Google Search)","Autocomplete & code suggestion (early Copilot precursors)","Customer service chatbots built on fine-tuned LLMs","Protein structure prediction (AlphaFold 2, 2021)"]
+  },
+  {
+    id:"genai", label:"Generative AI Era", years:"2022–Present", color:"#7FB5A0",
+    summary:"Chat interfaces bring large language models to hundreds of millions of everyday users. Multimodal models, coding agents, and reasoning-focused systems rapidly follow, AI moves from research demo to daily tool, and a distinct defense/autonomy-AI industry emerges alongside the consumer wave.",
+    events:[
+      {yr:"2022", title:"ChatGPT launches", desc:"OpenAI's conversational interface to GPT-3.5 becomes the fastest-growing consumer application in history, mainstreaming LLMs.", tags:["nlp","generative"]},
+      {yr:"2022–23", title:"Diffusion image models", desc:"Stable Diffusion, DALL·E 2, and Midjourney popularize text-to-image generation for the general public.", tags:["vision","generative"]},
+      {yr:"2023", title:"Claude launches", desc:"Anthropic ships Claude, built around Constitutional AI, followed by rapid iteration through Claude 2, then the Claude 3 family and Claude Sonnet/Opus/Haiku model lines in 2024–25.", tags:["nlp","safety"]},
+      {yr:"2023", title:"GPT-4 ships", desc:"OpenAI releases GPT-4, a frontier multimodal model with stronger reasoning, longer context, and tool use.", tags:["nlp","vision"]},
+      {yr:"2023", title:"Gemini launches", desc:"Google DeepMind ships its first natively multimodal Gemini model family, unifying what had been separate Bard and PaLM efforts.", tags:["nlp","vision"]},
+      {yr:"2023–24", title:"Robotaxis scale on LiDAR fusion", desc:"Waymo and Cruise expand driverless robotaxi service across US cities on LiDAR+radar+camera sensor fusion, arguing redundant sensors improve safety margins in poor visibility and edge cases.", tags:["autodrive","robotics","vision"]},
+      {yr:"2024", title:"AI safety & regulation breakthroughs", desc:"The EU AI Act, US executive actions, and international AI safety summits mark the first major wave of binding AI governance.", tags:["safety"]},
+      {yr:"2024–25", title:"Agentic & reasoning models", desc:"Models gain the ability to plan, use tools, write and run code, and operate computers on a user's behalf.", tags:["nlp","robotics"]},
+      {yr:"2024–26", title:"LiDAR vs. camera-only debate continues", desc:"Tesla continues refining its camera-only Full Self-Driving stack while Waymo and most other AV developers keep LiDAR+radar+camera fusion as the default. Vision-only proponents cite lower hardware cost and human-like perception; fusion proponents cite sensor redundancy in fog, glare, and low light — the tradeoff remains genuinely unresolved industry-wide.", tags:["autodrive","vision"]},
+      {yr:"2024–25", title:"Anduril & Shield AI expand into Taiwan", desc:"Anduril opens a Taiwan office, integrating its Lattice command-and-control software and Altius drone fleet with Taiwanese forces; Shield AI partners with Taiwan's AIDC on V-BAT autonomous aircraft and with Thunder Tiger on Hivemind-equipped autonomous surface vessels, opening a permanent Taipei office.", tags:["defense","robotics"]},
+      {yr:"2025", title:"Google Antigravity launches", desc:"Alongside Gemini 3, Google ships an agent-first development platform where AI agents operate IDEs, terminals, and browsers with greater autonomy.", tags:["nlp"]},
+      {yr:"2025–26", title:"Defense AI becomes an asset class", desc:"Anduril's autonomous weapons and systems platform reaches a $30B+ valuation, Palantir's Maven Smart System becomes a Pentagon program of record, and Shield AI's Hivemind autonomy software plus Ondas Holdings' drone/robot platforms attract multi-billion-dollar rounds and prime-contractor deals — marking military autonomy as a distinct, fast-growing AI sector.", tags:["defense","robotics"]},
+      {yr:"2025–26", title:"Taiwan builds AI defense ecosystem with allies", desc:"Taiwan's Ministry of National Defense stands up a dedicated AI office focused on image/video detection and cybersecurity, while Northrop Grumman and AeroVironment sign missile-defense and loitering-munitions partnerships with Taiwan's NCSIST — part of a broader AI-enabled defense buildup that Beijing has publicly criticized as crossing a red line, while Taipei and Washington frame it as strengthening deterrence.", tags:["defense"]},
+      {yr:"2026", title:"Frontier tier expansion", desc:"Labs continue pushing model capability tiers upward alongside growing focus on safety evaluation and export policy.", tags:["safety"]}
+    ],
+    figures:["Sam Altman","Demis Hassabis","Dario Amodei","Ilya Sutskever","Palmer Luckey (Anduril)"],
+    breakthroughs:["Consumer-scale conversational AI","Text-to-image / multimodal generation","Agentic, tool-using AI systems","Defense-sector autonomy going mainstream as an investable category"],
+    applications:["AI coding assistants (Claude Code, GitHub Copilot, Google Antigravity, Cursor)","Enterprise knowledge-work agents (research, spreadsheets, slides — e.g. Claude in Chrome/Excel/PowerPoint)","Text-to-image/video for marketing & design (Midjourney, Sora)","Drug discovery & materials science acceleration","Customer support & sales copilots embedded in SaaS","Military & defense autonomy (Anduril, Palantir Maven, Shield AI Hivemind, Ondas Holdings aerial/ground robotics)","Taiwan defense-AI partnerships (Anduril, Shield AI + AIDC/Thunder Tiger, Northrop Grumman, AeroVironment + NCSIST)","Driverless robotaxis (Waymo LiDAR fusion) and camera-only ADAS (Tesla FSD)","Personal productivity and reflection tools (e.g. your own ORID/decision-compass apps)"]
+  }
+];
+
+const COMPUTING_ERAS = [
+  {
+    id:"mainframe", label:"Mainframe Era", years:"1940s–1950s", color:"#7FB5A0",
+    summary:"The first electronic general-purpose computers move from theoretical designs to room-sized machines, establishing the stored-program concept that all modern computing still relies on.",
+    events:[
+      {yr:"1945", title:"ENIAC completed", desc:"The first general-purpose electronic digital computer is completed at the University of Pennsylvania, using vacuum tubes for calculation.", tags:["hardware"]},
+      {yr:"1948", title:"Manchester Baby runs first stored program", desc:"The Manchester Small-Scale Experimental Machine becomes the first computer to run a program stored in electronic memory.", tags:["hardware"]},
+      {yr:"1951", title:"UNIVAC I delivered", desc:"The first commercially produced computer in the US is delivered to the US Census Bureau, marking computing's move from lab to business.", tags:["hardware"]}
+    ],
+    figures:["John Mauchly","J. Presper Eckert","John von Neumann"],
+    breakthroughs:["Stored-program (von Neumann) architecture","Electronic computation replacing mechanical/relay computers","Computing as a commercial product, not just a lab instrument"],
+    applications:["Ballistics and artillery table calculation","Census data tabulation","Early scientific and cryptographic computation"]
+  },
+  {
+    id:"transistorcomputer", label:"Transistor & Minicomputer Era", years:"1950s–1970s", color:"#F5A623",
+    summary:"Transistorized computers shrink size and cost dramatically. IBM standardizes business computing, and the minicomputer brings computing power out of dedicated data centers and into labs and universities.",
+    events:[
+      {yr:"1959", title:"IBM 7090 (fully transistorized)", desc:"IBM ships one of the first fully transistorized mainframes, replacing vacuum tubes and dramatically improving reliability and speed.", tags:["hardware"]},
+      {yr:"1964", title:"IBM System/360 launches", desc:"IBM introduces a compatible family of mainframes spanning a huge performance range, standardizing business computing architecture for decades.", tags:["hardware"]},
+      {yr:"1965", title:"DEC PDP-8 minicomputer", desc:"Digital Equipment Corporation's PDP-8 brings computing to a fraction of mainframe cost, popularizing the minicomputer.", tags:["hardware"]}
+    ],
+    figures:["Gene Amdahl","Ken Olsen"],
+    breakthroughs:["Transistorized computing replacing vacuum tubes","Compatible architecture families (System/360)","Minicomputers making computing accessible beyond large institutions"],
+    applications:["Corporate payroll & accounting systems","University and research computing labs","Early real-time industrial control systems"]
+  },
+  {
+    id:"microcomputer", label:"Microprocessor & PC Era", years:"1971–1990s", color:"#1E3A5F",
+    summary:"The invention of the microprocessor puts an entire CPU on a single chip, triggering the personal computer revolution and the graphical user interface.",
+    events:[
+      {yr:"1971", title:"Intel 4004 microprocessor", desc:"Intel ships the first commercial microprocessor, putting an entire CPU on a single chip for the first time.", tags:["hardware"]},
+      {yr:"1977", title:"Apple II & Commodore PET launch", desc:"Mass-market personal computers reach consumers and small businesses for the first time.", tags:["hardware"]},
+      {yr:"1981", title:"IBM PC launches", desc:"IBM's Personal Computer, running MS-DOS, becomes the de facto standard for business computing.", tags:["hardware"]},
+      {yr:"1984", title:"Apple Macintosh", desc:"The Macintosh popularizes the graphical user interface and mouse for mainstream users.", tags:["hardware"]}
+    ],
+    figures:["Ted Hoff","Steve Jobs","Steve Wozniak","Bill Gates"],
+    breakthroughs:["Microprocessor: CPU on a single chip","Mass-market personal computing","Graphical user interfaces replacing command lines"],
+    applications:["Home computing & word processing","Small business accounting and spreadsheets (VisiCalc, Lotus 1-2-3)","Desktop publishing"]
+  },
+  {
+    id:"mobilecloud", label:"Mobile & Cloud Computing Era", years:"1990s–2010s", color:"#7FB5A0",
+    summary:"Computing shifts from the desktop to the pocket and to remote data centers. Laptops go mainstream, smartphones put a computer in every hand, and cloud computing turns servers into an on-demand utility.",
+    events:[
+      {yr:"2006", title:"Amazon Web Services (AWS) launches", desc:"Amazon opens its internal infrastructure to the public as rentable cloud computing, creating the cloud-computing industry.", tags:["hardware"]},
+      {yr:"2007", title:"iPhone launches", desc:"Apple's iPhone combines phone, computer, and internet device into one, kicking off the smartphone era of computing.", tags:["hardware"]},
+      {yr:"2013–14", title:"Containers & orchestration mature", desc:"Docker (2013) and Kubernetes (2014) let software run seamlessly across massive server fleets, becoming the backbone of modern cloud deployment.", tags:["hardware"]}
+    ],
+    figures:["Steve Jobs","Werner Vogels","Jeff Bezos"],
+    breakthroughs:["Cloud computing as a utility","Smartphones as general-purpose computers","Containerization & orchestration at scale"],
+    applications:["Streaming media (Netflix, YouTube) on cloud infrastructure","Mobile apps & app stores","Enterprise SaaS delivered from the cloud"]
+  },
+  {
+    id:"aicompute", label:"AI-Accelerated Computing Era", years:"2010s–Present", color:"#F5A623",
+    summary:"General-purpose CPUs give way to specialized parallel hardware built for AI workloads — GPUs, TPUs, and custom silicon — reshaping what 'a computer' even means at data-center scale.",
+    events:[
+      {yr:"2016", title:"Google TPU announced", desc:"Google reveals its custom Tensor Processing Unit, built specifically to accelerate neural network training and inference.", tags:["hardware"]},
+      {yr:"2020", title:"Apple Silicon (M1)", desc:"Apple moves the Mac from x86 to its own ARM-based system-on-chip, unifying mobile and desktop chip design philosophy.", tags:["hardware"]},
+      {yr:"2022–26", title:"AI datacenter buildout accelerates", desc:"Hyperscalers and chip makers race to build massive GPU/AI-accelerator clusters, making compute capacity itself a competitive bottleneck for AI progress.", tags:["hardware"]}
+    ],
+    figures:["Jensen Huang","Norman Jouppi"],
+    breakthroughs:["GPUs repurposed for general-purpose parallel computing (GPGPU/CUDA)","Custom AI accelerator chips (TPU and successors)","Compute infrastructure as a strategic, not just technical, asset"],
+    applications:["Large-scale model training clusters","Consumer AI features running on-device NPUs","National/corporate AI compute strategy and export controls"]
+  }
+];
+
+const SEMICONDUCTOR_ERAS = [
+  {
+    id:"transistorera", label:"From Vacuum Tubes to Transistors", years:"1947–1950s", color:"#C1666B",
+    summary:"The invention of the transistor at Bell Labs replaces bulky, unreliable vacuum tubes with a small, efficient solid-state switch — the foundational invention of the entire electronics industry.",
+    events:[
+      {yr:"1947", title:"Transistor invented at Bell Labs", desc:"Bardeen, Brattain, and Shockley invent the point-contact transistor, replacing vacuum tubes with a solid-state amplifying switch.", tags:["hardware"]},
+      {yr:"1954", title:"First transistor radio", desc:"Texas Instruments and Regency ship the first commercial transistor radio, demonstrating the transistor's consumer potential.", tags:["hardware"]},
+      {yr:"1956", title:"Nobel Prize for the transistor", desc:"Bardeen, Brattain, and Shockley share the Nobel Prize in Physics for the transistor.", tags:[]}
+    ],
+    figures:["John Bardeen","Walter Brattain","William Shockley"],
+    breakthroughs:["Solid-state transistor replacing vacuum tubes","Foundation of all modern electronics"],
+    applications:["Consumer radios and hearing aids","Early transistorized computers","Military and aerospace electronics"]
+  },
+  {
+    id:"icmoore", label:"Integrated Circuit & Moore's Law", years:"1958–1970s", color:"#7A6BA6",
+    summary:"Multiple transistors are combined onto a single chip, and an observation about the pace of miniaturization becomes the industry's guiding law for the next fifty years.",
+    events:[
+      {yr:"1958–59", title:"Integrated circuit invented", desc:"Jack Kilby (Texas Instruments) and Robert Noyce (Fairchild) independently develop the integrated circuit, putting multiple transistors on one chip.", tags:["hardware"]},
+      {yr:"1960–66", title:"Teradyne founded; J259 launches the ATE industry", desc:"Alex d'Arbeloff and Nick DeWolf found Teradyne in Boston, delivering the D133 diode tester to Raytheon in 1961; its 1966 J259 integrated circuit tester adds a minicomputer to run test programs, widely marking the true beginning of automated test equipment (ATE) in the semiconductor industry.", tags:["test"]},
+      {yr:"1960s", title:"Wafer probe & parametric test emerge", desc:"As ICs move from lab curiosities to mass production, in-line parametric test and wafer probing are introduced to screen die electrically before dicing and packaging — the origin of modern semiconductor test.", tags:["test"]},
+      {yr:"1964", title:"Dual In-line Package (DIP) introduced", desc:"Fairchild introduces the DIP, the first widely standardized IC package, enabling automated PCB assembly at scale and setting packaging convention for the next two decades.", tags:["packaging"]},
+      {yr:"1965", title:"Moore's Law articulated", desc:"Gordon Moore observes that the number of transistors on a chip doubles roughly every two years, a prediction that guides the industry's roadmap for decades.", tags:[]},
+      {yr:"1968", title:"Intel founded", desc:"Robert Noyce and Gordon Moore found Intel, which becomes the dominant force in memory chips and later microprocessors.", tags:["hardware"]}
+    ],
+    figures:["Jack Kilby","Robert Noyce","Gordon Moore"],
+    breakthroughs:["Integrated circuit (multiple transistors on one chip)","Moore's Law as an industry roadmap","Standardized IC packaging (DIP) enabling automated assembly"],
+    applications:["Calculators and early consumer electronics","Guidance computers for Apollo missions","Foundation for the coming microprocessor","Wafer probe used to sort functional vs. defective die before dicing (earliest form of yield screening)"]
+  },
+  {
+    id:"fabless", label:"Microprocessor & Fabless Revolution", years:"1971–1990s", color:"#4A8C8C",
+    summary:"The microprocessor puts a full CPU on one chip, and the industry begins splitting between companies that design chips and companies that manufacture them — setting up today's foundry model.",
+    events:[
+      {yr:"1969", title:"C4 flip-chip bonding (IBM)", desc:"IBM's Controlled Collapse Chip Connection replaces wire bonding with solder bumps under the die, shortening interconnects and cutting inductance — the ancestor of nearly all modern flip-chip packaging.", tags:["packaging"]},
+      {yr:"1970s–80s", title:"Automated Test Equipment (ATE) & scan-based DFT", desc:"Automatic test equipment automates functional test as chip complexity outgrows manual probing; IBM's Level-Sensitive Scan Design pioneers design-for-test, letting internal logic states shift out through scan chains for structural fault coverage.", tags:["test"]},
+      {yr:"1971", title:"Intel 4004", desc:"The first commercial microprocessor puts an entire central processing unit on a single chip.", tags:["hardware"]},
+      {yr:"1980s", title:"Surface-mount packages spread (SOP, PLCC, QFP)", desc:"Surface-mount technology packages replace through-hole DIPs, shrinking footprint and supporting the higher pin counts increasingly complex chips need.", tags:["packaging"]},
+      {yr:"1985", title:"Intel 386 & x86 dominance", desc:"Intel's 386 processor cements x86 as the dominant PC architecture for decades.", tags:["hardware"]},
+      {yr:"1987", title:"TSMC founded", desc:"Morris Chang founds Taiwan Semiconductor Manufacturing Company as the world's first dedicated 'pure-play' foundry, manufacturing chips designed by other companies.", tags:["hardware"]},
+      {yr:"1994", title:"AEC-Q100 automotive qualification standard published", desc:"The Automotive Electronics Council's AEC-Q100 establishes rigorous stress-test and reliability qualification requirements, setting the industry benchmark for automotive-grade chips — the first major test standard defined by application, not by technology.", tags:["test"]},
+      {yr:"1997", title:"KLA-Tencor forms (KLA Corporation)", desc:"KLA Instruments merges with Tencor Instruments to form KLA-Tencor (renamed KLA Corporation in 2019), combining optical wafer inspection and metrology into one company — the merger that builds today's dominant player in process control, eventually holding over 85% of the optical wafer inspection market.", tags:["test","hardware"]}
+    ],
+    figures:["Ted Hoff","Morris Chang","Andy Grove"],
+    breakthroughs:["Microprocessor: CPU on a single chip","Fabless/foundry split (design vs. manufacturing)","Flip-chip bonding (C4) and surface-mount packaging replacing wire-bond DIPs"],
+    applications:["Personal computers","Embedded control systems","Chip design outsourcing enabling fabless startups (Qualcomm, Nvidia, later AMD)","Final test & burn-in used to screen infant-mortality failures before shipment; AEC-Q100 test flows qualify chips for automotive use"]
+  },
+  {
+    id:"euv", label:"Advanced Node & EUV Lithography Era", years:"2000s–2010s", color:"#6C93B5",
+    summary:"As transistors shrink toward atomic scale, manufacturing itself becomes the industry's hardest problem — culminating in extreme ultraviolet (EUV) lithography, one of the most complex machines humanity has built.",
+    events:[
+      {yr:"1990s–2000s", title:"BGA & chip-scale packaging (CSP) mature", desc:"Ball Grid Array packages replace peripheral-leaded packages for high pin-count chips, cutting lead inductance; chip-scale packages shrink the package footprint close to bare-die size for mobile devices.", tags:["packaging"]},
+      {yr:"2000s", title:"Built-In Self-Test (BIST) matures", desc:"Memory BIST (MBIST) and logic BIST (LBIST) let chips test significant portions of themselves on-die, easing dependence on expensive external ATE time as chip complexity outpaces external test capability.", tags:["test"]},
+      {yr:"2000s–2010s", title:"Wafer-level packaging (WLP) & TSV research", desc:"Wafer-level packaging processes an entire wafer before dicing, while through-silicon via (TSV) research lays the groundwork for stacking multiple dies vertically.", tags:["packaging"]},
+      {yr:"2001", title:"Nvidia GPUs become programmable (GeForce 3)", desc:"Programmable shaders open the door to using graphics chips for general-purpose parallel computation, later crucial for AI.", tags:["hardware"]},
+      {yr:"2010s", title:"Known-good-die (KGD) test for multi-die packages", desc:"As 2.5D/3D packaging combines multiple dies in one package, fully testing each die before assembly becomes essential — an undetected bad die can no longer just be discarded after the package is built.", tags:["test","packaging"]},
+      {yr:"2012–19", title:"ASML brings EUV lithography to production", desc:"ASML takes extreme ultraviolet lithography from lab concept to high-volume manufacturing, becoming the sole supplier of the machines required to print the most advanced chip nodes.", tags:["hardware"]},
+      {yr:"2015", title:"FinFET transistors scale past 14nm", desc:"3D FinFET transistor structures let manufacturers keep shrinking chips well past the point planar transistors could go.", tags:["hardware"]},
+      {yr:"2015", title:"Teradyne acquires Universal Robots", desc:"The ATE maker buys Danish cobot pioneer Universal Robots for $285M, diversifying beyond pure semiconductor test cyclicality into collaborative robotics — a second growth leg later expanded with Mobile Industrial Robots (MiR) in 2021.", tags:["test","robotics"]}
+    ],
+    figures:["Morris Chang","Martin van den Brink"],
+    breakthroughs:["EUV lithography enabling sub-10nm manufacturing","3D transistor structures (FinFET)","BGA/CSP and wafer-level packaging maturing alongside node scaling"],
+    applications:["Smartphone application processors","High-performance computing chips","Early GPU-accelerated scientific computing","On-die BIST reducing external ATE dependence; known-good-die screening enabling reliable 2.5D/3D multi-die packages"]
+  },
+  {
+    id:"aichip", label:"AI Chip & Geopolitics Era", years:"1990s–Present", color:"#F5A623",
+    summary:"Chips purpose-built for AI workloads become the industry's most valuable product category, packaging becomes as strategically important as transistor scaling, and semiconductor manufacturing — concentrated in a handful of companies — becomes a matter of national strategy and export policy.",
+    events:[
+      {yr:"1990s–2002", title:"Nikon & Canon lead, then ASML overtakes both", desc:"Nikon's optical precision made it the dominant lithography supplier through the 1990s — at times supplying the majority of Intel's steppers — until ASML's dual-stage TWINSCAN system and early, heavy EUV R&D investment let it overtake both Japanese rivals by 2002.", tags:["lithography"]},
+      {yr:"2010–19", title:"EUV moves from pre-production to high-volume manufacturing", desc:"ASML's early NXE:3100/3350B systems mature into the NXE:3400 platform; TSMC and Samsung qualify EUV for 7nm/5nm high-volume production by 2019 — EUV's transition from lab curiosity to the industry's default leading-edge tool.", tags:["lithography","hardware"]},
+      {yr:"2011–12", title:"TSMC CoWoS (2.5D packaging) debuts", desc:"Chip-on-Wafer-on-Substrate packaging places multiple dies side-by-side on a silicon interposer, becoming the foundation for pairing GPUs with high-bandwidth memory in today's AI accelerators.", tags:["packaging"]},
+      {yr:"2016", title:"ASML acquires HMI for e-beam inspection", desc:"ASML buys Taiwan's Hermes Microvision (HMI) for ~$3B, adding e-beam inspection and metrology to its lithography business — HMI's e-beam tools find EUV mask pattern defects and feed high-resolution measurement data back into ASML's computational lithography models, closing the loop between exposing a pattern and verifying it.", tags:["lithography","test","hardware"]},
+      {yr:"2016", title:"TSMC InFO fan-out packaging ships (Apple A10)", desc:"Integrated Fan-Out wafer-level packaging ships in Apple's A10 processor, eliminating the traditional substrate for a thinner, higher-performance, lower-cost package.", tags:["packaging"]},
+      {yr:"2016", title:"Nvidia CUDA ecosystem & TPUs mature", desc:"Purpose-built AI accelerators and Nvidia's CUDA software stack make GPUs the default hardware for training neural networks.", tags:["hardware"]},
+      {yr:"late 2010s", title:"Nikon exits the EUV race", desc:"Unable to match ASML's R&D scale, patent position, and exclusive supply-chain partnerships (notably with optics maker Zeiss), Nikon abandons EUV development and retreats to mature-node DUV and specialty lithography.", tags:["lithography"]},
+      {yr:"2018–26", title:"System-Level Test (SLT) becomes essential for AI chips", desc:"Complex AI accelerators increasingly require running representative application workloads at speed — system-level test — because structural/functional test alone misses performance- and power-related defects that only show up under real use.", tags:["test"]},
+      {yr:"2020–22", title:"Chip shortage & CHIPS Act", desc:"A global semiconductor shortage exposes supply-chain fragility; the US CHIPS Act and similar policies elsewhere subsidize domestic chip manufacturing.", tags:["defense"]},
+      {yr:"2020s–26", title:"KLA extends process-control dominance into AI-era packaging", desc:"KLA — formed in 1997 and already holding over 85% of optical wafer inspection and 56%+ of overall process control — expands tools like its CIRCL cluster platform (with a CIRCL-AP variant) and eSL10 e-beam system to inspect 3D interconnects, multi-die stacks, and HBM packages, not just front-end wafers. FY2025 revenue hit ~$12.16B (+24% YoY) on AI infrastructure demand, while nearest rival Applied Materials holds under 10% of metrology/inspection share.", tags:["test","hardware","packaging"]},
+      {yr:"2021–24", title:"ASML announces High-NA EUV (0.55 NA)", desc:"ASML unveils its next-generation High-NA EUV platform, roughly doubling resolution over existing 0.33 NA systems for sub-2nm nodes; the first EXE:5000 system ships to Intel's Oregon fab in 2024.", tags:["lithography","hardware"]},
+      {yr:"2022–24", title:"US export controls on advanced chips", desc:"The US restricts export of advanced AI chips and EUV lithography tools to certain countries, tying semiconductor policy directly to AI competition.", tags:["defense"]},
+      {yr:"2022–26", title:"AI-assisted test & adaptive pattern generation", desc:"Machine learning is applied to test itself — optimizing test-pattern sets, predicting yield excursions, and flagging outlier die — closing the loop between AI as a product and AI as a manufacturing tool.", tags:["test","generative"]},
+      {yr:"2022–26", title:"Teradyne becomes the AI test-equipment 'gatekeeper'", desc:"Alongside rival Advantest, Teradyne (founded 1960) forms a duopoly in Automated Test Equipment; its UltraFLEXplus platform tests SoC and memory devices for Intel, Samsung, TSMC's customers, and Qualcomm, with demand for HBM-specific testers roughly doubling annually as 2nm/3nm AI chips need far more thorough qualification. A 2026 partnership pairs Teradyne's testers with Tokyo Electron's wafer probers for an integrated, production-ready AI-chip test solution.", tags:["test"]},
+      {yr:"2023–24", title:"CoWoS splits into S/L/R variants", desc:"As single silicon interposers hit their reticle-size limit (~2,700mm²), TSMC diversifies CoWoS into CoWoS-S (standard silicon interposer), CoWoS-R (RDL-based interposer, volume production since 2023, serving comms/edge customers like Broadcom), and CoWoS-L (RDL interposer plus local silicon interconnect bridges, volume production since 2024, at 3.5X-reticle size) — with CoWoS-L becoming TSMC's preferred solution for the largest AI training chips.", tags:["packaging"]},
+      {yr:"2023–26", title:"Chiplets & hybrid bonding go mainstream", desc:"AI accelerators increasingly combine multiple smaller chiplets via advanced packaging (CoWoS-L, hybrid bonding, Intel Foveros) rather than one large monolithic die, as yield economics and interconnect bandwidth push packaging innovation ahead of pure lithography scaling.", tags:["packaging"]},
+      {yr:"2023–26", title:"Canon bets on Nanoimprint Lithography as an EUV alternative", desc:"Rather than compete head-on in EUV, Canon commercializes Nanoimprint Lithography (its FPA-1200NZ2C system), claiming 5nm-equivalent resolution at lower power and cost — targeting 3D NAND first, then DRAM and logic.", tags:["lithography"]},
+      {yr:"2024–26", title:"Advanced packaging capacity becomes the bottleneck", desc:"CoWoS and HBM packaging capacity — not raw wafer starts — becomes the binding constraint on how many AI accelerators the industry can actually ship; TSMC races to quadruple monthly CoWoS output from ~35,000 to ~140,000 wafers by end-2026, still short of demand from Nvidia, Google, Amazon, and others.", tags:["packaging"]},
+      {yr:"2026", title:"Intel enters High-NA EUV high-volume manufacturing", desc:"Intel Foundry begins high-volume production of Intel 18A 'Panther Lake' chips using ASML's EXE High-NA EUV on select layers — the first HVM logic product built with High-NA — while TSMC delays adoption on cost grounds until its later 1nm-class node.", tags:["lithography","hardware"]},
+      {yr:"2026", title:"Nikon re-enters the price fight in DUV", desc:"Under new leadership, Nikon announces aggressively priced ArF immersion DUV systems aimed at reclaiming share among second-tier foundries and memory makers, even as ASML holds roughly 94% of overall lithography share and a full monopoly in EUV.", tags:["lithography"]},
+      {yr:"2026 →", title:"CoPoS: TSMC's next-gen panel-based packaging", desc:"To escape the circular 300mm wafer's reticle limits, TSMC develops Chip-on-Panel-on-Substrate (CoPoS), replacing round wafers with large square panels (starting at 310×310mm) to fit far more reticles per unit. A pilot line targets completion in 2026, with mass production expected 2028–29, Nvidia as the presumed first customer, and a roadmap toward 14+ reticle-size packages holding up to 24 HBM5E stacks by 2029 — packaging, not lithography, is now the primary driver of AI chip scaling.", tags:["packaging"]},
+      {yr:"2026 →", title:"High-NA roadmap: EXE:5200 → 5400 → 5600", desc:"ASML's near-term roadmap runs from the EXE:5200 (~190 wafers/hour) through the EXE:5400E (~210 wafers/hour, sub-0.7nm overlay) to a High Productivity EXE:5600 variant targeting 250+ wafers/hour; Low-NA EUV systems stay supported through 2031 for less advanced nodes, and a further 0.75 NA 'Hyper-NA' platform is planned for 1nm-class nodes beyond 2028.", tags:["lithography","hardware"]}
+    ],
+    figures:["Jensen Huang","Morris Chang","Lisa Su"],
+    breakthroughs:["AI-specific chip architectures becoming a distinct product category","2.5D/3D advanced packaging (CoWoS-S/L/R, InFO, hybrid bonding) rivaling transistor scaling in importance","Panel-level packaging (CoPoS) emerging to break past circular-wafer reticle limits","System-level test displacing pure structural test for complex AI SoCs","High-NA EUV entering high-volume manufacturing, with Hyper-NA (0.75 NA) planned beyond 2028","E-beam and optical inspection/metrology (ASML's HMI, and market-leading KLA) closing the loop between exposure/assembly and defect verification","Semiconductor manufacturing as geopolitical strategy"],
+    applications:["AI training/inference data centers","National chip manufacturing subsidies and export policy","High-bandwidth memory (HBM) stacked via advanced packaging for AI accelerators","Test regimes now diverge sharply by application: automotive (AEC-Q100 zero-defect targets + extended burn-in), memory (bit-fail mapping & redundancy repair), RF (S-parameter/linearity test), AI/HPC (thermal-aware system-level test for HBM-stacked packages)","ATE duopoly: Teradyne and Advantest dominate the automated test equipment market that qualifies SoC and HBM devices before shipment","Process-control dominance: KLA holds 56%+ of overall inspection/metrology and 85%+ of optical wafer inspection, with Applied Materials a distant #2 (~10%)","Lithography competition at the margins: Nikon's low-cost ArF DUV push and Canon's Nanoimprint Lithography target mature/memory nodes, while Applied Materials, Lam Research, and Tokyo Electron compete for adjacent etch/deposition budget rather than lithography itself","Advanced-packaging competitors to TSMC's CoWoS/CoPoS: Intel's EMIB + Foveros, Samsung's I-Cube, and OSAT players (ASE, Amkor, JCET/SPIL) expanding fan-out and panel-level packaging capacity"]
+  }
+];
+
+const INTERNET_ERAS = [
+  {
+    id:"packetswitch", label:"Packet-Switching Precursors", years:"1960s", color:"#4A8C8C",
+    summary:"Before there was 'the internet,' researchers had to invent the idea of breaking data into packets and routing them across a decentralized network that could survive individual failures.",
+    events:[
+      {yr:"1965–66", title:"Packet-switching theory formalized", desc:"Independent work by Paul Baran and Donald Davies lays the theoretical foundation for breaking data into packets for resilient network transmission.", tags:["network"]},
+      {yr:"1969", title:"ARPANET goes live", desc:"The US Department of Defense's ARPANET connects four university computers, becoming the internet's direct ancestor.", tags:["network","defense"]}
+    ],
+    figures:["Paul Baran","Donald Davies","Leonard Kleinrock"],
+    breakthroughs:["Packet-switching as a network design principle","First operational wide-area computer network (ARPANET)"],
+    applications:["Military/research network resilience","Remote computer time-sharing between universities"]
+  },
+  {
+    id:"protocolera", label:"Protocol Era", years:"1970s–1980s", color:"#7A6BA6",
+    summary:"A common language for networks to talk to each other — TCP/IP — turns a patchwork of separate networks into a single 'network of networks': the internet.",
+    events:[
+      {yr:"1973", title:"Ethernet invented", desc:"Robert Metcalfe develops Ethernet at Xerox PARC, becoming the dominant standard for local area networking.", tags:["network"]},
+      {yr:"1983", title:"TCP/IP becomes the standard", desc:"ARPANET adopts TCP/IP, the protocol suite that still underlies the entire internet today.", tags:["network"]},
+      {yr:"1983", title:"Domain Name System (DNS) introduced", desc:"DNS lets users navigate by memorable names instead of numeric IP addresses, essential to the internet's usability at scale.", tags:["network"]}
+    ],
+    figures:["Vint Cerf","Bob Kahn","Robert Metcalfe"],
+    breakthroughs:["TCP/IP as a universal internetworking protocol","Ethernet as the local-network standard","DNS making the network human-navigable"],
+    applications:["Email between research institutions","Early file transfer (FTP) between universities","Corporate local area networks"]
+  },
+  {
+    id:"webera", label:"World Wide Web Era", years:"1989–1990s", color:"#F5A623",
+    summary:"Tim Berners-Lee's web turns the internet from a tool for specialists into a medium anyone can publish and browse — and the resulting gold rush becomes the dot-com boom.",
+    events:[
+      {yr:"1989–91", title:"World Wide Web invented", desc:"Tim Berners-Lee proposes and builds the Web at CERN — HTML, HTTP, and the first browser — making the internet navigable by hyperlink.", tags:["network"]},
+      {yr:"1993", title:"Mosaic browser launches", desc:"The first widely used graphical web browser makes the web accessible to non-technical users for the first time.", tags:["network"]},
+      {yr:"1995–2000", title:"Dot-com boom", desc:"Massive speculative investment floods internet startups, ending in the 2000–01 crash but leaving core infrastructure and habits in place.", tags:["network"]},
+      {yr:"1998", title:"Google founded", desc:"Larry Page and Sergey Brin found Google, whose PageRank algorithm makes searching the exploding web actually usable.", tags:["network"]}
+    ],
+    figures:["Tim Berners-Lee","Marc Andreessen","Larry Page","Sergey Brin"],
+    breakthroughs:["HTML/HTTP and the hyperlinked Web","Graphical browsing for non-technical users","Search as the web's essential navigation layer"],
+    applications:["Online news, shopping, and publishing","Early e-commerce (Amazon 1994, eBay 1995)","Web search"]
+  },
+  {
+    id:"socialweb", label:"Broadband & Social Web Era", years:"2000s", color:"#6C93B5",
+    summary:"Always-on broadband and a new generation of platforms turn the web from something you read into something you participate in — and, with the smartphone, something you carry everywhere.",
+    events:[
+      {yr:"2004", title:"Facebook launches", desc:"Facebook popularizes the social network as a mainstream internet category, reshaping how people connect online.", tags:["network"]},
+      {yr:"2005", title:"YouTube launches", desc:"User-uploaded video becomes a mainstream internet medium.", tags:["network"]},
+      {yr:"2007", title:"iPhone brings mobile broadband internet mainstream", desc:"The smartphone turns the mobile internet from a niche feature into the primary way most people go online.", tags:["network","hardware"]}
+    ],
+    figures:["Mark Zuckerberg","Steve Jobs"],
+    breakthroughs:["User-generated content platforms (Web 2.0)","Social graphs as internet infrastructure","Mobile-first internet access"],
+    applications:["Social networking & content sharing","Mobile apps and app-store ecosystems","Streaming video"]
+  },
+  {
+    id:"ainative", label:"Platform, Cloud & AI-Native Internet", years:"2010s–Present", color:"#C1666B",
+    summary:"The internet becomes cloud-native and streaming-first, and — most recently — conversational AI interfaces begin to sit alongside (and sometimes replace) the traditional search box and app as how people navigate information online.",
+    events:[
+      {yr:"2010s", title:"Streaming replaces downloads", desc:"Netflix, Spotify, and similar services shift media consumption from ownership to on-demand streaming over the internet.", tags:["network"]},
+      {yr:"2019–20", title:"5G reaches mobile internet access", desc:"Next-generation mobile networks promise substantially higher bandwidth and lower latency, accelerating the shift of everyday internet access onto phones rather than fixed broadband.", tags:["network"]},
+      {yr:"2022–26", title:"Conversational AI becomes an internet interface layer", desc:"Chat-based AI assistants (ChatGPT, Claude, Gemini) begin functioning as a new way to search, summarize, and navigate information online, alongside traditional search and apps.", tags:["network","nlp"]}
+    ],
+    figures:["Reed Hastings","Daniel Ek"],
+    breakthroughs:["Streaming as the dominant media-delivery model","Mobile network capacity keeping pace with demand (5G)","Conversational AI as an emerging internet navigation layer"],
+    applications:["Video/audio streaming platforms","Real-time collaboration tools (cloud docs, video calls)","AI chat interfaces as search/assistant replacements"]
+  }
+];
+
+const COMMUNICATION_ERAS = [
+  {
+    id:"telegraphphone", label:"Telegraph & Telephone Era", years:"1830s–1900s", color:"#9370A8",
+    summary:"Long-distance communication moves from physically transporting messages to sending them as instantaneous electrical signals — first as coded pulses over telegraph wires, then as the human voice itself over telephone lines, then wirelessly through the air.",
+    events:[
+      {yr:"1837–44", title:"Electrical telegraph & Morse code", desc:"Samuel Morse and Alfred Vail develop a practical electrical telegraph and code, letting messages travel instantly over wires for the first time in history.", tags:["telecom"]},
+      {yr:"1866", title:"Transatlantic telegraph cable succeeds", desc:"After earlier failed attempts, a durable submarine telegraph cable connects Europe and North America, cutting message time from weeks to minutes.", tags:["telecom"]},
+      {yr:"1876", title:"Telephone invented", desc:"Alexander Graham Bell patents the telephone, transmitting the human voice electrically for the first time.", tags:["telecom"]},
+      {yr:"1901", title:"First transatlantic radio signal", desc:"Guglielmo Marconi transmits a wireless radio signal across the Atlantic, proving radio waves could carry information over vast distances without wires.", tags:["telecom"]}
+    ],
+    figures:["Samuel Morse","Alexander Graham Bell","Guglielmo Marconi"],
+    breakthroughs:["Electrical telegraphy replacing physical message transport","Voice transmission over wires (telephone)","Wireless radio transmission over long distances"],
+    applications:["Point-to-point business and military messaging (telegraph)","Personal and business voice communication (telephone)","Ship-to-shore and transoceanic wireless messaging"]
+  },
+  {
+    id:"radiobroadcast", label:"Radio & Broadcast Era", years:"1900s–1940s", color:"#7A6BA6",
+    summary:"Radio waves move beyond point-to-point messaging into mass broadcasting — one transmitter reaching thousands of receivers at once — while wartime research rapidly matures radar as a parallel application of the same physics.",
+    events:[
+      {yr:"1906", title:"First AM radio voice broadcast", desc:"Reginald Fessenden transmits voice and music over radio waves, moving beyond telegraph's dots and dashes to broadcast actual audio.", tags:["telecom"]},
+      {yr:"1920", title:"Commercial radio broadcasting begins (KDKA)", desc:"Pittsburgh's KDKA becomes one of the first commercially licensed radio stations, launching mass-audience broadcasting.", tags:["telecom"]},
+      {yr:"1933–40s", title:"FM radio & early radar developed", desc:"Edwin Armstrong develops FM radio for static-free audio, while wartime research rapidly matures radar for long-range object detection using radio waves.", tags:["telecom","defense"]}
+    ],
+    figures:["Reginald Fessenden","Edwin Armstrong"],
+    breakthroughs:["Audio broadcast over radio waves","Mass-market one-to-many broadcasting","FM radio and early radar as radio-wave applications beyond telegraphy"],
+    applications:["Mass entertainment and news broadcasting","Military radar for aircraft/ship detection","Aviation and maritime radio communication"]
+  },
+  {
+    id:"satellitefiber", label:"Telecommunications & Satellite Era", years:"1950s–1980s", color:"#6C93B5",
+    summary:"Communication goes intercontinental and extraterrestrial: undersea cables and orbiting satellites let voice and television cross oceans in real time, while fiber optics quietly begins its rise as the medium that will eventually carry almost everything.",
+    events:[
+      {yr:"1956", title:"TAT-1: first transatlantic telephone cable", desc:"The first submarine telephone cable between North America and Europe replaces unreliable shortwave radio for transatlantic calls.", tags:["telecom"]},
+      {yr:"1962", title:"Telstar 1 launches", desc:"The first active communications satellite relays telephone calls and television signals across the Atlantic in real time.", tags:["telecom"]},
+      {yr:"1970", title:"Low-loss optical fiber invented", desc:"Corning researchers develop optical fiber pure enough to carry light signals over practical distances, laying the foundation for the fiber-optic backbone of modern telecom.", tags:["telecom","hardware"]},
+      {yr:"1979", title:"First commercial cellular network (1G)", desc:"NTT launches the world's first commercial cellular phone network in Japan, using analog radio cells to let phones move between coverage areas.", tags:["telecom"]}
+    ],
+    figures:["Charles Kao","Arthur C. Clarke"],
+    breakthroughs:["Submarine telephone cables enabling real-time transoceanic calls","Communications satellites","Low-loss optical fiber","First-generation (1G) analog cellular networks"],
+    applications:["Transatlantic voice and television relay","International direct-dial telephone service","Early mobile car phones"]
+  },
+  {
+    id:"digitalcellular", label:"Digital & Mobile Cellular Era", years:"1980s–2000s", color:"#C1666B",
+    summary:"Analog gives way to digital: cellular networks switch to digital signaling for capacity and security, fiber-optic backbones replace copper for long-haul traffic, and mobile phones move from car-mounted novelties to pocketable consumer devices.",
+    events:[
+      {yr:"1983", title:"AMPS commercial cellular launches in the US", desc:"The Advanced Mobile Phone System becomes the first widescale commercial cellular network in the US, still analog but far more capable than earlier trials.", tags:["telecom"]},
+      {yr:"1988–90s", title:"Submarine fiber-optic cables replace copper", desc:"TAT-8, the first transatlantic fiber-optic cable, dramatically increases transoceanic communication capacity over the earlier copper and satellite links.", tags:["telecom","hardware"]},
+      {yr:"1991", title:"2G GSM digital cellular launches", desc:"The Global System for Mobile communications brings digital voice, SMS text messaging, and international roaming standards to cellular networks.", tags:["telecom"]},
+      {yr:"2001", title:"3G launches (NTT DoCoMo)", desc:"Third-generation cellular networks bring meaningful mobile data speeds, setting the stage for mobile internet access.", tags:["telecom","network"]}
+    ],
+    figures:["Martin Cooper"],
+    breakthroughs:["Digital cellular standards (GSM) replacing analog","Fiber-optic submarine cables as the internet's physical backbone","Mobile data (3G) enabling early mobile internet"],
+    applications:["SMS text messaging as a mass communication medium","International cellular roaming","Early mobile internet browsing and email"]
+  },
+  {
+    id:"broadbandwireless", label:"Broadband Wireless & Satellite-Internet Era", years:"2000s–Present", color:"#9370A8",
+    summary:"Cellular networks and satellite constellations converge with the internet itself: 4G and 5G turn phones into primary internet devices, and reusable rockets make low-earth-orbit satellite internet commercially viable for the first time.",
+    events:[
+      {yr:"2009", title:"4G LTE networks launch", desc:"Long-Term Evolution networks bring substantially higher mobile data speeds, making smartphones a primary way people access the internet.", tags:["telecom","network"]},
+      {yr:"2019–20", title:"5G rollout begins", desc:"Fifth-generation networks promise much higher bandwidth and lower latency, targeting both mobile broadband and new use cases like industrial IoT and autonomous systems.", tags:["telecom","network"]},
+      {yr:"2019–26", title:"Starlink & satellite internet constellations", desc:"SpaceX's Starlink and competitors deploy thousands of low-earth-orbit satellites, bringing broadband internet to areas fiber and cellular towers can't economically reach.", tags:["telecom","network"]},
+      {yr:"2020s", title:"6G research begins", desc:"Early research into sixth-generation networks explores terahertz frequencies, AI-native network management, and even higher bandwidth for future applications.", tags:["telecom"]}
+    ],
+    figures:["Elon Musk"],
+    breakthroughs:["4G/5G mobile broadband","Reusable-rocket-enabled satellite internet constellations","Convergence of cellular, satellite, and internet infrastructure"],
+    applications:["Smartphone-first internet access globally","Rural/remote broadband via satellite","Industrial IoT and low-latency applications (5G)","Emergency/disaster-response connectivity via satellite"]
+  }
+];
+
+const STORAGE_ERAS = [
+  {
+    id:"magneticcore", label:"Magnetic Storage & Core Memory", years:"1950s–1960s", color:"#7FB5A0",
+    summary:"Computers need somewhere to keep data between calculations. Magnetic tape and rotating magnetic disks emerge as the first practical mass-storage media, while magnetic core memory becomes the dominant form of working memory for over a decade.",
+    events:[
+      {yr:"1951", title:"Magnetic tape storage (UNIVAC)", desc:"UNIVAC I uses magnetic tape as a practical, reusable storage medium, replacing punched cards for bulk data.", tags:["storage","hardware"]},
+      {yr:"1955", title:"Magnetic core memory becomes standard", desc:"Tiny magnetized rings threaded on wire grids become the dominant computer memory technology, offering fast, non-volatile random access for over a decade.", tags:["storage","hardware"]},
+      {yr:"1956", title:"IBM 305 RAMAC: first hard disk drive", desc:"IBM introduces the first commercial hard disk drive, storing 5MB across fifty 24-inch spinning platters — the ancestor of every hard drive since.", tags:["storage","hardware"]}
+    ],
+    figures:["Jay Forrester","Reynold Johnson"],
+    breakthroughs:["Magnetic tape as reusable bulk storage","Magnetic core memory as random-access working memory","Rotating magnetic disk storage (the hard drive)"],
+    applications:["Business data processing and payroll","Scientific and census data storage","Early airline reservation systems"]
+  },
+  {
+    id:"diskfloppy", label:"Disk, Floppy & Winchester Drives", years:"1970s–1980s", color:"#F5A623",
+    summary:"Storage becomes removable, portable, and dramatically smaller. The floppy disk lets ordinary users carry data between machines, while IBM's sealed 'Winchester' architecture becomes the template every hard drive still follows today.",
+    events:[
+      {yr:"1971", title:"8-inch floppy disk introduced", desc:"IBM introduces the first floppy disk, giving computers an inexpensive, portable, removable storage medium for the first time.", tags:["storage","hardware"]},
+      {yr:"1973", title:"IBM Winchester hard drive architecture", desc:"IBM's sealed, low-friction hard drive design becomes the architectural template — read/write heads flying on an air cushion above spinning platters — that all modern HDDs still use.", tags:["storage","hardware"]},
+      {yr:"1976", title:"5.25-inch floppy disk (Shugart)", desc:"A smaller, cheaper floppy format becomes standard for the emerging personal computer market.", tags:["storage"]},
+      {yr:"1980", title:"Seagate ST-506: first 5.25-inch hard drive for microcomputers", desc:"Seagate brings hard-disk storage down to a size and price personal computers can actually use.", tags:["storage","hardware"]}
+    ],
+    figures:["Alan Shugart"],
+    breakthroughs:["Removable floppy disk storage","Sealed 'Winchester' hard-drive architecture","Hard drives shrinking to fit personal computers"],
+    applications:["Software distribution on floppy disk","Personal computer local storage","Small business data storage"]
+  },
+  {
+    id:"solidstatemem", label:"Solid-State Memory Emerges", years:"1970s–1990s", color:"#1E3A5F",
+    summary:"Memory begins its long shift from mechanical and magnetic media toward pure silicon. DRAM replaces core memory as working memory, and a Toshiba engineer invents flash memory — the technology that will eventually replace spinning disks entirely.",
+    events:[
+      {yr:"1970", title:"DRAM invented (Intel 1103)", desc:"Intel's 1103 becomes the first commercially successful DRAM chip, rapidly replacing magnetic core memory as the standard for computer working memory.", tags:["storage","hardware"]},
+      {yr:"1971", title:"EPROM invented", desc:"Intel's Erasable Programmable Read-Only Memory lets engineers reprogram chips by erasing them with ultraviolet light, a major step toward reprogrammable non-volatile memory.", tags:["storage","hardware"]},
+      {yr:"1980s–90s", title:"SRAM cache memory becomes standard", desc:"Fast but expensive SRAM is integrated onto CPUs as cache memory, bridging the speed gap between the processor and slower main DRAM.", tags:["storage","hardware"]},
+      {yr:"1984", title:"Flash memory invented (Toshiba)", desc:"Fujio Masuoka at Toshiba invents flash memory, a non-volatile memory that can be electrically erased and rewritten in blocks — eventually the basis for USB drives, SSDs, and smartphone storage.", tags:["storage","hardware"]}
+    ],
+    figures:["Robert Dennard","Fujio Masuoka"],
+    breakthroughs:["DRAM replacing magnetic core memory","EPROM enabling reprogrammable non-volatile memory","Flash memory invention","CPU cache memory (SRAM) hierarchy"],
+    applications:["Computer main memory (RAM)","Firmware and BIOS storage (EPROM/EEPROM)","Foundation technology for all later flash-based storage"]
+  },
+  {
+    id:"opticalremovable", label:"Optical & Removable Storage", years:"1980s–2000s", color:"#6C93B5",
+    summary:"Light-based storage brings mass-produced, durable, high-capacity media to consumers — first for music and software distribution, then for movies — while removable magnetic and early flash formats compete to replace the floppy disk.",
+    events:[
+      {yr:"1982", title:"CD introduced (Sony/Philips)", desc:"The compact disc brings digital optical storage to consumers, first for audio and soon for computer data (CD-ROM).", tags:["storage"]},
+      {yr:"1994–98", title:"Zip drives & early removable media compete", desc:"Iomega's Zip drive and similar formats offer far more capacity than floppy disks, briefly filling the gap before flash-based storage takes over.", tags:["storage"]},
+      {yr:"1995", title:"DVD introduced", desc:"DVD dramatically increases optical disc capacity, enabling full-length movies and larger software distribution on a single disc.", tags:["storage"]},
+      {yr:"2000", title:"USB flash drive commercializes", desc:"USB flash drives combine flash memory with a simple plug-and-play interface, quickly making floppy disks and Zip drives obsolete for everyday file transfer.", tags:["storage","hardware"]}
+    ],
+    figures:["James Russell"],
+    breakthroughs:["Optical (laser-read) storage media","Mass-produced high-capacity removable discs","USB flash drives replacing magnetic removable media"],
+    applications:["Music (CD) and movie (DVD) distribution","Software distribution on optical media","Portable file transfer (USB flash drives)"]
+  },
+  {
+    id:"ssdaimem", label:"SSD, NVMe & AI-Scale Memory", years:"2000s–Present", color:"#C1666B",
+    summary:"Flash memory finally becomes cheap and dense enough to replace spinning disks entirely. Solid-state drives take over consumer and enterprise storage, while AI workloads push memory technology toward extreme new forms like high-bandwidth memory stacked directly on the processor package.",
+    events:[
+      {yr:"2006–07", title:"SSDs reach consumer laptops", desc:"Flash-based solid-state drives begin appearing in mainstream laptops, offering far faster access than spinning hard drives.", tags:["storage","hardware"]},
+      {yr:"2011", title:"NVMe protocol standardized", desc:"Non-Volatile Memory Express lets SSDs connect directly over PCIe instead of legacy disk interfaces, unlocking dramatically higher storage speeds.", tags:["storage","hardware"]},
+      {yr:"2013", title:"HBM1 standardized (JEDEC)", desc:"JEDEC finalizes the first High Bandwidth Memory standard, stacking DRAM dies vertically and linking them to the processor via a wide 1024-bit interface; AMD's Fiji GPU becomes the first HBM product in 2015.", tags:["storage","hardware","packaging"]},
+      {yr:"2013", title:"3D NAND flash ships (Samsung)", desc:"Stacking flash memory cells vertically instead of shrinking them further lets manufacturers keep increasing storage density as planar scaling runs out of room.", tags:["storage","hardware"]},
+      {yr:"2016", title:"HBM2 & Nvidia's first HBM GPU (P100)", desc:"Nvidia's Tesla P100 becomes one of the first mainstream GPUs to use HBM2, roughly doubling bandwidth over HBM1 and establishing memory-bandwidth-hungry accelerators as HBM's primary market.", tags:["storage","hardware"]},
+      {yr:"2018–20", title:"HBM2E ships; SK hynix becomes Nvidia's primary supplier", desc:"SK hynix ships the first HBM2E (3.6 Gbps, 460GB/s per stack) and wins the design slot for Nvidia's A100 GPU in 2020 — a primary-supplier relationship that has never since been displaced.", tags:["storage","hardware"]},
+      {yr:"2023–24", title:"HBM3 & HBM3E scale with the AI boom", desc:"SK hynix ships the first 36GB HBM3E in Q3 2023, reaching 9.6 Gbps and 1.15TB/s per stack; Nvidia's H100, H200, and B100/B200 GPUs all rely on 24–48GB 8-Hi/12-Hi HBM3E stacks, making memory bandwidth — not raw compute — a binding constraint on AI accelerator performance.", tags:["storage","hardware","packaging"]},
+      {yr:"2024", title:"HBM4 spec finalized (JEDEC)", desc:"JEDEC's HBM4 standard doubles the interface width to 2048 bits, supporting 24–32Gb DRAM layers at up to 6.4 GT/s across 4-, 8-, 12-, or 16-Hi stacks — enabling up to roughly 8TB/s of bandwidth per stack, about double HBM3E.", tags:["storage","hardware"]},
+      {yr:"2025–26", title:"HBM4 mass-production race intensifies", desc:"SK hynix, Samsung, and Micron race to qualify HBM4 for Nvidia's Rubin GPU platform: SK hynix claims a 40% power-efficiency gain at 10Gbps and remains Nvidia's primary supplier, Micron ships 11Gbps samples, and Samsung targets a customizable HBM4E design for mid-2026 as it works to reclaim share lost to SK hynix's early lead.", tags:["storage","hardware"]},
+      {yr:"2020s", title:"CXL memory pooling & storage-class memory", desc:"Compute Express Link (CXL) lets multiple processors share pools of memory, while storage-class memory blurs the line between fast storage and working memory — both aimed at feeding increasingly memory-hungry AI workloads.", tags:["storage","hardware"]}
+    ],
+    figures:["Fujio Masuoka","Jensen Huang"],
+    breakthroughs:["Solid-state drives replacing spinning hard disks","NVMe unlocking flash memory's full speed potential","3D NAND stacking sustaining storage density growth","HBM's generational leap from 1024-bit (HBM1–3E) to 2048-bit (HBM4) interfaces as the defining AI-era memory architecture"],
+    applications:["Consumer and enterprise SSD storage","Cloud data-center storage tiers","HBM feeding GPU/AI accelerator memory bandwidth needs (Nvidia H100/H200/B200/Rubin, AMD Instinct)","CXL-pooled memory for large-scale AI training clusters"]
+  }
+];
+
+const SPACE_ERAS = [
+  {
+    id:"spacerace", label:"Early Rocketry & the Space Race", years:"1940s–1960s", color:"#4A8C8C",
+    summary:"Ballistic missile technology developed for WWII becomes the basis for orbital rocketry, and Cold War rivalry between the US and USSR turns spaceflight into a national prestige race — from the first satellite to the first human footprints on another world.",
+    events:[
+      {yr:"1944", title:"V-2 rocket reaches space", desc:"Nazi Germany's V-2, developed under Wernher von Braun, becomes the first human-made object to reach the edge of space, laying the technical foundation for postwar rocketry in both the US and USSR.", tags:["space","defense"]},
+      {yr:"1957", title:"Sputnik 1: first artificial satellite", desc:"The Soviet Union launches Sputnik 1, the first artificial satellite to orbit Earth, triggering the Space Race and shocking the US into major investment in science and rocketry.", tags:["space"]},
+      {yr:"1958", title:"NASA founded", desc:"The US creates NASA in direct response to Sputnik, consolidating American space efforts under a single civilian agency.", tags:["space"]},
+      {yr:"1961", title:"Yuri Gagarin: first human in space", desc:"Soviet cosmonaut Yuri Gagarin orbits Earth aboard Vostok 1, becoming the first human to travel into space.", tags:["space"]},
+      {yr:"1969", title:"Apollo 11 Moon landing", desc:"Neil Armstrong and Buzz Aldrin become the first humans to walk on the Moon, the culmination of the Space Race and one of the most-watched broadcasts in television history.", tags:["space"]}
+    ],
+    figures:["Wernher von Braun","Sergei Korolev","Yuri Gagarin","Neil Armstrong"],
+    breakthroughs:["Orbital rocketry derived from ballistic missile technology","First artificial satellite","First human spaceflight","First crewed Moon landing"],
+    applications:["Cold War prestige and propaganda","Reconnaissance and early-warning satellites","Foundational research for all later civilian and military space programs"]
+  },
+  {
+    id:"spacestations", label:"Space Stations, Shuttle & Space Telescopes", years:"1970s–1990s", color:"#7A6BA6",
+    summary:"With the Moon race won, space programs shift toward sustained human presence in orbit and reusable spacecraft, while GPS quietly turns satellite technology into an everyday navigation tool.",
+    events:[
+      {yr:"1971", title:"Salyut 1: first space station", desc:"The Soviet Union launches Salyut 1, the first space station, beginning the era of sustained human habitation in orbit.", tags:["space"]},
+      {yr:"1978–95", title:"GPS satellite navigation developed & completed", desc:"The US Department of Defense launches the first GPS satellites in 1978; the full 24-satellite constellation becomes operational in 1995, eventually opened to civilian use worldwide.", tags:["space","defense","network"]},
+      {yr:"1981", title:"Space Shuttle's first flight", desc:"NASA's Space Shuttle Columbia becomes the first partially reusable crewed spacecraft, flying 135 missions over 30 years before retirement in 2011.", tags:["space"]},
+      {yr:"1990", title:"Hubble Space Telescope launched", desc:"Hubble becomes one of the most productive scientific instruments in history, transforming astronomy with images and data unobstructed by Earth's atmosphere.", tags:["space"]},
+      {yr:"1998", title:"International Space Station construction begins", desc:"The US, Russia, and international partners begin assembling the ISS in orbit, eventually becoming the largest human-made structure in space and a continuously crewed research platform.", tags:["space"]}
+    ],
+    figures:["Sally Ride","Bradford Parkinson"],
+    breakthroughs:["First space stations enabling sustained orbital habitation","Reusable crewed spacecraft (Space Shuttle)","GPS satellite navigation","Space-based telescopes"],
+    applications:["Long-duration human spaceflight research","Global positioning for military and eventually civilian navigation","Space-based astronomy","International scientific collaboration in orbit"]
+  },
+  {
+    id:"commercialspace", label:"Commercial Spaceflight & Reusable Rockets", years:"2000s–2010s", color:"#6C93B5",
+    summary:"Space access stops being the exclusive domain of national governments. Private companies begin building and launching their own rockets, and a reusable first stage that lands itself becomes the breakthrough that finally makes spaceflight dramatically cheaper.",
+    events:[
+      {yr:"2002", title:"SpaceX founded", desc:"Elon Musk founds SpaceX with the explicit goal of making spaceflight affordable enough to eventually colonize Mars, starting with the small Falcon 1 rocket.", tags:["space"]},
+      {yr:"2008", title:"Falcon 1 becomes first privately developed rocket to reach orbit", desc:"SpaceX's Falcon 1 succeeds on its fourth attempt, proving a private company could develop an orbital-class rocket from scratch.", tags:["space"]},
+      {yr:"2012", title:"SpaceX Dragon docks with the ISS", desc:"SpaceX becomes the first private company to send a spacecraft to the International Space Station, under NASA's Commercial Resupply Services program.", tags:["space"]},
+      {yr:"2015", title:"Falcon 9 lands its first stage", desc:"SpaceX successfully lands an orbital rocket's first stage upright for the first time, proving reusability could work and setting up dramatic cost reductions for spaceflight.", tags:["space"]}
+    ],
+    figures:["Elon Musk","Jeff Bezos"],
+    breakthroughs:["Private companies developing orbital-class rockets","Commercial resupply of the ISS","Reusable rocket first stages landing and relaunching"],
+    applications:["Commercial satellite launch services","NASA cargo and eventually crew resupply contracts","Dramatically lower cost per kilogram to orbit"]
+  },
+  {
+    id:"newspacerace", label:"Mega-Constellations & the New Space Race", years:"2010s–Present", color:"#C1666B",
+    summary:"Reusable rockets make launching thousands of satellites economically viable, turning low-Earth orbit into critical internet infrastructure, while a new generation of national and private programs races back toward the Moon and on to Mars.",
+    events:[
+      {yr:"2019–26", title:"Starlink and satellite-internet mega-constellations", desc:"SpaceX's Starlink and rivals (Amazon's Kuiper, OneWeb) deploy thousands of low-Earth-orbit satellites, using reusable rockets to make mass satellite-internet deployment economically viable for the first time.", tags:["space","network","telecom"]},
+      {yr:"2020", title:"SpaceX Crew Dragon carries NASA astronauts", desc:"SpaceX's Crew Dragon becomes the first commercial spacecraft to carry NASA astronauts to the ISS, ending US reliance on Russian Soyuz rockets for crewed launches.", tags:["space"]},
+      {yr:"2021–26", title:"Starship & Super Heavy development", desc:"SpaceX develops the fully reusable Starship system, the largest and most powerful rocket ever built, aimed at Mars missions and NASA's Artemis lunar lander program.", tags:["space"]},
+      {yr:"2022", title:"NASA Artemis program returns to the Moon", desc:"NASA's Artemis I sends an uncrewed Orion capsule around the Moon, the first step in a program aiming to return humans to the lunar surface for the first time since Apollo.", tags:["space","defense"]},
+      {yr:"2023–26", title:"Commercial and national Moon landers proliferate", desc:"Private companies (Intuitive Machines, Firefly Aerospace) and national programs (China's Chang'e, India's Chandrayaan-3) successfully land on the Moon, marking a new multipolar era of lunar exploration.", tags:["space"]}
+    ],
+    figures:["Elon Musk","Gwynne Shotwell"],
+    breakthroughs:["Mass satellite-internet constellations enabled by reusable rockets","Commercial crewed spaceflight","Fully reusable super-heavy-lift rockets (Starship)","A multipolar 21st-century Moon race"],
+    applications:["Global satellite broadband internet, including remote/rural/disaster response","Crewed transport to the ISS and future lunar missions","Lunar resource prospecting and future Mars mission architecture","National prestige and strategic competition in space (US, China, India, private sector)"]
+  }
+];
+
+const TRACKS = [
+  {id:"ai", label:"AI History", color:"#F5A623", eras: AI_ERAS},
+  {id:"computing", label:"Computing", color:"#7FB5A0", eras: COMPUTING_ERAS},
+  {id:"semiconductor", label:"Semiconductors", color:"#6C93B5", eras: SEMICONDUCTOR_ERAS},
+  {id:"internet", label:"Internet", color:"#C1666B", eras: INTERNET_ERAS},
+  {id:"comms", label:"Communications", color:"#9370A8", eras: COMMUNICATION_ERAS},
+  {id:"storage", label:"Storage & Memory", color:"#8A9A5B", eras: STORAGE_ERAS},
+  {id:"space", label:"Space", color:"#4A6FA5", eras: SPACE_ERAS}
+];
+
+const TOPICS = [
+  {id:"vision", label:"Vision", color:"#7FB5A0"},
+  {id:"nlp", label:"NLP", color:"#F5A623"},
+  {id:"robotics", label:"Robotics", color:"#6C93B5"},
+  {id:"autodrive", label:"Autonomous Driving", color:"#C1666B"},
+  {id:"defense", label:"Defense", color:"#7A6BA6"},
+  {id:"generative", label:"Generative", color:"#B98BC9"},
+  {id:"safety", label:"Safety", color:"#4A8C8C"},
+  {id:"hardware", label:"Hardware", color:"#8A9A5B"},
+  {id:"network", label:"Network", color:"#5A7D9A"},
+  {id:"packaging", label:"Packaging", color:"#B5875A"},
+  {id:"test", label:"Test", color:"#C77B3B"},
+  {id:"telecom", label:"Telecom", color:"#9370A8"},
+  {id:"storage", label:"Storage", color:"#6B8E7F"},
+  {id:"lithography", label:"Lithography", color:"#B54A5A"},
+  {id:"space", label:"Space", color:"#4A6FA5"}
+];
+function topicColor(id){ const t = TOPICS.find(x=>x.id===id); return t ? t.color : '#999'; }
+function topicLabel(id){ const t = TOPICS.find(x=>x.id===id); return t ? t.label : id; }
+function eraMatchesTopic(era, topicId){
+  if(!topicId) return true;
+  return era.events.some(e => (e.tags||[]).includes(topicId));
+}
+function tagBadgesHtml(tags){
+  if(!tags || tags.length===0) return '';
+  return `<div class="tag-badges">${tags.map(t=>`<span class="tag-badge" style="background:${topicColor(t)}22;color:${topicColor(t)};">${topicLabel(t)}</span>`).join('')}</div>`;
+}
+
+const AITH_TRACKS = TRACKS;
+const AITH_TOPICS = TOPICS;
+
+let aithCurrentTrackId = localStorage.getItem('aihc_lastTrack') || 'ai';
+if (!AITH_TRACKS.some(t => t.id === aithCurrentTrackId)) aithCurrentTrackId = 'ai';
+
+function aithActiveEras() {
+  const tr = AITH_TRACKS.find(t => t.id === aithCurrentTrackId);
+  return tr ? tr.eras : AITH_TRACKS[0].eras;
+}
+function aithActiveTrack() {
+  const tr = AITH_TRACKS.find(t => t.id === aithCurrentTrackId);
+  return tr ? tr : AITH_TRACKS[0];
+}
+
+let aithCurrentIndex = parseInt(localStorage.getItem('aihc_lastEra_' + aithCurrentTrackId) || '0', 10);
+if (isNaN(aithCurrentIndex) || aithCurrentIndex < 0 || aithCurrentIndex >= aithActiveEras().length) {
+  aithCurrentIndex = 0;
+}
+let aithSelectedTopic = null;
+let aithCurrentTab = 'explore';
+let aithSearchIndex = null;
+
+function aithTopicColor(id) {
+  const t = AITH_TOPICS.find(x => x.id === id);
+  return t ? t.color : '#999';
+}
+function aithTopicLabel(id) {
+  const t = AITH_TOPICS.find(x => x.id === id);
+  return t ? t.label : id;
+}
+function aithEraMatchesTopic(era, topicId) {
+  if (!topicId) return true;
+  return era.events.some(e => (e.tags || []).includes(topicId));
+}
+function aithTagBadgesHtml(tags) {
+  if (!tags || tags.length === 0) return '';
+  return '<div class="aith-tag-badges">' + tags.map(t => 
+    '<span class="aith-tag-badge" style="background:' + aithTopicColor(t) + '22;color:' + aithTopicColor(t) + ';">' + aithTopicLabel(t) + '</span>'
+  ).join('') + '</div>';
+}
+
+function aithBuildTopicChips() {
+  const wrap = document.getElementById('aithTopicChips');
+  if (!wrap) return;
+  const allActive = aithSelectedTopic === null;
+  let html = '<div class="aith-chip" data-topic="" style="' + (allActive ? 'background:var(--amber);border-color:var(--amber);color:#0b0f19;font-weight:700;' : 'color:var(--muted);') + '">' + (state.lang === 'zh' ? '全部 (All)' : 'All') + '</div>';
+  html += AITH_TOPICS.map(t => {
+    const active = aithSelectedTopic === t.id;
+    return '<div class="aith-chip" data-topic="' + t.id + '" style="' + (active ? 'background:' + t.color + ';border-color:' + t.color + ';color:#fff;font-weight:700;' : 'border-color:' + t.color + '66;color:' + t.color + ';') + '">' + t.label + '</div>';
+  }).join('');
+  wrap.innerHTML = html;
+  wrap.querySelectorAll('.aith-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const t = chip.getAttribute('data-topic');
+      aithSelectedTopic = (t === '') ? null : (aithSelectedTopic === t ? null : t);
+      aithRefreshAllViews();
+    });
+  });
+}
+
+function aithBuildTrackChips() {
+  const wrap = document.getElementById('aithTrackChips');
+  if (!wrap) return;
+  wrap.innerHTML = AITH_TRACKS.map(t => {
+    const active = t.id === aithCurrentTrackId;
+    return '<div class="aith-chip" data-track="' + t.id + '" style="' + (active ? 'background:' + t.color + ';border-color:' + t.color + ';color:#fff;font-weight:700;' : 'border-color:' + t.color + '66;color:' + t.color + ';') + '">' + t.label + '</div>';
+  }).join('');
+  wrap.querySelectorAll('.aith-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const trackId = chip.getAttribute('data-track');
+      if (trackId === aithCurrentTrackId) return;
+      aithCurrentTrackId = trackId;
+      localStorage.setItem('aihc_lastTrack', aithCurrentTrackId);
+      aithCurrentIndex = parseInt(localStorage.getItem('aihc_lastEra_' + aithCurrentTrackId) || '0', 10);
+      if (isNaN(aithCurrentIndex) || aithCurrentIndex < 0 || aithCurrentIndex >= aithActiveEras().length) aithCurrentIndex = 0;
+      aithRefreshAllViews();
+    });
+  });
+}
+
+function aithBuildCompass() {
+  const svg = document.getElementById('aithCompassSvg');
+  if (!svg) return;
+  const cx = 160, cy = 160, r = 118;
+  const eras = aithActiveEras();
+  const n = eras.length;
+  let html = '<circle class="aith-ring-bg" cx="' + cx + '" cy="' + cy + '" r="' + r + '"></circle>';
+
+  eras.forEach((era, i) => {
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    const isActive = i === aithCurrentIndex;
+    const dim = !aithEraMatchesTopic(era, aithSelectedTopic);
+    html += '<line class="aith-connector ' + (isActive ? 'active' : '') + '" x1="' + cx + '" y1="' + cy + '" x2="' + x + '" y2="' + y + '" style="' + (dim ? 'opacity:0.2;' : '') + '"></line>';
+  });
+
+  const curEra = eras[aithCurrentIndex] || eras[0];
+  html += '<text class="aith-center-label" x="' + cx + '" y="' + (cy - 4) + '">' + curEra.label + '</text>' +
+          '<text class="aith-center-sub" x="' + cx + '" y="' + (cy + 10) + '">' + curEra.years + '</text>';
+
+  eras.forEach((era, i) => {
+    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    const isActive = i === aithCurrentIndex;
+    const dim = !aithEraMatchesTopic(era, aithSelectedTopic);
+    const labelY = y > cy ? y + 18 : y - 14;
+    const shortLabel = era.label.length > 14 ? era.label.slice(0, 13) + '…' : era.label;
+    html += '<g class="aith-node" data-index="' + i + '" transform="translate(0,0)" style="' + (dim ? 'opacity:0.25;' : '') + '">' +
+              '<circle class="aith-dot" cx="' + x + '" cy="' + y + '" r="' + (isActive ? 10 : 7) + '" fill="' + era.color + '" stroke="' + (isActive ? '#fff' : (aithSelectedTopic && !dim ? aithTopicColor(aithSelectedTopic) : 'transparent')) + '" stroke-width="2"></circle>' +
+              '<text class="aith-yr" x="' + x + '" y="' + (labelY - 9) + '" text-anchor="middle">' + era.years.split('–')[0] + '</text>' +
+              '<text x="' + x + '" y="' + labelY + '" text-anchor="middle">' + shortLabel + '</text>' +
+            '</g>';
+  });
+
+  svg.innerHTML = html;
+  svg.querySelectorAll('.aith-node').forEach(node => {
+    node.addEventListener('click', () => {
+      aithSetEra(parseInt(node.getAttribute('data-index'), 10));
+    });
+  });
+}
+
+function aithBuildStageList() {
+  const list = document.getElementById('aithStageList');
+  if (!list) return;
+  const eras = aithActiveEras();
+  list.innerHTML = eras.map((era, i) => {
+    const dim = !aithEraMatchesTopic(era, aithSelectedTopic);
+    return '<div class="aith-stage-item ' + (i === aithCurrentIndex ? 'active' : '') + '" data-index="' + i + '" style="' + (dim ? 'opacity:0.35;' : '') + '">' +
+             '<div class="aith-swatch" style="background:' + era.color + '"></div>' +
+             '<div>' + era.label + ' <span style="opacity:.6;font-weight:400;">· ' + era.years + '</span></div>' +
+           '</div>';
+  }).join('');
+  list.querySelectorAll('.aith-stage-item').forEach(item => {
+    item.addEventListener('click', () => aithSetEra(parseInt(item.getAttribute('data-index'), 10)));
+  });
+}
+
+function aithBuildMobileTabs() {
+  const wrap = document.getElementById('aithMobileStageTabs');
+  if (!wrap) return;
+  const eras = aithActiveEras();
+  wrap.innerHTML = eras.map((era, i) => {
+    const dim = !aithEraMatchesTopic(era, aithSelectedTopic);
+    return '<div class="aith-mtab ' + (i === aithCurrentIndex ? 'active' : '') + '" data-index="' + i + '" style="' + (dim ? 'opacity:0.35;' : '') + '">' + era.label + '</div>';
+  }).join('');
+  wrap.querySelectorAll('.aith-mtab').forEach(tab => {
+    tab.addEventListener('click', () => aithSetEra(parseInt(tab.getAttribute('data-index'), 10)));
+  });
+}
+
+function aithRenderWorkspace() {
+  const ws = document.getElementById('aithViewExploreWorkspace');
+  if (!ws) return;
+  const eras = aithActiveEras();
+  const era = eras[aithCurrentIndex] || eras[0];
+  const lang = state.lang;
+
+  ws.innerHTML = '<div class="aith-workspace-inner">' +
+    '<div class="aith-era-eyebrow">' + (lang === 'zh' ? '時代 ' + (aithCurrentIndex + 1) + ' / 共 ' + eras.length + ' 期' : 'Era ' + (aithCurrentIndex + 1) + ' of ' + eras.length) + '</div>' +
+    '<div class="aith-era-title">' + era.label + '</div>' +
+    '<div class="aith-era-years">' + era.years + '</div>' +
+    '<p class="aith-era-summary">' + era.summary + '</p>' +
+
+    '<div class="aith-grid-2">' +
+      '<div class="aith-card">' +
+        '<h3>' + (lang === 'zh' ? '關鍵突破 (Key Breakthroughs)' : 'Key Breakthroughs') + '</h3>' +
+        '<ul>' + era.breakthroughs.map(b => '<li>' + b + '</li>').join('') + '</ul>' +
+      '</div>' +
+      '<div class="aith-card">' +
+        '<h3>' + (lang === 'zh' ? '代表人物與先驅 (Notable Figures)' : 'Notable Figures') + '</h3>' +
+        '<div class="aith-figures">' + era.figures.map(f => '<span class="aith-pill">' + f + '</span>').join('') + '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="aith-card" style="border-color:' + era.color + ';margin-bottom:20px;">' +
+      '<h3 style="color:' + era.color + ';">' + (lang === 'zh' ? '實務與產業應用 (Real-World Applications)' : 'Real-World Applications') + '</h3>' +
+      '<ul>' + era.applications.map(a => '<li>' + a + '</li>').join('') + '</ul>' +
+    '</div>' +
+
+    '<div class="aith-card">' +
+      '<h3>' + (lang === 'zh' ? '里程碑事件 (Timeline of Events)' : 'Timeline of Events') + '</h3>' +
+      '<div class="aith-events">' +
+        era.events.map(e => {
+          const dim = aithSelectedTopic && !(e.tags || []).includes(aithSelectedTopic);
+          return '<div class="aith-event" style="' + (dim ? 'opacity:0.35;' : '') + '">' +
+                   '<div class="aith-yr">' + e.yr + '</div>' +
+                   '<div class="aith-desc"><strong>' + e.title + '</strong>' + e.desc + aithTagBadgesHtml(e.tags) + '</div>' +
+                 '</div>';
+        }).join('') +
+      '</div>' +
+    '</div>' +
+
+    '<div class="aith-nav-buttons">' +
+      '<button class="aith-nav-btn" id="aithPrevBtn" ' + (aithCurrentIndex === 0 ? 'disabled style="opacity:.35;cursor:default;"' : '') + '>' + (lang === 'zh' ? '← 上一個時代' : '← Prev Era') + '</button>' +
+      '<button class="aith-nav-btn" id="aithNextBtn" ' + (aithCurrentIndex === eras.length - 1 ? 'disabled style="opacity:.35;cursor:default;"' : '') + '>' + (lang === 'zh' ? '下一個時代 →' : 'Next Era →') + '</button>' +
+    '</div>' +
+  '</div>';
+
+  const prevBtn = document.getElementById('aithPrevBtn');
+  const nextBtn = document.getElementById('aithNextBtn');
+  if (prevBtn) prevBtn.addEventListener('click', () => { if (aithCurrentIndex > 0) aithSetEra(aithCurrentIndex - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { if (aithCurrentIndex < eras.length - 1) aithSetEra(aithCurrentIndex + 1); });
+}
+
+function aithSetEra(i) {
+  aithCurrentIndex = i;
+  localStorage.setItem('aihc_lastEra_' + aithCurrentTrackId, String(i));
+  aithBuildCompass();
+  aithBuildStageList();
+  aithBuildMobileTabs();
+  aithRenderWorkspace();
+}
+
+function aithRenderTimeline() {
+  const tl = document.getElementById('aithViewTimeline');
+  if (!tl) return;
+  let html = '';
+  const eras = aithActiveEras();
+  eras.forEach(era => {
+    era.events.forEach(ev => {
+      const dim = aithSelectedTopic && !(ev.tags || []).includes(aithSelectedTopic);
+      html += '<div class="aith-tl-item" style="' + (dim ? 'opacity:0.3;' : '') + '">' +
+                '<div class="aith-tl-line"></div>' +
+                '<div class="aith-tl-dot" style="background:' + era.color + '"></div>' +
+                '<div class="aith-tl-body">' +
+                  '<h4>' + ev.title + '</h4>' +
+                  '<span>' + ev.yr + ' · ' + era.label + '</span>' +
+                  '<p>' + ev.desc + '</p>' +
+                  aithTagBadgesHtml(ev.tags) +
+                '</div>' +
+              '</div>';
+    });
+  });
+  tl.innerHTML = html;
+}
+
+function aithYearOf(yr) {
+  const m = String(yr).match(/\d{4}/);
+  return m ? parseInt(m[0], 10) : 2000;
+}
+const AITH_TL_START = 1940, AITH_TL_END = 2027;
+function aithXPct(year) {
+  const clamped = Math.max(AITH_TL_START, Math.min(AITH_TL_END, year));
+  return ((clamped - AITH_TL_START) / (AITH_TL_END - AITH_TL_START)) * 100;
+}
+
+function aithRenderParallel() {
+  const wrap = document.getElementById('aithViewParallel');
+  if (!wrap) return;
+  const laneWidth = 1200;
+
+  let axisTicks = '';
+  for (let y = 1940; y <= 2020; y += 10) {
+    axisTicks += '<div class="aith-parallel-axis-tick" style="left:' + aithXPct(y) + '%">' + y + '</div>';
+  }
+  axisTicks += '<div class="aith-parallel-axis-tick" style="left:' + aithXPct(2026) + '%">2026</div>';
+
+  const rows = AITH_TRACKS.map(track => {
+    const events = track.eras.flatMap(era => era.events.map(e => ({ ...e, eraColor: era.color })));
+    const dots = events.map(e => {
+      const y = aithYearOf(e.yr);
+      const dim = aithSelectedTopic && !(e.tags || []).includes(aithSelectedTopic);
+      const safeTitle = e.title.replace(/"/g, '&quot;');
+      const safeDesc = e.desc.replace(/"/g, '&quot;');
+      return '<div class="aith-parallel-dot" data-title="' + safeTitle + '" data-desc="' + safeDesc + '" data-yr="' + e.yr + '" data-track="' + track.label + '" data-trackcolor="' + track.color + '" style="left:' + aithXPct(y) + '%;background:' + track.color + ';' + (dim ? 'opacity:0.2;' : '') + '"></div>';
+    }).join('');
+    return '<div class="aith-parallel-track">' +
+             '<div class="aith-parallel-track-label" style="color:' + track.color + ';">' + track.label + '</div>' +
+             '<div class="aith-parallel-track-lane" style="min-width:' + laneWidth + 'px;">' + dots + '</div>' +
+           '</div>';
+  }).join('');
+
+  wrap.innerHTML = '<div class="aith-parallel-legend">' +
+    AITH_TRACKS.map(t => '<div class="aith-parallel-legend-item"><span class="aith-parallel-legend-dot" style="background:' + t.color + '"></span>' + t.label + '</div>').join('') +
+  '</div>' +
+  '<div class="aith-parallel-chart">' +
+    '<div class="aith-parallel-track" style="border-bottom:none;height:26px;">' +
+      '<div class="aith-parallel-track-label"></div>' +
+      '<div class="aith-parallel-axis-lane" style="min-width:' + laneWidth + 'px;">' + axisTicks + '</div>' +
+    '</div>' +
+    rows +
+  '</div>' +
+  '<div class="aith-card aith-parallel-detail" id="aithParallelDetail" style="display:none;margin-top:16px;"></div>';
+
+  wrap.querySelectorAll('.aith-parallel-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const detail = document.getElementById('aithParallelDetail');
+      if (!detail) return;
+      detail.style.display = 'block';
+      detail.innerHTML = '<h3 style="color:' + dot.getAttribute('data-trackcolor') + ';">' + dot.getAttribute('data-track') + ' · ' + dot.getAttribute('data-yr') + '</h3>' +
+                         '<p><strong>' + dot.getAttribute('data-title') + '</strong><br>' + dot.getAttribute('data-desc') + '</p>';
+    });
+  });
+}
+
+function aithBuildSearchIndex() {
+  const idx = [];
+  AITH_TRACKS.forEach(track => {
+    track.eras.forEach((era, eraIdx) => {
+      era.events.forEach(ev => {
+        idx.push({ track, era, eraIdx, ev });
+      });
+    });
+  });
+  return idx;
+}
+
+function aithRenderFind() {
+  const wrap = document.getElementById('aithViewFind');
+  if (!wrap) return;
+  if (!aithSearchIndex) aithSearchIndex = aithBuildSearchIndex();
+  const lang = state.lang;
+  wrap.innerHTML = '<input type="text" id="aithFindInput" class="aith-find-input" placeholder="' + (lang === 'zh' ? '輸入關鍵字跨所有軌道搜尋事件、人物、關鍵突破…' : 'Search events, figures, breakthroughs across all tracks…') + '" autocomplete="off">' +
+    '<p class="aith-find-hint">' + (lang === 'zh' ? '在 7 大科技軌道的 ' + aithSearchIndex.length + ' 個關鍵歷史事件中進行檢索。點擊搜尋結果可直接跳轉至該時代。' : 'Searching ' + aithSearchIndex.length + ' events across 7 tracks. Click a result to jump straight to it.') + '</p>' +
+    '<div class="aith-find-results" id="aithFindResults"></div>';
+
+  const input = document.getElementById('aithFindInput');
+  if (input) {
+    input.addEventListener('input', () => aithRunFindSearch(input.value));
+    input.focus();
+    aithRunFindSearch('');
+  }
+}
+
+function aithRunFindSearch(query) {
+  const resultsEl = document.getElementById('aithFindResults');
+  if (!resultsEl) return;
+  const q = query.trim().toLowerCase();
+  if (q === '') {
+    resultsEl.innerHTML = '';
+    return;
+  }
+  const scored = aithSearchIndex.map(item => {
+    const title = (item.ev.title || '').toLowerCase();
+    const desc = (item.ev.desc || '').toLowerCase();
+    const yr = (item.ev.yr || '').toLowerCase();
+    const tags = (item.ev.tags || []).join(' ').toLowerCase();
+    const eraLabel = (item.era.label || '').toLowerCase();
+    const trackLabel = (item.track.label || '').toLowerCase();
+    const eraContext = [
+      item.era.summary, (item.era.figures || []).join(' '),
+      (item.era.breakthroughs || []).join(' '), (item.era.applications || []).join(' ')
+    ].join(' ').toLowerCase();
+
+    let score = 0;
+    if (title.includes(q)) score += 12;
+    if (desc.includes(q)) score += 6;
+    if (tags.includes(q)) score += 5;
+    if (yr.includes(q)) score += 5;
+    if (eraLabel.includes(q)) score += 3;
+    if (trackLabel.includes(q)) score += 2;
+    if (eraContext.includes(q)) score += 1;
+    return { ...item, score };
+  }).filter(item => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 60);
+
+  if (scored.length === 0) {
+    resultsEl.innerHTML = '<p style="color:var(--muted);font-size:13.5px;">' + (state.lang === 'zh' ? '找不到與「' + query + '」相符的事件' : 'No matches for "' + query + '"') + '</p>';
+    return;
+  }
+  resultsEl.innerHTML = scored.map(m => 
+    '<div class="aith-find-result" data-trackid="' + m.track.id + '" data-eraidx="' + m.eraIdx + '">' +
+      '<div class="aith-find-result-meta">' +
+        '<span class="aith-find-result-track" style="color:' + m.track.color + ';">' + m.track.label + '</span>' +
+        '<span class="aith-find-result-era">' + m.era.label + ' · ' + m.ev.yr + '</span>' +
+      '</div>' +
+      '<div class="aith-find-result-title">' + m.ev.title + '</div>' +
+      '<div class="aith-find-result-desc">' + m.ev.desc + '</div>' +
+    '</div>'
+  ).join('');
+
+  resultsEl.querySelectorAll('.aith-find-result').forEach(el => {
+    el.addEventListener('click', () => {
+      aithJumpToResult(el.getAttribute('data-trackid'), parseInt(el.getAttribute('data-eraidx'), 10));
+    });
+  });
+}
+
+function aithJumpToResult(trackId, eraIdx) {
+  aithCurrentTrackId = trackId;
+  localStorage.setItem('aihc_lastTrack', aithCurrentTrackId);
+  aithCurrentIndex = eraIdx;
+  localStorage.setItem('aihc_lastEra_' + aithCurrentTrackId, String(eraIdx));
+  aithRefreshAllViews();
+  aithShowTab('explore');
+}
+
+function aithShowTab(tab) {
+  aithCurrentTab = tab;
+  document.querySelectorAll('.aith-toptab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  
+  const vExplore = document.getElementById('aithViewExplore');
+  const vTimeline = document.getElementById('aithViewTimeline');
+  const vParallel = document.getElementById('aithViewParallel');
+  const vFind = document.getElementById('aithViewFind');
+  const vHelp = document.getElementById('aithViewHelp');
+  const topicBar = document.getElementById('aithTopicBar');
+  const trackBar = document.getElementById('aithTrackBar');
+
+  if (vExplore) vExplore.style.display = tab === 'explore' ? 'flex' : 'none';
+  if (vTimeline) vTimeline.style.display = tab === 'timeline' ? 'block' : 'none';
+  if (vParallel) vParallel.style.display = tab === 'parallel' ? 'block' : 'none';
+  if (vFind) vFind.style.display = tab === 'find' ? 'block' : 'none';
+  if (vHelp) vHelp.style.display = tab === 'help' ? 'block' : 'none';
+
+  if (topicBar) topicBar.style.display = (tab === 'help' || tab === 'find') ? 'none' : 'flex';
+  if (trackBar) trackBar.style.display = (tab === 'explore' || tab === 'timeline') ? 'flex' : 'none';
+
+  if (tab === 'timeline') aithRenderTimeline();
+  if (tab === 'parallel') aithRenderParallel();
+  if (tab === 'find') aithRenderFind();
+}
+
+function aithRefreshAllViews() {
+  aithBuildTrackChips();
+  aithBuildTopicChips();
+  aithBuildCompass();
+  aithBuildStageList();
+  aithBuildMobileTabs();
+  aithRenderWorkspace();
+  if (aithCurrentTab === 'timeline') aithRenderTimeline();
+  if (aithCurrentTab === 'parallel') aithRenderParallel();
+}
+
+function initAitechCompass() {
+  aithRefreshAllViews();
+  aithShowTab(aithCurrentTab || 'explore');
+}
+
 
 </script>
 </body>

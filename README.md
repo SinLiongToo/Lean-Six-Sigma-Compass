@@ -54,6 +54,21 @@
 - **RACI 職責分配矩陣編輯器**
 - **需求追蹤矩陣 (Requirements Tracker)**
 
+### 7. 🧭 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
+- **七大科技歷史軌道**：
+  - `人工智慧 (AI History)`：Foundations → Symbolic AI → Expert Systems → Neural Revival → Statistical ML → Deep Learning → Transformers & LLMs → Generative AI Era。
+  - `計算架構 (Computing)`：Mainframe → Transistor/Minicomputer → Microprocessor/PC → Mobile & Cloud → AI-Accelerated Computing。
+  - `半導體製程與封裝測試 (Semiconductors)`：Transistors → IC & Moore's Law → Microprocessor & Fabless → Advanced Node & EUV → AI Chip & Geopolitics（涵蓋 CoWoS-S/L/R、CoPoS 面板級封裝、High-NA EUV、Teradyne/Advantest ATE 測試與 KLA 製程控制）。
+  - `網際網路 (Internet)`：Packet-Switching → Protocols → Web 1.0 → Web 2.0 & Mobile → Cloud & AI-Native Internet。
+  - `通訊系統 (Communications)`：Telegraph & Phone → Radio & Broadcast → Telecommunications & Satellite → Digital Cellular → Broadband Wireless & Satellite-Internet。
+  - `儲存與記憶體 (Storage & Memory)`：Magnetic Core → Floppy/HDD → DRAM/Flash → Optical/USB → SSD/NVMe & AI-Scale Memory (HBM1~HBM4E, CXL)。
+  - `太空科技 (Space)`：Early Rocketry → Space Stations & Telescopes → Commercial Spaceflight → Mega-Constellations & New Space Race。
+- **多維互動視覺化**：
+  - `時代羅盤 (Meta-Compass)`：圓形 SVG 羅盤導覽，即時展示各時代之關鍵突破、代表人物、產業應用與里程碑事件。
+  - `平行軌道對照 (Parallel View)`：橫向 1940~2027 年泳道圖，跨領域對比同一時期的全球科技突破。
+  - `15 項專業標籤過濾`：支援封裝 (Packaging)、測試 (Test)、微影 (Lithography)、視覺 (Vision)、NLP、機器人 (Robotics)、國防 (Defense)、自駕 (Autonomous Driving) 等快速聚焦。
+  - `全局即時搜尋 (Find)`：支援跨所有 7 大軌道全文檢索。
+
 ---
 
 ## 🚀 快速開始
