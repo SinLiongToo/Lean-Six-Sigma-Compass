@@ -6572,6 +6572,32 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 </div>
               </div>
 
+              <!-- Card 8: Overconfidence Effect -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">8. 過度自信效應</span><span class="en">8. Overconfidence Effect</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">個體對自身知識、判斷準確性或掌控力的信心，系統性地高於客觀實際水準。常表現為對製程變異過度樂觀、低估未知雜訊變因，或堅信「憑直覺經驗就能解決問題」而省略嚴謹的科學驗證。</span><span class="en">Systematically overestimating the accuracy of one's knowledge, capability, or control. Manifests as downplaying process variability, underestimating unmeasured noise factors, and trusting intuition over rigorous empirical validation.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">資深製程工程師堅稱「這條產線我調機超過十年，聽聲音就知道砂輪有沒有偏擺，不必花時間做 MSA 或管制圖」，拒絕落實數據抽樣，最終因機台微小熱漂移導致整批高階晶圓厚度規格失控報廢。</span><span class="en">A senior engineer asserts "I've tuned this line for 10 years and can hear when the wheel wobbles—no need for Gage R&R or SPC charts." Bypassing data sampling allows an unmonitored thermal drift to scrap an entire lot of out-of-spec wafers.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">以數據事實說話，透過 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'MSA'})" class="fallacy-tool-link">實戰工具 7：MSA 量測系統分析</a> 驗證量測信度，並建立 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'SPC 管制圖'})" class="fallacy-tool-link">實戰工具 11：SPC 管制圖</a> 監控製程穩定性；專案推動前導入「事前驗屍法（Pre-Mortem Analysis）」假設專案失敗並反推盲點。</span><span class="en">Let data speak: validate measurement capability via <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'MSA'})" class="fallacy-tool-link">Tool 7: MSA</a>, monitor stability with <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'SPC 管制圖'})" class="fallacy-tool-link">Tool 11: SPC Charts</a>, and deploy "Pre-Mortem Analysis" to surface blind spots before execution.</span></p>
+                </div>
+              </div>
+
+              <!-- Card 9: Anchoring Bias -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">9. 錨定效應</span><span class="en">9. Anchoring Bias</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">在進行決策或評估根本原因時，過度依賴第一筆接收到的初始資訊或先入為主的數值（「錨點」），後續的思考與分析皆圍繞該錨點進行微調，無法跳脫框架進行全面的因果排查。</span><span class="en">Disproportionately anchoring decisions and root-cause estimations on the first piece of information received (the "anchor"), adjusting insufficiently and restricting subsequent analysis to that initial frame.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">交接班時前班幹部隨口說了一句「好像是某供應商這批膠水黏度有問題」，改善小組便連續兩週將所有資源鎖定在原物料檢驗上，即使化驗結果全數合格仍不願放手，徹底忽略了點膠機噴嘴積碳與環境溫濕度等真實肇因。</span><span class="en">During shift handover, a lead casually notes "it seems like supplier glue viscosity changed." The RCA team spends two weeks exclusively analyzing adhesive lots—refusing to pivot even after lab tests pass—completely missing real root causes like nozzle buildup and ambient humidity.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">使用結構化發散工具如 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'魚骨圖 (Fishbone)'})" class="fallacy-tool-link">實戰工具 3：魚骨圖 (Fishbone)</a> 與 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'FMEA 潛在失效模式分析'})" class="fallacy-tool-link">實戰工具 5：FMEA</a> 全面涵蓋 6M（人機料法環測）潛在因子，並以 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'Hypothesis Test'})" class="fallacy-tool-link">實戰工具 6：假設檢定</a> 與 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'Regression'})" class="fallacy-tool-link">實戰工具 9：迴歸分析</a> 逐一用數據客觀檢驗。</span><span class="en">Adopt structured divergent tools such as <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'魚骨圖 (Fishbone)'})" class="fallacy-tool-link">Tool 3: Fishbone</a> and <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'FMEA 潛在失效模式分析'})" class="fallacy-tool-link">Tool 5: FMEA</a> across 6M dimensions, and objectively validate each factor using <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'Hypothesis Test'})" class="fallacy-tool-link">Tool 6: Hypothesis Testing</a> and <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'Regression'})" class="fallacy-tool-link">Tool 9: Regression</a>.</span></p>
+                </div>
+              </div>
+
             </div>
           </div>
 
