@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Masa Tu 精實六標準差羅盤 | Masa Tu Lean Six Sigma Compass</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
@@ -1720,8 +1725,17 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   }
   .fallacy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+  }
+  @media (max-width: 600px) {
+    .fallacy-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .fallacy-card {
+      padding: 16px;
+    }
   }
   .fallacy-card {
     background: var(--panel);
@@ -8821,6 +8835,9 @@ const REAL_CASES = [
     src:'https://www.investopedia.com/terms/w/worldcom.asp'}];
 
 const GLOSSARY = [
+  {zh:'RWD 響應式網頁設計 (Responsive Web Design)', en:'RWD (Responsive Web Design)',
+    zh_d:'透過流體網格 (Fluid Grids)、彈性圖片 (Flexible Images) 與 CSS3 媒體查詢 (Media Queries) 等前端技術，使網頁能依據不同裝置（手機、平板、筆電、桌面寬螢幕）的螢幕尺寸與解析度自動調整排版與元件配置。在精實軟體開發 (Lean Software Development) 與敏捷交付中，RWD 實踐了「一次開發、多端適配」，大幅消除多版本維護的浪費 (Muda)，提升跨載具使用者體驗 (UX) 並降低操作缺陷率。',
+    en_d:'An approach to web development that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used (mobile, tablet, desktop) via Fluid Grids, Flexible Media, and CSS3 Media Queries. In Lean Software Development, RWD eliminates multi-codebase maintenance waste, reduces digital UI defects, and optimizes user experience across all form factors.'},
   {zh:'GAAP 與 Non-GAAP (一般公認會計原則 vs 調整後財務指標)', en:'GAAP vs. Non-GAAP',
     zh_d:'GAAP (Generally Accepted Accounting Principles) 為遵循法定標準編製的官方財報；Non-GAAP 則是管理層為了還原日常核心業務營運狀況 (Core Operating Performance)，剔除非現金（如 SBC 股權激勵、無形資產攤銷）或一次性非經常項目（如重組裁員、訴訟和解）後的自訂調整指標。',
     en_d:'GAAP strictly adheres to legal FASB/SEC/IFRS accounting rules. Non-GAAP refers to management-adjusted metrics that exclude non-cash items (e.g. Stock-Based Compensation, amortization) or one-time events (restructuring, litigation) to showcase recurring core business performance.'},
@@ -15645,12 +15662,13 @@ const INTERNET_ERAS = [
     id:"ainative", label:"Platform, Cloud & AI-Native Internet", years:"2010s–Present", color:"#C1666B",
     summary:"The internet becomes cloud-native and streaming-first, and — most recently — conversational AI interfaces begin to sit alongside (and sometimes replace) the traditional search box and app as how people navigate information online.",
     events:[
+      {yr:"2010", title:"Responsive Web Design (RWD) introduced", desc:"Ethan Marcotte coins Responsive Web Design (RWD), combining fluid grids, flexible images, and CSS media queries. This transforms web architecture, enabling a single codebase to seamlessly adapt across desktop, tablet, and mobile screens.", tags:["network"]},
       {yr:"2010s", title:"Streaming replaces downloads", desc:"Netflix, Spotify, and similar services shift media consumption from ownership to on-demand streaming over the internet.", tags:["network"]},
       {yr:"2019–20", title:"5G reaches mobile internet access", desc:"Next-generation mobile networks promise substantially higher bandwidth and lower latency, accelerating the shift of everyday internet access onto phones rather than fixed broadband.", tags:["network"]},
       {yr:"2022–26", title:"Conversational AI becomes an internet interface layer", desc:"Chat-based AI assistants (ChatGPT, Claude, Gemini) begin functioning as a new way to search, summarize, and navigate information online, alongside traditional search and apps.", tags:["network","nlp"]}
     ],
-    figures:["Reed Hastings","Daniel Ek"],
-    breakthroughs:["Streaming as the dominant media-delivery model","Mobile network capacity keeping pace with demand (5G)","Conversational AI as an emerging internet navigation layer"],
+    figures:["Ethan Marcotte","Reed Hastings","Daniel Ek"],
+    breakthroughs:["Responsive Web Design (RWD) establishing multi-device adaptive standards","Streaming as the dominant media-delivery model","Mobile network capacity keeping pace with demand (5G)","Conversational AI as an emerging internet navigation layer"],
     applications:["Video/audio streaming platforms","Real-time collaboration tools (cloud docs, video calls)","AI chat interfaces as search/assistant replacements"]
   }
 ];
