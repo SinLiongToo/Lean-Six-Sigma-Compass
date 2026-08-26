@@ -6598,6 +6598,71 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 </div>
               </div>
 
+              <!-- Card 10: Hasty Generalization -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">10. 以偏概全 (草率概括)</span><span class="en">10. Hasty Generalization</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">在樣本數極少、缺乏統計代表性或僅憑少數極端個案的情況下，便草率推導出適用於整體母體的全面性結論。在專案中常表現為「抽檢 3 顆就斷定整批品質」、或「遇到一次機台當機就否定整套自動化系統」。</span><span class="en">Drawing broad, definitive conclusions about an entire population based on an unrepresentatively small sample or isolated anecdotes (e.g. testing 3 parts to qualify a 10,000-unit lot).</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">產線導入新型研磨液時，工程師僅試跑了 1 片晶圓，量測厚度均勻度合格後便宣稱「新配方全面達標，可直接全線導入量產」，結果上線後遇到正常批次間原物料變異與機台溫度循環，導致良率雪崩下跌 15%。</span><span class="en">During a trial of new slurry, an engineer tests just 1 wafer, sees good uniformity, and declares "slurry validated for full production." Full ramp crashes yield by 15% due to lot-to-lot incoming variance and tool temperature cycles uncaptured in the single test.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">嚴格遵循統計抽樣原理，利用 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'Hypothesis Test'})" class="fallacy-tool-link">實戰工具 6：假設檢定</a> 計算「檢定力（Statistical Power）」與最小必要樣本數（Sample Size Determination），並透過 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'SPC 管制圖'})" class="fallacy-tool-link">實戰工具 11：SPC 管制圖</a> 跨班次、跨批次連續抽樣評估製程能力指數（Cp/Cpk）。</span><span class="en">Enforce statistical sampling rigor: use <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'Hypothesis Test'})" class="fallacy-tool-link">Tool 6: Hypothesis Testing</a> for sample size and power calculation, and track multi-lot capability (Cp/Cpk) across shifts using <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'SPC 管制圖'})" class="fallacy-tool-link">Tool 11: SPC Charts</a>.</span></p>
+                </div>
+              </div>
+
+              <!-- Card 11: Ad Hominem Fallacy -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">11. 人身攻擊 (對人不對事)</span><span class="en">11. Ad Hominem Fallacy</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">在討論製程異常或專案決策時，不針對數據、量測方法、實驗事實或邏輯假說進行客觀辯證，而是透過質疑對方的資歷、職級、部門背景、動機甚至個人性格來否定其論點與改善方案。</span><span class="en">Attacking a person's tenure, department, rank, motives, or personality rather than evaluating the objective merits of their data, logic, measurement methods, or technical hypotheses.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">當年輕的綠帶（Green Belt）工程師提出數據證明「清洗槽流量不足導致良率損失」時，資深主管卻當場反駁：「你才來幾個月？我做這台機二十年難道不懂？輪不到菜鳥來教我們怎麼調機」，徹底忽視客觀數據。</span><span class="en">When a junior Green Belt presents data showing "rinse tank flow deficit causes yield drop," the veteran lead dismisses it: "You've been here 6 months; I've run this tool 20 years. A rookie doesn't tell us how to tune tools"—completely ignoring the quantitative data.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">落實精實六標準差核心哲學「對事嚴格、對人尊重」，在檢討時實施「數據至上（In God we trust, all others bring data）」原則，並透過 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'RACI'})" class="fallacy-tool-link">實戰工具 15：RACI 矩陣</a> 與 <a href="javascript:void(0)" onclick="jumpTag({type:'mindset', key:'People'})" class="fallacy-tool-link">核心思維：尊重他人</a>，將審查焦點鎖定在實驗信度而非發言者階級。</span><span class="en">Embrace Lean's core pillar: "Hard on the problem, soft on the people." Enforce "In God we trust, all others bring data", and use neutral peer reviews, <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'RACI'})" class="fallacy-tool-link">Tool 15: RACI Matrix</a>, and <a href="javascript:void(0)" onclick="jumpTag({type:'mindset', key:'People'})" class="fallacy-tool-link">Mindset: Respect for People</a> to evaluate evidence regardless of hierarchy.</span></p>
+                </div>
+              </div>
+
+              <!-- Card 12: Straw Man Fallacy -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">12. 稻草人謬誤 (扭曲立靶)</span><span class="en">12. Straw Man Fallacy</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">刻意曲解、誇大、簡化或極端化對方的原始提案與論點，製造出一個容易被反駁的「虛假稻草人」，然後猛烈抨擊這個假靶子，以規避面對真正具建設性的核心問題。</span><span class="en">Distorting, exaggerating, oversimplifying, or misrepresenting someone's argument into a vulnerable caricature (the "straw man"), then attacking that false version to evade the real core issue.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">品保團隊建議「在關鍵黃光製程增加一道 AOI 抽檢關卡以攔截微小缺陷」，製造主管卻在會議抨擊：「品保的意思是希望產線整天停機做檢查、完全不管產出目標是嗎？這種極端要求根本在摧毀工廠營收！」</span><span class="en">QA proposes "adding a 5% inline AOI sampling gate to catch litho defects early." The MFG manager attacks: "QA wants us to halt every machine, inspect everything, and abandon delivery targets! This extreme proposal will ruin factory output!"—reframing targeted sampling as a full shutdown.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">在會議對話中實施「重述與確認（Reflect & Confirm）」機制，並透過 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'VSM 價值流程圖'})" class="fallacy-tool-link">實戰工具 2：VSM 價值流程圖</a> 與 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'每日站會'})" class="fallacy-tool-link">實戰工具 14：精實會議指南</a> 明確定義改善範圍、量化權衡（Trade-off）與數據邊界，杜絕主觀曲解。</span><span class="en">Apply active listening ("Reflect & Confirm") and document problem statements clearly in <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'VSM 價值流程圖'})" class="fallacy-tool-link">Tool 2: VSM</a> and <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'每日站會'})" class="fallacy-tool-link">Tool 14: Lean Meeting Guidelines</a> to quantify trade-offs and bound scope objectively.</span></p>
+                </div>
+              </div>
+
+              <!-- Card 13: Red Herring & Deflection -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">13. 問A答B (紅鯡魚轉移焦點)</span><span class="en">13. Red Herring & Deflection</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">面對具體的核心瓶頸、缺失或關鍵質問時，刻意引入看似相關但實質無關的話題、抱怨其他部門的歷史恩怨，或大談枝節瑣事（Whataboutism），以轉移眾人注意力並逃避當前問題的責任與根因分析。</span><span class="en">Introducing irrelevant topics, shifting blame to other departments (Whataboutism), or over-elaborating on minor distractions when pressed on key process failures or metric misses to derail focus from root causes.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">專案審查會上黑帶詢問：「為何蝕刻腔體連續三天真空度低於規格上限？」設備工程師卻長篇大論回答：「那是因為生管排程一直插單、廠務供氣管路去年就說要換但預算一直沒給、而且隔壁組的保養紀錄也常常沒填寫啊！」</span><span class="en">During a Tollgate review, the MBB asks "Why did Chamber B's vacuum drift below spec for 3 consecutive days?" The technician deflects: "Production keeps rushing hot lots, facilities never approved our piping budget last year, and team C forgets maintenance logs all the time too!"</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">強制落實結構化根因追查工具，運用 <a href="javascript:void(0)" onclick="jumpTag({type:'mindset', key:'Gemba'})" class="fallacy-tool-link">5 Whys 連續追問 (Go to Gemba)</a> 與 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'FMEA'})" class="fallacy-tool-link">實戰工具 4：FMEA 失效分析</a>，會議主持者應運用「停車場機制（Parking Lot）」將無關議題記錄後拉回主軸，聚焦「當下單一可控變數」。</span><span class="en">Use strict root-cause frameworks like <a href="javascript:void(0)" onclick="jumpTag({type:'mindset', key:'Gemba'})" class="fallacy-tool-link">5 Whys (Go to Gemba)</a> and <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'FMEA'})" class="fallacy-tool-link">Tool 4: FMEA</a>. Maintain a disciplined "Meeting Parking Lot" to isolate distractions and keep discussions anchored on direct controllable factors.</span></p>
+                </div>
+              </div>
+
+              <!-- Card 14: Stonewalling & Defensive Silence -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">14. 不願溝通 (築牆與消極防禦)</span><span class="en">14. Stonewalling & Defensive Silence</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">當跨部門推動變革或調查品質異常時，以沉默不語、已讀不回、敷衍拖延、拒絕共享關鍵數據或設置資訊壁壘（Silo Effect）來進行消極抵抗，造成真相被掩蓋、改善行動停滯。</span><span class="en">Resisting change or anomaly reviews through refusal to communicate, withholding critical datasets, passive-aggressive silence, delayed responses, and reinforcing departmental silos to block transparency.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">專案團隊需要調取模具的歷史維修次數與報廢履歷進行相關性分析，模具部門主管擔心維護不力被究責，便以「系統沒有紀錄」、「人力不足無法整理」、「這屬於內部機密」為由連續拖延一個月拒不提供。</span><span class="en">An LSS team requests mold maintenance logs to analyze tool wear correlation with defect spikes. Fearing accountability, the tooling owner stonewalls for a month citing "no system logs," "lack of staff," and "department internal confidentiality."</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">營造「免於恐懼的心理安全感（Psychological Safety）」與「不指責文化（Blameless Culture）」。變革推動應由高階主管（Champion）確立數據公開透明機制，結合 <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'5S'})" class="fallacy-tool-link">實戰工具 1：5S/6S 可視化管理</a> 與跨功能專案看板，打破資訊孤島。</span><span class="en">Foster "Psychological Safety" and a "Blameless Kaizen Culture." Champions must enforce transparent data-sharing protocols combined with <a href="javascript:void(0)" onclick="jumpTag({type:'tool', key:'5S'})" class="fallacy-tool-link">Tool 1: 5S/6S Visual Management</a> to dismantle functional silos and reward collaborative transparency.</span></p>
+                </div>
+              </div>
+
             </div>
           </div>
 
