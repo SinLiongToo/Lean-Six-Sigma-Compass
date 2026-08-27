@@ -1489,6 +1489,128 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   .meet-status-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
   .meet-status-dot { width: 6px; height: 6px; border-radius: 50%; }
 
+  /* Presentation & CARL/STAR styles */
+  .pres-tabs-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 10px;
+  }
+  .pres-tab-btn {
+    transition: all 0.2s ease;
+  }
+  .carl-banner {
+    background: linear-gradient(135deg, rgba(245, 166, 35, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .carl-matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 850px) {
+    .carl-matrix-grid { grid-template-columns: 1fr; }
+  }
+  .carl-framework-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .carl-framework-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+  }
+  .carl-framework-card.highlight {
+    border-color: rgba(99, 102, 241, 0.5);
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.03) 0%, var(--panel) 100%);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+  }
+  .carl-letters-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .carl-letter-badge {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .carl-letter-badge .letter {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .carl-letter-badge .name {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .carl-letter-badge .weight {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .carl-deepdive-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 950px) {
+    .carl-deepdive-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 550px) {
+    .carl-deepdive-grid { grid-template-columns: 1fr; }
+  }
+  .carl-pillar-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .carl-pillar-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .carl-pillar-card ul {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .carl-pillar-card li {
+    margin-bottom: 5px;
+  }
+  .carl-builder-wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .carl-builder-wrap { grid-template-columns: 1fr; }
+  }
+
   /* Recommended Books Styling */
   .books-grid {
     display: flex;
@@ -5159,236 +5281,516 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       </section>
 
       <section class="section" data-section="meeting">
-        <h2><span class="zh">精實會議指南</span><span class="en">Lean Meeting Guidelines</span></h2>
+        <h2>
+          <span class="zh">精實會議與高階簡報表達藝術 (STAR vs. CARL)</span>
+          <span class="en">Lean Meeting & Executive Presentation Art (STAR vs. CARL)</span>
+        </h2>
         <p class="lead">
-          <span class="zh">高效的會議分為會前準備、會中互動、會後推進三個階段。本指南協助您終結「會而不議，議而不決」的浪費。</span>
-          <span class="en">High-efficiency meetings are split into prep, interaction, and progress tracking. This guide eliminates the waste of decisionless meetings.</span>
+          <span class="zh">將精實消除浪費（Muda）與價值流概念導入溝通場域。涵蓋會前會中會後 3W 紀律，以及針對高階領導層（Director / VP / Principal / C-Suite）深度解構 STAR 與 CARL 述職與戰略簡報框架。</span>
+          <span class="en">Applying Lean flow and waste elimination to professional communication. Covering 3W meeting execution, alongside an executive deep dive comparing STAR and CARL presentation frameworks for senior leadership.</span>
         </p>
 
-        <!-- Phase Cards Grid -->
-        <div class="meet-phases-grid">
-          <!-- Prep Card -->
-          <div class="meet-phase-card">
-            <h3>🛠️ <span class="zh">會前準備：效率的基石</span><span class="en">Prep: The Foundation</span></h3>
-            <ul>
-              <li>
-                <strong><span class="zh">兩倍議程原則</span><span class="en">Double-Time Agenda Rule</span></strong>
-                <span class="zh">會議前 24 小時必須發出議程。議程不只寫討論主題，還要明確寫出「每個項目的討論時間」與「預期要達到的結論」。</span>
-                <span class="en">Agendas must be sent 24 hours in advance, explicitly detailing the time allocated per item and the target conclusion to be reached.</span>
-              </li>
-              <li>
-                <strong><span class="zh">極簡人數（雙披薩原則）</span><span class="en">Amazon's Two-Pizza Rule</span></strong>
-                <span class="zh">只邀請「必須做決策」或「與執行直接相關」的人。人數越少，溝通成本越低，越容易推進。</span>
-                <span class="en">Limit invitees to decision-makers and direct implementers. Fewer attendees means lower communication overhead and faster alignment.</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Interaction Card -->
-          <div class="meet-phase-card">
-            <h3>🗣️ <span class="zh">會中互動：高效與禮貌的平衡</span><span class="en">Interaction: Efficiency & Respect</span></h3>
-            <ul>
-              <li>
-                <strong><span class="zh">計時器制度 (Timeboxing)</span><span class="en">Timeboxing</span></strong>
-                <span class="zh">每個議題時間一到就必須停止。若無法達成共識，直接指派專人課後研究，不允許單一議題無限超時。</span>
-                <span class="en">Halt discussions immediately when the time limit expires. If no consensus is reached, delegate a DRI for offline research. Do not let single topics run over.</span>
-              </li>
-              <li>
-                <strong><span class="zh">對事不對人 (Issue-focused)</span><span class="en">Focus on the Issue</span></strong>
-                <span class="zh">所有意見必須針對「提案內容」或「數據」，禁止使用「你每次都...」或「你的想法很扯」等人身、動機攻擊。</span>
-                <span class="en">All feedback must target "proposals" or "data." Personal or motivational attacks like "you always..." or "that's ridiculous" are strictly banned.</span>
-              </li>
-              <li>
-                <strong><span class="zh">先傾聽再回應 (2分鐘不中斷)</span><span class="en">2-Min Uninterrupted Rule</span></strong>
-                <span class="zh">當有人發言時，其他人不准插嘴。必須等發言者完整表達完（或限時 2 分鐘到），下一位才能舉手或指派發言。</span>
-                <span class="en">No interruptions while someone is speaking. Wait for them to complete their point (or for the 2-minute mark) before raising your hand or speaking.</span>
-              </li>
-              <li>
-                <strong><span class="zh">建設性反對 (Yes, and...)</span><span class="en">Yes, and... (Constructive)</span></strong>
-                <span class="zh">不能只說「這不可行」，禮貌且高效的做法是：「我理解這個方向，但考量到 A 風險，我建議可以調整為 B 方案。」</span>
-                <span class="en">Never say "this won't work" without an alternative. Say: "I understand the direction, but considering Risk A, I suggest adjusting to Plan B."</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Post-Meeting Card -->
-          <div class="meet-phase-card">
-            <h3>🚀 <span class="zh">會後推進：終結「會而不議，議而不決」</span><span class="en">Progress: No Action, No Dismissal</span></h3>
-            <ul>
-              <li>
-                <strong><span class="zh">無行動不散會 (No Action, No Meeting)</span><span class="en">No Action, No Meeting</span></strong>
-                <span class="zh">會議結束前最後 5 分鐘，主席必須口頭複誦並確認本次會議產出的所有「交辦事項（Action Items）」。</span>
-                <span class="en">In the final 5 minutes, the chair must orally review and confirm all assigned Action Items. No meeting should end without actions.</span>
-              </li>
-              <li>
-                <strong><span class="zh">核心結論與摘要 (Key Takeaway & Summary)</span><span class="en">Key Takeaway & Summary</span></strong>
-                <span class="zh">會議結束前應共同確認並宣讀「最重要的一點收穫 (Takeaway)」與「會議摘要 (Summary)」。將此結論記錄於備忘錄最上方，可確保全體與會者在離開時，對「核心決策與下一步共識」達成 100% 一致的認知，消除任何溝通偏差。</span>
-                <span class="en">Before adjourning, define and confirm the single most critical "Key Takeaway" and "Summary." Recording this at the top of the memo ensures 100% alignment on decisions and prevents misaligned expectations after the meeting.</span>
-              </li>
-              <li>
-                <strong><span class="zh">3W 推進法則</span><span class="en">3W Progress Rule</span></strong>
-                <span class="zh">每個交辦事項必須同時滿足以下三要素：<br>
-                - <b>What</b>：具體要做什麼（目標必須明確、可量化）。<br>
-                - <b>Who</b>：第一負責人（只能寫一個人，寫兩個等於沒人負責）。<br>
-                - <b>When</b>：截止日期（明確截止日期與時間）。</span>
-                <span class="en">Every conclusion must specify:<br>
-                - <b>What</b>: Specific, quantifiable task.<br>
-                - <b>Who</b>: Single DRI (assigning two people means nobody is responsible).<br>
-                - <b>When</b>: A clear deadline.</span>
-              </li>
-            </ul>
-          </div>
+        <!-- Meeting & Presentation Sub-Tabs -->
+        <div class="pres-tabs-bar">
+          <button class="demo-btn pres-tab-btn" id="tabBtn_meet" onclick="switchMeetTab('meet')">
+            <span class="zh">📅 1. 精實會議與 3W 推進助理</span>
+            <span class="en">📅 1. Lean Meeting & 3W Memo</span>
+          </button>
+          <button class="demo-btn secondary pres-tab-btn" id="tabBtn_pres" onclick="switchMeetTab('pres')">
+            <span class="zh">🎙️ 2. 高階簡報與述職表達 (STAR vs. CARL)</span>
+            <span class="en">🎙️ 2. Executive Presentation (STAR vs. CARL)</span>
+          </button>
         </div>
 
-        <!-- Interactive Meeting Assistant Grid -->
-        <div class="meet-sub-title">
-          <span class="zh">🎯 會議助理與 Action Items (3W) 驗證器</span>
-          <span class="en">🎯 Lean Meeting Assistant & 3W Validator</span>
-        </div>
-
-        <div class="meet-assistant-wrap">
-          <!-- Left: Editor Box -->
-          <div class="meet-editor-box">
-            <!-- Basic Details -->
-            <div class="rt-form-row-2">
-              <div class="a3-field-group">
-                <label><span class="zh">會議名稱</span><span class="en">Meeting Title</span></label>
-                <input type="text" id="meet-title" class="a3-input" placeholder="e.g. 黃光機台產能改善對策會">
-              </div>
-              <div class="a3-field-group">
-                <label><span class="zh">會議日期</span><span class="en">Meeting Date</span></label>
-                <input type="date" id="meet-date" class="a3-input">
-              </div>
+        <!-- ==========================================
+             TAB 1: LEAN MEETING GUIDELINES & 3W BUILDER
+             ========================================== -->
+        <div id="meetTabContent_meet">
+          <!-- Phase Cards Grid -->
+          <div class="meet-phases-grid">
+            <!-- Prep Card -->
+            <div class="meet-phase-card">
+              <h3>🛠️ <span class="zh">會前準備：效率的基石</span><span class="en">Prep: The Foundation</span></h3>
+              <ul>
+                <li>
+                  <strong><span class="zh">兩倍議程原則</span><span class="en">Double-Time Agenda Rule</span></strong>
+                  <span class="zh">會議前 24 小時必須發出議程。議程不只寫討論主題，還要明確寫出「每個項目的討論時間」與「預期要達到的結論」。</span>
+                  <span class="en">Agendas must be sent 24 hours in advance, explicitly detailing the time allocated per item and the target conclusion to be reached.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">極簡人數（雙披薩原則）</span><span class="en">Amazon's Two-Pizza Rule</span></strong>
+                  <span class="zh">只邀請「必須做決策」或「與執行直接相關」的人。人數越少，溝通成本越低，越容易推進。</span>
+                  <span class="en">Limit invitees to decision-makers and direct implementers. Fewer attendees means lower communication overhead and faster alignment.</span>
+                </li>
+              </ul>
             </div>
 
-            <div class="a3-field-group" style="margin-top: 10px;">
-              <label>
-                <span class="zh">與會人員 (以逗號分隔，如：小明, 小華, 老張)</span>
-                <span class="en">Attendees (comma-separated, e.g. John, Mary, Bob)</span>
-              </label>
-              <input type="text" id="meet-attendees" class="a3-input" placeholder="e.g. John, Mary, Bob">
+            <!-- Interaction Card -->
+            <div class="meet-phase-card">
+              <h3>🗣️ <span class="zh">會中互動：高效與禮貌的平衡</span><span class="en">Interaction: Efficiency & Respect</span></h3>
+              <ul>
+                <li>
+                  <strong><span class="zh">計時器制度 (Timeboxing)</span><span class="en">Timeboxing</span></strong>
+                  <span class="zh">每個議題時間一到就必須停止。若無法達成共識，直接指派專人課後研究，不允許單一議題無限超時。</span>
+                  <span class="en">Halt discussions immediately when the time limit expires. If no consensus is reached, delegate a DRI for offline research. Do not let single topics run over.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">對事不對人 (Issue-focused)</span><span class="en">Focus on the Issue</span></strong>
+                  <span class="zh">所有意見必須針對「提案內容」或「數據」，禁止使用「你每次都...」或「你的想法很扯」等人身、動機攻擊。</span>
+                  <span class="en">All feedback must target "proposals" or "data." Personal or motivational attacks like "you always..." or "that's ridiculous" are strictly banned.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">先傾聽再回應 (2分鐘不中斷)</span><span class="en">2-Min Uninterrupted Rule</span></strong>
+                  <span class="zh">當有人發言時，其他人不准插嘴。必須等發言者完整表達完（或限時 2 分鐘到），下一位才能舉手或指派發言。</span>
+                  <span class="en">No interruptions while someone is speaking. Wait for them to complete their point (or for the 2-minute mark) before raising your hand or speaking.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">建設性反對 (Yes, and...)</span><span class="en">Yes, and... (Constructive)</span></strong>
+                  <span class="zh">不能只說「這不可行」，禮貌且高效的做法是：「我理解這個方向，但考量到 A 風險，我建議可以調整為 B 方案。」</span>
+                  <span class="en">Never say "this won't work" without an alternative. Say: "I understand the direction, but considering Risk A, I suggest adjusting to Plan B."</span>
+                </li>
+              </ul>
             </div>
 
-            <div class="a3-field-group" style="margin-top: 10px;">
-              <label>
-                <span class="zh">💡 核心結論與關鍵收穫 (最重要的 Takeaway & Summary)</span>
-                <span class="en">💡 Key Takeaway & Executive Summary</span>
-              </label>
-              <textarea id="meet-takeaway" class="a3-textarea" style="height: 60px;" placeholder="e.g. 確立本季產線瓶頸為黃光區，決議由機台組在兩週內完成 OEE 改善。"></textarea>
+            <!-- Post-Meeting Card -->
+            <div class="meet-phase-card">
+              <h3>🚀 <span class="zh">會後推進：終結「會而不議，議而不決」</span><span class="en">Progress: No Action, No Dismissal</span></h3>
+              <ul>
+                <li>
+                  <strong><span class="zh">無行動不散會 (No Action, No Meeting)</span><span class="en">No Action, No Meeting</span></strong>
+                  <span class="zh">會議結束前最後 5 分鐘，主席必須口頭複誦並確認本次會議產出的所有「交辦事項（Action Items）」。</span>
+                  <span class="en">In the final 5 minutes, the chair must orally review and confirm all assigned Action Items. No meeting should end without actions.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">核心結論與摘要 (Key Takeaway & Summary)</span><span class="en">Key Takeaway & Summary</span></strong>
+                  <span class="zh">會議結束前應共同確認並宣讀「最重要的一點收穫 (Takeaway)」與「會議摘要 (Summary)」。將此結論記錄於備忘錄最上方，可確保全體與會者在離開時，對「核心決策與下一步共識」達成 100% 一致的認知，消除任何溝通偏差。</span>
+                  <span class="en">Before adjourning, define and confirm the single most critical "Key Takeaway" and "Summary." Recording this at the top of the memo ensures 100% alignment on decisions and prevents misaligned expectations after the meeting.</span>
+                </li>
+                <li>
+                  <strong><span class="zh">3W 推進法則</span><span class="en">3W Progress Rule</span></strong>
+                  <span class="zh">每個交辦事項必須同時滿足以下三要素：<br>
+                  - <b>What</b>：具體要做什麼（目標必須明確、可量化）。<br>
+                  - <b>Who</b>：第一負責人（只能寫一個人，寫兩個等於沒人負責）。<br>
+                  - <b>When</b>：截止日期（明確截止日期與時間）。</span>
+                  <span class="en">Every conclusion must specify:<br>
+                  - <b>What</b>: Specific, quantifiable task.<br>
+                  - <b>Who</b>: Single DRI (assigning two people means nobody is responsible).<br>
+                  - <b>When</b>: A clear deadline.</span>
+                </li>
+              </ul>
             </div>
-
-            <!-- Agenda Builder -->
-            <div class="meet-sub-title">
-              <span class="zh">📅 會議議程規劃 (Timeboxing)</span>
-              <span class="en">📅 Meeting Agenda (Timeboxing)</span>
-            </div>
-            <table class="meet-table" id="meet-agenda-table">
-              <thead>
-                <tr>
-                  <th><span class="zh">討論主題</span><span class="en">Topic</span></th>
-                  <th style="width: 120px;"><span class="zh">時間 (分鐘)</span><span class="en">Duration (mins)</span></th>
-                  <th><span class="zh">預期結論</span><span class="en">Expected Conclusion</span></th>
-                  <th style="width: 50px;"></th>
-                </tr>
-              </thead>
-              <tbody id="meet-agenda-body"></tbody>
-            </table>
-            <button class="demo-btn" id="meet-add-agenda" style="margin-bottom: 20px;">
-              <span class="zh">+ 新增議程項目</span><span class="en">+ Add Agenda Item</span>
-            </button>
-
-            <!-- Action Items (3W) Builder -->
-            <div class="meet-sub-title">
-              <span class="zh">🚀 會後交辦事項 (3W 推進法則)</span>
-              <span class="en">🚀 Action Items (3W Rule)</span>
-            </div>
-            <table class="meet-table" id="meet-action-table">
-              <thead>
-                <tr>
-                  <th><span class="zh">What (具體做什麼事)</span><span class="en">What (Quantifiable Task)</span></th>
-                  <th style="width: 150px;"><span class="zh">Who (第一負責人)</span><span class="en">Who (Single DRI)</span></th>
-                  <th style="width: 160px;"><span class="zh">When (截止日期)</span><span class="en">When (Deadline)</span></th>
-                  <th style="width: 50px;"></th>
-                </tr>
-              </thead>
-              <tbody id="meet-action-body"></tbody>
-            </table>
-            <button class="demo-btn" id="meet-add-action">
-              <span class="zh">+ 新增交辦事項</span><span class="en">+ Add Action Item</span>
-            </button>
           </div>
 
-          <!-- Right: Validation & Output Sidebar -->
-          <div class="meet-validation-box">
-            <div style="font-weight: 700; font-size: 14px; margin-bottom: 15px; color: var(--amber); border-bottom: 1px solid var(--line); padding-bottom: 8px;">
-              <span class="zh">📋 精實會議規則查核</span>
-              <span class="en">📋 Lean Meeting Compliance</span>
-            </div>
+          <!-- Interactive Meeting Assistant Grid -->
+          <div class="meet-sub-title">
+            <span class="zh">🎯 會議助理與 Action Items (3W) 驗證器</span>
+            <span class="en">🎯 Lean Meeting Assistant & 3W Validator</span>
+          </div>
 
-            <ul class="a3-checklist" style="margin-bottom: 20px;">
-              <!-- Two Pizza Rule -->
-              <li class="a3-checklist-item" id="chk-pizza">
-                <span class="icon">✓</span>
-                <div>
-                  <div style="font-weight: 600;">
-                    <span class="zh">雙披薩人數原則 (Amazon's Two-Pizza Rule)</span>
-                    <span class="en">Two-Pizza Rule Check</span>
-                  </div>
-                  <div style="font-size: 11px; color: var(--muted);" id="chk-pizza-detail">
-                    <span class="zh">尚未填寫與會者</span>
-                    <span class="en">No attendees entered yet</span>
-                  </div>
+          <div class="meet-assistant-wrap">
+            <!-- Left: Editor Box -->
+            <div class="meet-editor-box">
+              <!-- Basic Details -->
+              <div class="rt-form-row-2">
+                <div class="a3-field-group">
+                  <label><span class="zh">會議名稱</span><span class="en">Meeting Title</span></label>
+                  <input type="text" id="meet-title" class="a3-input" placeholder="e.g. 黃光機台產能改善對策會">
                 </div>
-              </li>
-
-              <!-- Timeboxing -->
-              <li class="a3-checklist-item" id="chk-timebox">
-                <span class="icon">✓</span>
-                <div>
-                  <div style="font-weight: 600;">
-                    <span class="zh">時間箱原則 (Timeboxing Rule)</span>
-                    <span class="en">Timeboxing Rule Check</span>
-                  </div>
-                  <div style="font-size: 11px; color: var(--muted);" id="chk-timebox-detail">
-                    <span class="zh">尚未建立議程</span>
-                    <span class="en">No agenda items added</span>
-                  </div>
+                <div class="a3-field-group">
+                  <label><span class="zh">會議日期</span><span class="en">Meeting Date</span></label>
+                  <input type="date" id="meet-date" class="a3-input">
                 </div>
-              </li>
+              </div>
 
-              <!-- 3W rule (single owner check) -->
-              <li class="a3-checklist-item" id="chk-3w">
-                <span class="icon">✓</span>
-                <div>
-                  <div style="font-weight: 600;">
-                    <span class="zh">3W 單一負責人與完整度</span>
-                    <span class="en">3W Completeness & Single DRI</span>
-                  </div>
-                  <div style="font-size: 11px; color: var(--muted);" id="chk-3w-detail">
-                    <span class="zh">尚未建立行動事項</span>
-                    <span class="en">No action items added</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
+              <div class="a3-field-group" style="margin-top: 10px;">
+                <label>
+                  <span class="zh">與會人員 (以逗號分隔，如：小明, 小華, 老張)</span>
+                  <span class="en">Attendees (comma-separated, e.g. John, Mary, Bob)</span>
+                </label>
+                <input type="text" id="meet-attendees" class="a3-input" placeholder="e.g. John, Mary, Bob">
+              </div>
 
-            <div style="font-weight: 700; font-size: 14px; margin-bottom: 12px; color: var(--muted);">
-              <span class="zh">📄 自動產出會議備忘錄</span>
-              <span class="en">📄 Auto-Generated Memo</span>
-            </div>
+              <div class="a3-field-group" style="margin-top: 10px;">
+                <label>
+                  <span class="zh">💡 核心結論與關鍵收穫 (最重要的 Takeaway & Summary)</span>
+                  <span class="en">💡 Key Takeaway & Executive Summary</span>
+                </label>
+                <textarea id="meet-takeaway" class="a3-textarea" style="height: 60px;" placeholder="e.g. 確立本季產線瓶頸為黃光區，決議由機台組在兩週內完成 OEE 改善。"></textarea>
+              </div>
 
-            <textarea id="meet-memo-output" class="a3-textarea" readonly style="font-family: monospace; font-size: 12px; height: 160px; background: rgba(0,0,0,0.2); color: var(--ink); border: 1px solid var(--panel-border); margin-bottom: 14px;" placeholder="備忘錄預覽..."></textarea>
-
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <button class="demo-btn" id="meet-copy-memo" style="width: 100%;">
-                <span class="zh">📋 複製會議備忘錄</span><span class="en">📋 Copy Memo Content</span>
+              <!-- Agenda Builder -->
+              <div class="meet-sub-title">
+                <span class="zh">📅 會議議程規劃 (Timeboxing)</span>
+                <span class="en">📅 Meeting Agenda (Timeboxing)</span>
+              </div>
+              <table class="meet-table" id="meet-agenda-table">
+                <thead>
+                  <tr>
+                    <th><span class="zh">討論主題</span><span class="en">Topic</span></th>
+                    <th style="width: 120px;"><span class="zh">時間 (分鐘)</span><span class="en">Duration (mins)</span></th>
+                    <th><span class="zh">預期結論</span><span class="en">Expected Conclusion</span></th>
+                    <th style="width: 50px;"></th>
+                  </tr>
+                </thead>
+                <tbody id="meet-agenda-body"></tbody>
+              </table>
+              <button class="demo-btn" id="meet-add-agenda" style="margin-bottom: 20px;">
+                <span class="zh">+ 新增議程項目</span><span class="en">+ Add Agenda Item</span>
               </button>
-              <div style="display: flex; gap: 8px;">
-                <button class="demo-btn secondary" id="meet-load-sample" style="flex: 1;">
-                  <span class="zh">載入範例</span><span class="en">Load Sample</span>
+
+              <!-- Action Items (3W) Builder -->
+              <div class="meet-sub-title">
+                <span class="zh">🚀 會後交辦事項 (3W 推進法則)</span>
+                <span class="en">🚀 Action Items (3W Rule)</span>
+              </div>
+              <table class="meet-table" id="meet-action-table">
+                <thead>
+                  <tr>
+                    <th><span class="zh">What (具體做什麼事)</span><span class="en">What (Quantifiable Task)</span></th>
+                    <th style="width: 150px;"><span class="zh">Who (第一負責人)</span><span class="en">Who (Single DRI)</span></th>
+                    <th style="width: 160px;"><span class="zh">When (截止日期)</span><span class="en">When (Deadline)</span></th>
+                    <th style="width: 50px;"></th>
+                  </tr>
+                </thead>
+                <tbody id="meet-action-body"></tbody>
+              </table>
+              <button class="demo-btn" id="meet-add-action">
+                <span class="zh">+ 新增交辦事項</span><span class="en">+ Add Action Item</span>
+              </button>
+            </div>
+
+            <!-- Right: Validation & Output Sidebar -->
+            <div class="meet-validation-box">
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 15px; color: var(--amber); border-bottom: 1px solid var(--line); padding-bottom: 8px;">
+                <span class="zh">📋 精實會議規則查核</span>
+                <span class="en">📋 Lean Meeting Compliance</span>
+              </div>
+
+              <ul class="a3-checklist" style="margin-bottom: 20px;">
+                <!-- Two Pizza Rule -->
+                <li class="a3-checklist-item" id="chk-pizza">
+                  <span class="icon">✓</span>
+                  <div>
+                    <div style="font-weight: 600;">
+                      <span class="zh">雙披薩人數原則 (Amazon's Two-Pizza Rule)</span>
+                      <span class="en">Two-Pizza Rule Check</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--muted);" id="chk-pizza-detail">
+                      <span class="zh">尚未填寫與會者</span>
+                      <span class="en">No attendees entered yet</span>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- Timeboxing -->
+                <li class="a3-checklist-item" id="chk-timebox">
+                  <span class="icon">✓</span>
+                  <div>
+                    <div style="font-weight: 600;">
+                      <span class="zh">時間箱原則 (Timeboxing Rule)</span>
+                      <span class="en">Timeboxing Rule Check</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--muted);" id="chk-timebox-detail">
+                      <span class="zh">尚未建立議程</span>
+                      <span class="en">No agenda items added</span>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- 3W rule (single owner check) -->
+                <li class="a3-checklist-item" id="chk-3w">
+                  <span class="icon">✓</span>
+                  <div>
+                    <div style="font-weight: 600;">
+                      <span class="zh">3W 單一負責人與完整度</span>
+                      <span class="en">3W Completeness & Single DRI</span>
+                    </div>
+                    <div style="font-size: 11px; color: var(--muted);" id="chk-3w-detail">
+                      <span class="zh">尚未建立行動事項</span>
+                      <span class="en">No action items added</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 12px; color: var(--muted);">
+                <span class="zh">📄 自動產出會議備忘錄</span>
+                <span class="en">📄 Auto-Generated Memo</span>
+              </div>
+
+              <textarea id="meet-memo-output" class="a3-textarea" readonly style="font-family: monospace; font-size: 12px; height: 160px; background: rgba(0,0,0,0.2); color: var(--ink); border: 1px solid var(--panel-border); margin-bottom: 14px;" placeholder="備忘錄預覽..."></textarea>
+
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <button class="demo-btn" id="meet-copy-memo" style="width: 100%;">
+                  <span class="zh">📋 複製會議備忘錄</span><span class="en">📋 Copy Memo Content</span>
                 </button>
-                <button class="demo-btn secondary" id="meet-reset" style="flex: 1; background: rgba(232,141,90,0.1); border-color: rgba(232,141,90,0.25); color: #E88D5A;">
-                  <span class="zh">重置表單</span><span class="en">Reset Form</span>
+                <div style="display: flex; gap: 8px;">
+                  <button class="demo-btn secondary" id="meet-load-sample" style="flex: 1;">
+                    <span class="zh">載入範例</span><span class="en">Load Sample</span>
+                  </button>
+                  <button class="demo-btn secondary" id="meet-reset" style="flex: 1; background: rgba(232,141,90,0.1); border-color: rgba(232,141,90,0.25); color: #E88D5A;">
+                    <span class="zh">重置表單</span><span class="en">Reset Form</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 2: EXECUTIVE PRESENTATION ART (STAR vs. CARL)
+             ========================================== -->
+        <div id="meetTabContent_pres" style="display: none;">
+          <!-- Executive Philosophy Banner -->
+          <div class="carl-banner">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <h3 style="margin: 0 0 6px 0; font-size: 16px; color: var(--amber); display: flex; align-items: center; gap: 8px;">
+                  <span>🎯 為什麼針對高階職位（Director, VP, Principal/Staff, C-Suite），CARL 遠勝於 STAR？</span>
+                </h3>
+                <p style="margin: 0; font-size: 13px; line-height: 1.65; color: var(--ink);">
+                  <span class="zh">在基層與工程師層級，<b>STAR</b>（Situation, Task, Action, Result）能清晰證明執行力；但面對<b>處長、副總裁、主任工程師與董事會</b>等高階決策者時，他們<b>不只看你做了什麼任務（What I did），更在乎你的戰略高度、跨部門領導權衡，以及如何從復盤反思中沉澱組織級的標準化與反脆弱能力（The "L" - Learning & Reflection）</b>。</span>
+                  <span class="en">While <b>STAR</b> demonstrates tactical execution for ICs, executive stakeholders (Directors, VPs, C-Suite) evaluate leaders on strategic altitude, cross-functional orchestration, and how they convert lessons learned into repeatable organizational capability (<b>CARL</b>).</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison Grid (STAR vs. CARL Matrix) -->
+          <div class="carl-matrix-grid">
+            <!-- STAR Card -->
+            <div class="carl-framework-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="margin: 0; font-size: 15px; color: var(--sage); display: flex; align-items: center; gap: 6px;">
+                  <span>⚙️ STAR 執行型架構</span>
+                </h4>
+                <span class="chip" style="font-size: 11px;">適用：工程師 / IC / 專案執行</span>
+              </div>
+              <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                <span class="zh">重壓於「技術執行動作與流程步驟」，強調個人的動手解決問題能力（Problem Solving）。</span>
+                <span class="en">Focuses on tactical task completion and personal hands-on execution.</span>
+              </div>
+              <!-- Letters Row -->
+              <div class="carl-letters-row">
+                <div class="carl-letter-badge">
+                  <div class="letter" style="color: #60a5fa;">S</div>
+                  <div class="name">Situation</div>
+                  <div class="weight">情境 ~15%</div>
+                </div>
+                <div class="carl-letter-badge">
+                  <div class="letter" style="color: #818cf8;">T</div>
+                  <div class="name">Task</div>
+                  <div class="weight">任務 ~15%</div>
+                </div>
+                <div class="carl-letter-badge">
+                  <div class="letter" style="color: #34d399;">A</div>
+                  <div class="name">Action</div>
+                  <div class="weight">執行 ~50%</div>
+                </div>
+                <div class="carl-letter-badge">
+                  <div class="letter" style="color: #f59e0b;">R</div>
+                  <div class="name">Result</div>
+                  <div class="weight">成果 ~20%</div>
+                </div>
+              </div>
+              <div style="font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px;">
+                <span class="zh"><b>⚠️ 高階彙報盲點</b>：容易陷入瑣碎工具細節（如寫了幾行代碼、調了幾次機台），缺乏商業全局觀、跨組織妥協權衡與事後規模化反思。</span>
+                <span class="en"><b>Pitfall for Executives</b>: Over-indexes on manual labor, lacking strategic context and organizational scaling insights.</span>
+              </div>
+            </div>
+
+            <!-- CARL Card -->
+            <div class="carl-framework-card highlight">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="margin: 0; font-size: 15px; color: var(--amber); display: flex; align-items: center; gap: 6px;">
+                  <span>👑 CARL 領導戰略型架構</span>
+                </h4>
+                <span class="chip" style="font-size: 11px; background: rgba(245,166,35,0.15); color: var(--amber); border-color: rgba(245,166,35,0.3);">極力推薦：Director / VP / Staff / C-Suite</span>
+              </div>
+              <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                <span class="zh">重壓於「戰略脈絡、跨組織整合決策與團隊反脆弱復盤」，展現領導者將單點成功沉澱為制度化資產的戰略護城河。</span>
+                <span class="en">Focuses on strategic landscape, cross-functional leadership, systemic ROI, and institutional learning.</span>
+              </div>
+              <!-- Letters Row -->
+              <div class="carl-letters-row">
+                <div class="carl-letter-badge" style="border-color: rgba(99,102,241,0.3);">
+                  <div class="letter" style="color: #818cf8;">C</div>
+                  <div class="name">Context</div>
+                  <div class="weight">脈絡 ~25%</div>
+                </div>
+                <div class="carl-letter-badge" style="border-color: rgba(52,211,153,0.3);">
+                  <div class="letter" style="color: #34d399;">A</div>
+                  <div class="name">Action</div>
+                  <div class="weight">領導 ~30%</div>
+                </div>
+                <div class="carl-letter-badge" style="border-color: rgba(245,166,35,0.3);">
+                  <div class="letter" style="color: #f59e0b;">R</div>
+                  <div class="name">Result</div>
+                  <div class="weight">全域 ~20%</div>
+                </div>
+                <div class="carl-letter-badge" style="border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.08);">
+                  <div class="letter" style="color: #f472b6;">L</div>
+                  <div class="name">Learning</div>
+                  <div class="weight">反思 ~25% 🔥</div>
+                </div>
+              </div>
+              <div style="font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px;">
+                <span class="zh"><b>🌟 高階領導勝出關鍵</b>：「L」證明了專案成果不是靠運氣或個人英雄主義，而是提煉出了全公司可複製的標準作業（Standard Work）與系統防護網。</span>
+                <span class="en"><b>The Winning Advantage</b>: The "L" proves repeatable institutional excellence rather than one-off heroic luck.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Dive 4 Pillars -->
+          <div class="meet-sub-title">
+            <span class="zh">🔍 CARL 四大維度戰略拆解 (Deep-Dive Pillars)</span>
+            <span class="en">🔍 Deconstructing the 4 Pillars of CARL</span>
+          </div>
+
+          <div class="carl-deepdive-grid">
+            <!-- C -->
+            <div class="carl-pillar-card">
+              <div class="carl-pillar-header" style="color: #818cf8;">
+                <span>C · Context 戰略脈絡</span>
+              </div>
+              <ul>
+                <li><b>商業格局 (Business Stakes)</b>：背後的營收風險、市場份額威脅或客戶重大危機。</li>
+                <li><b>戰略對齊 (Hoshin/OKR Alignment)</b>：此專案如何直接支撐公司年度核心方針。</li>
+                <li><b>利益相關者衝突 (Stakeholder Friction)</b>：跨部門立場分歧與資源約束瓶頸。</li>
+              </ul>
+            </div>
+
+            <!-- A -->
+            <div class="carl-pillar-card">
+              <div class="carl-pillar-header" style="color: #34d399;">
+                <span>A · Action 領導力決策</span>
+              </div>
+              <ul>
+                <li><b>跨組織協調 (Cross-Functional Alignment)</b>：如何打破部門穀倉，建立共同目標。</li>
+                <li><b>戰略取捨 (Trade-offs)</b>：在時間、成本與風險極限下做出了哪些關鍵決策。</li>
+                <li><b>團隊賦權 (Empowerment)</b>：如何激勵核心骨幹並排除執行障礙。</li>
+              </ul>
+            </div>
+
+            <!-- R -->
+            <div class="carl-pillar-card">
+              <div class="carl-pillar-header" style="color: #f59e0b;">
+                <span>R · Result 全域商業效益</span>
+              </div>
+              <ul>
+                <li><b>財務量化回報 (Financial ROI)</b>：成本壓降、利潤率擴張或營收貢獻。</li>
+                <li><b>交付週期壓縮 (Cycle Time Reduction)</b>：提升系統吞吐量與客戶滿意度。</li>
+                <li><b>品質躍升 (Quality Defect Elimination)</b>：消除重大隱患與客訴風險。</li>
+              </ul>
+            </div>
+
+            <!-- L -->
+            <div class="carl-pillar-card" style="border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.02);">
+              <div class="carl-pillar-header" style="color: #f472b6;">
+                <span>L · Learning 反思與規模化</span>
+              </div>
+              <ul>
+                <li><b>事後復盤 (Post-Mortem & Failures)</b>：過程中有哪些未預期挫折？若重來會如何調整？</li>
+                <li><b>制度化與標準作業 (Standard Work)</b>：如何沉澱為全組織通用的平台與 SOP？</li>
+                <li><b>組織反脆弱 (Antifragility)</b>：為團隊沉澱了什麼長期肌肉與防呆護城河？</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Interactive Presentation Simulator & Script Generator -->
+          <div class="meet-sub-title" style="margin-top: 25px;">
+            <span class="zh">🛠️ 高階述職與簡報實戰沙盒 (Interactive Pitch & Slide Generator)</span>
+            <span class="en">🛠️ Interactive Presentation Builder & Script Generator</span>
+          </div>
+
+          <div class="carl-builder-wrap">
+            <!-- Left: Editor & Presets -->
+            <div class="meet-editor-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; gap: 6px;">
+                  <button class="demo-btn" id="btnPresFramework_carl" onclick="setPresFramework('carl')" style="font-size: 12px; padding: 5px 12px;">
+                    <span>👑 CARL (高階領導/Director/VP)</span>
+                  </button>
+                  <button class="demo-btn secondary" id="btnPresFramework_star" onclick="setPresFramework('star')" style="font-size: 12px; padding: 5px 12px;">
+                    <span>⚙️ STAR (執行專案/IC)</span>
+                  </button>
+                </div>
+                <div style="font-size: 12px; color: var(--muted);">
+                  <span class="zh">快速載入真實範例：</span>
+                </div>
+              </div>
+
+              <!-- Presets -->
+              <div style="display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;">
+                <button class="demo-btn secondary" onclick="loadPresPreset('fab_vp')" style="font-size: 11.5px; padding: 4px 10px;">
+                  <span>🌟 晶圓廠良率戰略突破 (CARL - VP/Director)</span>
+                </button>
+                <button class="demo-btn secondary" onclick="loadPresPreset('staff_eng')" style="font-size: 11.5px; padding: 4px 10px;">
+                  <span>🌟 分散式架構重構 (CARL - Principal/Staff)</span>
+                </button>
+                <button class="demo-btn secondary" onclick="loadPresPreset('sr_eng_star')" style="font-size: 11.5px; padding: 4px 10px;">
+                  <span>🌟 微影 CD 變異改善 (STAR - Senior Eng)</span>
+                </button>
+              </div>
+
+              <!-- Form Fields -->
+              <div class="a3-field-group">
+                <label id="lbl_pres_title"><span class="zh">專案或述職主題 (Presentation Title)</span><span class="en">Title</span></label>
+                <input type="text" id="pres-input-title" class="a3-input" oninput="updatePresOutput()" placeholder="e.g. 12 吋先進製程良率危機挽救與數位雙生戰略升級">
+              </div>
+
+              <div class="a3-field-group" style="margin-top: 10px;">
+                <label id="lbl_pres_f1">
+                  <span class="zh"><b>C · 戰略脈絡 (Context)</b>：商業風險、跨部門痛點與資源限制</span>
+                  <span class="en">Context</span>
+                </label>
+                <textarea id="pres-input-f1" class="a3-textarea" style="height: 70px;" oninput="updatePresOutput()" placeholder="敘述商業背景與組織核心痛點..."></textarea>
+              </div>
+
+              <div class="a3-field-group" style="margin-top: 10px;">
+                <label id="lbl_pres_f2">
+                  <span class="zh"><b>A · 領導力決策 (Action)</b>：跨組織對齊、資源權衡與架構重塑</span>
+                  <span class="en">Action</span>
+                </label>
+                <textarea id="pres-input-f2" class="a3-textarea" style="height: 70px;" oninput="updatePresOutput()" placeholder="敘述如何跨部門協調、打破阻力與做出關鍵戰略決策..."></textarea>
+              </div>
+
+              <div class="a3-field-group" style="margin-top: 10px;">
+                <label id="lbl_pres_f3">
+                  <span class="zh"><b>R · 全域成果 (Result)</b>：財務 ROI、週期壓縮與核心量化指標</span>
+                  <span class="en">Result</span>
+                </label>
+                <textarea id="pres-input-f3" class="a3-textarea" style="height: 70px;" oninput="updatePresOutput()" placeholder="量化商業價值（如節省 $5M、交期縮短 40%）..."></textarea>
+              </div>
+
+              <div class="a3-field-group" style="margin-top: 10px;">
+                <label id="lbl_pres_f4">
+                  <span class="zh"><b>L · 反思與規模化 (Learning & Reflection)</b>：復盤教訓、制度化 SOP 與反脆弱肌肉</span>
+                  <span class="en">Learning / Reflection</span>
+                </label>
+                <textarea id="pres-input-f4" class="a3-textarea" style="height: 75px;" oninput="updatePresOutput()" placeholder="復盤挫折教訓，如何將經驗沉澱為全公司通用的標準作業與防護機制..."></textarea>
+              </div>
+            </div>
+
+            <!-- Right: Live Slide Outline & Talk Track Output -->
+            <div class="meet-validation-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--line); padding-bottom: 8px;">
+                <span style="font-weight: 700; font-size: 14px; color: var(--amber);">
+                  <span class="zh">📑 高階投影片大綱與演說腳本</span>
+                  <span class="en">📑 Executive Slides & Talk Track</span>
+                </span>
+                <span id="presBadgeType" class="chip" style="font-size: 10.5px;">CARL Mode</span>
+              </div>
+
+              <textarea id="pres-output-text" class="a3-textarea" readonly style="font-family: monospace; font-size: 11.8px; height: 350px; background: rgba(0,0,0,0.25); color: var(--ink); border: 1px solid var(--panel-border); margin-bottom: 12px; line-height: 1.55; white-space: pre-wrap;" placeholder="即時生成之投影片大綱與高階演說腳本..."></textarea>
+
+              <div style="display: flex; gap: 8px;">
+                <button class="demo-btn" onclick="copyPresOutput()" style="flex: 1;">
+                  <span class="zh">📋 複製簡報大綱與講稿</span>
+                  <span class="en">📋 Copy Slide Outline</span>
+                </button>
+                <button class="demo-btn secondary" onclick="resetPresForm()" style="background: rgba(232,141,90,0.1); border-color: rgba(232,141,90,0.25); color: #E88D5A;">
+                  <span class="zh">重置</span><span class="en">Reset</span>
                 </button>
               </div>
             </div>
@@ -8224,7 +8626,7 @@ const SECTIONS = [
   {id:'a3', zh:'A3 回饋報告', en:'A3 Report'},
   {id:'priority', zh:'任務優先評分', en:'Task Priority Scorer'},
   {id:'reqtrack', zh:'客戶需求追蹤', en:'Customer Requirement Tracker'},
-  {id:'meeting', zh:'精實會議指南', en:'Lean Meeting Guidelines'},
+  {id:'meeting', zh:'精實會議與高階簡報表達 (STAR vs. CARL)', en:'Lean Meeting & Executive Presentation (STAR vs. CARL)'},
   {id:'sayno', zh:'職場說不的藝術與防禦手冊', en:'Art of Saying No: Workplace Defense'},
   {id:'books', zh:'相關推薦書籍', en:'Recommended Books'},
   {id:'fallacies', zh:'常見分析與認知謬誤', en:'Common Analytical & Cognitive Fallacies'},
@@ -9059,6 +9461,12 @@ const GLOSSARY = [
   {zh:'RWD 響應式網頁設計 (Responsive Web Design)', en:'RWD (Responsive Web Design)',
     zh_d:'透過流體網格 (Fluid Grids)、彈性圖片 (Flexible Images) 與 CSS3 媒體查詢 (Media Queries) 等前端技術，使網頁能依據不同裝置（手機、平板、筆電、桌面寬螢幕）的螢幕尺寸與解析度自動調整排版與元件配置。在精實軟體開發 (Lean Software Development) 與敏捷交付中，RWD 實踐了「一次開發、多端適配」，大幅消除多版本維護的浪費 (Muda)，提升跨載具使用者體驗 (UX) 並降低操作缺陷率。',
     en_d:'An approach to web development that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used (mobile, tablet, desktop) via Fluid Grids, Flexible Media, and CSS3 Media Queries. In Lean Software Development, RWD eliminates multi-codebase maintenance waste, reduces digital UI defects, and optimizes user experience across all form factors.'},
+  {zh:'CARL 高階述職與戰略簡報架構 (CARL Framework)', en:'CARL Framework (Context, Action, Result, Learning)',
+    zh_d:'專為高階領導職位（Director、VP、Principal/Staff Engineer、部門主管、C-Suite）設計的戰略表達與述職架構。由戰略脈絡 (Context, 25%)、領導力行動 (Action, 30%)、全域結果 (Result, 20%) 及深度反思學習 (Learning/Reflection, 25%) 構成。在高階場景中，CARL 遠勝於基礎 STAR 的關鍵在於「L（戰略反思與組織規模化）」——高階決策層更在乎領導者如何從挫折復盤中提煉出組織級的標準作業 (Standard Work / Platform)、如何建立反脆弱防禦機制，以及如何將個人單點突破沉澱為全體組織的長期護城河。',
+    en_d:'A strategic storytelling framework designed for executive roles (Director, VP, Principal/Staff, C-Suite) comprising Context (25%), Action (30%), Result (20%), and Learning (25%). CARL is significantly superior to STAR for senior leadership because the "L" demonstrates strategic reflection, post-mortem insights, organizational standard work creation, and institutional capability building rather than mere tactical task execution.'},
+  {zh:'STAR 彙報架構 (STAR Framework)', en:'STAR Framework (Situation, Task, Action, Result)',
+    zh_d:'結構化行為面試與專案述職的經典框架。由情境 (Situation, 15%)、任務 (Task, 15%)、行動 (Action, 50%)、結果 (Result, 20%) 四要素構成。核心篇幅重壓於執行細節，著重展現個人的專業技能、工具應用（如 DMAIC、SPC）與執行交付能力。適合工程師、基層專案經理或獨立貢獻者 (IC) 進行具體任務彙報；但在高階管理層面前容易顯得過於聚焦執行瑣事、缺乏商業格局與反思深度。',
+    en_d:'A classic structured framework for behavioral interviews and project reporting comprising Situation (15%), Task (15%), Action (50%), and Result (20%). Heavily weighted toward tactical execution, showcasing individual technical mastery (e.g. DMAIC, SPC) and delivery. Ideal for ICs and engineers; however, it often lacks the strategic altitude, trade-off analysis, and retrospective learning demanded by executive stakeholders.'},
   {zh:'GAAP 與 Non-GAAP (一般公認會計原則 vs 調整後財務指標)', en:'GAAP vs. Non-GAAP',
     zh_d:'GAAP (Generally Accepted Accounting Principles) 為遵循法定標準編製的官方財報；Non-GAAP 則是管理層為了還原日常核心業務營運狀況 (Core Operating Performance)，剔除非現金（如 SBC 股權激勵、無形資產攤銷）或一次性非經常項目（如重組裁員、訴訟和解）後的自訂調整指標。',
     en_d:'GAAP strictly adheres to legal FASB/SEC/IFRS accounting rules. Non-GAAP refers to management-adjusted metrics that exclude non-cash items (e.g. Stock-Based Compensation, amortization) or one-time events (restructuring, litigation) to showcase recurring core business performance.'},
@@ -14177,6 +14585,185 @@ function initMeeting() {
   renderMeetAgenda();
   renderMeetActions();
   validateMeeting();
+
+  // Initialize presentation preset on start
+  if (document.getElementById('pres-input-title') && !document.getElementById('pres-input-title').value) {
+    loadPresPreset('fab_vp');
+  }
+}
+
+/* ==========================================================================
+   EXECUTIVE PRESENTATION ART (STAR vs. CARL) & SUB-TAB CONTROLLER
+   ========================================================================== */
+let meetActiveSubTab = 'meet';
+let presCurrentFramework = 'carl';
+
+const CARL_PRESETS = {
+  fab_vp: {
+    framework: 'carl',
+    title: '12 吋先進製程良率危機挽救與數位雙生 (Digital Twin) 戰略轉型',
+    f1: '【戰略脈絡】N2/N3 先進節點試產良率卡在 68% 瓶頸，客戶 Q4 旗艦晶片量產面臨 6,000 萬美元延遲違約金；黃光微影與蝕刻製程跨部門互推責任（Silos），每週廢片損失逾百萬美元。',
+    f2: '【領導力決策】打破部門穀倉，建立跨製程戰鬥指揮室（War Room）；主動協調 IT 與設備商導入 Digital Twin 虛擬量測與 FDC 實時閉環回饋；授權現場黑帶團隊拉動 Andon 停機權，並做出「暫停非關鍵試產、重壓瓶頸站 DOE」的資源取捨。',
+    f3: '【全域成果】良率在 8 週內由 68% 突破至 89.5%，提前 2 週達成客戶驗收；年化減少廢片與重工損失達 1,840 萬美元；機台 OEE 提升 14.2%。',
+    f4: '【反思與規模化】(1) 復盤教訓：初期過度依賴外部軟體黑盒子導致工程師排斥，後續改為自主建模提升現場接受度；(2) 制度化：將此虛擬量測架構沉澱為全公司「Fab-Wide 標準作業體系 (Standard Work)」推廣至另外兩座廠區；(3) 反脆弱：建立製程異常自癒機制，使新節點良率爬坡週期縮短 35%。'
+  },
+  staff_eng: {
+    framework: 'carl',
+    title: '核心金融交易系統微服務解耦與高並發架構韌性升級',
+    f1: '【戰略脈絡】既有單體架構 (Monolith) 在雙 11 大促期間頻繁出現資料庫死鎖與超時，P99 延遲飆升至 3.2 秒，直接威脅年營收 12 億美元之核心金流通路；工程團隊長期陷入被動救火循環。',
+    f2: '【領導力決策】主導架構委員會推動分散式 Event-Driven 與 CQRS 重構；在「業務新功能交付」與「技術債償還」之間精準權衡，為團隊爭取 30% 架構重構產能；推行 Chaos Engineering 混沌工程演練與 Canary 金絲雀灰度發布。',
+    f3: '【全域成果】雙 11 峰值 QPS 承載力提升 8 倍，P99 延遲降至 45 毫秒（98.6% 改善）；系統可用性達 99.999%（年度零 P0/P1 故障），伺服器雲端運算成本年省 420 萬美元。',
+    f4: '【反思與規模化】(1) 復盤反思：跨團隊事件架構契約 (Schema Contract) 初期缺乏強型別防呆，導致兩次下游解析報錯；(2) 規模化：提煉出全集團《高可用微服務設計手冊》與自動化代碼腳手架；(3) 組織賦能：培訓 40+ 位資深工程師具備分散式追蹤診斷能力，將團隊從救火員轉化為架構設計師。'
+  },
+  sr_eng_star: {
+    framework: 'star',
+    title: '黃光微影機台關鍵尺寸 (CD) 變異改善與參數最佳化',
+    f1: '【情境 (Situation)】在 12 吋晶圓代工製程中，5 號黃光微影機台之關鍵尺寸 (CD) 變異度 Cpk 僅為 1.05，低於客戶規格要求的 1.33，造成每月約 2.5% 的邊緣晶粒重工。',
+    f2: '【任務 (Task)】作為主責製程工程師，被指派於 6 週內將 5 號機台 CD Cpk 提升至 1.45 以上，並消除邊緣重工缺陷。',
+    f3: '【執行 (Action)】(1) 運用 5-Why 與魚骨圖定位光阻塗布厚度均勻性與曝光聚焦深度 (DOF) 為顯著因子；(2) 執行 2^3 全因子 DOE 實驗設計，找出最佳聚焦補償參數；(3) 修改機台 Recipe 並建立 SPC X-bar R 管制圖實施每日監控。',
+    f4: '【成果 (Result)】CD Cpk 成功由 1.05 大幅拉升至 1.58；晶圓重工率從 2.5% 壓降至 0.08%；每月為產線節省約 85,000 美元的重工成本。'
+  }
+};
+
+function switchMeetTab(tab) {
+  meetActiveSubTab = tab;
+  const btnMeet = document.getElementById('tabBtn_meet');
+  const btnPres = document.getElementById('tabBtn_pres');
+  const viewMeet = document.getElementById('meetTabContent_meet');
+  const viewPres = document.getElementById('meetTabContent_pres');
+
+  if (tab === 'meet') {
+    if (btnMeet) { btnMeet.classList.remove('secondary'); btnMeet.classList.add('active'); }
+    if (btnPres) { btnPres.classList.add('secondary'); btnPres.classList.remove('active'); }
+    if (viewMeet) viewMeet.style.display = 'block';
+    if (viewPres) viewPres.style.display = 'none';
+  } else {
+    if (btnMeet) { btnMeet.classList.add('secondary'); btnMeet.classList.remove('active'); }
+    if (btnPres) { btnPres.classList.remove('secondary'); btnPres.classList.add('active'); }
+    if (viewMeet) viewMeet.style.display = 'none';
+    if (viewPres) viewPres.style.display = 'block';
+    updatePresOutput();
+  }
+}
+
+function setPresFramework(fw) {
+  presCurrentFramework = fw;
+  const btnCarl = document.getElementById('btnPresFramework_carl');
+  const btnStar = document.getElementById('btnPresFramework_star');
+  const badge = document.getElementById('presBadgeType');
+
+  if (fw === 'carl') {
+    if (btnCarl) { btnCarl.classList.remove('secondary'); }
+    if (btnStar) { btnStar.classList.add('secondary'); }
+    if (badge) { badge.textContent = 'CARL Mode (Executive / Leadership)'; badge.style.color = 'var(--amber)'; }
+    
+    document.getElementById('lbl_pres_f1').innerHTML = '<span class="zh"><b>C · 戰略脈絡 (Context)</b>：商業風險、跨部門痛點與資源限制</span><span class="en">Context</span>';
+    document.getElementById('lbl_pres_f2').innerHTML = '<span class="zh"><b>A · 領導力決策 (Action)</b>：跨組織對齊、資源權衡與架構重塑</span><span class="en">Action</span>';
+    document.getElementById('lbl_pres_f3').innerHTML = '<span class="zh"><b>R · 全域成果 (Result)</b>：財務 ROI、週期壓縮與核心量化指標</span><span class="en">Result</span>';
+    document.getElementById('lbl_pres_f4').innerHTML = '<span class="zh"><b>L · 反思與規模化 (Learning & Reflection)</b>：復盤教訓、制度化 SOP 與反脆弱肌肉</span><span class="en">Learning / Reflection</span>';
+  } else {
+    if (btnCarl) { btnCarl.classList.add('secondary'); }
+    if (btnStar) { btnStar.classList.remove('secondary'); }
+    if (badge) { badge.textContent = 'STAR Mode (Operational / IC)'; badge.style.color = 'var(--sage)'; }
+
+    document.getElementById('lbl_pres_f1').innerHTML = '<span class="zh"><b>S · 情境背景 (Situation)</b>：專案背景與起因</span><span class="en">Situation</span>';
+    document.getElementById('lbl_pres_f2').innerHTML = '<span class="zh"><b>T · 具體任務 (Task)</b>：被指派的目標與量化指標</span><span class="en">Task</span>';
+    document.getElementById('lbl_pres_f3').innerHTML = '<span class="zh"><b>A · 執行動作 (Action)</b>：實際執行的技術步驟與分析</span><span class="en">Action</span>';
+    document.getElementById('lbl_pres_f4').innerHTML = '<span class="zh"><b>R · 量化成果 (Result)</b>：最終達成之指標與效益</span><span class="en">Result</span>';
+  }
+  updatePresOutput();
+}
+
+function loadPresPreset(presetKey) {
+  const p = CARL_PRESETS[presetKey];
+  if (!p) return;
+  setPresFramework(p.framework);
+  document.getElementById('pres-input-title').value = p.title;
+  document.getElementById('pres-input-f1').value = p.f1;
+  document.getElementById('pres-input-f2').value = p.f2;
+  document.getElementById('pres-input-f3').value = p.f3;
+  document.getElementById('pres-input-f4').value = p.f4;
+  updatePresOutput();
+  if (typeof rtShowToast === 'function') {
+    rtShowToast(state.lang === 'zh' ? '已載入簡報範例！' : 'Preset loaded successfully!');
+  }
+}
+
+function resetPresForm() {
+  document.getElementById('pres-input-title').value = '';
+  document.getElementById('pres-input-f1').value = '';
+  document.getElementById('pres-input-f2').value = '';
+  document.getElementById('pres-input-f3').value = '';
+  document.getElementById('pres-input-f4').value = '';
+  updatePresOutput();
+}
+
+function updatePresOutput() {
+  const titleEl = document.getElementById('pres-input-title');
+  if (!titleEl) return;
+  const title = titleEl.value.trim() || '高階述職與戰略專案簡報';
+  const f1 = (document.getElementById('pres-input-f1').value || '').trim();
+  const f2 = (document.getElementById('pres-input-f2').value || '').trim();
+  const f3 = (document.getElementById('pres-input-f3').value || '').trim();
+  const f4 = (document.getElementById('pres-input-f4').value || '').trim();
+  const fw = presCurrentFramework;
+
+  let script = '';
+  if (fw === 'carl') {
+    script += `================================================================\n`;
+    script += `👑 EXECUTIVE PRESENTATION TALK TRACK & SLIDE DECK (CARL Framework)\n`;
+    script += `🎯 主題 (Presentation Title): ${title}\n`;
+    script += `👤 報告對象 (Target Audience): C-Suite / VP / Director / Promotion Board\n`;
+    script += `================================================================\n\n`;
+
+    script += `【Slide 1: Executive Summary & Context 戰略脈絡 (25%)】\n`;
+    script += `• 商業背景與風險敞口 (Stakes & Constraints):\n  ${f1 || '(請在左側填寫戰略脈絡與痛點...)'}\n\n`;
+
+    script += `【Slide 2: Strategic Actions & Leadership 領導決策與協調 (30%)】\n`;
+    script += `• 跨部門整合、權衡決策與授權 (Cross-Functional Orchestration & Trade-offs):\n  ${f2 || '(請在左側填寫領導行動與破障決策...)'}\n\n`;
+
+    script += `【Slide 3: Measurable Business Results 全域商業回報 (20%)】\n`;
+    script += `• 財務 ROI、週期壓縮與交付價值 (Systemic ROI & Impact):\n  ${f3 || '(請在左側填寫量化商業回報...)'}\n\n`;
+
+    script += `【Slide 4: Retrospective Learning & Antifragility 戰略反思與規模化 (25% 🔥 高階勝出核心)】\n`;
+    script += `• 復盤教訓、制度化標準作業與組織護城河 (Post-Mortem & Standard Work):\n  ${f4 || '(請在左側填寫復盤反思與組織規模化資產...)'}\n\n`;
+
+    script += `----------------------------------------------------------------\n`;
+    script += `🎙️ [高管 3 分鐘電梯演說腳本 / 3-Min Executive Talk Track]\n`;
+    script += `"各位長官好，今天向大家彙報《${title}》。\n\n`;
+    script += `首先在脈絡層面：${f1 ? f1.replace(/【.*?】/g, '') : '我們面臨了關鍵業務風險...'}\n\n`;
+    script += `在推動過程中，核心挑戰在於跨部門利益協調與資源極限，我的關鍵決策是：${f2 ? f2.replace(/【.*?】/g, '') : '打破部門邊界，精準權衡優先級...'}\n\n`;
+    script += `專案帶來的全域商業成果包括：${f3 ? f3.replace(/【.*?】/g, '') : '達成了顯著的財務與品質回報...'}\n\n`;
+    script += `最後也是最關鍵的收穫（Learning & Scaling）：這項專案不僅解決了當下危機，我們更從中沉澱出：${f4 ? f4.replace(/【.*?】/g, '') : '全公司通用的標準作業體系與反脆弱防護網，全面提升組織未來的抗風險能力。'}"\n`;
+  } else {
+    script += `================================================================\n`;
+    script += `⚙️ TECHNICAL PROJECT PRESENTATION (STAR Framework)\n`;
+    script += `🎯 專案名稱: ${title}\n`;
+    script += `👤 報告對象: Direct Manager / Technical Reviewers / IC Team\n`;
+    script += `================================================================\n\n`;
+
+    script += `【Slide 1: Situation 情境背景 (15%)】\n• 專案背景與起因: ${f1 || '(填寫背景...)'}\n\n`;
+    script += `【Slide 2: Task 專案任務與目標 (15%)】\n• 被指派之指標與交付要求: ${f2 || '(填寫任務指標...)'}\n\n`;
+    script += `【Slide 3: Action 執行步驟與技術應用 (50%)】\n• 工具應用 (DMAIC/DOE/SPC) 與實體操作: ${f3 || '(填寫執行步驟...)'}\n\n`;
+    script += `【Slide 4: Result 量化成果與產出 (20%)】\n• 指標改善幅度與成本節省: ${f4 || '(填寫成果效益...)'}\n\n`;
+  }
+
+  const outEl = document.getElementById('pres-output-text');
+  if (outEl) outEl.value = script;
+}
+
+function copyPresOutput() {
+  const txt = document.getElementById('pres-output-text').value;
+  if (!txt) return;
+  navigator.clipboard.writeText(txt).then(() => {
+    if (typeof rtShowToast === 'function') {
+      rtShowToast(state.lang === 'zh' ? '簡報大綱與演說講稿已複製到剪貼簿！' : 'Presentation outline copied to clipboard!');
+    } else {
+      alert(state.lang === 'zh' ? '簡報大綱已複製！' : 'Outline copied!');
+    }
+  }).catch(() => {
+    alert(state.lang === 'zh' ? '複製失敗，請手動複製。' : 'Copy failed, please copy manually.');
+  });
 }
 
 /* ---------- Financial Analysis & Lean Opportunities Logic ---------- */
