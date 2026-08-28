@@ -199,10 +199,24 @@
     animation: fade .2s ease;
   }
 
+  .mobile-floating-menu-btn {
+    display: none;
+  }
+
   @media (max-width:880px){
-    .app{padding:14px 14px 40px;}
-    header{padding:6px 2px 16px;margin-bottom:16px;}
-    .top-quote{padding:12px 14px;margin-bottom:18px;font-size:13.5px;}
+    .app{padding:0 12px 40px;}
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+      background: var(--bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 4px 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .top-quote{padding:10px 12px;margin-bottom:14px;font-size:13px;}
     .layout{grid-template-columns:1fr;}
     .tabs{display:none !important;}
     .compass-wrap{
@@ -227,6 +241,28 @@
     }
     body.mobile-nav-open {
       overflow: hidden;
+    }
+    .mobile-floating-menu-btn {
+      display: flex !important;
+      position: fixed;
+      right: 18px;
+      bottom: 22px;
+      z-index: 1090;
+      background: var(--amber);
+      color: var(--navy);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 30px;
+      padding: 10px 16px;
+      font-size: 13.5px;
+      font-weight: 800;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      cursor: pointer;
+      align-items: center;
+      gap: 6px;
+      transition: all .2s ease;
+    }
+    .mobile-floating-menu-btn:active {
+      transform: scale(0.95);
     }
     .sidebar-expand-float {
       display: none !important;
@@ -3150,6 +3186,12 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     flex-direction: column;
     gap: 16px;
     margin-top: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .aith-toptabs, .aith-track-bar, .aith-topic-bar, .aith-mobile-tabs {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
   .aith-toptabs {
     display: flex;
@@ -8895,6 +8937,11 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     </div>
   </div>
 
+  <button type="button" class="mobile-floating-menu-btn" id="mobileFloatingMenuBtn" onclick="toggleSidebar()" title="開啟模組選單 / Open Menu">
+    <span>🧭</span>
+    <span class="zh">目錄</span><span class="en">Menu</span>
+  </button>
+
   <footer><span class="zh">單一檔案 · 免安裝 · 數據完全保留在您的瀏覽器中</span><span class="en">Single file · No install · Data stays in your browser</span></footer>
 </div>
 
@@ -10013,6 +10060,7 @@ function renderNav(){
         state.section=s.id; 
         saveState(); 
         render();
+        window.scrollTo({ top: 0, behavior: 'instant' });
         if(document.body.classList.contains('mobile-nav-open')){
           closeMobileNav();
         }
