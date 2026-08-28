@@ -173,9 +173,12 @@
   .nav-list{width:100%;display:flex;flex-direction:column;gap:5px;}
   .nav-item{
     display:flex;align-items:center;gap:10px;
-    padding:9px 10px;border-radius:8px;cursor:pointer;
-    font-size:13px;color:var(--muted);transition:all .15s ease;
+    padding:11px 12px;border-radius:8px;cursor:pointer;
+    font-size:13.5px;color:var(--muted);transition:all .15s ease;
     border:1px solid transparent;
+    user-select:none;-webkit-user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
   }
   .nav-item .n{
     width:20px;height:20px;border-radius:50%;flex-shrink:0;
@@ -3201,18 +3204,18 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     overflow-x: auto;
   }
   .aith-toptab {
-    padding: 10px 18px;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--muted);
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 8px 8px 0 0;
-    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    transition: all 0.15s ease;
+    white-space: nowrap;
     user-select: none;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   .aith-toptab:hover {
     color: var(--ink);
@@ -3247,16 +3250,18 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     flex-wrap: wrap;
   }
   .aith-chip {
-    padding: 5px 13px;
-    border-radius: 20px;
+    padding: 6px 12px;
     font-size: 12px;
     font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--panel-border);
     cursor: pointer;
-    border: 1.5px solid var(--line);
-    color: var(--muted);
-    background: transparent;
     transition: all 0.15s ease;
+    white-space: nowrap;
     user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   .aith-chip:hover {
     transform: translateY(-1px);
@@ -3756,17 +3761,21 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     padding: 10px 0;
   }
   .aith-mobile-tabs .aith-mtab {
-    flex-shrink: 0;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 8px 14px;
+    font-size: 12.5px;
     font-weight: 600;
+    border-radius: 8px;
     border: 1px solid var(--line);
+    background: var(--panel);
     color: var(--muted);
-    white-space: nowrap;
     cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
-  .aith-mobile-tabs .aith-mtab.active {
+  .aith-mtab.active {
     background: var(--amber);
     color: #0b0f19;
     border-color: var(--amber);
@@ -9988,7 +9997,7 @@ function saveState(){
 }
 
 function updateSidebarUI(){
-  const isMobile = window.innerWidth <= 880;
+  const isMobile = window.innerWidth <= 1024;
   const toggleBtn = document.getElementById('sidebarToggle');
   if(state.sidebarCollapsed && !isMobile){
     document.body.classList.add('sidebar-collapsed');
@@ -10002,7 +10011,7 @@ function updateSidebarUI(){
 }
 
 function toggleSidebar(){
-  const isMobile = window.innerWidth <= 880;
+  const isMobile = window.innerWidth <= 1024;
   if(isMobile){
     const isOpen = document.body.classList.toggle('mobile-nav-open');
     const toggleBtn = document.getElementById('sidebarToggle');
@@ -10020,7 +10029,7 @@ function toggleSidebar(){
 function closeMobileNav(){
   document.body.classList.remove('mobile-nav-open');
   const toggleBtn = document.getElementById('sidebarToggle');
-  if(toggleBtn && (!state.sidebarCollapsed || window.innerWidth <= 880)){
+  if(toggleBtn && (!state.sidebarCollapsed || window.innerWidth <= 1024)){
     toggleBtn.classList.remove('active');
   }
 }
@@ -11297,13 +11306,13 @@ function renderA3Demo(){
 }
 
 function validateA3(){
-  const title = document.getElementById('a3-title') ? document.getElementById('a3-title').value.trim() : '';
-  const background = document.getElementById('a3-background') ? document.getElementById('a3-background').value.trim() : '';
-  const current = document.getElementById('a3-current') ? document.getElementById('a3-current').value.trim() : '';
-  const targetVal = document.getElementById('a3-target-val') ? document.getElementById('a3-target-val').value.trim() : '';
+  const title = document.getElementById('a3-title') ? (document.getElementById('a3-title').value || '').trim() : '';
+  const background = document.getElementById('a3-background') ? (document.getElementById('a3-background').value || '').trim() : '';
+  const current = document.getElementById('a3-current') ? (document.getElementById('a3-current').value || '').trim() : '';
+  const targetVal = document.getElementById('a3-target-val') ? (document.getElementById('a3-target-val').value || '').trim() : '';
   const targetDate = document.getElementById('a3-target-date') ? document.getElementById('a3-target-date').value : '';
-  const confirm = document.getElementById('a3-confirm') ? document.getElementById('a3-confirm').value.trim() : '';
-  const standardize = document.getElementById('a3-standardize') ? document.getElementById('a3-standardize').value.trim() : '';
+  const confirm = document.getElementById('a3-confirm') ? (document.getElementById('a3-confirm').value || '').trim() : '';
+  const standardize = document.getElementById('a3-standardize') ? (document.getElementById('a3-standardize').value || '').trim() : '';
 
   let score = 0;
   const comments = [];
@@ -11381,7 +11390,7 @@ function validateA3(){
   let whysCount = 0;
   let verifiedCount = 0;
   for(let i=1; i<=5; i++) {
-    const val = document.getElementById(`a3-why${i}`) ? document.getElementById(`a3-why${i}`).value.trim() : '';
+    const val = document.getElementById(`a3-why${i}`) ? (document.getElementById(`a3-why${i}`).value || '').trim() : '';
     const isV = document.getElementById(`a3-why${i}-v`) ? document.getElementById(`a3-why${i}-v`).checked : false;
     if(val.length > 3) {
       whysCount++;
@@ -12826,7 +12835,7 @@ function initPriorityScorer() {
   const saveBtn = document.getElementById('tpsSaveTaskBtn');
   if (saveBtn) {
     saveBtn.onclick = () => {
-      const name = document.getElementById('tpsTaskName').value.trim();
+      const name = (document.getElementById('tpsTaskName')?.value || '').trim();
       if (!name) { document.getElementById('tpsTaskName').focus(); return; }
       
       const scores = {};
@@ -12835,7 +12844,7 @@ function initPriorityScorer() {
       });
       const hours = Number(document.getElementById('tpsHoursInput').value) || 0;
       const dueDate = document.getElementById('tpsDueInput').value || null;
-      const desc = document.getElementById('tpsTaskDesc').value.trim();
+      const desc = (document.getElementById('tpsTaskDesc')?.value || '').trim();
 
       if (tpsEditingId) {
         const t = tpsState.tasks.find(x => x.id === tpsEditingId);
@@ -13655,7 +13664,7 @@ function initReqTrack() {
   const btnSaveReq = document.getElementById("rt-req-save");
   if (btnSaveReq) {
     btnSaveReq.onclick = () => {
-      const title = document.getElementById("rt-req-title").value.trim();
+      const title = (document.getElementById('rt-req-title')?.value || '').trim();
       if(!title){ alert("Please enter a title."); return; }
       const id = document.getElementById("rt-req-id").value;
       const status = document.getElementById("rt-req-status").value;
@@ -13663,9 +13672,9 @@ function initReqTrack() {
         const r = rtReqById(id);
         const oldStatus = r.status;
         r.title = title;
-        r.description = document.getElementById("rt-req-desc").value.trim();
+        r.description = (document.getElementById('rt-req-desc')?.value || '').trim();
         r.customerId = document.getElementById("rt-req-customer").value;
-        r.owner = document.getElementById("rt-req-owner").value.trim();
+        r.owner = (document.getElementById('rt-req-owner')?.value || '').trim();
         r.category = document.getElementById("rt-req-category").value;
         r.priority = document.getElementById("rt-req-priority").value;
         r.status = status;
@@ -13677,9 +13686,9 @@ function initReqTrack() {
         rtState.counters.req += 1;
         const newId = "REQ-" + String(rtState.counters.req).padStart(4,"0");
         rtState.requirements.push({
-          id:newId, title, description: document.getElementById("rt-req-desc").value.trim(),
+          id:newId, title, description: (document.getElementById('rt-req-desc')?.value || '').trim(),
           customerId: document.getElementById("rt-req-customer").value,
-          owner: document.getElementById("rt-req-owner").value.trim(),
+          owner: (document.getElementById('rt-req-owner')?.value || '').trim(),
           category: document.getElementById("rt-req-category").value,
           priority: document.getElementById("rt-req-priority").value,
           status, dueDate: document.getElementById("rt-req-due").value || null,
@@ -13718,7 +13727,7 @@ function initReqTrack() {
   const btnSaveNote = document.getElementById("rt-note-save");
   if (btnSaveNote) {
     btnSaveNote.onclick = () => {
-      const text = document.getElementById("rt-note-input").value.trim();
+      const text = (document.getElementById('rt-note-input')?.value || '').trim();
       if(!text || !rtCurrentDetailId) return;
       rtState.notes.push({ id: rtUid("note"), requirementId: rtCurrentDetailId, timestamp:new Date().toISOString(), text, type:"note" });
       saveRtState();
@@ -13746,7 +13755,7 @@ function initReqTrack() {
   const btnSaveTask = document.getElementById("rt-task-save");
   if (btnSaveTask) {
     btnSaveTask.onclick = () => {
-      const title = document.getElementById("rt-task-title").value.trim();
+      const title = (document.getElementById('rt-task-title')?.value || '').trim();
       if(!title){ alert("Please enter a task title."); return; }
       const id = document.getElementById("rt-task-id").value;
       const data = {
@@ -13792,13 +13801,13 @@ function initReqTrack() {
   const btnSaveCust = document.getElementById("rt-cust-save");
   if (btnSaveCust) {
     btnSaveCust.onclick = () => {
-      const name = document.getElementById("rt-cust-name").value.trim();
+      const name = (document.getElementById('rt-cust-name')?.value || '').trim();
       if(!name){ alert("Please enter a contact name."); return; }
       const id = document.getElementById("rt-cust-id").value;
       const data = {
-        name, company: document.getElementById("rt-cust-company").value.trim(),
-        email: document.getElementById("rt-cust-email").value.trim(),
-        phone: document.getElementById("rt-cust-phone").value.trim()
+        name, company: (document.getElementById('rt-cust-company')?.value || '').trim(),
+        email: (document.getElementById('rt-cust-email')?.value || '').trim(),
+        phone: (document.getElementById('rt-cust-phone')?.value || '').trim()
       };
       if(id){ Object.assign(rtCustomerById(id), data); }
       else{ rtState.customers.push({ id: rtUid("cust"), ...data }); }
@@ -15065,25 +15074,29 @@ function setPresFramework(fw) {
   const btnCarl = document.getElementById('btnPresFramework_carl');
   const btnStar = document.getElementById('btnPresFramework_star');
   const badge = document.getElementById('presBadgeType');
+  const lblF1 = document.getElementById('lbl_pres_f1');
+  const lblF2 = document.getElementById('lbl_pres_f2');
+  const lblF3 = document.getElementById('lbl_pres_f3');
+  const lblF4 = document.getElementById('lbl_pres_f4');
 
   if (fw === 'carl') {
-    if (btnCarl) { btnCarl.classList.remove('secondary'); }
-    if (btnStar) { btnStar.classList.add('secondary'); }
+    if (btnCarl) btnCarl.classList.remove('secondary');
+    if (btnStar) btnStar.classList.add('secondary');
     if (badge) { badge.textContent = 'CARL Mode (Executive / Leadership)'; badge.style.color = 'var(--amber)'; }
     
-    document.getElementById('lbl_pres_f1').innerHTML = '<span class="zh"><b>C · 戰略脈絡 (Context)</b>：商業風險、跨部門痛點與資源限制</span><span class="en">Context</span>';
-    document.getElementById('lbl_pres_f2').innerHTML = '<span class="zh"><b>A · 領導力決策 (Action)</b>：跨組織對齊、資源權衡與架構重塑</span><span class="en">Action</span>';
-    document.getElementById('lbl_pres_f3').innerHTML = '<span class="zh"><b>R · 全域成果 (Result)</b>：財務 ROI、週期壓縮與核心量化指標</span><span class="en">Result</span>';
-    document.getElementById('lbl_pres_f4').innerHTML = '<span class="zh"><b>L · 反思與規模化 (Learning & Reflection)</b>：復盤教訓、制度化 SOP 與反脆弱肌肉</span><span class="en">Learning / Reflection</span>';
+    if (lblF1) lblF1.innerHTML = '<span class="zh"><b>C · 戰略脈絡 (Context)</b>：商業風險、跨部門痛點與資源限制</span><span class="en">Context</span>';
+    if (lblF2) lblF2.innerHTML = '<span class="zh"><b>A · 領導力決策 (Action)</b>：跨組織對齊、資源權衡與架構重塑</span><span class="en">Action</span>';
+    if (lblF3) lblF3.innerHTML = '<span class="zh"><b>R · 全域成果 (Result)</b>：財務 ROI、週期壓縮與核心量化指標</span><span class="en">Result</span>';
+    if (lblF4) lblF4.innerHTML = '<span class="zh"><b>L · 反思與規模化 (Learning & Reflection)</b>：復盤教訓、制度化 SOP 與反脆弱肌肉</span><span class="en">Learning / Reflection</span>';
   } else {
-    if (btnCarl) { btnCarl.classList.add('secondary'); }
-    if (btnStar) { btnStar.classList.remove('secondary'); }
+    if (btnCarl) btnCarl.classList.add('secondary');
+    if (btnStar) btnStar.classList.remove('secondary');
     if (badge) { badge.textContent = 'STAR Mode (Operational / IC)'; badge.style.color = 'var(--sage)'; }
 
-    document.getElementById('lbl_pres_f1').innerHTML = '<span class="zh"><b>S · 情境背景 (Situation)</b>：專案背景與起因</span><span class="en">Situation</span>';
-    document.getElementById('lbl_pres_f2').innerHTML = '<span class="zh"><b>T · 具體任務 (Task)</b>：被指派的目標與量化指標</span><span class="en">Task</span>';
-    document.getElementById('lbl_pres_f3').innerHTML = '<span class="zh"><b>A · 執行動作 (Action)</b>：實際執行的技術步驟與分析</span><span class="en">Action</span>';
-    document.getElementById('lbl_pres_f4').innerHTML = '<span class="zh"><b>R · 量化成果 (Result)</b>：最終達成之指標與效益</span><span class="en">Result</span>';
+    if (lblF1) lblF1.innerHTML = '<span class="zh"><b>S · 情境背景 (Situation)</b>：專案背景與起因</span><span class="en">Situation</span>';
+    if (lblF2) lblF2.innerHTML = '<span class="zh"><b>T · 具體任務 (Task)</b>：被指派的目標與量化指標</span><span class="en">Task</span>';
+    if (lblF3) lblF3.innerHTML = '<span class="zh"><b>A · 執行動作 (Action)</b>：實際執行的技術步驟與分析</span><span class="en">Action</span>';
+    if (lblF4) lblF4.innerHTML = '<span class="zh"><b>R · 量化成果 (Result)</b>：最終達成之指標與效益</span><span class="en">Result</span>';
   }
   updatePresOutput();
 }
@@ -15092,11 +15105,16 @@ function loadPresPreset(presetKey) {
   const p = CARL_PRESETS[presetKey];
   if (!p) return;
   setPresFramework(p.framework);
-  document.getElementById('pres-input-title').value = p.title;
-  document.getElementById('pres-input-f1').value = p.f1;
-  document.getElementById('pres-input-f2').value = p.f2;
-  document.getElementById('pres-input-f3').value = p.f3;
-  document.getElementById('pres-input-f4').value = p.f4;
+  const elTitle = document.getElementById('pres-input-title');
+  const elF1 = document.getElementById('pres-input-f1');
+  const elF2 = document.getElementById('pres-input-f2');
+  const elF3 = document.getElementById('pres-input-f3');
+  const elF4 = document.getElementById('pres-input-f4');
+  if (elTitle) elTitle.value = p.title || '';
+  if (elF1) elF1.value = p.f1 || '';
+  if (elF2) elF2.value = p.f2 || '';
+  if (elF3) elF3.value = p.f3 || '';
+  if (elF4) elF4.value = p.f4 || '';
   updatePresOutput();
   if (typeof rtShowToast === 'function') {
     rtShowToast(state.lang === 'zh' ? '已載入簡報範例！' : 'Preset loaded successfully!');
@@ -15115,11 +15133,15 @@ function resetPresForm() {
 function updatePresOutput() {
   const titleEl = document.getElementById('pres-input-title');
   if (!titleEl) return;
-  const title = titleEl.value.trim() || '高階述職與戰略專案簡報';
-  const f1 = (document.getElementById('pres-input-f1').value || '').trim();
-  const f2 = (document.getElementById('pres-input-f2').value || '').trim();
-  const f3 = (document.getElementById('pres-input-f3').value || '').trim();
-  const f4 = (document.getElementById('pres-input-f4').value || '').trim();
+  const title = (titleEl.value || '').trim() || '高階述職與戰略專案簡報';
+  const f1El = document.getElementById('pres-input-f1');
+  const f2El = document.getElementById('pres-input-f2');
+  const f3El = document.getElementById('pres-input-f3');
+  const f4El = document.getElementById('pres-input-f4');
+  const f1 = f1El ? (f1El.value || '').trim() : '';
+  const f2 = f2El ? (f2El.value || '').trim() : '';
+  const f3 = f3El ? (f3El.value || '').trim() : '';
+  const f4 = f4El ? (f4El.value || '').trim() : '';
   const fw = presCurrentFramework;
 
   let script = '';
@@ -17546,6 +17568,8 @@ function aithShowTab(tab) {
 
   if (topicBar) topicBar.style.display = (tab === 'help' || tab === 'find') ? 'none' : 'flex';
   if (trackBar) trackBar.style.display = (tab === 'explore' || tab === 'timeline') ? 'flex' : 'none';
+  const mTabs = document.getElementById('aithMobileStageTabs');
+  if (mTabs) mTabs.style.display = (tab === 'explore' && window.innerWidth <= 1024) ? 'flex' : 'none';
 
   if (tab === 'timeline') aithRenderTimeline();
   if (tab === 'parallel') aithRenderParallel();
