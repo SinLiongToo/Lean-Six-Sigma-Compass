@@ -4661,6 +4661,134 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     gap: 12px;
   }
 
+
+  /* ==========================================================================
+     MANAGEMENT QUOTES MARQUEE / TICKER TAPE
+     ========================================================================== */
+  .marquee-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(245, 166, 35, 0.06);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    height: 38px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    touch-action: pan-y;
+  }
+  [data-theme="light"] .marquee-wrapper {
+    background: #fffdf5;
+    border-color: #fde68a;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+  .marquee-badge {
+    background: var(--amber);
+    color: var(--navy);
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 0 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    z-index: 2;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    user-select: none;
+    letter-spacing: 0.02em;
+  }
+  .marquee-track-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+  }
+  .marquee-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marqueeScroll 55s linear infinite;
+  }
+  .marquee-wrapper:hover .marquee-content,
+  .marquee-wrapper.is-paused .marquee-content {
+    animation-play-state: paused;
+  }
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--ink);
+    cursor: default;
+    user-select: none;
+    transition: color 0.15s ease;
+  }
+  .marquee-item .author {
+    font-weight: 800;
+    color: var(--amber);
+    background: rgba(245, 166, 35, 0.12);
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 11px;
+    border: 1px solid rgba(245, 166, 35, 0.25);
+  }
+  .marquee-item .divider {
+    color: var(--line);
+    margin-left: 20px;
+    font-size: 10px;
+    opacity: 0.7;
+  }
+  .marquee-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0 8px;
+    height: 100%;
+    background: var(--bg);
+    border-left: 1px solid var(--panel-border);
+    flex-shrink: 0;
+    z-index: 2;
+  }
+  .marquee-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .marquee-btn:hover {
+    color: var(--amber);
+    background: rgba(245, 166, 35, 0.12);
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  @media (max-width: 680px) {
+    .marquee-wrapper { height: 34px; margin-bottom: 10px; font-size: 11.5px; }
+    .marquee-badge { font-size: 10.5px; padding: 0 8px; }
+    .marquee-item { font-size: 11.5px; gap: 6px; }
+    .marquee-item .author { font-size: 10px; padding: 1px 5px; }
+  }
+
 </style>
 </head>
 <body data-theme="dark" lang-mode="zh">
@@ -4699,6 +4827,123 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       <button class="ctrl-btn" id="themeToggle">☀️</button>
     </div>
   </header>
+
+  
+  <!-- Management Wisdom Marquee Ticker -->
+  <div class="marquee-wrapper" id="managementMarquee">
+    <div class="marquee-badge">
+      <span>💡</span>
+      <span class="zh">管理金句</span><span class="en">Wisdom</span>
+    </div>
+    <div class="marquee-track-container" id="marqueeTrackContainer">
+      <div class="marquee-content" id="marqueeContent">
+        
+    <div class="marquee-item">
+      <span class="author"><span class="zh">彼得·杜拉克 (Peter Drucker)</span><span class="en">Peter F. Drucker</span></span>
+      <span><span class="zh">「無法度量，就無法管理；無法管理，就無法改善。」</span><span class="en">"If you can't measure it, you can't manage it; if you can't manage it, you can't improve it."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">愛德華茲·戴明 (W. Edwards Deming)</span><span class="en">W. Edwards Deming</span></span>
+      <span><span class="zh">「除了上帝，所有人都必須用數據說話。」</span><span class="en">"In God we trust; all others must bring data."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">大野耐一 (Taiichi Ohno)</span><span class="en">Taiichi Ohno (Toyota)</span></span>
+      <span><span class="zh">「沒有標準，就沒有改善；看見問題是邁向卓越的第一步。」</span><span class="en">"Without standards, there can be no improvement. Seeing problems is the first step."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">安迪·葛洛夫 (Andy Grove)</span><span class="en">Andy Grove (Intel)</span></span>
+      <span><span class="zh">「只有偏執狂才能生存；將心力集中在槓桿率最高的關鍵要務上。」</span><span class="en">"Only the paranoid survive. Focus resources on high-leverage activities."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">艾美·埃德蒙森 (Amy Edmondson)</span><span class="en">Amy C. Edmondson (Harvard)</span></span>
+      <span><span class="zh">「打造心理安全感：快速、智慧型的嘗試與修正是精實創新的最高境界。」</span><span class="en">"Psychological safety empowers intelligent failure and rapid corrective agility."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">查理·蒙格 (Charlie Munger)</span><span class="en">Charlie T. Munger</span></span>
+      <span><span class="zh">「反過來想，總是反過來想；掌握跨領域多元心智模型。」</span><span class="en">"Invert, always invert. Master multidisciplinary mental models."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">史蒂夫·賈伯斯 (Steve Jobs)</span><span class="en">Steve Jobs</span></span>
+      <span><span class="zh">「專注意味著對一百個好點子說『不』；極致的簡約即是純粹的深邃。」</span><span class="en">"Focus means saying no to the hundred other good ideas. Simplicity is sophistication."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">維克多·弗蘭克 (Viktor Frankl)</span><span class="en">Viktor E. Frankl</span></span>
+      <span><span class="zh">「在刺激與回應之間有一個空間，那裡是我們選擇回應的自由與力量。」</span><span class="en">"Between stimulus and response there is a space where we choose our response."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">詹姆斯·克利爾 (James Clear)</span><span class="en">James Clear</span></span>
+      <span><span class="zh">「你不會躍升到設定的目標高度，而是會跌落至日常系統的水平。」</span><span class="en">"You do not rise to the level of your goals. You fall to the level of your systems."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">Masa Tu 精實箴言</span><span class="en">Masa Tu Philosophy</span></span>
+      <span><span class="zh">「M挑戰精進 · A目標對齊 · S解決問題 · A迅速行動 · T團隊協作 · U成就他人。」</span><span class="en">"Mastery Challenge · Align & Adjust · Solve Problems · Act Swiftly · Team Up · Uplift Others."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">彼得·杜拉克 (Peter Drucker)</span><span class="en">Peter F. Drucker</span></span>
+      <span><span class="zh">「無法度量，就無法管理；無法管理，就無法改善。」</span><span class="en">"If you can't measure it, you can't manage it; if you can't manage it, you can't improve it."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">愛德華茲·戴明 (W. Edwards Deming)</span><span class="en">W. Edwards Deming</span></span>
+      <span><span class="zh">「除了上帝，所有人都必須用數據說話。」</span><span class="en">"In God we trust; all others must bring data."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">大野耐一 (Taiichi Ohno)</span><span class="en">Taiichi Ohno (Toyota)</span></span>
+      <span><span class="zh">「沒有標準，就沒有改善；看見問題是邁向卓越的第一步。」</span><span class="en">"Without standards, there can be no improvement. Seeing problems is the first step."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">安迪·葛洛夫 (Andy Grove)</span><span class="en">Andy Grove (Intel)</span></span>
+      <span><span class="zh">「只有偏執狂才能生存；將心力集中在槓桿率最高的關鍵要務上。」</span><span class="en">"Only the paranoid survive. Focus resources on high-leverage activities."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">艾美·埃德蒙森 (Amy Edmondson)</span><span class="en">Amy C. Edmondson (Harvard)</span></span>
+      <span><span class="zh">「打造心理安全感：快速、智慧型的嘗試與修正是精實創新的最高境界。」</span><span class="en">"Psychological safety empowers intelligent failure and rapid corrective agility."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">查理·蒙格 (Charlie Munger)</span><span class="en">Charlie T. Munger</span></span>
+      <span><span class="zh">「反過來想，總是反過來想；掌握跨領域多元心智模型。」</span><span class="en">"Invert, always invert. Master multidisciplinary mental models."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">史蒂夫·賈伯斯 (Steve Jobs)</span><span class="en">Steve Jobs</span></span>
+      <span><span class="zh">「專注意味著對一百個好點子說『不』；極致的簡約即是純粹的深邃。」</span><span class="en">"Focus means saying no to the hundred other good ideas. Simplicity is sophistication."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">維克多·弗蘭克 (Viktor Frankl)</span><span class="en">Viktor E. Frankl</span></span>
+      <span><span class="zh">「在刺激與回應之間有一個空間，那裡是我們選擇回應的自由與力量。」</span><span class="en">"Between stimulus and response there is a space where we choose our response."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">詹姆斯·克利爾 (James Clear)</span><span class="en">James Clear</span></span>
+      <span><span class="zh">「你不會躍升到設定的目標高度，而是會跌落至日常系統的水平。」</span><span class="en">"You do not rise to the level of your goals. You fall to the level of your systems."</span></span>
+      <span class="divider">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span class="author"><span class="zh">Masa Tu 精實箴言</span><span class="en">Masa Tu Philosophy</span></span>
+      <span><span class="zh">「M挑戰精進 · A目標對齊 · S解決問題 · A迅速行動 · T團隊協作 · U成就他人。」</span><span class="en">"Mastery Challenge · Align & Adjust · Solve Problems · Act Swiftly · Team Up · Uplift Others."</span></span>
+      <span class="divider">✦</span>
+    </div>
+      </div>
+    </div>
+    <div class="marquee-controls">
+      <button type="button" class="marquee-btn" id="marqueeToggleBtn" onclick="toggleMarqueePlay()" title="暫停/播放跑馬燈 / Pause/Play">⏸️</button>
+    </div>
+  </div>
 
   <div class="top-quote">
     <p class="zh" style="margin-bottom: 4px;">「精實並不神祕，觀念也不難懂。難是難在觀念的應用，而不在觀念本身。」</p>
@@ -19860,6 +20105,19 @@ function vsmExportMarkdown() {
   });
 }
 
+
+
+/* ---------- Management Quotes Marquee Controller ---------- */
+let marqueeIsPaused = false;
+
+function toggleMarqueePlay() {
+  const wrap = document.getElementById('managementMarquee');
+  const btn = document.getElementById('marqueeToggleBtn');
+  if (!wrap || !btn) return;
+  marqueeIsPaused = !marqueeIsPaused;
+  wrap.classList.toggle('is-paused', marqueeIsPaused);
+  btn.textContent = marqueeIsPaused ? '▶️' : '⏸️';
+}
 
 // Initialize everything once DOM is ready
 if (document.readyState === 'loading') {
