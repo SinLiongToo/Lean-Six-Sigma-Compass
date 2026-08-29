@@ -11226,6 +11226,9 @@ function loadState(){
     const saved = JSON.parse(localStorage.getItem('leanCompassState')||'{}');
     Object.assign(state, saved);
   }catch(e){}
+  if(!state.section || !SECTIONS.some(s => s.id === state.section)){
+    state.section = 'mindset';
+  }
 }
 function saveState(){
   try{ localStorage.setItem('leanCompassState', JSON.stringify(state)); }catch(e){}
@@ -12018,9 +12021,17 @@ function renderGlossary(){
 }
 
 function renderSections(){
+  let activeFound = false;
   document.querySelectorAll('.section').forEach(sec=>{
-    sec.classList.toggle('active', sec.dataset.section===state.section);
+    const isActive = sec.dataset.section === state.section;
+    sec.classList.toggle('active', isActive);
+    if(isActive) activeFound = true;
   });
+  if(!activeFound){
+    state.section = 'mindset';
+    const firstSec = document.querySelector('.section[data-section="mindset"]');
+    if(firstSec) firstSec.classList.add('active');
+  }
 }
 
 function render(){
@@ -19840,6 +19851,13 @@ function vsmExportMarkdown() {
   });
 }
 
+
+// Initialize everything once DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
 </body>
 </html>
