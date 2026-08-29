@@ -11235,22 +11235,24 @@ function saveState(){
 }
 
 function updateSidebarUI(){
-  const isMobile = window.innerWidth <= 1024;
   const toggleBtn = document.getElementById('sidebarToggle');
-  if(state.sidebarCollapsed && !isMobile){
+  const expandFloat = document.getElementById('sidebarExpandFloat');
+  if(state.sidebarCollapsed){
     document.body.classList.add('sidebar-collapsed');
     if(toggleBtn) toggleBtn.classList.add('active');
+    if(expandFloat) expandFloat.style.display = 'inline-flex';
   } else {
     document.body.classList.remove('sidebar-collapsed');
     if(toggleBtn && !document.body.classList.contains('mobile-nav-open')){
       toggleBtn.classList.remove('active');
     }
+    if(expandFloat) expandFloat.style.display = 'none';
   }
 }
 
 function toggleSidebar(){
-  const isMobile = window.innerWidth <= 1024;
-  if(isMobile){
+  const isPortraitPhone = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+  if(isPortraitPhone){
     const isOpen = document.body.classList.toggle('mobile-nav-open');
     const toggleBtn = document.getElementById('sidebarToggle');
     if(toggleBtn){
@@ -11264,10 +11266,17 @@ function toggleSidebar(){
   }
 }
 
+function collapseSidebar(){
+  document.body.classList.remove('mobile-nav-open');
+  state.sidebarCollapsed = true;
+  saveState();
+  updateSidebarUI();
+}
+
 function closeMobileNav(){
   document.body.classList.remove('mobile-nav-open');
   const toggleBtn = document.getElementById('sidebarToggle');
-  if(toggleBtn && (!state.sidebarCollapsed || window.innerWidth <= 1024)){
+  if(toggleBtn && !state.sidebarCollapsed){
     toggleBtn.classList.remove('active');
   }
 }
@@ -19000,7 +19009,7 @@ function init(){
   const sidebarToggleBtn = document.getElementById('sidebarToggle');
   if(sidebarToggleBtn) sidebarToggleBtn.onclick = toggleSidebar;
   const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn');
-  if(sidebarCollapseBtn) sidebarCollapseBtn.onclick = toggleSidebar;
+  if(sidebarCollapseBtn) sidebarCollapseBtn.onclick = collapseSidebar;
   const sidebarExpandFloat = document.getElementById('sidebarExpandFloat');
   if(sidebarExpandFloat) sidebarExpandFloat.onclick = toggleSidebar;
   const sidebarBackdrop = document.getElementById('sidebarBackdrop');
