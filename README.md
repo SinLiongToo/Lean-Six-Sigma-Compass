@@ -27,7 +27,7 @@
 ## 🧭 全站 19 大核心模組架構
 
 ```
-Masa Tu 精實六標準差羅盤
+Masa Tu 精實六標準差羅盤 (共 20 大核心模組)
  ├── 01. 核心思維 (Mindset)
  ├── 02. 證照地圖與模擬考試 (Belt Map & Exam Engine)
  ├── 03. 個人專案診斷與證照推薦 (Personal Project Diagnostics & Belt Recommendation)
@@ -44,9 +44,10 @@ Masa Tu 精實六標準差羅盤
  ├── 14. 常見分析與認知謬誤 (Common Analytical & Cognitive Fallacies)
  ├── 15. 財務分析與精實機會 (Financial Analysis & Lean Opportunities)
  ├── 16. 團隊腦力激盪與視覺化工具 (Team Brainstorming & Visual Tools: Mind Map & KJ Board)
- ├── 17. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
- ├── 18. 相關推薦書籍 (32 本跨領域經典精實書庫)
- └── 19. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
+ ├── 17. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)  <-- ⭐ [NEW]
+ ├── 18. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
+ ├── 19. 相關推薦書籍 (32 本跨領域經典精實書庫)
+ └── 20. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
 ```
 
 ---

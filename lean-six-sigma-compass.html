@@ -4088,6 +4088,579 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   }
 
+
+  /* ==========================================================================
+     17. VALUE STREAM MAPPING (VSM) BUILDER CSS
+     ========================================================================== */
+  .vsm-wrap { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+  
+  .vsm-banner {
+    background: rgba(245, 166, 35, 0.06);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  [data-theme="light"] .vsm-banner {
+    background: #fffbeb;
+    border-color: #fde68a;
+    border-left: 4px solid var(--amber);
+  }
+
+  .vsm-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+  .vsm-presets-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .vsm-btn {
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 7px 13px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .vsm-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .vsm-btn.active {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+    font-weight: 700;
+  }
+  .vsm-btn.primary {
+    background: var(--amber);
+    color: var(--navy);
+    font-weight: 700;
+    border-color: var(--amber);
+  }
+  .vsm-btn.primary:hover {
+    background: #e09612;
+  }
+
+  /* Global Parameters Form */
+  .vsm-params-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    align-items: center;
+  }
+  .vsm-param-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .vsm-param-item label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .vsm-param-input {
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .vsm-param-input:focus {
+    border-color: var(--amber);
+  }
+
+  /* KPI Metrics Dashboard */
+  .vsm-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .vsm-kpi-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  .vsm-kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--line);
+  }
+  .vsm-kpi-card.takt::before { background: #60a5fa; }
+  .vsm-kpi-card.plt::before { background: #f87171; }
+  .vsm-kpi-card.va::before { background: #34d399; }
+  .vsm-kpi-card.pce::before { background: var(--amber); }
+  .vsm-kpi-card.bottleneck::before { background: #ec4899; }
+
+  .vsm-kpi-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .vsm-kpi-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    font-family: monospace;
+  }
+  .vsm-kpi-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Future State Benefit Comparison Banner */
+  .vsm-future-benefit-banner {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(245, 166, 35, 0.12));
+    border: 1.5px dashed #34d399;
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Visual Map Canvas Container */
+  .vsm-canvas-container {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 20px 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+  }
+  [data-theme="light"] .vsm-canvas-container {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+  }
+
+  /* 1. Top: Information Flow Section */
+  .vsm-info-section {
+    min-width: 1000px;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  [data-theme="light"] .vsm-info-section {
+    background: #ffffff;
+    border-color: #e2e8f0;
+  }
+  .vsm-info-box {
+    background: var(--bg);
+    border: 1.5px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .vsm-info-box h4 {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: var(--amber);
+  }
+  .vsm-info-box p {
+    margin: 0;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .vsm-info-arrow-track {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .vsm-lightning-line {
+    width: 100%;
+    height: 2px;
+    background: var(--amber);
+    position: relative;
+    margin: 4px 0;
+  }
+  .vsm-lightning-line::after {
+    content: '⚡';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+  }
+
+  /* 2. Middle: Material & Process Stream */
+  .vsm-stream-section {
+    min-width: 1000px;
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .vsm-party-card {
+    width: 130px;
+    flex-shrink: 0;
+    background: var(--bg);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+  .vsm-party-card .icon { font-size: 24px; }
+  .vsm-party-card .title { font-size: 12px; font-weight: 700; color: var(--ink); }
+  .vsm-party-card .sub { font-size: 10.5px; color: var(--muted); }
+
+  /* Process Box (工序盒) */
+  .vsm-process-card {
+    width: 190px;
+    flex-shrink: 0;
+    background: var(--bg);
+    border: 1.5px solid var(--panel-border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    position: relative;
+  }
+  [data-theme="light"] .vsm-process-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .vsm-process-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+  }
+  .vsm-process-card.is-bottleneck {
+    border-color: #f43f5e;
+    box-shadow: 0 0 12px rgba(244, 63, 94, 0.25);
+  }
+  .vsm-process-header {
+    background: rgba(245, 166, 35, 0.12);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--panel-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .vsm-process-card.is-bottleneck .vsm-process-header {
+    background: rgba(244, 63, 94, 0.15);
+    border-bottom-color: rgba(244, 63, 94, 0.3);
+  }
+  .vsm-process-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vsm-process-ops {
+    font-size: 10px;
+    background: var(--panel);
+    padding: 2px 6px;
+    border-radius: 10px;
+    color: var(--muted);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .vsm-process-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .vsm-metric-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: var(--muted);
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+    padding-bottom: 2px;
+  }
+  [data-theme="light"] .vsm-metric-row {
+    border-bottom-color: #f1f5f9;
+  }
+  .vsm-metric-row .val {
+    font-weight: 700;
+    color: var(--ink);
+    font-family: monospace;
+  }
+  .vsm-kaizen-burst-tag {
+    background: rgba(245, 166, 35, 0.18);
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.2;
+  }
+  .vsm-process-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.1);
+    border-top: 1px solid var(--line);
+  }
+  .vsm-mini-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+  }
+  .vsm-mini-btn:hover {
+    color: var(--amber);
+    background: rgba(245, 166, 35, 0.1);
+  }
+
+  /* WIP Inventory Node (庫存三角形) */
+  .vsm-wip-card {
+    width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px;
+    position: relative;
+  }
+  .vsm-triangle-icon {
+    width: 0; 
+    height: 0; 
+    border-left: 26px solid transparent;
+    border-right: 26px solid transparent;
+    border-bottom: 42px solid var(--amber);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  }
+  .vsm-triangle-icon span {
+    position: absolute;
+    top: 16px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #0b0f19;
+  }
+  .vsm-wip-input-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+  }
+  .vsm-wip-input {
+    width: 75px;
+    text-align: center;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 3px 4px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: monospace;
+    outline: none;
+  }
+  .vsm-wip-input:focus { border-color: var(--amber); }
+  .vsm-wip-days {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+    padding: 2px 6px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  /* 3. Bottom: Live Lead Time Ladder (時間階梯線) */
+  .vsm-ladder-section {
+    min-width: 1000px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  [data-theme="light"] .vsm-ladder-section {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .vsm-ladder-track {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    height: 70px;
+    position: relative;
+    padding: 0 140px; /* offset for supplier and customer */
+  }
+  .vsm-ladder-step-wip {
+    flex: 1;
+    height: 38px;
+    border-top: 2.5px solid #f87171;
+    border-right: 2.5px solid #f87171;
+    border-left: 2.5px solid #f87171;
+    background: rgba(248, 113, 113, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f87171;
+    position: relative;
+  }
+  .vsm-ladder-step-proc {
+    width: 190px;
+    flex-shrink: 0;
+    height: 30px;
+    border-bottom: 2.5px solid #34d399;
+    border-right: 2.5px solid #34d399;
+    border-left: 2.5px solid #34d399;
+    background: rgba(52, 211, 153, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #34d399;
+    position: relative;
+  }
+  .vsm-ladder-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* Kaizen Burst Table */
+  .vsm-kaizen-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .vsm-kaizen-table th, .vsm-kaizen-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--panel-border);
+    font-size: 12.5px;
+    text-align: left;
+  }
+  .vsm-kaizen-table th {
+    background: var(--bg);
+    color: var(--amber);
+    font-weight: 700;
+  }
+
+  /* Modal Form */
+  .vsm-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 3000;
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+  }
+  .vsm-modal-overlay.open { display: flex; }
+  .vsm-modal-card {
+    background: var(--panel);
+    border: 1.5px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 24px;
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .vsm-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
 </style>
 </head>
 <body data-theme="dark" lang-mode="zh">
@@ -8142,6 +8715,275 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
         </div>
       </section>
 
+      
+      <!-- ==========================================
+           17. VALUE STREAM MAPPING (VSM) BUILDER
+           ========================================== -->
+      <section class="section" data-section="vsm" id="sec-vsm">
+        <div class="vsm-wrap">
+          
+          <!-- Banner -->
+          <div class="vsm-banner">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 22px;">🧭</span>
+              <h2 style="margin: 0; font-size: 18px; color: var(--amber);">
+                <span class="zh">價值流程圖 (Value Stream Mapping, VSM) 視覺化互動產生器</span>
+                <span class="en">Value Stream Mapping (VSM) Interactive Builder</span>
+              </h2>
+            </div>
+            <p style="margin: 0; font-size: 13px; line-height: 1.6; color: var(--ink);">
+              <span class="zh"><b>看見浪費（Muda）與流動（Flow）的精實之眼</b>：VSM 橫跨資訊流、物料流與時間階梯線，貫穿供應商到顧客的端到端週期。透過分析 <b>Takt Time（節拍時間）</b>、<b>PLT（製造前置時間）</b>、<b>VA（增值時間）</b> 與 <b>PCE（流程週期效率）</b>，精準識別製程瓶頸並打造拉式（Pull）未來狀態圖。</span>
+              <span class="en">VSM is the core Lean tool to visualize end-to-end material and information flow. Analyze Takt Time, PLT, VA time, and Process Cycle Efficiency (PCE) to eradicate bottlenecks and design a pull-based future state.</span>
+            </p>
+          </div>
+
+          <!-- Toolbar: Presets, State Toggle & Actions -->
+          <div class="vsm-toolbar">
+            <div class="vsm-presets-group">
+              <span style="font-size: 12px; font-weight: 700; color: var(--muted);"><span class="zh">實戰範本：</span><span class="en">Presets:</span></span>
+              <button type="button" class="vsm-btn active" id="btnVsmPreset_semi" onclick="vsmLoadPreset('semi')">🏭 <span class="zh">半導體晶圓與封測</span><span class="en">Semiconductor Fab/OSAT</span></button>
+              <button type="button" class="vsm-btn" id="btnVsmPreset_smt" onclick="vsmLoadPreset('smt')">⚙️ <span class="zh">電子 SMT 製造</span><span class="en">Electronics SMT</span></button>
+              <button type="button" class="vsm-btn" id="btnVsmPreset_devops" onclick="vsmLoadPreset('devops')">💻 <span class="zh">DevOps 軟體價值流</span><span class="en">DevOps / Software</span></button>
+              <button type="button" class="vsm-btn" id="btnVsmPreset_o2c" onclick="vsmLoadPreset('o2c')">📋 <span class="zh">訂單至收款 (O2C)</span><span class="en">Order-to-Cash</span></button>
+              <button type="button" class="vsm-btn" id="btnVsmPreset_blank" onclick="vsmLoadPreset('blank')">➕ <span class="zh">自訂空白</span><span class="en">Blank Map</span></button>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <!-- Current vs. Future State Toggle -->
+              <div style="display: flex; background: var(--bg); border: 1px solid var(--panel-border); border-radius: 8px; padding: 2px;">
+                <button type="button" class="vsm-btn active" id="btnVsmState_curr" style="border:none; padding:5px 10px;" onclick="vsmSetState('current')">📍 <span class="zh">現狀圖 (Current)</span><span class="en">Current State</span></button>
+                <button type="button" class="vsm-btn" id="btnVsmState_fut" style="border:none; padding:5px 10px;" onclick="vsmSetState('future')">🚀 <span class="zh">未來圖 (Future)</span><span class="en">Future State</span></button>
+              </div>
+              <button type="button" class="vsm-btn primary" onclick="vsmOpenAddProcessModal()">➕ <span class="zh">新增工序</span><span class="en">Add Process</span></button>
+              <button type="button" class="vsm-btn" onclick="vsmExportMarkdown()">📄 <span class="zh">匯出報告</span><span class="en">Export MD</span></button>
+            </div>
+          </div>
+
+          <!-- Global Parameters Bar -->
+          <div class="vsm-params-card">
+            <div class="vsm-param-item">
+              <label><span class="zh">客戶每日需求量 (Daily Demand)</span><span class="en">Daily Demand</span></label>
+              <input type="number" class="vsm-param-input" id="vsmInput_demand" value="1200" min="1" oninput="vsmOnParamsChange()">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">每日可用工時 (Available Time)</span><span class="en">Available Time</span></label>
+              <div style="display: flex; gap: 6px;">
+                <input type="number" class="vsm-param-input" id="vsmInput_hours" value="24" step="0.5" min="1" oninput="vsmOnParamsChange()" style="flex:1;">
+                <span style="align-self:center; font-size:12px; color:var(--muted);"><span class="zh">小時</span><span class="en">hrs</span></span>
+              </div>
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">每日班次 (Daily Shifts)</span><span class="en">Shifts</span></label>
+              <input type="number" class="vsm-param-input" id="vsmInput_shifts" value="3" min="1" max="4" oninput="vsmOnParamsChange()">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">計算節拍時間 (Takt Time)</span><span class="en">Takt Time</span></label>
+              <div id="vsmBadge_taktTime" style="font-size: 15px; font-weight: 800; color: #60a5fa; font-family: monospace; padding: 6px 0;">
+                72.0 秒 / 件 (sec/pc)
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI Metrics Dashboard -->
+          <div class="vsm-kpi-grid">
+            <div class="vsm-kpi-card takt">
+              <div class="vsm-kpi-title">
+                <span>⏱️ <span class="zh">節拍時間 (Takt Time)</span><span class="en">Takt Time</span></span>
+                <span class="chip" style="font-size:10px;">基準節奏</span>
+              </div>
+              <div class="vsm-kpi-value" id="vsmKpi_takt">72.0s</div>
+              <div class="vsm-kpi-desc"><span class="zh">生產每件產品被允許的最大節奏時長</span><span class="en">Pace required by customer demand</span></div>
+            </div>
+
+            <div class="vsm-kpi-card plt">
+              <div class="vsm-kpi-title">
+                <span>⏳ <span class="zh">製造前置時間 (PLT)</span><span class="en">Production Lead Time</span></span>
+                <span class="chip" style="font-size:10px; color:#f87171;">庫存天數</span>
+              </div>
+              <div class="vsm-kpi-value" id="vsmKpi_plt" style="color:#f87171;">21.0 天</div>
+              <div class="vsm-kpi-desc"><span class="zh">原料投入至成品出貨的總在製品等候時間</span><span class="en">Total time from raw material to shipping</span></div>
+            </div>
+
+            <div class="vsm-kpi-card va">
+              <div class="vsm-kpi-title">
+                <span>⚡ <span class="zh">總增值時間 (Total VA)</span><span class="en">Total VA Time</span></span>
+                <span class="chip" style="font-size:10px; color:#34d399;">純加工</span>
+              </div>
+              <div class="vsm-kpi-value" id="vsmKpi_va" style="color:#34d399;">360.0s</div>
+              <div class="vsm-kpi-desc"><span class="zh">各站點實際改變產品形態之作業時長總和</span><span class="en">Sum of actual processing cycle times</span></div>
+            </div>
+
+            <div class="vsm-kpi-card pce">
+              <div class="vsm-kpi-title">
+                <span>🚀 <span class="zh">流程週期效率 (PCE)</span><span class="en">Process Cycle Efficiency</span></span>
+                <span class="chip" id="vsmPceRatingChip" style="font-size:10px;">健康評估</span>
+              </div>
+              <div class="vsm-kpi-value" id="vsmKpi_pce" style="color:var(--amber);">0.02%</div>
+              <div class="vsm-kpi-desc" id="vsmKpi_pceDesc"><span class="zh">VA / PLT 比例（傳統製造業常態 < 5%）</span><span class="en">Ratio of VA time over PLT</span></div>
+            </div>
+
+            <div class="vsm-kpi-card bottleneck">
+              <div class="vsm-kpi-title">
+                <span>🔴 <span class="zh">瓶頸工序 (Bottleneck)</span><span class="en">Bottleneck Station</span></span>
+                <span class="chip" style="font-size:10px; color:#ec4899;">限速站點</span>
+              </div>
+              <div class="vsm-kpi-value" id="vsmKpi_bottleneck" style="font-size:16px; color:#ec4899;">WAT 測試</div>
+              <div class="vsm-kpi-desc" id="vsmKpi_bottleneckDesc"><span class="zh">C/T 85.0s > 節拍 72.0s（產能不足）</span><span class="en">Cycle time exceeds Takt pace</span></div>
+            </div>
+          </div>
+
+          <!-- Future State Benefit Comparison Banner (Visible in Future Mode) -->
+          <div class="vsm-future-benefit-banner" id="vsmFutureBenefitBanner" style="display: none;">
+            <div>
+              <h4 style="margin: 0 0 4px; font-size: 15px; color: #34d399; display: flex; align-items: center; gap: 6px;">
+                <span>✨ 未來精實改善狀態效益預測 (Future State Kaizen Impact)</span>
+              </h4>
+              <p style="margin: 0; font-size: 12.5px; color: var(--ink); line-height: 1.5;" id="vsmFutureBenefitText">
+                透過導入拉式超市看板（Supermarket Pull）、SMED 快速換線與測試站點並行化，前置交期（PLT）壓縮 <b>81.0%</b>，WIP 庫存資金降低 <b>76.2%</b>，PCE 流程效率提升 <b>5.3 倍</b>！
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <span class="chip" style="background:rgba(52,211,153,0.2); color:#34d399; font-weight:700; font-size:12px;" id="vsmFuturePltDelta">PLT -81.0%</span>
+              <span class="chip" style="background:rgba(245,166,35,0.2); color:var(--amber); font-weight:700; font-size:12px;" id="vsmFuturePceDelta">PCE +430%</span>
+            </div>
+          </div>
+
+          <!-- Interactive VSM Visual Map Canvas -->
+          <div class="vsm-canvas-container" id="vsmCanvasContainer">
+            <!-- 1. Top Information Flow -->
+            <div class="vsm-info-section" id="vsmInfoSection">
+              <div class="vsm-info-box">
+                <h4><span class="zh">🏭 原物料供應商</span><span class="en">Supplier</span></h4>
+                <p id="vsmSupplierScheduleInfo"><span class="zh">每週 ERP 預測 / 週出貨</span><span class="en">Weekly Forecast (ERP)</span></p>
+              </div>
+
+              <div class="vsm-info-arrow-track">
+                <span>⟵ <span class="zh">MRP 採購預測與叫料</span><span class="en">MRP Forecast</span> ⟵</span>
+                <div class="vsm-lightning-line"></div>
+                <span>⚡ <span class="zh">電子資料傳輸 (EDI / API)</span><span class="en">Electronic Data (EDI)</span></span>
+              </div>
+
+              <div class="vsm-info-box" style="border-color:var(--amber); background:rgba(245,166,35,0.08);">
+                <h4 style="color:var(--amber);">📊 <span class="zh">生產管制中心 (PPC / ERP)</span><span class="en">Production Control (ERP)</span></h4>
+                <p><span class="zh">每日派工廣播 / 看板排程</span><span class="en">Daily Dispatch / Kanban</span></p>
+              </div>
+
+              <div class="vsm-info-arrow-track">
+                <span>⟵ <span class="zh">30-60-90 天滾動預測</span><span class="en">Rolling Forecast</span> ⟵</span>
+                <div class="vsm-lightning-line"></div>
+                <span>⟵ <span class="zh">每日實際訂單傳送</span><span class="en">Daily Orders</span> ⟵</span>
+              </div>
+
+              <div class="vsm-info-box">
+                <h4><span class="zh">🏢 最終客戶</span><span class="en">Customer</span></h4>
+                <p id="vsmCustomerDemandInfo"><span class="zh">需求: 1,200 件/日</span><span class="en">Demand: 1,200 pcs/day</span></p>
+              </div>
+            </div>
+
+            <!-- 2. Middle Material Flow Stream (Generated dynamically) -->
+            <div class="vsm-stream-section" id="vsmStreamSection">
+              <!-- Dynamically populated by JS -->
+            </div>
+
+            <!-- 3. Bottom Live Lead Time Ladder (Generated dynamically) -->
+            <div class="vsm-ladder-section" id="vsmLadderSection">
+              <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700; color:var(--muted);">
+                <span>📈 <span class="zh">動態前置時間階梯線 (Lead Time Ladder)</span><span class="en">Lead Time Ladder</span></span>
+                <span style="display:flex; gap:16px;">
+                  <span style="color:#f87171;">■ <span class="zh">凸起台階：非增值等候時間 (WIP Waiting Time)</span><span class="en">Waiting Time</span></span>
+                  <span style="color:#34d399;">■ <span class="zh">凹下階梯：增值作業時間 (Processing Time C/T)</span><span class="en">VA Time</span></span>
+                </span>
+              </div>
+              <div class="vsm-ladder-track" id="vsmLadderTrack">
+                <!-- Dynamically populated by JS -->
+              </div>
+              <div class="vsm-ladder-summary" id="vsmLadderSummary">
+                <span style="color:#f87171;"><span class="zh">總前置製造時間 (PLT)</span><span class="en">Production Lead Time (PLT)</span>: <b id="vsmLadderPltVal">21.0 Days</b></span>
+                <span style="color:#34d399;"><span class="zh">總增值作業時間 (VA Time)</span><span class="en">Value-Added Time</span>: <b id="vsmLadderVaVal">360.0 Seconds</b></span>
+                <span style="color:var(--amber);"><span class="zh">流程效率 (PCE)</span><span class="en">PCE</span>: <b id="vsmLadderPceVal">0.02%</b></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kaizen Bursts / Action Plan Table -->
+          <div class="vsm-banner" style="background:var(--panel); border-left:4px solid var(--sage);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h3 style="margin: 0; font-size: 15px; color: var(--sage); display: flex; align-items: center; gap: 6px;">
+                <span>⚡ 識別之精實改善機會與對策清單 (Kaizen Opportunities & Action Plan)</span>
+              </h3>
+              <span class="chip" style="font-size: 11px;"><span class="zh">對應精實工具</span><span class="en">Lean Tools</span></span>
+            </div>
+            <div style="overflow-x: auto;">
+              <table class="vsm-kaizen-table">
+                <thead>
+                  <tr>
+                    <th><span class="zh">站點工序</span><span class="en">Process</span></th>
+                    <th><span class="zh">現狀浪費痛點 (Muda / Root Cause)</span><span class="en">Root Cause / Waste</span></th>
+                    <th><span class="zh">推薦精實改善手法 (Kaizen Strategy)</span><span class="en">Kaizen Strategy</span></th>
+                    <th><span class="zh">預期成效 (Expected Outcome)</span><span class="en">Expected Outcome</span></th>
+                  </tr>
+                </thead>
+                <tbody id="vsmKaizenTableBody">
+                  <!-- Dynamically populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- VSM Process Edit / Add Modal -->
+      <div class="vsm-modal-overlay" id="vsmModalOverlay">
+        <div class="vsm-modal-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 16px; color: var(--amber);" id="vsmModalTitle">
+              <span class="zh">編輯工序站點</span><span class="en">Edit Process</span>
+            </h3>
+            <button type="button" class="search-close" onclick="vsmCloseModal()">✕</button>
+          </div>
+          <div class="vsm-modal-grid">
+            <div class="vsm-param-item" style="grid-column: 1 / -1;">
+              <label><span class="zh">工序名稱 (Process Name)</span><span class="en">Process Name</span></label>
+              <input type="text" class="vsm-param-input" id="vsmModal_name" placeholder="例如: WAT 晶圓允收測試">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">週期時間 C/T (秒)</span><span class="en">Cycle Time (s)</span></label>
+              <input type="number" class="vsm-param-input" id="vsmModal_ct" value="60" min="1">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">換模/換線時間 C/O (分)</span><span class="en">Changeover (min)</span></label>
+              <input type="number" class="vsm-param-input" id="vsmModal_co" value="30" min="0">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">稼動率 Uptime (%)</span><span class="en">Uptime (%)</span></label>
+              <input type="number" class="vsm-param-input" id="vsmModal_uptime" value="95" min="1" max="100">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">良率 FPY (%)</span><span class="en">FPY (%)</span></label>
+              <input type="number" class="vsm-param-input" id="vsmModal_fpy" value="99" min="1" max="100">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">作業人數 (Operators)</span><span class="en">Operators</span></label>
+              <input type="number" class="vsm-param-input" id="vsmModal_ops" value="2" min="1">
+            </div>
+            <div class="vsm-param-item">
+              <label><span class="zh">批量大小 (Batch Size)</span><span class="en">Batch Size</span></label>
+              <input type="number" class="vsm-param-input" id="vsmModal_batch" value="25" min="1">
+            </div>
+            <div class="vsm-param-item" style="grid-column: 1 / -1;">
+              <label><span class="zh">改善爆發點 ⚡ (Kaizen Burst 標籤，逗號分隔)</span><span class="en">Kaizen Bursts (comma separated)</span></label>
+              <input type="text" class="vsm-param-input" id="vsmModal_kaizen" placeholder="例如: SMED 快速換模, 建立 FIFO 緩衝區">
+            </div>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px;">
+            <button type="button" class="vsm-btn" onclick="vsmCloseModal()"><span class="zh">取消</span><span class="en">Cancel</span></button>
+            <button type="button" class="vsm-btn primary" onclick="vsmSaveProcessModal()"><span class="zh">儲存工序</span><span class="en">Save Process</span></button>
+          </div>
+        </div>
+      </div>
+
+
       <section class="section" data-section="aitech">
         <h2>
           <span class="zh">科技與半導體/AI 發展史羅盤</span>
@@ -9381,6 +10223,7 @@ const SECTIONS = [
   {id:'fallacies', zh:'常見分析與認知謬誤', en:'Common Analytical & Cognitive Fallacies'},
   {id:'finance', zh:'財務分析與精實機會', en:'Financial Analysis & Lean Opportunities'},
   {id:'brainstorm', zh:'團隊腦力激盪與視覺化工具', en:'Team Brainstorming & Visual Tools'},
+  {id:'vsm', zh:'價值流程圖 VSM 互動產生器', en:'Value Stream Mapping (VSM) Builder'},
   {id:'aitech', zh:'科技與半導體/AI 發展史羅盤', en:'Tech, Semiconductor & AI History Compass'},
   {id:'books', zh:'相關推薦書籍', en:'Recommended Books'},
   {id:'glossary', zh:'詞彙釋義', en:'Glossary'},
@@ -11201,6 +12044,9 @@ function render(){
   }
   if (state.section === 'finance' && typeof calculateFinance === 'function') {
     calculateFinance();
+  }
+  if (state.section === 'vsm' && typeof initVsm === 'function') {
+    initVsm();
   }
   if (state.section === 'aitech' && typeof initAitechCompass === 'function') {
     initAitechCompass();
@@ -18373,6 +19219,625 @@ function generateSayNoScript() {
     scriptEl.innerHTML = `<div class="zh">${entry.zh}</div><div class="en">${entry.en}</div>`;
   }
   if (tipEl) tipEl.textContent = entry.tip;
+}
+
+
+/* ==========================================================================
+   17. VALUE STREAM MAPPING (VSM) CORE ENGINE
+   ========================================================================== */
+
+const VSM_PRESETS = {
+  semi: {
+    id: 'semi',
+    name: '半導體先進晶圓與 CoWoS 封測流',
+    demand: 1200,
+    hours: 24,
+    shifts: 3,
+    supplierInfo: '每週晶圓毛胚投片 / 批次運輸',
+    customerInfo: '客製晶片需求: 1,200 片/日',
+    current: {
+      processes: [
+        { id: 'p1', name: '晶圓薄膜沈積 (Thin Film)', ct: 65, co: 180, uptime: 94, fpy: 99.2, ops: 2, batch: 25, wip: 3600, kaizen: '' },
+        { id: 'p2', name: '乾蝕刻與微影 (Etch & Photo)', ct: 70, co: 120, uptime: 91, fpy: 98.8, ops: 3, batch: 25, wip: 6000, kaizen: '微影光罩防呆 Poka-Yoke' },
+        { id: 'p3', name: '晶圓允收測試 (WAT/CP Test)', ct: 85, co: 45, uptime: 88, fpy: 97.5, ops: 2, batch: 25, wip: 8400, kaizen: 'SMED 探針卡快換 & 並行測試' },
+        { id: 'p4', name: 'CoWoS 3D 晶片堆疊封裝', ct: 68, co: 90, uptime: 95, fpy: 98.0, ops: 4, batch: 10, wip: 7200, kaizen: '建立 FIFO 控溫緩衝區' },
+        { id: 'p5', name: '系統級最終測試 (ATE SLT)', ct: 72, co: 30, uptime: 96, fpy: 99.5, ops: 2, batch: 10, wip: 0, kaizen: '' }
+      ]
+    },
+    future: {
+      processes: [
+        { id: 'p1', name: '晶圓薄膜沈積 (Thin Film)', ct: 65, co: 30, uptime: 96, fpy: 99.5, ops: 2, batch: 5, wip: 800, kaizen: '小批量 Continuous Flow' },
+        { id: 'p2', name: '乾蝕刻與微影 (Etch & Photo)', ct: 68, co: 25, uptime: 95, fpy: 99.2, ops: 2, batch: 5, wip: 1000, kaizen: '光罩在線監控' },
+        { id: 'p3', name: '晶圓允收測試 (WAT/CP Test)', ct: 62, co: 10, uptime: 95, fpy: 99.0, ops: 2, batch: 5, wip: 1200, kaizen: '多通道並行測試升級' },
+        { id: 'p4', name: 'CoWoS 3D 晶片堆疊封裝', ct: 65, co: 15, uptime: 97, fpy: 99.0, ops: 3, batch: 5, wip: 1000, kaizen: '拉式超市 Supermarket' },
+        { id: 'p5', name: '系統級最終測試 (ATE SLT)', ct: 68, co: 10, uptime: 98, fpy: 99.8, ops: 2, batch: 5, wip: 0, kaizen: '看板拉動出貨' }
+      ]
+    }
+  },
+  smt: {
+    id: 'smt',
+    name: '電子 SMT 與離散模組組裝',
+    demand: 2400,
+    hours: 16,
+    shifts: 2,
+    supplierInfo: '電子元器件每日交貨',
+    customerInfo: '終端客戶需求: 2,400 台/日',
+    current: {
+      processes: [
+        { id: 'p1', name: 'SMT 表面貼焊 (SMT Line)', ct: 20, co: 45, uptime: 90, fpy: 98.5, ops: 1, batch: 500, wip: 4800, kaizen: 'SMED 換線快換料架' },
+        { id: 'p2', name: 'AOI 自動光學檢測', ct: 18, co: 10, uptime: 95, fpy: 99.0, ops: 1, batch: 100, wip: 2400, kaizen: '' },
+        { id: 'p3', name: 'DIP 手工插件與波峰焊', ct: 28, co: 20, uptime: 88, fpy: 96.0, ops: 6, batch: 200, wip: 7200, kaizen: '治具標準化防呆 Poka-Yoke' },
+        { id: 'p4', name: '外殼組裝與整機鎖附', ct: 22, co: 15, uptime: 92, fpy: 98.0, ops: 4, batch: 50, wip: 3600, kaizen: 'U型單件流 (One-Piece Flow)' },
+        { id: 'p5', name: '終檢測試與裝箱 (Packing)', ct: 21, co: 5, uptime: 98, fpy: 99.5, ops: 2, batch: 50, wip: 0, kaizen: '' }
+      ]
+    },
+    future: {
+      processes: [
+        { id: 'p1', name: 'SMT 表面貼焊 (SMT Line)', ct: 20, co: 8, uptime: 95, fpy: 99.2, ops: 1, batch: 50, wip: 600, kaizen: '在線自動換料' },
+        { id: 'p2', name: 'AOI 自動光學檢測', ct: 18, co: 2, uptime: 98, fpy: 99.5, ops: 1, batch: 10, wip: 300, kaizen: '連線直通' },
+        { id: 'p3', name: 'DIP 手工插件與波峰焊', ct: 21, co: 5, uptime: 95, fpy: 98.8, ops: 4, batch: 10, wip: 800, kaizen: '工序平衡 (Line Balancing)' },
+        { id: 'p4', name: '外殼組裝與整機鎖附', ct: 20, co: 2, uptime: 96, fpy: 99.0, ops: 3, batch: 10, wip: 500, kaizen: '單件流連線' },
+        { id: 'p5', name: '終檢測試與裝箱 (Packing)', ct: 20, co: 2, uptime: 98, fpy: 99.8, ops: 2, batch: 10, wip: 0, kaizen: '直通出貨' }
+      ]
+    }
+  },
+  devops: {
+    id: 'devops',
+    name: 'DevOps 軟體工程交付價值流',
+    demand: 8,
+    hours: 8,
+    shifts: 1,
+    supplierInfo: '產品經理 PRD 需求池',
+    customerInfo: '發布需求: 8 個 Feature/日',
+    current: {
+      processes: [
+        { id: 'p1', name: '架構設計與規格拆解', ct: 2400, co: 0, uptime: 90, fpy: 95.0, ops: 1, batch: 1, wip: 16, kaizen: '用戶故事輕量化' },
+        { id: 'p2', name: '功能編碼與單元測試', ct: 3200, co: 0, uptime: 85, fpy: 90.0, ops: 2, batch: 1, wip: 24, kaizen: 'TDD 測試驅動開發' },
+        { id: 'p3', name: 'PR 同儕程式碼審查 (Review)', ct: 1800, co: 0, uptime: 80, fpy: 85.0, ops: 1, batch: 1, wip: 32, kaizen: '限制 WIP 審查佇列 & 自動 Linter' },
+        { id: 'p4', name: 'CI/CD 自動整合與端到端測試', ct: 1200, co: 0, uptime: 92, fpy: 92.0, ops: 1, batch: 1, wip: 12, kaizen: '測試並行加速容器化' },
+        { id: 'p5', name: '灰度金絲雀部署與監控', ct: 600, co: 0, uptime: 98, fpy: 99.0, ops: 1, batch: 1, wip: 0, kaizen: '' }
+      ]
+    },
+    future: {
+      processes: [
+        { id: 'p1', name: '架構設計與規格拆解', ct: 2000, co: 0, uptime: 95, fpy: 98.0, ops: 1, batch: 1, wip: 4, kaizen: '精實規格規範' },
+        { id: 'p2', name: '功能編碼與單元測試', ct: 2800, co: 0, uptime: 92, fpy: 96.0, ops: 2, batch: 1, wip: 6, kaizen: 'AI 輔助代碼生成' },
+        { id: 'p3', name: 'PR 同儕程式碼審查 (Review)', ct: 1200, co: 0, uptime: 95, fpy: 95.0, ops: 1, batch: 1, wip: 4, kaizen: '24小時內 SLA 快速 Review' },
+        { id: 'p4', name: 'CI/CD 自動整合與端到端測試', ct: 600, co: 0, uptime: 98, fpy: 98.0, ops: 1, batch: 1, wip: 2, kaizen: '分佈式測試快取' },
+        { id: 'p5', name: '灰度金絲雀部署與監控', ct: 300, co: 0, uptime: 99, fpy: 99.8, ops: 1, batch: 1, wip: 0, kaizen: '全自動化發布' }
+      ]
+    }
+  },
+  o2c: {
+    id: 'o2c',
+    name: '訂單至收款 (Order-to-Cash) 跨部門流',
+    demand: 40,
+    hours: 8,
+    shifts: 1,
+    supplierInfo: '客戶詢價單與意向書',
+    customerInfo: '每日訂單: 40 筆/日',
+    current: {
+      processes: [
+        { id: 'p1', name: '業務詢價與報價單製作', ct: 450, co: 0, uptime: 90, fpy: 92.0, ops: 2, batch: 10, wip: 80, kaizen: '標準化報價引擎' },
+        { id: 'p2', name: '財務信用審查與折扣核決', ct: 600, co: 0, uptime: 85, fpy: 88.0, ops: 1, batch: 10, wip: 140, kaizen: '消除多層簽核 / 授權自動放行' },
+        { id: 'p3', name: '供應鏈交期確認與排程', ct: 540, co: 0, uptime: 90, fpy: 94.0, ops: 2, batch: 10, wip: 100, kaizen: 'ERP 即時庫存連動' },
+        { id: 'p4', name: '系統開立銷貨單與撿貨', ct: 400, co: 0, uptime: 95, fpy: 98.0, ops: 3, batch: 10, wip: 60, kaizen: '條碼化自動標籤' },
+        { id: 'p5', name: '出貨裝運與發票開立', ct: 350, co: 0, uptime: 98, fpy: 99.0, ops: 2, batch: 10, wip: 0, kaizen: '' }
+      ]
+    },
+    future: {
+      processes: [
+        { id: 'p1', name: '業務詢價與報價單製作', ct: 300, co: 0, uptime: 96, fpy: 98.0, ops: 1, batch: 1, wip: 10, kaizen: '客戶入口自助手冊' },
+        { id: 'p2', name: '財務信用審查與折扣核決', ct: 200, co: 0, uptime: 98, fpy: 98.0, ops: 1, batch: 1, wip: 15, kaizen: '信用額度自動匹配' },
+        { id: 'p3', name: '供應鏈交期確認與排程', ct: 300, co: 0, uptime: 96, fpy: 98.0, ops: 1, batch: 1, wip: 10, kaizen: '自動 ATP 承諾' },
+        { id: 'p4', name: '系統開立銷貨單與撿貨', ct: 250, co: 0, uptime: 98, fpy: 99.5, ops: 2, batch: 1, wip: 10, kaizen: 'WMS 智能波次撿貨' },
+        { id: 'p5', name: '出貨裝運與發票開立', ct: 200, co: 0, uptime: 99, fpy: 99.8, ops: 1, batch: 1, wip: 0, kaizen: '電子發票直發' }
+      ]
+    }
+  },
+  blank: {
+    id: 'blank',
+    name: '自訂空白地圖',
+    demand: 1000,
+    hours: 8,
+    shifts: 1,
+    supplierInfo: '原料供應商',
+    customerInfo: '目標需求: 1,000 件/日',
+    current: {
+      processes: [
+        { id: 'p1', name: '工序一 (Process 1)', ct: 20, co: 10, uptime: 95, fpy: 99.0, ops: 1, batch: 10, wip: 1000, kaizen: '' },
+        { id: 'p2', name: '工序二 (Process 2)', ct: 25, co: 15, uptime: 90, fpy: 98.0, ops: 1, batch: 10, wip: 1500, kaizen: '精實改善點' },
+        { id: 'p3', name: '工序三 (Process 3)', ct: 22, co: 5, uptime: 98, fpy: 99.5, ops: 1, batch: 10, wip: 0, kaizen: '' }
+      ]
+    },
+    future: {
+      processes: [
+        { id: 'p1', name: '工序一 (Process 1)', ct: 20, co: 2, uptime: 98, fpy: 99.5, ops: 1, batch: 1, wip: 200, kaizen: '單件流' },
+        { id: 'p2', name: '工序二 (Process 2)', ct: 20, co: 2, uptime: 98, fpy: 99.0, ops: 1, batch: 1, wip: 200, kaizen: '線平衡' },
+        { id: 'p3', name: '工序三 (Process 3)', ct: 20, co: 2, uptime: 99, fpy: 99.8, ops: 1, batch: 1, wip: 0, kaizen: '看板拉動' }
+      ]
+    }
+  }
+};
+
+let vsmActivePresetKey = 'semi';
+let vsmCurrentStateMode = 'current'; // 'current' | 'future'
+let vsmStateData = JSON.parse(JSON.stringify(VSM_PRESETS.semi));
+let vsmEditingProcessIndex = -1;
+
+function initVsm() {
+  vsmLoadPreset('semi');
+}
+
+function vsmLoadPreset(key) {
+  vsmActivePresetKey = key;
+  const p = VSM_PRESETS[key] || VSM_PRESETS.semi;
+  vsmStateData = JSON.parse(JSON.stringify(p));
+
+  // Update preset buttons
+  document.querySelectorAll('[id^="btnVsmPreset_"]').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const activeBtn = document.getElementById('btnVsmPreset_' + key);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Update parameters form
+  const inputDemand = document.getElementById('vsmInput_demand');
+  const inputHours = document.getElementById('vsmInput_hours');
+  const inputShifts = document.getElementById('vsmInput_shifts');
+  if (inputDemand) inputDemand.value = vsmStateData.demand;
+  if (inputHours) inputHours.value = vsmStateData.hours;
+  if (inputShifts) inputShifts.value = vsmStateData.shifts;
+
+  vsmRenderAll();
+}
+
+function vsmSetState(mode) {
+  vsmCurrentStateMode = mode;
+  const btnCurr = document.getElementById('btnVsmState_curr');
+  const btnFut = document.getElementById('btnVsmState_fut');
+  if (btnCurr) btnCurr.classList.toggle('active', mode === 'current');
+  if (btnFut) btnFut.classList.toggle('active', mode === 'future');
+
+  const benefitBanner = document.getElementById('vsmFutureBenefitBanner');
+  if (benefitBanner) benefitBanner.style.display = (mode === 'future') ? 'flex' : 'none';
+
+  vsmRenderAll();
+}
+
+function vsmOnParamsChange() {
+  const demand = parseFloat(document.getElementById('vsmInput_demand')?.value) || 1000;
+  const hours = parseFloat(document.getElementById('vsmInput_hours')?.value) || 8;
+  const shifts = parseInt(document.getElementById('vsmInput_shifts')?.value) || 1;
+
+  vsmStateData.demand = demand;
+  vsmStateData.hours = hours;
+  vsmStateData.shifts = shifts;
+
+  vsmRenderAll();
+}
+
+function vsmCalculateMetrics(processes, demand, hours) {
+  const totalAvailableSec = Math.max(1, hours * 3600);
+  const taktTime = totalAvailableSec / Math.max(1, demand);
+
+  let totalVaSec = 0;
+  let totalWipPcs = 0;
+  let bottleneckProc = null;
+  let maxCt = 0;
+
+  processes.forEach(p => {
+    totalVaSec += (p.ct || 0);
+    totalWipPcs += (p.wip || 0);
+    if ((p.ct || 0) > maxCt) {
+      maxCt = p.ct || 0;
+      bottleneckProc = p;
+    }
+  });
+
+  // WIP Waiting Time (in Days) = WIP Pcs / Daily Demand
+  const pltDays = totalWipPcs / Math.max(1, demand);
+  const pltSec = (pltDays * totalAvailableSec) + totalVaSec;
+
+  // Process Cycle Efficiency (PCE) = Total VA Time / Total Lead Time in seconds
+  const pcePct = pltSec > 0 ? ((totalVaSec / pltSec) * 100) : 0;
+
+  return {
+    taktTime,
+    totalVaSec,
+    totalWipPcs,
+    pltDays,
+    pltSec,
+    pcePct,
+    bottleneckProc,
+    maxCt
+  };
+}
+
+function vsmRenderAll() {
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  const m = vsmCalculateMetrics(activeProcesses, vsmStateData.demand, vsmStateData.hours);
+
+  // 1. Update Parameter & KPI Badges
+  const taktBadge = document.getElementById('vsmBadge_taktTime');
+  if (taktBadge) taktBadge.textContent = m.taktTime.toFixed(1) + ' 秒 / 件 (sec/pc)';
+
+  const kpiTakt = document.getElementById('vsmKpi_takt');
+  if (kpiTakt) kpiTakt.textContent = m.taktTime.toFixed(1) + 's';
+
+  const kpiPlt = document.getElementById('vsmKpi_plt');
+  if (kpiPlt) kpiPlt.textContent = m.pltDays.toFixed(1) + ' 天 (Days)';
+
+  const kpiVa = document.getElementById('vsmKpi_va');
+  if (kpiVa) kpiVa.textContent = m.totalVaSec.toFixed(1) + 's';
+
+  const kpiPce = document.getElementById('vsmKpi_pce');
+  if (kpiPce) kpiPce.textContent = (m.pcePct < 0.01 ? m.pcePct.toFixed(3) : m.pcePct.toFixed(2)) + '%';
+
+  const pceChip = document.getElementById('vsmPceRatingChip');
+  const pceDesc = document.getElementById('vsmKpi_pceDesc');
+  if (pceChip) {
+    if (m.pcePct > 10) {
+      pceChip.textContent = '🌟 世界級標竿 (>10%)';
+      pceChip.style.background = 'rgba(52, 211, 153, 0.2)';
+      pceChip.style.color = '#34d399';
+    } else if (m.pcePct > 2) {
+      pceChip.textContent = '⚡ 良好改善 (2~10%)';
+      pceChip.style.background = 'rgba(245, 166, 35, 0.2)';
+      pceChip.style.color = 'var(--amber)';
+    } else {
+      pceChip.textContent = '⚠️ 浪費巨大 (<2%)';
+      pceChip.style.background = 'rgba(248, 113, 113, 0.2)';
+      pceChip.style.color = '#f87171';
+    }
+  }
+
+  const kpiBn = document.getElementById('vsmKpi_bottleneck');
+  const kpiBnDesc = document.getElementById('vsmKpi_bottleneckDesc');
+  if (kpiBn && m.bottleneckProc) {
+    kpiBn.textContent = m.bottleneckProc.name;
+    const isOverTakt = m.maxCt > m.taktTime;
+    if (kpiBnDesc) {
+      kpiBnDesc.innerHTML = isOverTakt
+        ? '<span style="color:#f43f5e;font-weight:700;">C/T ' + m.maxCt + 's > 節拍 ' + m.taktTime.toFixed(1) + 's (產能不足!)</span>'
+        : '<span>C/T ' + m.maxCt + 's ≤ 節拍 ' + m.taktTime.toFixed(1) + 's (節奏平衡)</span>';
+    }
+  }
+
+  // 2. Future State Delta Comparison
+  if (vsmCurrentStateMode === 'future') {
+    const currM = vsmCalculateMetrics(vsmStateData.current.processes, vsmStateData.demand, vsmStateData.hours);
+    const pltReductionPct = currM.pltDays > 0 ? (((currM.pltDays - m.pltDays) / currM.pltDays) * 100) : 0;
+    const wipReductionPct = currM.totalWipPcs > 0 ? (((currM.totalWipPcs - m.totalWipPcs) / currM.totalWipPcs) * 100) : 0;
+    const pceRatio = currM.pcePct > 0 ? (m.pcePct / currM.pcePct) : 1;
+
+    const pltDeltaEl = document.getElementById('vsmFuturePltDelta');
+    const pceDeltaEl = document.getElementById('vsmFuturePceDelta');
+    const benefitTxt = document.getElementById('vsmFutureBenefitText');
+
+    if (pltDeltaEl) pltDeltaEl.textContent = 'PLT -' + pltReductionPct.toFixed(1) + '%';
+    if (pceDeltaEl) pceDeltaEl.textContent = 'PCE ×' + pceRatio.toFixed(1) + ' 倍';
+    if (benefitTxt) {
+      benefitTxt.innerHTML = '透過消除非增值堆疊、導入拉式看板（Pull）與工序瓶頸改善，前置交期（PLT）由 <b>' + currM.pltDays.toFixed(1) + ' 天</b> 壓縮至 <b>' + m.pltDays.toFixed(1) + ' 天（降低 ' + pltReductionPct.toFixed(1) + '%）</b>，WIP 庫存資金釋放 <b>' + wipReductionPct.toFixed(1) + '%</b>，流程週期效率（PCE）躍升 <b>' + pceRatio.toFixed(1) + ' 倍</b>！';
+    }
+  }
+
+  // 3. Render Middle Stream (Material Flow Nodes)
+  vsmRenderMaterialStream(activeProcesses, m.taktTime);
+
+  // 4. Render Bottom Ladder (Lead Time Timeline)
+  vsmRenderLeadTimeLadder(activeProcesses, m);
+
+  // 5. Render Kaizen Bursts Table
+  vsmRenderKaizenTable(activeProcesses);
+}
+
+function vsmRenderMaterialStream(processes, taktTime) {
+  const wrap = document.getElementById('vsmStreamSection');
+  if (!wrap) return;
+
+  let html = '';
+
+  // Supplier Card
+  html += '<div class="vsm-party-card">' +
+            '<div class="icon">🏭</div>' +
+            '<div class="title"><span class="zh">原物料供應商</span><span class="en">Supplier</span></div>' +
+            '<div class="sub">' + (vsmStateData.supplierInfo || '週批量配送') + '</div>' +
+            '<div style="font-size:18px; color:var(--amber); margin-top:4px;">🚚 ➔</div>' +
+          '</div>';
+
+  // Process Nodes & WIP Triangles
+  processes.forEach((proc, idx) => {
+    const isBottleneck = proc.ct > taktTime;
+    const kaizenHtml = proc.kaizen ? '<div class="vsm-kaizen-burst-tag">⚡ ' + proc.kaizen + '</div>' : '';
+
+    // Process Card
+    html += '<div class="vsm-process-card ' + (isBottleneck ? 'is-bottleneck' : '') + '">' +
+              '<div class="vsm-process-header">' +
+                '<span class="vsm-process-name" title="' + proc.name + '">' + proc.name + '</span>' +
+                '<span class="vsm-process-ops">👥 ' + (proc.ops || 1) + '人</span>' +
+              '</div>' +
+              '<div class="vsm-process-body">' +
+                '<div class="vsm-metric-row"><span>C/T (週期)</span><span class="val" style="' + (isBottleneck ? 'color:#f43f5e;' : '') + '">' + proc.ct + 's</span></div>' +
+                '<div class="vsm-metric-row"><span>C/O (換模)</span><span class="val">' + proc.co + 'm</span></div>' +
+                '<div class="vsm-metric-row"><span>Uptime (稼動)</span><span class="val">' + proc.uptime + '%</span></div>' +
+                '<div class="vsm-metric-row"><span>FPY (良率)</span><span class="val">' + proc.fpy + '%</span></div>' +
+                '<div class="vsm-metric-row"><span>Batch (批量)</span><span class="val">' + (proc.batch || 1) + '</span></div>' +
+                kaizenHtml +
+              '</div>' +
+              '<div class="vsm-process-actions">' +
+                '<button type="button" class="vsm-mini-btn" onclick="vsmOpenEditProcessModal(' + idx + ')" title="編輯此工序">✏️ 編輯</button>' +
+                '<div>' +
+                  (idx > 0 ? '<button type="button" class="vsm-mini-btn" onclick="vsmMoveProcess(' + idx + ', -1)" title="前移">◀</button>' : '') +
+                  (idx < processes.length - 1 ? '<button type="button" class="vsm-mini-btn" onclick="vsmMoveProcess(' + idx + ', 1)" title="後移">▶</button>' : '') +
+                  '<button type="button" class="vsm-mini-btn" style="color:#f87171;" onclick="vsmDeleteProcess(' + idx + ')" title="刪除">✕</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+
+    // WIP Triangle (if not last station)
+    if (idx < processes.length - 1) {
+      const wipCount = proc.wip || 0;
+      const wipDays = (wipCount / Math.max(1, vsmStateData.demand)).toFixed(1);
+
+      html += '<div class="vsm-wip-card">' +
+                '<div class="vsm-triangle-icon"><span>I</span></div>' +
+                '<div class="vsm-wip-input-wrap">' +
+                  '<input type="number" class="vsm-wip-input" value="' + wipCount + '" min="0" step="50" onchange="vsmOnWipChange(' + idx + ', this.value)" title="在庫件數">' +
+                  '<span class="vsm-wip-days">' + wipDays + ' 天 (Days)</span>' +
+                '</div>' +
+              '</div>';
+    }
+  });
+
+  // Customer Card
+  html += '<div class="vsm-party-card" style="border-color:var(--amber);">' +
+            '<div class="icon">🏢</div>' +
+            '<div class="title" style="color:var(--amber);"><span class="zh">最終客戶</span><span class="en">Customer</span></div>' +
+            '<div class="sub">' + (vsmStateData.customerInfo || '每日需求出貨') + '</div>' +
+            '<div style="font-size:18px; color:var(--amber); margin-top:4px;">➔ 📦</div>' +
+          '</div>';
+
+  wrap.innerHTML = html;
+}
+
+function vsmRenderLeadTimeLadder(processes, m) {
+  const track = document.getElementById('vsmLadderTrack');
+  if (!track) return;
+
+  let html = '';
+
+  processes.forEach((proc, idx) => {
+    // Process step (lower trough)
+    html += '<div class="vsm-ladder-step-proc">' +
+              '<span>C/T: ' + proc.ct + 's</span>' +
+            '</div>';
+
+    // WIP step (upper plateau, if not last)
+    if (idx < processes.length - 1) {
+      const wipDays = ((proc.wip || 0) / Math.max(1, vsmStateData.demand)).toFixed(1);
+      html += '<div class="vsm-ladder-step-wip">' +
+                '<span>' + wipDays + 'd</span>' +
+              '</div>';
+    }
+  });
+
+  track.innerHTML = html;
+
+  const pltVal = document.getElementById('vsmLadderPltVal');
+  const vaVal = document.getElementById('vsmLadderVaVal');
+  const pceVal = document.getElementById('vsmLadderPceVal');
+
+  if (pltVal) pltVal.textContent = m.pltDays.toFixed(1) + ' 天 (Days)';
+  if (vaVal) vaVal.textContent = m.totalVaSec.toFixed(1) + ' 秒 (Seconds)';
+  if (pceVal) pceVal.textContent = (m.pcePct < 0.01 ? m.pcePct.toFixed(3) : m.pcePct.toFixed(2)) + '%';
+}
+
+function vsmRenderKaizenTable(processes) {
+  const tbody = document.getElementById('vsmKaizenTableBody');
+  if (!tbody) return;
+
+  let rows = '';
+  processes.forEach((p, idx) => {
+    if (p.kaizen || p.ct > 60 || p.wip > 1000) {
+      let mudaReason = '';
+      let kaizenTool = p.kaizen || '標準化作業 (SOP) & 5S';
+      let outcome = '縮短換線與等候，降低在製品庫存';
+
+      if (p.wip > 3000) {
+        mudaReason = '站點間大量推式庫存積壓（Inventory Muda）';
+        kaizenTool = '導入拉式超市看板 (Supermarket Pull) & FIFO 泳道';
+        outcome = '庫存水位下降 70%，消除資金積壓';
+      } else if (p.co > 60) {
+        mudaReason = '換線換模時間過長，造成設備稼動損失';
+        kaizenTool = 'SMED 單分鐘快速換模（內外作業分離）';
+        outcome = '換模時間由 ' + p.co + 'm 降至 10m 以內';
+      } else if (p.fpy < 98) {
+        mudaReason = '製程變異過大，重工與報廢浪費 (Defect Muda)';
+        kaizenTool = 'Poka-Yoke 防呆機制 & DOE 參數優化';
+        outcome = '提升一次良品率 FPY 至 99.5%';
+      } else {
+        mudaReason = '等待與非增值搬運浪費';
+      }
+
+      rows += '<tr>' +
+                '<td><b>' + p.name + '</b></td>' +
+                '<td style="color:var(--muted);">' + mudaReason + '</td>' +
+                '<td><span class="chip" style="background:rgba(245,166,35,0.15); color:var(--amber); font-weight:700;">⚡ ' + kaizenTool + '</span></td>' +
+                '<td style="color:var(--sage);">' + outcome + '</td>' +
+              '</tr>';
+    }
+  });
+
+  if (!rows) {
+    rows = '<tr><td colspan="4" style="text-align:center; color:var(--muted); padding:16px;">目前工序流已高度精實平衡，未偵測到重大浪費！</td></tr>';
+  }
+
+  tbody.innerHTML = rows;
+}
+
+function vsmOnWipChange(idx, val) {
+  const count = Math.max(0, parseInt(val, 10) || 0);
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  if (activeProcesses[idx]) {
+    activeProcesses[idx].wip = count;
+    vsmRenderAll();
+  }
+}
+
+function vsmMoveProcess(idx, dir) {
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  const target = idx + dir;
+  if (target < 0 || target >= activeProcesses.length) return;
+
+  const temp = activeProcesses[idx];
+  activeProcesses[idx] = activeProcesses[target];
+  activeProcesses[target] = temp;
+
+  vsmRenderAll();
+}
+
+function vsmDeleteProcess(idx) {
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  if (activeProcesses.length <= 1) {
+    alert(state.lang === 'zh' ? '至少需保留一個工序站點！' : 'Must keep at least one process station!');
+    return;
+  }
+
+  if (confirm(state.lang === 'zh' ? '確定要刪除此工序站點嗎？' : 'Are you sure you want to delete this process?')) {
+    activeProcesses.splice(idx, 1);
+    vsmRenderAll();
+  }
+}
+
+function vsmOpenAddProcessModal() {
+  vsmEditingProcessIndex = -1;
+  const modalTitle = document.getElementById('vsmModalTitle');
+  if (modalTitle) modalTitle.innerHTML = '<span class="zh">新增工序站點</span><span class="en">Add Process Station</span>';
+
+  document.getElementById('vsmModal_name').value = '';
+  document.getElementById('vsmModal_ct').value = 45;
+  document.getElementById('vsmModal_co').value = 15;
+  document.getElementById('vsmModal_uptime').value = 95;
+  document.getElementById('vsmModal_fpy').value = 99.0;
+  document.getElementById('vsmModal_ops').value = 2;
+  document.getElementById('vsmModal_batch').value = 25;
+  document.getElementById('vsmModal_kaizen').value = '';
+
+  const overlay = document.getElementById('vsmModalOverlay');
+  if (overlay) overlay.classList.add('open');
+}
+
+function vsmOpenEditProcessModal(idx) {
+  vsmEditingProcessIndex = idx;
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  const p = activeProcesses[idx];
+  if (!p) return;
+
+  const modalTitle = document.getElementById('vsmModalTitle');
+  if (modalTitle) modalTitle.innerHTML = '<span class="zh">編輯工序：' + p.name + '</span><span class="en">Edit: ' + p.name + '</span>';
+
+  document.getElementById('vsmModal_name').value = p.name || '';
+  document.getElementById('vsmModal_ct').value = p.ct || 60;
+  document.getElementById('vsmModal_co').value = p.co || 0;
+  document.getElementById('vsmModal_uptime').value = p.uptime || 95;
+  document.getElementById('vsmModal_fpy').value = p.fpy || 99.0;
+  document.getElementById('vsmModal_ops').value = p.ops || 1;
+  document.getElementById('vsmModal_batch').value = p.batch || 1;
+  document.getElementById('vsmModal_kaizen').value = p.kaizen || '';
+
+  const overlay = document.getElementById('vsmModalOverlay');
+  if (overlay) overlay.classList.add('open');
+}
+
+function vsmCloseModal() {
+  const overlay = document.getElementById('vsmModalOverlay');
+  if (overlay) overlay.classList.remove('open');
+}
+
+function vsmSaveProcessModal() {
+  const name = (document.getElementById('vsmModal_name')?.value || '').trim() || '新工序 (New Station)';
+  const ct = parseFloat(document.getElementById('vsmModal_ct')?.value) || 30;
+  const co = parseFloat(document.getElementById('vsmModal_co')?.value) || 0;
+  const uptime = parseFloat(document.getElementById('vsmModal_uptime')?.value) || 95;
+  const fpy = parseFloat(document.getElementById('vsmModal_fpy')?.value) || 99.0;
+  const ops = parseInt(document.getElementById('vsmModal_ops')?.value) || 1;
+  const batch = parseInt(document.getElementById('vsmModal_batch')?.value) || 1;
+  const kaizen = (document.getElementById('vsmModal_kaizen')?.value || '').trim();
+
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  if (vsmEditingProcessIndex >= 0 && activeProcesses[vsmEditingProcessIndex]) {
+    activeProcesses[vsmEditingProcessIndex] = {
+      ...activeProcesses[vsmEditingProcessIndex],
+      name, ct, co, uptime, fpy, ops, batch, kaizen
+    };
+  } else {
+    activeProcesses.push({
+      id: 'p_' + Date.now(),
+      name, ct, co, uptime, fpy, ops, batch, kaizen, wip: 500
+    });
+  }
+
+  vsmCloseModal();
+  vsmRenderAll();
+  if (typeof rtShowToast === 'function') {
+    rtShowToast(state.lang === 'zh' ? '工序已儲存！' : 'Process saved successfully!');
+  }
+}
+
+function vsmExportMarkdown() {
+  const activeProcesses = (vsmCurrentStateMode === 'current') 
+    ? vsmStateData.current.processes 
+    : vsmStateData.future.processes;
+
+  const m = vsmCalculateMetrics(activeProcesses, vsmStateData.demand, vsmStateData.hours);
+  const stateLabel = (vsmCurrentStateMode === 'current') ? '現狀價值流程圖 (Current State Map)' : '未來精實改善圖 (Future State Map)';
+
+  let md = '# 精實價值流程圖分析報告 (Value Stream Mapping Report)\n\n';
+  md += '- **專案範本 (Preset)**: ' + (vsmStateData.name || '自訂專案') + '\n';
+  md += '- **圖表模式 (State Mode)**: ' + stateLabel + '\n';
+  md += '- **客戶每日需求量 (Daily Demand)**: ' + vsmStateData.demand + ' pcs/day\n';
+  md += '- **每日可用工時 (Available Time)**: ' + vsmStateData.hours + ' 小時 (班次: ' + vsmStateData.shifts + ' 班)\n';
+  md += '- **節拍時間 (Takt Time)**: ' + m.taktTime.toFixed(1) + ' 秒/件 (sec/pc)\n';
+  md += '- **製造前置時間 (Production Lead Time, PLT)**: ' + m.pltDays.toFixed(1) + ' 天 (Days)\n';
+  md += '- **總增值作業時間 (Total VA Time)**: ' + m.totalVaSec.toFixed(1) + ' 秒 (Seconds)\n';
+  md += '- **流程週期效率 (Process Cycle Efficiency, PCE)**: ' + m.pcePct.toFixed(3) + '%\n';
+  md += '- **瓶頸限制工序 (Bottleneck)**: ' + (m.bottleneckProc ? m.bottleneckProc.name : '無明顯瓶頸') + ' (C/T: ' + m.maxCt + 's)\n\n';
+
+  md += '## 工序流詳細數據 (Process Stream Data)\n\n';
+  md += '| 工序站點 | 週期時間 (C/T) | 換模時間 (C/O) | 稼動率 (Uptime) | 良率 (FPY) | 作業人數 | 站後 WIP 庫存 | 等候時間 (天) | 改善爆發點 (Kaizen) |\n';
+  md += '| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n';
+
+  activeProcesses.forEach(p => {
+    const days = ((p.wip || 0) / Math.max(1, vsmStateData.demand)).toFixed(1);
+    md += '| ' + p.name + ' | ' + p.ct + 's | ' + p.co + 'm | ' + p.uptime + '% | ' + p.fpy + '% | ' + p.ops + '人 | ' + (p.wip || 0) + ' pcs | ' + days + 'd | ' + (p.kaizen || '—') + ' |\n';
+  });
+
+  md += '\n\n---\n*Generated by Masa Tu Lean Six Sigma Compass VSM Builder*';
+
+  navigator.clipboard.writeText(md).then(() => {
+    alert(state.lang === 'zh' ? '✅ VSM  Markdown 報告已成功複製至剪貼簿！' : '✅ VSM Markdown Report copied to clipboard!');
+  }).catch(err => {
+    prompt('請複製以下 Markdown 報告：', md);
+  });
 }
 
 </script>
