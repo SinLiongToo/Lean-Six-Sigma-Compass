@@ -4663,7 +4663,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
 
   /* ==========================================================================
-     MANAGEMENT QUOTES MARQUEE / TICKER TAPE
+     MANAGEMENT QUOTES MARQUEE / VERTICAL TICKER
      ========================================================================== */
   .marquee-wrapper {
     display: flex;
@@ -4707,30 +4707,35 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     height: 100%;
     display: flex;
     align-items: center;
-    mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 4px, black calc(100% - 4px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 4px, black calc(100% - 4px), transparent 100%);
   }
   .marquee-content {
     display: flex;
-    align-items: center;
-    gap: 32px;
-    white-space: nowrap;
+    flex-direction: column;
+    width: 100%;
     will-change: transform;
-    animation: marqueeScroll 55s linear infinite;
+    animation: marqueeScrollVertical 40s linear infinite;
   }
   .marquee-wrapper:hover .marquee-content,
   .marquee-wrapper.is-paused .marquee-content {
     animation-play-state: paused;
   }
   .marquee-item {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 8px;
     font-size: 12.5px;
     color: var(--ink);
     cursor: default;
     user-select: none;
-    transition: color 0.15s ease;
+    height: 38px;
+    flex-shrink: 0;
+    padding: 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
   }
   .marquee-item .author {
     font-weight: 800;
@@ -4740,12 +4745,12 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     border-radius: 6px;
     font-size: 11px;
     border: 1px solid rgba(245, 166, 35, 0.25);
+    flex-shrink: 0;
   }
-  .marquee-item .divider {
-    color: var(--line);
-    margin-left: 20px;
-    font-size: 10px;
-    opacity: 0.7;
+  .marquee-item .quote-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .marquee-controls {
     display: flex;
@@ -4778,14 +4783,14 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     color: var(--amber);
     background: rgba(245, 166, 35, 0.12);
   }
-  @keyframes marqueeScroll {
+  @keyframes marqueeScrollVertical {
     0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, -50%, 0); }
   }
   @media (max-width: 680px) {
     .marquee-wrapper { height: 34px; margin-bottom: 10px; font-size: 11.5px; }
     .marquee-badge { font-size: 10.5px; padding: 0 8px; }
-    .marquee-item { font-size: 11.5px; gap: 6px; }
+    .marquee-item { height: 34px; font-size: 11.5px; gap: 6px; padding: 0 4px; }
     .marquee-item .author { font-size: 10px; padding: 1px 5px; }
   }
 
@@ -4829,7 +4834,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   </header>
 
   
-  <!-- Management Wisdom Marquee Ticker -->
+  <!-- Management Wisdom Marquee Vertical Ticker -->
   <div class="marquee-wrapper" id="managementMarquee">
     <div class="marquee-badge">
       <span>💡</span>
@@ -4837,106 +4842,85 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     </div>
     <div class="marquee-track-container" id="marqueeTrackContainer">
       <div class="marquee-content" id="marqueeContent">
-        
     <div class="marquee-item">
       <span class="author"><span class="zh">彼得·杜拉克 (Peter Drucker)</span><span class="en">Peter F. Drucker</span></span>
-      <span><span class="zh">「無法度量，就無法管理；無法管理，就無法改善。」</span><span class="en">"If you can't measure it, you can't manage it; if you can't manage it, you can't improve it."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「無法度量，就無法管理；無法管理，就無法改善。」</span><span class="en">"If you can't measure it, you can't manage it; if you can't manage it, you can't improve it."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">愛德華茲·戴明 (W. Edwards Deming)</span><span class="en">W. Edwards Deming</span></span>
-      <span><span class="zh">「除了上帝，所有人都必須用數據說話。」</span><span class="en">"In God we trust; all others must bring data."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「除了上帝，所有人都必須用數據說話。」</span><span class="en">"In God we trust; all others must bring data."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">大野耐一 (Taiichi Ohno)</span><span class="en">Taiichi Ohno (Toyota)</span></span>
-      <span><span class="zh">「沒有標準，就沒有改善；看見問題是邁向卓越的第一步。」</span><span class="en">"Without standards, there can be no improvement. Seeing problems is the first step."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「沒有標準，就沒有改善；看見問題是邁向卓越的第一步。」</span><span class="en">"Without standards, there can be no improvement. Seeing problems is the first step."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">安迪·葛洛夫 (Andy Grove)</span><span class="en">Andy Grove (Intel)</span></span>
-      <span><span class="zh">「只有偏執狂才能生存；將心力集中在槓桿率最高的關鍵要務上。」</span><span class="en">"Only the paranoid survive. Focus resources on high-leverage activities."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「只有偏執狂才能生存；將心力集中在槓桿率最高的關鍵要務上。」</span><span class="en">"Only the paranoid survive. Focus resources on high-leverage activities."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">艾美·埃德蒙森 (Amy Edmondson)</span><span class="en">Amy C. Edmondson (Harvard)</span></span>
-      <span><span class="zh">「打造心理安全感：快速、智慧型的嘗試與修正是精實創新的最高境界。」</span><span class="en">"Psychological safety empowers intelligent failure and rapid corrective agility."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「打造心理安全感：快速、智慧型的嘗試與修正是精實創新的最高境界。」</span><span class="en">"Psychological safety empowers intelligent failure and rapid corrective agility."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">查理·蒙格 (Charlie Munger)</span><span class="en">Charlie T. Munger</span></span>
-      <span><span class="zh">「反過來想，總是反過來想；掌握跨領域多元心智模型。」</span><span class="en">"Invert, always invert. Master multidisciplinary mental models."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「反過來想，總是反過來想；掌握跨領域多元心智模型。」</span><span class="en">"Invert, always invert. Master multidisciplinary mental models."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">史蒂夫·賈伯斯 (Steve Jobs)</span><span class="en">Steve Jobs</span></span>
-      <span><span class="zh">「專注意味著對一百個好點子說『不』；極致的簡約即是純粹的深邃。」</span><span class="en">"Focus means saying no to the hundred other good ideas. Simplicity is sophistication."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「專注意味著對一百個好點子說『不』；極致的簡約即是純粹的深邃。」</span><span class="en">"Focus means saying no to the hundred other good ideas. Simplicity is sophistication."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">維克多·弗蘭克 (Viktor Frankl)</span><span class="en">Viktor E. Frankl</span></span>
-      <span><span class="zh">「在刺激與回應之間有一個空間，那裡是我們選擇回應的自由與力量。」</span><span class="en">"Between stimulus and response there is a space where we choose our response."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「在刺激與回應之間有一個空間，那裡是我們選擇回應的自由與力量。」</span><span class="en">"Between stimulus and response there is a space where we choose our response."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">詹姆斯·克利爾 (James Clear)</span><span class="en">James Clear</span></span>
-      <span><span class="zh">「你不會躍升到設定的目標高度，而是會跌落至日常系統的水平。」</span><span class="en">"You do not rise to the level of your goals. You fall to the level of your systems."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「你不會躍升到設定的目標高度，而是會跌落至日常系統的水平。」</span><span class="en">"You do not rise to the level of your goals. You fall to the level of your systems."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">Masa Tu 精實箴言</span><span class="en">Masa Tu Philosophy</span></span>
-      <span><span class="zh">「M挑戰精進 · A目標對齊 · S解決問題 · A迅速行動 · T團隊協作 · U成就他人。」</span><span class="en">"Mastery Challenge · Align & Adjust · Solve Problems · Act Swiftly · Team Up · Uplift Others."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「M挑戰精進 · A目標對齊 · S解決問題 · A迅速行動 · T團隊協作 · U成就他人。」</span><span class="en">"Mastery Challenge · Align & Adjust · Solve Problems · Act Swiftly · Team Up · Uplift Others."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">彼得·杜拉克 (Peter Drucker)</span><span class="en">Peter F. Drucker</span></span>
-      <span><span class="zh">「無法度量，就無法管理；無法管理，就無法改善。」</span><span class="en">"If you can't measure it, you can't manage it; if you can't manage it, you can't improve it."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「無法度量，就無法管理；無法管理，就無法改善。」</span><span class="en">"If you can't measure it, you can't manage it; if you can't manage it, you can't improve it."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">愛德華茲·戴明 (W. Edwards Deming)</span><span class="en">W. Edwards Deming</span></span>
-      <span><span class="zh">「除了上帝，所有人都必須用數據說話。」</span><span class="en">"In God we trust; all others must bring data."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「除了上帝，所有人都必須用數據說話。」</span><span class="en">"In God we trust; all others must bring data."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">大野耐一 (Taiichi Ohno)</span><span class="en">Taiichi Ohno (Toyota)</span></span>
-      <span><span class="zh">「沒有標準，就沒有改善；看見問題是邁向卓越的第一步。」</span><span class="en">"Without standards, there can be no improvement. Seeing problems is the first step."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「沒有標準，就沒有改善；看見問題是邁向卓越的第一步。」</span><span class="en">"Without standards, there can be no improvement. Seeing problems is the first step."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">安迪·葛洛夫 (Andy Grove)</span><span class="en">Andy Grove (Intel)</span></span>
-      <span><span class="zh">「只有偏執狂才能生存；將心力集中在槓桿率最高的關鍵要務上。」</span><span class="en">"Only the paranoid survive. Focus resources on high-leverage activities."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「只有偏執狂才能生存；將心力集中在槓桿率最高的關鍵要務上。」</span><span class="en">"Only the paranoid survive. Focus resources on high-leverage activities."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">艾美·埃德蒙森 (Amy Edmondson)</span><span class="en">Amy C. Edmondson (Harvard)</span></span>
-      <span><span class="zh">「打造心理安全感：快速、智慧型的嘗試與修正是精實創新的最高境界。」</span><span class="en">"Psychological safety empowers intelligent failure and rapid corrective agility."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「打造心理安全感：快速、智慧型的嘗試與修正是精實創新的最高境界。」</span><span class="en">"Psychological safety empowers intelligent failure and rapid corrective agility."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">查理·蒙格 (Charlie Munger)</span><span class="en">Charlie T. Munger</span></span>
-      <span><span class="zh">「反過來想，總是反過來想；掌握跨領域多元心智模型。」</span><span class="en">"Invert, always invert. Master multidisciplinary mental models."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「反過來想，總是反過來想；掌握跨領域多元心智模型。」</span><span class="en">"Invert, always invert. Master multidisciplinary mental models."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">史蒂夫·賈伯斯 (Steve Jobs)</span><span class="en">Steve Jobs</span></span>
-      <span><span class="zh">「專注意味著對一百個好點子說『不』；極致的簡約即是純粹的深邃。」</span><span class="en">"Focus means saying no to the hundred other good ideas. Simplicity is sophistication."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「專注意味著對一百個好點子說『不』；極致的簡約即是純粹的深邃。」</span><span class="en">"Focus means saying no to the hundred other good ideas. Simplicity is sophistication."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">維克多·弗蘭克 (Viktor Frankl)</span><span class="en">Viktor E. Frankl</span></span>
-      <span><span class="zh">「在刺激與回應之間有一個空間，那裡是我們選擇回應的自由與力量。」</span><span class="en">"Between stimulus and response there is a space where we choose our response."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「在刺激與回應之間有一個空間，那裡是我們選擇回應的自由與力量。」</span><span class="en">"Between stimulus and response there is a space where we choose our response."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">詹姆斯·克利爾 (James Clear)</span><span class="en">James Clear</span></span>
-      <span><span class="zh">「你不會躍升到設定的目標高度，而是會跌落至日常系統的水平。」</span><span class="en">"You do not rise to the level of your goals. You fall to the level of your systems."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「你不會躍升到設定的目標高度，而是會跌落至日常系統的水平。」</span><span class="en">"You do not rise to the level of your goals. You fall to the level of your systems."</span></span>
     </div>
     <div class="marquee-item">
       <span class="author"><span class="zh">Masa Tu 精實箴言</span><span class="en">Masa Tu Philosophy</span></span>
-      <span><span class="zh">「M挑戰精進 · A目標對齊 · S解決問題 · A迅速行動 · T團隊協作 · U成就他人。」</span><span class="en">"Mastery Challenge · Align & Adjust · Solve Problems · Act Swiftly · Team Up · Uplift Others."</span></span>
-      <span class="divider">✦</span>
+      <span class="quote-text"><span class="zh">「M挑戰精進 · A目標對齊 · S解決問題 · A迅速行動 · T團隊協作 · U成就他人。」</span><span class="en">"Mastery Challenge · Align & Adjust · Solve Problems · Act Swiftly · Team Up · Uplift Others."</span></span>
     </div>
       </div>
     </div>
@@ -11296,6 +11280,42 @@ const REAL_CASES = [
     src:'https://www.investopedia.com/terms/w/worldcom.asp'}];
 
 const GLOSSARY = [
+  {zh:'VSM 價值流程圖 (Value Stream Mapping)', en:'VSM (Value Stream Mapping)',
+    zh_d:'精實生產的核心可視化架構，用於全面審視與設計產品或服務自供應商端到端交付至客戶手中的物料流（Material Flow）與資訊流（Information Flow）。圖表中繪製工序數據方塊（包含 C/T、C/O、Uptime、FPY、WIP 等參數）與底部時間階梯線（Time Ladder），清晰拆解「增值時間 (VA)」與「非增值前置時間 (PLT)」，作為消除系統性浪費 (Muda) 與規劃拉式 (Pull) 未來狀態圖的核心指引。',
+    en_d:'A foundational Lean visualization framework used to analyze and design the end-to-end material and information flows required to deliver a product or service from supplier to customer. Incorporates process data boxes (C/T, C/O, Uptime, FPY, WIP) and a bottom timeline ladder separating Value-Added (VA) time from Non-Value-Added lead time (PLT), serving as the blueprint for eliminating systemic waste and architecting a future state.'},
+  {zh:'PLT 製造前置時間 (Production Lead Time)', en:'PLT (Production Lead Time)',
+    zh_d:'一件產品自原料投產開始，歷經各工站等待、在製品 (WIP) 庫存滯留到最終檢驗出貨所耗費的總日曆時間。公式：PLT ＝ (總在製品庫存 WIP ÷ 客戶日需求量) ＋ 總增值加工時間 (VA)。精實透過導入單件流 (One-Piece Flow) 與拉式看板消除中間堆積的 WIP，是大幅壓縮 PLT、加速現金循環 (CCC) 的關鍵。',
+    en_d:'The total elapsed time required for a product to traverse the entire value stream from raw material receipt to finished goods shipment. Formula: PLT = (Total WIP / Daily Demand) + Total VA Time. Compressing WIP queues via continuous flow and pull Kanban is the primary driver for slashing PLT and optimizing cash conversion cycles (CCC).'},
+  {zh:'VA / NVA / NNVA (增值、非增值與必要非增值時間)', en:'VA / NVA / NNVA (Value-Added / Non-Value-Added / Necessary Non-Value-Added)',
+    zh_d:'精實價值流時間的三大分類。1. VA (Value-Added，增值時間)：客戶願意付費、實際改變產品形狀、組裝或功能特性的加工時間；2. NVA (Non-Value-Added，非增值時間/純浪費)：等待、多餘搬運、過量庫存、不良返工等純損耗，應全面消除；3. NNVA (Necessary Non-Value-Added，必要非增值/Type 1 Muda)：在現有技術法規下不可或缺但本身不創造價值的支援活動（如法定安規檢驗、光罩校準、財務稽核），應極力簡化與自動化。',
+    en_d:'The three classifications of value stream time: 1. VA (Value-Added): Activities transforming the product physically or functionally that the customer is willing to pay for. 2. NVA (Non-Value-Added / Pure Waste): Activities like waiting, transport, excess inventory, and rework that should be eradicated. 3. NNVA (Necessary Non-Value-Added / Type 1 Muda): Activities creating no direct customer value but mandatory under current technology or regulatory rules (e.g. calibration, compliance audits), which should be streamlined.'},
+  {zh:'PCE 流程週期效率 (Process Cycle Efficiency)', en:'PCE (Process Cycle Efficiency)',
+    zh_d:'衡量價值流精實成熟度與流動性的核心指標，表示總前置時間中有多少比例真正用於產品增值作業。公式：PCE ＝ (總增值時間 VA ÷ 總製造前置時間 PLT) × 100%。傳統批量生產工廠的 PCE 通常低於 5%（超過 95% 為在製品庫存滯留與無效等待），世界級精實標竿企業透過單件流與看板管制，可將 PCE 提升至 15%～25% 以上。',
+    en_d:'A core Lean metric assessing value stream velocity and flow health by measuring the proportion of lead time spent on true value-adding work. Formula: PCE = (Total VA Time / Total PLT) × 100%. Traditional batch factories typically register PCE < 5% (over 95% is idle waiting waste), whereas world-class Lean enterprises achieve 15% to 25%+.'},
+  {zh:'C/T 週期時間 (Cycle Time)', en:'C/T (Cycle Time)',
+    zh_d:'單一工序站點或機台每連續產出一個合格單位所需花費的實際操作時長。在 VSM 分析中，將各工站的 C/T 與客戶節拍時間 (Takt Time) 進行對比：若 C/T ＞ Takt Time，代表該工站為限制整線產出的瓶頸工序 (Bottleneck)；若 C/T 遠小於 Takt Time，則代表該站存在等待浪費或產能閒置，需透過工序平衡 (Line Balancing) 進行重組。',
+    en_d:'The actual time taken by an operator or machine to complete one repeatable cycle of work and produce one unit. In VSM analysis, comparing C/T against Takt Time identifies line balance: C/T > Takt signals a pacing bottleneck requiring line elevation; C/T << Takt indicates operator idle time or over-capacity suitable for line rebalancing.'},
+  {zh:'C/O 換線與換模時間 (Changeover Time)', en:'C/O (Changeover Time)',
+    zh_d:'設備或產線從生產前一型號產品的最後一件良品，到切換模具/治具、載入程式、調校參數並產出下一型號產品的第一件合格品為止的中斷時間。利用 SMED (個位數分鐘快速換模) 將內部作業轉換為外部作業，能大幅壓縮 C/O，使產線具備小批量、高頻率彈性混線生產能力。',
+    en_d:'The elapsed time between producing the last good piece of Product A and the first verified good piece of Product B at full operating speed. Reducing C/O via SMED (Single-Minute Exchange of Die) enables economical small-batch runs, mixed-model flexibility, and drastic inventory reductions.'},
+  {zh:'FPY 初次良品率 / 直通率 (First Pass Yield)', en:'FPY (First Pass Yield / Rolled Throughput Yield)',
+    zh_d:'單一工站或全產線在首次加工時，不經過任何返工 (Rework)、重測、降級或報修，直接一次合格通過的百分比。公式：首次合格產出數 ÷ 初始投入總數。高 FPY 能杜絕隱性重測回路造成的等待、在製品積壓與搬運浪費，是維持價值流平順流暢 (Continuous Flow) 的品質前提。',
+    en_d:'The percentage of units that successfully complete a process step and pass quality verification on the first attempt without requiring rework, scrap, or re-testing. Formula: First-pass Good Units / Total Units Started. High FPY eliminates hidden loop wastes and protects steady continuous flow.'},
+  {zh:'WIP 在製品庫存 (Work In Process)', en:'WIP (Work In Process)',
+    zh_d:'已領料進入生產線但尚未全部完工入庫的所有半成品、中間組件與待檢批次。在 VSM 流程圖中以警示三角形符號 (⚠️) 標註於工序之間。過多的 WIP 會佔用營運資金、拉長前置時間 (PLT) 並掩蓋製程缺陷；精實透過看板 (Kanban) 與 CONWIP (在製品恆定管制) 嚴格限制 WIP 上限。',
+    en_d:'Unfinished goods, subassemblies, and materials currently undergoing processing or waiting between workstations. Represented as inventory warning triangles on a VSM. Excessive WIP locks up working capital, lengthens lead time, and conceals quality defects; Lean strictly enforces WIP caps via Kanban and CONWIP.'},
+  {zh:'EPEI 每種零件生產間隔 (Every Part Every Interval)', en:'EPEI (Every Part Every Interval)',
+    zh_d:'衡量產線彈性與換模敏捷度的核心指標，代表工廠在多機型混流生產時，循環輪流製造完整產品組合中「每一種型號」所需的時間週期（例如「每 2 天輪換生產完全部型號」）。公式：可用於換線的總有效時間 ÷ 每次換線平均時長。EPEI 越短，批量越小，越能即時響應客戶訂單波動並壓降成品安全庫存。',
+    en_d:'A Lean metric of changeover flexibility indicating the frequency at which a manufacturing system cycles through producing every part number in its catalog (e.g. Every Part Every Day). Formula: Available Changeover Time / Time per Changeover. Shorter EPEI enables smaller batches and agile response to market swings.'},
+  {zh:'Pacemaker Process 定拍工序 (節奏調節站點)', en:'Pacemaker Process (Pacemaker Station)',
+    zh_d:'在精實價值流程中唯一直接接收中央生產排程指令與派工廣播的基準工站。定拍工序決定了全價值流的生產節奏；定拍站下游各工序採取單件連續流直通出貨，定拍站上游各工序則透過拉式超市 (Supermarket) 或 FIFO 通道按需補貨，徹底消滅整廠多點各自排程導致的不均 (Mura) 與過量生產。',
+    en_d:'The single workstation in a value stream that receives the customer dispatch schedule and paces the entire production stream. Processes downstream of the pacemaker operate in continuous flow to shipping, while upstream processes respond via Supermarket Pull or FIFO lanes, eradicating multi-point schedule chaos.'},
+  {zh:'Supermarket Pull 超市拉式系統 (精實緩衝機制)', en:'Supermarket Pull System',
+    zh_d:'在無法實現單件連續流的工序之間（如 C/T 差異過大、換線耗時或跨廠區熱處理/封裝）設立的標準定量在製品超市。下游工序根據實際消耗取走所需物料，同時釋放「取料/生產看板 (Kanban)」授權上游工序按消耗量精確補貨，落實嚴格的後拉式生產控制。',
+    en_d:'A controlled buffer inventory established between processes where continuous flow cannot be maintained (due to distance, long changeovers, or takt mismatches). Downstream steps withdraw parts as needed, returning Kanban cards to authorize upstream replenishment, preventing overproduction waste.'},
+  {zh:'FIFO Lane 先進先出管制通道', en:'FIFO Lane (First-In, First-Out Queue)',
+    zh_d:'連接兩個相鄰工站的有界限專屬緩衝通道，嚴格強制先進入的工件必須先被下游工站取出加工（First-In, First-Out），維持批次時序與品質追溯性。通道設有絕對的「最大在製品容量上限 (Max WIP Cap)」；一旦通道填滿，上游工站必須立即停止生產，防止庫存無序堆積。',
+    en_d:'A bounded physical or visual lane linking two decoupled sequential operations that enforces strict First-In, First-Out part sequencing. The lane maintains a hard capacity cap: when full, upstream production halts immediately, preventing inventory overflow and ensuring traceability.'},
   {zh:'RWD 響應式網頁設計 (Responsive Web Design)', en:'RWD (Responsive Web Design)',
     zh_d:'透過流體網格 (Fluid Grids)、彈性圖片 (Flexible Images) 與 CSS3 媒體查詢 (Media Queries) 等前端技術，使網頁能依據不同裝置（手機、平板、筆電、桌面寬螢幕）的螢幕尺寸與解析度自動調整排版與元件配置。在精實軟體開發 (Lean Software Development) 與敏捷交付中，RWD 實踐了「一次開發、多端適配」，大幅消除多版本維護的浪費 (Muda)，提升跨載具使用者體驗 (UX) 並降低操作缺陷率。',
     en_d:'An approach to web development that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used (mobile, tablet, desktop) via Fluid Grids, Flexible Media, and CSS3 Media Queries. In Lean Software Development, RWD eliminates multi-codebase maintenance waste, reduces digital UI defects, and optimizes user experience across all form factors.'},
