@@ -1834,6 +1834,27 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   }
 
   /* Recommended Books Styling */
+  .books-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .book-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 9px;
+    background: var(--amber, #f59e0b);
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 99px;
+    letter-spacing: 0;
+    line-height: 1;
+  }
   .books-grid {
     display: flex;
     flex-direction: column;
@@ -9432,7 +9453,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       </section>
 
       <section class="section" data-section="books">
-        <h2><span class="zh">相關推薦書籍</span><span class="en">Recommended Books</span></h2>
+        <h2 id="booksHeading" class="books-section-heading"><span class="zh">相關推薦書籍</span><span class="en">Recommended Books</span></h2>
         <p class="lead">
           <span class="zh">精選跨領域經典著作，協助您將精實六標準差與日常工作管理、醫療及高複雜度流程進行有機結合。</span>
           <span class="en">Curated classic books that bridge Lean Six Sigma with daily workflow organization and high-complexity error management.</span>
@@ -11791,6 +11812,16 @@ function initBookCollapse() {
 
   // Build the title chip list (must be after all cards are processed)
   buildBooksTitleList();
+
+  // Inject total count badge into section heading
+  const heading = document.getElementById('booksHeading');
+  if (heading && !heading.querySelector('.book-count-badge')) {
+    const count = document.querySelectorAll('.book-card').length;
+    const badge = document.createElement('span');
+    badge.className = 'book-count-badge';
+    badge.textContent = count;
+    heading.appendChild(badge);
+  }
 }
 
 // Init once DOM is ready
