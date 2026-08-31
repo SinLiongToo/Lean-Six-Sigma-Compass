@@ -2010,6 +2010,69 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #0d9488 80%, #f59e0b 100%);
     border-right: 3px solid #f59e0b;
   }
+  .book-cover.give-and-take {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 35%, #0f3460 65%, #e94560 100%);
+    border-right: 3px solid #e94560;
+  }
+  /* Books section collapsible */
+  .books-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 7px 18px;
+    background: var(--primary, #2563eb);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    user-select: none;
+  }
+  .books-toggle-btn:hover { background: var(--primary-dark, #1d4ed8); }
+  .books-toggle-btn .toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s;
+    font-style: normal;
+  }
+  .books-toggle-btn.collapsed .toggle-icon { transform: rotate(-90deg); }
+  /* Wrapper itself stays; inner grid collapses */
+  .books-grid-wrap { }
+  .books-grid {
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+    max-height: 99999px;
+    opacity: 1;
+  }
+  .books-grid-wrap.collapsed .books-grid {
+    max-height: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* Title-chip list shown when grid is collapsed */
+  .books-title-list {
+    display: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+  }
+  .books-grid-wrap.collapsed .books-title-list { display: flex; }
+  .books-title-chip {
+    font-size: 12.5px;
+    padding: 5px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--panel-border);
+    border-radius: 20px;
+    color: var(--ink);
+    white-space: nowrap;
+    cursor: default;
+  }
+
   .book-spine {
     position: absolute;
     left: 0;
@@ -2095,7 +2158,50 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     }
   }
 
-  /* Fallacies section styles */
+  /* Per-book collapsible */
+  .book-info-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 0;
+    border-radius: 6px;
+    transition: opacity 0.15s;
+  }
+  .book-info-header:hover { opacity: 0.8; }
+  .book-info-header h3 { margin: 0; flex: 1; }
+  .book-collapse-arrow {
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--amber, #f59e0b);
+    transition: transform 0.3s;
+    margin-top: 4px;
+    line-height: 1;
+  }
+  .book-card.book-collapsed .book-collapse-arrow { transform: rotate(-90deg); }
+  .book-body {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s;
+    max-height: 2000px;
+    opacity: 1;
+  }
+  .book-card.book-collapsed .book-body {
+    max-height: 0;
+    opacity: 0;
+  }
+  /* Collapsed card: hide cover, collapse to title-only row */
+  .book-card.book-collapsed {
+    grid-template-columns: 1fr;
+    padding: 14px 20px;
+    transform: none !important;
+  }
+  .book-card.book-collapsed .book-cover-wrap {
+    display: none;
+  }
+
+
   .fallacy-container {
     display: flex;
     flex-direction: column;
@@ -9331,7 +9437,12 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span class="zh">精選跨領域經典著作，協助您將精實六標準差與日常工作管理、醫療及高複雜度流程進行有機結合。</span>
           <span class="en">Curated classic books that bridge Lean Six Sigma with daily workflow organization and high-complexity error management.</span>
         </p>
+        <button class="books-toggle-btn" id="booksToggleBtn" onclick="toggleBooksGrid()">
+          <i class="toggle-icon">▼</i>
+          <span class="zh">收合書單</span><span class="en">Collapse Books</span>
+        </button>
 
+        <div class="books-grid-wrap" id="booksGridWrap">
         <div class="books-grid">
           <!-- Book 1 -->
           <div class="book-card">
@@ -10436,7 +10547,42 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- Give and Take (給予) -->
+          <div class="book-card">
+            <div class="book-cover-wrap">
+              <div class="book-cover give-and-take">
+                <div class="book-spine"></div>
+                <div class="book-title-container">
+                  <div class="book-title-main">給予</div>
+                  <div class="book-title-sub">Give and Take</div>
+                </div>
+                <div class="book-author">Adam Grant</div>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3><span class="zh">《給予：華頓商學院最啟發人心的一堂課》</span><span class="en">Give and Take: Why Helping Others Drives Our Success</span></h3>
+              <div class="book-meta">
+                <span class="chip"><span class="zh">作者：亞當·格蘭特 (Adam Grant)</span><span class="en">Author: Adam Grant</span></span>
+                <span class="chip"><span class="zh">關聯：精實人生 · 職場邊界 · 持續改善 (Lean Life, Boundary Setting &amp; Kaizen)</span><span class="en">LSS Mapping: Lean Life, Boundary Setting &amp; Continuous Improvement</span></span>
+              </div>
+              <p>
+                <span class="zh"><strong>核心概念：</strong> 格蘭特將人分為三種類型——<strong>給予者 (Givers)</strong>、<strong>索取者 (Takers)</strong> 與 <strong>互利者 (Matchers)</strong>。研究顯示，最成功的人往往是聰明的給予者，但最失敗的人也是給予者——差別就在於「有策略地給予」還是「無底線地燃燒自己」。真正的給予者懂得設定界線、說不的藝術，在保護自身能量與資源的同時，仍能創造長遠的影響力。</span>
+                <span class="en"><strong>Core Concept:</strong> Grant categorizes people as Givers, Takers, and Matchers. Research shows the most successful people are strategic givers — but so are the most burned-out. The difference lies in setting boundaries: genuine givers master the art of saying no, protecting their energy and capacity, while still creating outsized long-term impact.</span>
+              </p>
+              <div class="book-lean-connection">
+                <div class="connection-title">💡 <span class="zh">精實人生連結</span><span class="en">Lean Life Application Link</span></div>
+                <ul>
+                  <li><span class="zh"><strong>職場邊界即精實邊界 (Workplace Boundary = Lean Boundary)</strong>：精實思維強調「消除浪費」，職場上最隱形卻也最昂貴的浪費，正是「無償燃燒自己的能量與時間」。設定清晰的工作邊界，是精實人生中保護最核心資源——個人能量——的必要防線。熱情不代表沒有底線，界線是維持長期高品質輸出的系統性保障。</span><span class="en"><strong>Workplace Boundaries as Lean Boundaries</strong>: Lean thinking is about eliminating waste. The most invisible yet expensive waste in the workplace is the unchecked draining of your own energy and time. Setting clear boundaries is the essential defense that protects your most critical resource — personal energy — enabling long-term, high-quality output.</span></li>
+                  <li><span class="zh"><strong>說不的藝術：防止過載，保護 Throughput (The Art of Saying No: Overload Prevention)</strong>：在精實生產中，「超負荷 (Muri)」是豐田三廢（Muda / Mura / Muri）之一，是導致品質崩潰與人員倦怠的根本原因。有意識地說不、拒絕多餘的任務委派，等同於在個人工作系統中實施「產能管控」，確保核心工作的品質與穩定性，避免精力在無效需求上耗盡。</span><span class="en"><strong>The Art of Saying No: Preventing Muri (Overload)</strong>: In Lean production, Muri (overburden) is one of Toyota's Three Evils. Consciously saying no to excessive task requests is equivalent to implementing capacity control in your personal work system — protecting quality and sustainability, and preventing energy from being consumed by low-value demands.</span></li>
+                  <li><span class="zh"><strong>智慧給予 × 持續改善 (Strategic Giving × Kaizen)</strong>：《給予》的核心洞見不是叫你停止幫助別人，而是叫你聰明地幫助——把時間與精力集中投入在真正有槓桿效益、能強化系統韌性的事情上。這與 Kaizen 的精神高度一致：不是用蠻力，而是用槓桿，讓每一次付出都能創造最大的系統性改善。</span><span class="en"><strong>Strategic Giving × Kaizen</strong>: Give and Take's core insight is not to stop helping — it's to help strategically. Focus time and energy on contributions that create real leverage and strengthen system resilience. This mirrors the spirit of Kaizen: not brute force, but leverage — making every effort create maximum systemic improvement.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /books-grid -->
+        </div><!-- /books-grid-wrap -->
       </section>
 
       <section class="section" data-section="glossary">
@@ -11558,6 +11704,100 @@ function updateSidebarUI(){
     }
     if(expandFloat) expandFloat.style.display = 'none';
   }
+}
+
+
+function buildBooksTitleList() {
+  const wrap = document.getElementById('booksGridWrap');
+  if (!wrap) return;
+  // Remove existing list if any
+  const old = wrap.querySelector('.books-title-list');
+  if (old) old.remove();
+
+  const list = document.createElement('div');
+  list.className = 'books-title-list';
+
+  document.querySelectorAll('.book-card').forEach(function(card) {
+    // Prefer the Chinese title from the cover, fallback to h3 zh span
+    const coverTitle = card.querySelector('.book-title-main');
+    const h3zh = card.querySelector('.book-info h3 .zh');
+    let label = '';
+    if (coverTitle) {
+      label = coverTitle.textContent.trim();
+    } else if (h3zh) {
+      // Strip 《》 if present
+      label = h3zh.textContent.trim().replace(/^《|》.*$/g, '');
+    }
+    if (!label) return;
+    const chip = document.createElement('span');
+    chip.className = 'books-title-chip';
+    chip.textContent = label;
+    list.appendChild(chip);
+  });
+
+  wrap.appendChild(list);
+}
+
+function toggleBooksGrid() {
+  const wrap = document.getElementById('booksGridWrap');
+  const btn = document.getElementById('booksToggleBtn');
+  if (!wrap || !btn) return;
+  const collapsed = wrap.classList.toggle('collapsed');
+  btn.classList.toggle('collapsed', collapsed);
+  const zhSpan = btn.querySelector('.zh');
+  const enSpan = btn.querySelector('.en');
+  if (collapsed) {
+    if (zhSpan) zhSpan.textContent = '展開書單';
+    if (enSpan) enSpan.textContent = 'Show Books';
+  } else {
+    if (zhSpan) zhSpan.textContent = '收合書單';
+    if (enSpan) enSpan.textContent = 'Collapse Books';
+  }
+}
+
+function initBookCollapse() {
+  document.querySelectorAll('.book-card').forEach(function(card) {
+    const info = card.querySelector('.book-info');
+    if (!info || info.dataset.collapseInit) return;
+    info.dataset.collapseInit = '1';
+
+    const h3 = info.querySelector('h3');
+    if (!h3) return;
+
+    // Build header wrapper
+    const header = document.createElement('div');
+    header.className = 'book-info-header';
+    const arrow = document.createElement('span');
+    arrow.className = 'book-collapse-arrow';
+    arrow.textContent = '▼';
+
+    // Wrap h3 + arrow in header
+    h3.parentNode.insertBefore(header, h3);
+    header.appendChild(h3);
+    header.appendChild(arrow);
+
+    // Wrap all remaining siblings (meta, p, lean-connection…) in book-body
+    const body = document.createElement('div');
+    body.className = 'book-body';
+    const remaining = Array.from(info.children).filter(function(el) { return el !== header; });
+    remaining.forEach(function(el) { body.appendChild(el); });
+    info.appendChild(body);
+
+    // Toggle on header click
+    header.addEventListener('click', function() {
+      card.classList.toggle('book-collapsed');
+    });
+  });
+
+  // Build the title chip list (must be after all cards are processed)
+  buildBooksTitleList();
+}
+
+// Init once DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBookCollapse);
+} else {
+  initBookCollapse();
 }
 
 function toggleSidebar(){
