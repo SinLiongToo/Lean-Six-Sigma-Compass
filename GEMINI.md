@@ -116,6 +116,7 @@ Each book requires **two additions** (no JS changes needed):
 | 34 | 真確 | Factfulness | `factfulness` | Data-Based DMAIC |
 | 35 | 給予 | Give and Take | `give-and-take` | Lean Life, Boundary Setting |
 | 36 | 跨能致勝 | Range | `range` | VUCA Adaptability, Multi-Skill |
+| 37 | 做自己的人生財務長 | Family Inc. | `life-cfo` | OpEx Cost Control, Personal P&L, Family CFO |
 
 ---
 
