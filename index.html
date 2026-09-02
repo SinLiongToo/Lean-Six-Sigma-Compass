@@ -11914,6 +11914,50 @@ function updateSidebarUI(){
 }
 
 
+function scrollToBookCard(card) {
+  if (!card) return;
+  const wrap = document.getElementById('booksGridWrap');
+  if (wrap && wrap.classList.contains('collapsed')) {
+    const grid = wrap.querySelector('.books-grid');
+    if (grid) {
+      grid.style.transition = 'none';
+    }
+    toggleBooksGrid();
+    if (grid) {
+      void grid.offsetHeight; // Force layout recalculation with full height
+      grid.style.transition = '';
+    }
+  }
+
+  if (card.classList.contains('book-collapsed')) {
+    card.classList.remove('book-collapsed');
+  }
+
+  // Force synchronous reflow so card dimensions & positions are 100% computed
+  void card.offsetHeight;
+
+  // Compute exact target Y coordinate and smooth scroll
+  setTimeout(function() {
+    const rect = card.getBoundingClientRect();
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    let targetTop = currentScroll + rect.top - Math.max(20, (viewportHeight - rect.height) / 2);
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: 'smooth'
+    });
+
+    // Trigger visual pulse highlight
+    card.classList.remove('book-card-highlight');
+    void card.offsetWidth;
+    card.classList.add('book-card-highlight');
+    setTimeout(function() {
+      card.classList.remove('book-card-highlight');
+    }, 2200);
+  }, 40);
+}
+
 function buildBooksTitleList() {
   const wrap = document.getElementById('booksGridWrap');
   if (!wrap) return;
@@ -11969,29 +12013,9 @@ function buildBooksTitleList() {
       chip.textContent = '📖 ' + (labelZh || labelEn);
     }
 
-    chip.addEventListener('click', function() {
-      // 1. If section is collapsed, expand it
-      if (wrap.classList.contains('collapsed')) {
-        toggleBooksGrid();
-      }
-
-      // 2. If the individual card is collapsed, expand it
-      if (card.classList.contains('book-collapsed')) {
-        card.classList.remove('book-collapsed');
-      }
-
-      // 3. Scroll to target book card smoothly
-      setTimeout(function() {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 50);
-
-      // 4. Highlight the card with a pulse effect
-      card.classList.remove('book-card-highlight');
-      void card.offsetWidth; // Force DOM reflow to re-trigger animation
-      card.classList.add('book-card-highlight');
-      setTimeout(function() {
-        card.classList.remove('book-card-highlight');
-      }, 2000);
+    chip.addEventListener('click', function(e) {
+      e.preventDefault();
+      scrollToBookCard(card);
     });
 
     list.appendChild(chip);
@@ -12194,7 +12218,7 @@ function jumpTag(tag){
     state.section='books'; saveState(); render();
     setTimeout(()=>{
       const card = document.querySelector(`.book-card .book-cover.${CSS.escape(tag.key)}`)?.closest('.book-card');
-      if(card) flash(card);
+      if(card) scrollToBookCard(card);
     }, 60);
   }
 }
