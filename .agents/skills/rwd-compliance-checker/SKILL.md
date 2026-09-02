@@ -118,5 +118,5 @@ Insert before `</div><!-- /books-grid -->`:
 ### No JS Changes Needed
 The following functions wire up all book cards automatically on page load:
 - `initBookCollapse()` — per-card collapse toggle + count badge injection
-- `buildBooksTitleList()` — chip list of all book titles (shown when section is collapsed)
+- `buildBooksTitleList()` — interactive clickable chip list of all book titles (shown when section is collapsed; click to expand, jump to card & pulse highlight)
 - `toggleBooksGrid()` — section-level expand/collapse button handler

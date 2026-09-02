@@ -2093,13 +2093,59 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   .books-grid-wrap.collapsed .books-title-list { display: flex; }
   .books-title-chip {
     font-size: 12.5px;
-    padding: 5px 14px;
+    padding: 6px 14px;
     background: rgba(255,255,255,0.06);
     border: 1px solid var(--panel-border);
     border-radius: 20px;
     color: var(--ink);
     white-space: nowrap;
-    cursor: default;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .books-title-chip:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+  }
+  .books-title-chip:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
+  }
+  .books-title-chip:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  @keyframes bookCardHighlight {
+    0% {
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.8), 0 8px 24px rgba(0,0,0,0.3);
+      border-color: var(--primary);
+      transform: scale(1.02);
+    }
+    40% {
+      box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.35), 0 12px 30px rgba(99, 102, 241, 0.25);
+      border-color: var(--amber);
+      transform: scale(1.02);
+    }
+    100% {
+      box-shadow: none;
+      border-color: var(--panel-border);
+      transform: scale(1);
+    }
+  }
+  .book-card.book-card-highlight {
+    animation: bookCardHighlight 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 10;
   }
 
   .book-spine {
@@ -11841,21 +11887,76 @@ function buildBooksTitleList() {
   const list = document.createElement('div');
   list.className = 'books-title-list';
 
-  document.querySelectorAll('.book-card').forEach(function(card) {
-    // Prefer the Chinese title from the cover, fallback to h3 zh span
-    const coverTitle = card.querySelector('.book-title-main');
+  document.querySelectorAll('.book-card').forEach(function(card, idx) {
+    // Prefer the Chinese & English titles from the cover, fallback to h3 spans
+    const coverTitleZh = card.querySelector('.book-title-main');
+    const coverTitleEn = card.querySelector('.book-title-sub');
     const h3zh = card.querySelector('.book-info h3 .zh');
-    let label = '';
-    if (coverTitle) {
-      label = coverTitle.textContent.trim();
+    const h3en = card.querySelector('.book-info h3 .en');
+    let labelZh = '';
+    if (coverTitleZh) {
+      labelZh = coverTitleZh.textContent.trim();
     } else if (h3zh) {
       // Strip 《》 if present
-      label = h3zh.textContent.trim().replace(/^《|》.*$/g, '');
+      labelZh = h3zh.textContent.trim().replace(/^《|》.*$/g, '');
     }
-    if (!label) return;
-    const chip = document.createElement('span');
+
+    let labelEn = '';
+    if (coverTitleEn) {
+      labelEn = coverTitleEn.textContent.trim();
+    } else if (h3en) {
+      labelEn = h3en.textContent.trim().replace(/^《|》.*$/g, '');
+    }
+
+    if (!labelZh && !labelEn) return;
+
+    if (!card.id) {
+      card.id = 'book-card-' + (idx + 1);
+    }
+
+    const chip = document.createElement('button');
+    chip.type = 'button';
     chip.className = 'books-title-chip';
-    chip.textContent = label;
+    chip.title = labelZh || labelEn;
+
+    if (labelZh && labelEn) {
+      const zhSpan = document.createElement('span');
+      zhSpan.className = 'zh';
+      zhSpan.textContent = '📖 ' + labelZh;
+      const enSpan = document.createElement('span');
+      enSpan.className = 'en';
+      enSpan.textContent = '📖 ' + labelEn;
+      chip.appendChild(zhSpan);
+      chip.appendChild(enSpan);
+    } else {
+      chip.textContent = '📖 ' + (labelZh || labelEn);
+    }
+
+    chip.addEventListener('click', function() {
+      // 1. If section is collapsed, expand it
+      if (wrap.classList.contains('collapsed')) {
+        toggleBooksGrid();
+      }
+
+      // 2. If the individual card is collapsed, expand it
+      if (card.classList.contains('book-collapsed')) {
+        card.classList.remove('book-collapsed');
+      }
+
+      // 3. Scroll to target book card smoothly
+      setTimeout(function() {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+
+      // 4. Highlight the card with a pulse effect
+      card.classList.remove('book-card-highlight');
+      void card.offsetWidth; // Force DOM reflow to re-trigger animation
+      card.classList.add('book-card-highlight');
+      setTimeout(function() {
+        card.classList.remove('book-card-highlight');
+      }, 2000);
+    });
+
     list.appendChild(chip);
   });
 

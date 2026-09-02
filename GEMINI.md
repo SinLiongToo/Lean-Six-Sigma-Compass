@@ -70,9 +70,9 @@ Each book requires **two additions** (no JS changes needed):
 | Feature | Implementation | Element |
 |---|---|---|
 | **Per-card collapsible** | Click title row → hides cover + body, shows title + arrow only | `initBookCollapse()` JS |
-| **Section toggle button** | Hides grid, shows chip list of all book titles when collapsed | `toggleBooksGrid()` + `buildBooksTitleList()` JS |
+| **Section toggle button & Title chips** | Hides grid, shows interactive clickable chip list of all book titles when collapsed (click to expand, smooth-scroll & pulse highlight card) | `toggleBooksGrid()` + `buildBooksTitleList()` JS |
 | **Book count badge** | Auto-counts `.book-card` elements, injected into `#booksHeading` | `initBookCollapse()` JS |
-| **Bilingual** | All content uses `.zh` / `.en` span pairs | Site-wide language toggle CSS |
+| **Bilingual** | All content uses `.zh` / `.en` span pairs (including title chips) | Site-wide language toggle CSS |
 
 > All three JS functions (`initBookCollapse`, `toggleBooksGrid`, `buildBooksTitleList`) wire up new cards automatically — no extra JS needed when adding books.
 
