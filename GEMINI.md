@@ -76,7 +76,7 @@ Each book requires **two additions** (no JS changes needed):
 
 > All three JS functions (`initBookCollapse`, `toggleBooksGrid`, `buildBooksTitleList`) wire up new cards automatically — no extra JS needed when adding books.
 
-### Books Added (as of 2026-09-01)
+### Books Added (as of 2026-09-02)
 
 | # | 中文書名 | English Title | CSS slug | Key Theme |
 |---|---|---|---|---|
