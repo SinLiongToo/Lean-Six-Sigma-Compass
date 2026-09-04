@@ -4290,6 +4290,236 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   }
 
 
+  /* ==================== CONFLICT RESOLUTION & WORKPLACE DEFENSE SECTION ==================== */
+  .conflict-wrap { display: flex; flex-direction: column; gap: 22px; }
+  .conflict-banner {
+    background: rgba(244, 63, 94, 0.05);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid #f43f5e;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  [data-theme="light"] .conflict-banner {
+    background: #fff1f2;
+    border-color: #fecdd3;
+    border-left: 4px solid #e11d48;
+  }
+  .conflict-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .conflict-pillar-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: all 0.2s ease;
+  }
+  [data-theme="light"] .conflict-pillar-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .conflict-pillar-card:hover {
+    border-color: #f43f5e;
+    transform: translateY(-2px);
+  }
+  .conflict-subtabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+  }
+  .conflict-tab-btn {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .conflict-tab-btn:hover {
+    color: var(--ink);
+    border-color: #f43f5e;
+  }
+  .conflict-tab-btn.active {
+    background: #f43f5e;
+    color: #ffffff;
+    border-color: #f43f5e;
+    font-weight: 700;
+  }
+  [data-theme="light"] .conflict-tab-btn.active {
+    background: #e11d48;
+    color: #ffffff;
+    border-color: #e11d48;
+  }
+  .conflict-content-pane {
+    display: none;
+    animation: fade .25s ease;
+  }
+  .conflict-content-pane.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .conflict-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .conflict-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  [data-theme="light"] .conflict-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+  .conflict-card:hover {
+    border-color: #f43f5e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  .conflict-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(244, 63, 94, 0.14);
+    color: #f43f5e;
+  }
+  [data-theme="light"] .conflict-card-badge {
+    background: #ffe4e6;
+    color: #be123c;
+  }
+  .conflict-meta-box {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  [data-theme="light"] .conflict-meta-box {
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .conflict-quote-box {
+    background: rgba(15, 27, 45, 0.35);
+    border: 1px solid var(--line);
+    border-left: 3px solid #f43f5e;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  [data-theme="light"] .conflict-quote-box {
+    background: #fff1f2;
+    border-color: #fecdd3;
+    border-left: 3px solid #e11d48;
+  }
+  .conflict-copy-btn {
+    align-self: flex-start;
+    background: rgba(244, 63, 94, 0.12);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: #f43f5e;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  [data-theme="light"] .conflict-copy-btn {
+    color: #be123c;
+    background: #ffe4e6;
+    border-color: #fca5a5;
+  }
+  .conflict-copy-btn:hover {
+    background: #f43f5e;
+    color: #ffffff;
+  }
+  .conflict-generator-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  [data-theme="light"] .conflict-generator-box {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .conflict-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .conflict-select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .conflict-select:focus {
+    border-color: #f43f5e;
+  }
+  .conflict-result-card {
+    background: rgba(244, 63, 94, 0.04);
+    border: 1px solid #f43f5e;
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  [data-theme="light"] .conflict-result-card {
+    background: #fff5f5;
+    border-color: #f87171;
+  }
+  [data-theme="light"] .conflict-card,
+  [data-theme="light"] .conflict-generator-box,
+  [data-theme="light"] .conflict-pillar-card {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+
+
   /* ==========================================================================
      17. VALUE STREAM MAPPING (VSM) BUILDER CSS
      ========================================================================== */
@@ -5029,7 +5259,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.39 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-04</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.40 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-04</span></span>
         </div>
       </div>
     </div>
@@ -7669,6 +7899,620 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                     <li><strong>面對「大家都是一個 Team」：</strong>微笑回應：「正因為是團隊，更要確保每個人守好各自的守備位置與核心交付，這樣專案才不會連環脫鉤。」</li>
                     <li><strong>面對「你比較厲害順手弄一下」：</strong>「正因為專業，才更清楚這件事背後的維護風險與架構責任，必須循正式流程評估。」</li>
                     <li><strong>絕口不提個人私下工具：</strong>若被問到，微笑帶過：「那都只是隨手試試公開的基礎功能，企業落地還是要看專責團隊規範。」</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" data-section="conflict">
+        <h2><span class="zh">職場面對衝突的藝術與防禦手冊</span><span class="en">The Art & Defense Playbook of Workplace Conflict Resolution</span></h2>
+        <p class="lead">
+          <span class="zh">精實管理的本質不是消除所有衝突，而是將「破壞性人際內耗」轉化為「建設性流程對齊」。在職場中，衝突往往源於指標不對齊、權責模糊或資源爭奪。掌握結構化防禦模型與情緒降溫話術，既能守護個人心理安全與精力，又能驅動團隊回歸客觀數據與雙贏解方。</span>
+          <span class="en">The essence of Lean is not to eliminate all friction, but to transform destructive interpersonal conflict into constructive process alignment. Workplace friction usually stems from misaligned incentives, blurred RACI, or resource constraints. Master structured defense frameworks and de-escalation scripts to protect personal energy and pivot teams back to data-driven win-win solutions.</span>
+        </p>
+
+        <!-- Conflict Wrap -->
+        <div class="conflict-wrap">
+
+          <!-- Core Pillars Banner -->
+          <div class="conflict-banner">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 24px;">🛡️</span>
+                <span style="font-weight: 800; font-size: 15px; color: #f43f5e;"><span class="zh">衝突防禦的三大底層哲學心法</span><span class="en">3 Core Philosophical Pillars of Conflict Defense</span></span>
+              </div>
+              <span class="chip" style="background: rgba(244,63,94,0.12); color: #f43f5e; font-weight: 700;">
+                <span class="zh">對事不對人 • 數據盾牌 • 心理安全</span><span class="en">Process Focus • Data Shield • Psychological Safety</span>
+              </span>
+            </div>
+            
+            <div class="conflict-pillars-grid">
+              <div class="conflict-pillar-card">
+                <div style="font-weight: 700; color: #f43f5e; font-size: 13.5px; margin-bottom: 4px;">
+                  1. <span class="zh">人事分離 (Separate People from the Problem)</span><span class="en">Separate People & Problem</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">將對方的攻擊與焦慮解讀為「流程缺陷」與「指標衝突」，而非針對個人能力的否定。情緒是訊號，數據才是事實。</span>
+                  <span class="en">De-personalize attacks as symptoms of systemic process bottlenecks or misaligned KPIs. Emotions are signals; data is the factual baseline.</span>
+                </div>
+              </div>
+              <div class="conflict-pillar-card">
+                <div style="font-weight: 700; color: #f43f5e; font-size: 13.5px; margin-bottom: 4px;">
+                  2. <span class="zh">穿透立場看底層利益 (Focus on Interests)</span><span class="en">Interests over Positions</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">不要糾纏於對方「要什麼（Position）」，而是探究他「為什麼需要（Interest）」。背後往往是交付壓力、考核焦慮或資源匱乏。</span>
+                  <span class="en">Look beyond surface demands ("Positions") to uncover underlying business stakes ("Interests"): delivery pressure, performance appraisal fear, or resource starvation.</span>
+                </div>
+              </div>
+              <div class="conflict-pillar-card">
+                <div style="font-weight: 700; color: #f43f5e; font-size: 13.5px; margin-bottom: 4px;">
+                  3. <span class="zh">阻斷杏仁核劫持 (Hijack the Amygdala Pause)</span><span class="en">5-Second Tactical Pause</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">衝突發生時，大腦進入戰或逃模式。運用黃金 5 秒深呼吸、複述事實與對比說明，將對話拉回前額葉皮層的理性思考。</span>
+                  <span class="en">When fight-or-flight triggers, take a deliberate 5-second breath, mirror facts, and use contrasting statements to reactivate rational prefrontal thinking.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-tabs Navigation -->
+          <div class="conflict-subtabs">
+            <button class="conflict-tab-btn active" onclick="switchConflictTab('tab-c-tki')">
+              <span>🧭</span>
+              <span class="zh">TKI 5大衝突模式</span><span class="en">TKI 5 Conflict Modes</span>
+            </button>
+            <button class="conflict-tab-btn" onclick="switchConflictTab('tab-c-scenarios')">
+              <span>🎯</span>
+              <span class="zh">四大實戰破局法</span><span class="en">4 Core Scenarios</span>
+            </button>
+            <button class="conflict-tab-btn" onclick="switchConflictTab('tab-c-models')">
+              <span>📐</span>
+              <span class="zh">高階溝通防禦模型</span><span class="en">Defense Models (DESC/NVC)</span>
+            </button>
+            <button class="conflict-tab-btn" onclick="switchConflictTab('tab-c-phrases')">
+              <span>💬</span>
+              <span class="zh">10大降溫金句與數據盾牌</span><span class="en">10 De-escalation Scripts</span>
+            </button>
+            <button class="conflict-tab-btn" onclick="switchConflictTab('tab-c-gen')">
+              <span>⚡</span>
+              <span class="zh">智能衝突話術生成器</span><span class="en">Interactive Script Generator</span>
+            </button>
+            <button class="conflict-tab-btn" onclick="switchConflictTab('tab-c-tactics')">
+              <span>🥋</span>
+              <span class="zh">現場太極與避坑手冊</span><span class="en">Defensive Tactics & Pitfalls</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: TKI 5 Conflict Modes -->
+          <div class="conflict-content-pane active" id="conflict-pane-tab-c-tki">
+            <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+              <span class="zh">根據湯瑪斯-基爾曼衝突模式儀器（TKI, Thomas-Kilmann Conflict Mode Instrument），人際衝突應對取決於兩大維度：<strong>堅定程度（Assertiveness - 關心自己的目標）</strong>與<strong>合作程度（Cooperativeness - 關心對方的目標）</strong>。成熟的職場專家應根據場景靈活切換模式：</span>
+              <span class="en">According to the Thomas-Kilmann Conflict Mode Instrument (TKI), conflict behavior is mapped along two dimensions: <strong>Assertiveness (focus on own goals)</strong> and <strong>Cooperativeness (focus on other's goals)</strong>. Seasoned professionals fluidly switch modes based on situational stakes:</span>
+            </div>
+
+            <div class="conflict-card-grid">
+              <!-- Mode 1 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">高堅定 + 高合作</span>
+                  <span style="font-size: 12px; color: var(--muted);">Win-Win</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🤝 <span class="zh">協作 (Collaborating)</span><span class="en">Collaborating</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">適用情境：</span><span class="en">When to Use:</span></strong> <span class="zh">雙方利益過於重要不容妥協、需深度創新、建立長期跨部門互信。</span><span class="en">High-stakes initiatives, mission-critical architectural decisions, long-term strategic alignment.</span></div>
+                  <div><strong><span class="zh">防身心法：</span><span class="en">Defense Strategy:</span></strong> <span class="zh">共同把問題放到白板上，探索第三種創造性雙贏方案。</span><span class="en">Put the problem on the whiteboard; co-design an expanded third alternative.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我們各自的底線與目標都很關鍵。我們先花 15 分鐘把彼此的約束條件列出來，一起設計一個能兼顧雙方交付標準的流程。」</span>
+                  <span class="en">"Both our delivery criteria are non-negotiable. Let's list our constraints on the board and engineer an optimized workflow that protects both goals."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Mode 2 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">中堅定 + 中合作</span>
+                  <span style="font-size: 12px; color: var(--muted);">Split Difference</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  ⚖️ <span class="zh">妥協 (Compromising)</span><span class="en">Compromising</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">適用情境：</span><span class="en">When to Use:</span></strong> <span class="zh">時間緊迫需快速解法、雙方勢均力敵、暫時性過渡方案。</span><span class="en">Time-critical deadlines, temporary bridge solutions, equal power dynamics.</span></div>
+                  <div><strong><span class="zh">防身心法：</span><span class="en">Defense Strategy:</span></strong> <span class="zh">明確定義妥協的範圍與截止時間（Phase 1 妥協，Phase 2 補正），避免無底線退讓。</span><span class="en">Bound the compromise with explicit scope and timelines (e.g., Phase 1 MVP compromise, Phase 2 refactor).</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「考量到本週五的死線，我們先採用方案 A 的核心模組完成上線（滿足你方的時效），下個 Sprint 我們再補齊方案 B 的完整報表（滿足我方的品質控管）。」</span>
+                  <span class="en">"Given Friday's hard release, let's ship Module A first for timeline compliance, and schedule Module B's deep analytics for the subsequent sprint."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Mode 3 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">高堅定 + 低合作</span>
+                  <span style="font-size: 12px; color: var(--muted);">Win-Lose</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🛡️ <span class="zh">競爭/堅守原則 (Competing / Asserting)</span><span class="en">Competing / Standing Firm</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">適用情境：</span><span class="en">When to Use:</span></strong> <span class="zh">涉及資安法規、品管底線、道德合規、重大系統架構崩潰風險。</span><span class="en">Regulatory compliance, security policies, core quality gates, catastrophic risk prevention.</span></div>
+                  <div><strong><span class="zh">防身心法：</span><span class="en">Defense Strategy:</span></strong> <span class="zh">以企業規範與客觀測試數據為護甲，語氣溫和但立場如磐石。</span><span class="en">Armor up with corporate governance and empirical test failure data; gentle tone, iron boundary.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我非常理解時程壓力，但 ISO / 資安審計規範明確要求此環節必須具備雙重驗證。跳過這道檢驗會直接導致整個產品無法通過驗收，這條底線我們必須堅守。」</span>
+                  <span class="en">"I hear the urgent timeline pressure, but mandatory ISO/security policies require dual verification. Bypassing this will cause outright certification failure, so this quality gate stands."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Mode 4 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">低堅定 + 高合作</span>
+                  <span style="font-size: 12px; color: var(--muted);">Lose-Win</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🎁 <span class="zh">順應/戰略讓步 (Accommodating)</span><span class="en">Accommodating / Strategic Concession</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">適用情境：</span><span class="en">When to Use:</span></strong> <span class="zh">該議題對我方成本極低、但對對方極其關鍵；為了建立長期合作的情感帳戶。</span><span class="en">Low cost to you, critical priority to them; building strategic political capital and goodwill.</span></div>
+                  <div><strong><span class="zh">防身心法：</span><span class="en">Defense Strategy:</span></strong> <span class="zh">讓步時必須「具名化成本」與「標註情分」，切勿讓對方視為理所當然。</span><span class="en">Make concessions explicit and visible; frame it as a targeted investment in the partnership.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「既然這個格式調整對你們向客戶匯報非常關鍵，我這邊請工程師今晚加班 1 小時特急為你們處理。後續在數據串接部分，也期待你們團隊的大力支持！」</span>
+                  <span class="en">"Since this formatting tweak is crucial for your executive review, I'll have our engineer expedite it tonight. We look forward to your team's support on the upcoming API integration!"</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Mode 5 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">低堅定 + 低合作</span>
+                  <span style="font-size: 12px; color: var(--muted);">Tactical Pause</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  ⏸️ <span class="zh">迴避/戰術冷卻 (Avoiding / Tactical Pause)</span><span class="en">Avoiding / Cooling Off</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">適用情境：</span><span class="en">When to Use:</span></strong> <span class="zh">對方處於極端情緒失控期、資訊嚴重不足、或是無關大局的微小雜音。</span><span class="en">When tempers are flared, insufficient data to decide, or trivial non-impact noise.</span></div>
+                  <div><strong><span class="zh">防身心法：</span><span class="en">Defense Strategy:</span></strong> <span class="zh">設定明確的時間錨點（非無限期逃避），爭取數據調取與情緒降溫時間。</span><span class="en">Anchor with an explicit resumption timestamp; buy time for data gathering and temperature drop.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「現在現場資訊尚未完整，且大家都在氣頭上。我建議我們先各自把日誌與伺服器日誌調出來，下午 3 點帶著數據再進行對齊，這樣討論會更有效率。」</span>
+                  <span class="en">"Emotions are high and root-cause logs are still incomplete. Let's pull the full telemetry data and reconvene at 3:00 PM with the metrics in hand."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: 4 Core Scenarios -->
+          <div class="conflict-content-pane" id="conflict-pane-tab-c-scenarios">
+            <div class="conflict-card-grid">
+              <!-- Scenario 1 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">實戰場景 01</span>
+                  <span style="font-size: 12px; color: var(--muted);">跨部門權責推諉</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🌐 <span class="zh">跨部門灰色地帶踢皮球</span><span class="en">Cross-Functional Boundary Dispute</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">痛點情境：</span><span class="en">Situation:</span></strong> <span class="zh">新流程或出包時，跨部門互相指責「這不屬於我們團隊的範疇」。</span><span class="en">During new workflows or bugs, departments claim "this is not in our job description".</span></div>
+                  <div><strong><span class="zh">破局武器：</span><span class="en">Lean Defense:</span></strong> <span class="zh">SIPOC 邊界圖 + RACI 矩陣 + 共同主管仲裁會。</span><span class="en">SIPOC Process Boundary + RACI Matrix + Shared Leadership Alignment.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我們理解目前此交接節點的定義尚有模糊地帶。為了避免客戶受影響，我們本週先以臨時 SOP 支援；同時我已草擬一份 RACI 邊界清單，明天邀請雙方主管 15 分鐘對齊未來標準流程。」</span>
+                  <span class="en">"We recognize this handoff point lacks a formal boundary. To prevent customer impact, our team will temporarily handle it today while I schedule a 15-min RACI alignment with both directors tomorrow."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Scenario 2 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">實戰場景 02</span>
+                  <span style="font-size: 12px; color: var(--muted);">會議公開挑釁</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🎯 <span class="zh">大會現場遭當眾質疑與發難</span><span class="en">Public Ambush & Hostile Challenge</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">痛點情境：</span><span class="en">Situation:</span></strong> <span class="zh">在跨部門大會或高層前，對方突然指責你的數據不準確或方案不可行。</span><span class="en">In an all-hands or executive meeting, someone aggressively challenges your numbers or competency.</span></div>
+                  <div><strong><span class="zh">破局武器：</span><span class="en">Lean Defense:</span></strong> <span class="zh">複述問題（剝離情緒）+ 錨定數據口徑 + 會後 1-on-1 私下對齊。</span><span class="en">Paraphrase neutrally + Anchor baseline formula + Take deep dives offline.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「感謝點出這個視角。你關心的是第 3 季度的轉換率計算基準。目前簡報數據是基於 ERP 經財務認證的統一口徑。會後我把詳細的 SQL 邏輯與抽樣原始檔寄給你，我們進一步對齊。」</span>
+                  <span class="en">"Thank you for highlighting that perspective. You're questioning the Q3 conversion formula. These slides reflect the finance-certified ERP baseline. I will share the exact SQL query and sample logs after this call."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Scenario 3 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">實戰場景 03</span>
+                  <span style="font-size: 12px; color: var(--muted);">主管焦慮壓榨</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  📊 <span class="zh">主管微觀管理與焦慮情緒轉嫁</span><span class="en">Micromanaging Boss & Pressure Inversion</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">痛點情境：</span><span class="en">Situation:</span></strong> <span class="zh">長官頻繁催促進度、質疑執行細節、態度急躁施壓。</span><span class="en">Manager constantly pings for updates, micromanages details, and transfers panic downward.</span></div>
+                  <div><strong><span class="zh">破局武器：</span><span class="en">Lean Defense:</span></strong> <span class="zh">結構化非同步看板 + 主動式進度日報（反客為主提供安全感）。</span><span class="en">Asynchronous Kanban + Proactive daily bullet digest to satisfy need for control.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「長官請放心，我理解這項交付對總部的急迫性。目前已完成 70%，剩下 30% 正在進行極限測試。我已建立即時監控儀表板，每天下午 5 點前會自動同步最新燃盡圖給您。」</span>
+                  <span class="en">"Understood, this milestone is top priority. We are at 70% with stress testing in progress. I've set up a live tracking dashboard and will send you a daily 5:00 PM burndown summary."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Scenario 4 -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">實戰場景 04</span>
+                  <span style="font-size: 12px; color: var(--muted);">同儕暗箭甩鍋</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  ⚔️ <span class="zh">強勢同事搶功與出包甩鍋</span><span class="en">Peer Credit Stealing & Blame Shifting</span>
+                </h3>
+                <div class="conflict-meta-box">
+                  <div><strong><span class="zh">痛點情境：</span><span class="en">Situation:</span></strong> <span class="zh">同儕在匯報時略過你的貢獻，或在發生延誤時將責任推給你。</span><span class="en">A peer omits your contributions in front of bosses or blames your team for project lag.</span></div>
+                  <div><strong><span class="zh">破局武器：</span><span class="en">Lean Defense:</span></strong> <span class="zh">書面軌跡（Written Paper Trail）+ 公開肯定法（綁定所有人貢獻）。</span><span class="en">Written Paper Trail (Git/Jira/Email) + Public inclusive attribution.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「很高興看到專案順利推進！如同 Jira 任務單 #1024 與上週五交付報告所示，我們團隊負責的底層演算法已於 3 天前提前上線交付，期待與各位夥伴無縫銜接下一階段。」</span>
+                  <span class="en">"Great to see the project progressing! As logged in Jira #1024 and Friday's release note, our team delivered the core algorithm 3 days ahead of schedule, enabling this successful rollout."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Advanced Defense Models -->
+          <div class="conflict-content-pane" id="conflict-pane-tab-c-models">
+            <div class="conflict-card-grid">
+              <!-- Model 1: DESC -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">結構化反擊框架</span>
+                  <span style="font-size: 12px; color: var(--muted);">Assertive Feedback</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🎯 <span class="zh">DESC 斷金四步法</span><span class="en">DESC Assertive Model</span>
+                </h3>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.6;">
+                  <div><strong>D (Describe 描述事實):</strong> <span class="zh">只講客觀發生的行為與數據，杜絕主觀批判形容詞。</span><span class="en">Objectively describe observed events without subjective labels.</span></div>
+                  <div><strong>E (Express 理性表達):</strong> <span class="zh">說明該行為對流程、團隊產出或資源造成的實質衝擊。</span><span class="en">Explain concrete impacts on workflow, schedule, or team capacity.</span></div>
+                  <div><strong>S (Specify 明確要求):</strong> <span class="zh">提出具體可量化、可執行的下一步行動方案。</span><span class="en">Specify actionable, measurable changes requested.</span></div>
+                  <div><strong>C (Consequences 明確結果):</strong> <span class="zh">說明改善後的雙贏成果，或未改善時的既定制度後果。</span><span class="en">Highlight mutual benefits of compliance or procedural next steps.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「（D）過去兩週內，我們在週五下午 5:30 收到 3 次突發上線需求。（E）這導致工程團隊必須臨時加班且無法完成迴歸測試，使線上 Bug 率上升 15%。（S）未來非緊急需求請於週四中午前提交。（C）這樣我們能確保 100% 測試覆蓋率，產品品質也能穩定提升。」</span>
+                  <span class="en">"(D) In the past two weeks, we received 3 ad-hoc release requests on Friday at 5:30 PM. (E) This forced unreviewed deploys and raised production bugs by 15%. (S) Please submit non-critical changes by Thursday noon. (C) This guarantees 100% test coverage and keeps our system rock solid."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Model 2: NVC -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">去情緒心理學</span>
+                  <span style="font-size: 12px; color: var(--muted);">Non-Violent Comm</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🕊️ <span class="zh">NVC 職場非暴力溝通模型</span><span class="en">NVC Workplace Framework</span>
+                </h3>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.6;">
+                  <div><strong>1. 觀察 (Observation):</strong> <span class="zh">「當我看到/聽到...」（錄音機式的客觀記錄）</span><span class="en">"When I see/hear..." (Factual recording)</span></div>
+                  <div><strong>2. 感受 (Feeling):</strong> <span class="zh">「我感到擔憂/困擾...」（聚焦工作影響而非人身指控）</span><span class="en">"I feel concerned about the risk..." (Impact-oriented)</span></div>
+                  <div><strong>3. 需要 (Need):</strong> <span class="zh">「因為我們需要確保系統穩定度與交付承諾...」</span><span class="en">"Because our team needs predictability and quality..."</span></div>
+                  <div><strong>4. 請求 (Request):</strong> <span class="zh">「你是否願意在下週二前提供具體欄位規格？」</span><span class="en">"Would you be open to providing the schema by Tuesday?"</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「當會議中討論突然轉向質疑我們測試完整性時，我感到很擔憂，因為我們的共同需要是確保下週向客戶展示順利。你是否願意我們先花 10 分鐘，一起把測試驗證報告逐項過一遍？」</span>
+                  <span class="en">"When doubts are raised about our QA rigor in this review, I feel concerned because we both need flawless customer demos. Would you be willing to spend 10 minutes walking through the test logs together?"</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Model 3: Crucial Conversations Contrasting -->
+              <div class="conflict-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="conflict-card-badge">高難度對話</span>
+                  <span style="font-size: 12px; color: var(--muted);">Crucial Conversations</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🌓 <span class="zh">關鍵對話「對比說明法」</span><span class="en">Contrasting Statement Technique</span>
+                </h3>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.6;">
+                  <div><strong>先否定對方可能誤解的意圖 (Don't):</strong> <span class="zh">「我不是要否定你的提案 / 逃避這項責任...」</span><span class="en">"I am not trying to reject your idea / bypass responsibility..."</span></div>
+                  <div><strong>再肯定自己真實的初衷與共同目的 (Do):</strong> <span class="zh">「我是希望確保我們在有限資源下達成最佳產出...」</span><span class="en">"I want to make sure our constrained resources deliver maximum ROI..."</span></div>
+                  <div><strong>作用機制：</strong> <span class="zh">瞬間消除對方的防衛機制與被害妄想，重建安全對話場域。</span><span class="en">Instantly disarms defensiveness and restores psychological safety.</span></div>
+                </div>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我不是想推辭這份額外的市場分析，更不是質疑這件事的價值；我是希望確保我們手頭上進行中的 A 級專案能如期交付，不讓團隊因為多工切換而導致品質下滑。」</span>
+                  <span class="en">"I am not discounting the value of this market study, nor am I pushing back on supporting you. I simply want to ensure our tier-1 committed project delivers on time without context-switching defects."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                  <span>📋</span><span class="zh">複製話術</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: 10 De-escalation Scripts -->
+          <div class="conflict-content-pane" id="conflict-pane-tab-c-phrases">
+            <div class="conflict-card-grid">
+              <!-- Phrase 1 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 01 • 共情降溫</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我完全理解這件事對你們部門非常緊急，我們先把目前的阻礙與數據列出來，看看怎麼拆解最快。」</span>
+                  <span class="en">"I completely understand how critical this deadline is for your department. Let's list the key bottlenecks and data points so we can unblock this together."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 2 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 02 • 痛點對齊</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「為了確保我們都在同一頻率上，我先確認一下：你目前最擔心的核心風險是交付時程，還是資源分配？」</span>
+                  <span class="en">"To ensure we are fully aligned, let me confirm: is your primary concern the release timeline, or team resource bandwidth?"</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 3 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 03 • 對比說明</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我不是要反對這個構想，而是想確保新架構上線後的維護成本與資安風險在可控範圍內。」</span>
+                  <span class="en">"I'm not resisting this proposal; I want to ensure that long-term maintenance overhead and security risks remain manageable."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 4 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 04 • 目標錨定</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我們雙方的共同目標都是讓 Q4 業績達標，現在爭議的是執行路徑。我們用 ROI 數據來決定優先級。」</span>
+                  <span class="en">"Our shared goal is hitting our Q4 revenue targets. The friction is just on execution paths. Let's let projected ROI guide priority."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 5 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 05 • 階段拆解</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「這個建議非常有前瞻性。我們先把核心 MVP 在 Phase 1 交付，這項進階功能列入 Phase 2 迭代排程。」</span>
+                  <span class="en">"This is a high-value suggestion. Let's deliver the core MVP in Phase 1 and schedule these advanced enhancements for Phase 2."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 6 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 06 • 數據盾牌</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「如果跳過此階段的品管驗證，根據歷史數據，線上故障率可能上升 28%。請問這是否在團隊風險容忍度內？」</span>
+                  <span class="en">"Bypassing this QA phase carries a historical 28% defect escalation. Is the business prepared to accept this operational risk?"</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 7 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 07 • 留下憑據</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我聽到大家的顧慮了。為求謹慎，我會將剛才討論的 3 項共識與責任指派整理成會議紀錄發給大家確認。」</span>
+                  <span class="en">"I've noted everyone's insights. To ensure precision, I will document our 3 agreed action items and owners in a recap email."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 8 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 08 • 定義對齊</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「我們雙方似乎對『完成（Definition of Done）』有不同認知。我們先對齊驗收標準，再談工時評估。」</span>
+                  <span class="en">"We seem to have differing definitions of 'Done'. Let's clarify the exact acceptance criteria before estimating hours."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 9 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 09 • 暫停冷卻</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「目前現場討論有些情緒化，我們休會 10 分鐘喝杯咖啡，待會帶著客觀測試數據回來繼續探討。」</span>
+                  <span class="en">"Things are getting heated. Let's take a 10-minute coffee break and regroup with the raw telemetry logs to make an objective call."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Phrase 10 -->
+              <div class="conflict-card">
+                <span class="conflict-card-badge">金句 10 • 向上定奪</span>
+                <div class="conflict-quote-box">
+                  <span class="zh">「主管，目前專案 A 與緊急需求 B 產生了人力排擠。若兩者皆需如期交付，需要額外資源支援，請您定奪優先級。」</span>
+                  <span class="en">"Director, Project A and urgent Request B are competing for the same engineers. To deliver both, we need extra headcount. Please advise priority."</span>
+                </div>
+                <button class="conflict-copy-btn" onclick="copyConflictText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: Interactive Script Generator -->
+          <div class="conflict-content-pane" id="conflict-pane-tab-c-gen">
+            <div class="conflict-generator-box">
+              <div style="font-weight: 800; font-size: 15px; color: #f43f5e; display: flex; align-items: center; gap: 8px;">
+                <span>⚡</span>
+                <span class="zh">智能職場衝突話術生成器（64 種高情商破局矩陣）</span>
+                <span class="en">Intelligent Conflict Resolution Script Generator (64 Dynamic Matrices)</span>
+              </div>
+              <div style="font-size: 12.8px; color: var(--muted); line-height: 1.5;">
+                <span class="zh">選擇衝突對象、衝突情境與防禦風格，即時生成精準客製的高情商防身話術與避坑指引：</span>
+                <span class="en">Select your counterpart, conflict scenario, and resolution strategy to generate tailored high-EQ scripts and tactical advice:</span>
+              </div>
+
+              <div class="conflict-form-grid">
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    1. <span class="zh">衝突對象 / 角色</span><span class="en">Counterpart Role</span>
+                  </label>
+                  <select class="conflict-select" id="conflict-sel-target" onchange="generateConflictScript()">
+                    <option value="manager" selected>直屬主管 / 長官 (Direct Supervisor / Manager)</option>
+                    <option value="cross_mgr">跨部門主管 / 業務窗口 (Cross-Functional Lead)</option>
+                    <option value="peer">強勢同事 / 甩鍋同儕 (Peer / Dominant Colleague)</option>
+                    <option value="external">外部客戶 / 強勢供應商 (Client / External Vendor)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    2. <span class="zh">衝突情境類型</span><span class="en">Conflict Type</span>
+                  </label>
+                  <select class="conflict-select" id="conflict-sel-type" onchange="generateConflictScript()">
+                    <option value="ambush" selected>當眾質疑 / 公開挑釁 (Public Ambush & Hostility)</option>
+                    <option value="resource">推諉責任 / 資源爭奪 (Responsibility Shifting & Resource Clash)</option>
+                    <option value="deadline">無理死線 / 範圍蔓延 (Unrealistic Deadline & Scope Creep)</option>
+                    <option value="blame">出包甩鍋 / 錯誤歸咎 (Blame Game & Finger Pointing)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    3. <span class="zh">應對與防禦風格</span><span class="en">Resolution & Defense Style</span>
+                  </label>
+                  <select class="conflict-select" id="conflict-sel-style" onchange="generateConflictScript()">
+                    <option value="collab" selected>協作雙贏型 - 尋找共同利益 (Collaborative Win-Win)</option>
+                    <option value="assert">堅定防守型 - 數據邊界與原則 (Assertive Boundary & Data Shield)</option>
+                    <option value="cool">降溫冷卻型 - 延期非同步化解 (Tactical Pause & Cooling)</option>
+                    <option value="escalate">制度升級型 - 向上仲裁與合規 (Systemic Escalation & RACI)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Output Result Card -->
+              <div class="conflict-result-card" id="conflict-result-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="conflict-card-badge" id="conflict-res-badge">長官對應 • 協作雙贏</span>
+                    <span style="font-size: 12px; font-weight: 700; color: #f43f5e;" id="conflict-res-tag">公開質疑破局</span>
+                  </div>
+                  <button class="conflict-copy-btn" onclick="copyConflictText(this)">
+                    <span>📋</span>
+                    <span class="zh">複製推薦話術</span><span class="en">Copy Generated Script</span>
+                  </button>
+                </div>
+
+                <div class="conflict-meta-box" id="conflict-res-analysis">
+                  <strong>核心策略：</strong> 肯定長官對專案成功的焦慮，將挑釁轉化為現場流程梳理。
+                </div>
+
+                <div class="conflict-quote-box" id="conflict-res-script" style="font-size: 13.5px; font-weight: 500;">
+                  <!-- Dynamic JS injection -->
+                </div>
+
+                <div style="font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px;" id="conflict-res-tip">
+                  💡 避坑重點：切忌當眾反駁主管面子，用「是的，而且...」承接。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: Tactical Pitfalls & Tai-Chi Playbook -->
+          <div class="conflict-content-pane" id="conflict-pane-tab-c-tactics">
+            <div class="conflict-card-grid">
+              <div class="conflict-card">
+                <span class="conflict-card-badge">現場太極 01</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🧘 <span class="zh">黃金 5 秒深呼吸與白板轉移法</span><span class="en">The 5-Second Breath & Whiteboard Shift</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>第一時間絕不回嘴：</strong>深吸一口氣，在筆記本上寫下對方的關鍵字，讓自己的心率降回 80 以下。</li>
+                    <li><strong>視線轉移至白板或螢幕：</strong>站起身或開啟共享螢幕：「我們把這件事的邏輯圖畫出來。」將「你 vs 我」的對抗轉為「我們 vs 白板上的問題」。</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="conflict-card">
+                <span class="conflict-card-badge">現場太極 02</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  📧 <span class="zh">會議紀錄與郵件 CC 防禦兵法</span><span class="en">Email CC & Minutes of Meeting Shield</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>會後 30 分鐘內發出 MoM：</strong>條列 1. 決定事項 2. 待辦指派（Owner + Due Date） 3. 雙方約束條件。</li>
+                    <li><strong>溫和確認法：</strong>結尾加上：「若今日下班前未收到修改意見，我們將依上述共識推進執行。」不給對方事後賴帳空間。</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="conflict-card">
+                <span class="conflict-card-badge">現場太極 03</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  ☕ <span class="zh">非正式私下咖啡對齊心法</span><span class="en">Private 1-on-1 Coffee Pre-Alignment</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>大會前先做 1-on-1 摸底：</strong>80% 的公開衝突源於「面子」與「未提前告知」。在關鍵發表前先私下向潛在反對者請益。</li>
+                    <li><strong>台詞公式：</strong>「這份方案明天會在大會報告，我想先聽聽您的專業建議，看看有沒有我們疏漏的盲點。」</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="conflict-card">
+                <span class="conflict-card-badge">現場太極 04</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🛡️ <span class="zh">情緒黑洞隔離與心理能量防護</span><span class="en">Emotional Shield & Energy Conservation</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.6;">
+                  <ul style="padding-left: 18px; margin: 0;">
+                    <li><strong>「垃圾車法則」實踐：</strong>有些人就像垃圾車，滿載憤怒與沮喪到處找人傾倒。微笑揮手，切勿接收他的垃圾。</li>
+                    <li><strong>職場不求被所有人喜歡：</strong>建立「專業且可預測」的口碑比「討好所有人」更具安全感。守護你的能量，專注在能創造真實價值的事物上。</li>
                   </ul>
                 </div>
               </div>
@@ -10958,6 +11802,7 @@ const SECTIONS = [
   {id:'reqtrack', zh:'客戶需求追蹤', en:'Customer Requirement Tracker'},
   {id:'meeting', zh:'精實會議與高階簡報表達 (STAR vs. CARL)', en:'Lean Meeting & Executive Presentation (STAR vs. CARL)'},
   {id:'sayno', zh:'職場說不的藝術與防禦手冊', en:'Art of Saying No: Workplace Defense'},
+  {id:'conflict', zh:'職場面對衝突的藝術與防禦手冊', en:'Workplace Conflict Resolution & Defense'},
   {id:'fallacies', zh:'常見分析與認知謬誤', en:'Common Analytical & Cognitive Fallacies'},
   {id:'finance', zh:'財務分析與精實機會', en:'Financial Analysis & Lean Opportunities'},
   {id:'brainstorm', zh:'團隊腦力激盪與視覺化工具', en:'Team Brainstorming & Visual Tools'},
@@ -19957,6 +20802,7 @@ function init(){
 
   render();
   generateSayNoScript();
+    generateConflictScript();
 
   document.getElementById('themeToggle').onclick=()=>{
     state.theme = state.theme==='dark'?'light':'dark';
@@ -19966,6 +20812,7 @@ function init(){
     state.lang = state.lang==='zh'?'en':'zh';
     saveState(); render();
     generateSayNoScript();
+    generateConflictScript();
   };
 
   const sidebarToggleBtn = document.getElementById('sidebarToggle');
@@ -20005,6 +20852,7 @@ function switchSayNoTab(tabId) {
   });
   if (tabId === 'tab-gen') {
     generateSayNoScript();
+    generateConflictScript();
   }
 }
 
@@ -20631,6 +21479,638 @@ function generateSayNoScript() {
     tipEl.textContent = typeof entry.tip === 'object' ? (isEn ? entry.tip.en : entry.tip.zh) : entry.tip;
   }
 }
+
+
+/* ==================== CONFLICT RESOLUTION & WORKPLACE DEFENSE LOGIC ==================== */
+function switchConflictTab(tabId) {
+  document.querySelectorAll('.conflict-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
+  });
+  document.querySelectorAll('.conflict-content-pane').forEach(pane => {
+    pane.classList.toggle('active', pane.id === 'conflict-pane-' + tabId);
+  });
+  if (tabId === 'tab-c-gen') {
+    generateConflictScript();
+  }
+}
+
+function copyConflictText(btn) {
+  const card = btn.closest('.conflict-card') || btn.closest('.conflict-result-card') || btn.closest('.conflict-quote-box');
+  if (!card) return;
+  const quoteBox = card.classList.contains('conflict-quote-box') ? card : card.querySelector('.conflict-quote-box');
+  if (!quoteBox) return;
+  
+  const isEn = (typeof state !== 'undefined' && state.lang === 'en');
+  const targetEl = isEn ? (quoteBox.querySelector('.en') || quoteBox) : (quoteBox.querySelector('.zh') || quoteBox);
+  const textToCopy = targetEl.innerText || targetEl.textContent;
+
+  navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<span>✅</span><span class="zh">已複製話術！</span><span class="en">Copied!</span>';
+    btn.style.background = '#f43f5e';
+    btn.style.color = '#ffffff';
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  }).catch(err => {
+    console.error('Copy failed:', err);
+  });
+}
+
+const CONFLICT_TEMPLATES = {
+  manager: {
+    ambush: {
+      collab: {
+        badge: { zh: '長官對應 • 協作雙贏', en: 'Supervisor Alignment • Collaborative Win-Win' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '肯定長官對專案交付品質的急迫性，把當眾質疑轉化為共同梳理流程的契機。', en: 'Validate the supervisor\'s focus on quality; pivot public challenge into a joint process review.' },
+        zh: '「長官點出的風險非常敏銳。為了確保專案上線萬無一失，我手上有最新的驗證數據，我們可以花 10 分鐘一起對齊這項指標的計算口徑，確保團隊步伐一致。」',
+        en: '"You make a sharp observation regarding risk. To ensure flawless rollout, I have the latest validation metrics ready; let\'s align on this formula to keep everyone on the same page."',
+        tip: { zh: '💡 避坑重點：切忌當眾反駁主管面子，用「是的，而且...」承接。', en: '💡 Pro Tip: Never challenge authority in public; use "Yes, and..." to reframe.' }
+      },
+      assert: {
+        badge: { zh: '長官對應 • 堅定防守', en: 'Supervisor Alignment • Assertive Boundary' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '以客觀測試數據與既定標準作業規範為護盾，平靜且堅定地澄清事實。', en: 'Shield with verified telemetry and SOP guidelines; remain calm, objective, and firm.' },
+        zh: '「長官，此專案目前的架構與參數均嚴格符合上季度簽核的 SOP 規範。在過去 500 次壓測中，穩定率達到 99.8%，符合生產標準。」',
+        en: '"Director, the current architecture strictly adheres to our signed SOP baseline. Over 500 stress tests, stability has held at 99.8%, fully meeting release criteria."',
+        tip: { zh: '💡 避坑重點：用數據與已簽核的文件說話，避免使用情緒化字眼。', en: '💡 Pro Tip: Anchor with signed approvals and hard numbers, not defensiveness.' }
+      },
+      cool: {
+        badge: { zh: '長官對應 • 降溫冷卻', en: 'Supervisor Alignment • Tactical Pause' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '不急於現場爭辯細節，提議會後備妥完整數據包單獨匯報，保護彼此台階。', en: 'Avoid deep-dive debates during general meetings; offer an offline briefing with full telemetry.' },
+        zh: '「長官關心的這幾個異常邊界條件很具體。由於現場牽涉到多個子系統日誌，我會在會後 1 小時內整理一份完整的 Trace Log 專題簡報向您單獨匯報。」',
+        en: '"These boundary conditions are very specific. Because they span multiple subsystem logs, I will prepare a detailed Trace Log brief for a 1-on-1 review within an hour."',
+        tip: { zh: '💡 避坑重點：給予明確的會後交付時間，展現高執行力與掌控感。', en: '💡 Pro Tip: Commit to an exact delivery timeframe to project control and reliability.' }
+      },
+      escalate: {
+        badge: { zh: '長官對應 • 制度升級', en: 'Supervisor Alignment • Systemic Escalation' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '若質疑涉及跨部門既定政策衝突，提請跨部門委員會或更高層級決策圈裁決。', en: 'If the conflict stems from competing company policies, route to executive governance committee.' },
+        zh: '「這項設計是遵循跨部門架構委員會上週裁定的標準。若長官評估業務現況需調整策略優先級，我可立即提請委員會召開變更審查會。」',
+        en: '"This design reflects last week\'s cross-functional Architecture Board decision. If business priorities necessitate a change, I can initiate a formal review board agenda."',
+        tip: { zh: '💡 避坑重點：引用更高決策機構的正式共識，切勿形成個人對長官的單點對抗。', en: '💡 Pro Tip: Reference formal steering committee governance rather than personal opinions.' }
+      },
+    },
+    resource: {
+      collab: {
+        badge: { zh: '長官對應 • 協作雙贏', en: 'Supervisor Alignment • Collaborative Win-Win' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '展現全局思維，與主管共同檢視專案看板與產能負荷，共同決定資源最佳化配置。', en: 'Demonstrate holistic thinking; review team capacity WIP together to optimize allocations.' },
+        zh: '「長官，目前團隊的 WIP 已達滿載。如果這項新專案是當前最高策略優先級，我們一起檢視目前的任務看板，看是否將專案 C 順延，以集中火力確保本案成功？」',
+        en: '"Our current sprint WIP is fully saturated. If this new initiative takes strategic precedence, let\'s review the Kanban board to deprioritize Project C and ensure delivery here."',
+        tip: { zh: '💡 避坑重點：不做二選一的拒絕，而是提供資源調度方案供長官定奪。', en: '💡 Pro Tip: Offer trade-off options rather than outright refusals.' }
+      },
+      assert: {
+        badge: { zh: '長官對應 • 堅定防守', en: 'Supervisor Alignment • Assertive Boundary' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '用產能上限與品質風險矩陣立下明確邊界，防止團隊過載崩潰。', en: 'Set explicit boundaries using capacity limits and defect correlation models.' },
+        zh: '「根據團隊的工時測算，若在未增加人力的情況下承接此需求，核心系統的代碼審查與測試時間將被壓縮 40%，預估線上故障率將激增，這不符合品質政策。」',
+        en: '"Based on capacity modeling, taking this on without additional engineers will cut code review and testing by 40%, significantly increasing defect risk beyond acceptable quality thresholds."',
+        tip: { zh: '💡 避坑重點：強調過載對組織整體產出的危害，而非個人喊累。', en: '💡 Pro Tip: Frame capacity limits in terms of organizational risk and quality yield.' }
+      },
+      cool: {
+        badge: { zh: '長官對應 • 降溫冷卻', en: 'Supervisor Alignment • Tactical Pause' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '請求 24 小時進行精確的資源與排程衝擊評估，避免在壓力下貿然承諾。', en: 'Request 24 hours to conduct an empirical resource impact assessment before committing.' },
+        zh: '「收到這項重要需求。為了給您最精準的交付預估，請容我與技術主管在明天中午前完成產能與架構衝擊分析，屆時呈交完整評估報告。」',
+        en: '"Understood. To provide an accurate timeline, please allow our team until tomorrow noon to finish a formal capacity and dependency impact assessment."',
+        tip: { zh: '💡 避坑重點：爭取緩衝時間是專業工程師的自我防護本能。', en: '💡 Pro Tip: Professional estimation buffers protect team predictability.' }
+      },
+      escalate: {
+        badge: { zh: '長官對應 • 制度升級', en: 'Supervisor Alignment • Systemic Escalation' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '當資源衝突涉及跨事業群爭奪時，請求主管協調更高階 Headcount 或預算支持。', en: 'When resources collide across business units, escalate for formal headcount or OPEX reallocation.' },
+        zh: '「目前專案 A 與專案 B 均為 VP 級關注目標。在既有人力下無法同時併行，建請長官於下週處級會議向處長爭取外部外包預算或指派支援人力。」',
+        en: '"Both projects are VP-level commitments. We cannot parallel-execute with current staffing. I suggest raising an external contractor budget request at the director sync next week."',
+        tip: { zh: '💡 避坑重點：主動為長官準備好向上爭取資源的數據簡報。', en: '💡 Pro Tip: Equip your manager with slide decks and ROI data to fight for budget.' }
+      },
+    },
+    deadline: {
+      collab: {
+        badge: { zh: '長官對應 • 協作雙贏', en: 'Supervisor Alignment • Collaborative Win-Win' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '採用敏捷敏捷 MVP 概念，與主管協議「按期交付核心功能，進階功能分期上線」。', en: 'Apply Agile MVP slicing; agree on shipping the core on time and staging advanced features.' },
+        zh: '「為了守住長官要求的死線，我建議將交付物拆為兩階段：下週五先交付 MVP 核心流程（滿足業務急迫性），進階報表於兩週後的 Phase 2 迭代補齊。」',
+        en: '"To meet this hard deadline, I propose phased delivery: ship the core MVP workflow next Friday for operational readiness, and rollout advanced analytics in Phase 2."',
+        tip: { zh: '💡 避坑重點：死線不變，彈性調整範疇（Fixed Date, Variable Scope）。', en: '💡 Pro Tip: Hold date fixed while flexing scope.' }
+      },
+      assert: {
+        badge: { zh: '長官對應 • 堅定防守', en: 'Supervisor Alignment • Assertive Boundary' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '搬出技術債與致命缺陷的歷史因果關係，明確拒絕不合理的壓縮。', en: 'Demonstrate the empirical causality between compressed QA and critical production outages.' },
+        zh: '「長官，若將原定 3 週的驗證期壓縮至 3 天，我們無法執行全鏈路壓力測試與資安掃描。根據過往案例，這將面臨服務中斷的重大風險，我不建議採取此路徑。」',
+        en: '"Compressing a 3-week verification cycle into 3 days eliminates end-to-end load testing. Historical incident data shows this creates unacceptable outage risks."',
+        tip: { zh: '💡 避坑重點：留下書面風險警示，保護自己免於承擔盲目壓期的責任。', en: '💡 Pro Tip: Send a formal written risk disclosure to protect professional liability.' }
+      },
+      cool: {
+        badge: { zh: '長官對應 • 降溫冷卻', en: 'Supervisor Alignment • Tactical Pause' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '將時程倒推表（Critical Path Schedule）攤開，引導主管看清物理極限。', en: 'Lay out the CPM (Critical Path Method) schedule to let reality speak for itself.' },
+        zh: '「我已把本專案的關鍵路徑圖（CPM）與每道工序的最小所需工時排定。請長官過目這張燃盡圖，我們一起看看哪些工序具備並行加速的空間。」',
+        en: '"I have mapped out the Critical Path Method (CPM) diagram with minimum mandatory cycle times. Let\'s review this burndown together to identify viable parallel tracks."',
+        tip: { zh: '💡 避坑重點：視覺化排程能讓無理催促的主管自行看清瓶頸。', en: '💡 Pro Tip: Visual Gantt charts make bottleneck realities unmistakable.' }
+      },
+      escalate: {
+        badge: { zh: '長官對應 • 制度升級', en: 'Supervisor Alignment • Systemic Escalation' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '向主管提出正式的「範疇變更與時程延期請求單（CR）」，啟動正式變更流程。', en: 'Submit a formal Change Request (CR) documenting scope variance and timeline adjustments.' },
+        zh: '「由於本次新增了 4 項關鍵需求，已超出原定專案範疇。我已填寫專案變更申請單（Change Request），請長官簽核新的里程碑基準線（Baseline）。」',
+        en: '"Because 4 major functional requirements were injected, scope has expanded. I have drafted a formal Change Request (CR) for your baseline re-authorization."',
+        tip: { zh: '💡 避坑重點：變更必須有字據，白紙黑字是工程師最好的保護傘。', en: '💡 Pro Tip: Re-baselining requires formal sign-off.' }
+      },
+    },
+    blame: {
+      collab: {
+        badge: { zh: '長官對應 • 協作雙贏', en: 'Supervisor Alignment • Collaborative Win-Win' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '不急於辯解，以「DMAIC 根因分析」框架帶領主管聚焦於修復系統漏洞。', en: 'Pivot from finger-pointing to systemic DMAIC RCA and permanent corrective actions.' },
+        zh: '「對於這次事件造成的影響我深感遺憾。團隊已在 15 分鐘內完成止血。我目前正以 5-Why 進行根因調查，下午會呈交『防止再發措施（CAPA）』報告給您。」',
+        en: '"I take this incident seriously. The team contained the issue within 15 minutes. I am currently running a 5-Why root cause analysis and will deliver a full CAPA report this afternoon."',
+        tip: { zh: '💡 避坑重點：先止血、再覆盤，用專業的 CAPA 報告平息怒火。', en: '💡 Pro Tip: Contain first, analyze second; neutralize blame with structured CAPA.' }
+      },
+      assert: {
+        badge: { zh: '長官對應 • 堅定防守', en: 'Supervisor Alignment • Assertive Boundary' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '用版本控制與系統日誌還原事實真相，釐清非本團隊責任邊界。', en: 'Present version control diffs and audit trails to clarify exact operational boundaries.' },
+        zh: '「根據伺服器日誌與 Git 提交紀錄，本次異常係因外部相依套件於今日凌晨更動 API 所致，我方代碼完全符合規範。我們已主動協助撰寫防禦層代碼進行隔離。」',
+        en: '"Audit telemetry and Git history confirm this anomaly was triggered by upstream API changes deployed at midnight. Our codebase remains compliant, and we have deployed a defensive wrapper."',
+        tip: { zh: '💡 避坑重點：陳述事實而不帶諷刺，展現專業擔當與技術威信。', en: '💡 Pro Tip: State telemetry facts dispassionately while showcasing technical agility.' }
+      },
+      cool: {
+        badge: { zh: '長官對應 • 降溫冷卻', en: 'Supervisor Alignment • Tactical Pause' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '承接情緒但延後定性，待調查數據完整後召開客觀覆盤會。', en: 'Acknowledge gravity while deferring attribution until full post-mortem data is assembled.' },
+        zh: '「我理解長官對此事的重視。目前事件尚在監控中，為了避免不完整的資訊誤導判斷，請給團隊 2 小時完成全鏈路數據取證，屆時召開無指責覆盤會。」',
+        en: '"I understand the high severity of this event. To avoid partial conclusions, allow us 2 hours to pull full cross-system telemetry for a blameless post-mortem."',
+        tip: { zh: '💡 避坑重點：堅持「無指責覆盤（Blameless Post-mortem）」原則。', en: '💡 Pro Tip: Champion blameless post-mortems to foster psychological safety.' }
+      },
+      escalate: {
+        badge: { zh: '長官對應 • 制度升級', en: 'Supervisor Alignment • Systemic Escalation' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '若長官執意將跨部門系統性失誤歸咎於個人，啟動品質保證稽核小組獨立介入。', en: 'Request an independent QA/Audit review if systemic multi-team failures are scapegoated on you.' },
+        zh: '「此事件涉及多部門交接介面與權限架構。建請長官指示內部品質稽核小組（QA Audit）進行獨立客觀的事件調查，以建立公平且具公信力的改善對策。」',
+        en: '"This outage spans multiple cross-functional interfaces. I recommend commissioning an independent QA audit to conduct an objective review and establish systemic remedies."',
+        tip: { zh: '💡 避坑重點：尋求第三方獨立稽核，避免成為政治博弈的替罪羊。', en: '💡 Pro Tip: Independent third-party audit prevents political scapegoating.' }
+      },
+    },
+  },
+  cross_mgr: {
+    ambush: {
+      collab: {
+        badge: { zh: '跨部門窗口 • 協作雙贏', en: 'Cross-functional Alignment • Collaborative Win-Win' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '在跨部門會議中化解挑釁，將焦點拉回雙方共同的業務目標與指標。', en: 'Disarm public friction by anchoring back to mutual corporate OKRs.' },
+        zh: '「感謝王經理提出這個問題。我們都希望系統在雙 11 大促時保持零故障。針對你提到的負載顧慮，我們下週一開個專題會議，把架構對接方案敲定。」',
+        en: '"Thank you for raising this point. We both share the goal of zero downtime during peak season. Regarding your throughput concern, let\'s sync Monday to finalize the interface spec."',
+        tip: { zh: '💡 避坑重點：不當場爭辯，將爭端移至專門工作會議，避免在無關人員面前演戲。', en: '💡 Pro Tip: Move detailed friction offline into focused working sessions.' }
+      },
+      assert: {
+        badge: { zh: '跨部門窗口 • 堅定防守', en: 'Cross-functional Alignment • Assertive Boundary' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '用跨部門服務水準協議（SLA）與介面合約（API Contract）正面回應質疑。', en: 'Defend with existing Service Level Agreements (SLAs) and signed API specifications.' },
+        zh: '「本服務目前提供的響應時間為 120ms，完全符合雙方於 Q1 簽署的 SLA 服務水準規範（規範上限為 200ms）。若貴方業務需要更高規格，需啟動 SLA 升級流程。」',
+        en: '"Our current API response time is 120ms, well within the agreed 200ms SLA signed in Q1. If your updated requirements demand lower latency, we can initiate an SLA upgrade review."',
+        tip: { zh: '💡 避坑重點：合約與 SLA 是跨部門最堅不可摧的法律盾牌。', en: '💡 Pro Tip: Pre-agreed SLAs are your ultimate contractual defense.' }
+      },
+      cool: {
+        badge: { zh: '跨部門窗口 • 降溫冷卻', en: 'Cross-functional Alignment • Tactical Pause' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '以「需要調取完整資料庫日誌」為由，冷卻對方的攻擊氣焰。', en: 'Cool off aggression by requiring empirical log verification before reaching conclusions.' },
+        zh: '「你剛才提到的那筆異常交易非常關鍵。為求精確，請把該交易的 Trace ID 發給我們，工程團隊會在今天下午 5 點前完成日誌檢索並回覆分析結果。」',
+        en: '"That outlier transaction you referenced is critical. Please forward the Trace ID, and our engineering team will inspect the server logs and reply by 5:00 PM today."',
+        tip: { zh: '💡 避坑重點：要求對方提供具體的 Trace ID / 憑證，將空泛指責轉化為技術工單。', en: '💡 Pro Tip: Require concrete ticket IDs to transform vague accusations into engineering tasks.' }
+      },
+      escalate: {
+        badge: { zh: '跨部門窗口 • 制度升級', en: 'Cross-functional Alignment • Systemic Escalation' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '當跨部門主管惡意刁難時，將雙方主管同時抄送，訴諸專案指導委員會。', en: 'Escalate persistent hostile friction to joint project steering committee with leadership copied.' },
+        zh: '「由於雙方對此功能的交付邊界存在持續分歧，我已將此議題列入本週四的跨部門專案推動委員會（PMO）議程，請雙方處長共同定奪。」',
+        en: '"Since our teams hold differing views on functional scope, I have scheduled this for Thursday\'s PMO Steering Committee with our respective directors."',
+        tip: { zh: '💡 避坑重點：讓 PMO 與處長層級介入，切勿私下與平級主管無休止纏鬥。', en: '💡 Pro Tip: Let PMO arbitration resolve boundary deadlocks.' }
+      },
+    },
+    resource: {
+      collab: {
+        badge: { zh: '跨部門窗口 • 協作雙贏', en: 'Cross-functional Alignment • Collaborative Win-Win' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '運用「資源互惠交換（Trade-off）」機制，促成跨部門資源合作。', en: 'Negotiate cross-functional reciprocal trade-offs to unblock shared bottlenecks.' },
+        zh: '「如果貴團隊能協助分擔前端畫面的切版工作，我方即可抽出兩位資深後端工程師全力衝刺資料庫優化，這樣整體專案能提早一週完成！」',
+        en: '"If your team can cover frontend UI slicing, we can dedicate two senior backend engineers to the database tuning, cutting overall cycle time by a week!"',
+        tip: { zh: '💡 避坑重點：提出建設性的交換條件，打造雙贏合作。', en: '💡 Pro Tip: Propose reciprocal resource sharing for mutual benefit.' }
+      },
+      assert: {
+        badge: { zh: '跨部門窗口 • 堅定防守', en: 'Cross-functional Alignment • Assertive Boundary' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '引用部門年度 OKR 與既定專案承諾，守住團隊核心防線。', en: 'Stand on approved annual OKR commitments to shield team bandwidth.' },
+        zh: '「我們團隊目前的產能已 100% 承諾於 Q3 公司級核心專案。若要支援貴部門的新專案，必須由業務主管正式提出優先級置換申請。」',
+        en: '"Our current capacity is 100% committed to Q3 Tier-1 strategic initiatives. Supporting this request requires a formal reprioritization from executive leadership."',
+        tip: { zh: '💡 避坑重點：將拒絕的原因歸結於「公司整體戰略優先級」，而非本位主義。', en: '💡 Pro Tip: Frame boundary protection as adherence to company-wide strategic priorities.' }
+      },
+      cool: {
+        badge: { zh: '跨部門窗口 • 降溫冷卻', en: 'Cross-functional Alignment • Tactical Pause' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '引導對方遵循正式的「需求評估表（RFC）」流程，過濾隨興的口頭索取。', en: 'Direct requests into a structured RFC (Request for Comments) pipeline to filter out frivolous demands.' },
+        zh: '「為確保跨部門資源調配的公平與透明，請填妥跨部門需求評估表（附上預期效益與急迫性）。我們將於每週一的資源排程會上進行統一評審。」',
+        en: '"To maintain transparency in resource allocation, please complete our standard Cross-Department Request Form. We review and score all tickets at our Monday intake sync."',
+        tip: { zh: '💡 避坑重點：用流程標準化（Standard Work）擋掉 80% 不負責任的插單。', en: '💡 Pro Tip: Standardized intake intake forms eliminate 80% of ad-hoc interruptions.' }
+      },
+      escalate: {
+        badge: { zh: '跨部門窗口 • 制度升級', en: 'Cross-functional Alignment • Systemic Escalation' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '提請 PMO 建立 RACI 責任矩陣，明確界定跨部門交付物。', en: 'Request PMO to establish a binding RACI matrix for cross-functional deliverables.' },
+        zh: '「針對此項模組的維護權責，目前雙方認知不一。我建議請 PMO 召集 RACI 矩陣工作坊，由事業群主管裁定長期的 Owner 部門。」',
+        en: '"Regarding long-term ownership of this module, I recommend asking PMO to facilitate a RACI workshop for executive assignment."',
+        tip: { zh: '💡 避坑重點：權責模糊是萬惡之源，及早透過制度定錨。', en: '💡 Pro Tip: Ambiguity breeds conflict; anchor permanent ownership early via RACI.' }
+      },
+    },
+    deadline: {
+      collab: {
+        badge: { zh: '跨部門窗口 • 協作雙贏', en: 'Cross-functional Alignment • Collaborative Win-Win' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '協助跨部門窗口進行「要徑（Critical Path）」優化，協同壓縮非必要等待。', en: 'Collaborate to optimize the critical path and eliminate non-value handoff delays.' },
+        zh: '「我們非常想幫你們趕上客戶死線。如果貴方能在本週三前提供測試用數據，我們就能提前啟動聯調，將整體驗收時程縮短 3 天。」',
+        en: '"We want to help you hit that client milestone. If you can provide sanitized test data by Wednesday, we can start integration 3 days early."',
+        tip: { zh: '💡 避坑重點：把球踢回給對方，將死線壓力轉化為對方的交付承諾。', en: '💡 Pro Tip: Tie your accelerated delivery directly to their prompt input delivery.' }
+      },
+      assert: {
+        badge: { zh: '跨部門窗口 • 堅定防守', en: 'Cross-functional Alignment • Assertive Boundary' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '堅持最低測試與安全工期，明確告知壓縮極限的後果。', en: 'Assert immutable quality and validation cycle times to uphold compliance.' },
+        zh: '「跨部門系統整合涉及金流與用戶個資，標準回歸測試至少需要 5 個工作日。壓縮此時間將直接違反金管資安規範，我們無法承擔此風險。」',
+        en: '"Cross-system financial integrations require a minimum 5-day regression test. Shortening this directly violates regulatory audit guidelines, which is non-negotiable."',
+        tip: { zh: '💡 避坑重點：把法規與資安作為不可撼動的鋼鐵護盾。', en: '💡 Pro Tip: Regulatory and compliance mandates are non-negotiable defenses.' }
+      },
+      cool: {
+        badge: { zh: '跨部門窗口 • 降溫冷卻', en: 'Cross-functional Alignment • Tactical Pause' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '提供即時交付倒數甘特圖，邀請對方共同確認每個節點。', en: 'Publish a shared live Gantt chart to make dependency lag mutually visible.' },
+        zh: '「這是我們雙方的聯合交付甘特圖。由於前置模組延遲了 4 天交付給我方，後續時程自動順延。我已更新看板，大家可隨時查閱最新交付日。」',
+        en: '"Here is our joint delivery Gantt chart. Because upstream inputs were delayed by 4 days, downstream milestones shifted accordingly. The board is updated in real time."',
+        tip: { zh: '💡 避坑重點：前置延誤自動推遲後續節點，用甘特圖邏輯建立客觀因果。', en: '💡 Pro Tip: Make upstream delays automatically cascade to downstream dates via Gantt.' }
+      },
+      escalate: {
+        badge: { zh: '跨部門窗口 • 制度升級', en: 'Cross-functional Alignment • Systemic Escalation' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '發出正式「專案時程風險預警函（Risk Alert）」，抄送雙方高層。', en: 'Issue a formal Project Schedule Risk Alert copied to mutual department directors.' },
+        zh: '「鑑於目前的時程要求已超出物理交付極限，我方已正式提報【專案進度黃色預警】至專案管理處，建請高層協調範疇縮減或時程順延。」',
+        en: '"As the requested deadline exceeds technical feasibility, we have submitted a formal Schedule Amber Alert to PMO, requesting executive scope adjustment."',
+        tip: { zh: '💡 避坑重點：提前發布預警，避免在死線當天才被動背鍋。', en: '💡 Pro Tip: Early yellow alerts prevent late red disasters.' }
+      },
+    },
+    blame: {
+      collab: {
+        badge: { zh: '跨部門窗口 • 協作雙贏', en: 'Cross-functional Alignment • Collaborative Win-Win' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '以「共同解決客戶問題」為優先，暫擱責任劃分，先合力修復。', en: 'Prioritize customer impact containment before attributing technical root causes.' },
+        zh: '「客戶現在最在意的是系統恢復運作。我們雙方的技術團隊先組成聯合應變小組（War Room），等問題解決後再召開無指責覆盤會。」',
+        en: '"The customer needs the system restored immediately. Let\'s form a joint War Room now; we can analyze root causes in a blameless retrospective afterwards."',
+        tip: { zh: '💡 避坑重點：在危機當下展現大格局，贏得團隊尊重。', en: '💡 Pro Tip: Take the high ground during active incidents to earn long-term authority.' }
+      },
+      assert: {
+        badge: { zh: '跨部門窗口 • 堅定防守', en: 'Cross-functional Alignment • Assertive Boundary' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '出示明確的日誌與接口協議證明，劃清責任界限。', en: 'Present interface contract payloads to prove non-fault status definitively.' },
+        zh: '「根據 API 閘道器的錯誤日誌，該請求返回 400 錯誤係因貴方傳入的 JSON 格式缺少必填欄位 `userId`，我方後端驗證邏輯運作正常。」',
+        en: '"According to gateway logs, the HTTP 400 error occurred because your incoming JSON payload lacked the required `userId` field. Our backend validation worked as designed."',
+        tip: { zh: '💡 避坑重點：保留完整的 Request/Response Log 作為防身憑據。', en: '💡 Pro Tip: Retain complete payload logs as indisputable technical evidence.' }
+      },
+      cool: {
+        badge: { zh: '跨部門窗口 • 降溫冷卻', en: 'Cross-functional Alignment • Tactical Pause' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '提議將事件紀錄交由架構委員會或第三方小組進行中立調查。', en: 'Propose third-party architecture review for impartial incident post-mortem.' },
+        zh: '「為確保客觀公正，我們已將本次事件的所有相關日誌與時間戳上傳至共享空間，建請系統架構師小組進行獨立調研並出具根因報告。」',
+        en: '"To maintain objectivity, we uploaded all incident logs and timestamps to the shared vault for independent root cause evaluation by the Architecture Team."',
+        tip: { zh: '💡 避坑重點：避免兩方各執一詞，交給客觀日誌說話。', en: '💡 Pro Tip: Let immutable logs and neutral architects decide causality.' }
+      },
+      escalate: {
+        badge: { zh: '跨部門窗口 • 制度升級', en: 'Cross-functional Alignment • Systemic Escalation' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '若對方在主管群組中進行不實指控，發布正式澄清郵件並附上全套證據鏈。', en: 'Issue a formal factual rebuttal email with complete evidence chain attached.' },
+        zh: '「各位長官好，針對剛才討論的事件，為避免資訊傳遞落差，附上技術調查報告與時間軸（Timeline）。事實證明我方系統均按規範運作，請長官參閱。」',
+        en: '"Directors, to ensure full transparency regarding the recent outage, attached is the chronological timeline and telemetry report showing our systems complied with all protocols."',
+        tip: { zh: '💡 避坑重點：公開澄清需極度冷靜、條理分明，用證據鏈說話。', en: '💡 Pro Tip: Public rebuttals must be dispassionate, precise, and backed by evidence.' }
+      },
+    },
+  },
+  peer: {
+    ambush: {
+      collab: {
+        badge: { zh: '同儕應對 • 協作雙贏', en: 'Peer Interaction • Collaborative Win-Win' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '把同儕的質疑化為共同改進的點子，邀請對方一起參與解決。', en: 'Reframe peer skepticism into a co-improvement opportunity; invite them to build.' },
+        zh: '「你提的這個角度很有意思，既然你對這塊模組有深入研究，要不要下週跟我一起做一次 Pair Review，把這段架構再打磨得更漂亮？」',
+        en: '"That\'s an insightful angle. Since you have deep context here, let\'s pair up next week for a code review to polish this module together!"',
+        tip: { zh: '💡 避坑重點：把潛在的反對者拉進盟友陣營，化阻力為助力。', en: '💡 Pro Tip: Turn vocal critics into co-owners by inviting them into the process.' }
+      },
+      assert: {
+        badge: { zh: '同儕應對 • 堅定防守', en: 'Peer Interaction • Assertive Boundary' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '直接點出技術事實與先前會議共識，不卑不亢地捍衛設計。', en: 'Directly cite established technical consensus and PR approvals with calm confidence.' },
+        zh: '「這套演算法在上週的架構評審會上已全票通過，且壓測數據表現優異。如果你有更新的測試基準，歡迎在 Jira 上提交 Ticket 我們再來探討。」',
+        en: '"This algorithm was unanimously approved in last week\'s architecture sync and passed all benchmarks. If you have newer metrics, feel free to open a ticket for discussion."',
+        tip: { zh: '💡 避坑重點：用流程規則規範同儕，要求其走正式反饋管道。', en: '💡 Pro Tip: Enforce formal review channels to curb informal grandstanding.' }
+      },
+      cool: {
+        badge: { zh: '同儕應對 • 降溫冷卻', en: 'Peer Interaction • Tactical Pause' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '微笑以對，用幽默或輕描淡寫化解攻擊，不給對方製造戲劇化的機會。', en: 'Deflect with humor or casual composure; starve their hostility of drama.' },
+        zh: '「哈哈，謝謝你的建議！我先把這點記在待辦事項裡，我們先把今天會議的主題過完，會後私下聊！」',
+        en: '"Thanks for the thought! I\'ve jotted that down. Let\'s stay focused on today\'s agenda and catch up offline afterwards!"',
+        tip: { zh: '💡 避坑重點：在眾人面前不接招、不被激怒，展現高情商風度。', en: '💡 Pro Tip: Refusing to get triggered publicly showcases supreme emotional control.' }
+      },
+      escalate: {
+        badge: { zh: '同儕應對 • 制度升級', en: 'Peer Interaction • Systemic Escalation' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '若同儕屢次無端人身攻擊或打斷發言，適時提請會議主持人維持秩序。', en: 'Politely prompt the meeting facilitator to maintain procedural order and agenda focus.' },
+        zh: '「主席，為了確保今天會議能在預定時間內完成主要決策，建議我們先回到簡報主線，將衍生議題放入 Parking Lot 會後討論。」',
+        en: '"Facilitator, to ensure we reach the primary decision within our allotted time, I suggest parking side topics and returning to the main presentation agenda."',
+        tip: { zh: '💡 避坑重點：借力會議主持人的權威，切斷對方的無理干擾。', en: '💡 Pro Tip: Leverage the meeting facilitator to enforce boundaries.' }
+      },
+    },
+    resource: {
+      collab: {
+        badge: { zh: '同儕應對 • 協作雙贏', en: 'Peer Interaction • Collaborative Win-Win' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '協議雙方各自承擔部分模組，共享代碼庫或測試資源。', en: 'Negotiate modular workload division and shared infrastructure access.' },
+        zh: '「我們都在搶這台 GPU 伺服器的算力。不如我們把訓練排程錯開，你跑白天我跑夜間批次，這樣兩人的模型訓練都不會耽誤！」',
+        en: '"We\'re both competing for GPU clusters. Let\'s alternate schedules: you run day batches and I\'ll run night jobs so neither model gets blocked!"',
+        tip: { zh: '💡 避坑重點：用精實的平準化（Heijunka）思維錯峰共享資源。', en: '💡 Pro Tip: Use Heijunka (load leveling) to share constrained hardware.' }
+      },
+      assert: {
+        badge: { zh: '同儕應對 • 堅定防守', en: 'Peer Interaction • Assertive Boundary' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '依據 Sprint 規劃會議的認領紀錄，明確劃定守備範圍。', en: 'Point to Sprint Planning task ownership to prevent scope poaching.' },
+        zh: '「在週一的 Sprint Planning 上，主管已將此核心模組指派給我負責。請你專注完成你認領的模組，這樣團隊整體進度才不會落後。」',
+        en: '"During Monday\'s Sprint Planning, the team lead assigned this module to me. Please focus on your assigned story so our collective sprint stays on track."',
+        tip: { zh: '💡 避坑重點：守好自己的職責邊界，防止強勢同事越俎代庖。', en: '💡 Pro Tip: Guard your assigned scope against overbearing peers.' }
+      },
+      cool: {
+        badge: { zh: '同儕應對 • 降溫冷卻', en: 'Peer Interaction • Tactical Pause' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '建議將爭議任務切細，各自認領獨立的一小塊進行 POC。', en: 'Propose slicing disputed features into independent sub-tasks for parallel POCs.' },
+        zh: '「既然我們兩人都對這項技術感興趣，不如把這個功能拆成前端介面與後端引擎，各自先做一個簡易 POC，下週再看成果整合。」',
+        en: '"Since we\'re both enthusiastic about this technology, let\'s split it into frontend and engine POCs and compare integration benchmarks next week."',
+        tip: { zh: '💡 避坑重點：化競爭為良性賽馬，用最終成效說話。', en: '💡 Pro Tip: Transform friction into a healthy proof-of-concept bake-off.' }
+      },
+      escalate: {
+        badge: { zh: '同儕應對 • 制度升級', en: 'Peer Interaction • Systemic Escalation' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '同儕爭奪關鍵任務時，在 Standup 會議中公開請主管指派。', en: 'Surface ownership ambiguities in Daily Standup for clear lead assignment.' },
+        zh: '「在今天的 Daily Standup 上，我和 Alex 都希望主導這項新功能。請主管直接指派 Primary Owner 與 Secondary Reviewer，以便我們分工。」',
+        en: '"At standup today, both Alex and I expressed interest in this epic. Could our lead assign a Primary Owner and a Secondary Reviewer so we can split work?"',
+        tip: { zh: '💡 避坑重點：光明正大地在站會上請主管定奪，避免私下內耗。', en: '💡 Pro Tip: Clarify roles publicly in standup to eliminate toxic office politics.' }
+      },
+    },
+    deadline: {
+      collab: {
+        badge: { zh: '同儕應對 • 協作雙贏', en: 'Peer Interaction • Collaborative Win-Win' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '主動協調相依介面的 Mock Data，降低彼此等待時間。', en: 'Provide early Mock API endpoints to decouple mutual blocking.' },
+        zh: '「我知道你在等我的後端 API。我今天先提供 Mock 伺服器與規格定義檔給你，你前端可以先開始寫，不用乾等我的真實資料庫上線！」',
+        en: '"I know you are waiting on my API. I will spin up a Mock endpoint and swagger schema today so you can build the UI without waiting on the DB migration!"',
+        tip: { zh: '💡 避坑重點：用 Mock 數據解耦依賴，創造高情商合作口碑。', en: '💡 Pro Tip: Unblock peers with mock data to build strong collaboration karma.' }
+      },
+      assert: {
+        badge: { zh: '同儕應對 • 堅定防守', en: 'Peer Interaction • Assertive Boundary' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '明確告知個人承諾交付時間，拒絕對方無端的提前催促。', en: 'Reaffirm agreed sprint commitment date against ad-hoc pressure.' },
+        zh: '「根據 Sprint 規劃，此任務的承諾交付日是本週四下午 5 點。目前進度完全在軌道上，請耐心等待，我會按時交付。」',
+        en: '"Per our sprint commitment, my delivery target is Thursday 5:00 PM. Work is completely on track; I will deliver on time as planned."',
+        tip: { zh: '💡 避坑重點：不被對方的催促焦慮傳染，堅定維護自身節奏。', en: '💡 Pro Tip: Stay immune to peer anxiety; keep your focused cadence.' }
+      },
+      cool: {
+        badge: { zh: '同儕應對 • 降溫冷卻', en: 'Peer Interaction • Tactical Pause' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '引導對方查看 Jira 看板上的即時狀態，減少打擾。', en: 'Direct peer to live Jira/Kanban status cards to minimize interruptions.' },
+        zh: '「我目前的即時開發進度都更新在 Jira 卡片 #882 上了。你可以隨時訂閱那張卡片，一有狀態變更系統會自動通知你！」',
+        en: '"My live progress is logged in Jira #882. You can watch that ticket to receive automated notifications whenever status updates!"',
+        tip: { zh: '💡 避坑重點：利用工具的非同步通知擋掉同儕頻繁的即時通訊轟炸。', en: '💡 Pro Tip: Direct frequent pingers to automated tool notifications.' }
+      },
+      escalate: {
+        badge: { zh: '同儕應對 • 制度升級', en: 'Peer Interaction • Systemic Escalation' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '若同儕嚴重延誤影響到你的下游交付，在團隊看板上標註 Blocker。', en: 'Flag dependencies as formal Blockers on team board to document root causes.' },
+        zh: '「因上游模組延遲交付，我在 Jira 上已將我的任務標記為【Blocked by #501】。待上游解鎖後，我的預估工時仍需 2 個工作天。」',
+        en: '"Due to upstream delays, I flagged my ticket as [Blocked by #501] in Jira. Once unblocked, my task will require 2 business days to complete."',
+        tip: { zh: '💡 避坑重點：客觀標註 Blocker，避免事後被怪罪是你延誤專案。', en: '💡 Pro Tip: Always flag blockers explicitly on the project board.' }
+      },
+    },
+    blame: {
+      collab: {
+        badge: { zh: '同儕應對 • 協作雙贏', en: 'Peer Interaction • Collaborative Win-Win' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '主動邀約進行 Pair Debugging，共同排查問題展現風度。', en: 'Invite peer to pair-debug and solve the bug collaboratively.' },
+        zh: '「不管這個 Bug 是出在哪個模組，我們現在都在同一條船上。我現在有空，我們一起看代碼把它修復，然後去喝杯咖啡！」',
+        en: '"Regardless of where this bug originated, we\'re in this together. I have 30 minutes now—let\'s pair up, squash it, and grab a coffee!"',
+        tip: { zh: '💡 避坑重點：展現格局，把潛在的甩鍋戰轉化為深厚戰友誼。', en: '💡 Pro Tip: Magnanimity converts potential finger-pointing into deep camaraderie.' }
+      },
+      assert: {
+        badge: { zh: '同儕應對 • 堅定防守', en: 'Peer Interaction • Assertive Boundary' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '調出 Git Blame 與 PR 審查紀錄，以代碼事實澄清責任。', en: 'Cite Git blame history and signed PR approvals to clarify accountability.' },
+        zh: '「根據 Git 提交歷史（Commit SHA: a1b2c3），這段代碼是由你在上週三合併的 PR 引入。我已定位出問題行數，建議你可以這樣修復...」',
+        en: '"According to Git commit a1b2c3, this regression was introduced in last Wednesday\'s merged PR. I\'ve isolated the line and have a suggested patch here..."',
+        tip: { zh: '💡 避坑重點：Git 是工程師最公正的裁判，提供修復建議更顯專業。', en: '💡 Pro Tip: Git blame is indisputable; offering a patch shows constructive leadership.' }
+      },
+      cool: {
+        badge: { zh: '同儕應對 • 降溫冷卻', en: 'Peer Interaction • Tactical Pause' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '保持情緒平靜，拒絕在群組內互撕，提議召開技術覆盤。', en: 'Refuse public Slack flamewars; propose a structured post-mortem meeting.' },
+        zh: '「在群組裡爭論無助於修復問題。我們先把當前報錯修復，週五技術分享會上我們再把這類邊界條件當作案例共同探討。」',
+        en: '"Debating in group chat won\'t fix production. Let\'s deploy the hotfix first, then review this boundary condition at Friday\'s tech sharing."',
+        tip: { zh: '💡 避坑重點：絕不在公開群組與同事情緒互撕。', en: '💡 Pro Tip: Never engage in toxic public Slack arguments.' }
+      },
+      escalate: {
+        badge: { zh: '同儕應對 • 制度升級', en: 'Peer Interaction • Systemic Escalation' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '若同儕惡意在主管面前背刺，附上完整事實鏈私下向主管澄清。', en: 'If peer maliciously badmouths you to leadership, provide factual summary 1-on-1.' },
+        zh: '「主管好，針對剛才會議中提及的模組問題，附上詳細的測試紀錄與 PR 歷程。事實顯示我方交付均符合標準，特此向您報告備查。」',
+        en: '"Director, regarding the issue raised in the standup, attached is the test verification report and PR history showing our component fully meets specifications."',
+        tip: { zh: '💡 避坑重點：私下向主管提供客觀事證，切勿在公開場合掀起鬥爭。', en: '💡 Pro Tip: Clarify privately with your manager with receipts, not public drama.' }
+      },
+    },
+  },
+  external: {
+    ambush: {
+      collab: {
+        badge: { zh: '外部客戶/廠商 • 協作雙贏', en: 'Client/Vendor Alignment • Collaborative Win-Win' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '感謝客戶的嚴格要求，將客訴轉化為加深夥伴關係的契機。', en: 'Thank client for feedback; reframe complaint into a long-term partnership enhancer.' },
+        zh: '「非常感謝貴方點出這項使用痛點。這對我們優化產品體驗非常有價值。我們技術專家今天會進駐排查，明早給貴方一份優化報告。」',
+        en: '"Thank you for highlighting this workflow friction. It gives us invaluable insight to optimize the platform. Our lead architect will inspect this today and provide an action plan by tomorrow morning."',
+        tip: { zh: '💡 避坑重點：先接納客戶情緒，再提供超預期的專業應對。', en: '💡 Pro Tip: Validate client emotions first, then deliver swift professional remedies.' }
+      },
+      assert: {
+        badge: { zh: '外部客戶/廠商 • 堅定防守', en: 'Client/Vendor Alignment • Assertive Boundary' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '以合約規格書（SOW）為基準，溫和但堅定地捍衛交付標準。', en: 'Anchor firmly on the signed Statement of Work (SOW) with diplomatic tact.' },
+        zh: '「貴方提出的這項新功能非常實用。不過根據雙方簽署的 SOW 規格書第 4.2 條，此項目屬於 Phase 2 範疇。若需提前實施，我們很樂意為貴方提供追加報價。」',
+        en: '"This feature request is very compelling. However, per Section 4.2 of our signed SOW, this is slated for Phase 2. If you\'d like to expedite it, we can promptly prepare a change order quote."',
+        tip: { zh: '💡 避坑重點：不要免費答應合約外範疇，引導走正規追加預算（Change Order）。', en: '💡 Pro Tip: Guide out-of-scope requests to formal paid Change Orders.' }
+      },
+      cool: {
+        badge: { zh: '外部客戶/廠商 • 降溫冷卻', en: 'Client/Vendor Alignment • Tactical Pause' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '開啟工單系統登記機制，將客戶的激動情緒轉化為結構化問題。', en: 'Route heated client queries into official ticket tracking with clear SLA timers.' },
+        zh: '「我已親自為貴方建立緊急工單 #T-998，並指派資深工程師處理。您可以在客戶後台實時追蹤處理進度，我們每 2 小時會更新一次日誌。」',
+        en: '"I have opened high-priority Ticket #T-998 and assigned our senior engineer. You can track live remediation notes in the portal; we will post updates every 2 hours."',
+        tip: { zh: '💡 避坑重點：用即時工單系統給予客戶確定感與安全感。', en: '💡 Pro Tip: Visible ticket progress conveys immediate competence and containment.' }
+      },
+      escalate: {
+        badge: { zh: '外部客戶/廠商 • 制度升級', en: 'Client/Vendor Alignment • Systemic Escalation' },
+        tag: { zh: '公開質疑破局', en: 'Public Ambush' },
+        analysis: { zh: '當外部廠商/客戶提出無理索賠或毀約威脅時，引導法務與業務總監介入。', en: 'Escalate legal or commercial breach threats directly to Account Executive and Legal.' },
+        zh: '「這項爭議已涉及雙方商業合約條款的詮釋。我已請我方業務總監與法務顧問於明天與貴方採購主管進行正式商務對齊。」',
+        en: '"This discussion touches upon commercial contractual interpretations. I have briefed our Account Executive and Legal Counsel to schedule a formal alignment with your procurement leads tomorrow."',
+        tip: { zh: '💡 避坑重點：工程與技術人員絕不在法律與商務爭議上擅自表態。', en: '💡 Pro Tip: Never negotiate legal or commercial liabilities on the fly.' }
+      },
+    },
+    resource: {
+      collab: {
+        badge: { zh: '外部客戶/廠商 • 協作雙贏', en: 'Client/Vendor Alignment • Collaborative Win-Win' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '協助外部夥伴建立標準化資料接口，減少雙方重工與摩擦。', en: 'Provide standard data ingestion templates to eliminate manual reconciliation.' },
+        zh: '「為協助貴方更順暢地傳遞數據，我們已開放了自助驗證 Sandbox 環境。貴方工程師可隨時在上面測試，能大幅節省雙方聯調時間！」',
+        en: '"To assist your integration, we have opened a self-service Sandbox environment. Your developers can validate payloads instantly, cutting joint debugging time in half!"',
+        tip: { zh: '💡 避坑重點：提供自動化工具降低外部協作成本。', en: '💡 Pro Tip: Self-service sandboxes drastically cut cross-organization friction.' }
+      },
+      assert: {
+        badge: { zh: '外部客戶/廠商 • 堅定防守', en: 'Client/Vendor Alignment • Assertive Boundary' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '提醒外部廠商遵守交付進度與品質 SLA，否則啟動罰則條款。', en: 'Remind vendors of contractual delivery SLAs and financial penalty terms.' },
+        zh: '「根據採購合約第 8 條，貴方原定本週交付的晶片毛胚已延遲 3 天。請於今日下班前提供補償交付排程，否則將依約啟動違約金機制。」',
+        en: '"Per Section 8 of the Procurement Agreement, the wafer batch is 3 days overdue. Please provide an expedited delivery schedule today to avoid triggering contractual liquidated damages."',
+        tip: { zh: '💡 避坑重點：對外部供應商要有清晰的合約底線與賞罰機制。', en: '💡 Pro Tip: Enforce clear vendor accountability using contract penalty clauses.' }
+      },
+      cool: {
+        badge: { zh: '外部客戶/廠商 • 降溫冷卻', en: 'Client/Vendor Alignment • Tactical Pause' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '以「例行週會（QBR/WBR）」作為固定溝通渠道，收斂零散要求。', en: 'Funnel scattershot demands into structured Weekly Business Reviews (WBR).' },
+        zh: '「感謝貴方的多項反饋。我們已將所有項目彙整至《雙週對齊清單》，建議在週四下午的例行對齊會上逐項確認優先順序。」',
+        en: '"Thank you for the detailed feedback. We compiled all items into our Bi-weekly Review Board and suggest prioritizing them during Thursday\'s partner sync."',
+        tip: { zh: '💡 避坑重點：用固定會議收斂外部零散轟炸，保護日常專注力。', en: '💡 Pro Tip: Regular structured syncs tame erratic ad-hoc client demands.' }
+      },
+      escalate: {
+        badge: { zh: '外部客戶/廠商 • 制度升級', en: 'Client/Vendor Alignment • Systemic Escalation' },
+        tag: { zh: '資源邊界協調', en: 'Resource Allocation' },
+        analysis: { zh: '若外部客戶長期佔用額外諮詢人力，提請業務主管調整服務等級協議。', en: 'Propose premium support SLA tiering if client chronically consumes out-of-scope advisory time.' },
+        zh: '「貴方近期的客製化諮詢需求已超出標準維護合約時數。我方業務經理已準備好【專屬架構師駐點方案】，竭誠為貴方提供更深度的支持。」',
+        en: '"Your recent advisory requests exceed standard SLA allocations. Our Commercial Director has prepared a Dedicated Enterprise Solutions package to support you at this expanded scale."',
+        tip: { zh: '💡 避坑重點：將客戶的額外需求包裝成增銷（Upsell）商業機會。', en: '💡 Pro Tip: Turn excess client demands into legitimate upsell opportunities.' }
+      },
+    },
+    deadline: {
+      collab: {
+        badge: { zh: '外部客戶/廠商 • 協作雙贏', en: 'Client/Vendor Alignment • Collaborative Win-Win' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '與客戶溝通核心業務價值，優先交付最具 ROI 的模組。', en: 'Align on core business ROI to prioritize and fast-track high-impact modules.' },
+        zh: '「我們深知貴方新季度發表會的重要性。我們團隊將優先全力打磨『核心支付與結帳模組』，確保大會演示完美無瑕，其餘後台報表於次週交付。」',
+        en: '"We know how critical your upcoming keynote launch is. We will focus 100% on the checkout and payment flow for a flawless demo, delivering background reporting the following week."',
+        tip: { zh: '💡 避坑重點：幫客戶贏得他的高光時刻，客戶就會成為你的終身盟友。', en: '💡 Pro Tip: Help the client win their executive spotlight to gain enduring loyalty.' }
+      },
+      assert: {
+        badge: { zh: '外部客戶/廠商 • 堅定防守', en: 'Client/Vendor Alignment • Assertive Boundary' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '明確告知變更對上線日的連動影響，由客戶承擔時程順延責任。', en: 'Document that late client scope additions directly push back delivery milestones.' },
+        zh: '「貴方於昨日新增的 3 項 UI 規格變更已啟動範疇重估。依合約規定，整體驗收上線日將相應順延 7 個工作日，請貴方主管確認簽核變更單。」',
+        en: '"Yesterday\'s 3 UI change requests triggered scope recalculation. Per contract, final sign-off is adjusted out by 7 business days pending your signed authorization."',
+        tip: { zh: '💡 避坑重點：客戶改需求 = 時程自動順延，必須有白紙黑字簽核。', en: '💡 Pro Tip: Scope changes must automatically push delivery dates in writing.' }
+      },
+      cool: {
+        badge: { zh: '外部客戶/廠商 • 降溫冷卻', en: 'Client/Vendor Alignment • Tactical Pause' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '提供即時交付進度儀表板（Client Portal），讓進度完全透明化。', en: 'Provide a real-time Client Portal tracking dashboard to dispel uncertainty.' },
+        zh: '「我們已為貴方開啟即時交付進度儀表板。貴方專案經理可隨時查閱各項測試的通過率與燃盡圖，掌握第一手客觀進度。」',
+        en: '"We provisioned a live tracking portal for your project managers to review test pass rates and burndown metrics with full transparency."',
+        tip: { zh: '💡 避坑重點：透明度是消解客戶催促焦慮的最佳解藥。', en: '💡 Pro Tip: Radical transparency is the ultimate antidote to client anxiety.' }
+      },
+      escalate: {
+        badge: { zh: '外部客戶/廠商 • 制度升級', en: 'Client/Vendor Alignment • Systemic Escalation' },
+        tag: { zh: '死線與範圍管理', en: 'Deadline & Scope' },
+        analysis: { zh: '若客戶無理逼迫加班趕工，請業務總監出面維護團隊身心健康與合約權益。', en: 'Involve Account VP if client exerts abusive pressure threatening team well-being.' },
+        zh: '「針對此時程爭議，我方業務副總希望今天下午與貴方專案總監通話，商討最佳的資源平衡方案，確保產品在最高品質下交付。」',
+        en: '"Regarding this timeline escalation, our Account VP would like to speak with your Project Director this afternoon to agree on a healthy execution plan that maintains zero-defect quality."',
+        tip: { zh: '💡 避坑重點：主管的職責就是為第一線工程師擋掉外部無理的霸凌與壓榨。', en: '💡 Pro Tip: Executive leadership must shield frontline engineers from client bullying.' }
+      },
+    },
+    blame: {
+      collab: {
+        badge: { zh: '外部客戶/廠商 • 協作雙贏', en: 'Client/Vendor Alignment • Collaborative Win-Win' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '第一時間啟動應變與修復，以無指責態度共同撰寫事件報告。', en: 'Mobilize instant containment and collaborate on an objective post-incident review.' },
+        zh: '「我們對此中斷給貴方業務造成的困擾深表歉意。目前系統已全面恢復。我們已撰寫了完整的 Root Cause Analysis (RCA) 報告與防範對策，請貴方參閱。」',
+        en: '"We apologize for the operational disruption. All services are restored. We have compiled a comprehensive Root Cause Analysis (RCA) and preventive action plan for your review."',
+        tip: { zh: '💡 避坑重點：迅速專業的 RCA 報告能將客訴危機轉化為信任資產。', en: '💡 Pro Tip: A crisp, professional RCA report turns an outage into a trust-building asset.' }
+      },
+      assert: {
+        badge: { zh: '外部客戶/廠商 • 堅定防守', en: 'Client/Vendor Alignment • Assertive Boundary' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '出示第三方雲端供應商的故障公告或日誌，證明非我方服務故障。', en: 'Provide third-party cloud status logs proving the outage was an external upstream event.' },
+        zh: '「經查證，本次服務中斷係因 AWS 亞太區域資料中心發生大規模光纖斷線所致（附上 AWS 官方事件編號）。我方架構已於 8 分鐘內自動切換至備援節點。」',
+        en: '"Investigation confirms the disruption was caused by an upstream AWS Asia-Pacific datacenter outage (AWS Incident #9921 attached). Our failover system switched to backup within 8 minutes."',
+        tip: { zh: '💡 避坑重點：用第三方權威日誌釐清責任，證明我方防禦架構的敏捷性。', en: '💡 Pro Tip: Third-party infrastructure logs completely exonerate internal code.' }
+      },
+      cool: {
+        badge: { zh: '外部客戶/廠商 • 降溫冷卻', en: 'Client/Vendor Alignment • Tactical Pause' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '承諾於 24 小時內出具正式官方調查報告，避免在電話中匆促承認未經證實的指控。', en: 'Commit to a formal official report within 24 hours; avoid conceding unverified claims on live calls.' },
+        zh: '「我們非常重視貴方的反饋。為確保技術結論嚴謹客觀，工程團隊正在調取完整日誌鏈。我們將在明日上午 10 點前提交正式的官方技術調查函。」',
+        en: '"We take your feedback seriously. To ensure technical rigor, our engineers are parsing the full telemetry stream. We will deliver an official technical report by 10:00 AM tomorrow."',
+        tip: { zh: '💡 避坑重點：在未完成技術定性前，切忌在電話中隨口說「是我們的問題」。', en: '💡 Pro Tip: Never say "it\'s our fault" on phone calls before telemetry confirms root cause.' }
+      },
+      escalate: {
+        badge: { zh: '外部客戶/廠商 • 制度升級', en: 'Client/Vendor Alignment • Systemic Escalation' },
+        tag: { zh: '責任釐清與防禦', en: 'Blame Defense' },
+        analysis: { zh: '面對客戶無理的索賠指控，啟動合約爭議解決條款（Dispute Resolution）。', en: 'Trigger formal contractual Dispute Resolution protocols for unfair penalty claims.' },
+        zh: '「針對貴方提出的賠償訴求，我們已交由公司法律與商務委員會審查。我方合約法務代表將於本週內正式去函貴方商務部門進行法規對齊。」',
+        en: '"Regarding your indemnity claim, we have forwarded the dossier to our Legal and Commercial Governance Committee. Our legal counsel will formally communicate with your procurement division this week."',
+        tip: { zh: '💡 避坑重點：涉及金錢賠償一律交給法務處理，技術人員絕不私下允諾。', en: '💡 Pro Tip: Never make informal financial commitments; leave compensation to legal counsel.' }
+      },
+    },
+  },
+};
+
+
+function generateConflictScript() {
+  const target = document.getElementById('conflict-sel-target')?.value || 'manager';
+  const type = document.getElementById('conflict-sel-type')?.value || 'ambush';
+  const style = document.getElementById('conflict-sel-style')?.value || 'collab';
+
+  let entry = (CONFLICT_TEMPLATES[target] && CONFLICT_TEMPLATES[target][type] && CONFLICT_TEMPLATES[target][type][style])
+    || (CONFLICT_TEMPLATES[target] && CONFLICT_TEMPLATES[target][type] && Object.values(CONFLICT_TEMPLATES[target][type])[0])
+    || (CONFLICT_TEMPLATES[target] && Object.values(CONFLICT_TEMPLATES[target])[0] && Object.values(Object.values(CONFLICT_TEMPLATES[target])[0])[0])
+    || CONFLICT_TEMPLATES.manager.ambush.collab;
+
+  const isEn = (typeof state !== 'undefined' && state.lang === 'en');
+
+  const badgeEl = document.getElementById('conflict-res-badge');
+  const tagEl = document.getElementById('conflict-res-tag');
+  const analysisEl = document.getElementById('conflict-res-analysis');
+  const scriptEl = document.getElementById('conflict-res-script');
+  const tipEl = document.getElementById('conflict-res-tip');
+
+  if (badgeEl) {
+    badgeEl.textContent = typeof entry.badge === 'object' ? (isEn ? entry.badge.en : entry.badge.zh) : entry.badge;
+  }
+  if (tagEl) {
+    tagEl.textContent = typeof entry.tag === 'object' ? (isEn ? entry.tag.en : entry.tag.zh) : entry.tag;
+  }
+  if (analysisEl) {
+    const analysisText = typeof entry.analysis === 'object' ? (isEn ? entry.analysis.en : entry.analysis.zh) : entry.analysis;
+    analysisEl.innerHTML = '<strong>' + (isEn ? 'Core Strategy: ' : '核心策略：') + '</strong>' + analysisText;
+  }
+  if (scriptEl) {
+    scriptEl.innerHTML = `<div class="zh">${entry.zh}</div><div class="en">${entry.en}</div>`;
+  }
+  if (tipEl) {
+    tipEl.textContent = typeof entry.tip === 'object' ? (isEn ? entry.tip.en : entry.tip.zh) : entry.tip;
+  }
+}
+
 
 
 /* ==========================================================================
