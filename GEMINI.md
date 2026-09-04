@@ -76,7 +76,7 @@ Each book requires **two additions** (no JS changes needed):
 
 > All three JS functions (`initBookCollapse`, `toggleBooksGrid`, `buildBooksTitleList`) wire up new cards automatically — no extra JS needed when adding books.
 
-### Books Added (as of 2026-09-02)
+### Books Added (as of 2026-09-04)
 
 | # | 中文書名 | English Title | CSS slug | Key Theme |
 |---|---|---|---|---|
@@ -119,6 +119,8 @@ Each book requires **two additions** (no JS changes needed):
 | 37 | 做自己的人生財務長 | Family Inc. | `life-cfo` | OpEx Cost Control, Personal P&L, Family CFO |
 | 38 | 5秒法則 | The 5 Second Rule | `five-second-rule` | Overcoming Inertia, Instant Action, Habit Activation |
 | 39 | 我可能錯了 | I May Be Wrong | `i-may-be-wrong` | Intellectual Humility, VUCA, Bias Awareness, Non-Attachment |
+| 40 | 當下的力量 | The Power of Now | `power-of-now` | Present-Moment Focus, React vs Respond, Mental Muda |
+| 41 | 寫下來，事情就會發生 | Write It Down, Make It Happen | `write-it-down` | Visual Management, Marking RAS, Hoshin Kanri, Execution |
 
 ---
 
