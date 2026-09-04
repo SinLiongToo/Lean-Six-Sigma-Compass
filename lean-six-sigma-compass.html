@@ -4520,7 +4520,256 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   }
 
 
-  /* ==========================================================================
+  
+  /* ==================== LEAN DIGITAL TRANSFORMATION & SMART MANUFACTURING (DX) ==================== */
+  .leandx-wrap { display: flex; flex-direction: column; gap: 22px; width: 100%; }
+  .leandx-banner {
+    background: rgba(6, 182, 212, 0.06);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid #06b6d4;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  [data-theme="light"] .leandx-banner {
+    background: #ecfeff;
+    border-color: #a5f3fc;
+    border-left: 4px solid #0891b2;
+  }
+  .leandx-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .leandx-pillar-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: all 0.2s ease;
+  }
+  [data-theme="light"] .leandx-pillar-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .leandx-pillar-card:hover {
+    border-color: #06b6d4;
+    transform: translateY(-2px);
+  }
+  .leandx-subtabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+  }
+  .leandx-tab-btn {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .leandx-tab-btn:hover {
+    color: var(--ink);
+    border-color: #06b6d4;
+  }
+  .leandx-tab-btn.active {
+    background: #06b6d4;
+    color: #082f49;
+    border-color: #06b6d4;
+    font-weight: 700;
+  }
+  [data-theme="light"] .leandx-tab-btn.active {
+    background: #0891b2;
+    color: #ffffff;
+    border-color: #0891b2;
+  }
+  .leandx-content-pane {
+    display: none;
+    animation: fade .25s ease;
+  }
+  .leandx-content-pane.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .leandx-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .leandx-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  [data-theme="light"] .leandx-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+  .leandx-card:hover {
+    border-color: #06b6d4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  .leandx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(6, 182, 212, 0.15);
+    color: #06b6d4;
+  }
+  [data-theme="light"] .leandx-badge {
+    background: #cffafe;
+    color: #0e7490;
+  }
+  .leandx-meta-box {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  [data-theme="light"] .leandx-meta-box {
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .leandx-quote-box {
+    background: rgba(6, 182, 212, 0.04);
+    border: 1px solid var(--line);
+    border-left: 3px solid #06b6d4;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  [data-theme="light"] .leandx-quote-box {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    border-left: 3px solid #16a34a;
+  }
+  .leandx-copy-btn {
+    align-self: flex-start;
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.35);
+    color: #06b6d4;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  [data-theme="light"] .leandx-copy-btn {
+    color: #0891b2;
+    background: #cffafe;
+    border-color: #67e8f9;
+  }
+  .leandx-copy-btn:hover {
+    background: #06b6d4;
+    color: #082f49;
+  }
+  .leandx-interactive-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  [data-theme="light"] .leandx-interactive-box {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .leandx-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  .leandx-select, .leandx-range {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .leandx-select:focus {
+    border-color: #06b6d4;
+  }
+  .leandx-result-panel {
+    background: rgba(6, 182, 212, 0.05);
+    border: 1px solid #06b6d4;
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  [data-theme="light"] .leandx-result-panel {
+    background: #f0fdfa;
+    border-color: #2dd4bf;
+  }
+  .leandx-phase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .leandx-phase-1 { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+  .leandx-phase-2 { background: rgba(245, 166, 35, 0.18); color: #fbbf24; border: 1px solid rgba(245, 166, 35, 0.3); }
+  .leandx-phase-3 { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+  .leandx-phase-4 { background: rgba(6, 182, 212, 0.18); color: #38bdf8; border: 1px solid rgba(6, 182, 212, 0.3); }
+  
+  [data-theme="light"] .leandx-card,
+  [data-theme="light"] .leandx-interactive-box,
+  [data-theme="light"] .leandx-pillar-card {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  }
+
+
+  
+
+
+
+/* ==========================================================================
      17. VALUE STREAM MAPPING (VSM) BUILDER CSS
      ========================================================================== */
   .vsm-wrap { display: flex; flex-direction: column; gap: 20px; width: 100%; }
@@ -5259,7 +5508,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.40 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-04</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.41 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-04</span></span>
         </div>
       </div>
     </div>
@@ -10395,6 +10644,565 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
         </div>
       </section>
 
+      
+      <section class="section" data-section="leandx">
+        <h2>
+          <span class="zh">精實數位轉型與智慧製造 (半導體/高科技 DX)</span>
+          <span class="en">Lean Digital Transformation & Smart Manufacturing (Semi/High-Tech DX)</span>
+        </h2>
+        <p class="lead">
+          <span class="zh">精實專家對數位轉型（DX）的核心洞察：轉型的目標不是盲目採購昂貴炫目的新軟體，而是最大化客戶價值並徹底消除流程浪費。「如果你將一個充滿缺陷與浪費的破爛流程數位化，你只會得到一個運行得更快、製造更多數位垃圾的破爛流程。」從價值流程梳理、前線微自動化、可視化 Andon 到半導體高階設備（如 ASML/NPI）實戰落地。</span>
+          <span class="en">A Lean expert's perspective on Digital Transformation (DX): The goal is never to blindly buy shiny new tools, but to maximize customer value and eradicate process waste. "If you digitize a broken, wasteful process, you simply end up with a digitized, faster wasteful process." From VSM waste removal and frontline micro-automation to visual Andon and semiconductor equipment (e.g., ASML / high-variation NPI) operational blueprints.</span>
+        </p>
+
+        <!-- Lean DX Wrap -->
+        <div class="leandx-wrap">
+
+          <!-- Core Pillars Banner -->
+          <div class="leandx-banner">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 26px;">🚀</span>
+                <span style="font-weight: 800; font-size: 15px; color: #06b6d4;">
+                  <span class="zh">精實數位轉型四大戰略支柱 (4 Strategic DX Pillars)</span>
+                  <span class="en">4 Strategic Pillars of Lean Digital Transformation</span>
+                </span>
+              </div>
+              <span class="chip" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; font-weight: 700;">
+                <span class="zh">先精實後數位 • 小步快跑 • 賦能前線</span><span class="en">Lean Before Tech • Fast Iteration • Empower People</span>
+              </span>
+            </div>
+
+            <div class="leandx-pillars-grid">
+              <div class="leandx-pillar-card">
+                <div style="font-weight: 700; color: #06b6d4; font-size: 13.5px; margin-bottom: 4px;">
+                  1. <span class="zh">流程優化與去浪費 (先優化再買軟體)</span><span class="en">Process Optimization Before Tech</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">在花任何經費買軟體前，先用 VSM 畫出 As-Is 流程，剔除重複審批與無價值交接，執行 Digital 5S 清理雲端與溝通雜訊。</span>
+                  <span class="en">Before spending on software, map As-Is workflows via VSM, eliminate redundant approvals, and run Digital 5S on cloud storage and communication.</span>
+                </div>
+              </div>
+
+              <div class="leandx-pillar-card">
+                <div style="font-weight: 700; color: #06b6d4; font-size: 13.5px; margin-bottom: 4px;">
+                  2. <span class="zh">微自動化與敏捷快贏 (小處著手快速試錯)</span><span class="en">Micro-Automation & Quick Wins</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">拒絕動輒數年的笨重 ERP 導入；善用低代碼（Power Automate、Python、Jira、自助表單）解決前線最痛苦的重複文書與等待。</span>
+                  <span class="en">Avoid monolithic multi-year ERP overhauls; start small with low-code, Python scripts, digital Kanban, and self-service intake forms to deliver instant relief.</span>
+                </div>
+              </div>
+
+              <div class="leandx-pillar-card">
+                <div style="font-weight: 700; color: #06b6d4; font-size: 13.5px; margin-bottom: 4px;">
+                  3. <span class="zh">可視化管理與數據驅動改善 (即時暴露瓶頸)</span><span class="en">Visual Management & Data Kaizen</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">建立 Power BI/Tableau 即時儀表板、知識型與組裝數位 Andon（暗燈呼叫）、動態數位 SOP 與 IoT Poka-Yoke 防錯。</span>
+                  <span class="en">Deploy real-time Power BI dashboards, digital Andon flagging for knowledge blockers, interactive dynamic SOPs, and connected IoT Poka-Yoke error proofing.</span>
+                </div>
+              </div>
+
+              <div class="leandx-pillar-card">
+                <div style="font-weight: 700; color: #06b6d4; font-size: 13.5px; margin-bottom: 4px;">
+                  4. <span class="zh">人才賦能與變革管理 (克服 70% 失敗率)</span><span class="en">People Capability & Lean Culture</span>
+                </div>
+                <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">轉型失敗 70% 源於忽視人的阻力。組建 IT+前線混編敏捷小隊、建立即時反饋閉環，培養團隊以 PDCA 思維持續迭代系統。</span>
+                  <span class="en">70% of DX fails due to human resistance. Form IT+frontline squads, implement instant bug/feedback loops, and instill Lean-Agile PDCA continuous improvement mindsets.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-tabs Navigation -->
+          <div class="leandx-subtabs">
+            <button class="leandx-tab-btn active" onclick="switchLeanDxTab('tab-dx-pillars')">
+              <span>🏛️</span>
+              <span class="zh">四大轉型戰略支柱</span><span class="en">4 Strategic Pillars</span>
+            </button>
+            <button class="leandx-tab-btn" onclick="switchLeanDxTab('tab-dx-semi')">
+              <span>🔬</span>
+              <span class="zh">半導體高階設備實戰 (ASML 案例)</span><span class="en">Semiconductor & High-Tech Case</span>
+            </button>
+            <button class="leandx-tab-btn" onclick="switchLeanDxTab('tab-dx-timwoods')">
+              <span>🗑️</span>
+              <span class="zh">數位八大浪費診斷矩陣 (TIMWOODS)</span><span class="en">Digital 8 Wastes (TIMWOODS)</span>
+            </button>
+            <button class="leandx-tab-btn" onclick="switchLeanDxTab('tab-dx-calc')">
+              <span>⚡</span>
+              <span class="zh">DX 成熟度診斷與路徑產生器</span><span class="en">DX Maturity & Roadmap Scorer</span>
+            </button>
+            <button class="leandx-tab-btn" onclick="switchLeanDxTab('tab-dx-links')">
+              <span>🔗</span>
+              <span class="zh">羅盤關聯與教學導覽</span><span class="en">Compass Cross-Links</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: 4 Strategic Pillars -->
+          <div class="leandx-content-pane active" id="leandx-pane-tab-dx-pillars">
+            <div class="leandx-card-grid">
+              <!-- Pillar 1 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">戰略 01 • 先精實後數位</span>
+                  <span style="font-size: 12px; color: var(--muted);">Process Optimization</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🧹 <span class="zh">流程簡化、VSM 與 Digital 5S</span><span class="en">Process Simplification, VSM & Digital 5S</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">精實原則：</span><span class="en">Lean Principle:</span></strong> <span class="zh">自動化一個爛流程只會更快產生垃圾。在導入系統前先消除非增值步驟（NVA）。</span><span class="en">Automating bad processes speeds up waste. Strip out NVA steps before coding.</span></div>
+                  <div><strong><span class="zh">實踐工具：</span><span class="en">Tools:</span></strong> <span class="zh">價值流程圖 (VSM)、SIPOC 邊界梳理、雲端 Digital 5S（清理過期檔案、定義 Slack/Teams 頻道治理規則）。</span><span class="en">Value Stream Mapping (VSM), SIPOC, Cloud Digital 5S (folder taxonomies & Teams channel governance).</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">「我們透過 VSM 發現一個工程變更需要 7 個主管簽核，但 5 個只是形式點擊。簡化成 2 位關鍵負責人後，再進行自動化，審批 Lead Time 直接從 14 天縮短至 2 小時！」</span>
+                  <span class="en">"VSM revealed an ECO required 7 signatures, 5 of which were rubber stamps. We trimmed it to 2 key owners before automating, slashing Lead Time from 14 days to 2 hours!"</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)">
+                  <span>📋</span><span class="zh">複製案例心法</span><span class="en">Copy Case Note</span>
+                </button>
+              </div>
+
+              <!-- Pillar 2 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">戰略 02 • 微自動化與快贏</span>
+                  <span style="font-size: 12px; color: var(--muted);">Start Small & Scale</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  ⚡ <span class="zh">低代碼工具、數位看板與自助入口</span><span class="en">Low-Code, Digital Flow Boards & Self-Service</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">精實原則：</span><span class="en">Lean Principle:</span></strong> <span class="zh">小步快跑（Agile Iteration），以最快速度讓前線體會到減輕負擔的甜頭。</span><span class="en">Start small with low-code quick wins to build frontline buy-in and immediate trust.</span></div>
+                  <div><strong><span class="zh">實踐工具：</span><span class="en">Tools:</span></strong> <span class="zh">Power Automate、Python 批次腳本、Jira/Trello 數位看板、Forms 自助表單（替代混亂的 Email 追單）。</span><span class="en">Power Automate, Python scripts, Jira/Trello boards, Typeform/Google Forms for structured intake.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">「不用等 IT 開發半年，工程師花兩天用 Python + Power Automate 串接測試機台與 Slack，當測試跑完自動發送分析圖表，每天為團隊節省 2 小時手動截圖與發信時間。」</span>
+                  <span class="en">"Instead of waiting 6 months for IT, engineers built a 2-day Python + Power Automate bot that parses test logs and sends charts to Slack, saving 2 hours daily."</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)">
+                  <span>📋</span><span class="zh">複製案例心法</span><span class="en">Copy Case Note</span>
+                </button>
+              </div>
+
+              <!-- Pillar 3 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">戰略 03 • 視覺化與動態改善</span>
+                  <span style="font-size: 12px; color: var(--muted);">Data-Driven Kaizen</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  📊 <span class="zh">戰情儀表板、數位 Andon 與動態 SOP</span><span class="en">Dashboards, Digital Andon & Dynamic SOPs</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">精實原則：</span><span class="en">Lean Principle:</span></strong> <span class="zh">讓問題無所遁形（Visual Management），從「事後救火」轉為「即時預警與防錯」。</span><span class="en">Make blockers visible instantly; shift from reactive firefighting to real-time Andon alert and Poka-Yoke.</span></div>
+                  <div><strong><span class="zh">實踐工具：</span><span class="en">Tools:</span></strong> <span class="zh">Power BI/Tableau 實時戰情室、Jira Blocked 數位暗燈、Notion/Confluence 互動式動態 SOP、聯網扭力防錯。</span><span class="en">Power BI/Tableau live dashboards, Jira digital Andon flags, interactive living SOPs, IoT connected tooling.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">「傳統研發卡關往往週會才被發現；導入數位 Andon 後，工程師在 Jira 一鍵標註 Blocked，系統即時推播給資深架構師，跨部門卡關等待時間從 5 天降至 4 小時。」</span>
+                  <span class="en">"Knowledge work bottlenecks used to hide until weekly meetings; with digital Andon, flagging a Jira ticket as 'Blocked' instantly alerts lead architects, dropping blocker wait times from 5 days to 4 hours."</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)">
+                  <span>📋</span><span class="zh">複製案例心法</span><span class="en">Copy Case Note</span>
+                </button>
+              </div>
+
+              <!-- Pillar 4 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">戰略 04 • 人才賦能與文化</span>
+                  <span style="font-size: 12px; color: var(--muted);">People & Change Mgmt</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  👥 <span class="zh">混編敏捷小隊、反饋閉環與 PDCA</span><span class="en">Cross-Functional Squads, Feedback Loops & PDCA</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">精實原則：</span><span class="en">Lean Principle:</span></strong> <span class="zh">尊重他人（Respect for People）。科技是工具，人才是驅動者。70% 數位轉型失敗源於組織抗拒。</span><span class="en">Respect for people. Technology is an enabler; employees are the drivers. Overcome the 70% DX failure trap.</span></div>
+                  <div><strong><span class="zh">實踐工具：</span><span class="en">Tools:</span></strong> <span class="zh">IT + 前線現場工程師組成混編 Squad、單鍵回報 Bug/改善建議機制、Lean-Agile PDCA 數位技能實戰培訓。</span><span class="en">IT + Frontline co-design squads, 1-click bug/improvement feedback widgets, continuous PDCA upskilling.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">「讓前線裝配技術員參與軟體 UI 的設計，並設立『每週最佳小改善（Micro-Kaizen）獎』，員工從『被強迫使用新系統』轉變成『主動提出改善點子』的主人翁！」</span>
+                  <span class="en">"Involving frontline technicians in software UI co-design and establishing a weekly Micro-Kaizen bounty transformed staff from passive users into passionate system co-creators."</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)">
+                  <span>📋</span><span class="zh">複製案例心法</span><span class="en">Copy Case Note</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Semiconductor & High-Tech Case Study (ASML / NPI) -->
+          <div class="leandx-content-pane" id="leandx-pane-tab-dx-semi">
+            <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+              <span class="zh">在半導體高階設備與先進製程/封裝領域（如 ASML 的光刻微影機台組裝、NPI 新產品試產、CoWoS/先進測試設備），產品具備<strong>「極高變動性（High Variation）」</strong>與<strong>「極度複雜的跨國跨部門協同（Cross-functional dependencies）」</strong>。精實數位轉型的四大核心任務：</span>
+              <span class="en">In semiconductor capital equipment and advanced packaging (e.g., ASML lithography tool assembly, NPI pilot lines, CoWoS / high-end ATE test), operations face <strong>extreme product variation</strong> and <strong>complex cross-functional dependencies</strong>. The 4 mission-critical Lean DX tasks:</span>
+            </div>
+
+            <div class="leandx-card-grid">
+              <!-- Semi Task 1 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">半導體實戰 01</span>
+                  <span style="font-size: 12px; color: var(--muted);">Information VSM</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🌐 <span class="zh">資訊流價值流程圖 (Digital VSM for Information Flow)</span><span class="en">Digital VSM for Cross-Functional Info Flow</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">現場痛點：</span><span class="en">Pain Point:</span></strong> <span class="zh">半導體設備最大浪費不是機台加工，而是「等待資訊與交接」。ECR/ECO 工程變更、客製規格、缺料卡在 ERP、MES、PLM 與無數 Excel 間，Touch Time 僅佔 Lead Time 的 3~5%。</span><span class="en">The biggest bottleneck is waiting for info. ECOs, custom recipes, and material shortages get stuck across ERP, MES, PLM, and Excel siloes with touch time &lt;5% of lead time.</span></div>
+                  <div><strong><span class="zh">數位精實任務：</span><span class="en">Lean DX Mission:</span></strong> <span class="zh">利用系統 Process Mining（流程挖掘日誌）將資訊流數位化，精確量測一個 ECR 在研發、採購、組裝、品管的停留時間，打通跨系統 API 管道，砍掉多餘手動轉檔與會簽。</span><span class="en">Apply process mining logs to build a digital VSM, measuring actual idle touch vs. lead times across R&D, Procurement, Cleanroom Assembly, and QA to streamline handoffs.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">💡 <strong>實戰成效：</strong> ASML 等級供應鏈透過數位資訊流 VSM 梳理，將模組缺料通報到跨國採購調撥的反應時間由 72 小時壓縮至 4 小時以內。</span>
+                  <span class="en">💡 <strong>Impact:</strong> Digital VSM compressed critical component shortage escalation from 72 hours down to under 4 hours across global fab suppliers.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Semi Task 2 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">半導體實戰 02</span>
+                  <span style="font-size: 12px; color: var(--muted);">Frontline Tooling</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🤖 <span class="zh">前線工程微自動化與日誌自動診斷 (Log Triage)</span><span class="en">Frontline Micro-Automation & Log Triage</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">現場痛點：</span><span class="en">Pain Point:</span></strong> <span class="zh">晶圓測試（WT/FT）或機台組裝異常時，高薪資深工程師耗費 4~6 小時手動撈取、對齊不同模組的日誌（Logs），重複填寫繁瑣異常報告（Overprocessing 浪費）。</span><span class="en">During WT/FT wafer test or assembly errors, senior engineers waste 4-6 hours manually extracting multi-module logs and pasting failure reports (Overprocessing Muda).</span></div>
+                  <div><strong><span class="zh">數位精實任務：</span><span class="en">Lean DX Mission:</span></strong> <span class="zh">導入 Agentic AI / Python 日誌自動化解析：異常發生即刻自動抓取 Log、比對歷史維修庫生成根因摘要；搭配數位 Andon，重大瓶頸一鍵直通跨國專家聯網協同。</span><span class="en">Deploy Python/Agentic AI log parsers to auto-triage telemetry upon fault detection, correlate historical CAPA fixes, and trigger a digital Andon to bring global experts into live debug rooms.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">💡 <strong>實戰成效：</strong> 異常排查（Triage）時間縮短 80%，讓頂尖工程師精力完全解放並聚焦於高價值的根本原因分析（RCA）。</span>
+                  <span class="en">💡 <strong>Impact:</strong> Triage turnaround accelerated by 80%, freeing senior talent to focus strictly on root-cause analysis (5-Why/Fishbone).</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Semi Task 3 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">半導體實戰 03</span>
+                  <span style="font-size: 12px; color: var(--muted);">Dynamic Poka-Yoke</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  🔧 <span class="zh">動態標準作業與物聯網防錯 (Dynamic SOP & Poka-Yoke)</span><span class="en">Dynamic Standard Work & IoT Poka-Yoke</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">現場痛點：</span><span class="en">Pain Point:</span></strong> <span class="zh">機台每台客製化版本迭代極快，傳統紙本或靜態 PDF SOP 極易導致作業員看錯版本、漏裝精密螺絲或扭力磅數不足（Defect 浪費）。</span><span class="en">With extreme machine customization, static PDF/paper SOPs cause operators to read outdated revisions, missing critical torque or optical alignment steps (Defects).</span></div>
+                  <div><strong><span class="zh">數位精實任務：</span><span class="en">Lean DX Mission:</span></strong> <span class="zh">推動「動態數位 SOP」：MES 依機台序號自動推播專屬工步；整合物聯網（IoT）數位扭力扳手與 AI 視覺辨識，扭力到位與光學確認後系統方可放行進入下一工步。</span><span class="en">Implement Dynamic SOPs driven by MES machine serials; integrate smart IoT torque wrenches and AI vision verification—preventing workflow progression until specs are met.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">💡 <strong>實戰成效：</strong> 實現零缺陷防錯（Zero-Defect Poka-Yoke），高階光學組裝人為裝配失誤率下降 95% 以上。</span>
+                  <span class="en">💡 <strong>Impact:</strong> Achieved in-station defect containment, dropping human assembly error rates in precision optical modules by &gt;95%.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+
+              <!-- Semi Task 4 -->
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">半導體實戰 04</span>
+                  <span style="font-size: 12px; color: var(--muted);">Data Kaizen & MSA</span>
+                </div>
+                <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                  📈 <span class="zh">數據驅動動態改善與層級會議 (Data Kaizen & Tier Meetings)</span><span class="en">Data-Driven Kaizen, MSA & Tier Meetings</span>
+                </h3>
+                <div class="leandx-meta-box">
+                  <div><strong><span class="zh">現場痛點：</span><span class="en">Pain Point:</span></strong> <span class="zh">半導體「數據很多但資訊孤島」，量測系統分析（MSA/GRR）與製程能力（Cpk）分散，常是出事才事後拉數據；每日早會多憑感覺口頭匯報。</span><span class="en">Semi fabs suffer from "data rich, information poor" syndrome. MSA/GRR and Cpk data sit in silos; daily tier meetings rely on subjective anecdotes.</span></div>
+                  <div><strong><span class="zh">數位精實任務：</span><span class="en">Lean DX Mission:</span></strong> <span class="zh">建立 Power BI 品質自動戰情板，將 MSA（如中度 CV% 預警）與 WIP 堆積即時視覺化。在每日 Tier 1/2/3 站會中直接以實時燃盡圖檢視瓶頸，Kaizen 全面數據化。</span><span class="en">Deploy automated Power BI SPC dashboards monitoring MSA (CV% drift) and WIP queues. Daily Tier 1/2/3 huddles run strictly on real-time burndown charts for fast-cycle Kaizen.</span></div>
+                </div>
+                <div class="leandx-quote-box">
+                  <span class="zh">💡 <strong>實戰成效：</strong> 每日會議時間由 45 分鐘縮短至 15 分鐘，瓶頸站點在製品（WIP）週轉率提升 35%。</span>
+                  <span class="en">💡 <strong>Impact:</strong> Cut daily standup duration from 45 min to 15 min while increasing bottleneck WIP velocity by 35%.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="copyLeanDxText(this)"><span>📋</span><span class="zh">複製</span><span class="en">Copy</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Digital TIMWOODS (8 Digital Wastes) -->
+          <div class="leandx-content-pane" id="leandx-pane-tab-dx-timwoods">
+            <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+              <span class="zh">數位時代的八大浪費（Digital TIMWOODS）隱藏在螢幕之後，比實體工廠的浪費更加隱蔽且具破壞力。透過以下診斷矩陣辨識並拔除數位毒瘤：</span>
+              <span class="en">The 8 Digital Wastes (Digital TIMWOODS) lurk behind screens, often more destructive than physical factory Muda. Use this diagnostic matrix to identify and eliminate them:</span>
+            </div>
+
+            <div class="leandx-card-grid">
+              <!-- T -->
+              <div class="leandx-card">
+                <span class="leandx-badge">T • Transportation</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🚚 <span class="zh">數位搬運 (Digital Transportation)</span><span class="en">Digital Transportation</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 手動在系統間 Export CSV、轉檔後再 Import 到另一個系統、重複以 Email 附件寄送大型資料包。</div>
+                  <div><strong>精實解方：</strong> 建立系統間 RESTful API / Webhook 自動串接，或利用 ETL / iPaaS 工具建立自動化數據流。</div>
+                </div>
+              </div>
+
+              <!-- I -->
+              <div class="leandx-card">
+                <span class="leandx-badge">I • Inventory</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  📦 <span class="zh">數位庫存 (Digital Inventory)</span><span class="en">Digital Inventory</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 數千封未讀未回郵件、積壓數百張無人認領的 Jira Backlog、重複儲存且版本不一致的共享檔案庫。</div>
+                  <div><strong>精實解方：</strong> 實施 WIP 限制（Work In Progress Limits）、定期清退死單 Backlog、建立 Single Source of Truth 知識庫。</div>
+                </div>
+              </div>
+
+              <!-- M -->
+              <div class="leandx-card">
+                <span class="leandx-badge">M • Motion</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🖱️ <span class="zh">數位動作 (Digital Motion)</span><span class="en">Digital Motion</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 員工在多層深層資料夾或 Slack 頻道中翻找文件、頻繁在 10 個軟體視窗間切換複製貼上、過多密碼登入驗證。</div>
+                  <div><strong>精實解方：</strong> 推行 Digital 5S、導入企業級全局搜尋（Ctrl+K）、SSO 單一簽入與統一工作入口儀表板。</div>
+                </div>
+              </div>
+
+              <!-- W -->
+              <div class="leandx-card">
+                <span class="leandx-badge">W • Waiting</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  ⏳ <span class="zh">數位等待 (Digital Waiting)</span><span class="en">Digital Waiting</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 跑報表轉圈圈等待伺服器響應、表單卡在多層主管信箱等待簽核、下游團隊乾等上游提供測試環境或帳號權限。</div>
+                  <div><strong>精實解方：</strong> 優化 SQL 與報表快取架構、簡化審批授權矩陣（超時自動放行）、實施自助式環境自動配置（IaC）。</div>
+                </div>
+              </div>
+
+              <!-- O1 -->
+              <div class="leandx-card">
+                <span class="leandx-badge">O • Overproduction</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  📄 <span class="zh">數位過度生產 (Digital Overproduction)</span><span class="en">Digital Overproduction</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 每週耗時產出 50 頁無人細看的 PDF 週報、系統自動發送無差別的報警垃圾信（造成警報疲勞）。</div>
+                  <div><strong>精實解方：</strong> 落實 VOC（只生產客戶與主管真正決策需要的數據）、改用精簡 1 頁式 A3 儀表板、警報分級降噪。</div>
+                </div>
+              </div>
+
+              <!-- O2 -->
+              <div class="leandx-card">
+                <span class="leandx-badge">O • Overprocessing</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  ⚙️ <span class="zh">數位過度加工 (Digital Overprocessing)</span><span class="en">Digital Overprocessing</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 手動合併多份 Excel 並反覆調格式、在 3 個系統手動重複 Key-in 相同客製參數、過度複雜的審查步驟。</div>
+                  <div><strong>精實解方：</strong> 撰寫 Python/VBA 自動合併腳本、整合系統主數據（Master Data）、標準化資料輸入介面。</div>
+                </div>
+              </div>
+
+              <!-- D -->
+              <div class="leandx-card">
+                <span class="leandx-badge">D • Defects</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🐛 <span class="zh">數位缺陷 (Digital Defects)</span><span class="en">Digital Defects</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 系統 Bug、人工作業手滑輸錯數字、資料庫不同步、Excel 公式被不小心篡改導致決策失誤。</div>
+                  <div><strong>精實解方：</strong> 數位 Poka-Yoke（必填欄位驗證、下拉防呆選單、異常極值自動阻擋）、自動化單元測試與 CI/CD 驗證。</div>
+                </div>
+              </div>
+
+              <!-- S -->
+              <div class="leandx-card">
+                <span class="leandx-badge">S • Skills / Underutilized Talent</span>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🧠 <span class="zh">未被善用的數位技能與智慧 (Underutilized Talent)</span><span class="en">Underutilized Talent</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <div><strong>症狀：</strong> 年薪數百萬的資深工程師每天花 4 小時在手動填表與抓 Log、前線寶貴的改善點子無法被管理層看見。</div>
+                  <div><strong>精實解方：</strong> 普及公民開發者（Citizen Developer）低代碼培訓、建立 Micro-Kaizen 即時獎勵機制、釋放高階大腦專注創新。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: Interactive DX Maturity & Roadmap Generator -->
+          <div class="leandx-content-pane" id="leandx-pane-tab-dx-calc">
+            <div class="leandx-interactive-box">
+              <div style="font-weight: 800; font-size: 15px; color: #06b6d4; display: flex; align-items: center; gap: 8px;">
+                <span>⚡</span>
+                <span class="zh">精實 DX 成熟度評估與轉型路徑產生器</span>
+                <span class="en">Lean DX Maturity Diagnostic & Tailored Roadmap Generator</span>
+              </div>
+              <div style="font-size: 12.8px; color: var(--muted); line-height: 1.5;">
+                <span class="zh">評估團隊在四大精實數位維度的現況分數（1~5 分），系統將為您診斷當前 DX 帶級並客製產出三階段轉型落地路徑：</span>
+                <span class="en">Score your team across the 4 Lean DX dimensions (1-5 scale) to diagnose maturity and generate a staged transformation roadmap:</span>
+              </div>
+
+              <div class="leandx-form-grid">
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    1. 產業與場景領域 (Industry Context)
+                  </label>
+                  <select class="leandx-select" id="dx-sel-industry" onchange="calculateLeanDxMaturity()">
+                    <option value="semi" selected>半導體 / 高階精密設備製造 (Semiconductor / Equipment - High Variation)</option>
+                    <option value="electronics">高科技組裝與硬體製造 (High-Tech Electronics & Discrete Assembly)</option>
+                    <option value="software">軟體開發、IT 與 DevOps (Software / Cloud & Knowledge Work)</option>
+                    <option value="enterprise">企業營運、財務與後勤流程 (Corporate / Financial / Operations)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    2. 流程梳理與去浪費度 (Process Optimization): <span id="dx-val-p1" style="color: #06b6d4; font-weight: 700;">3</span> / 5
+                  </label>
+                  <input type="range" class="leandx-range" id="dx-range-p1" min="1" max="5" value="3" oninput="document.getElementById('dx-val-p1').textContent=this.value; calculateLeanDxMaturity();">
+                  <div style="font-size: 11px; color: var(--muted); display: flex; justify-content: space-between;">
+                    <span>1 (混亂無SOP)</span><span>3 (有VSM手動)</span><span>5 (極簡標準化)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    3. 微自動化與工具普及率 (Micro-Automation): <span id="dx-val-p2" style="color: #06b6d4; font-weight: 700;">2</span> / 5
+                  </label>
+                  <input type="range" class="leandx-range" id="dx-range-p2" min="1" max="5" value="2" oninput="document.getElementById('dx-val-p2').textContent=this.value; calculateLeanDxMaturity();">
+                  <div style="font-size: 11px; color: var(--muted); display: flex; justify-content: space-between;">
+                    <span>1 (全手動複製貼上)</span><span>3 (部分腳本/表單)</span><span>5 (端到端自動串接)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    4. 可視化與 Andon 預警機制 (Visual Kaizen & Andon): <span id="dx-val-p3" style="color: #06b6d4; font-weight: 700;">2</span> / 5
+                  </label>
+                  <input type="range" class="leandx-range" id="dx-range-p3" min="1" max="5" value="2" oninput="document.getElementById('dx-val-p3').textContent=this.value; calculateLeanDxMaturity();">
+                  <div style="font-size: 11px; color: var(--muted); display: flex; justify-content: space-between;">
+                    <span>1 (事後救火/靜態PDF)</span><span>3 (有Dashboard)</span><span>5 (即時Andon防錯)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
+                    5. 組織變革與持續改善文化 (People & Lean-Agile): <span id="dx-val-p4" style="color: #06b6d4; font-weight: 700;">3</span> / 5
+                  </label>
+                  <input type="range" class="leandx-range" id="dx-range-p4" min="1" max="5" value="3" oninput="document.getElementById('dx-val-p4').textContent=this.value; calculateLeanDxMaturity();">
+                  <div style="font-size: 11px; color: var(--muted); display: flex; justify-content: space-between;">
+                    <span>1 (被動抗拒新系統)</span><span>3 (IT主導推廣)</span><span>5 (前線自主改善)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Output Result Panel -->
+              <div class="leandx-result-panel" id="dx-result-panel">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="leandx-badge" id="dx-res-score-badge" style="font-size: 13px; padding: 4px 12px;">總分：10 / 20 分</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #06b6d4;" id="dx-res-level-title">等級 2: 點狀數位化與高混亂期 (Point-Digitized)</span>
+                  </div>
+                  <button class="leandx-copy-btn" onclick="copyLeanDxText(this)">
+                    <span>📋</span>
+                    <span class="zh">複製轉型路徑報告</span><span class="en">Copy Roadmap Report</span>
+                  </button>
+                </div>
+
+                <div class="leandx-meta-box" id="dx-res-diagnosis">
+                  <!-- Dynamic Diagnosis -->
+                </div>
+
+                <!-- 3-Phase Roadmap -->
+                <div style="display: flex; flex-direction: column; gap: 10px;" id="dx-res-roadmap">
+                  <!-- Dynamic 3-Phase Roadmap -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: Compass Cross-Links & Training Guide -->
+          <div class="leandx-content-pane" id="leandx-pane-tab-dx-links">
+            <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+              <span class="zh">精實數位轉型不是孤島，它與本羅盤各核心模組緊密連動。以下為轉型專案在各模組中的落地路徑與教學導引：</span>
+              <span class="en">Lean Digital Transformation connects seamlessly across this Compass. Recommended learning paths for corporate workshops and mentoring:</span>
+            </div>
+
+            <div class="leandx-card-grid">
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">關聯模組 01</span>
+                  <span style="font-size: 12px; color: var(--muted);">Section 17</span>
+                </div>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  📊 <span class="zh">價值流程圖 (VSM) 互動產生器</span><span class="en">Value Stream Mapping (VSM) Builder</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <span class="zh">在數位化之前，使用 VSM 繪製資訊流與實體物料流。標記出 Touch Time、Wait Time 與 C/O 換線時間，計算出 PCE（製程循環效率），鎖定最該被自動化的瓶頸節點。</span>
+                  <span class="en">Map info and material flows before coding. Quantify Touch Time vs. Wait Time to calculate PCE and target the highest-ROI automation bottlenecks.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="navigateToSection('vsm')">
+                  <span>🚀</span><span class="zh">前往 VSM 模組</span><span class="en">Go to VSM</span>
+                </button>
+              </div>
+
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">關聯模組 02</span>
+                  <span style="font-size: 12px; color: var(--muted);">Section 04</span>
+                </div>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🔄 <span class="zh">DMAIC / DMADV 雙循環方法論</span><span class="en">DMAIC / DMADV Dual Methodologies</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <span class="zh">現有流程的數位微自動化採用 <strong>DMAIC</strong> 循環；若是全新架構、新系統或無先例流程的數位化重構，採用 <strong>DMADV</strong>（Define, Measure, Analyze, Design, Verify）。</span>
+                  <span class="en">Apply <strong>DMAIC</strong> for Kaizen micro-automations on existing processes; use <strong>DMADV</strong> for ground-up digital system architecture and new platform designs.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="navigateToSection('dmaic')">
+                  <span>🚀</span><span class="zh">前往 DMAIC 模組</span><span class="en">Go to DMAIC</span>
+                </button>
+              </div>
+
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">關聯模組 03</span>
+                  <span style="font-size: 12px; color: var(--muted);">Section 08</span>
+                </div>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🧮 <span class="zh">FMEA 風險分析 & RACI 責任矩陣</span><span class="en">FMEA Risk & RACI Matrix</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <span class="zh">自動化會放大失誤！導入微自動化腳本或 AI 前，先用 <strong>FMEA RPN</strong> 評估失敗模式；跨部門系統對接時，用 <strong>RACI 矩陣</strong> 界定數據 Owner 與維護責任。</span>
+                  <span class="en">Automation magnifies defects! Run an <strong>FMEA RPN</strong> risk analysis prior to bot deployment; use a <strong>RACI Matrix</strong> to assign strict data ownership across IT and Ops.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="navigateToSection('calculators')">
+                  <span>🚀</span><span class="zh">前往計算器模組</span><span class="en">Go to Calculators</span>
+                </button>
+              </div>
+
+              <div class="leandx-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="leandx-badge">關聯模組 04</span>
+                  <span style="font-size: 12px; color: var(--muted);">Section 12</span>
+                </div>
+                <h3 style="margin: 0; font-size: 15px; color: var(--ink);">
+                  🗣️ <span class="zh">精實會議與高階表達 (STAR vs. CARL)</span><span class="en">Lean Meetings & Executive STAR/CARL</span>
+                </h3>
+                <div style="font-size: 12.8px; color: var(--muted); line-height: 1.55;">
+                  <span class="zh">落實 15 分鐘每日 Tier Meeting 站會機制；向上層管理層或執委會爭取數位轉型預算時，運用 <strong>CARL 深度學習架構</strong> 展現轉型 ROI 與組織韌性。</span>
+                  <span class="en">Implement 15-minute daily Tier Standups; pitch digital transformation budgets to executive committees using the <strong>CARL executive framework</strong> to demonstrate ROI.</span>
+                </div>
+                <button class="leandx-copy-btn" onclick="navigateToSection('meeting')">
+                  <span>🚀</span><span class="zh">前往會議與表達模組</span><span class="en">Go to Meeting</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
       <section class="section" data-section="books">
         <h2 id="booksHeading" class="books-section-heading"><span class="zh">相關推薦書籍</span><span class="en">Recommended Books</span></h2>
         <p class="lead">
@@ -11808,6 +12616,7 @@ const SECTIONS = [
   {id:'brainstorm', zh:'團隊腦力激盪與視覺化工具', en:'Team Brainstorming & Visual Tools'},
   {id:'vsm', zh:'價值流程圖 VSM 互動產生器', en:'Value Stream Mapping (VSM) Builder'},
   {id:'aitech', zh:'科技與半導體/AI 發展史羅盤', en:'Tech, Semiconductor & AI History Compass'},
+  {id:'leandx', zh:'精實數位轉型與智慧製造 (半導體/高科技 DX)', en:'Lean Digital Transformation & Smart Manufacturing'},
   {id:'books', zh:'相關推薦書籍', en:'Recommended Books'},
   {id:'glossary', zh:'詞彙釋義', en:'Glossary'},
 ];
@@ -20803,6 +21612,7 @@ function init(){
   render();
   generateSayNoScript();
     generateConflictScript();
+    calculateLeanDxMaturity();
 
   document.getElementById('themeToggle').onclick=()=>{
     state.theme = state.theme==='dark'?'light':'dark';
@@ -20813,6 +21623,7 @@ function init(){
     saveState(); render();
     generateSayNoScript();
     generateConflictScript();
+    calculateLeanDxMaturity();
   };
 
   const sidebarToggleBtn = document.getElementById('sidebarToggle');
@@ -20853,6 +21664,7 @@ function switchSayNoTab(tabId) {
   if (tabId === 'tab-gen') {
     generateSayNoScript();
     generateConflictScript();
+    calculateLeanDxMaturity();
   }
 }
 
@@ -21491,6 +22303,7 @@ function switchConflictTab(tabId) {
   });
   if (tabId === 'tab-c-gen') {
     generateConflictScript();
+    calculateLeanDxMaturity();
   }
 }
 
@@ -22110,6 +22923,158 @@ function generateConflictScript() {
     tipEl.textContent = typeof entry.tip === 'object' ? (isEn ? entry.tip.en : entry.tip.zh) : entry.tip;
   }
 }
+
+
+/* ==================== LEAN DIGITAL TRANSFORMATION & SMART MANUFACTURING LOGIC ==================== */
+function navigateToSection(secId) {
+  if (!secId) return;
+  state.section = secId;
+  saveState();
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function switchLeanDxTab(tabId) {
+  document.querySelectorAll('.leandx-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
+  });
+  document.querySelectorAll('.leandx-content-pane').forEach(pane => {
+    pane.classList.toggle('active', pane.id === 'leandx-pane-' + tabId);
+  });
+  if (tabId === 'tab-dx-calc') {
+    calculateLeanDxMaturity();
+  }
+}
+
+function copyLeanDxText(btn) {
+  const card = btn.closest('.leandx-card') || btn.closest('.leandx-result-panel') || btn.closest('.leandx-quote-box');
+  if (!card) return;
+  const quoteBox = card.querySelector('.leandx-quote-box') || card.querySelector('.leandx-meta-box') || card;
+  
+  const isEn = (typeof state !== 'undefined' && state.lang === 'en');
+  const targetEl = isEn ? (quoteBox.querySelector('.en') || quoteBox) : (quoteBox.querySelector('.zh') || quoteBox);
+  const textToCopy = targetEl.innerText || targetEl.textContent;
+
+  navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<span>✅</span><span class="zh">已複製！</span><span class="en">Copied!</span>';
+    btn.style.background = '#06b6d4';
+    btn.style.color = '#082f49';
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  }).catch(err => {
+    console.error('Copy failed:', err);
+  });
+}
+
+function calculateLeanDxMaturity() {
+  const industry = document.getElementById('dx-sel-industry')?.value || 'semi';
+  const p1 = parseInt(document.getElementById('dx-range-p1')?.value || '3', 10);
+  const p2 = parseInt(document.getElementById('dx-range-p2')?.value || '2', 10);
+  const p3 = parseInt(document.getElementById('dx-range-p3')?.value || '2', 10);
+  const p4 = parseInt(document.getElementById('dx-range-p4')?.value || '3', 10);
+
+  const totalScore = p1 + p2 + p3 + p4;
+  const isEn = (typeof state !== 'undefined' && state.lang === 'en');
+
+  const badgeEl = document.getElementById('dx-res-score-badge');
+  const titleEl = document.getElementById('dx-res-level-title');
+  const diagEl = document.getElementById('dx-res-diagnosis');
+  const roadEl = document.getElementById('dx-res-roadmap');
+
+  if (badgeEl) {
+    badgeEl.textContent = isEn ? `Score: ${totalScore} / 20` : `成熟度總分：${totalScore} / 20 分`;
+  }
+
+  let level = 1;
+  let levelTitle = { zh: '等級 1: 數位混沌與孤島期 (Digital Chaos & Silos)', en: 'Level 1: Digital Chaos & Silos' };
+  let diagnosisText = {
+    zh: '團隊充斥大量手動重複作業、數據孤島與多版本 Excel。缺乏統一標準與數位看板，70% 流程存在數位搬運（Transportation）與等待（Waiting）浪費。',
+    en: 'Operations are mired in manual re-entry, disconnected data silos, and Excel chaos. Lack of unified SOPs creates severe digital transportation and waiting waste.'
+  };
+
+  if (totalScore >= 17) {
+    level = 4;
+    levelTitle = { zh: '等級 4: 智慧預測與自主精實數位體系 (Autonomous Predictive Lean DX)', en: 'Level 4: Autonomous Predictive Lean DX' };
+    diagnosisText = {
+      zh: '流程高度精實且自動化，具備即時閉環 Andon 與 AI 預測維護能力。前線全員具備 PDCA 與公民開發者能力，數據直接驅動戰略決策。',
+      en: 'Highly lean and automated processes with live Andon and predictive AI diagnostics. Frontline staff autonomously drive continuous PDCA improvements.'
+    };
+  } else if (totalScore >= 12) {
+    level = 3;
+    levelTitle = { zh: '等級 3: 流程可視化與數據改善期 (Visual Flow & Data Kaizen)', en: 'Level 3: Visual Flow & Data Kaizen' };
+    diagnosisText = {
+      zh: '核心流程已建立數位看板與即時報表，正從事後檢討邁向即時預警。重點在於深化微自動化並打通跨部門資訊流斷層。',
+      en: 'Core workflows feature visual boards and dashboards. Shifting from reactive audits to real-time alerts. Focus on scaling micro-automations across department boundaries.'
+    };
+  } else if (totalScore >= 8) {
+    level = 2;
+    levelTitle = { zh: '等級 2: 點狀數位化與微改善期 (Point-Digitized & Quick Wins)', en: 'Level 2: Point-Digitized & Quick Wins' };
+    diagnosisText = {
+      zh: '已有部分系統與表單，但跨部門交接仍依賴人工口頭或 Email 追蹤。需要透過 VSM 全面梳理端到端價值流，消除局部優化引發的瓶頸。',
+      en: 'Disparate digital tools exist, but cross-team handoffs still rely on manual emails. Need end-to-end VSM alignment to eliminate localized bottlenecks.'
+    };
+  }
+
+  if (titleEl) {
+    titleEl.textContent = isEn ? levelTitle.en : levelTitle.zh;
+  }
+
+  if (diagEl) {
+    diagEl.innerHTML = '<strong>' + (isEn ? 'Current Diagnostic Assessment: ' : '現況深度診斷：') + '</strong>' + (isEn ? diagnosisText.en : diagnosisText.zh);
+  }
+
+  // 3-Phase Roadmap generation based on Industry and Level
+  let phase1Action = {
+    zh: '【Phase 1: 基礎去浪費與梳理】用 VSM 畫出 As-Is 資訊流與實體流，清理數位 5S，明確 RACI 權責，剔除 30% 形式性簽核。',
+    en: '[Phase 1: Waste Eradication] Map As-Is VSM for info & material flows, execute Digital 5S, clarify RACI, and eliminate 30% redundant approvals.'
+  };
+  let phase2Action = {
+    zh: '【Phase 2: 前線微自動化與即時看板】導入 Python 腳本或 Power Automate 處理日誌撈取與異常排查（Log Triage）；建立 Power BI 戰情室與 Jira 數位 Andon。',
+    en: '[Phase 2: Micro-Automation & Live Boards] Deploy Python/Power Automate for log triage; establish live Power BI dashboards and Jira digital Andon flagging.'
+  };
+  let phase3Action = {
+    zh: '【Phase 3: 動態標準作業與 AI 閉環】MES 串接動態數位 SOP、導入 IoT 扭力/視覺防錯（Poka-Yoke），建立每日 15 分鐘數據驅動 Tier Standup Kaizen 機制。',
+    en: '[Phase 3: Dynamic SOP & AI Kaizen] Link MES to dynamic serial-based SOPs, implement IoT torque/vision Poka-Yoke, and run 15-min data-driven daily Tier Standup Kaizen.'
+  };
+
+  if (industry === 'semi') {
+    phase1Action.zh = '【Phase 1: 半導體資訊流 VSM】用日誌梳理 ECR/ECO 工程變更在研發、採購、無塵室組裝的停留時間（Touch vs. Lead Time），定義 SIPOC 邊界。';
+    phase1Action.en = '[Phase 1: Semi Info Flow VSM] Map ECO cycle time across R&D, Procurement, and Cleanroom Assembly using system logs to uncover idle handoff lag.';
+    phase2Action.zh = '【Phase 2: 晶圓/設備測試日誌自動診斷】建立 Python / Agentic AI 自動爬取多機台 Log、比對歷史 CAPA 庫並生成摘要，縮短異常排查（Triage）時間 80%。';
+    phase2Action.en = '[Phase 2: Automated Log Triage] Deploy Python/AI parsers to auto-extract multi-module test logs and correlate historical CAPA fixes, slashing triage by 80%.';
+    phase3Action.zh = '【Phase 3: 動態 SOP 與物聯網防錯】落實機台序號專屬動態 SOP、聯網扭力扳手與 AI 光學檢測防錯，建立 Power BI MSA/Cpk 預警戰情板與 Tier 1 早會。';
+    phase3Action.en = '[Phase 3: Dynamic SOP & IoT Poka-Yoke] Deploy machine-specific dynamic SOPs, IoT torque wrenches, AI optical checks, and live Power BI MSA/Cpk alerts in Tier 1 standups.';
+  } else if (industry === 'software') {
+    phase1Action.zh = '【Phase 1: DevOps 價值流梳理】量測 PR Review 時間、Deploy Lead Time，梳理 Jira 流程，清理數位庫存與過期 Backlog。';
+    phase1Action.en = '[Phase 1: DevOps Value Stream] Measure PR review cycle and deployment lead times, prune dead Jira backlogs, and implement Digital 5S.';
+    phase2Action.zh = '【Phase 2: CI/CD 與自動化 Andon】建置自動化迴歸測試、Slack 異常 Andon 告警，建立開發者自助發布入口。';
+    phase2Action.en = '[Phase 2: CI/CD & Automated Andon] Setup automated regression tests, Slack build break Andon alerts, and self-service deployment portals.';
+    phase3Action.zh = '【Phase 3: DORA 指標與全員 Kaizen】全面追蹤 Deployment Frequency 與 MTTR，將雙週 Retrospective 改為數據驅動的 PDCA 改進。';
+    phase3Action.en = '[Phase 3: DORA Metrics & Culture] Track Deployment Frequency and MTTR; transform bi-weekly retrospectives into data-driven PDCA Kaizen.';
+  }
+
+  if (roadEl) {
+    roadEl.innerHTML = `
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;">
+        <div class="leandx-phase-badge leandx-phase-1">階段 1 • 近期目標 (Week 1 ~ 4)</div>
+        <div style="font-size: 13px; color: var(--ink); line-height: 1.5;"><span class="zh">${phase1Action.zh}</span><span class="en">${phase1Action.en}</span></div>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;">
+        <div class="leandx-phase-badge leandx-phase-2">階段 2 • 中期擴展 (Month 2 ~ 3)</div>
+        <div style="font-size: 13px; color: var(--ink); line-height: 1.5;"><span class="zh">${phase2Action.zh}</span><span class="en">${phase2Action.en}</span></div>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;">
+        <div class="leandx-phase-badge leandx-phase-3">階段 3 • 長期成熟 (Month 4 ~ 6)</div>
+        <div style="font-size: 13px; color: var(--ink); line-height: 1.5;"><span class="zh">${phase3Action.zh}</span><span class="en">${phase3Action.en}</span></div>
+      </div>
+    `;
+  }
+}
+
 
 
 
