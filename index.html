@@ -7564,7 +7564,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               <div class="sayno-form-grid">
                 <div>
                   <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
-                    1. 施壓對象 / 角色 (Counterpart)
+                    <span class="zh">1. 施壓對象 / 角色 (Counterpart)</span><span class="en">1. Counterpart / Target</span>
                   </label>
                   <select class="sayno-select" id="sayno-sel-target" onchange="generateSayNoScript()">
                     <option value="manager">直屬長官 / 老闆 (Direct Manager)</option>
@@ -7576,7 +7576,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
                 <div>
                   <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
-                    2. 遭遇的要求 / 情境 (Request Type)
+                    <span class="zh">2. 遭遇的要求 / 情境 (Request Type)</span><span class="en">2. Request / Situation</span>
                   </label>
                   <select class="sayno-select" id="sayno-sel-req" onchange="generateSayNoScript()">
                     <option value="meeting">臨時拉開會 / 兼任專案副手 (Meetings / Scope Creep)</option>
@@ -7588,7 +7588,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
                 <div>
                   <label style="display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px;">
-                    3. 推薦防禦風格 (Defense Style)
+                    <span class="zh">3. 期望防禦風格 (Defense Style)</span><span class="en">3. Desired Defense Style</span>
                   </label>
                   <select class="sayno-select" id="sayno-sel-style" onchange="generateSayNoScript()">
                     <option value="priority">向上管理與資源置換型 (Prioritization & Managerial Shield)</option>
@@ -19956,6 +19956,7 @@ function init(){
   if(a3RstBtn) a3RstBtn.onclick = resetA3Form;
 
   render();
+  generateSayNoScript();
 
   document.getElementById('themeToggle').onclick=()=>{
     state.theme = state.theme==='dark'?'light':'dark';
@@ -19964,6 +19965,7 @@ function init(){
   document.getElementById('langToggle').onclick=()=>{
     state.lang = state.lang==='zh'?'en':'zh';
     saveState(); render();
+    generateSayNoScript();
   };
 
   const sidebarToggleBtn = document.getElementById('sidebarToggle');
@@ -20032,139 +20034,562 @@ function copySayNoText(btn) {
 }
 
 const SAYNO_TEMPLATES = {
+  // 1. 直屬長官 / 老闆 (Direct Manager)
   manager: {
     meeting: {
       priority: {
-        badge: '🎯 策略：優先級置換與專注交付',
-        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
-        analysis: '對直屬主管絕不能生硬拒絕，而是主動展現『為了確保您交辦的最高優先級專案準時交付』的忠誠與專業態度，讓主管主動決定是否要調整排程。',
-        zh: '「老闆，目前我手頭全力在趕 [核心專案名稱]，目標是在 [時間點] 前完成交付。這場會議如果需要我列席，可能會擠壓到既定交付的進度。想向您確認：您會建議我維持原專案全力衝刺，還是先調整這項交付的優先級？」',
-        en: '"Boss, I am currently sprint-focusing on [Core Project Name] to hit the [Target Date] milestone. Attending this discussion will squeeze our primary delivery pipeline. Could you clarify whether you would prefer me to stay 100% focused on our core milestone, or reprioritize our timeline?"',
-        tip: '💡 避坑重點：主動提供 A/B 選擇權，把問題轉化為『如何保護您的專案』，主管通常會選擇保護核心專案。'
+        badge: { zh: '🎯 策略：優先級置換與專注交付', en: '🎯 Strategy: Priority Trade-off & Core Delivery' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '對直屬主管絕不能生硬拒絕，而是主動展現「為了確保您交辦的最高優先級專案準時交付」的專業態度，讓主管主動決定是否要調整排程。', en: 'Never refuse a manager abruptly. Frame the conversation around safeguarding their top-priority milestones, letting them decide whether to absorb the schedule delay.' },
+        zh: '「老闆，目前我手頭全力在衝刺 [核心專案名稱]，目標是在 [時間點] 前完成交付。這場會議若需要我列席或兼任副手，預計會擠壓到既定交付的進度。想向您確認：您會建議我維持原專案全力衝刺，還是先調整這項交付的優先級？」',
+        en: '"Boss, I am currently sprint-focusing on [Core Project Name] to hit our [Target Date] milestone. Attending this discussion or taking on co-lead duties will squeeze our primary delivery pipeline. Could you clarify whether you prefer me to stay 100% focused on our core milestone, or reprioritize our current schedule?"',
+        tip: { zh: '💡 避坑重點：主動提供 A/B 選擇權，把問題轉化為「如何保護您的專案」，主管通常會選擇保護核心專案。', en: '💡 Pro Tip: Offer clear A/B choices to protect their KPI — managers almost always prioritize the core deliverable.' }
       },
       compliance: {
-        badge: '🛡️ 策略：客觀體制與專責分工',
-        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
-        analysis: '強調專責窗口的存在，避免部門多頭馬車，並保護主管團隊的專業邊界。',
-        zh: '「老闆，關於此議題目前已有 [專責團隊/同仁] 主導。由專職團隊直接對齊策略會更精準高效。為避免多頭馬車，建議本次會議由專責同仁主匯報即可，後續有落地執行需求我再配合。」',
-        en: '"Boss, [Dedicated Team/DRI] is already leading this initiative. Direct alignment through their dedicated stream ensures maximum clarity and efficiency. I suggest letting the DRI present to avoid redundant overhead, and I will support standard execution once workflows are set."',
-        tip: '💡 避坑重點：強調『避免多頭馬車』是高階主管最在意的組織效率。'
+        badge: { zh: '🛡️ 策略：客觀體制與專責分工', en: '🛡️ Strategy: Role Boundaries & Dedicated Governance' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Compliance & Structure | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '強調專責窗口的存在，避免部門多頭馬車與角色重疊，並保護主管團隊的專業邊界。', en: 'Highlight official DRIs to avoid organizational redundancy and preserve team focus.' },
+        zh: '「老闆，關於此議題目前已有 [專責團隊/同仁] 主導。由專職團隊直接對齊策略會更精準高效。為避免方向多頭馬車與職能重疊，建議本次會議由專責同仁主匯報即可，後續有標準落地需求我再配合。」',
+        en: '"Boss, [Dedicated Team/DRI] is already formally designated to lead this initiative. Direct alignment through their dedicated stream ensures maximum clarity and efficiency. I suggest letting the DRI present to avoid redundant overhead, and I will support standard execution once workflows are set."',
+        tip: { zh: '💡 避坑重點：強調「避免多頭馬車」是高階主管最在意的組織治理效率。', en: '💡 Pro Tip: Emphasizing "preventing divergent directions" appeals directly to executive efficiency.' }
+      },
+      delegate: {
+        badge: { zh: '🤝 策略：推薦梯隊人選與歷練賦能', en: '🤝 Strategy: Delegate to Emerging Talent' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Delegation & Empowerment | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '肯定會議重要性，主動推薦組內正需要歷練或研究該領域的同仁出席，既展現領導格局又釋放個人專注力。', en: 'Acknowledge meeting value while delegating representation to a team member seeking domain growth, demonstrating mentorship while protecting your bandwidth.' },
+        zh: '「報告主管，這項跨組專案確實關鍵。考量我目前正全力攻堅核心模組，組內的 [同仁姓名] 最近也在深入研究此技術，若由他代表我們組出席對接，既能確保資訊同步，也是極佳的實戰歷練，您覺得如何？」',
+        en: '"Manager, this cross-team sync is indeed important. Since I am locked into our critical path, [Teammate Name] has been developing depth in this area. Having them represent our team ensures full sync while providing great growth for them. What are your thoughts?"',
+        tip: { zh: '💡 避坑重點：推薦替代人選能展現團隊梯隊思維，同時完全釋放自己的專注時間。', en: '💡 Pro Tip: Proposing a capable delegate shows organizational maturity and completely frees your calendar.' }
+      },
+      consult: {
+        badge: { zh: '💡 策略：會前書面評估（免出席）', en: '💡 Strategy: Pre-meeting Written Memo (Skip Attendance)' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Consultative Memo | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '不出席冗長會議，但在會前提供 3 點清晰的書面技術評估，既展現專業價值又節省數小時的無效會議時間。', en: 'Provide a concise written technical summary before the meeting instead of attending live, preserving hours of deep work.' },
+        zh: '「老闆，為節省您的時間與會議冗長討論，我已先將手頭評估的 [3大關鍵技術風險與建議清單] 整理為簡要筆記附上。核心洞見都在裡面，我就不佔用會議席位，您可直接在會上參考使用！」',
+        en: '"Boss, to save meeting bandwidth, I synthesized our [Top 3 Technical Risks & Recommendations] into a concise memo attached. The core insights are covered, so I will skip the live session while you can directly leverage these points during the discussion!"',
+        tip: { zh: '💡 避坑重點：用 5 分鐘的書面 Memo 換取 2 小時的專注時間，主管反而會讚賞你的高效率。', en: '💡 Pro Tip: A 5-minute written memo saves 2 hours of meeting drag and earns executive praise.' }
       }
     },
     tool: {
+      priority: {
+        badge: { zh: '⏱️ 策略：工時成本與正式立項', en: '⏱️ Strategy: Resourcing Cost & Formal Charter' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '說明若要將個人原型改造成團隊通用工具，需要投入大量重構與文件工時，請主管評估是否將其立項。', en: 'Explain that productionizing a personal prototype requires significant refactoring hours, prompting leadership to formalize the trade-off.' },
+        zh: '「主管，這套自用腳本目前只是客製化雛形。若要封裝成團隊通用的生產級工具，需要投入至少 [X] 週進行防呆架構重構與使用手冊撰寫。這會需要暫停目前的 [專案A]，想請示您是否要將其正式立項並調整本季排程？」',
+        en: '"Manager, this personal script is strictly an unpolished prototype. Productionizing it for team-wide use requires at least [X] weeks of refactoring, error-proofing, and documentation. This would necessitate pausing [Project A]. Would you like us to formally charter this as a new initiative and adjust our quarterly roadmap?"',
+        tip: { zh: '💡 避坑重點：任何「順便分享」都隱含維護成本，要求正式立項能讓主管冷靜評估產能代價。', en: '💡 Pro Tip: Casual sharing creates permanent maintenance burdens; asking for formal chartering forces realistic capacity planning.' }
+      },
       compliance: {
-        badge: '🔐 策略：企業資安與合規防線',
-        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐⭐ (最強免死金牌)',
-        analysis: '直接點出個人工具未通過公司資安審查與商業授權，將私人資產問題上升至企業資安風險，主管絕對不敢強行背書推廣。',
+        badge: { zh: '🔐 策略：企業資安與合規防線', en: '🔐 Strategy: Enterprise Security & Compliance Shield' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐ (最強免死金牌)', en: 'Target: Manager | Style: Compliance & Security | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '直接點出個人工具未通過公司資安審查與商業授權，將私人資產問題上升至企業資安風險，主管絕對不敢強行背書推廣。', en: 'Highlight that personal tools lack corporate security clearance and commercial licensing, escalating private assets to enterprise risk.' },
         zh: '「報告主管，我私下測試的只是個人帳號與零散腳本，未通過公司的資安檢驗與商業授權審查。若冒然推廣至團隊，可能引發潛在的資安漏洞與版權風險。建議由專責 IT 團隊評估標準企業級方案，對部門才是最安全的作法。」',
         en: '"Regarding tool sharing, my personal scripts run on unverified personal environments without enterprise compliance or commercial licenses. Deploying them widely presents critical security and legal vulnerabilities. We should request official IT evaluation for standard enterprise tools to safeguard the department."',
-        tip: '💡 避坑重點：資安法規是企業紅線，任何主管都無法承擔因非授權工具出包的責任。'
+        tip: { zh: '💡 避坑重點：資安法規是企業紅線，任何主管都無法承擔因非授權工具出包的責任。', en: '💡 Pro Tip: Security compliance is an absolute red line that no manager will willingly cross.' }
+      },
+      delegate: {
+        badge: { zh: '🏛️ 策略：轉交官方 IT/架構組標準化', en: '🏛️ Strategy: Delegate to Central IT / Platform Team' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '建議將需求轉交由官方 IT 或自動化部門統一承接，避免個人成為部門工具的永久義務維護者。', en: 'Route the request to central IT to prevent becoming a single point of failure and perpetual unpaid support.' },
+        zh: '「報告主管，團隊有自動化需求非常棒！不過部門級工具的長期維護、版本升級與權限控管，最適合由 [公司 IT/平台工程組] 統一納入標準資產庫。建議我將概念架構提交給 IT 組評估統一開發，這樣未來維運才有保障。」',
+        en: '"Manager, automating team workflows is a great direction! However, long-term maintenance, versioning, and access control are best governed by [Central IT/Platform Team]. I suggest submitting the architecture concept to IT for official development to ensure long-term support."',
+        tip: { zh: '💡 避坑重點：避免成為單點失效（SPOF）的免費用服人員，交給專職 IT 是最佳解法。', en: '💡 Pro Tip: Avoid becoming a single point of failure (SPOF) for internal tooling.' }
+      },
+      consult: {
+        badge: { zh: '📖 策略：提供公開學習資源與概念指南', en: '📖 Strategy: Provide Public Docs & Self-Build Guide' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '不直接交出私人腳本原始碼，而是提供公開技術文檔或概念說明，鼓勵團隊學習官方做法。', en: 'Provide architectural guidelines and public references rather than raw private script code.' },
+        zh: '「主管，這套邏輯的核心原理其實來自 [官方開源庫/標準 API]。我已經把公開技術文檔與關鍵實作指引整理在內部 Wiki 連結，同仁可參考這篇官方指南快速搭建符合各自環境的設定。」',
+        en: '"Manager, the underlying logic is based on [Official Open-Source Library/Standard API]. I have shared the public documentation link and key architectural guidelines on our internal Wiki so teammates can configure standard setups for their specific needs."',
+        tip: { zh: '💡 避坑重點：分享「如何查找知識的釣竿」，保護自己私有的核心程式碼與私人帳號。', en: '💡 Pro Tip: Share the fishing rod (public docs) rather than handing over private proprietary code.' }
       }
     },
     fire: {
       priority: {
-        badge: '🚒 策略：產能衝突與排程置換',
-        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
-        analysis: '當主管想塞其他人的緊急救火任務給你時，清楚呈現目前工時滿載，要求主管授權任務優先順序。',
+        badge: { zh: '🚒 策略：產能衝突與排程置換', en: '🚒 Strategy: Capacity Conflict & Schedule Trade-off' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '當主管想塞其他人的緊急救火任務給你時，清楚呈現目前工時滿載，要求主管授權任務優先順序。', en: 'When pushed into someone else fire drill, articulate current full capacity and demand explicit prioritization approval.' },
         zh: '「主管，我理解這項突發狀況很緊急。不過今天我預計要完成 [既定關鍵任務]，若臨時介入救火，原本的專案進度將順延 [X] 天。想請示主管是否核准暫停既定排程來支援這項緊急任務？」',
         en: '"Manager, I recognize the urgency of this outage. However, I am scheduled to finish [Critical Deliverable] today. Intervening now will delay our main deliverable by [X] days. Could you confirm if you approve pausing our scheduled pipeline to absorb this fire drill?"',
-        tip: '💡 避坑重點：明確說出『延遲 X 天』的具體代價，讓主管自行權衡。'
+        tip: { zh: '💡 避坑重點：明確說出「延遲 X 天」的具體代價，讓主管自行權衡。', en: '💡 Pro Tip: State the exact delay penalty in days so the manager must weigh the true cost.' }
+      },
+      compliance: {
+        badge: { zh: '🛡️ 策略：變更審計與責任防線', en: '🛡️ Strategy: Change Management & Audit Trail' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: Manager | Style: Compliance & Audit | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '強調未熟悉專案架構貿然修改會產生連鎖失效風險，必須依照標準變更與測試流程。', en: 'Stress that rushing a blind hotfix without context introduces severe systemic regression risks.' },
+        zh: '「主管，這套系統平時不是由我維運，缺乏完整上下文與歷史補丁紀錄。若由我未經完整回歸測試直接熱修復（Hotfix），引發二次故障的系統風險極高。建議依照標準變更流程，由原負責同仁會同架構師處理。」',
+        en: '"Manager, since I do not maintain this codebase daily, lacking full historical context means an emergency patch from me carries a severe risk of secondary regression. Standard change management protocol dictates that the primary maintainer and architect execute the hotfix."',
+        tip: { zh: '💡 避坑重點：把「我不去修」包裝成「為了保護系統不產生更大災難」。', en: '💡 Pro Tip: Frame your hesitation as defending system integrity against cascading outages.' }
+      },
+      delegate: {
+        badge: { zh: '🔄 策略：指派專屬 On-Call / DRI 窗口', en: '🔄 Strategy: Route to Primary On-Call Engineer' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提醒主管依照輪值表與 DRI 機制派工，維持團隊輪值制度的嚴肅性。', en: 'Reinforce department on-call schedules and designated DRI responsibilities to maintain governance.' },
+        zh: '「報告主管，依照部門目前的輪值規範，本週的 Primary On-Call 與主責窗口是 [同仁姓名]。為維護排班制度的權責分明，建議由輪值同仁第一線排查，若需要特定模組數據我再提供查閱。」',
+        en: '"Manager, per our department on-call rotation policy, the primary DRI on duty this week is [Teammate Name]. To maintain operational governance, the active on-call engineer should lead triage, and I will gladly provide historical data if queried."',
+        tip: { zh: '💡 避坑重點：維護輪值制度是所有工程團隊的共同原則，越級介入只會破壞制度。', en: '💡 Pro Tip: Respecting on-call governance prevents organizational chaos and burnout.' }
+      },
+      consult: {
+        badge: { zh: '🧭 策略：提供除錯清單與快速診斷方向', en: '🧭 Strategy: Provide Diagnostic Checklist (Hands-Off)' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '不接過鍵盤動手改，而是提供 10 分鐘的快速診斷思路，讓原負責人動手修。', en: 'Offer quick diagnostic hints without touching the keyboard, keeping full ownership with the original maintainer.' },
+        zh: '「主管，我手頭交付無法中斷，但我剛剛快速看了一下 Log，懷疑是 [A 配置/網路連線逾時] 引起的。我已把 3 個排查步驟發給負責同仁，請他照這方向走，應該能快速定位問題！」',
+        en: '"Manager, while I cannot break my core sprint, I took a 2-minute look at the logs — it likely stems from [Config A/Network Timeout]. I sent a 3-step triage checklist to the maintainer so they can isolate and fix it immediately!"',
+        tip: { zh: '💡 避坑重點：給予診斷建議，但雙手不碰系統，既展現同理心又守住工作邊界。', en: '💡 Pro Tip: Provide diagnostic direction without touching the system directly.' }
       }
     },
     housework: {
       priority: {
-        badge: '📊 策略：專注高價值交付',
-        tag: '對象：直屬主管 ｜ 防禦等級：⭐⭐⭐⭐',
-        analysis: '對於非本職的打雜瑣事，以高價值核心專案產出為由婉拒，維持專業形象。',
+        badge: { zh: '📊 策略：專注高價值交付', en: '📊 Strategy: Focus on High-Value Delivery' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '對於非本職的打雜瑣事，以高價值核心專案產出為由婉拒，維持專業形象。', en: 'Decline non-core administrative chores by emphasizing high-leverage technical deliverables.' },
         zh: '「主管，目前我手頭幾項核心專案正進入關鍵產出期，為確保最重要的業務指標不受稀釋，這類行政協調事項建議依照標準流程或由助理窗口統籌，我全力專注在專案攻堅上。」',
         en: '"Manager, my primary projects are in their critical delivery stage. To ensure our top KPI metrics are not diluted, I recommend routing these administrative tasks through standard coordination channels so I can remain 100% focused on core delivery."',
-        tip: '💡 避坑重點：將自己的時間定位為『高價值戰略資源』。'
+        tip: { zh: '💡 避坑重點：將自己的時間定位為「高價值戰略資源」。', en: '💡 Pro Tip: Position your engineering hours as high-ROI strategic assets.' }
+      },
+      compliance: {
+        badge: { zh: '📋 策略：職掌定義與作業標準化', en: '📋 Strategy: Job Role SOP & Operational Standards' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Compliance & SOP | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '以標準化作業程序（SOP）為由，建議將非正式雜務轉化為標準職掌或外包流程。', en: 'Propose formalizing ad-hoc tasks into operations SOPs or assigning them to designated support roles.' },
+        zh: '「報告主管，這類庶務目前缺乏標準作業規範，容易隨機消耗同仁的研發產能。建議由行政/維運團隊制定標準流程範本，或列入定期工讀生與庶務窗口職掌，以保護研發團隊的工時效益。」',
+        en: '"Manager, ad-hoc administrative tasks lack standardized procedures and randomly consume high-cost engineering capacity. I suggest having our operations team establish a formal SOP or assign it to administrative support to safeguard engineering ROI."',
+        tip: { zh: '💡 避坑重點：把雜事提升到「精實消除非增值活動（Non-Value-Added Waste）」的高度。', en: '💡 Pro Tip: Frame task redesign as Lean Non-Value-Added (NVA) waste elimination.' }
+      },
+      delegate: {
+        badge: { zh: '🔄 策略：公開輪值表與責任均攤', en: '🔄 Strategy: Public Team Rotation Schedule' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '建議建立公開透明的輪值機制，避免固定人員被當成雜事垃圾桶。', en: 'Propose a transparent rotation schedule so shared duties are distributed equally.' },
+        zh: '「主管，如果這項事務屬於部門公共事務，我非常樂意配合！為公平起見，建議我們在組會上建立一個全組輪值表（Rotation Schedule），每人輪流負責一週，這樣既透明也制度化。」',
+        en: '"Manager, if this is a team-wide duty, I am happy to do my part! For long-term fairness, let us establish a transparent team rotation schedule where every member covers a week in turn. This institutionalizes the workload cleanly."',
+        tip: { zh: '💡 避坑重點：推動「輪值制度」能有效阻止主管習慣性把雜事丟給最好講話的人。', en: '💡 Pro Tip: Institutional rotation stops managers from dumping chores on the most agreeable person.' }
+      },
+      consult: {
+        badge: { zh: '🤖 策略：提供自動化模板或自助手冊', en: '🤖 Strategy: Self-Service Template & Automation' },
+        tag: { zh: '對象：直屬主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Manager | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '不親自手動做雜事，而是建立一個快速模板或自動化腳本讓大家自助完成。', en: 'Create a reusable template or automated form once, ending recurring manual requests forever.' },
+        zh: '「主管，這項行政匯總如果每次手動做非常耗時。我已建立了一份自動填報表單與指南，大家花 1 分鐘填寫就能自動生成匯總，不用再人工逐一催收了！」',
+        en: '"Manager, manually compiling this administrative data is very tedious. I set up an automated form and self-service template so everyone can log inputs directly in 1 minute, eliminating manual chasing completely!"',
+        tip: { zh: '💡 避坑重點：用一次性的精實防呆自動化工具，徹底終結重複性雜事。', en: '💡 Pro Tip: Build a single self-service template to eliminate recurring manual overhead permanently.' }
       }
     }
   },
+
+  // 2. 跨部門主管 / 高層 (Cross-team Director)
   cross_mgr: {
     meeting: {
       priority: {
-        badge: '📋 策略：跨部門主管協調防盾',
-        tag: '對象：跨部門主管 ｜ 防禦等級：⭐⭐⭐⭐⭐',
-        analysis: '面對跨部門長官，切勿自行承諾。將問題禮貌推回給雙方直屬主管，由長官之間去協調資源。',
+        badge: { zh: '📋 策略：跨部門主管協調防盾', en: '📋 Strategy: Managerial Resource Shield' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Priority Shift | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '面對跨部門長官，切勿自行承諾。將問題禮貌推回給雙方直屬主管，由長官之間去協調資源。', en: 'Never commit to cross-department requests unilaterally. Politely direct them to your manager for resource alignment.' },
         zh: '「謝謝長官邀請。由於目前我手上的工作時程均由 [直屬主管姓名] 排定且進度緊湊，若有跨部門專案需我參與，可能要麻煩您先與我主管對齊資源調度，只要主管排定，我一定全力以赴。」',
         en: '"Thank you for the invitation. Because my deliverables are tightly scheduled under [Manager Name], any cross-departmental commitments require managerial alignment. Please coordinate with my manager directly; once approved, I will fully support your initiative."',
-        tip: '💡 避坑重點：搬出直屬主管是跨部門溝通最堅固且禮貌的防火牆。'
-      }
-    },
-    fire: {
+        tip: { zh: '💡 避坑重點：搬出直屬主管是跨部門溝通最堅固且禮貌的防火牆。', en: '💡 Pro Tip: Directing cross-team requests to your direct manager is the safest corporate boundary.' }
+      },
       compliance: {
-        badge: '⚖️ 策略：權限邊界與責任歸屬',
-        tag: '對象：跨部門主管 ｜ 防禦等級：⭐⭐⭐⭐⭐',
-        analysis: '跨部門出包救火最容易成為替罪羊，堅持架構權限與變更流程。',
-        zh: '「非常同理貴團隊的時間壓力。但由於該系統架構平時非由我維護，缺乏完整的環境與歷史紀錄，倉促介入容易產生未知的連鎖異常。建議依正規異常升級流程由原主責團隊處理最為穩妥。」',
-        en: '"I understand your urgent timeline. However, since this system is not under my daily governance, intervening without complete architectural context poses serious regression risks. It is best handled by the primary DRI via formal incident escalation."',
-        tip: '💡 避坑重點：非自己主管的業務出包，切勿私下插手。'
-      }
-    }
-  },
-  peer: {
-    meeting: {
+        badge: { zh: '⚖️ 策略：跨部門立項審核與流程合規', en: '⚖️ Strategy: Formal Cross-Team Project Charter' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Compliance & Governance | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '依跨部門治理規範，非正式立項之會議需由主責窗口統一出席，避免私下牽涉未授權範疇。', en: 'Cite cross-department governance standards requiring formal chartering and designated representation.' },
+        zh: '「感謝長官邀約。依照公司跨部門合作治理準則，專案需先完成跨組立項與資源審核。為符合專案治理標準，建議先由您單位發起正式需求單，由我部門代表窗口統一對接出席。」',
+        en: '"Thank you for the invite. Per company cross-departmental governance guidelines, collaborative initiatives require formal chartering and approved staffing. Please initiate a standard project request so our department can assign formal representation."',
+        tip: { zh: '💡 避坑重點：堅持正式立項流程，杜絕未經主管同意的「偷渡型專案」。', en: '💡 Pro Tip: Require formal project intake to prevent unauthorized scope creep.' }
+      },
       delegate: {
-        badge: '🤝 策略：專注本職與借力使力',
-        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐',
-        analysis: '平級同事拉你開會多半是為了分攤責任或湊人數，直接以時程滿檔婉拒。',
-        zh: '「感謝想到我！不過我手頭這個 Sprint 的排程很滿，沒辦法列席。這題你們直接找 [專責同事] 討論最專業，我就不湊熱鬧了，祝你們會議順利！」',
-        en: '"Thanks for thinking of me! However, my sprint capacity is completely booked. [DRI Name] is the subject expert on this—best to align with them directly. Good luck with the meeting!"',
-        tip: '💡 避坑重點：語氣輕鬆友善，但拒絕態度堅定。'
+        badge: { zh: '🎯 策略：轉介對等層級專責窗口', en: '🎯 Strategy: Route to Designated Cross-Team DRI' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '推薦本部門專責業務窗口或對等層級代表進行跨組對接，避免職權錯置。', en: 'Introduce your departments official counterpart to handle cross-team alignment.' },
+        zh: '「謝謝長官！關於此跨組議題，我們部門目前是由 [專責主管/同仁] 統一統籌與制定策略。由專責窗口直接與您對齊能確保決策速度，我已將您的會議訊息轉達給他，後續由他與您聯繫！」',
+        en: '"Thank you! For this cross-team topic, [Dedicated Lead Name] is our designated department liaison. Aligning directly with them ensures strategic continuity. I have forwarded your invite to them to connect directly!"',
+        tip: { zh: '💡 避坑重點：主動轉發給專責窗口，既給足長官面子又讓自己完全抽身。', en: '💡 Pro Tip: Warmly introducing the official liaison respects the director while extricating yourself.' }
+      },
+      consult: {
+        badge: { zh: '📝 策略：提供跨組架構書面摘要', en: '📝 Strategy: Provide Asynchronous Technical Summary' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '會前提供跨組技術架構評估摘要，不列席冗長跨部門例會。', en: 'Deliver a high-level asynchronous summary rather than sitting through hours of cross-team meetings.' },
+        zh: '「長官好，為提升跨部門溝通效率，我已先針對貴單位的技術疑問整理了一份 [跨組架構與依賴評估簡報]。要點均已詳述於文件中，您可直接參考，本次跨組討論我就先不列席了，謝謝！」',
+        en: '"Hello Director, to optimize meeting efficiency, I prepared a concise [Cross-Team Architecture & Dependency Briefing] addressing your technical queries. All key findings are documented, so I will excuse myself from the live sync."',
+        tip: { zh: '💡 避坑重點：用高質量的書面成果替代人肉出席，展現專業且不失禮。', en: '💡 Pro Tip: High-quality written briefings replace physical attendance with higher executive polish.' }
       }
     },
     tool: {
+      priority: {
+        badge: { zh: '📊 策略：跨組研發工時申請', en: '📊 Strategy: Formal Cross-Team Headcount Request' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '跨部門客製工具需要直屬主管核准研發工時與工令分配。', en: 'Remind cross-team leaders that customizing internal tools requires formal managerial headcount allocation.' },
+        zh: '「長官，將這套工具客製化以支援貴部門流程，需投入約 [X] 人天之研發與適配工時。因本組目前正全力趕工既定專案，若需調撥資源支援，可能要請您與我主管 [主管名] 協調工時分配。」',
+        en: '"Director, tailoring this tool for your team requires approximately [X] engineering days. Since our team is sprint-committed, allocating resources for this adaptation will require alignment between you and my manager [Manager Name]."',
+        tip: { zh: '💡 避坑重點：任何跨部門工具移植都有「適配工時」，不可私下答應免費支援。', en: '💡 Pro Tip: Never offer free cross-departmental tool customization without headcount approval.' }
+      },
       compliance: {
-        badge: '🚫 策略：維護成本與實驗性免責',
-        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐⭐',
-        analysis: '面對想白嫖工具的同事，強調維護成本極高且容易出錯。',
-        zh: '「我那套只是土炮寫給自己環境用的零碎腳本，超級不穩定而且沒防呆。拿給別人用我還得花時間維護除錯，手頭真的完全沒頻寬支援，建議還是等公司官方的標準工具上線吧！」',
-        en: '"That is just a hacky personal script built strictly for my local setup; it is very fragile. Supporting it externally requires endless debugging bandwidth that I simply do not have. Best to wait for our official enterprise tools!"',
-        tip: '💡 避坑重點：自嘲工具『很爛很脆弱』，消滅對方的使用慾望。'
+        badge: { zh: '🔒 策略：跨部門資安審查與授權合規', en: '🔒 Strategy: Cross-Department Security & IP Governance' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Compliance & Security | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '跨部門未經資安與商業合規審查嚴禁私下拷貝傳播內部腳本。', en: 'Cite enterprise security governance prohibiting unvetted script sharing across organizational boundaries.' },
+        zh: '「報告長官，該腳本屬個人測試性質，尚未通過公司跨部門資安審查（Security Review）與合規授權。依公司資訊治理規範，未受控工具不得跨部門部署。建議循正式 IT 採購管道導入企業級方案。」',
+        en: '"Director, this script is an experimental test environment that has not passed mandatory cross-departmental InfoSec and compliance review. Corporate policy strictly prohibits deploying uncertified scripts across teams. Official IT procurement is required."',
+        tip: { zh: '💡 避坑重點：將拒絕原因歸咎於「公司資安紅線」，長官無法反駁。', en: '💡 Pro Tip: Enterprise InfoSec policy is an irrefutable defense against ad-hoc tool distribution.' }
+      },
+      delegate: {
+        badge: { zh: '🏢 策略：轉介企業 IT/平台處統一採購', en: '🏢 Strategy: Direct to Enterprise IT Platform Service' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '建議該部門向公司 IT 平台提出通用工具採購與導入需求。', en: 'Point the requesting director to the centralized IT department for enterprise-grade solutions.' },
+        zh: '「報告長官，貴單位所需的這項自動化功能，其實公司 [IT 平台處] 目前已有評估標準企業方案的計畫。建議由貴部門直接向 IT 處提出需求登記，由專業 IT 團隊提供 24/7 維運與正式支援最為穩當。」',
+        en: '"Director, [Enterprise IT Platform Division] is currently evaluating standardized tooling for this exact capability. I recommend submitting your requirement directly to IT so your team gets official 24/7 support and enterprise SLAs."',
+        tip: { zh: '💡 避坑重點：把球踢給專職 IT，讓對方獲得更正規的支援。', en: '💡 Pro Tip: Redirecting to official IT provides the counterpart a better path while relieving your team.' }
+      },
+      consult: {
+        badge: { zh: '📚 策略：提供公開架構文檔與範例連結', en: '📚 Strategy: Share Public Architectural References' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提供公用技術文檔與架構參考連結，供對方工程師自行建置。', en: 'Provide architectural blueprints and documentation for their engineers to implement independently.' },
+        zh: '「長官，此工具採用的核心技術架構已公開在公司內部技術分享區（連結如下）。貴單位的工程師可直接參照該文件中的架構設計，自行搭建符合貴部門特殊業務規則的模組！」',
+        en: '"Director, the core architectural blueprint has been published on our engineering wiki (link below). Your engineering team can directly reference these specifications to build a customized pipeline for your domain!"',
+        tip: { zh: '💡 避坑重點：提供架構說明書，讓對方的工程師自己動手做。', en: '💡 Pro Tip: Providing an architectural blueprint empowers their engineers without pulling you into execution.' }
       }
     },
     fire: {
+      priority: {
+        badge: { zh: '🚨 策略：跨處級緊急資源協調', en: '🚨 Strategy: Cross-Division Escalation & Alignment' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '自身交付死線在即，跨組緊急調度需雙方處級主管批准。', en: 'State that active critical path commitments require VP/Director sign-off before assisting outside teams.' },
+        zh: '「非常理解長官面臨的緊急狀況！但因我手頭正處於關鍵驗收倒數階段，若需中斷排程跨組支援，需由您與我的處長/主管協調臨時調度核准，只要長官指令下達，我會全力配合。」',
+        en: '"I recognize the critical urgency facing your team! However, I am in the final hours of our critical milestone. Jumping across teams requires formal authorization between you and my Director. Once approved, I will coordinate fully."',
+        tip: { zh: '💡 避坑重點：跨部門出包時，沒有長官簽核絕不能私自跳進火坑。', en: '💡 Pro Tip: Never jump into another departments crisis without explicit executive clearance.' }
+      },
+      compliance: {
+        badge: { zh: '⚖️ 策略：權限隔離與變更審計防線', en: '⚖️ Strategy: System Isolation & Access Governance' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Compliance & Audit | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '跨系統權限隔離，未經變更審批介入操作違反資安審計標準。', en: 'Highlight that modifying third-party systems without governance access violates corporate audit standards.' },
+        zh: '「非常同理貴團隊的時間壓力。但由於該系統架構平時非由我維護，缺乏完整的環境與歷史紀錄，倉促介入容易產生未知的連鎖異常。建議依正規異常升級流程由原主責團隊處理最為穩妥。」',
+        en: '"I understand your urgent timeline. However, since this system is not under my daily governance, intervening without complete architectural context poses serious regression risks. It is best handled by the primary DRI via formal incident escalation."',
+        tip: { zh: '💡 避坑重點：非自己主管的業務出包，切勿私下插手。', en: '💡 Pro Tip: Unregulated intervention in external systems creates severe blame traps.' }
+      },
+      delegate: {
+        badge: { zh: '🚑 策略：引導至官方緊急應變小組 (ERT)', en: '🚑 Strategy: Escalate to Official Incident Response (ERT)' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '請其依照標準異常通報路徑（Incident Ticket）升級至原主責團隊或緊急應變中心。', en: 'Direct the inquiry to the formal Emergency Response Team (ERT) / NOC.' },
+        zh: '「長官，針對重大生產系統異常，公司設有專屬的緊急應變機制（ERT/War Room）。建議請主責同仁立即在監控平台發起 P1 Incident，由當班維運專家與系統原廠提供最高優先級排查！」',
+        en: '"Director, for critical production outages, our company operates a dedicated Emergency Response Team (ERT/NOC). Please have your lead trigger a P1 incident ticket immediately so on-call site reliability engineers can intervene with full authorization!"',
+        tip: { zh: '💡 避坑重點：P1 重大事故必須走正規 War Room，個人私下救火只會背鍋。', en: '💡 Pro Tip: Major production incidents require formal War Room protocols, not unofficial heroics.' }
+      },
       consult: {
-        badge: '🎣 策略：給釣竿不給魚（顧問指路）',
-        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐⭐',
-        analysis: '同事出包情勒，可以友善指點排查方向，但絕不動手幫他寫或操作。',
-        zh: '「這問題確實棘手！我手頭專案死線在即沒辦法幫你排查，但我建議你先去查 [A 模組] 或看知識庫 [文檔連結]，過去類似問題都是那邊設定出錯。你照這方向試試看應該能解！」',
-        en: '"That sounds tough! I am racing against a hard deadline so I cannot debug it directly, but I suggest checking [Module A] or reviewing [Doc Link]. Previous incidents stemmed from there. Follow that clue and you will nail it!"',
-        tip: '💡 避坑重點：給予方向展現情義，堅決不動手保護邊界。'
+        badge: { zh: '🔍 策略：遠程提供異常排查方向建議', en: '🔍 Strategy: Remote Diagnostic Clues (Hands-Off)' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提供遠程診斷提示與歷史異常排查方向，雙手不直接碰對方系統。', en: 'Provide high-level triage advice without touching their systems or accepting ownership.' },
+        zh: '「長官，我目前無法直接操作貴組系統，但從現象來看，建議貴組工程師優先檢查 [資料庫連線池/金鑰憑證是否過期]。過去類似案例多半是這兩處設定異常，供貴團隊快速排查參考！」',
+        en: '"Director, while I cannot directly modify your infrastructure, the symptoms strongly point to [DB Connection Pool Exhaustion/Expired TLS Certs]. Most past incidents originated there. I hope this pointer helps your team isolate it quickly!"',
+        tip: { zh: '💡 避坑重點：給予診斷思維，堅決不拿對方系統權限。', en: '💡 Pro Tip: Share diagnostic intuition while firmly avoiding system credentials.' }
       }
     },
     housework: {
       priority: {
-        badge: '🛑 策略：平等邊界與專業分工',
-        tag: '對象：平級同事 ｜ 防禦等級：⭐⭐⭐',
-        analysis: '拒絕被當成雜事垃圾桶，守住平級邊界。',
-        zh: '「這部分若需大家輪流分擔，建議我們在 Team Meeting 上定一個輪值表公開分配；若是專案常態行政，建議請主責 PM 統一協調，我目前專注在交付技術模組上。」',
-        en: '"If this is a shared team duty, let us establish a formal rotation schedule during our next team meeting. Otherwise, it should be coordinated by the lead PM so I can stay focused on engineering deliverables."',
-        tip: '💡 避坑重點：把私下推託變成『公開制度化』。'
+        badge: { zh: '🛡️ 策略：本組戰略目標優先', en: '🛡️ Strategy: Department Strategic Priority' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '專注於所屬部門核心戰略交付，無主管授權不承接跨組庶務。', en: 'Firmly state that departmental sprint capacity is fully booked for organizational goals.' },
+        zh: '「謝謝長官詢問。目前我們組正全力聚焦在處長交辦的年度重點專案上，時程極為緊湊。這項跨組行政協調工作，可能需要由各處秘書或專案窗口統一統籌，感謝您的體諒！」',
+        en: '"Thank you for reaching out. Our team is fully committed to our division critical annual milestones under strict deadlines. This cross-team administrative coordination is best handled through central program coordinators. Thank you for understanding!"',
+        tip: { zh: '💡 避坑重點：抬出「處長交辦重點專案」，跨部門主管不會強求。', en: '💡 Pro Tip: Citing executive division-level deliverables safely deflects lateral busywork.' }
+      },
+      compliance: {
+        badge: { zh: '📏 策略：跨部門職掌與 SLA 合規', en: '📏 Strategy: Governance & Inter-Department SLA' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Compliance & SLA | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '跨組工作邊界合規化，非本組權責事項回歸跨部門 SLA 定義。', en: 'Reference formal cross-departmental SLAs and functional responsibilities.' },
+        zh: '「報告長官，依據雙方部門制定的服務水準協定（SLA）與組織權責分工，此項例行事務屬於 [公共事務處/維運組] 職掌範圍。依流程應提交至該部門窗口統一辦理，以符合組織治理規範。」',
+        en: '"Director, under our inter-departmental SLA and functional governance charter, this administrative function belongs to [Operations/Administrative Services]. It should be routed to their service desk to maintain organizational compliance."',
+        tip: { zh: '💡 避坑重點：用制度與 SLA 說話，不落入個人人情勒索。', en: '💡 Pro Tip: Let corporate SLAs and charters handle the refusal to avoid personal friction.' }
+      },
+      delegate: {
+        badge: { zh: '🗂️ 策略：轉介專案管理辦公室 (PMO)', en: '🗂️ Strategy: Route to Project Management Office (PMO)' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '轉介至專案管理辦公室（PMO）或跨部門公共行政窗口。', en: 'Delegate multi-departmental administrative tracking to dedicated PMO staff.' },
+        zh: '「長官，這項涉及多部門的統計與庶務工作，最適合由專案管理辦公室（PMO）或跨部門專案經理統籌辦理，他們有跨組專屬權限與追蹤工具，推動起來會更為順暢高效！」',
+        en: '"Director, multi-department administrative consolidation is best facilitated by the PMO. They possess the formal authority and tracking tooling to execute cross-functional coordination efficiently!"',
+        tip: { zh: '💡 避坑重點：推給具備跨組協調職能的 PMO 是最合理的正解。', en: '💡 Pro Tip: Delegating multi-department coordination to the PMO is standard industry practice.' }
+      },
+      consult: {
+        badge: { zh: '📑 策略：提供跨組作業 SOP 範本', en: '📑 Strategy: Provide Self-Service SOP Template' },
+        tag: { zh: '對象：跨部門主管 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Cross-team Director | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提供公用 SOP 範本，請其團隊同仁自助執行。', en: 'Share a standardized template so the other department can complete the work on their own.' },
+        zh: '「長官，我們團隊先前已建立過一套標準作業手冊（SOP）與填報模板（連結如下）。貴部門同仁只要套用這份模板即可在 10 分鐘內完成整合作業，非常方便實用！」',
+        en: '"Director, our team previously standardized a reusable SOP and template for this procedure (link attached). Your team can directly apply this framework to finish the consolidation independently within 10 minutes!"',
+        tip: { zh: '💡 避坑重點：提供標準範本解決問題，同時堅決不投入人工作業。', en: '💡 Pro Tip: Handing over a turnkey SOP solves their problem without taking on their labor.' }
       }
     }
   },
-  external: {
+
+  // 3. 強勢 / 習慣甩鍋同事 (Pushy / Free-riding Peer)
+  peer: {
     meeting: {
+      priority: {
+        badge: { zh: '⏱️ 策略：Sprint 產能滿載堅定婉拒', en: '⏱️ Strategy: Sprint Capacity Locked' },
+        tag: { zh: '對象：平級同事 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '平級同事拉你開會多半是為了湊人數或分擔責任，直接以 Sprint 時程滿檔堅定婉拒。', en: 'Peers invite you to diffuse blame or pad numbers; decline firmly citing locked sprint capacity.' },
+        zh: '「感謝想到我！不過我本週 Sprint 的任務排程已經 100% 滿載，正全力趕工死線，實在抽不出空列席。這場會議我就先不參加了，祝你們開會順利！」',
+        en: '"Thanks for thinking of me! However, my sprint capacity this week is 100% committed to hard milestone deliverables. I cannot squeeze in another meeting. I will pass on this session—hope it goes smoothly!"',
+        tip: { zh: '💡 避坑重點：語氣輕鬆友善，但拒絕態度必須堅定絕不鬆口。', en: '💡 Pro Tip: Keep tone cheerful but boundary airtight—do not leave room for negotiation.' }
+      },
       compliance: {
-        badge: '📑 策略：合約範疇與正式窗口',
-        tag: '對象：外部廠商/客戶 ｜ 防禦等級：⭐⭐⭐⭐⭐',
-        analysis: '外部要求一律回歸合約範疇（SOW）與專案經理窗口。',
-        zh: '「感謝您的通知。根據雙方專案現階段的範疇定義（SOW），相關會議與需求變更需由我方專案窗口 [PM 姓名] 統一彙整與評估，我將依照雙方確認後的專案排程參與配合。」',
-        en: '"Thank you for reaching out. Per our current SOW and contract governance, all scope discussions must be coordinated through our lead PM [PM Name]. I will participate in accordance with the aligned project timeline."',
-        tip: '💡 避坑重點：切勿私下答應客戶或廠商合約外的額外要求。'
+        badge: { zh: '🎯 策略：精實會議原則與非主責不列席', en: '🎯 Strategy: Lean Meeting Policy (Non-Core Skip)' },
+        tag: { zh: '對象：平級同事 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Compliance & Lean | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '搬出精實會議原則：非決策者與非主責人不出席，維持會議效率。', en: 'Invoke Lean meeting discipline: keeping attendee lists minimal to maximize decision velocity.' },
+        zh: '「依我們團隊的精實開會規範，非核心主責同仁不列席以維持會議決策效率。該題目由你與主責同仁直接拍板即可，我就不加入增加溝通成本了！」',
+        en: '"Per our teams Lean meeting guidelines, non-core participants should refrain from attending to keep decision loops tight. You and the lead DRI can finalize the action items directly without extra overhead!"',
+        tip: { zh: '💡 避坑重點：把不參加開會昇華為「為了提升你的會議效率」。', en: '💡 Pro Tip: Frame your absence as respecting their meeting efficiency and ownership.' }
+      },
+      delegate: {
+        badge: { zh: '🤝 策略：推薦專職 DRI 避免多頭溝通', en: '🤝 Strategy: Delegate to Official DRI' },
+        tag: { zh: '對象：平級同事 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐', en: 'Target: Pushy Peer | Style: Delegation | Rating: ⭐⭐⭐' },
+        analysis: { zh: '推薦直接與專職 DRI 同仁對齊，避免多方溝通造成訊息落差。', en: 'Direct them to the designated subject expert, preventing redundant back-and-forth.' },
+        zh: '「感謝邀請！這題團隊中 [專責同事姓名] 是真正的專家，且目前主導相關架構。你們直接找他討論最聚焦、也最不會走冤枉路，我就不湊熱鬧了！」',
+        en: '"Thanks for inviting me! [DRI Name] is the true subject expert on this topic and owns the architecture. Aligning directly with them will be far more productive. I will step aside!"',
+        tip: { zh: '💡 避坑重點：捧專職同仁，讓對方沒有理由非拉你不可。', en: '💡 Pro Tip: Praising the official DRI removes any excuse for dragging you into the room.' }
+      },
+      consult: {
+        badge: { zh: '💬 策略：會前私訊 2 點技術重點', en: '💬 Strategy: Async Slack Note (No Live Meeting)' },
+        tag: { zh: '對象：平級同事 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '會前私訊 2 點關鍵技術反饋與建議，不參加現場冗長會議。', en: 'Drop two bullet points in chat before the call, satisfying curiosity while skipping the live hour.' },
+        zh: '「我手上在趕工沒辦法上線開會，但我先看過你的議程了，重點在於 [A 參數與 B 依賴]。這 2 點在會上確認好基本上就沒問題，供你們參考，加油！」',
+        en: '"I am racing against a build deadline and cannot join live, but I skimmed your agenda: the critical bottlenecks are [Parameter A and Dependency B]. Align on those two points and you will be solid!"',
+        tip: { zh: '💡 避坑重點：用 2 行文字展現同事同理心，同時捍衛整整 1 小時專注時間。', en: '💡 Pro Tip: A 2-line chat note shows solidarity while protecting an hour of uninterrupted work.' }
+      }
+    },
+    tool: {
+      priority: {
+        badge: { zh: '⛔ 策略：無維護頻寬與環境差異', en: '⛔ Strategy: Zero Support Bandwidth' },
+        tag: { zh: '對象：平級同事 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '面對想白嫖自研工具的同事，強調手頭無頻寬處理跨環境相容性與後續除錯支援。', en: 'Refuse casual tool leeches by stressing zero capacity to support cross-environment debugging.' },
+        zh: '「這套工具完全是針對我個人本地環境客製的，搬到其他機器容易噴錯。我手頭專案排程滿檔，真的沒時間幫你除錯和做客製適配，手頭工作吃緊，實在抱歉！」',
+        en: '"This tool is tightly coupled to my local machine configuration and breaks easily on other environments. My sprint is completely jammed, so I will not have bandwidth to debug or maintain it for you. Sorry about that!"',
+        tip: { zh: '💡 避坑重點：強調「我絕對沒有時間幫你除錯」，打消對方的依賴心態。', en: '💡 Pro Tip: Stating upfront that you cannot provide troubleshooting kills opportunistic tool requests.' }
+      },
+      compliance: {
+        badge: { zh: '🚫 策略：自用測試免責與風險聲明', en: '🚫 Strategy: Fragile Prototype Disclaimer' },
+        tag: { zh: '對象：平級同事 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Compliance & Risk | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '自用腳本為土炮測試版，無防呆機制，隨意使用容易造成資料損壞或資安疑慮。', en: 'Disclose that personal scripts lack error-proofing and could cause irreversible data corruption.' },
+        zh: '「我那套只是土炮寫給自己測試用的未驗證腳本，完全沒有防呆保護與回滾機制。如果拿去操作正式資料出問題風險極大，建議你千萬別用，還是等公司官方標準工具發布最安全！」',
+        en: '"That is just a raw, unverified personal test script with zero Poka-Yoke error-proofing or rollback safety. Running it on team data carries severe corruption risks. I strongly advise waiting for our official company tools!"',
+        tip: { zh: '💡 避坑重點：把工具講得「非常危險且容易搞砸資料」，消滅對方使用慾望。', en: '💡 Pro Tip: Describing the script as fragile and hazardous instantly cures their desire to borrow it.' }
+      },
+      delegate: {
+        badge: { zh: '🛠️ 策略：推薦使用官方標準工具庫', en: '🛠️ Strategy: Direct to Verified Internal Tools' },
+        tag: { zh: '對象：平級同事 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '推薦使用公司官方已驗證的標準工具或提交需求給專職 IT。', en: 'Guide peers to officially supported tools developed by the platform team.' },
+        zh: '「如果需要穩定的自動化方案，其實公司 IT 平台組已經發布了官方標準工具 [工具名稱]，有專人維護還有完整使用手冊，比我個人寫的穩定 100 倍，推薦你直接用官方的！」',
+        en: '"If you need a reliable automation workflow, our central IT team already published official tool [Tool Name]. It has full documentation and dedicated on-call support—infinitely more stable than personal hacks!"',
+        tip: { zh: '💡 避坑重點：指引對方使用官方已維護的資產。', en: '💡 Pro Tip: Pointing to verified enterprise tools offers a superior alternative.' }
+      },
+      consult: {
+        badge: { zh: '📖 策略：分享官方技術文檔與概念', en: '📖 Strategy: Share Public Documentation Link' },
+        tag: { zh: '對象：平級同事 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '分享官方技術文檔與安裝教學，鼓勵對方自主配置學習。', en: 'Share reference documentation so they can build their own solution.' },
+        zh: '「我當初也是看這篇官方教程 [教學連結] 寫出來的，步驟很清楚！你花半小時照著文件走一遍就能根據你自己的需求架設出來，很值得自己動手試試！」',
+        en: '"I built my workflow directly from this tutorial [Tutorial Link]; the documentation is crystal clear. Spending 30 minutes following the steps lets you build one perfectly tailored to your needs!"',
+        tip: { zh: '💡 避坑重點：給予教程連結，激發對方自主學習，守住私人腳本資產。', en: '💡 Pro Tip: Giving them the tutorial encourages self-sufficiency without surrendering your IP.' }
       }
     },
     fire: {
+      priority: {
+        badge: { zh: '🚧 策略：自身專案死線全力衝刺', en: '🚧 Strategy: Locked on Critical Deadline' },
+        tag: { zh: '對象：平級同事 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '自身專案今日有重大交付驗收，無時間代為排查他人出包。', en: 'Refuse peer fire drills cleanly by citing your own urgent delivery milestone.' },
+        zh: '「這狀況聽起來真的很趕！但我今天下午主管要親自驗收 [核心模組]，我手頭一分一秒都不能耽誤，實在沒辦法幫你一起看，你可能要趕快找其他人支援或找主管協調！」',
+        en: '"That sounds like a tough crunch! Unfortunately, my manager is reviewing [Core Deliverable] this afternoon, so every minute is locked. I cannot assist on this—you should escalate to your lead right away!"',
+        tip: { zh: '💡 避坑重點：明確說明自身死線的嚴肅性，讓對方知難而退。', en: '💡 Pro Tip: Concrete deadlines stop peers from pressuring you into their emergencies.' }
+      },
       compliance: {
-        badge: '📜 策略：SLA 與標準工單流程',
-        tag: '對象：外部廠商/客戶 ｜ 防禦等級：⭐⭐⭐⭐⭐',
-        analysis: '要求走正式 Issue Tracking 與 SLA 流程。',
+        badge: { zh: '🛡️ 策略：權限隔離防背鍋', en: '🛡️ Strategy: System Isolation & Blame Defense' },
+        tag: { zh: '對象：平級同事 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Compliance & Risk | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '避免介入他人系統導致出包時責任歸屬模糊（防背鍋原則）。', en: 'Never touch another peers production outage to avoid being scapegoated.' },
+        zh: '「這套系統的代碼和部署權限平时都是你在管，我未經正式授權貿然上去操作，一旦出更大問題責任完全說不清楚。建議你還是依照標準流程由你主導排查最合規。」',
+        en: '"You own the codebase and deployment credentials for this system. If I intervene without formal onboarding and cause further regressions, the audit trail becomes a liability. Best to keep remediation under your official ownership."',
+        tip: { zh: '💡 避坑重點：千萬別碰別人的生產環境，避免成為替罪羊。', en: '💡 Pro Tip: Never operate on someone elses production service—avoid the blame trap.' }
+      },
+      delegate: {
+        badge: { zh: '🔄 策略：指派專屬值班人員 (On-Call)', en: '🔄 Strategy: Escalate to On-Call Engineer' },
+        tag: { zh: '對象：平級同事 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '請其通報當週值班工程師（On-Call）或系統原架構師。', en: 'Direct them to the designated on-call support channel.' },
+        zh: '「這種即時故障應該直接通報到我們的 On-Call 頻道，本週值班的是 [值班同仁姓名]，他在線上能以最快速度調動資源幫你處理！」',
+        en: '"For live outages, post immediately in the #oncall channel. [On-Call Engineer] is on duty and equipped with full triage tooling to resolve this fast!"',
+        tip: { zh: '💡 避坑重點：引導至正式值班管道，尊重組織分工。', en: '💡 Pro Tip: Formal on-call channels exist specifically to handle these issues.' }
+      },
+      consult: {
+        badge: { zh: '🎣 策略：給釣竿不給魚（顧問指路）', en: '🎣 Strategy: Consultative Pointer (Hands-Off)' },
+        tag: { zh: '對象：平級同事 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '同事出包情勒，可以友善指點排查方向，但絕不動手幫他寫或操作。', en: 'Point out diagnostic clues warmly while strictly refusing to write code or touch configurations.' },
+        zh: '「這問題確實棘手！我手頭專案死線在即沒辦法幫你排查，但我建議你先去查 [A 模組] 或看知識庫 [文檔連結]，過去類似問題都是那邊設定出錯。你照這方向試試看應該能解！」',
+        en: '"That sounds tough! I am racing against a hard deadline so I cannot debug it directly, but I suggest checking [Module A] or reviewing [Doc Link]. Previous incidents stemmed from there. Follow that clue and you will nail it!"',
+        tip: { zh: '💡 避坑重點：給予方向展現情義，堅決不動手保護邊界。', en: '💡 Pro Tip: Showing empathy with pointers satisfies goodwill without accepting work.' }
+      }
+    },
+    housework: {
+      priority: {
+        badge: { zh: '🛑 策略：專注工程交付與邊界防守', en: '🛑 Strategy: Engineering Priority Shield' },
+        tag: { zh: '對象：平級同事 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐', en: 'Target: Pushy Peer | Style: Priority Shift | Rating: ⭐⭐⭐' },
+        analysis: { zh: '拒絕被當成雜事垃圾桶，守住平級專業邊界。', en: 'Do not allow peers to dump administrative chores onto your technical time.' },
+        zh: '「這部分若需大家輪流分擔，建議我們在 Team Meeting 上定一個輪值表公開分配；若是專案常態行政，建議請主責 PM 統一協調，我目前專注在交付技術模組上。」',
+        en: '"If this is a shared team duty, let us establish a formal rotation schedule during our next team meeting. Otherwise, it should be coordinated by the lead PM so I can stay focused on engineering deliverables."',
+        tip: { zh: '💡 避坑重點：把私下推託變成「公開制度化」。', en: '💡 Pro Tip: Turn private chore dumping into transparent team-wide scheduling.' }
+      },
+      compliance: {
+        badge: { zh: '📋 策略：倡導專業分工拒絕越界', en: '📋 Strategy: Professional Role Boundaries' },
+        tag: { zh: '對象：平級同事 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Compliance & Standards | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提倡專業分工與職能邊界，反對私人隨意推諉。', en: 'Reinforce functional responsibilities to prevent ad-hoc role drift.' },
+        zh: '「這項事務依團隊職掌劃分屬於 [行政/專案助理] 的標準作業範疇。我們身為研發工程同仁應專注在架構產出上，隨意承接會打亂職能分工，建議直接交由專責窗口辦理。」',
+        en: '"This task falls under standard administrative operations per team role definitions. As engineers, our bandwidth is budgeted for technical deliverables. We should route this directly to the administrative desk to preserve operational clarity."',
+        tip: { zh: '💡 避坑重點：以團隊職能規範為盾，讓對方無法情勒。', en: '💡 Pro Tip: Clear role definitions eliminate ambiguity and guilt trips.' }
+      },
+      delegate: {
+        badge: { zh: '🔄 策略：提議建立團隊公開輪值機制', en: '🔄 Strategy: Propose Transparent Team Rotation' },
+        tag: { zh: '對象：平級同事 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提議於組會上建立公開輪值機制或請 PM 統一分派。', en: 'Suggest bringing the chore to the team meeting for balanced allocation.' },
+        zh: '「每次臨時找人做很容易不均勻，不如我們下次組會請主管訂一個每週輪值表，輪到誰誰就做，大家公平公開，你覺得如何？」',
+        en: '"Relying on ad-hoc volunteering creates uneven workloads. Why dont we propose an official weekly rotation during our next team sync? Transparent and fair for everyone!"',
+        tip: { zh: '💡 避坑重點：公開制度化是打擊「柿子挑軟的吃」的最有效武器。', en: '💡 Pro Tip: Public rotation eliminates freeloading.' }
+      },
+      consult: {
+        badge: { zh: '📑 策略：提供自動化腳本或表單模板', en: '📑 Strategy: Share Self-Service Automation Script' },
+        tag: { zh: '對象：平級同事 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: Pushy Peer | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提供自動化表單或腳本範本，讓對方 1 分鐘自行處理完畢。', en: 'Share an automation template so they can finish the chore in 60 seconds.' },
+        zh: '「這件事情其實不用人工手動一筆一筆整理！我之前寫過一個 Excel 巨集/自動化腳本（附檔），你把資料貼進去按一下 10 秒就自動排版完成了，你可以直接用！」',
+        en: '"You do not need to format this manually! I previously created an automation script (attached); paste your raw data and click Run to format everything in 10 seconds!"',
+        tip: { zh: '💡 避坑重點：給予自動化工具，徹底終結重複性人工雜務。', en: '💡 Pro Tip: Reusable automation ends repetitive requests permanently.' }
+      }
+    }
+  },
+
+  // 4. 外部廠商 / 客戶窗口 (External Client / Vendor)
+  external: {
+    meeting: {
+      priority: {
+        badge: { zh: '💼 策略：研發排程緊湊需 PM 評估計費', en: '💼 Strategy: Sprint Bandwidth & Billable Scope' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '專案研發交付排程緊湊，技術會議需經由 PM 評估工時與計費範疇。', en: 'Inform clients that technical engineering sprints are strictly planned and billable through PM.' },
+        zh: '「感謝您的邀約。目前技術團隊正全速衝刺本期交付里程碑，為妥善管理專案資源，相關技術會議請統一由我方專案經理 [PM 姓名] 評估排程與議程，我們將依確認後的計畫出席。」',
+        en: '"Thank you for the invitation. Our engineering team is currently sprint-delivering our committed contract milestone. To ensure proper resource allocation, please coordinate all technical discussions through our Lead PM [PM Name]."',
+        tip: { zh: '💡 避坑重點：技術人員切勿私下答應客戶開會，一切由 PM 統籌。', en: '💡 Pro Tip: Engineers must never accept ad-hoc client meetings without PM triage.' }
+      },
+      compliance: {
+        badge: { zh: '📑 策略：合約工作範疇 (SOW) 與正式窗口', en: '📑 Strategy: Contract SOW & Formal Governance' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: External Client | Style: Compliance & SOW | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '外部要求一律回歸合約範疇（SOW）與專案經理窗口。', en: 'Anchor external interactions to the Statement of Work (SOW) and formal governance.' },
+        zh: '「感謝您的通知。根據雙方專案現階段的範疇定義（SOW），相關會議與需求變更需由我方專案窗口 [PM 姓名] 統一彙整與評估，我將依照雙方確認後的專案排程參與配合。」',
+        en: '"Thank you for reaching out. Per our current SOW and contract governance, all scope discussions must be coordinated through our lead PM [PM Name]. I will participate in accordance with the aligned project timeline."',
+        tip: { zh: '💡 避坑重點：切勿私下答應客戶或廠商合約外的額外要求。', en: '💡 Pro Tip: Never commit to out-of-scope client requests outside the SOW.' }
+      },
+      delegate: {
+        badge: { zh: '🤝 策略：轉介專屬客戶成功/專案經理', en: '🤝 Strategy: Route to Dedicated PM / Account Lead' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '請客戶/廠商直接對齊專案經理（PM / Account Lead）。', en: 'Direct the external counterpart to their dedicated Account Executive / PM.' },
+        zh: '「謝謝您的聯繫！為確保雙方溝通資訊完整無落差，所有跨公司議題均由我方專屬窗口 [PM/業務姓名] 統籌管理。我已將您的訊息轉交給他，他將儘速主動與您對接安排！」',
+        en: '"Thank you! To ensure synchronized communication, all account-level coordination is managed by our dedicated Lead PM [PM Name]. I have forwarded your message to them, and they will connect with you shortly!"',
+        tip: { zh: '💡 避坑重點：將外部客戶引導至商業對接窗口。', en: '💡 Pro Tip: Funneling client requests to the commercial lead protects developer time.' }
+      },
+      consult: {
+        badge: { zh: '✉️ 策略：非同步 Agenda 書面審閱答覆', en: '✉️ Strategy: Async Agenda Review (Written FAQ)' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '請對方寄送會議議題清單（Agenda），以非同步 Email 簡要答覆。', en: 'Request a written agenda and answer asynchronously via email instead of taking a call.' },
+        zh: '「為提高雙方溝通效率並節省會議時間，建議貴方先將欲諮詢的具體技術問題清單（Agenda）以 Email 提供，我們將於 1 個工作日內提供書面說明，若有複雜爭議再另行安排通話！」',
+        en: '"To maximize efficiency and save meeting time, please email us your specific technical agenda items. We will provide detailed written responses within 1 business day, scheduling a call only if complex alignment remains needed!"',
+        tip: { zh: '💡 避坑重點：要求對方先寫清 Agenda，80% 的無效會議會自動消失。', en: '💡 Pro Tip: Demanding a written agenda defuses 80% of unnecessary meetings.' }
+      }
+    },
+    tool: {
+      priority: {
+        badge: { zh: '💰 策略：需求變更 (CR) 與商業計費評估', en: '💰 Strategy: Change Request (CR) & Commercial Quote' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: External Client | Style: Priority Shift | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '外部額外工具交付物需經由合約變更（Change Request, CR）重新計費評估。', en: 'Treat any private tool transfer as an out-of-scope Change Request requiring commercial billing.' },
+        zh: '「感謝貴公司對我們技術工具的肯定。由於此自研工具並非原合約約定之交付物，若貴方有導入需求，需由我方商務團隊發起需求變更程序（Change Request, CR）重新進行工時評估與報價。」',
+        en: '"Thank you for your interest in our internal tooling. Since this proprietary software is not an agreed deliverable under our current contract, licensing or deploying it requires a formal Change Request (CR) through our commercial sales team."',
+        tip: { zh: '💡 避坑重點：對外部客戶談「CR 變更與報價」能立即擋掉無理索取。', en: '💡 Pro Tip: Mentioning a formal CR and billing quote quickly puts an end to unearned requests.' }
+      },
+      compliance: {
+        badge: { zh: '🔒 策略：智慧財產權 (IP) 與保密協議 (NDA)', en: '🔒 Strategy: IP Protection & NDA Compliance' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐ (最高等級紅線)', en: 'Target: External Client | Style: Compliance & Legal | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '企業智慧財產權（IP）與保密協定（NDA）嚴格限制，禁止私下提供內部工具。', en: 'Enforce non-negotiable corporate IP rights and confidentiality (NDA) clauses.' },
+        zh: '「非常抱歉，本內部工具包含我方核心專利演算法與智慧財產權（IP），受雙方簽署之保密合約（NDA）與企業合規嚴格規範，未經法務審核授權嚴禁對外發布或共享，敬請理解！」',
+        en: '"Regrettably, this internal tool embodies proprietary intellectual property (IP) strictly protected under our NDA and corporate security compliance. Unauthorized distribution is prohibited by corporate legal counsel. Thank you for your understanding!"',
+        tip: { zh: '💡 避坑重點：IP 與 NDA 是商業世界最堅不可摧的法律護城河。', en: '💡 Pro Tip: Intellectual property and NDA clauses are unbreakable legal defenses.' }
+      },
+      delegate: {
+        badge: { zh: '🛒 策略：轉介商務窗口諮詢正式授權', en: '🛒 Strategy: Route to Commercial Sales / Licensing' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '建議聯繫商務窗口評估商業版模組採購授權。', en: 'Direct the client to your commercial account team for formal enterprise licensing.' },
+        zh: '「若貴公司對此類自動化方案有強烈商業需求，建議直接與我們的業務經理 [業務姓名] 聯繫，我們有提供專屬的企業級模組與專業售後支援方案可供選購！」',
+        en: '"If your organization has strong commercial demand for this automation module, please connect directly with our Account Executive [Name] to explore our enterprise licensing and dedicated SLA packages!"',
+        tip: { zh: '💡 避坑重點：將無償索取轉化為潛在商務銷售機會。', en: '💡 Pro Tip: Convert freebie requests into potential revenue opportunities for your sales team.' }
+      },
+      consult: {
+        badge: { zh: '🌐 策略：推薦公有雲與原廠開源 API 文檔', en: '🌐 Strategy: Direct to Public APIs & Documentation' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '建議客戶參考公有雲或原廠官方標準 API 文檔。', en: 'Point clients toward public vendor documentation and standard developer portals.' },
+        zh: '「貴方若想自行實現類似功能，建議可參考 [原廠官方開發者文檔/公開 API 規範]（連結如下）。業界標準實作流程均有完整示範，貴方工程團隊可直接參照建置！」',
+        en: '"If your team wishes to implement comparable capabilities independently, we recommend reviewing [Official Vendor Developer Docs / Public API Specs] (link attached). Standard industry patterns are thoroughly documented there!"',
+        tip: { zh: '💡 避坑重點：提供公有技術標準，展現專業且不洩漏任何內部代碼。', en: '💡 Pro Tip: Public industry standards demonstrate technical polish without disclosing proprietary code.' }
+      }
+    },
+    fire: {
+      priority: {
+        badge: { zh: '⏱️ 策略：非合約範疇緊急工時與商務核可', en: '⏱️ Strategy: Out-of-Scope Emergency Resourcing' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '非合約保障之緊急支援需經商務窗口評估工時費用（Out-of-Scope）。', en: 'Emergency support outside contract SLA requires out-of-scope commercial billing approval.' },
+        zh: '「我們理解此事件的急迫性。但因該模組已超出原合約約定之維護範疇，調動研發團隊進行緊急排查需經雙方商務窗口確認緊急工時與計費，請協助聯繫我方 PM 啟動緊急支援程序。」',
+        en: '"We understand the urgency of this incident. However, since this module falls outside current contract maintenance boundaries, emergency engineering deployment requires commercial sign-off for out-of-scope billing. Please contact our Lead PM to initiate the emergency protocol."',
+        tip: { zh: '💡 避坑重點：嚴格守住合約範疇，杜絕免費無底洞式救火。', en: '💡 Pro Tip: Guarding the contract boundary stops endless unpaid fire drills.' }
+      },
+      compliance: {
+        badge: { zh: '📜 策略：SLA 協議與標準工單系統 (Ticket)', en: '📜 Strategy: Formal SLA & Support Ticket Protocol' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: External Client | Style: Compliance & SLA | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '要求走正式 Issue Tracking 與 SLA 流程。', en: 'Enforce standard SLA ticket intake protocols for all incident reports.' },
         zh: '「收到問題通報。為確保事件處理具備完整的追蹤紀錄與優先級管理，請您協助透過官方工單系統（Ticket）提交異常詳情，我們團隊將依據 SLA 標準流程儘速排查。」',
         en: '"We acknowledge the reported issue. To ensure proper tracking and SLA management, please submit a formal ticket via our support portal. Our team will investigate per standard support protocols."',
-        tip: '💡 避坑重點：沒有 Ticket，就沒有維護責任。'
+        tip: { zh: '💡 避坑重點：沒有 Ticket，就沒有維護責任。', en: '💡 Pro Tip: No ticket, no liability—always require a formal ticket.' }
+      },
+      delegate: {
+        badge: { zh: '🎧 策略：轉介官方 24/7 客服與技術支援中心', en: '🎧 Strategy: Route to 24/7 Global Support Desk' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '請對方提交 Ticket 至官方 Support 管道由一線客服與維運專職受理。', en: 'Route the request to the dedicated round-the-clock technical support desk.' },
+        zh: '「為提供最高時效的救急支援，請撥打我方 24/7 全天候技術支援熱線或直接寄信至 support@company.com。專職值班工程師具備即時診斷權限，將第一時間為您處理！」',
+        en: '"For fastest emergency response, please contact our 24/7 Technical Support Center or email support@company.com. Dedicated on-call engineers have immediate diagnostic access to assist you right away!"',
+        tip: { zh: '💡 避坑重點：將外部求助轉交給專職 Support 體系。', en: '💡 Pro Tip: Channeling client issues to dedicated Support ensures proper SLA fulfillment.' }
+      },
+      consult: {
+        badge: { zh: '🔍 策略：提供常見故障排除 (FAQ) 與自檢清單', en: '🔍 Strategy: Self-Service Troubleshooting FAQ' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提供常見故障排除 FAQ 與標準健康檢查自我排查清單。', en: 'Share a self-service health check guide to help them triage basic root causes.' },
+        zh: '「在專屬工程師介入前，建議貴方先參考我們的 [線上故障排除指南與自檢清單]（連結如下）。請優先確認網絡端口、授權憑證與傳輸格式，90% 的類似問題可透過自檢迅速恢復！」',
+        en: '"While our support engineers prepare, we recommend reviewing our [Self-Service Troubleshooting Guide & Health Check Checklist] (link attached). Please verify port access and certificate validity—most incidents resolve quickly via this checklist!"',
+        tip: { zh: '💡 避坑重點：提供自檢清單，幫助客戶在第一時間自助排除基本錯誤。', en: '💡 Pro Tip: A self-service checklist empowers clients to solve common setup mistakes immediately.' }
+      }
+    },
+    housework: {
+      priority: {
+        badge: { zh: '🎯 策略：專注合約關鍵成果交付', en: '🎯 Strategy: Focus on Contract Milestones' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：資源置換 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Priority Shift | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '專注於合約核心驗收標準交付，非約定雜項不予承接。', en: 'Politely decline non-contractual chores to protect committed delivery timelines.' },
+        zh: '「感謝您的提醒。目前技術團隊所有產能均全額投注在 [核心驗收里程碑] 的開發與測試上。為確保關鍵交付不發生延宕，非合約約定之庶務性作業恕無法抽身支援，感謝您的體諒！」',
+        en: '"Thank you for checking in. Our engineering capacity is 100% committed to delivering the [Core Milestone Deliverable]. To ensure on-time delivery of this major milestone, we cannot absorb uncontracted administrative chores. Thank you for your understanding!"',
+        tip: { zh: '💡 避坑重點：把保護交付成果作為拒絕雜務的最高正當性。', en: '💡 Pro Tip: Safeguarding the contracted milestone is the ultimate justification.' }
+      },
+      compliance: {
+        badge: { zh: '📐 策略：嚴守合約範圍杜絕範疇蔓延 (Scope Creep)', en: '📐 Strategy: Prevent Scope Creep & Contract Discipline' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：制度合規 ｜ 防禦等級：⭐⭐⭐⭐⭐', en: 'Target: External Client | Style: Compliance & Scope | Rating: ⭐⭐⭐⭐⭐' },
+        analysis: { zh: '嚴格遵守商業合約範圍（SOW），杜絕範疇蔓延（Scope Creep）。', en: 'Enforce strict SOW boundaries to eliminate creeping administrative commitments.' },
+        zh: '「依照雙方簽署之專案合約（SOW）第 [X] 條規定，此項庶務資料彙整非屬我方服務範疇。為維持專案治理與合約履約之嚴謹性，此部分需由貴方窗口自行處理，謝謝配合！」',
+        en: '"Per Section [X] of our executed Statement of Work (SOW), ad-hoc administrative compilation is not within our contracted scope. To maintain contractual governance, this must be completed by your internal project team. Thank you!"',
+        tip: { zh: '💡 避坑重點：以合約條款為界，杜絕客戶把乙方當雜工使喚。', en: '💡 Pro Tip: Citing exact SOW boundaries stops client scope creep in its tracks.' }
+      },
+      delegate: {
+        badge: { zh: '🤝 策略：轉介專案經理與商務窗口對齊', en: '🤝 Strategy: Route to Project Manager for Alignment' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：借力使力 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Delegation | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '轉由專案經理或客戶成功經理（CSM）進行商務確認與溝通。', en: 'Delegate external scope queries to the designated Account Manager or PM.' },
+        zh: '「關於此項跨公司資料彙整的配合方式，請您直接與我方專案經理 [PM 姓名] 對齊溝通。經雙方 PM 確認工作職掌與流程後，我們將依照確認結論執行。」',
+        en: '"Regarding the coordination of this cross-company data task, please align directly with our Lead PM [PM Name]. Once both PMs confirm functional responsibilities, our engineering team will execute per the aligned workflow."',
+        tip: { zh: '💡 避坑重點：讓 PM 當第一線緩衝，保護研發工程團隊。', en: '💡 Pro Tip: Let PMs act as the primary buffer between clients and engineers.' }
+      },
+      consult: {
+        badge: { zh: '📋 策略：提供標準資料填寫範本', en: '📋 Strategy: Provide Standard Data Intake Template' },
+        tag: { zh: '對象：外部廠商/客戶 ｜ 風格：顧問指路 ｜ 防禦等級：⭐⭐⭐⭐', en: 'Target: External Client | Style: Consultative Pointer | Rating: ⭐⭐⭐⭐' },
+        analysis: { zh: '提供標準資料填寫範本，請對方依規格提供完整資料。', en: 'Provide an input specification template and require the client to supply completed data.' },
+        zh: '「為確保後續處理效率，我們已制定標準化的 [資料規格填報範本]（附檔）。請貴方先依照範本欄位填妥完整資訊後寄回，收到完整資料後我們將於 2 個工作日內批次處理！」',
+        en: '"To streamline processing, we provide a standardized [Data Intake Template] (attached). Please populate all required fields and return it; our team will batch-process the validated dataset within 2 business days!"',
+        tip: { zh: '💡 避坑重點：要求對方按照你的標準填寫，化被動為主動。', en: '💡 Pro Tip: Standardizing intake puts the onus of data preparation onto the requesting client.' }
       }
     }
   }
@@ -20181,7 +20606,7 @@ function generateSayNoScript() {
     || (SAYNO_TEMPLATES[target] && Object.values(SAYNO_TEMPLATES[target])[0] && Object.values(Object.values(SAYNO_TEMPLATES[target])[0])[0])
     || SAYNO_TEMPLATES.manager.meeting.priority;
 
-  const isEn = state.lang === 'en';
+  const isEn = (typeof state !== 'undefined' && state.lang === 'en');
 
   const badgeEl = document.getElementById('sayno-res-badge');
   const tagEl = document.getElementById('sayno-res-tag');
@@ -20189,13 +20614,22 @@ function generateSayNoScript() {
   const scriptEl = document.getElementById('sayno-res-script');
   const tipEl = document.getElementById('sayno-res-tip');
 
-  if (badgeEl) badgeEl.textContent = entry.badge;
-  if (tagEl) tagEl.textContent = entry.tag;
-  if (analysisEl) analysisEl.innerHTML = '<strong>' + (isEn ? 'Core Defense Strategy: ' : '核心防身邏輯：') + '</strong>' + entry.analysis;
+  if (badgeEl) {
+    badgeEl.textContent = typeof entry.badge === 'object' ? (isEn ? entry.badge.en : entry.badge.zh) : entry.badge;
+  }
+  if (tagEl) {
+    tagEl.textContent = typeof entry.tag === 'object' ? (isEn ? entry.tag.en : entry.tag.zh) : entry.tag;
+  }
+  if (analysisEl) {
+    const analysisText = typeof entry.analysis === 'object' ? (isEn ? entry.analysis.en : entry.analysis.zh) : entry.analysis;
+    analysisEl.innerHTML = '<strong>' + (isEn ? 'Core Defense Strategy: ' : '核心防身邏輯：') + '</strong>' + analysisText;
+  }
   if (scriptEl) {
     scriptEl.innerHTML = `<div class="zh">${entry.zh}</div><div class="en">${entry.en}</div>`;
   }
-  if (tipEl) tipEl.textContent = entry.tip;
+  if (tipEl) {
+    tipEl.textContent = typeof entry.tip === 'object' ? (isEn ? entry.tip.en : entry.tip.zh) : entry.tip;
+  }
 }
 
 
