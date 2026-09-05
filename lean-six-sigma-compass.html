@@ -206,6 +206,76 @@
     display: none;
   }
 
+  /* Floating back navigation pill */
+  .nav-back-pill {
+    position: fixed;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    left: 24px;
+    z-index: 1095;
+    background: var(--panel);
+    border: 1.5px solid var(--amber);
+    color: var(--amber);
+    border-radius: 30px;
+    padding: 9px 16px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 700;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all .2s ease;
+    animation: navPillPop .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    max-width: min(360px, calc(100vw - 120px));
+  }
+  .nav-back-pill:hover {
+    background: var(--amber);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(245, 166, 35, 0.35);
+  }
+  .nav-back-pill:hover .nav-back-close {
+    color: var(--navy);
+  }
+  .nav-back-pill:active {
+    transform: scale(0.96);
+  }
+  .nav-back-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .nav-back-close {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 5px;
+    margin-left: 2px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s ease;
+    touch-action: manipulation;
+  }
+  .nav-back-close:hover {
+    color: #ff5252;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  @keyframes navPillPop {
+    from { opacity: 0; transform: translateY(12px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
   @media (max-width:880px){
     .app{padding:0 12px 40px;}
     header{
@@ -249,7 +319,7 @@
       display: flex !important;
       position: fixed;
       right: 18px;
-      bottom: 22px;
+      bottom: calc(22px + env(safe-area-inset-bottom, 0px));
       z-index: 1090;
       background: var(--amber);
       color: var(--navy);
@@ -263,9 +333,18 @@
       align-items: center;
       gap: 6px;
       transition: all .2s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .mobile-floating-menu-btn:active {
       transform: scale(0.95);
+    }
+    .nav-back-pill {
+      left: 14px;
+      bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+      padding: 8px 12px;
+      font-size: 12px;
+      max-width: calc(100vw - 130px);
     }
     .sidebar-expand-float {
       display: none !important;
@@ -12570,6 +12649,15 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     </div>
   </div>
 
+  <!-- Floating Back Navigation Pill -->
+  <div class="nav-back-pill" id="navBackPill" onclick="goBackInHistory()" title="返回剛才的章節 / Return to previous section">
+    <span class="nav-back-icon">↩️</span>
+    <div class="nav-back-text">
+      <span class="zh">返回原頁面</span><span class="en">Back to Previous</span>
+    </div>
+    <button type="button" class="nav-back-close" onclick="event.stopPropagation(); dismissNavBackPill();" title="關閉提示 / Dismiss">✕</button>
+  </div>
+
   <button type="button" class="mobile-floating-menu-btn" id="mobileFloatingMenuBtn" onclick="toggleSidebar()" title="開啟模組選單 / Open Menu">
     <span>🧭</span>
     <span class="zh">目錄</span><span class="en">Menu</span>
@@ -13649,11 +13737,111 @@ const GLOSSARY = [
 /* ---------- render ---------- */
 const state = {section:'mindset', lang:'zh', theme:'dark', cycle:'dmaic', sidebarCollapsed:false};
 
+/* ---------- navigation & history management ---------- */
+const navHistoryStack = [];
+
+function getSectionInfo(secId) {
+  const sec = SECTIONS.find(s => s.id === secId);
+  return sec ? { zh: sec.zh, en: sec.en } : { zh: secId, en: secId };
+}
+
+function updateNavBackPill() {
+  const pill = document.getElementById('navBackPill');
+  if (!pill) return;
+  if (navHistoryStack.length > 0) {
+    const last = navHistoryStack[navHistoryStack.length - 1];
+    const textEl = pill.querySelector('.nav-back-text');
+    if (textEl) {
+      textEl.innerHTML = `<span class="zh">返回「${last.fromNameZh}」</span><span class="en">Back to "${last.fromNameEn}"</span>`;
+    }
+    pill.style.display = 'inline-flex';
+  } else {
+    pill.style.display = 'none';
+  }
+}
+
+function dismissNavBackPill() {
+  navHistoryStack.length = 0;
+  updateNavBackPill();
+}
+
+function goBackInHistory() {
+  if (navHistoryStack.length === 0) {
+    if (window.history.length > 1) {
+      window.history.back();
+    }
+    return;
+  }
+  const last = navHistoryStack.pop();
+  switchSection(last.fromSection, {
+    pushHistory: true,
+    scrollTo: last.fromScrollY,
+    flashSelector: last.triggerSelector,
+    fromBackAction: true
+  });
+}
+
+function switchSection(secId, options = {}) {
+  if (!SECTIONS.some(s => s.id === secId)) return;
+  const isDifferent = state.section !== secId;
+  const prevSec = state.section;
+
+  if (isDifferent && options.trackHistory) {
+    const prevInfo = getSectionInfo(prevSec);
+    navHistoryStack.push({
+      fromSection: prevSec,
+      fromNameZh: prevInfo.zh,
+      fromNameEn: prevInfo.en,
+      fromScrollY: window.scrollY || window.pageYOffset || 0,
+      triggerSelector: options.triggerSelector || null
+    });
+    if (navHistoryStack.length > 10) navHistoryStack.shift();
+  } else if (isDifferent && !options.fromBackAction && !options.fromPopState) {
+    navHistoryStack.length = 0;
+  }
+
+  state.section = secId;
+  saveState();
+  render();
+
+  if (options.pushHistory !== false) {
+    try {
+      const targetHash = '#' + secId;
+      if (window.location.hash !== targetHash) {
+        history.pushState({ section: secId }, '', targetHash);
+      }
+    } catch (e) {}
+  }
+
+  if (typeof options.scrollTo === 'number') {
+    window.scrollTo({ top: options.scrollTo, behavior: 'smooth' });
+  } else if (options.scrollToTop !== false) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  if (options.flashSelector) {
+    setTimeout(() => {
+      const el = document.querySelector(options.flashSelector);
+      if (el) {
+        if (typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('flash-highlight');
+        setTimeout(() => el.classList.remove('flash-highlight'), 1600);
+      }
+    }, 60);
+  }
+
+  updateNavBackPill();
+}
+
 function loadState(){
   try{
     const saved = JSON.parse(localStorage.getItem('leanCompassState')||'{}');
     Object.assign(state, saved);
   }catch(e){}
+  const hash = window.location.hash ? window.location.hash.replace('#', '').trim() : '';
+  if(hash && SECTIONS.some(s => s.id === hash)){
+    state.section = hash;
+  }
   if(!state.section || !SECTIONS.some(s => s.id === state.section)){
     state.section = 'mindset';
   }
@@ -13924,10 +14112,7 @@ function renderNav(){
       item.className = 'nav-item'+(state.section===s.id?' active':'');
       item.innerHTML = `<span class="n">${i+1}</span><span class="zh">${s.zh}</span><span class="en">${s.en}</span>`;
       item.onclick=()=>{
-        state.section=s.id; 
-        saveState(); 
-        render();
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        switchSection(s.id, { trackHistory: false, scrollToTop: true });
         if(document.body.classList.contains('mobile-nav-open')){
           closeMobileNav();
         }
@@ -13939,23 +14124,32 @@ function renderNav(){
       const chip = document.createElement('div');
       chip.className='tab-chip'+(state.section===s.id?' active':'');
       chip.innerHTML = `<span class="zh">${s.zh}</span><span class="en">${s.en}</span>`;
-      chip.onclick=()=>{state.section=s.id; saveState(); render();};
+      chip.onclick=()=>{
+        switchSection(s.id, { trackHistory: false, scrollToTop: true });
+      };
       tabs.appendChild(chip);
     }
   });
 }
 
-function jumpTag(tag){
+function jumpTag(tag, originEl){
   const flash = (el)=>{
     if(!el) return;
     if(typeof el.scrollIntoView === 'function') el.scrollIntoView({behavior:'smooth', block:'center'});
     el.classList.add('flash-highlight');
     setTimeout(()=>el.classList.remove('flash-highlight'), 1600);
   };
+
+  let originSelector = null;
+  if (originEl) {
+    if (originEl.id) originSelector = '#' + originEl.id;
+    else if (originEl.dataset && originEl.dataset.tag) originSelector = `[data-tag="${CSS.escape(originEl.dataset.tag)}"]`;
+  }
+
   if(tag.type==='tool'){
     const idx = TOOLS.findIndex(t=>t.name.includes(tag.key));
     if(idx<0) return;
-    state.section='tools'; saveState(); render();
+    switchSection('tools', { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     setTimeout(()=>{
       const row = document.querySelector(`tr.tool-row[data-i="${idx}"]`);
       const scRow = document.querySelector(`tr.scenario-row[data-i="${idx}"]`);
@@ -13963,24 +14157,24 @@ function jumpTag(tag){
       flash(row);
     }, 60);
   } else if(tag.type==='mindset'){
-    state.section='mindset'; saveState(); render();
+    switchSection('mindset', { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     setTimeout(()=>flash(document.querySelector(`.mcard[data-tag="${CSS.escape(tag.key)}"]`)), 60);
   } else if(tag.type==='belt'){
-    state.section='belt'; saveState(); render();
+    switchSection('belt', { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     setTimeout(()=>flash(document.querySelector(`.belt-row[data-belt="${tag.key}"]`)), 60);
   } else if(tag.type==='glossary'){
-    state.section='glossary'; saveState(); render();
+    switchSection('glossary', { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     setTimeout(()=>flash(document.querySelector(`.gloss-item[data-term="${CSS.escape(tag.key)}"]`)), 60);
   } else if(tag.type==='dmaic'){
-    state.section='dmaic'; saveState(); render();
+    switchSection('dmaic', { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     activeDmaic = tag.key; renderWheel(); renderDmaicDetail();
   } else if(tag.type==='section'){
-    state.section=tag.key; saveState(); render();
+    switchSection(tag.key, { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     if(tag.target){
       setTimeout(()=>flash(document.querySelector(tag.target)), 60);
     }
   } else if(tag.type==='book'){
-    state.section='books'; saveState(); render();
+    switchSection('books', { trackHistory: true, triggerSelector: originSelector, scrollToTop: false });
     setTimeout(()=>{
       const card = document.querySelector(`.book-card .book-cover.${CSS.escape(tag.key)}`)?.closest('.book-card');
       if(card) scrollToBookCard(card);
@@ -14007,7 +14201,7 @@ function renderRoadmap(){
   let tagEls = document.querySelectorAll('.rm-tag');
   let flatTags = [];
   ROADMAP.forEach(r=>r.tags.forEach(t=>flatTags.push(t)));
-  tagEls.forEach((el,i)=>{ el.onclick=()=>jumpTag(flatTags[i]); });
+  tagEls.forEach((el,i)=>{ el.onclick=()=>jumpTag(flatTags[i], el); });
 }
 
 function renderMindset(){
@@ -15622,9 +15816,7 @@ function renderSearchResults(query){
       if(!r) return;
 
       // Navigate to section
-      state.section = r.sectionId;
-      saveState();
-      render();
+      switchSection(r.sectionId, { trackHistory: true, scrollToTop: false });
 
       // Close search
       closeSearch();
@@ -21651,6 +21843,39 @@ function init(){
       closeMobileNav();
     }
   });
+
+  // Initialize History state & URL Hash synchronization
+  try {
+    if (!window.location.hash) {
+      history.replaceState({ section: state.section }, '', '#' + state.section);
+    } else {
+      history.replaceState({ section: state.section }, '', window.location.hash);
+    }
+  } catch (e) {}
+
+  window.addEventListener('popstate', (e) => {
+    let targetSec = null;
+    if (e.state && e.state.section) {
+      targetSec = e.state.section;
+    } else if (window.location.hash) {
+      const h = window.location.hash.replace('#', '').trim();
+      if (SECTIONS.some(s => s.id === h)) targetSec = h;
+    } else {
+      targetSec = 'mindset';
+    }
+    if (targetSec) {
+      switchSection(targetSec, { pushHistory: false, fromPopState: true, scrollToTop: false });
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const h = window.location.hash ? window.location.hash.replace('#', '').trim() : '';
+    if (h && SECTIONS.some(s => s.id === h) && state.section !== h) {
+      switchSection(h, { pushHistory: false, fromPopState: true, scrollToTop: false });
+    }
+  });
+
+  updateNavBackPill();
 }
 
 /* ==================== SAY NO / WORKPLACE DEFENSE LOGIC ==================== */
@@ -22928,10 +23153,7 @@ function generateConflictScript() {
 /* ==================== LEAN DIGITAL TRANSFORMATION & SMART MANUFACTURING LOGIC ==================== */
 function navigateToSection(secId) {
   if (!secId) return;
-  state.section = secId;
-  saveState();
-  render();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  switchSection(secId, { trackHistory: true, scrollToTop: true });
 }
 
 function switchLeanDxTab(tabId) {

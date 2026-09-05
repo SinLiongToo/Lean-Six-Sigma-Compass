@@ -20,14 +20,17 @@
   - **手機版懸浮目錄按鈕 (FAB)**：畫面右下角配置快速導航圓角按鈕，單手大拇指輕鬆操作。
   - **iOS 深度適配**：適配 iPhone 瀏海與 Dynamic Island 安全區域（`safe-area-inset`）、動態視圖高度（`100dvh`）、防自動放大（`font-size: 16px`）與直立模式（Portrait Mode）搜尋置頂。
   - **切換自動置頂**：選取章節後自動關閉抽屜並回滾至頂部。
+- ↩️ **無縫深度導覽與智慧返回棧 (Deep Linking & Navigation History Stack)**：
+  - **URL Hash 與瀏覽器歷史同步**：各章節皆具備獨立 URL Hash（如 `#dmaic`, `#tools`, `#books`, `#vsm`），支援瀏覽器原生上一頁/下一頁（`history.pushState`）與手機側邊滑動返回手勢，網址可直接複製分享。
+  - **跨模組跳轉智慧返回膠囊 (Contextual Back Pill)**：點擊任一交叉跳轉（如 Roadmap 標籤、DMAIC 推薦工具、全域搜尋結果、診斷推薦或書籍連結）進入其他模組時，畫面左下角自動浮現 `↩️ 返回「來源章節」` 膠囊按鈕，點擊即可一鍵原路返回並精確還原滾動閱讀視角。
 - 🔍 **全域極速搜尋 (Global Search / Ctrl+K)**：支援中英文跨章節關鍵字檢索，高亮標記匹配內容並支援一鍵跳轉。
 
 ---
 
-## 🧭 全站 19 大核心模組架構
+## 🧭 全站 22 大核心模組架構
 
 ```
-Masa Tu 精實六標準差羅盤 (共 20 大核心模組)
+Masa Tu 精實六標準差羅盤 (共 22 大核心模組)
  ├── 01. 核心思維 (Mindset)
  ├── 02. 證照地圖與模擬考試 (Belt Map & Exam Engine)
  ├── 03. 個人專案診斷與證照推薦 (Personal Project Diagnostics & Belt Recommendation)
@@ -41,13 +44,15 @@ Masa Tu 精實六標準差羅盤 (共 20 大核心模組)
  ├── 11. 客戶需求追蹤系統 (ReqTrack)
  ├── 12. 精實會議與高階簡報表達藝術 (STAR vs. CARL Frameworks)
  ├── 13. 職場說不的藝術與防禦手冊 (Art of Saying No: Workplace Defense Playbook)
- ├── 14. 常見分析與認知謬誤 (Common Analytical & Cognitive Fallacies)
- ├── 15. 財務分析與精實機會 (Financial Analysis & Lean Opportunities)
- ├── 16. 團隊腦力激盪與視覺化工具 (Team Brainstorming & Visual Tools: Mind Map & KJ Board)
- ├── 17. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)  <-- ⭐ [NEW]
- ├── 18. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
- ├── 19. 相關推薦書籍 (34 本跨領域經典精實書庫)
- └── 20. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
+ ├── 14. 職場面對衝突的藝術與防禦手冊 (Workplace Conflict Resolution & Defense)
+ ├── 15. 常見分析與認知謬誤 (Common Analytical & Cognitive Fallacies)
+ ├── 16. 財務分析與精實機會 (Financial Analysis & Lean Opportunities)
+ ├── 17. 團隊腦力激盪與視覺化工具 (Team Brainstorming & Visual Tools: Mind Map & KJ Board)
+ ├── 18. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)
+ ├── 19. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
+ ├── 20. 精實數位轉型與智慧製造 (Lean Digital Transformation & DX)
+ ├── 21. 相關推薦書籍 (41 本跨領域經典精實書庫)
+ └── 22. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
 ```
 
 ---
