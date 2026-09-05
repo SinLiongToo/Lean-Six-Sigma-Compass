@@ -76,7 +76,7 @@ Each book requires **two additions** (no JS changes needed):
 
 > All three JS functions (`initBookCollapse`, `toggleBooksGrid`, `buildBooksTitleList`) wire up new cards automatically — no extra JS needed when adding books.
 
-### Books Added (as of 2026-09-04)
+### Books Added (as of 2026-09-05)
 
 | # | 中文書名 | English Title | CSS slug | Key Theme |
 |---|---|---|---|---|
@@ -121,6 +121,7 @@ Each book requires **two additions** (no JS changes needed):
 | 39 | 我可能錯了 | I May Be Wrong | `i-may-be-wrong` | Intellectual Humility, VUCA, Bias Awareness, Non-Attachment |
 | 40 | 當下的力量 | The Power of Now | `power-of-now` | Present-Moment Focus, React vs Respond, Mental Muda |
 | 41 | 寫下來，事情就會發生 | Write It Down, Make It Happen | `write-it-down` | Visual Management, Marking RAS, Hoshin Kanri, Execution |
+| 42 | 職場人的生成式AI工作法 | Generative AI at Work | `hbr-genai-work` | Personal Lean DX, Human-AI Teaming, Knowledge Waste |
 
 ---
 
