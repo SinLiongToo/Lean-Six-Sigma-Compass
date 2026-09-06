@@ -19,6 +19,19 @@ Whenever you update or modify HTML, CSS, or JavaScript in this project:
 
 ---
 
+## 🏷️ Version & Release Date Rule
+Whenever a new feature, section, book, or content change is introduced:
+1. **Update `#versionBadge` in `index.html`**:
+   - Increment the minor version (e.g. `v2.42` → `v2.43`).
+   - Update the release date to current date (`YYYY-MM-DD`, e.g. `2026-09-06`).
+   - Element location: `<span id="versionBadge" ...>🔖 vX.XX &nbsp;<span ...>YYYY-MM-DD</span></span>` in `<header class="header">`.
+2. **Synchronize to `lean-six-sigma-compass.html`**:
+   - Always copy to keep byte-for-byte sync: `Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force`
+3. **Update `README.md`**:
+   - Keep module lists, book counts (e.g. `44 本跨領域經典精實書庫`), and feature summaries in sync.
+
+---
+
 ## 📚 Books Section (`data-section="books"`)
 
 ### Adding a New Book
@@ -123,7 +136,7 @@ Each book requires **two additions** (no JS changes needed):
 | 41 | 寫下來，事情就會發生 | Write It Down, Make It Happen | `write-it-down` | Visual Management, Marking RAS, Hoshin Kanri, Execution |
 | 42 | 職場人的生成式AI工作法 | Generative AI at Work | `hbr-genai-work` | Personal Lean DX, Human-AI Teaming, Knowledge Waste |
 | 43 | 投資最重要的事 | The Most Important Thing | `most-important-thing` | Second-Level Thinking, Margin of Safety, Priority Identification, FSPIRE Resilience |
-| 44 | 別一個人吃飯 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
+| 44 | 別自個兒用餐 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
 
 ---
 
