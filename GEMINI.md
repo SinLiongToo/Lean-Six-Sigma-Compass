@@ -122,6 +122,8 @@ Each book requires **two additions** (no JS changes needed):
 | 40 | 當下的力量 | The Power of Now | `power-of-now` | Present-Moment Focus, React vs Respond, Mental Muda |
 | 41 | 寫下來，事情就會發生 | Write It Down, Make It Happen | `write-it-down` | Visual Management, Marking RAS, Hoshin Kanri, Execution |
 | 42 | 職場人的生成式AI工作法 | Generative AI at Work | `hbr-genai-work` | Personal Lean DX, Human-AI Teaming, Knowledge Waste |
+| 43 | 投資最重要的事 | The Most Important Thing | `most-important-thing` | Second-Level Thinking, Margin of Safety, Priority Identification, FSPIRE Resilience |
+| 44 | 別一個人吃飯 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
 
 ---
 
