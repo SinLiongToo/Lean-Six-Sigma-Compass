@@ -137,6 +137,7 @@ Each book requires **two additions** (no JS changes needed):
 | 42 | 職場人的生成式AI工作法 | Generative AI at Work | `hbr-genai-work` | Personal Lean DX, Human-AI Teaming, Knowledge Waste |
 | 43 | 投資最重要的事 | The Most Important Thing | `most-important-thing` | Second-Level Thinking, Margin of Safety, Priority Identification, FSPIRE Resilience |
 | 44 | 別自個兒用餐 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
+| 45 | 專注力協定 | Indistractable | `indistractable` | Pre-commitments, Identity Pacts, Price Pacts, Cognitive Poka-Yoke, Lean Quality |
 
 ---
 

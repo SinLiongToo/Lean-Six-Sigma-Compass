@@ -51,7 +51,7 @@ Masa Tu 精實六標準差羅盤 (共 22 大核心模組)
  ├── 18. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)
  ├── 19. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
  ├── 20. 精實數位轉型與智慧製造 (Lean Digital Transformation & DX)
- ├── 21. 相關推薦書籍 (44 本跨領域經典精實書庫)
+ ├── 21. 相關推薦書籍 (45 本跨領域經典精實書庫)
  └── 22. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
 ```
 
