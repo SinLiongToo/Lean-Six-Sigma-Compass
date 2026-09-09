@@ -19,16 +19,16 @@ Whenever you update or modify HTML, CSS, or JavaScript in this project:
 
 ---
 
-## 🏷️ Version & Release Date Rule
+## 🏷️ Version, Release Date & Time Rule
 Whenever a new feature, section, book, or content change is introduced:
 1. **Update `#versionBadge` in `index.html`**:
-   - Increment the minor version (e.g. `v2.42` → `v2.43`).
-   - Update the release date to current date (`YYYY-MM-DD`, e.g. `2026-09-06`).
-   - Element location: `<span id="versionBadge" ...>🔖 vX.XX &nbsp;<span ...>YYYY-MM-DD</span></span>` in `<header class="header">`.
+   - Increment the minor version (e.g. `v2.44` → `v2.45`).
+   - Update the release date and time to current timestamp (`YYYY-MM-DD HH:mm`, e.g. `2026-09-09 09:23`).
+   - Element location: `<span id="versionBadge" ...>🔖 vX.XX &nbsp;<span ...>YYYY-MM-DD HH:mm</span></span>` in `<header class="header">`.
 2. **Synchronize to `lean-six-sigma-compass.html`**:
    - Always copy to keep byte-for-byte sync: `Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force`
 3. **Update `README.md`**:
-   - Keep module lists, book counts (e.g. `44 本跨領域經典精實書庫`), and feature summaries in sync.
+   - Keep module lists, book counts (e.g. `45 本跨領域經典精實書庫`), and feature summaries in sync.
 
 ---
 
