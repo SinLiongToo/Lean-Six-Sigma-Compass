@@ -5603,7 +5603,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.45 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-09 09:23</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.46 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-11 05:35</span></span>
         </div>
       </div>
     </div>
@@ -7621,7 +7621,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               <span>🚒</span><span class="zh">模組三：突發救火與甩鍋防禦 (防背鍋/除猴子)</span><span class="en">Level 3: Firefighting & Blame Defense</span>
             </button>
             <button class="sayno-tab-btn" onclick="switchSayNoTab('tab-lv4')">
-              <span>🔬</span><span class="zh">模組四：工程數據與邏輯防禦 (13大金句庫)</span><span class="en">Level 4: Engineering & Logic Shields (13 Rules)</span>
+              <span>🔬</span><span class="zh">模組四：工程數據與邏輯防禦 (14大金句庫)</span><span class="en">Level 4: Engineering & Logic Shields (14 Rules)</span>
             </button>
             <button class="sayno-tab-btn" onclick="switchSayNoTab('tab-gen')">
               <span>⚡</span><span class="zh">智能情境話術生成器</span><span class="en">Interactive Script Generator</span>
@@ -7849,11 +7849,11 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
             <!-- Top Banner -->
             <div style="background: rgba(245, 166, 35, 0.06); border: 1px solid rgba(245, 166, 35, 0.3); border-left: 4px solid var(--amber); border-radius: 10px; padding: 14px 18px;">
               <div style="font-weight: 700; font-size: 14px; color: var(--amber); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
-                <span>🔥 工程分析、數據要件與邏輯陷阱拆解（13大職場防身神功）</span>
+                <span>🔥 工程分析、數據要件與邏輯陷阱拆解（14大職場防身神功）</span>
               </div>
               <div style="font-size: 12.5px; color: var(--muted); line-height: 1.55;">
-                <span class="zh">在跨部門協作、製程異常或統計數據需求中，常遭遇「未定義就急催」、「倒果為因設局背鍋」、「發散內耗」或「通靈式要數據」。前 4 項為現場高段位實戰金句，後續彙整完整 13 大防身神功，以嚴謹邏輯捍衛專業邊界。</span>
-                <span class="en">When handling engineering data requests or incident reviews, vague requirements, hasty blame games, and assumption traps are common. Master these 13 battle-tested golden shields to safeguard your time and data integrity.</span>
+                <span class="zh">在跨部門協作、製程異常或統計數據需求中，常遭遇「未定義就急催」、「倒果為因設局背鍋」、「發散內耗」、「通靈式要數據」或「事後諸葛後見之明」。前 4 項為現場高段位實戰金句，後續彙整完整 14 大防身神功，以嚴謹邏輯捍衛專業邊界。</span>
+                <span class="en">When handling engineering data requests or incident reviews, vague requirements, hasty blame games, hindsight bias, and assumption traps are common. Master these 14 battle-tested golden shields to safeguard your time and data integrity.</span>
               </div>
             </div>
 
@@ -8116,6 +8116,27 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 <div class="sayno-quote-box">
                   <div class="zh" style="margin-bottom: 6px;">「過往先例是有價值的參考背景，但我們的技術決策必須基於經過驗證的數據與當前標準，而非單憑歷史慣性。」</div>
                   <div class="en">"Precedent provides useful context, but we must base our technical decisions on validated data and current standards rather than historical routine."</div>
+                </div>
+                <button class="sayno-copy-btn" onclick="copySayNoText(this)">
+                  <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
+                </button>
+              </div>
+
+              <!-- Item 14 -->
+              <div class="sayno-card">
+                <div class="sayno-card-header">
+                  <div>
+                    <span class="sayno-card-badge">實戰神功 14｜決策邊界與防事後諸葛</span>
+                    <h3 style="margin: 6px 0 2px; font-size: 15px;"><span class="zh">14. 防後見之明（事後諸葛究責，回歸決策當下資訊邊界）</span><span class="en">14. Hindsight Bias Defense (Evaluate Decisions by Context, Not Outcome)</span></h3>
+                  </div>
+                </div>
+                <div class="sayno-meta-box">
+                  <div>🎯 <strong><span class="zh">適用情境：</span><span class="en">Context: </span></strong><span class="zh">事情出狀況或良率未如預期時，主管或協同團隊以事後諸葛姿態究責：「我早就知道會這樣 / 為什麼當初沒想到這點？」</span><span class="en">Post-incident blame where colleagues or management claim 'I knew it all along'.</span></div>
+                  <div style="margin-top: 4px;">👥 <strong><span class="zh">對象考量：</span><span class="en">Target: </span></strong><span class="zh">以事後全知視角挑刺的主管或跨部門。將焦點從「事後結果偏誤」拉回「決策當下的客觀數據邊界與風險共識」，反彈不公平指責。</span><span class="en">Managers or peers weaponizing outcome knowledge against sound prior decisions.</span></div>
+                </div>
+                <div class="sayno-quote-box">
+                  <div class="zh" style="margin-bottom: 6px;">「在已知最終結果的情況下回推，任何問題看起來都像是顯而易見的（後見之明謬誤）。但評估一項工程決策時，我們必須回歸當時已有的數據、資源限制與團隊共同簽核的假設邊界。若以當時的資訊來看，那是具備合理統計依據的最佳選擇；現在既然獲得了新結果，我們應該做的是更新這套因果模型與防呆機制，而非拿事後全知視角去否定當時經過客觀評估的決策。」</div>
+                  <div class="en">"Looking back with full knowledge of the outcome naturally makes the flaw seem obvious (hindsight bias). However, evaluating an engineering decision requires grounding ourselves in the information horizon, constraints, and agreed-upon baselines at that moment. Given what was known then, it was the statistically sound choice. Now that we have new empirical data, our priority should be updating our causal models and Poka-Yoke controls, rather than retroactively judging prior decisions with hindsight."</div>
                 </div>
                 <button class="sayno-copy-btn" onclick="copySayNoText(this)">
                   <span>📋</span><span class="zh">複製話術範本</span><span class="en">Copy Script</span>
@@ -9118,6 +9139,20 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                   <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">在良率達 99.9%（缺陷率僅 0.1%）的精密半導體封測產線中，引進了一套聲稱準確率高達 99% 的光學檢測機（AOI）。當機台對某晶粒亮起紅燈警報時，工程師直覺斷定「有 99% 機率真的是瑕疵品」並立刻停線排查。然而依據貝氏定理計算：每 10,000 顆晶粒中僅 10 顆真不良（AOI 抓出約 10 顆），而 9,990 顆良品中會有 1%（約 100 顆）被誤判為不良。因此當紅燈響起時，<strong>該晶粒真正是不良品的機率只有 10 / (10 + 100) ≈ 9.1%，高達 90.9% 其實是假警報（偽陽性）</strong>！忽視基本比率導致團隊耗費大量工時追查幽靈缺陷，造成嚴重的過度處理（Overprocessing）與停機等待浪費。</span><span class="en">On a high-yield semiconductor packaging line with 99.9% yield (0.1% defect rate), the plant deploys an AOI machine boasting 99% accuracy. When an alarm triggers for a die, engineers intuitively assume there is a "99% probability that it is truly defective," stopping the line. But via Bayes' Theorem: out of 10,000 dice, only 10 are truly defective (~10 caught), while 1% of the 9,990 good dice (~100 units) trigger false alarms. When an alarm triggers, <strong>the true probability of a defect is only 10 / (10 + 100) ≈ 9.1%—over 90.9% are false positives!</strong> Neglecting the base rate leads teams on expensive wild-goose chases after phantom defects, creating massive Overprocessing and Waiting waste.</span></p>
                   <p><strong><span class="zh">VUCA 時代視角：</span><span class="en">VUCA Perspective:</span></strong> <span class="zh">在巨量資料、AI 異常偵測與高度不確定的 VUCA 環境中，關鍵故障與黑天鵝事件通常屬於極端不平衡的「罕見事件（Rare Events）」。若缺乏先驗機率思維，演算法或管理層會被大量「看似高信心度的警報」疲勞轟炸（Alarm Fatigue），導致真正危機來臨時反而因麻木而漏接。精實領導者必須認清底層基本比率事實，避免被局部訊號牽著鼻子走。</span><span class="en">In modern big-data operations, AI anomaly detection, and uncertain VUCA environments, critical failures are often Rare Events with extreme class imbalance. Without accounting for baseline prior probabilities, organizations suffer from severe Alarm Fatigue generated by high-confidence false alerts, desensitizing teams to genuine crises. Lean leaders must anchor in base-rate reality rather than reacting blindly to isolated spikes.</span></p>
                   <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">建立「貝氏多階驗證架構（Bayesian Multi-Gate Verification）」：在 DMAIC Measure 與 Analyze 階段，嚴格審查量測系統分析（MSA）的混淆矩陣（Confusion Matrix），計算陽性預測值（Precision / PPV）與召回率（Recall），而非單看表面的「準確率（Accuracy）」。對於低發生率的異常警報，設置二級覆判（Secondary Inspection Gate）或跨感測器交叉比對，唯有確認後驗機率顯著成立時方可啟動高成本停線改善流程。</span><span class="en">Deploy Bayesian Multi-Gate Verification: In DMAIC Measure and Analyze phases, evaluate measurement system analysis (MSA) using Confusion Matrices, Positive Predictive Value (PPV/Precision), and Recall rather than aggregate "Accuracy." For rare-event detections, establish secondary confirmation gates or multi-sensor cross-validation before initiating costly containment stops.</span></p>
+                </div>
+              </div>
+
+              <!-- Card 18: Hindsight Bias -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">18. 後見之明謬誤 (事後諸葛效應)</span><span class="en">18. Hindsight Bias (Knew-It-All-Along Effect)</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">在事情發生並得知最終結果後，人們傾向於認為自己「早就知道會這樣（I knew it all along）」，嚴重高估自己在事前預測的能力，並以「已知結果」回溯評判當初決策者的合理性，產生扭曲的確定感與結果偏誤（Outcome Bias）。</span><span class="en">The pervasive tendency to perceive past events as having been predictable before they happened ("I knew it all along") once the outcome is known, unfairly judging past decisions with the benefit of hindsight and breeding toxic Outcome Bias.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">在先進製程異常檢討會（Post-Mortem / 8D RCA）中，某批晶圓因溫控閥門偶發性微漂移導致良率驟降。事後分析定位出原因後，審查委員或長官苛責工程團隊：「這閥門歷史數據明明有些微抖動，你們當初怎麼會沒預料到？這不是理所當然會出事嗎？」——卻忽視了在異常發生前，全產線同時有數萬個感測器在規格限內正常擾動，事前根本無法從龐大白雜訊中分離出此微弱訊號。這種事後諸葛心態嚴重扼殺工程師的心理安全感，將本應聚焦於系統防呆的 RCA 扭曲為個人獵巫。</span><span class="en">During an 8D RCA post-mortem for a wafer yield drop caused by intermittent temperature valve drift, reviewers criticize the engineering team: "The sensor showed micro-jitters—how could you not see this coming?" They completely ignore that prior to the incident, tens of thousands of sensors were fluctuating normally within control limits; singling out that tiny signal from massive operational noise in advance was impossible. This hindsight bias destroys psychological safety, degrading systemic root-cause investigation into unfair scapegoating.</span></p>
+                  <p><strong><span class="zh">VUCA 時代視角：</span><span class="en">VUCA Perspective:</span></strong> <span class="zh">在高度複雜（Complex）與非線性的 VUCA 系統中，許多因果關係只能在「事後回顧時被理解（Hindsight）」，而無法在「事前預測（Foresight）」。將事後的清晰度誤當作事前的必然性，會使團隊陷入風險厭惡、不敢推動精實突破性改善（Kaikaku）。精實領導者必須嚴格區分「決策品質（依當時可用資訊所做的理性判斷）」與「隨機結果（機率與運氣）」，包容智慧型失敗（Intelligent Failure）。</span><span class="en">In complex, nonlinear VUCA environments, causal links can often only be understood in retrospect, never anticipated with certainty beforehand. Confusing post-hoc clarity with ex-ante inevitability breeds extreme risk aversion and paralyzes radical Kaikaku breakthroughs. Lean leaders must decouple decision quality (evaluating choices based on the information horizon available at the time) from stochastic outcome variance, fostering intelligent failure.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">實施「事前驗屍（Pre-mortem）」與建立「決策日誌（Decision Journal）」：在重大 DOE 實驗、量產變更前，先行記錄當時的資訊邊界、假設與已知風險；在 RCA 檢討中落實「客觀時間軸回溯法（Timeline Reconstruction with Information Horizon）」，嚴格限制僅能以「決策當下團隊所掌握的資訊」評估決策合理性，避免事後全知視角。可參照 <a href="javascript:void(0)" onclick="jumpTag({type:'book', id:'thinking-fast-slow'})">Book 19《快思慢想》</a> 與 <a href="javascript:void(0)" onclick="jumpTag({type:'book', id:'right-kind-of-wrong'})">Book 29《聰明犯錯》</a>。</span><span class="en">Implement Pre-mortems and Decision Journals: Before major DOE runs or process changes, document assumptions, known constraints, and data boundaries. In incident RCAs, enforce Timeline Reconstruction with Information Horizon—evaluating past choices strictly against what was knowable then rather than armed with hindsight. See <a href="javascript:void(0)" onclick="jumpTag({type:'book', id:'thinking-fast-slow'})">Book 19 (Thinking, Fast and Slow)</a> and <a href="javascript:void(0)" onclick="jumpTag({type:'book', id:'right-kind-of-wrong'})">Book 29 (Right Kind of Wrong)</a>.</span></p>
                 </div>
               </div>
 
@@ -11928,6 +11963,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 <ul>
                   <li><span class="zh"><strong>以數據分析約束直覺偏誤 (Data Constraints on Intuitive Guesswork)</strong>：精實改善中，人們常依賴直覺或經驗（系統一）草率判定原因（如「憑我多年經驗，這肯定是模組問題」）。LSS 核心是強制啟動系統二——透過收集數據、繪製管制圖 (SPC) 與假設檢定，用事實約束直覺，防止盲目投入資源。</span><span class="en"><strong>Data Constraints on Intuitive Guesswork</strong>: Engineers often jump to conclusions using System 1 ("based on my years of experience..."). LSS forces System 2 engagement through data collection, SPC charts, and hypothesis tests to bound intuitive biases with statistical evidence.</span></li>
                   <li><span class="zh"><strong>製程防呆與人類生理極限 (Poka-Yoke & Human Limits)</strong>：系統一無意識且容易出錯。精實管理承認人類生理極限，因此設計「防呆防錯 (Poka-Yoke)」與「目視化管理」，即使在操作員疲勞或無意識（依賴系統一）時，也能透過物理機制阻斷錯誤發生。</span><span class="en"><strong>Poka-Yoke & Human Limits</strong>: System 1 is automatic and error-prone under fatigue. Lean designs Poka-Yoke (error-proofing) and visual controls to physically block errors from propagating, even when operators are running on autopilot.</span></li>
+                  <li><span class="zh"><strong>對抗後見之明與結果偏誤 (Defeating Hindsight & Outcome Bias)</strong>：康納曼指出人類在獲知事件結果後，會不可逆地重構記憶並產生「我早就知道會這樣」的後見之明謬誤。在精實 RCA 與異常檢討中，必須建立「事前驗屍 (Pre-mortem)」與「客觀時間軸回溯」，嚴格以決策當下的資訊界限評估選擇，防止事後諸葛扼殺團隊的心理安全感與試錯意願。</span><span class="en"><strong>Defeating Hindsight & Outcome Bias</strong>: Kahneman demonstrated that once an outcome is known, our brains reconstruct memories to believe "we knew it all along." In Lean RCA post-mortems, teams must institutionalize Pre-mortems and objective Timeline Reconstruction, evaluating decisions strictly within the constraints of what was knowable at the time to shield psychological safety and innovation.</span></li>
                 </ul>
               </div>
             </div>

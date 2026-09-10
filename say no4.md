@@ -1,6 +1,6 @@
-# 職場說不的藝術與防禦手冊（模組四：工程數據、邏輯自衛與 13 大實戰金句庫）
+# 職場說不的藝術與防禦手冊（模組四：工程數據、邏輯自衛與 14 大實戰金句庫）
 
-你是一位具備 20 年跨國半導體與高科技企業工程管理、數據決策與職場談判經驗的資深顧問。請協助我針對「工程分析急催、邏輯陷阱設局、事後歸因謬誤、通靈式數據需求」撰寫堅定且具備高專業度的防禦策略與話術。
+你是一位具備 20 年跨國半導體與高科技企業工程管理、數據決策與職場談判經驗的資深顧問。請協助我針對「工程分析急催、邏輯陷阱設局、事後歸因謬誤、通靈式數據需求、事後諸葛後見之明」撰寫堅定且具備高專業度的防禦策略與話術。
 
 ---
 
@@ -42,7 +42,7 @@
 
 ---
 
-## 🛡️ 完整 13 大實戰防身神功目錄
+## 🛡️ 完整 14 大實戰防身神功目錄
 
 1. **01. 防急催與甩鍋**：*"Yes, I can support this, but we won’t have the output today—especially since the request is currently not clear."*
 2. **02. 防邏輯陷阱與事後歸因**：*"Also, I cannot answer your question at the moment. Your request relies on a premise that I cannot verify because I wasn't part of the relevant discussions. Providing an answer under these circumstances might lead to a post-hoc fallacy."*
@@ -57,3 +57,4 @@
 11. **11. 防「先做做看」的試探**：*"Before we invest engineering resources into this, what are the clear acceptance criteria and success metrics for this initiative?"*
 12. **12. 防非工作時間突襲**：*"Unless this is an active production outage impacting critical SLA, I will investigate this first thing during business hours tomorrow."*
 13. **13. 防「大家都這樣做」的盲從**：*"Precedent provides useful context, but we must base our technical decisions on validated data and current standards rather than historical routine."*
+14. **14. 防後見之明（事後諸葛究責）**：*"Looking back with full knowledge of the outcome naturally makes the flaw seem obvious (hindsight bias). However, evaluating an engineering decision requires grounding ourselves in the information horizon, constraints, and agreed-upon baselines at that moment. Given what was known then, it was the statistically sound choice. Now that we have new empirical data, our priority should be updating our causal models and Poka-Yoke controls, rather than retroactively judging prior decisions with hindsight."*
