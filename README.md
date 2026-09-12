@@ -27,10 +27,10 @@
 
 ---
 
-## 🧭 全站 22 大核心模組架構
+## 🧭 全站 23 大核心模組架構
 
 ```
-Masa Tu 精實六標準差羅盤 (共 22 大核心模組)
+Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
  ├── 01. 核心思維 (Mindset)
  ├── 02. 證照地圖與模擬考試 (Belt Map & Exam Engine)
  ├── 03. 個人專案診斷與證照推薦 (Personal Project Diagnostics & Belt Recommendation)
@@ -51,8 +51,9 @@ Masa Tu 精實六標準差羅盤 (共 22 大核心模組)
  ├── 18. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)
  ├── 19. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
  ├── 20. 精實數位轉型與智慧製造 (Lean Digital Transformation & DX)
- ├── 21. 相關推薦書籍 (45 本跨領域經典精實書庫)
- └── 22. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
+ ├── 21. 企業組織全景架構與跨部門升級求助板模 (Org Chart & Cross-Functional Escalation Playbook)
+ ├── 22. 相關推薦書籍 (45 本跨領域經典精實書庫)
+ └── 23. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
 ```
 
 ---
@@ -88,11 +89,20 @@ Masa Tu 精實六標準差羅盤 (共 22 大核心模組)
 - **七大科技歷史軌道**：人工智慧 (AI)、計算架構 (Computing)、半導體製程與封測 (Semiconductors - CoWoS/High-NA EUV/ATE 測試)、網際網路 (Internet)、通訊 (Communications)、儲存與記憶體 (Storage & HBM)、太空科技 (Space)。
 - **平行時間軸 (Parallel View)**：1940～2027 年全球跨領域科技突破橫向對照。
 
-### 6. 📚 相關推薦書籍 (45 本經典跨領域書庫)
+### 6. 🏛️ 企業組織全景架構與跨部門升級求助板模 (Org Chart & Escalation Playbook)
+- **雙架構模式切換**：
+  - `半導體與高科技製造業全景架構`：深入覆蓋晶圓代工 (Foundry)、IDM 與封測 12 大核心部門（經營決策 C-Suite、先進製程研發 TD、製程整合 PIE、模組 PE、設備 EE、製造營運 Fab Ops、廠務與環安衛 Facility/EHS、品質可靠度 QA/CQE、供應鏈外包 Sourcing/OSAT、業務 FAE、CIM 自動化 MES、財務成本會計）。
+  - `跨國通用型大企業矩陣架構`：完整解構事業群 (BU P&L) × 區域市場 (Geographies) × 總部共享職能 (Platform, Ops, QA, IT, FP&A, HRBP, Legal) 雙軸矩陣與實線/虛線回報鏈。
+- **部門作戰情報檔案 (Dossier)**：點擊任一部門節點即時展開核心使命、關鍵交付產出、Top KPIs 衡量指標、踩雷禁忌（Pet Peeves）、請求求助前必備 Checklist 與黃金開場白。
+- **四級漸進式升級階梯 (4-Level Escalation Ladder)**：清晰界定 Level 1 同級對齊 (24~48h) → Level 2 課/組級主管協調 (3天) → Level 3 處級主管/專案委員會 (1週) → Level 4 高階決策仲裁之時限與標準動作。
+- **精實升級三大黃金法則與避坑對照表**：強調「No Surprises 拒絕背刺預先告知」、「帶著方案升級 (Option A vs B)」、「對事不對人 (Data & Timeline)」，對比健康精實升級與有害職場打小報告之關鍵差異。
+- **跨部門升級通報備忘錄產生器 (Escalation Memo Generator)**：輸入阻礙與商業衝擊、已嘗試協商努力、選項 A/B 與具體裁決請求，一鍵生成結構化高管專用中英文 Markdown / Email 報告。
+
+### 7. 📚 相關推薦書籍 (45 本經典跨領域書庫)
 精選與精實六標準差、心智模型、數據檢驗、專注力、敏捷試錯與生成式 AI 深度結合的 45 本跨界經典著作：
 - 《專注力協定》、《別自個兒用餐》、《投資最重要的事》、《職場人的生成式AI工作法》、《寫下來，事情就會發生》、《當下的力量》、《我可能錯了》、《5秒法則》、《做自己的人生財務長》、《跨能致勝》、《給予》、《真確》、《刻意練習》、《精實創業》、《豐田模式》、《目標：限制理論》、《原子習慣》、《致富心態》、《深度工作力》、《窮查理的普通常識》、《聰明犯錯》、《卡內基溝通與人際關係》、《當我談跑步時我談些什麼》、《垃圾車法則》、《活出意義來》、《與成功有約》等。
 
-### 7. 🧮 實用工程與管理運算工具箱 (Calculators)
+### 8. 🧮 實用工程與管理運算工具箱 (Calculators)
 - **FMEA RPN 計算器**（嚴重度 S / 發生度 O / 難檢度 D）
 - **Pugh 概念決策矩陣**（加權評分與基準方案對比）
 - **OEE 綜合設備效率模擬器**（可用率 × 表現率 × 品質良率）

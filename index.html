@@ -4867,7 +4867,380 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 /* ==========================================================================
      17. VALUE STREAM MAPPING (VSM) BUILDER CSS
      ========================================================================== */
-  .vsm-wrap { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+  
+  /* ==================== 21. ORG CHART & CROSS-FUNCTIONAL ESCALATION PLAYBOOK ==================== */
+  .orgchart-wrap { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+  
+  .orgchart-banner {
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid #10b981;
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  [data-theme="light"] .orgchart-banner {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    border-left: 4px solid #059669;
+  }
+
+  .orgchart-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 12px 18px;
+  }
+  .orgchart-mode-group {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 4px;
+  }
+  [data-theme="light"] .orgchart-mode-group {
+    background: #e2e8f0;
+  }
+  .orgchart-mode-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .orgchart-mode-btn.active {
+    background: #10b981;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
+  }
+  [data-theme="light"] .orgchart-mode-btn.active {
+    background: #059669;
+    color: #ffffff;
+  }
+
+  .orgchart-filter-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .org-filter-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .org-filter-pill:hover {
+    border-color: #10b981;
+    color: var(--ink);
+  }
+  .org-filter-pill.active {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+    color: #10b981;
+  }
+
+  /* Split layout: Interactive Grid & Live Dossier */
+  .orgchart-main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 992px) {
+    .orgchart-main-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Org Node Cards Grid */
+  .org-nodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    max-height: 750px;
+    overflow-y: auto;
+    padding-right: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .org-node-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 13px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .org-node-card:hover {
+    border-color: #10b981;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .org-node-card.active {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.08);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  }
+  [data-theme="light"] .org-node-card {
+    background: #ffffff;
+    border-color: #e2e8f0;
+  }
+  [data-theme="light"] .org-node-card.active {
+    background: #ecfdf5;
+    border-color: #059669;
+  }
+  .org-node-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .org-node-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .org-level-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .lvl-l1 { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+  .lvl-l2 { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+  .lvl-l3 { background: rgba(59, 130, 246, 0.18); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+  .lvl-l4 { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+  .lvl-l5 { background: rgba(168, 85, 247, 0.18); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+  .lvl-l6 { background: rgba(100, 116, 139, 0.18); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.3); }
+
+  /* Department Dossier Panel */
+  .org-dossier-panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 80px;
+    max-height: 750px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  [data-theme="light"] .org-dossier-panel {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  }
+  .dossier-sec-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  [data-theme="light"] .dossier-sec-title {
+    color: #059669;
+  }
+  .dossier-badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dossier-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .dossier-checklist li {
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  [data-theme="light"] .dossier-checklist li {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .dossier-opening-box {
+    background: rgba(245, 166, 35, 0.06);
+    border: 1px dashed rgba(245, 166, 35, 0.35);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.8px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  [data-theme="light"] .dossier-opening-box {
+    background: #fffbeb;
+    border-color: #fde68a;
+  }
+
+  /* 4-Level Escalation Ladder */
+  .escalation-ladder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .ladder-step-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    border-top: 4px solid #10b981;
+  }
+  [data-theme="light"] .ladder-step-card {
+    background: #ffffff;
+    border-color: #e2e8f0;
+  }
+  .ladder-step-card:nth-child(1) { border-top-color: #10b981; }
+  .ladder-step-card:nth-child(2) { border-top-color: #3b82f6; }
+  .ladder-step-card:nth-child(3) { border-top-color: #f59e0b; }
+  .ladder-step-card:nth-child(4) { border-top-color: #ef4444; }
+
+  /* Escalation Memo Generator */
+  .memo-builder-wrap {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  [data-theme="light"] .memo-builder-wrap {
+    background: #ffffff;
+    border-color: #cbd5e1;
+  }
+  .memo-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .memo-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .memo-form-group label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .memo-input, .memo-select, .memo-textarea {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--ink);
+    font-size: 13.5px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  [data-theme="light"] .memo-input,
+  [data-theme="light"] .memo-select,
+  [data-theme="light"] .memo-textarea {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+  }
+  .memo-input:focus, .memo-select:focus, .memo-textarea:focus {
+    outline: none;
+    border-color: #10b981;
+  }
+  .memo-textarea {
+    resize: vertical;
+    min-height: 65px;
+  }
+  .memo-output-box {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+  [data-theme="light"] .memo-output-box {
+    background: #1e293b;
+    color: #f1f5f9;
+  }
+
+  /* Comparison Table: Healthy vs Toxic Escalation */
+  .escalation-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .escalation-compare-table th, .escalation-compare-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    text-align: left;
+  }
+  .escalation-compare-table th {
+    background: rgba(255, 255, 255, 0.03);
+    font-weight: 700;
+  }
+  [data-theme="light"] .escalation-compare-table th {
+    background: #f1f5f9;
+  }
+
+
+.vsm-wrap { display: flex; flex-direction: column; gap: 20px; width: 100%; }
   
   .vsm-banner {
     background: rgba(245, 166, 35, 0.06);
@@ -5603,7 +5976,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.46 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-11 05:35</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.47 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-12 06:55</span></span>
         </div>
       </div>
     </div>
@@ -11347,6 +11720,329 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       </section>
 
 
+      
+      <!-- ==================== 21. ORG CHART & CROSS-FUNCTIONAL ESCALATION PLAYBOOK ==================== -->
+      <section class="section" data-section="orgchart">
+        <h2>
+          <span class="zh">企業組織全景架構、權責分工與跨部門升級求助板模</span>
+          <span class="en">Corporate Org Chart & Cross-Functional Escalation Playbook</span>
+        </h2>
+        <p class="lead">
+          <span class="zh">在精實六標準差與卓越營運實務中，專案停滯往往不是因為技術或數據分析不足，而是「看不清組織權責全貌（Who owns what）、不懂用對方的語言與 KPI 溝通（How to ask）、以及缺乏健康透明的升級機制（How to escalate without burning bridges）」。本模組提供半導體/高科技製造與跨國矩陣雙模式組織圖，結合各部門作戰情報、請求求助清單與階梯式升級備忘錄產生器。</span>
+          <span class="en">In Lean Six Sigma and operational excellence, project gridlocks rarely stem from statistical shortcomings, but from organizational silos: not knowing who owns what, failing to communicate in cross-functional peers' KPI language, and lacking a structured, trust-preserving escalation protocol. This playbook offers dual org architecture models (Semiconductor Fab & Global Corporate Matrix), department dossiers, help-seeking checklists, and an automated escalation memo generator.</span>
+        </p>
+
+        <div class="orgchart-wrap">
+
+          <!-- Core Pillar Banner -->
+          <div class="orgchart-banner">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 26px;">🏛️</span>
+                <span style="font-weight: 800; font-size: 15px; color: #10b981;">
+                  <span class="zh">精實跨部門協同與升級三大黃金法則</span>
+                  <span class="en">3 Golden Rules of Lean Cross-Functional Escalation</span>
+                </span>
+              </div>
+              <span class="chip" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 700;">
+                <span class="zh">No Surprises • 帶著方案升級 • 對事不對人</span>
+                <span class="en">No Surprises • Bring Solutions • Focus on Data</span>
+              </span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 6px;">
+              <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px;">
+                <div style="font-weight: 700; color: #10b981; font-size: 13px; margin-bottom: 2px;">
+                  1. <span class="zh">No Surprises（拒絕背刺，預先告知）</span><span class="en">No Surprises (Pre-align Before Escalating)</span>
+                </div>
+                <div style="font-size: 12.2px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">升級前務必事先通知同級協調夥伴：「因雙方目前有技術歧見且時程緊迫，我將於今日會議將此風險提請雙方主管裁決。」絕不可暗中告狀。</span>
+                  <span class="en">Always notify your peer in advance: "As we have technical differences and timeline risks, I will raise this to joint management for arbitration." Never blindside peers.</span>
+                </div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px;">
+                <div style="font-weight: 700; color: #3b82f6; font-size: 13px; margin-bottom: 2px;">
+                  2. <span class="zh">帶著方案升級（Bring Option A vs. B）</span><span class="en">Bring Solutions, Not Just Problems</span>
+                </div>
+                <div style="font-size: 12.2px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">主管不是收納抱怨的垃圾桶。升級時必須攜帶至少兩種評估過的替代方案（各附代價、時程影響與資源需求），並提供專業推薦。</span>
+                  <span class="en">Leaders need decision choices, not complaints. Present at least two vetted options (with trade-offs, schedule impacts, and resource asks) plus your recommendation.</span>
+                </div>
+              </div>
+              <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px;">
+                <div style="font-weight: 700; color: #f59e0b; font-size: 13px; margin-bottom: 2px;">
+                  3. <span class="zh">對事不對人（Data & Timeline Focused）</span><span class="en">Focus on Data, Milestone & Business Impact</span>
+                </div>
+                <div style="font-size: 12.2px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh">聚焦於瓶頸（Blocker）、里程碑延誤天數、良率損失與金錢衝擊；嚴禁批評個人工作態度，維護組織長期互信與協作資本。</span>
+                  <span class="en">Quantify blockers, schedule slip days, yield loss, and revenue impacts. Refrain from personal attacks to safeguard cross-functional social capital.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls: Mode Switcher & Level Filter -->
+          <div class="orgchart-controls">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--ink);">
+                <span class="zh">組織體系模式：</span><span class="en">Org Model:</span>
+              </span>
+              <div class="orgchart-mode-group">
+                <button class="orgchart-mode-btn active" id="orgModeBtnSemi" onclick="switchOrgMode('semi')">
+                  🏭 <span class="zh">半導體與高科技製造業</span><span class="en">Semiconductor & High-Tech Mfg</span>
+                </button>
+                <button class="orgchart-mode-btn" id="orgModeBtnMatrix" onclick="switchOrgMode('matrix')">
+                  🌐 <span class="zh">跨國通用大企業矩陣</span><span class="en">Global Corporate Matrix</span>
+                </button>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="font-size: 12.5px; font-weight: 600; color: var(--muted);">
+                <span class="zh">層級篩選：</span><span class="en">Filter Level:</span>
+              </span>
+              <div class="orgchart-filter-pills">
+                <button class="org-filter-pill active" onclick="filterOrgByLevel('ALL', this)">
+                  <span class="zh">全部 (12 部門)</span><span class="en">All (12 Depts)</span>
+                </button>
+                <button class="org-filter-pill" onclick="filterOrgByLevel('L1', this)">L1 決策高層</button>
+                <button class="org-filter-pill" onclick="filterOrgByLevel('L2_L3', this)">L2~L3 處/部級</button>
+                <button class="org-filter-pill" onclick="filterOrgByLevel('L4_L5', this)">L4~L5 課級/專家</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Interactive Section: Grid + Live Dossier -->
+          <div class="orgchart-main-layout">
+            
+            <!-- Left: Node Grid -->
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="font-size: 15px; margin: 0; color: var(--ink); display: flex; align-items: center; gap: 6px;">
+                  <span>🗺️</span>
+                  <span class="zh">部門節點架構地圖 (點擊查看情報檔案)</span>
+                  <span class="en">Department Nodes (Click to Inspect Dossier)</span>
+                </h3>
+                <span id="orgActiveDeptCount" style="font-size: 12px; color: var(--muted); font-weight: 600;">12 個部門</span>
+              </div>
+              <div class="org-nodes-grid" id="orgNodesContainer">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+
+            <!-- Right: Live Dossier Inspector -->
+            <div class="org-dossier-panel" id="orgDossierContainer">
+              <!-- Dynamically populated via JS -->
+            </div>
+
+          </div>
+
+          <!-- Section: 4-Level Escalation Ladder -->
+          <div style="margin-top: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+              <h3 style="font-size: 16px; margin: 0; color: var(--ink); display: flex; align-items: center; gap: 8px;">
+                <span>🪜</span>
+                <span class="zh">四級漸進式升級階梯 (4-Level Escalation Ladder)</span>
+                <span class="en">4-Level Progressive Escalation Ladder</span>
+              </h3>
+              <span class="chip" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; font-weight: 600;">
+                <span class="zh">同級釐清 → 主管對齊 → 處長仲裁 → 高階裁決</span>
+                <span class="en">Peer -> Manager -> Director -> C-Suite</span>
+              </span>
+            </div>
+            <p style="font-size: 13px; color: var(--muted); margin: 0 0 12px;">
+              <span class="zh">當專案遭遇資源排擠、技術歧見或進度死鎖時，應依序循序漸進向上升級，不可任意越級跳層造成組織信任破裂。</span>
+              <span class="en">When projects face bottlenecks, technical deadlock, or resource conflicts, escalate progressively through defined tiers rather than skipping levels.</span>
+            </p>
+
+            <div class="escalation-ladder-grid">
+              <div class="ladder-step-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 14px; color: #10b981;">Level 1</span>
+                  <span class="chip" style="font-size: 11px;">24~48 小時內</span>
+                </div>
+                <div style="font-weight: 700; font-size: 13.5px; color: var(--ink);">
+                  <span class="zh">同級專業對話 (Peer-to-Peer)</span>
+                  <span class="en">Peer-to-Peer Technical Alignment</span>
+                </div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh"><strong>對話對象</strong>：專案經理 (PM)、黑帶、第一線主辦工程師。<br><strong>核心動作</strong>：召開 15~30 分鐘專案對齊會，核對數據、規格差異與 SIPOC 輸入輸出，釐清是否僅為認知誤解。</span>
+                  <span class="en"><strong>Participants</strong>: Project Leads, Black Belts, Engineers.<br><strong>Action</strong>: 15-30 min sync to clarify data, spec definitions, and SIPOC interfaces to rule out misunderstandings.</span>
+                </div>
+              </div>
+
+              <div class="ladder-step-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 14px; color: #3b82f6;">Level 2</span>
+                  <span class="chip" style="font-size: 11px;">3 工作天內</span>
+                </div>
+                <div style="font-weight: 700; font-size: 13.5px; color: var(--ink);">
+                  <span class="zh">課/組級主管對齊 (Lead / Manager)</span>
+                  <span class="en">Section Lead / Manager Alignment</span>
+                </div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh"><strong>對話對象</strong>：雙方直屬經理 (Manager / Lead)。<br><strong>核心動作</strong>：檢視組內當前 Sprint 或排程優先順序，協調短期資源調配、設備時段借調或替代人力支援。</span>
+                  <span class="en"><strong>Participants</strong>: Direct Functional Managers.<br><strong>Action</strong>: Review team backlog & schedule priorities, negotiate short-term resource borrow, tool time, or temporary workload balancing.</span>
+                </div>
+              </div>
+
+              <div class="ladder-step-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 14px; color: #f59e0b;">Level 3</span>
+                  <span class="chip" style="font-size: 11px;">1 週內 / 例行會</span>
+                </div>
+                <div style="font-weight: 700; font-size: 13.5px; color: var(--ink);">
+                  <span class="zh">處級主管 / 指導委員會 (Director)</span>
+                  <span class="en">Director & Steering Committee</span>
+                </div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh"><strong>對話對象</strong>：部門處長 (Director)、專案贊助人 (Sponsor)。<br><strong>核心動作</strong>：權衡跨處 KPI 取捨（如良率 vs. 產能速度）、重整專案範圍 (Scope)、追加預算或調整 Milestone。</span>
+                  <span class="en"><strong>Participants</strong>: Functional Directors, Project Sponsors.<br><strong>Action</strong>: Trade-off conflicting KPIs (e.g., yield vs cycle time), adjust project scope, reallocate CapEx, or revise milestones.</span>
+                </div>
+              </div>
+
+              <div class="ladder-step-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 14px; color: #ef4444;">Level 4</span>
+                  <span class="chip" style="font-size: 11px;">立即召集特別會</span>
+                </div>
+                <div style="font-weight: 700; font-size: 13.5px; color: var(--ink);">
+                  <span class="zh">高階決策仲裁 (VP / C-Suite)</span>
+                  <span class="en">Executive & C-Suite Review</span>
+                </div>
+                <div style="font-size: 12.3px; color: var(--muted); line-height: 1.5;">
+                  <span class="zh"><strong>對話對象</strong>：副總經理 (VP)、COO、CEO。<br><strong>核心動作</strong>：處理牽涉公司重大戰略變更、重大客戶索賠/抽單危機、法律合規違規或數百萬美元以上之戰略仲裁。</span>
+                  <span class="en"><strong>Participants</strong>: Vice Presidents, COO, CEO.<br><strong>Action</strong>: Resolve company-wide strategic shifts, customer contract risks, regulatory redlines, or multi-million dollar trade-offs.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Interactive Escalation Memo Generator -->
+          <div class="memo-builder-wrap">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 24px;">📝</span>
+                <div>
+                  <h3 style="margin: 0; font-size: 16px; color: var(--ink);">
+                    <span class="zh">跨部門升級通報與求助備忘錄產生器 (Escalation Memo Generator)</span>
+                    <span class="en">Cross-Functional Escalation Memo Generator</span>
+                  </h3>
+                  <div style="font-size: 12.3px; color: var(--muted);">
+                    <span class="zh">自動生成結構化、數據導向且符合高管閱覽習慣的中英文專業升級報告，支援一鍵複製。</span>
+                    <span class="en">Auto-generates structured, data-driven executive escalation memos adhering to professional protocol.</span>
+                  </div>
+                </div>
+              </div>
+              <button class="ctrl-btn" style="background: #10b981; color: #fff; border-color: #10b981;" onclick="generateEscalationMemo()">
+                ⚡ <span class="zh">即時生成備忘錄</span><span class="en">Generate Memo</span>
+              </button>
+            </div>
+
+            <div class="memo-form-grid">
+              <div class="memo-form-group">
+                <label><span class="zh">專案名稱與代號</span><span class="en">Project Name & Code</span></label>
+                <input type="text" id="memoProjectName" class="memo-input" value="N3 先進製程晶圓良率攻堅專案 (Project Titan)">
+              </div>
+              <div class="memo-form-group">
+                <label><span class="zh">發起人身分 / 層級</span><span class="en">Sender Role & Level</span></label>
+                <input type="text" id="memoSenderRole" class="memo-input" value="製程整合資深工程師 (PIE) / L5 專案技術負責人">
+              </div>
+              <div class="memo-form-group">
+                <label><span class="zh">受文對象 / 裁決主管</span><span class="en">Recipient / Target Management</span></label>
+                <input type="text" id="memoRecipient" class="memo-input" value="製程工程處處長 & 製造部副廠長">
+              </div>
+              <div class="memo-form-group">
+                <label><span class="zh">升級階梯層次</span><span class="en">Escalation Tier</span></label>
+                <select id="memoLevelSelect" class="memo-select">
+                  <option value="Level 2 (Manager / Section Lead)">Level 2：課/組級主管對齊 (Manager Level)</option>
+                  <option value="Level 3 (Director / Steering Committee)" selected>Level 3：處級主管 / 專案指導委員會 (Director Level)</option>
+                  <option value="Level 4 (VP / C-Suite Executive)">Level 4：高階決策仲裁 (VP / C-Suite)</option>
+                </select>
+              </div>
+              <div class="memo-form-group" style="grid-column: 1 / -1;">
+                <label><span class="zh">目前遭遇之阻礙事項與商業衝擊 (Blocker & Business Impact)</span><span class="en">Current Blocker & Impact</span></label>
+                <textarea id="memoBlocker" class="memo-textarea">新光阻 Recipe 驗證機台需佔用產線 4 小時機台時段，製造部因排程達標率壓力無法放行，導致專案良率攻堅里程碑已延遲 5 天，恐影響 Q3 試產進度（潛在商業損失估計達每週 $120,000 美元）。</textarea>
+              </div>
+              <div class="memo-form-group" style="grid-column: 1 / -1;">
+                <label><span class="zh">已嘗試之同級協商努力 (Efforts Made - No Surprise Check)</span><span class="en">Prior Collaborative Efforts</span></label>
+                <input type="text" id="memoEfforts" class="memo-input" value="已於 9/10 與製造課長召開 30 分鐘協調會，並主動提出夜班離峰時段測試，但因線上 WIP 堆疊仍未獲排程同意。雙方已取得共識將此議題提報主管裁決。">
+              </div>
+              <div class="memo-form-group">
+                <label><span class="zh">推薦方案 Option A (建議採行，含代價)</span><span class="en">Recommended Option A (Pros & Trade-offs)</span></label>
+                <input type="text" id="memoOptionA" class="memo-input" value="利用本週日清晨 02:00-06:00 預防保養 (PM) 復機後空檔切入測試，由 PIE 全程駐點盯線，不影響日間生產產能，但需由製造部協助派工放行。">
+              </div>
+              <div class="memo-form-group">
+                <label><span class="zh">備選方案 Option B (折衷替代方案)</span><span class="en">Alternative Option B (Trade-off)</span></label>
+                <input type="text" id="memoOptionB" class="memo-input" value="轉移至研發廠 (R&D Fab) 機台進行離線抽樣測試，但需額外花費 4 天進行基板校準與跨廠移載，整體進度推遲一週。">
+              </div>
+              <div class="memo-form-group" style="grid-column: 1 / -1;">
+                <label><span class="zh">明確請求主管裁決事項 (Clear Ask)</span><span class="en">Clear Request / Decision Needed</span></label>
+                <input type="text" id="memoAsk" class="memo-input" value="請求處長與製造副廠長核准採行 Option A 之週日清晨測試窗口，並同意將本次測試產生的 4 小時稼動率影響計入工程變更扣抵。">
+              </div>
+            </div>
+
+            <!-- Output Preview -->
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-weight: 700; font-size: 13px; color: var(--ink);">
+                  <span class="zh">生成之標準備忘錄預覽：</span><span class="en">Generated Memo Preview:</span>
+                </span>
+                <button class="ctrl-btn" onclick="copyEscalationMemo()">
+                  📋 <span class="zh">複製全文 Markdown / Email</span><span class="en">Copy Markdown / Email</span>
+                </button>
+              </div>
+              <div class="memo-output-box" id="memoOutputPreview">
+                <!-- Generated via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Comparison Table (Healthy vs Toxic Escalation) -->
+          <div>
+            <h3 style="font-size: 16px; margin: 0 0 8px; color: var(--ink); display: flex; align-items: center; gap: 8px;">
+              <span>⚖️</span>
+              <span class="zh">精實健康升級 vs. 有害越級打小報告 (Escalation Pitfalls & Best Practices)</span>
+              <span class="en">Lean Healthy Escalation vs. Toxic Finger-Pointing</span>
+            </h3>
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+              <table class="escalation-compare-table">
+                <thead>
+                  <tr>
+                    <th style="width: 18%;"><span class="zh">維度</span><span class="en">Dimension</span></th>
+                    <th style="width: 41%; color: #10b981;">✅ <span class="zh">精實健康升級 (Lean Escalation)</span><span class="en">Healthy Lean Escalation</span></th>
+                    <th style="width: 41%; color: #ef4444;">❌ <span class="zh">有害職場背刺 (Toxic Finger-Pointing)</span><span class="en">Toxic Finger-Pointing</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong><span class="zh">發起動機</span><span class="en">Motive</span></strong></td>
+                    <td><span class="zh">為了整體專案里程碑與公司利益，移除瓶頸以推進流程。</span><span class="en">Remove roadblocks to protect customer milestones and business goals.</span></td>
+                    <td><span class="zh">為了推卸責任、尋找替罪羊、證明自己是對的或讓別人難看。</span><span class="en">Shift blame, find scapegoats, or prove moral superiority.</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong><span class="zh">透明度</span><span class="en">Transparency</span></strong></td>
+                    <td><span class="zh"><strong>預先告知</strong>平行夥伴：「雙方認知有差異，我將在會議上請主管仲裁」。</span><span class="en"><strong>Advance notice</strong>: Informs peer that unresolved issues will be escalated for joint alignment.</span></td>
+                    <td><span class="zh"><strong>暗箭傷人</strong>：在對手不知情的情況下偷偷寄信 CC 對方大老闆或在公開大會突然開火。</span><span class="en"><strong>Blindside ambush</strong>: Secretly emails the VP or springs surprise accusations in large all-hands meetings.</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong><span class="zh">呈報內容</span><span class="en">Content Presented</span></strong></td>
+                    <td><span class="zh">清晰數據、時程差距、商業損失，並附帶 <strong>Option A 與 Option B 具體解法</strong>。</span><span class="en">Objective data, slip days, revenue impact, with <strong>evaluated Option A & B solutions</strong>.</span></td>
+                    <td><span class="zh">只有抱怨「對方不配合、態度差」，將問題丟給主管「通靈解決」。</span><span class="en">Vague complaints about bad attitudes; throws raw problems onto management's lap.</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong><span class="zh">組織信任後果</span><span class="en">Trust Impact</span></strong></td>
+                    <td><span class="zh">雙方皆感到專業公正，建立跨部門解決複雜死鎖的健康信任。</span><span class="en">Builds psychological safety and structured conflict resolution muscle.</span></td>
+                    <td><span class="zh">徹底摧毀跨部門信任，引發報復性防禦、互相扣帽子與更大推諉。</span><span class="en">Destroys cross-functional trust, sparking reciprocal defensive retaliation.</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
       <section class="section" data-section="books">
         <h2 id="booksHeading" class="books-section-heading"><span class="zh">相關推薦書籍</span><span class="en">Recommended Books</span></h2>
         <p class="lead">
@@ -12902,6 +13598,7 @@ const SECTIONS = [
   {id:'vsm', zh:'價值流程圖 VSM 互動產生器', en:'Value Stream Mapping (VSM) Builder'},
   {id:'aitech', zh:'科技與半導體/AI 發展史羅盤', en:'Tech, Semiconductor & AI History Compass'},
   {id:'leandx', zh:'精實數位轉型與智慧製造 (半導體/高科技 DX)', en:'Lean Digital Transformation & Smart Manufacturing'},
+  {id:'orgchart', zh:'企業組織全景架構與跨部門升級求助板模', en:'Org Chart & Escalation Playbook'},
   {id:'books', zh:'相關推薦書籍', en:'Recommended Books'},
   {id:'glossary', zh:'詞彙釋義', en:'Glossary'},
 ];
@@ -15064,6 +15761,7 @@ function render(){
   if (typeof renderRtCurrentView === 'function') {
     renderRtCurrentView();
   }
+  if (state.section === 'orgchart' && typeof renderOrgNodes === 'function') { renderOrgNodes(); }
   if (state.section === 'finance' && typeof calculateFinance === 'function') {
     calculateFinance();
   }
@@ -21861,6 +22559,8 @@ function initAitechCompass() {
 }
 
 function init(){
+  // Initialize Org Chart & Escalation Playbook
+  if(typeof initOrgChart === "function") initOrgChart();
   // Initialize Exam Engine
   initExamEngine();
 
@@ -24160,6 +24860,1042 @@ function vsmExportMarkdown() {
   });
 }
 
+
+
+
+/* ==================== 21. ORG CHART & ESCALATION PLAYBOOK LOGIC ==================== */
+const ORG_DATA_SEMI = [
+  {
+    "id": "semi_exec",
+    "icon": "👑",
+    "nameZh": "經營決策與戰略處",
+    "nameEn": "Executive & Strategy Office",
+    "code": "C-Suite / COO",
+    "level": "L1",
+    "levelZh": "L1 決策高層",
+    "levelEn": "L1 Executive",
+    "reporting": "實線對董事會負責；統籌所有事業群與 Fab 營運方針",
+    "reportingEn": "Reports to Board; governs all BUs and Fab operations",
+    "mandateZh": "制定晶圓代工年度戰略方針（Hoshin Kanri）、核准十億級 CapEx 資本支出、先進節點投資與關鍵大客戶戰略合約。",
+    "mandateEn": "Formulate foundry annual strategy, approve multi-billion CapEx investments, advanced node roadmaps, and tier-1 customer agreements.",
+    "deliverablesZh": "公司方針展開目標、季度營運審查 (QBR)、CapEx 預算分配表。",
+    "deliverablesEn": "Hoshin Kanri targets, Quarterly Business Reviews (QBR), CapEx allocations.",
+    "kpisZh": "營業利益率 (Operating Margin)、ROIC 投資資本回報率、先進製程營收佔比。",
+    "kpisEn": "Operating Margin, ROIC, Advanced Node Revenue Share.",
+    "petPeevesZh": "帶著無數據的技術爭辯升級到此層級；缺乏商業影響力評估；無事先同儕對齊的突發危機。",
+    "petPeevesEn": "Escalating without data; lack of financial impact assessment; unaligned surprise crises.",
+    "checklistZh": [
+      "準備好 Executive Summary（1 頁內說明背景、衝擊與決策點）",
+      "附上量化的商業財務影響（每週延誤造成的營收/良率損失）",
+      "提供 Option A vs Option B 與具體推薦建議",
+      "已取得涉及處長級主管之預先對齊意見"
+    ],
+    "checklistEn": [
+      "1-page Executive Summary covering context, business impact, and decision ask",
+      "Quantified revenue/yield loss per week of delay",
+      "Option A vs Option B with clear recommendation",
+      "Pre-aligned comments from involved functional directors"
+    ],
+    "openingZh": "「執行長/營運長好，針對 Project Titan 先進節點，因跨處在排程與良率驗證產生策略權衡，我們已備妥 1 頁評估報告與 Option A/B 方案，請求您裁決指導…」",
+    "openingEn": "Executive leadership, regarding Project Titan advanced node, due to cross-divisional trade-offs between capacity and yield qualification, we have prepared a 1-page memo with Options A/B for your arbitration...",
+    "escalationPathZh": "最終裁決層級。通常由 VP 或處長直接在執委會提報裁決。"
+  },
+  {
+    "id": "semi_td",
+    "icon": "🔬",
+    "nameZh": "先進製程研發處 (TD)",
+    "nameEn": "Technology Development (TD & R&D)",
+    "code": "R&D / TD",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對技術長 (CTO) 回報；虛線對 Fab 廠長對齊轉量產節奏",
+    "reportingEn": "Reports to CTO; matrix alignment with Fab Director for ramp",
+    "mandateZh": "負責次世代電晶體微縮 (GAA/CFET)、先進封裝架構 (CoWoS/SoIC)、新材料探索與 PDK (製程設計套件) 定義。",
+    "mandateEn": "Drive next-gen transistor scaling, advanced packaging (CoWoS), material discovery, and PDK spec definition.",
+    "deliverablesZh": "新製程 Baseline 規範、PDK 1.0、元件測試驗證報告 (WAT/PCM)。",
+    "deliverablesEn": "Process Baseline Specs, PDK 1.0, Component Verification Reports.",
+    "kpisZh": "研發里程碑準時達成率、元件驅動電流 (Ion/Ioff)、專利獲准件數。",
+    "kpisEn": "R&D Milestone On-Time Delivery, Transistor Performance, Approved Patents.",
+    "petPeevesZh": "量產廠直接抱怨「規格太難做」卻給不出具體失效物理數據；要求研發無止境放寬製程容許範圍 (Process Window)。",
+    "petPeevesEn": "Complaining specs are too hard without physical failure data; demanding relaxed process windows without DOE data.",
+    "checklistZh": [
+      "提供在線 TEM/SEM 顯微切片與 EDS 元素分析",
+      "對比 TD Baseline 與量產機台之溫控/射頻 (RF) 差異數據",
+      "附上 3 批次以上之測試驗證趨勢圖 (Trend Chart)"
+    ],
+    "checklistEn": [
+      "Provide TEM/SEM physical cross-section and EDS data",
+      "Delta comparison between TD Baseline tool vs Fab mass production tool",
+      "Trend charts across 3+ experimental verification runs"
+    ],
+    "openingZh": "「TD 團隊您好，我們在量產線試跑新節點時，發現第 3 層金屬填洞在邊緣晶粒有空洞現象，我們已備齊 TEM 切片與機台溫度差異分析，想請教 TD 在 Recipe 微調上的建議…」",
+    "openingEn": "TD team, during mass ramp trials, we detected edge-die metal voiding. We have prepared TEM cross-sections and thermal delta data to consult your advice on recipe tuning...",
+    "escalationPathZh": "資深 RD 工程師 → TD Section Lead → TD 處長 → CTO。"
+  },
+  {
+    "id": "semi_pie",
+    "icon": "🎯",
+    "nameZh": "製程整合處 (PIE)",
+    "nameEn": "Process Integration (PIE & Yield)",
+    "code": "PIE / YE",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對廠長回報；跨模組整合黃光、蝕刻、薄膜、擴散各模組",
+    "reportingEn": "Reports to Fab Director; integrates Litho, Etch, Thin Film, CMP",
+    "mandateZh": "負責全製程流程整合、良率提升 (Yield Enhancement)、電性測試 (WAT)、缺陷根因分析 (In-line Defect) 與工程變更審查。",
+    "mandateEn": "Own full-flow integration, yield enhancement, WAT electrical test, inline defect root-cause, and Engineering Change (ECN).",
+    "deliverablesZh": "晶圓良率走勢圖、失效分析報告 (FA Report)、DOE 實驗結論、CP 良率放行標準。",
+    "deliverablesEn": "Yield Pareto trends, Failure Analysis (FA) reports, DOE conclusions, CP sign-off specs.",
+    "kpisZh": "晶圓良率 (Wafer Yield)、缺陷密度 (D0)、良率爬坡斜率 (Ramp-up Rate)。",
+    "kpisEn": "Die Yield, Defect Density (D0), Yield Ramp Slope.",
+    "petPeevesZh": "各模組互踢皮球不認帳；沒有 Defect Map 就要求整合下結論；未經 ECN 審核私自調機。",
+    "petPeevesEn": "Module finger-pointing; asking for conclusions without Defect Maps; unapproved recipe modifications without ECN.",
+    "checklistZh": [
+      "準備 Klarf 缺陷圖譜與 Pareto 主因分析",
+      "WAT 關鍵電性參數相關性散佈圖 (Correlation Plot)",
+      "明確列出涉案之 Lot ID、機台 ID 與出問題之 Layer"
+    ],
+    "checklistEn": [
+      "Klarf defect inspection map and defect Pareto",
+      "WAT electrical parameter correlation scatter plots",
+      "List of implicated Lot IDs, Tool Chamber IDs, and Process Layers"
+    ],
+    "openingZh": "「整合夥伴好，針對批號 LOT-8891 的電阻偏移，我們已疊加黃光聚焦與薄膜厚度 SPC，發現與 Chamber B 有顯著相關，希望能與整合確認是否啟動局部工程變更…」",
+    "openingEn": "PIE team, regarding LOT-8891 resistance shift, we overlaid Litho focus and Thin Film thickness SPC, identifying high correlation with Chamber B. We propose reviewing a split-lot DOE...",
+    "escalationPathZh": "PIE 工程師 → PIE 課長 → 整合處長 → 廠長。"
+  },
+  {
+    "id": "semi_pe",
+    "icon": "⚙️",
+    "nameZh": "製程模組工程處 (PE)",
+    "nameEn": "Process Module Engineering (PE)",
+    "code": "PE (Litho/Etch/ThinFilm/CMP)",
+    "level": "L4",
+    "levelZh": "L4 課級主管",
+    "levelEn": "L4 Section Lead",
+    "reporting": "實線對模組部經理回報；與設備工程 (EE) 結為雙搭檔 (Co-owners)",
+    "reportingEn": "Reports to Module Manager; paired co-owner with Equipment (EE)",
+    "mandateZh": "維護特定模組（黃光/蝕刻/薄膜/擴散/CMP）之製程穩定度、Cp/Cpk 能力指數、化學品/光阻 Recipe 優化。",
+    "mandateEn": "Maintain module process capability (Cp/Cpk), chemistry/recipe optimization across Litho, Etch, Thin Film, and CMP.",
+    "deliverablesZh": "Recipe 參數卡、製程 FMEA、SPC 警戒線設定、異常品處理處置單。",
+    "deliverablesEn": "Recipe parameter sheets, PFMEA, SPC control limits, Discrepancy Action Reports.",
+    "kpisZh": "Cp/Cpk 製程能力指數、製程良率 (Inline Yield)、化學品單晶圓耗用成本。",
+    "kpisEn": "Cp/Cpk Capability, Inline Module Yield, Chemical Cost per Wafer.",
+    "petPeevesZh": "製造部一直催促快速放行但不給時間做 Calibration；設備端隱瞞零件老化未及時報備。",
+    "petPeevesEn": "Manufacturing pressuring for quick tool release without test wafers; EE hiding chamber hardware drifts.",
+    "checklistZh": [
+      "最近 30 天之 SPC 趨勢圖與 Cpk 指數計算",
+      "近 3 次 Preventive Maintenance (PM) 復機測機數據",
+      "機台 Chamber-to-Chamber 匹配度 (Tool Matching) 比對"
+    ],
+    "checklistEn": [
+      "30-day SPC trend charts and computed Cpk index",
+      "Last 3 PM post-maintenance qualification wafer data",
+      "Tool matching and chamber-to-chamber delta analysis"
+    ],
+    "openingZh": "「PE 團隊好，Etch 3 號機最近在關鍵尺寸 (CD) 有向規格上限偏離趨勢，雖然未破 SPC，但 Cpk 已降至 1.15，想請教是否能在下次 PM 前先微調氣體流量 Recipe…」",
+    "openingEn": "PE team, Etch tool #3 critical dimension (CD) is trending towards USL. Although within SPC, Cpk dipped to 1.15. Can we review a minor gas flow trim before the next PM?",
+    "escalationPathZh": "PE 工程師 → PE 課長 → 模組部經理 → 廠長。"
+  },
+  {
+    "id": "semi_ee",
+    "icon": "🔧",
+    "nameZh": "設備工程處 (EE)",
+    "nameEn": "Equipment Engineering (EE)",
+    "code": "EE",
+    "level": "L4",
+    "levelZh": "L4 課級主管",
+    "levelEn": "L4 Section Lead",
+    "reporting": "實線對設備部經理回報；與 PE 共同對機台健康度負責",
+    "reportingEn": "Reports to Equipment Manager; co-owns tool health with PE",
+    "mandateZh": "負責機台預防保養 (PM)、故障排除 (Troubleshooting)、機台妥善率 (Availability)、零組件壽命預測與機台升級改造。",
+    "mandateEn": "Execute tool Preventive Maintenance (PM), troubleshooting, tool uptime/availability, spare parts lifecycle, and CIP retrofits.",
+    "deliverablesZh": "PM 標準作業指引 (WI)、零件保養履歷、機台當機檢討報告 (Downtime 8D)。",
+    "deliverablesEn": "PM Work Instructions, spare parts logs, Machine Downtime 8D reports.",
+    "kpisZh": "平均故障間隔時間 (MTBF)、平均修復時間 (MTTR)、機台妥善稼動率 (Availability > 95%)。",
+    "kpisEn": "MTBF, MTTR, Tool Availability (> 95%).",
+    "petPeevesZh": "製造部在機台保養時不給預約時段；採購為了省錢買次等副廠耗材導致頻繁當機。",
+    "petPeevesEn": "Manufacturing refusing PM downtime slots; Procurement buying cheap second-source parts causing tool crashes.",
+    "checklistZh": [
+      "明確列出當機 Chamber、感測器警報代碼 (Alarm Log)",
+      "提供零件耗損週期與上次更換時間記錄",
+      "附上供應商 (ASML/Lam/AMAT) 原廠技術支援指引"
+    ],
+    "checklistEn": [
+      "Chamber ID, sensor alarm logs, and error codes",
+      "Component lifecycle logs and last replacement timestamp",
+      "Vendor (ASML/Lam/AMAT) technical bulletin references"
+    ],
+    "openingZh": "「設備主管您好，離子植入機目前真空值有微漏氣現象，依據歷史數據若未在 24 小時內更換 O-Ring，恐引發非預期停機，已備好備件，希望能與製造協調 2 小時維護窗口…」",
+    "openingEn": "EE lead, Implanter chamber vacuum is showing micro-leaks. History indicates an unplanned crash within 24 hours without O-ring swap. Parts are ready, request a 2-hour window...",
+    "escalationPathZh": "EE 工程師 → EE 課長 → 設備部經理 → 廠長。"
+  },
+  {
+    "id": "semi_fab",
+    "icon": "🏭",
+    "nameZh": "製造部營運處 (Fab Ops)",
+    "nameEn": "Fab Operations & Manufacturing",
+    "code": "Fab Ops / MF",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對廠長回報；直接指揮線上帶班工程師與輪班技術員 (DL)",
+    "reportingEn": "Reports to Fab Director; directs shift supervisors and operators",
+    "mandateZh": "負責全廠晶圓產出調度、產線瓶頸 (Bottleneck) 搬移、在製品 (WIP) 控制、交期 (Cycle Time) 與機台綜合效率 (OEE)。",
+    "mandateEn": "Drive wafer output, bottleneck balancing, WIP management, line cycle time, and Overall Equipment Effectiveness (OEE).",
+    "deliverablesZh": "日生產排程表 (Daily Run Plan)、產能預測、線平衡圖 (Line Balance)、交期報表。",
+    "deliverablesEn": "Daily Run Plan, Capacity Forecasts, Line Balance charts, Cycle Time Reports.",
+    "kpisZh": "晶圓出貨片數 (Wafer Moves)、準時交貨率 (OTD > 98%)、OEE 綜合設備效率。",
+    "kpisEn": "Wafer Moves, On-Time Delivery (OTD > 98%), OEE.",
+    "petPeevesZh": "研發或工程未打招呼就突襲扣留線上批號做實驗；機台 PM 嚴重超時交不回產線。",
+    "petPeevesEn": "Engineering raiding mass production lots for experiments without notice; tool maintenance exceeding agreed downtime.",
+    "checklistZh": [
+      "工程實驗需提早 48 小時填寫特別派工單 (Engineering Lot Ticket)",
+      "明確承諾實驗佔用機台之起訖時間與專人盯線承諾",
+      "提供實驗批號對產能出貨之補償對策"
+    ],
+    "checklistEn": [
+      "Submit Engineering Lot Ticket 48h in advance",
+      "Committed start/end timestamps and assigned on-site engineer",
+      "Capacity recovery plan for delayed mass production wafers"
+    ],
+    "openingZh": "「製造課長您好，我們有一批關鍵客戶良率試驗批，已排定於明晨 03:00 離峰時段過站，預計佔用機台 45 分鐘，我會全程在現場盯機復原，絕不影響交期…」",
+    "openingEn": "Fab Ops lead, we have a critical customer yield trial lot scheduled for 03:00 AM off-peak. Estimated tool hold is 45 mins. I will be on-site to ensure zero cycle-time disruption...",
+    "escalationPathZh": "值班幹部 → 製造課長 → 製造部副廠長 → 廠長。"
+  },
+  {
+    "id": "semi_fac",
+    "icon": "⚡",
+    "nameZh": "廠務與環安衛處 (Facility & EHS)",
+    "nameEn": "Facility & Environmental Health (EHS)",
+    "code": "Facility / EHS",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對廠長回報；對政府環保、工安主管機關負法律責任",
+    "reportingEn": "Reports to Fab Director; legally responsible to EHS regulators",
+    "mandateZh": "負責超純水 (UPW)、大宗化學品 (Bulk Gas/Chemicals)、超淨室微粒控制 (Particle Class 1)、電力穩定度 (UPS) 與工安零災害 (ISO 45001)。",
+    "mandateEn": "Supply Ultra-Pure Water (UPW), specialty gases, Class 1 cleanroom control, power grid stability (UPS), and ISO 45001 safety.",
+    "deliverablesZh": "廠務系統運轉監控報表、氣體純度檢驗書、EHS 工安審核報告、減碳 ESG 方案。",
+    "deliverablesEn": "Facility SCADA monitoring, gas purity certificates, EHS audit reports, ESG reduction metrics.",
+    "kpisZh": "水電氣供應不中斷率 (99.999%)、超淨室顆粒合格率、重大工安意外 0 件。",
+    "kpisEn": "Utility Uptime (99.999%), Cleanroom Particle Compliance, 0 Lost-Time Accidents.",
+    "petPeevesZh": "工程變更涉及易燃有毒化學品卻未先做 EHS 危害審查 (MOC)；未經穿戴防護裝備擅自開閥門。",
+    "petPeevesEn": "Introducing hazardous chemistry without Management of Change (MOC) review; breaking protocol without PPE.",
+    "checklistZh": [
+      "填妥化學品物質安全資料表 (SDS) 與管路配管需求",
+      "完成新材料之 EHS 危害辨識與 MOC 審查簽核",
+      "評估化學品排氣廢水排放之環保許可額度"
+    ],
+    "checklistEn": [
+      "Safety Data Sheet (SDS) and hook-up piping specifications",
+      "Completed EHS hazard identification and MOC review sign-off",
+      "Environmental discharge quota compliance evaluation"
+    ],
+    "openingZh": "「廠務與 EHS 夥伴好，新引進之清洗溶劑已取得 SDS 並完成 MOC 初審，附上排氣管路耐腐蝕規格，希望本週能請廠務團隊協助現場會勘 Hook-up 接口…」",
+    "openingEn": "Facility & EHS team, our new rinse solvent has completed SDS and MOC review. Attached is piping compatibility data. Requesting a site walkthrough for hook-up connection...",
+    "escalationPathZh": "廠務工程師 → 廠務課長 → 廠務處長 → 廠長。"
+  },
+  {
+    "id": "semi_qa",
+    "icon": "🛡️",
+    "nameZh": "品質、可靠度與客訴處 (QA/CQE)",
+    "nameEn": "Quality, Reliability & CQE",
+    "code": "QA / CQE",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對副總級 CQO/副總裁回報（具備獨立攔阻出貨權）；與業務對齊客戶溝通",
+    "reportingEn": "Reports to VP/CQO with veto power; aligns with Sales for clients",
+    "mandateZh": "負責品質系統 (IATF 16949/ISO 9001)、晶圓出貨可靠度 (HTOL/ESD)、客戶客訴 8D 調查與客戶稽核接待。",
+    "mandateEn": "Maintain Quality System (IATF 16949), Wafer Reliability (HTOL/ESD), customer 8D root-cause investigations, and audit host.",
+    "deliverablesZh": "客戶 8D 矯正報告、可靠度 Qualification 報告、出貨品質判定書、管制計畫 (Control Plan)。",
+    "deliverablesEn": "Customer 8D reports, Reliability Qual reports, Outgoing Quality certificates, Control Plans.",
+    "kpisZh": "客戶抱怨件數 (DPPM / Complaints)、8D 及時關閉率、車規零缺陷稽核通過率。",
+    "kpisEn": "Customer DPPM, 8D On-Time Closure Rate, Automotive Audit Score.",
+    "petPeevesZh": "為了趕季末出貨要求品質「特採放行 (MRB)」；工程報告敷衍塞責「人為疏忽」當根因。",
+    "petPeevesEn": "Pressuring QA for concession release to meet revenue goals; lazy 8Ds citing human error as root cause.",
+    "checklistZh": [
+      "完整的 5-Why 根本原因分析（指向流程與防呆設計，而非個人）",
+      "不良品之精確數量、Lot ID 與邊界隔離驗證 (Containment Action)",
+      "預防再發之 Poka-Yoke 防呆與 Control Plan 修改修訂頁"
+    ],
+    "checklistEn": [
+      "Rigorous 5-Why pointing to systemic root causes, not human error",
+      "Exact defect count, Lot containment verification across supply chain",
+      "Poka-Yoke poka-yoke implementation and revised Control Plan page"
+    ],
+    "openingZh": "「CQE 夥伴您好，針對大客戶反映之打線接合不良，我們已完成 4M1E 魚骨圖與切片分析，已將同批次 12 批在途晶圓完成封鎖隔離，請求與您對齊 8D 初版說明…」",
+    "openingEn": "CQE team, regarding the Tier-1 customer bond-pad issue, we finalized the 4M1E Ishikawa and containment on 12 related lots. We request aligning on the preliminary 8D draft...",
+    "escalationPathZh": "CQE 工程師 → 品質經理 → 品質處長 → 執行副總 (CQO)。"
+  },
+  {
+    "id": "semi_proc",
+    "icon": "📦",
+    "nameZh": "供應鏈、採購與外包處",
+    "nameEn": "Supply Chain, Sourcing & OSAT",
+    "code": "Sourcing / OSAT",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對供應鏈副總回報；統籌矽晶圓、機台零件與委外封測廠 (OSAT)",
+    "reportingEn": "Reports to VP Supply Chain; manages silicon wafers, spares & OSATs",
+    "mandateZh": "負責矽晶圓 Raw Wafer 採購、關鍵機台零組件合約、委外封測 (OSAT Subcon) 產能調度與供應商品質管理 (SQE)。",
+    "mandateEn": "Lead raw silicon wafer sourcing, tool spare parts contracts, OSAT packaging capacity allocation, and Supplier Quality (SQE).",
+    "deliverablesZh": "採購合約、供應商評鑑報告、交期追蹤清單、雙供應商 (Dual Sourcing) 認證計畫。",
+    "deliverablesEn": "Procurement contracts, Supplier Scorecards, Lead Time Trackers, Dual Sourcing Roadmaps.",
+    "kpisZh": "採購總成本降低 (PPV %)、物料交期準時率 (On-Time Delivery)、供應商品質合格率。",
+    "kpisEn": "Purchase Price Variance (PPV %), Material On-Time Delivery, Supplier Quality Yield.",
+    "petPeevesZh": "工程師明天就要耗材今天才開單；指定獨家規格導致採購完全沒有議價空間。",
+    "petPeevesEn": "Engineers submitting last-minute PRs for immediate delivery; specifying single-source proprietary parts with zero leverage.",
+    "checklistZh": [
+      "提供 3 至 6 個月的前瞻需求預測 (Forecast)",
+      "列出至少兩家以上可替換規格之第二供應商清單",
+      "附上工程驗證合格證明，協助採購降低供應商轉換風險"
+    ],
+    "checklistEn": [
+      "3-6 months forward consumption forecast",
+      "List of qualified or candidate 2nd-source vendor specifications",
+      "Engineering Qual sign-off supporting vendor transition"
+    ],
+    "openingZh": "「採購處長好，我們預計在 Q4 導入新型研磨液以降低 15% 耗用成本，已完成兩家第二供應商初部測試，想提早借重採購的談判優勢啟動報價對比…」",
+    "openingEn": "Sourcing Director, we plan to adopt a new CMP slurry in Q4 to reduce consumption cost by 15%. Initial tests on two 2nd-source vendors passed; requesting early price negotiations...",
+    "escalationPathZh": "採購主辦 → 採購經理 → 供應鏈處長 → 供應鏈副總。"
+  },
+  {
+    "id": "semi_sales",
+    "icon": "💼",
+    "nameZh": "業務與現場應用工程處 (Sales/FAE)",
+    "nameEn": "Sales, Account & FAE",
+    "code": "Sales / FAE",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對業務資深副總回報；直接面對 Apple, NVIDIA, AMD 等關鍵大客戶",
+    "reportingEn": "Reports to Senior VP of Sales; directly interfaces with Tier-1 accounts",
+    "mandateZh": "負責客戶晶圓配額 (Wafer Allocation)、訂單預測 (Bookings)、商業條款談判、現場技術支援 (FAE) 與設計導入 (Design Win)。",
+    "mandateEn": "Manage wafer allocation, sales bookings, commercial contract negotiations, Field Application Support (FAE), and Design-Wins.",
+    "deliverablesZh": "銷售預測合約、客戶設計指引 (Design Manual)、報價單 (Quotation)、客戶需求規格書。",
+    "deliverablesEn": "Sales forecast agreements, Design Manuals, Quotations, Customer Spec Sheets.",
+    "kpisZh": "晶圓營收達成率 (Revenue)、設計導入專案數 (Design-Win Count)、客戶滿意度指數 (CSAT)。",
+    "kpisEn": "Wafer Revenue, Design-Win Count, Customer Satisfaction (CSAT).",
+    "petPeevesZh": "廠內工程回覆慢吞吞導致客戶不滿；直接回絕客戶要求說「廠內做不到」而丟掉訂單。",
+    "petPeevesEn": "Slow engineering response causing client escalation; engineers flatly telling customers impossible and losing deals.",
+    "checklistZh": [
+      "提供客戶能理解的白話技術說明與圖表說帖",
+      "若無法滿足客戶極端規格，必須主動附上 Option A/B 折衷解法",
+      "給予清晰的量產時程承諾 (Committed Delivery Date)"
+    ],
+    "checklistEn": [
+      "Plain-language technical brief suitable for customer presentation",
+      "If extreme specs cannot be met, provide Option A/B compromises",
+      "Clear, reliable milestone commitment dates"
+    ],
+    "openingZh": "「業務主管您好，針對客戶提出的客製金屬層厚度，若依原案生產將產生良率風險，我們工程團隊已設計好更穩定的替代方案 B，附上客戶說帖簡報供您參考…」",
+    "openingEn": "Sales lead, regarding the customer custom metal thickness request, the original spec risks yield. We developed a robust Alternative B with customer-facing slides ready...",
+    "escalationPathZh": "Account PM → 業務經理 → 業務處長 → 業務副總。"
+  },
+  {
+    "id": "semi_cim",
+    "icon": "💻",
+    "nameZh": "資訊科技與 CIM 自動化處",
+    "nameEn": "IT, CIM, MES & Smart Fab",
+    "code": "IT / CIM / AI",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對資訊長 (CIO) 回報；全天候 24/7 支援自動化生產線 (AMHS/MES)",
+    "reportingEn": "Reports to CIO; 24/7 support for AMHS, MES and automated line",
+    "mandateZh": "負責製造執行系統 (MES)、先進製程控制 (APC)、統計製程控制 (SPC)、空中無人搬運 (OHT/AMHS) 與晶圓大數據/AI 演算法。",
+    "mandateEn": "Maintain MES, Advanced Process Control (APC), realtime SPC, Automated Material Handling (AMHS/OHT), and Fab Big Data/AI.",
+    "deliverablesZh": "MES 系統高可用性架構、APC 配方自動微調模型、全廠自動派工演算法、資安防火牆協議。",
+    "deliverablesEn": "MES High Availability, APC run-to-run models, automated dispatching algorithms, cybersecurity protocols.",
+    "kpisZh": "MES 產線可用率 (99.99% SLA)、搬運系統阻塞率、資安事件 0 件。",
+    "kpisEn": "MES Availability (99.99% SLA), AMHS bottleneck time, 0 Security Breaches.",
+    "petPeevesZh": "工程師隨便安裝未授權外掛軟體；通靈式開單回報「系統好像卡卡的」但沒有 Log 截圖。",
+    "petPeevesEn": "Unauthorized third-party software on fab tools; submitting tickets saying system seems slow with zero logs.",
+    "checklistZh": [
+      "附上問題發生時間戳 (Timestamp)、機台代碼與錯誤代碼截圖",
+      "說明受影響的批號數量與產線搬運瓶頸衝擊程度",
+      "確認需求符合公司內部資安與智財網路隔離架構"
+    ],
+    "checklistEn": [
+      "Exact timestamp, tool ID, and screenshot of error logs",
+      "Number of affected lots and AMHS line-block severity",
+      "Confirmation of alignment with IT security and network isolation rules"
+    ],
+    "openingZh": "「CIM 團隊好，今晨 04:15 CMP 模組之 APC 伺服器在接收膜厚反饋時發生 Timeout（Ticket #5821），已附上封包日誌，請求協助重啟連線以防產線停擺…」",
+    "openingEn": "CIM team, at 04:15 AM the CMP APC server timed out on thickness feedback (Ticket #5821). Packet logs attached; request immediate reconnection to prevent line-stop...",
+    "escalationPathZh": "IT/CIM 工程師 → CIM 課長 → 資訊處長 → 資訊長 (CIO)。"
+  },
+  {
+    "id": "semi_fin",
+    "icon": "💰",
+    "nameZh": "財務與成本會計處",
+    "nameEn": "Finance & Cost Accounting",
+    "code": "Finance / Cost",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對財務長 (CFO) 回報；核算每片晶圓真實成本 (Wafer Costing)",
+    "reportingEn": "Reports to CFO; audits wafer unit costing and CapEx ROI",
+    "mandateZh": "負責全廠資本支出 (CapEx) 審查、晶圓單片成本核算 (Die/Wafer Costing)、設備折舊提列、精實改善效益財務簽核 (Financial Validation)。",
+    "mandateEn": "Audit Fab CapEx investments, calculate Wafer Costing, equipment depreciation schedules, and validate Six Sigma project financial savings.",
+    "deliverablesZh": "專案投資回本模型 (Payback/ROI)、產品邊際貢獻報表、年度預算差異分析書。",
+    "deliverablesEn": "CapEx Payback models, Product Margin reports, Annual Budget Variance analyses.",
+    "kpisZh": "預算執行達成率、專案硬成本節省驗證率 (Hard Dollar Savings)、自由現金流 (FCF)。",
+    "kpisEn": "Budget Adherence, Validated Hard Dollar Savings, Free Cash Flow (FCF).",
+    "petPeevesZh": "工程師聲稱改善案「每年節省一億」但全都是虛擬空頭工時；臨時提出大筆額外支出預算。",
+    "petPeevesEn": "Projects claiming millions in savings based purely on soft phantom labor hours; unbudgeted emergency spending requests.",
+    "checklistZh": [
+      "清晰區分「硬性省錢 (Hard Savings, 如化學品減量)」與「軟性省錢 (Soft Savings)」",
+      "提供詳細的會計代碼、採購單價與月耗用量算式",
+      "附上專案投資回收期 (Payback Period < 1.5 年) 試算模型"
+    ],
+    "checklistEn": [
+      "Strict separation of Hard Savings (raw material reduction) vs Soft Savings",
+      "Detailed accounting cost codes, unit purchase price, and consumption formulas",
+      "Payback period model demonstrating ROI < 1.5 years"
+    ],
+    "openingZh": "「財務夥伴您好，我們完成了光阻微縮改善專案，依據每月用量可為公司每年省下實質採購成本 $340,000 美元，已準備好算式模型，想請財務協助簽核認列…」",
+    "openingEn": "Finance team, we completed the photoresist reduction project, yielding verified hard material savings of $340,000/yr. Cost models attached; requesting financial sign-off...",
+    "escalationPathZh": "成本會計師 → 財務經理 → 財務處長 → 財務長 (CFO)。"
+  }
+];
+
+const ORG_DATA_MATRIX = [
+  {
+    "id": "mat_csuite",
+    "icon": "🏛️",
+    "nameZh": "最高執行委員會 (C-Suite / ELT)",
+    "nameEn": "Executive Leadership Team (ELT)",
+    "code": "ELT / C-Suite",
+    "level": "L1",
+    "levelZh": "L1 決策高層",
+    "levelEn": "L1 Executive",
+    "reporting": "對董事會及股東大會負責；領導全集團事業群與職能矩陣",
+    "reportingEn": "Accountable to Board; leads all Business Units & Functions",
+    "mandateZh": "掌舵集團願景、全球重大併購 (M&A)、跨事業群戰略資源分配、危機決策與企業治理。",
+    "mandateEn": "Set corporate vision, global M&A, cross-BU strategic capital allocation, enterprise risk, and governance.",
+    "deliverablesZh": "年度戰略方針、全球財報、重大重組計畫。",
+    "deliverablesEn": "Annual Strategic Plan, Global 10-K, Enterprise Transformation Plans.",
+    "kpisZh": "總股東報酬率 (TSR)、集團營收成長率、EBITDA 毛利率。",
+    "kpisEn": "Total Shareholder Return (TSR), Group Revenue Growth, EBITDA Margin.",
+    "petPeevesZh": "事業部與職能總部內耗打架要求高層當保姆調解；匯報充斥細枝末節缺乏高階戰略視野。",
+    "petPeevesEn": "Internecine fighting between BUs and shared functions; tactical operational weeds lacking executive synthesis.",
+    "checklistZh": [
+      "準備高階電梯演說（3 分鐘 CARL 架構說明背景、行動、結果與學習）",
+      "展示對集團股東價值與關鍵客戶合約的根本影響",
+      "提出經兩大事業部審議過之雙贏仲裁提案"
+    ],
+    "checklistEn": [
+      "3-minute executive brief using CARL framework",
+      "Clear demonstration of TSR or key enterprise revenue impacts",
+      "Vetted win-win arbitration proposal signed off by participating heads"
+    ],
+    "openingZh": "「執行委員會好，針對 Cloud 與 Mobility 兩大事業群在共用架構的爭端，我們已梳理出 2 頁裁決備忘錄，列出 Option A (統合) 與 Option B (分流) 之五年 TCO 比較…」",
+    "openingEn": "ELT, regarding the shared architecture deadlock between Cloud and Mobility BUs, we compiled a 2-page memo detailing 5-year TCO for Option A (Unified) vs Option B (Bifurcated)...",
+    "escalationPathZh": "集團最高裁決層級。"
+  },
+  {
+    "id": "mat_bu",
+    "icon": "📊",
+    "nameZh": "事業群與產品線 (Business Units)",
+    "nameEn": "Business Units & Product Lines",
+    "code": "BU 1 / BU 2 / P&L",
+    "level": "L2",
+    "levelZh": "L2 事業部級",
+    "levelEn": "L2 Business Unit",
+    "reporting": "實線對 CEO/COO 回報；掌握該產品線損益 (P&L) 全責",
+    "reportingEn": "Reports to CEO/COO; holds complete P&L accountability",
+    "mandateZh": "負責特定產品線之商業成敗、產品發布路徑圖 (Roadmap)、客戶價值主張與營收獲利。",
+    "mandateEn": "Own commercial success of product portfolio, product roadmap, value proposition, and bottom-line P&L.",
+    "deliverablesZh": "產品規格書 (PRD)、事業部年度預算、產品生命週期計畫。",
+    "deliverablesEn": "Product Requirement Documents (PRD), BU Annual Budgets, Product Life Cycle plans.",
+    "kpisZh": "事業部營收 (Revenue)、淨利潤 (Net Margin)、市場佔有率 (Market Share)。",
+    "kpisEn": "BU Revenue, Net Margin, Market Share.",
+    "petPeevesZh": "共享平台以「全集團標準規範」為由延誤該事業部的特定客戶功能發布；成本分攤不透明。",
+    "petPeevesEn": "Shared functions blocking customer features under guise of enterprise standards; opaque overhead allocations.",
+    "checklistZh": [
+      "量化客戶商業價值與放棄此需求之違約金/客戶流失風險",
+      "提供該產品線在未來 4 季度的銷售預測回報模型",
+      "評估若由 BU 自行承擔維護成本之可行性"
+    ],
+    "checklistEn": [
+      "Quantified customer revenue impact and churn risk",
+      "Forward 4-quarter sales forecast and ROI curve",
+      "Feasibility of BU absorbing dedicated maintenance costs"
+    ],
+    "openingZh": "「BU 總經理好，客戶要求在 6 週內交付客製化 API，共享架構組因排期受限無法支援，我們已評估由我們 BU 臨時借調工程師加速，希望爭取您的核准與資源協調…」",
+    "openingEn": "BU GM, the client requests custom APIs within 6 weeks. Central platform is backlog-constrained. We evaluated temporary borrowing of BU engineers and seek your sponsorship...",
+    "escalationPathZh": "產品經理 → BU 處長 → BU 總經理 (GM) → COO。"
+  },
+  {
+    "id": "mat_geo",
+    "icon": "🌍",
+    "nameZh": "區域市場總部 (Regional Geographies)",
+    "nameEn": "Regional Geographies (APAC/Americas/EMEA)",
+    "code": "Geo (APAC / EMEA)",
+    "level": "L2",
+    "levelZh": "L2 事業部級",
+    "levelEn": "L2 Business Unit",
+    "reporting": "實線對全球銷售總裁回報；虛線與各 BU 矩陣對齊",
+    "reportingEn": "Reports to Global Sales Chief; matrixed with Product BUs",
+    "mandateZh": "深耕在地市場通路、各國政府法規遵循、在地客戶關係維繫與跨產品線在地落地銷售。",
+    "mandateEn": "Drive regional distribution, local regulatory compliance, key account relationships, and multi-BU field go-to-market.",
+    "deliverablesZh": "區域季營收承諾、在地通路夥伴合約、在地法規合規證明。",
+    "deliverablesEn": "Regional revenue commitments, partner channel contracts, local compliance certs.",
+    "kpisZh": "區域營收目標達成率、客戶滿意度 (NPS)、區域滲透率。",
+    "kpisEn": "Regional Revenue Quota, NPS, Regional Market Penetration.",
+    "petPeevesZh": "總部閉門造車制定「全球通用定價」，完全不考慮在地文化與競爭對手的價格屠殺。",
+    "petPeevesEn": "HQ imposing one-size-fits-all global pricing ignoring local economic realities and aggressive domestic competitors.",
+    "checklistZh": [
+      "在地市場競品價格與功能對照矩陣",
+      "在地主管機關（如歐盟 GDPR / 日本 METI）法規硬性要求清單",
+      "區域客戶明確的意向書 (LOI / MOU)"
+    ],
+    "checklistEn": [
+      "Local competitor pricing and feature battlecard",
+      "Mandatory local regulatory compliance mandates (e.g., GDPR)",
+      "Signed Letters of Intent (LOI) or firm customer commitments"
+    ],
+    "openingZh": "「區域副總好，針對日本市場的在地化要求，總部標準軟體不支援特定報表格式，我們已整理競爭對手現況與 3 家大客戶意向書，請求總部同意局部客製化授權…」",
+    "openingEn": "Regional VP, Japanese accounts require specific local reporting unhandled by the global build. With 3 signed LOIs and competitor benchmarks, we request approval for regional customization...",
+    "escalationPathZh": "區域客戶總監 → 區域副總 → 全球銷售總裁。"
+  },
+  {
+    "id": "mat_rnd",
+    "icon": "⚙️",
+    "nameZh": "共享研發與技術平台處",
+    "nameEn": "Shared R&D & Core Platform",
+    "code": "Platform Engineering",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對技術長 (CTO) 回報；向所有 BU 提供共用底層元件",
+    "reportingEn": "Reports to CTO; delivers shared core infra to all product BUs",
+    "mandateZh": "打造高可用性共用底層微服務、雲端基礎架構、身分認證 (IAM)、CI/CD 管線與技術債治理。",
+    "mandateEn": "Build unified backend microservices, core cloud infrastructure, identity (IAM), CI/CD pipelines, and technical debt governance.",
+    "deliverablesZh": "共用平台 API、架構架構標準規範、DevOps 基礎設施、高並發高可用 SLA。",
+    "deliverablesEn": "Shared APIs, Enterprise Architecture Standards, DevOps Toolchains, High-Availability SLAs.",
+    "kpisZh": "平台可用性 (99.99% Uptime)、API 延遲時間 (<50ms)、技術債修復率。",
+    "kpisEn": "Platform Uptime (99.99%), API Latency, Tech Debt Remediation Velocity.",
+    "petPeevesZh": "各 BU 為了搶快各自發明輪子造成龐大重複資產；要求平台提供不可擴展的一次性臨時代碼。",
+    "petPeevesEn": "BUs building redundant shadow IT to bypass backlog; demanding unmaintainable one-off spaghetti patches.",
+    "checklistZh": [
+      "通用化架構設計（此需求是否能抽象為 2 個以上 BU 共用的通用 API）",
+      "預估的 API 呼叫量 (QPS) 與負載峰值曲線",
+      "長遠維護承諾與代碼審查標準 (Code Review SLA)"
+    ],
+    "checklistEn": [
+      "Generic architecture: Can this feature be abstracted for 2+ BUs?",
+      "Projected QPS and peak traffic load profiles",
+      "Long-term maintenance commitment and unit test coverage"
+    ],
+    "openingZh": "「平台架構組好，我們發現 BU 1 與 BU 2 都在開發類似的支付網關，我們已起草一份通用模組規格書，希望能請平台組納入下個季度 Sprint 統一排程…」",
+    "openingEn": "Platform Architecture, both BU 1 and BU 2 are duplicating payment connectors. We drafted a common service specification to request consolidation into next quarters core roadmap...",
+    "escalationPathZh": "架構師 → 平台工程總監 → CTO。"
+  },
+  {
+    "id": "mat_ops",
+    "icon": "🚚",
+    "nameZh": "全球營運與戰略採購處",
+    "nameEn": "Global Operations & Sourcing",
+    "code": "Global Ops",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對營運長 (COO) 回報；調度全球供應鏈與製造網絡",
+    "reportingEn": "Reports to COO; manages global supply chain and manufacturing footprint",
+    "mandateZh": "負責全球工廠產能規劃、規模經濟戰略採購、跨國物流、存貨周轉 (Inventory Turns) 與營運卓越推動。",
+    "mandateEn": "Manage global factory footprint, economies of scale procurement, cross-border logistics, inventory turnover, and operational excellence.",
+    "deliverablesZh": "全球產能矩陣表、大宗採購框架合約、供應鏈彈性風險評估報告。",
+    "deliverablesEn": "Global Capacity Matrix, Master Service Agreements, Supply Chain Risk Audits.",
+    "kpisZh": "供應鏈總成本 (TCO %)、庫存周轉天數 (DIO)、全球準時履約率。",
+    "kpisEn": "Total Cost of Ownership (TCO), Days Inventory Outstanding (DIO), On-Time In-Full (OTIF).",
+    "petPeevesZh": "BU 提出誇張灌水的需求預測造成幾千萬美元的呆料庫存；未經審核私自外包。",
+    "petPeevesEn": "BUs providing inflated hockey-stick forecasts resulting in massive inventory write-offs; rogue unauthorized subcontracting.",
+    "checklistZh": [
+      "經過銷售與營運規劃 (S&OP) 共同簽核的保守與樂觀需求區間",
+      "呆滯料 (E&O) 庫存跌價責任分攤協議",
+      "物流海空運碳足跡與關稅成本分析"
+    ],
+    "checklistEn": [
+      "S&OP co-signed conservative vs optimistic demand envelope",
+      "Liability agreement for Excess & Obsolete (E&O) inventory write-downs",
+      "Freight, tariff, and customs compliance impact analysis"
+    ],
+    "openingZh": "「全球營運處長好，因應美洲市場急單，若走標準海運將延誤交付，我們已計算空運溢價與客戶加價合約，希望能向營運處申請特案排程…」",
+    "openingEn": "Global Ops Director, to satisfy urgent Americas orders, ocean freight causes SLA breach. We modeled expedited air surcharge offsets against customer penalty clauses to request emergency routing...",
+    "escalationPathZh": "營運經理 → 全球營運總監 → COO。"
+  },
+  {
+    "id": "mat_qa",
+    "icon": "✅",
+    "nameZh": "全球品質與法規遵循處",
+    "nameEn": "Global Quality & Regulatory (QA/RA)",
+    "code": "QA / Regulatory",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對獨立品質副總裁回報；擁有全球產品上市否決權",
+    "reportingEn": "Reports to VP Quality with independent release veto power",
+    "mandateZh": "負責跨國合規標準 (FDA, CE, ISO, HIPAA)、品質管理系統 (QMS)、缺陷通報與全球召回危機管理。",
+    "mandateEn": "Enforce regulatory compliance (FDA/CE/ISO/HIPAA), enterprise QMS, defect containment, and global recall mitigation.",
+    "deliverablesZh": "法規放行證明書、品質稽核總結報告、重大缺陷 8D 糾正預防對策 (CAPA)。",
+    "deliverablesEn": "Regulatory Dossiers, Audit Reports, Corrective and Preventive Action (CAPA) plans.",
+    "kpisZh": "重大法規不符合項 0 件、CAPA 閉環率 (>95%)、外部監管稽核通過率。",
+    "kpisEn": "0 Major Regulatory Non-conformances, CAPA On-Time Closure (>95%), Audit Pass Rate.",
+    "petPeevesZh": "業務以「客戶很急」為由要求繞過法規審批偷偷上架；將嚴重設計缺陷包裝為正常現象。",
+    "petPeevesEn": "Sales pressuring to bypass regulatory certification to hit quarterly deadlines; disguising safety flaws as design quirks.",
+    "checklistZh": [
+      "第三方實驗室完整測試驗證證明與認證報告",
+      "完整的風險評估矩陣 (Risk Management File / FMEA)",
+      "若發生非預期偏差之全球隔離與召回應對備案"
+    ],
+    "checklistEn": [
+      "Certified independent lab test verification dossier",
+      "Comprehensive Risk Management File & FMEA review",
+      "Global containment and recall procedure contingency plan"
+    ],
+    "openingZh": "「全球法規處長好，我們已備齊歐盟 CE 認證的所有測試報告與 CAPA 改善證據，想請品質團隊啟動上市前最終合規審查簽核…」",
+    "openingEn": "Global Regulatory Director, all CE test dossiers and verified CAPA closures are finalized. We request initiating final regulatory sign-off for EU launch...",
+    "escalationPathZh": "合規專員 → 法規經理 → 全球品質總監 → 執行副總 (CQO)。"
+  },
+  {
+    "id": "mat_sales",
+    "icon": "🤝",
+    "nameZh": "全球大客戶業務處 (Enterprise Sales)",
+    "nameEn": "Global Enterprise Sales",
+    "code": "Enterprise Sales",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對全球商務長 (CCO) 回報；直面 Fortune 500 級企業採購長",
+    "reportingEn": "Reports to Chief Commercial Officer; interfaces with Fortune 500 buyers",
+    "mandateZh": "負責大企業年度百萬級合約簽約 (ARR)、多年度跨國框架協議、高階客戶關係拓展與跨產品線聯合銷售。",
+    "mandateEn": "Drive multi-million enterprise contract signings (ARR), multi-year MSAs, C-level client relationship development, and cross-BU solution bundling.",
+    "deliverablesZh": "企業主合約 (MSA)、年度銷售管線報告 (Sales Pipeline)、競標提案書 (RFP Response)。",
+    "deliverablesEn": "Master Service Agreements (MSA), Sales Pipeline Reports, RFP Bids.",
+    "kpisZh": "年度經常性營收 (ARR)、合約總價值 (TCV)、贏單率 (Win Rate > 35%)。",
+    "kpisEn": "Annual Recurring Revenue (ARR), Total Contract Value (TCV), Win Rate (> 35%).",
+    "petPeevesZh": "後端產品團隊技術傲慢，不了解大客戶採購流程與合約談判的敏感時間點；答應客戶的 Feature 屢屢跳票。",
+    "petPeevesEn": "Engineering arrogance regarding commercial dynamics; missing committed product delivery dates promised in MSAs.",
+    "checklistZh": [
+      "標記客戶採購委員會 (Procurement Board) 核心決策者痛點",
+      "明確的合約簽約金額與預計付款里程碑",
+      "提供業務直接可用之客戶端 Executive Summary"
+    ],
+    "checklistEn": [
+      "Customer procurement decision-maker pain points & timeline",
+      "Firm contract value and milestone payment schedule",
+      "Customer-ready executive one-pager tailored for client C-suite"
+    ],
+    "openingZh": "「業務主管好，針對該五百強客戶提出的資安合規特殊要求，我們工程團隊已在不修改核心的情況下完成白皮書與合規對照表，能協助您在本週五前完成投標…」",
+    "openingEn": "Sales Lead, regarding the Fortune 500 accounts security requirements, our engineering squad prepared a tailored compliance matrix enabling on-time RFP submission by Friday...",
+    "escalationPathZh": "資深業務經理 → 業務總監 → 商業長 (CCO)。"
+  },
+  {
+    "id": "mat_mkt",
+    "icon": "📢",
+    "nameZh": "全球行銷與品牌傳播處 (Marketing)",
+    "nameEn": "Global Marketing & Brand PR",
+    "code": "Marketing / PR",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對行銷長 (CMO) 回報；守護全球品牌形象與發布聲量",
+    "reportingEn": "Reports to Chief Marketing Officer; guards brand equity & PR",
+    "mandateZh": "負責全球品牌形象定調、產品發表會 (GTM Launch)、分析師評鑑 (Gartner/IDC)、社群口碑與危機公關。",
+    "mandateEn": "Lead corporate brand positioning, Go-To-Market launches, industry analyst relations (Gartner/IDC), and crisis communications.",
+    "deliverablesZh": "產品發表會活動、GTM 宣傳素材包、新聞發布稿、品牌標準書。",
+    "deliverablesEn": "Keynote launch events, GTM marketing collateral, PR press releases, Brand Guidelines.",
+    "kpisZh": "行銷合格名單 (MQL)、品牌心智佔有率 (Share of Voice)、媒體正面聲量率。",
+    "kpisEn": "Marketing Qualified Leads (MQL), Share of Voice, Positive PR Sentiment.",
+    "petPeevesZh": "工程或業務未經公關審批私自在社群媒體放話；發表日前 3 天突然通知產品重大功能被砍掉。",
+    "petPeevesEn": "Engineers speaking to media without PR approval; cancelling headline features 3 days prior to an announced keynote.",
+    "checklistZh": [
+      "產品亮點與解決痛點之「白話故事線 (Narrative)」",
+      "客戶成功見證案例 (Customer Case Study) 與授權同意書",
+      "高畫質產品展示截圖與 60 秒展示錄影"
+    ],
+    "checklistEn": [
+      "User-centric problem/solution narrative (plain language)",
+      "Customer testimonial case study with signed logo release",
+      "High-res UI visuals and 60-second walkthrough demo clip"
+    ],
+    "openingZh": "「行銷總監好，我們新功能已完成灰度驗證，為行銷團隊備妥了 1 份客戶效益數據圖與 3 分鐘展示影片，想請教如何配合下月大會的新聞稿排程…」",
+    "openingEn": "Marketing Director, our new feature completed beta with strong telemetry. We prepared verified ROI metrics and a 3-min video to coordinate with next months keynote PR...",
+    "escalationPathZh": "行銷經理 → 行銷總監 → 行銷長 (CMO)。"
+  },
+  {
+    "id": "mat_it",
+    "icon": "🛡️",
+    "nameZh": "全球資安與企業科技處 (IT/Security)",
+    "nameEn": "Cybersecurity & Global IT",
+    "code": "IT / CISO",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對資安長 (CISO) 及 CIO 回報；守護跨國資料主權與網路邊界",
+    "reportingEn": "Reports to CISO / CIO; enforces data sovereignty & zero-trust",
+    "mandateZh": "落實零信任 (Zero Trust) 資安架構、跨國雲端平台治理 (AWS/Azure)、資料防洩 (DLP)、單一登入 (SSO) 與威脅滲透防禦。",
+    "mandateEn": "Enforce Zero Trust cybersecurity, enterprise multi-cloud governance (AWS/Azure), DLP, SSO, and threat response.",
+    "deliverablesZh": "資安合規認證 (SOC 2 / ISO 27001)、滲透測試報告、企業災難復原演練 (DRP)。",
+    "deliverablesEn": "SOC 2 Type II / ISO 27001 certs, penetration test reports, Disaster Recovery Runbooks.",
+    "kpisZh": "重大資安事件 0 件、勒索威脅攔阻率 (100%)、全球系統弱點修補時限 (SLA)。",
+    "kpisEn": "0 Data Breaches, 100% Ransomware Block Rate, Patching SLA Compliance.",
+    "petPeevesZh": "員工為了方便擅自把公司商業機密與代碼丟到未授權的外部生成式 AI；隨便開防火牆連接埠。",
+    "petPeevesEn": "Employees pasting proprietary source code into unapproved public AI tools; opening unauthorized firewall ingress ports.",
+    "checklistZh": [
+      "填寫資安架構審查表 (Security Architecture Review)",
+      "第三方軟體供應鏈安全評估 (SBOM 及 CVE 漏洞掃描)",
+      "提供資料儲存地緣性與資料加密方案 (Data Residency & KMS)"
+    ],
+    "checklistEn": [
+      "Completed Security Architecture Review (SAR) form",
+      "Software Bill of Materials (SBOM) and clean CVE vulnerability scan",
+      "Data residency geography and encryption key management plan"
+    ],
+    "openingZh": "「資安團隊好，我們專案需整合外部金流 API，已完成 SOC 2 供應商資安稽核報告與 CVE 掃描（0 Critical），想申請安排資安架構評審 (SAR)…」",
+    "openingEn": "Security team, our project requires a payment gateway API. We completed vendor SOC 2 audit and CVE scans (0 critical). Requesting a formal SAR review slot...",
+    "escalationPathZh": "資安工程師 → 資安經理 → 資安長 (CISO)。"
+  },
+  {
+    "id": "mat_fin",
+    "icon": "💵",
+    "nameZh": "總部財務規劃與資金處 (FP&A/Treasury)",
+    "nameEn": "Corporate FP&A & Treasury",
+    "code": "FP&A / Treasury",
+    "level": "L2",
+    "levelZh": "L2 事業部級",
+    "levelEn": "L2 Business Unit",
+    "reporting": "實線對集團財務長 (CFO) 回報；掌管全集團預算與資金運作",
+    "reportingEn": "Reports to Group CFO; governs enterprise budget allocations",
+    "mandateZh": "負責全集團財務規劃與分析 (FP&A)、資本支出回報評估、跨國外匯避險、投資人關係 (IR) 與併購財務模型。",
+    "mandateEn": "Lead corporate FP&A, capital allocation modeling, multi-currency hedging, Investor Relations (IR), and M&A valuation.",
+    "deliverablesZh": "年度財務預算書、跨國稅務優化架構、投資回報率 (DCF/NPV) 分析。",
+    "deliverablesEn": "Annual Operating Plan (AOP), Tax Optimization Structure, DCF / NPV Valuation Models.",
+    "kpisZh": "預算預測準確度 (+/- 3%)、營運現金流 (Operating Cash Flow)、WACC 加權平均資本成本。",
+    "kpisEn": "Forecast Accuracy (+/- 3%), Operating Cash Flow, WACC Optimization.",
+    "petPeevesZh": "各單位到了第四季突然瘋狂突擊花光預算；專案預估效益誇大卻拿不出任何現金流折現模型。",
+    "petPeevesEn": "End-of-year rush spending spree to burn budget; bloated ROI claims unsupported by discounted cash flow logic.",
+    "checklistZh": [
+      "建立 DCF 現金流折現模型，計算淨現值 (NPV) 與內部報酬率 (IRR)",
+      "詳述跨國公司內部移轉訂價 (Transfer Pricing) 與稅務衝擊",
+      "提供專案退場停損點 (Stop-Loss Trigger)"
+    ],
+    "checklistEn": [
+      "DCF cash flow model detailing Net Present Value (NPV) and IRR",
+      "Transfer pricing and multi-jurisdiction corporate tax implications",
+      "Explicit milestone-based stop-loss exit criteria"
+    ],
+    "openingZh": "「財務總監好，針對次世代雲端移轉專案，我們已建立 3 年 TCO 財務模型，IRR 達 28%，預計每年可降低 $1.2M 授權費，已整理算式想請財務審核指教…」",
+    "openingEn": "Finance Director, regarding next-gen cloud migration, we built a 3-year TCO model with 28% IRR, saving $1.2M/yr in recurring licenses. Seeking financial model audit...",
+    "escalationPathZh": "財務分析師 → FP&A 總監 → 集團財務長 (CFO)。"
+  },
+  {
+    "id": "mat_hr",
+    "icon": "👥",
+    "nameZh": "人力資源業務夥伴處 (HRBP)",
+    "nameEn": "HR Business Partners & CoE",
+    "code": "HRBP / Talent",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對人資長 (CHRO) 回報；深度嵌入各事業群協助組織診斷",
+    "reportingEn": "Reports to CHRO; deeply embedded in business units",
+    "mandateZh": "負責組織架構設計 (Org Design)、關鍵人才招募、高潛力主管接班計畫、員工滿意度調查與離職率管控。",
+    "mandateEn": "Drive organizational design, executive talent acquisition, succession planning, employee engagement, and retention.",
+    "deliverablesZh": "組織編制與招聘計畫、領導力職能評鑑 (360)、員工滿意度 (eNPS) 改善案。",
+    "deliverablesEn": "Headcount & Hiring Plans, 360 Leadership Competency Reviews, eNPS Action Plans.",
+    "kpisZh": "關鍵人才流失率 (<8%)、招募達標時間 (Time-to-Hire)、組織健康度指數。",
+    "kpisEn": "Key Talent Attrition (<8%), Time-to-Hire, Organizational Health Index.",
+    "petPeevesZh": "主管平時不輔導低績效同仁，年底直接丟出 PIP 要求人資開除；私自向求職者承諾未核准的職級與股票。",
+    "petPeevesEn": "Managers ignoring poor performance all year then demanding immediate PIP firing; promising unauthorized titles/equity.",
+    "checklistZh": [
+      "明確的職務職能描述 (Job Description) 與面試評分標準",
+      "同仁平日輔導與 1-on-1 具體事實紀錄",
+      "團隊薪資結構與同業基準 (Market Benchmark) 比對表"
+    ],
+    "checklistEn": [
+      "Structured job description and competency rubric",
+      "Documented 1-on-1 coaching logs and objective factual records",
+      "Compensation leveling benchmark against industry peers"
+    ],
+    "openingZh": "「HRBP 夥伴好，為了支援 Q4 新架構轉型，我們團隊需新增 2 位高階架構師編制，已備妥職責產出目標與面試評分矩陣，希望與您討論獵頭招募策略…」",
+    "openingEn": "HRBP team, to support our Q4 transformation, we require 2 Principal Architect headcounts. Job mandates and competency rubrics ready; request syncing on talent search...",
+    "escalationPathZh": "HRBP 經理 → 人資總監 → 人資長 (CHRO)。"
+  },
+  {
+    "id": "mat_legal",
+    "icon": "⚖️",
+    "nameZh": "全球法務、合規與智財處 (Legal)",
+    "nameEn": "Legal, Compliance & IP",
+    "code": "General Counsel",
+    "level": "L3",
+    "levelZh": "L3 部/處級",
+    "levelEn": "L3 Division Head",
+    "reporting": "實線對法務長 (General Counsel) 回報；直接向董事會報告法律風險",
+    "reportingEn": "Reports to General Counsel; reports legal liabilities to Board",
+    "mandateZh": "負責商業合約審核、專利防禦組合、跨國訴訟、商業機密保護、反壟斷合規與政府監管溝通。",
+    "mandateEn": "Manage commercial contracts, patent prosecution, international litigation, trade secrets, antitrust compliance, and regulatory affairs.",
+    "deliverablesZh": "合約紅線修改意見書 (Redline)、專利核准清單、法規遵循指引。",
+    "deliverablesEn": "Contract Redlines, Patent Disclosures, Compliance Guidelines.",
+    "kpisZh": "法律重大訴訟損失 0 元、合約審查平均時效 (<5 工作天)、專利獲准率。",
+    "kpisEn": "$0 Material Legal Judgments, Contract Review Turnaround (<5 days), Patent Grant Rate.",
+    "petPeevesZh": "合約已經向客戶口頭答應了才送法務審查；要求法務「今天下班前必須無條件蓋章」。",
+    "petPeevesEn": "Committing to terms with clients before legal review; demanding approval within 2 hours without review time.",
+    "checklistZh": [
+      "提供雙方爭議條款紅線對照表 (Redline Comparison)",
+      "明確標記商業談判之「不可退讓底線」與「可妥協範圍」",
+      "至少預留 3 至 5 個完整工作天之審閱時間"
+    ],
+    "checklistEn": [
+      "Redline comparison highlighting contested liability/IP clauses",
+      "Clear definition of walk-away bottom lines vs negotiable trade-offs",
+      "3-5 business days advance review buffer"
+    ],
+    "openingZh": "「法務顧問好，客戶在合約第 14 條針對資料外洩提出無上限賠償要求，我們已標註紅線比對，並梳理出替代折衷條款，想請教法務在責任上限設定上的防禦策略…」",
+    "openingEn": "Legal Counsel, customer demands uncapped liability in Section 14. We redlined the clause with proposed industry-standard compromise caps to request your guidance...",
+    "escalationPathZh": "法務專員 → 資深法務經理 → 法務處長 → 總法律顧問 (General Counsel)。"
+  }
+];
+
+let currentOrgMode = 'semi';
+let currentOrgLevelFilter = 'ALL';
+let activeSelectedDeptId = 'semi_pie';
+
+function initOrgChart() {
+  renderOrgNodes();
+  selectOrgDept(activeSelectedDeptId);
+  generateEscalationMemo();
+}
+
+function switchOrgMode(mode) {
+  currentOrgMode = mode;
+  const btnSemi = document.getElementById('orgModeBtnSemi');
+  const btnMatrix = document.getElementById('orgModeBtnMatrix');
+  if (btnSemi) btnSemi.classList.toggle('active', mode === 'semi');
+  if (btnMatrix) btnMatrix.classList.toggle('active', mode === 'matrix');
+  
+  // Set default active dept
+  activeSelectedDeptId = mode === 'semi' ? 'semi_pie' : 'mat_bu';
+  renderOrgNodes();
+  selectOrgDept(activeSelectedDeptId);
+}
+
+function filterOrgByLevel(level, btnEl) {
+  currentOrgLevelFilter = level;
+  document.querySelectorAll('.org-filter-pill').forEach(pill => pill.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  renderOrgNodes();
+}
+
+function renderOrgNodes() {
+  const container = document.getElementById('orgNodesContainer');
+  const countLabel = document.getElementById('orgActiveDeptCount');
+  if (!container) return;
+
+  const data = currentOrgMode === 'semi' ? ORG_DATA_SEMI : ORG_DATA_MATRIX;
+  
+  let filtered = data;
+  if (currentOrgLevelFilter === 'L1') {
+    filtered = data.filter(d => d.level === 'L1');
+  } else if (currentOrgLevelFilter === 'L2_L3') {
+    filtered = data.filter(d => d.level === 'L2' || d.level === 'L3');
+  } else if (currentOrgLevelFilter === 'L4_L5') {
+    filtered = data.filter(d => d.level === 'L4' || d.level === 'L5' || d.level === 'L6');
+  }
+
+  if (countLabel) {
+    countLabel.textContent = filtered.length + ' 個部門 / ' + filtered.length + ' Depts';
+  }
+
+  container.innerHTML = filtered.map(d => {
+    const isActive = d.id === activeSelectedDeptId;
+    const lvlClass = 'lvl-' + d.level.toLowerCase();
+    return `
+      <div class="org-node-card ${isActive ? 'active' : ''}" onclick="selectOrgDept('${d.id}')">
+        <div class="org-node-header">
+          <div class="org-node-icon-title">
+            <span style="font-size:18px;">${d.icon}</span>
+            <span><span class="zh">${d.nameZh}</span><span class="en">${d.nameEn}</span></span>
+          </div>
+          <span class="org-level-badge ${lvlClass}">${d.level}</span>
+        </div>
+        <div style="font-size:11.5px; color:var(--muted); line-height:1.4;">
+          <strong>${d.code}</strong> • <span class="zh">${d.levelZh}</span><span class="en">${d.levelEn}</span>
+        </div>
+        <div style="font-size:12px; color:var(--ink); opacity:0.85; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+          <span class="zh">${d.mandateZh}</span><span class="en">${d.mandateEn}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectOrgDept(deptId) {
+  activeSelectedDeptId = deptId;
+  const data = currentOrgMode === 'semi' ? ORG_DATA_SEMI : ORG_DATA_MATRIX;
+  const dept = data.find(d => d.id === deptId) || data[0];
+
+  // Update node card highlight
+  document.querySelectorAll('.org-node-card').forEach(card => card.classList.remove('active'));
+  const activeCard = document.querySelector(`.org-node-card[onclick*="${deptId}"]`);
+  if (activeCard) activeCard.classList.add('active');
+
+  // Render Dossier Panel
+  const panel = document.getElementById('orgDossierContainer');
+  if (!panel || !dept) return;
+
+  const lvlClass = 'lvl-' + dept.level.toLowerCase();
+
+  panel.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 12px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 26px;">${dept.icon}</span>
+          <h3 style="margin: 0; font-size: 17px; color: var(--ink);">
+            <span class="zh">${dept.nameZh}</span><span class="en">${dept.nameEn}</span>
+          </h3>
+        </div>
+        <div style="font-size: 12.5px; color: var(--muted); margin-top: 4px;">
+          <strong>${dept.code}</strong> • <span class="zh">回報線：${dept.reporting}</span><span class="en">Reporting: ${dept.reportingEn}</span>
+        </div>
+      </div>
+      <span class="org-level-badge ${lvlClass}" style="font-size: 12px; padding: 4px 10px;">${dept.levelZh}</span>
+    </div>
+
+    <!-- Mandate & Deliverables -->
+    <div>
+      <div class="dossier-sec-title">🎯 <span class="zh">核心使命與主要交付產出</span><span class="en">Core Mandate & Deliverables</span></div>
+      <div style="font-size: 13px; color: var(--ink); line-height: 1.55; margin-bottom: 6px;">
+        <span class="zh">${dept.mandateZh}</span><span class="en">${dept.mandateEn}</span>
+      </div>
+      <div style="font-size: 12.2px; color: var(--muted); background: rgba(255,255,255,0.02); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line);">
+        <strong><span class="zh">主要產出物：</span><span class="en">Deliverables: </span></strong>
+        <span class="zh">${dept.deliverablesZh}</span><span class="en">${dept.deliverablesEn}</span>
+      </div>
+    </div>
+
+    <!-- Top KPIs -->
+    <div>
+      <div class="dossier-sec-title">📊 <span class="zh">他們最在乎的衡量指標 (Top KPIs)</span><span class="en">Key Metrics They Care About</span></div>
+      <div style="font-size: 13px; color: #10b981; font-weight: 700; background: rgba(16, 185, 129, 0.08); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2);">
+        <span class="zh">${dept.kpisZh}</span><span class="en">${dept.kpisEn}</span>
+      </div>
+    </div>
+
+    <!-- Pet Peeves / Rejection Triggers -->
+    <div>
+      <div class="dossier-sec-title" style="color: #ef4444;">⚠️ <span class="zh">踩雷禁忌與最容易被拒絕的情境 (Pet Peeves)</span><span class="en">Rejection Triggers & Pet Peeves</span></div>
+      <div style="font-size: 12.5px; color: var(--muted); line-height: 1.5; background: rgba(239, 68, 68, 0.06); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.2);">
+        <span class="zh">${dept.petPeevesZh}</span><span class="en">${dept.petPeevesEn}</span>
+      </div>
+    </div>
+
+    <!-- Help-Seeking Checklist -->
+    <div>
+      <div class="dossier-sec-title">🤝 <span class="zh">找他們請求幫助前的準備清單 (Checklist)</span><span class="en">Help-Seeking Checklist</span></div>
+      <ul class="dossier-checklist">
+        ${dept.checklistZh.map((item, idx) => `
+          <li>
+            <input type="checkbox" style="margin-top:2px;" id="chk_${idx}">
+            <label for="chk_${idx}"><span class="zh">${item}</span><span class="en">${dept.checklistEn[idx] || item}</span></label>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <!-- Gold Opening Script -->
+    <div>
+      <div class="dossier-sec-title">💬 <span class="zh">推薦黃金開場白範例</span><span class="en">Recommended Opening Script</span></div>
+      <div class="dossier-opening-box">
+        <span class="zh">${dept.openingZh}</span><span class="en">${dept.openingEn}</span>
+      </div>
+    </div>
+
+    <!-- Escalation Pathway -->
+    <div style="font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px;">
+      <strong>🪜 <span class="zh">內部標準升級路徑：</span><span class="en">Escalation Pathway: </span></strong>
+      <span class="zh">${dept.escalationPathZh}</span><span class="en">${dept.escalationPathZh}</span>
+    </div>
+  `;
+}
+
+function generateEscalationMemo() {
+  const project = document.getElementById('memoProjectName')?.value.trim() || 'Project Titan';
+  const sender = document.getElementById('memoSenderRole')?.value.trim() || 'Lead Engineer';
+  const recipient = document.getElementById('memoRecipient')?.value.trim() || 'Functional Directors';
+  const tier = document.getElementById('memoLevelSelect')?.value || 'Level 3';
+  const blocker = document.getElementById('memoBlocker')?.value.trim() || 'Process bottleneck';
+  const efforts = document.getElementById('memoEfforts')?.value.trim() || 'Peer sync attempted';
+  const optA = document.getElementById('memoOptionA')?.value.trim() || 'Option A';
+  const optB = document.getElementById('memoOptionB')?.value.trim() || 'Option B';
+  const ask = document.getElementById('memoAsk')?.value.trim() || 'Request for decision';
+
+  const dateStr = new Date().toISOString().slice(0, 10);
+
+  const memo = `
+================================================================================
+【專案跨部門升級通報備忘錄 / CROSS-FUNCTIONAL ESCALATION MEMO】
+================================================================================
+📅 日期 (Date): ${dateStr}
+🔖 升級階梯層次 (Escalation Tier): ${tier}
+👥 受文對象 (To): ${recipient}
+👤 發起人 (From): ${sender}
+🎯 專案名稱 (Project): ${project}
+
+--------------------------------------------------------------------------------
+1. 當前阻礙與商業衝擊 (Current Blocker & Business Impact):
+--------------------------------------------------------------------------------
+${blocker}
+
+--------------------------------------------------------------------------------
+2. 已嘗試之同級協商努力 (Prior Collaborative Efforts - No Surprise Check):
+--------------------------------------------------------------------------------
+${efforts}
+
+--------------------------------------------------------------------------------
+3. 建議解決方案評估對照 (Evaluated Solution Options):
+--------------------------------------------------------------------------------
+[Option A - 推薦方案 / Recommended]:
+${optA}
+
+[Option B - 備選折衷方案 / Alternative]:
+${optB}
+
+--------------------------------------------------------------------------------
+4. 明確請求主管裁決事項 (Clear Decision Request / Ask):
+--------------------------------------------------------------------------------
+${ask}
+
+================================================================================
+*本備忘錄遵循精實六標準差治理原則（No Surprise、帶著方案升級、數據導向）。
+*Generated by Masa Tu Lean Six Sigma Compass (Org & Escalation Playbook)*
+`.trim();
+
+  const previewEl = document.getElementById('memoOutputPreview');
+  if (previewEl) {
+    previewEl.textContent = memo;
+  }
+}
+
+function copyEscalationMemo() {
+  const previewEl = document.getElementById('memoOutputPreview');
+  if (!previewEl) return;
+  const text = previewEl.textContent;
+  const isZh = (document.body.getAttribute('lang-mode') || 'zh') === 'zh';
+
+  navigator.clipboard.writeText(text).then(() => {
+    alert(isZh ? '✅ 升級通報備忘錄已成功複製至剪貼簿！' : '✅ Escalation Memo copied to clipboard!');
+  }).catch(() => {
+    prompt(isZh ? '請複製以下備忘錄：' : 'Please copy memo below:', text);
+  });
+}
 
 
 /* ---------- Management Quotes Marquee Controller ---------- */
