@@ -683,6 +683,74 @@
   }
   [data-theme="light"] .dmaic-toggle-bar{background:rgba(15,27,45,0.02);}
 
+  
+  /* Case Switcher Bar for Define Templates */
+  .dt-case-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    padding: 6px 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+  }
+  [data-theme="light"] .dt-case-switcher {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .dt-case-label {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 4px;
+  }
+  .dt-case-btn {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    transition: all .15s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dt-case-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .dt-case-btn.active {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+  }
+  [data-theme="light"] .dt-case-btn {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #475569;
+  }
+  [data-theme="light"] .dt-case-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  [data-theme="light"] .dt-case-btn.active {
+    background: var(--amber) !important;
+    color: #ffffff !important;
+    border-color: var(--amber) !important;
+  }
+
   /* Define Templates Panels */
   .define-template-panel {
     display: none;
@@ -6422,7 +6490,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.48 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-14 16:46</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.49 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-14 18:22</span></span>
         </div>
       </div>
     </div>
@@ -6746,6 +6814,11 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
         <!-- 1. SIPOC Process Map Panel -->
         <div class="define-template-panel" id="panelSipoc">
+          <div class="dt-case-switcher">
+            <span class="dt-case-label">🏭 <span class="zh">選擇實戰案例：</span><span class="en">Case Preset:</span></span>
+            <button class="dt-case-btn active" id="caseBtnSipocFab" onclick="switchDefineCase('fab')">⚡ <span class="zh">晶圓廠 N3 先進製程 (Fab Yield)</span><span class="en">12-Inch Fab N3 Yield</span></button>
+            <button class="dt-case-btn" id="caseBtnSipocAsml" onclick="switchDefineCase('asml')">🔬 <span class="zh">ASML 艾司摩爾高階曝光機組裝廠 (EUV Factory)</span><span class="en">ASML EUV Scanner Factory</span></button>
+          </div>
           <div class="dt-header-card">
             <div class="dt-header-title">
               <h3>📋 <span class="zh">SIPOC 高階流程圖分析模板</span><span class="en">SIPOC High-Level Process Map Template</span></h3>
@@ -6755,8 +6828,8 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               </p>
             </div>
             <div class="dt-actions">
-              <span class="sc-preset-badge">⚡ <span class="zh">半導體真實晶圓廠案例</span><span class="en">12-Inch Fab N3 Node Example</span></span>
-              <button class="dt-btn primary" id="btnResetSipocSemicon"><span class="zh">🔄 載入半導體案例</span><span class="en">🔄 Load Fab Case</span></button>
+              <span class="sc-preset-badge" id="badgeSipocCase">⚡ <span class="zh">案例：晶圓廠 N3 製程 (Project Aegis)</span><span class="en">Preset: Fab N3 (Project Aegis)</span></span>
+              <button class="dt-btn primary" id="btnResetSipocSemicon"><span class="zh">🔄 重設當前案例</span><span class="en">🔄 Reset Preset</span></button>
               <button class="dt-btn" id="btnCopySipocMd"><span class="zh">📋 複製為 Markdown</span><span class="en">📋 Copy Markdown</span></button>
             </div>
           </div>
@@ -6771,6 +6844,11 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
         <!-- 2. Project Charter Panel -->
         <div class="define-template-panel" id="panelCharter">
+          <div class="dt-case-switcher">
+            <span class="dt-case-label">🏭 <span class="zh">選擇實戰案例：</span><span class="en">Case Preset:</span></span>
+            <button class="dt-case-btn active" id="caseBtnCharterFab" onclick="switchDefineCase('fab')">⚡ <span class="zh">晶圓廠 N3 先進製程 (Fab Yield)</span><span class="en">12-Inch Fab N3 Yield</span></button>
+            <button class="dt-case-btn" id="caseBtnCharterAsml" onclick="switchDefineCase('asml')">🔬 <span class="zh">ASML 艾司摩爾高階曝光機組裝廠 (EUV Factory)</span><span class="en">ASML EUV Scanner Factory</span></button>
+          </div>
           <div class="dt-header-card">
             <div class="dt-header-title">
               <h3>📜 <span class="zh">Project Charter 專案憲章模板 (六宮格精實版)</span><span class="en">Project Charter Template (Six-Box Lean Matrix)</span></h3>
@@ -6780,8 +6858,8 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               </p>
             </div>
             <div class="dt-actions">
-              <span class="sc-preset-badge">⚡ <span class="zh">專案代號：Project Aegis</span><span class="en">Codename: Project Aegis</span></span>
-              <button class="dt-btn primary" id="btnResetCharterSemicon"><span class="zh">🔄 載入半導體案例</span><span class="en">🔄 Load Fab Case</span></button>
+              <span class="sc-preset-badge" id="badgeCharterCase">⚡ <span class="zh">專案代號：Project Aegis</span><span class="en">Codename: Project Aegis</span></span>
+              <button class="dt-btn primary" id="btnResetCharterSemicon"><span class="zh">🔄 重設當前案例</span><span class="en">🔄 Reset Preset</span></button>
               <button class="dt-btn" id="btnCopyCharterMd"><span class="zh">📋 複製為 Markdown</span><span class="en">📋 Copy Markdown</span></button>
             </div>
           </div>
@@ -6794,6 +6872,11 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
         <!-- 3. CTQ / COT Tree Panel -->
         <div class="define-template-panel" id="panelCot">
+          <div class="dt-case-switcher">
+            <span class="dt-case-label">🏭 <span class="zh">選擇實戰案例：</span><span class="en">Case Preset:</span></span>
+            <button class="dt-case-btn active" id="caseBtnCotFab" onclick="switchDefineCase('fab')">⚡ <span class="zh">晶圓廠 N3 先進製程 (Fab Yield)</span><span class="en">12-Inch Fab N3 Yield</span></button>
+            <button class="dt-case-btn" id="caseBtnCotAsml" onclick="switchDefineCase('asml')">🔬 <span class="zh">ASML 艾司摩爾高階曝光機組裝廠 (EUV Factory)</span><span class="en">ASML EUV Scanner Factory</span></button>
+          </div>
           <div class="dt-header-card">
             <div class="dt-header-title">
               <h3>🎯 <span class="zh">CTQ / COT 關鍵品質與交付特性樹 (VOC 轉化矩陣)</span><span class="en">CTQ & COT Tree (Voice of Customer Translation Matrix)</span></h3>
@@ -6803,8 +6886,8 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               </p>
             </div>
             <div class="dt-actions">
-              <span class="sc-preset-badge">⚡ <span class="zh">N3 晶圓良率與交期驅動</span><span class="en">N3 Yield & Cycle Time Drivers</span></span>
-              <button class="dt-btn primary" id="btnResetCotSemicon"><span class="zh">🔄 載入半導體案例</span><span class="en">🔄 Load Fab Case</span></button>
+              <span class="sc-preset-badge" id="badgeCotCase">⚡ <span class="zh">指標：N3 晶圓良率與交期驅動</span><span class="en">Metrics: Fab N3 Yield & OTD</span></span>
+              <button class="dt-btn primary" id="btnResetCotSemicon"><span class="zh">🔄 重設當前案例</span><span class="en">🔄 Reset Preset</span></button>
               <button class="dt-btn" id="btnCopyCotMd"><span class="zh">📋 複製為 Markdown</span><span class="en">📋 Copy Markdown</span></button>
             </div>
           </div>
@@ -23461,10 +23544,326 @@ const SEMICON_COT_DATA = [
 ];
 
 // Template rendering functions
+
+/* ==========================================================================
+   ASML EUV Scanner Factory Clean Manufacturing Case (Project Apollo-NXE)
+   Veldhoven EUV Factory 0.33 NA / High-NA 0.55 NA Cleanroom Assembly
+   ========================================================================== */
+
+let activeDefineCase = 'fab'; // 'fab' | 'asml'
+
+const ASML_SIPOC_DATA = {
+  suppliers: [
+    {
+      title_zh: "蔡司光學元件模組處 (Zeiss SMT)",
+      title_en: "Carl Zeiss SMT (Oberkochen)",
+      desc_zh: "供應極致平整度之 EUV 莫林光學多層反射鏡鏡組 (Projection Optics Box, POB) 與照明系統 (Illuminator)。",
+      desc_en: "Delivers sub-atomic surface roughness EUV multilayer mirrors, Projection Optics Box (POB), and illuminators."
+    },
+    {
+      title_zh: "通快雷射子系統供應商 (TRUMPF)",
+      title_en: "TRUMPF Industrial Lasers",
+      desc_zh: "供應超高功率 CO2 脈衝雷射激發模組（雷射功率 > 30kW），每秒轟擊錫滴 50,000 次激發 13.5nm EUV 光。",
+      desc_en: "High-power CO2 pulsed laser subsystem (>30kW) pulsing 50,000 times/sec onto molten tin droplets."
+    },
+    {
+      title_zh: "真空腔體與精密運動模組",
+      title_en: "High-Vacuum & Motion OEMs",
+      desc_zh: "供應超高真空腔體 (Ultra-High Vacuum 10⁻⁹ mbar)、磁浮雙工件台 (TwinScan Dual Wafer Stage) 與光罩台。",
+      desc_en: "Ultra-High Vacuum chambers (10^-9 mbar), magnetic levitation TwinScan dual wafer & reticle stages."
+    },
+    {
+      title_zh: "錫滴產生器原廠 (Cymer/ASML SD)",
+      title_en: "EUV Tin Droplet Generator Unit",
+      desc_zh: "提供直徑 25μm 高純液態金屬錫滴高速微噴射器與錫回收再循環腔體 (Tin Catching System)。",
+      desc_en: "Molten tin droplet generator dispensing 25-micron tin droplets with recirculating catchment chamber."
+    },
+    {
+      title_zh: "軟體與即時控制架構處",
+      title_en: "ASML Software & Embedded Control",
+      desc_zh: "提供奈米級即時干涉計回饋運算韌體、自動光罩對準演算法與安全互鎖系統 (Safety Interlocks)。",
+      desc_en: "Real-time nanometer laser interferometer control firmware, servo drivers, and safety interlocking suites."
+    }
+  ],
+  inputs: [
+    {
+      title_zh: "光學投影物鏡模組 (POB)",
+      title_en: "Projection Optics Box (POB)",
+      desc_zh: "已通過 Zeiss 表面原子級干涉儀檢驗之 0.33/0.55 NA 光學物鏡組，保持於高純氮氣充填傳輸箱內。",
+      desc_en: "Zeiss-certified POB assembly transported in positive-pressure N2 sealed environmental canisters."
+    },
+    {
+      title_zh: "TwinScan 雙工件晶圓平台",
+      title_en: "TwinScan Sub-Nanometer Stage",
+      desc_zh: "具備多軸磁懸浮加速機構，加速度可達 10G，於真空環境下實現 0.1nm 閉迴路定位精度。",
+      desc_en: "Multi-axis magnetic levitation stage capable of 10G acceleration with 0.1nm interferometer resolution."
+    },
+    {
+      title_zh: "EUV 潔淨室組裝裝配工裝與圖紙",
+      title_en: "Assembly Jigs & ISO 1 Cleanroom Kits",
+      desc_zh: "無微塵特殊鈦合金裝配工具、無油真空扭力扳手、防刮光學防護罩與最新 3D 裝配 SOP 數位作業卡。",
+      desc_en: "ISO 1 certified titanium assembly tools, oil-free vacuum torque wrenches, and digital 3D work instructions."
+    },
+    {
+      title_zh: "高潔淨吹驅特氣與管路組件",
+      title_en: "High-Purity Purge Gases & H2 Supply",
+      desc_zh: "氫氣 (H2) 緩解錫沈積氣體管路、超純氬氣 (Ar)、氦氣冷卻迴路及 Class 1 超低揮發線束 (Cables)。",
+      desc_en: "H2 tin-debris mitigation gas lines, ultra-pure Ar/He cooling circuits, and ultra-low outgassing cables."
+    },
+    {
+      title_zh: "機台組裝工程師專門防護裝備",
+      title_en: "Cleanroom PPE & Protocol Kit",
+      desc_zh: "無微粒特殊全罩防塵衣、正壓呼吸過濾面罩、無硫丁腈防靜電手套及防微塵離子風槍。",
+      desc_en: "Particle-free hooded cleanroom bunny suits, powered air-purifying respirators, and ESD ionization guns."
+    }
+  ],
+  process: [
+    {
+      step: 1,
+      title_zh: "主機架與超高真空主腔體裝配",
+      title_en: "Mainframe & Vacuum Vessel Assembly",
+      desc_zh: "於 Veldhoven ISO 1 潔淨室安裝隔振基座 ➔ 裝配大型超高真空腔體 ➔ 進行氦氣測漏 (Helium Leak Test ≦ 10⁻¹⁰ mbar·l/s)。",
+      desc_en: "Assemble vibration-isolation mainframe -> Mount vacuum vessel -> Helium leak rate verification <= 10^-10 mbar.l/s."
+    },
+    {
+      step: 2,
+      title_zh: "光學物鏡鏡箱與照明鏡組精準對位",
+      title_en: "POB & Illuminator Optical Docking",
+      desc_zh: "利用精密懸吊吊具將 2.5 噸 Zeiss POB 鏡組對接主腔 ➔ 雷射干涉儀調校 6 自由度六足機器人 (Hexapod) 鏡片姿態。",
+      desc_en: "Precision crane alignment of 2.5-ton Zeiss POB -> Laser interferometer alignment of hexapod mirror actuators."
+    },
+    {
+      step: 3,
+      title_zh: "TwinScan 雙工件台與光罩平台整合",
+      title_en: "Dual Wafer & Reticle Stage Integration",
+      desc_zh: "安裝磁懸浮軌道與直線馬達 ➔ 對齊光學編碼器與雙頻雷射量測系統 ➔ 驗證高速掃描動態平衡。",
+      desc_en: "Install magnetic levitation guides & linear motors -> Calibrate dual-frequency laser encoders -> Verify 10G dynamics."
+    },
+    {
+      step: 4,
+      title_zh: "錫滴光源模組整合與全光路導通驗證",
+      title_en: "Source Module & Beamline Firing Test",
+      desc_zh: "對接 CO2 雷射射頻聚焦導光管 ➔ 點燃錫滴電漿 EUV 光源 ➔ 量測 Intermediate Focus (IF) 點輸出光功率 (≧ 250W)。",
+      desc_en: "Dock CO2 laser beam transport -> Fire tin droplet plasma source -> Measure intermediate focus EUV power >= 250W."
+    },
+    {
+      step: 5,
+      title_zh: "出廠前動態曝光良率與套刻驗收測試",
+      title_en: "Factory Acceptance Test (FAT Overlay)",
+      desc_zh: "裝載測試晶圓進行高速動態曝石印驗證 ➔ 檢驗全晶面套刻精度 (Overlay Error ≦ 1.1nm) ➔ 簽署出廠放行 (Green Light Release)。",
+      desc_en: "Full-speed wafer exposure run -> Verify wafer-to-wafer overlay <= 1.1nm & MTBF -> Final FAT customer sign-off."
+    }
+  ],
+  outputs: [
+    {
+      title_zh: "全功能 EUV 曝光機台系統",
+      title_en: "Certified ASML EUV Litho Scanner",
+      desc_zh: "完整通過出廠檢驗 (FAT) 之 NXE:3600D / 3800E 或 EXE:5000 High-NA 全機系統（拆分為 4 架波音 747 專機貨運模組）。",
+      desc_en: "Fully FAT-certified scanner module packed into 40 specialized air-freight containers for Boeing 747 transport."
+    },
+    {
+      title_zh: "出廠驗收測試報告 (FAT Protocol)",
+      title_en: "Factory Acceptance Test (FAT) Report",
+      desc_zh: "包含光學波前像差 (Wavefront Aberration ≦ 0.05nm)、套刻精度 (DCO ≦ 1.1nm) 與全日曝晶圓產能 (≧ 160 WPH)。",
+      desc_en: "Complete certification report documenting wavefront aberration <= 0.05nm, overlay <= 1.1nm, and throughput >= 160 WPH."
+    },
+    {
+      title_zh: "機台潔淨度與分子微污染認證",
+      title_en: "Airborne Molecular Contamination (AMC)",
+      desc_zh: "真空腔體揮發性有機物 (VOC) 與金屬錫沉積微粒認證證書（潔淨度超越 ISO Class 1 標準）。",
+      desc_en: "Certified vacuum chamber residual gas analysis (RGA) confirming zero critical airborne organic contamination."
+    },
+    {
+      title_zh: "客戶裝機與場地適配指南 (SAD)",
+      title_en: "Site Acceptance Document (SAD)",
+      desc_zh: "載明 12 吋晶圓廠安裝現場地基剛性、微震動限制 (VC-E)、水電特氣接頭規格之完整工程手冊。",
+      desc_en: "Engineering manual for fab civil foundation rigidity, VC-E micro-vibration specs, and facility docking lines."
+    },
+    {
+      title_zh: "原廠備品箱與校正專用治具",
+      title_en: "Tooling Kit & Critical Spares Pack",
+      desc_zh: "含第一年度原廠保養更換之錫滴產生器噴嘴、光罩護膜夾持治具及光學對準感測晶片。",
+      desc_en: "OEM calibration wafer sets, spare tin nozzles, pellicle mounting fixtures, and field maintenance tools."
+    }
+  ],
+  customers: [
+    {
+      title_zh: "頂級晶圓代工大客戶 (Foundry)",
+      title_en: "Tier-1 Semiconductor Foundries",
+      desc_zh: "台積電 (TSMC) 先進製程晶圓廠（Fab 18 / Fab 20），接收曝光機用於 3nm/2nm 先進製程大規模量產。",
+      desc_en: "TSMC GigaFabs deploying scanners for N3/N2 high-volume manufacturing lines in Hsinchu & Tainan."
+    },
+    {
+      title_zh: "IDM 邏輯與處理器晶片製造商",
+      title_en: "Leading IDMs (Intel / Samsung)",
+      desc_zh: "Intel (Intel 18A/14A 製程)、Samsung Foundry，用於高階伺服器與行動處理器晶片製造。",
+      desc_en: "Intel & Samsung semiconductor fabs integrating EUV into Angstrom-era GAA transistor production."
+    },
+    {
+      title_zh: "DRAM 先進記憶體晶片廠",
+      title_en: "Advanced Memory Fabs (Micron/SK)",
+      desc_zh: "美光科技 (Micron)、SK 海力士，導入 EUV 微影技術製造 1-beta / 1-gamma 節點先進 DRAM 與 HBM 晶片。",
+      desc_en: "Micron & SK Hynix deploying EUV for 1-beta/1-gamma nm sub-generation DRAM & high-bandwidth HBM stacks."
+    },
+    {
+      title_zh: "ASML 全球現場裝機與客戶服務處 (CS)",
+      title_en: "ASML Global Customer Support (CS)",
+      desc_zh: "各國在地駐廠客戶服務工程師團隊 (CSE/FSE)，負責晶圓廠開箱、裝機 (Installation) 與現場驗收 (SAT)。",
+      desc_en: "Local field service engineers stationed inside client cleanrooms conducting 6-month site commissioning."
+    },
+    {
+      title_zh: "ASML 全球營運決策高層與供應鏈處",
+      title_en: "ASML Executive Operations & Board",
+      desc_zh: "掌握每季度高階機台出貨達成數 (Revenue Recognition)、客戶驗收週期 (Cycle Time) 與機台可靠度保證。",
+      desc_en: "Monitors quarterly machine shipment recognition, customer SAT cycle time, and fleet MTBF commitments."
+    }
+  ]
+};
+
+const ASML_CHARTER_DATA = {
+  businessCase: {
+    title_zh: "💼 商業背景 (Business Case)",
+    title_en: "💼 Business Case",
+    content_zh: "ASML Veldhoven 潔淨組裝廠作為全球唯一高階極紫外光 (EUV) 曝光機製造基地，正面臨全球 AI 算力晶片爆發引發的空前交機壓力。一台 EUV 曝光機造價高達 1.8 億至 3.5 億歐元，包含超過 10 萬個精密零件與 3,000 條線束。目前工廠出廠驗收測試（FAT）階段的光學波前對準與潔淨真空調校周期偏長，導致年度機台產出（Throughput）受限於乾淨組裝測試站點（Clean Cabins），直接影響數億歐元的營收認列與全球半導體擴產步伐。",
+    content_en: "As the world's sole manufacturer of EUV lithography systems, ASML's Veldhoven cleanroom faces intense delivery pressure amid global AI chip demand. Each EUV tool costs 180M-350M EUR with 100k+ parts. Currently, factory cleanroom assembly and Factory Acceptance Testing (FAT) cycle times are throttled by optical wavefront alignment and vacuum AMC outgassing bottlenecks, delaying hundreds of millions in quarterly revenue recognition."
+  },
+  problemStatement: {
+    title_zh: "⚠️ 問題陳述 (Problem Statement)",
+    title_en: "⚠️ Problem Statement",
+    content_zh: "過去 2 個季度（2026 Q1-Q2）內，NXE:3800E 機台在 Veldhoven 廠內組裝與出廠驗收測試（FAT）的平均週期時間高達 <strong>86.4 工作天</strong>（超出標準目標 <strong>65.0 天</strong> 達 32.9%）。其中「光學物鏡鏡組 (POB) 對位真空調校」與「高潔淨氦氣測漏失敗重工」佔據了超過 42% 的非增值停滯等待時間，導致每季度有 3~4 台機台無法如期移交貨運專機，產生巨額排程延誤成本與客戶端建廠待料損失。",
+    content_en: "Over the last 2 quarters (2026 Q1-Q2), NXE:3800E factory assembly and FAT cycle time averaged 86.4 working days, 32.9% above the standard target of 65.0 days. Optical POB docking alignment and helium vacuum leak re-work contributed >42% of total non-value-added waiting muda, stalling 3-4 machines per quarter from timely air transport handover."
+  },
+  goalStatement: {
+    title_zh: "🎯 目標陳述 (Goal Statement - SMART)",
+    title_en: "🎯 Goal Statement (SMART)",
+    content_zh: "專案自 2026 年 10 月 1 日起，在 <strong>18 週（約 4.5 個月）內</strong>：<br>1. 將 EUV 曝光機廠內組裝與出廠驗收測試總週期時間自 <strong>86.4 天縮短至 ≦ 64.0 天</strong>（降幅達 25.9%）。<br>2. 乾淨腔體組裝初次檢驗通過率（First-Pass Yield）由 78.5% 提升至 <strong>≧ 94.0%</strong>。<br>3. 消除真空氦氣測漏二次重工，單機組裝平均節省 <strong>380 個工程人時</strong>。<br>4. 實現年度機台產能增加 <strong>4 台 EUV 機台額外交付</strong>，年化加速營收認列效益估計超過 <strong>7.2 億歐元</strong>。",
+    content_en: "Within 18 weeks (by mid-February 2027):<br>1. Compress EUV factory assembly & FAT cycle time from 86.4 to <= 64.0 working days (-25.9%).<br>2. Elevate vacuum clean cabin First-Pass Yield (FPY) from 78.5% to >= 94.0%.<br>3. Eliminate helium leak re-works, saving ~380 engineering hours per tool.<br>4. Unlock capacity to ship 4 additional EUV systems annually, accelerating >720M EUR in deliveries."
+  },
+  scope: {
+    title_zh: "📐 專案範圍 (Project Scope)",
+    title_en: "📐 Project Scope",
+    inScope_zh: "<strong>In-Scope (納入範疇)：</strong><br>• Veldhoven Cleanroom 5A/5B 廠區 NXE:3800E 機台模組組裝、光學物鏡 POB 吊裝與姿態調準 SOP。<br>• 腔體真空密封膠條安裝作業標準化與氦氣氣密檢驗流程。<br>• 多職能組裝技術員技能矩陣交叉訓練與數位防呆組裝看板（Visual Work Instructions）。",
+    inScope_en: "<strong>In-Scope:</strong><br>• Veldhoven Cleanroom 5A/5B NXE:3800E POB optical docking, hexapod leveling, and vacuum prep.<br>• Vacuum seal gasket installation standardization and fast helium leak detection protocols.<br>• Multi-skilled cleanroom technician cross-training and digital 3D assembly guidance kits.",
+    outScope_zh: "<strong>Out-of-Scope (排除範疇)：</strong><br>• 德國蔡司光學 (Zeiss Oberkochen) 物鏡鏡面物理幾何曲率或光學研磨工藝變更。<br>• 錫滴產生器雷射激發電漿物理核心機制重新研發。<br>• 晶圓廠客戶現場安裝驗收 (SAT) 流程（僅聚焦於 ASML 廠內 FAT 出廠前作業）。",
+    outScope_en: "<strong>Out-of-Scope:</strong><br>• Fundamental Zeiss mirror optical coating or polishing formula changes.<br>• Cymer laser-produced plasma physics redesign.<br>• On-site customer fab SAT commissioning (restricted strictly to ASML factory gate release)."
+  },
+  team: {
+    title_zh: "👥 團隊組織與職掌 (Team Roles)",
+    title_en: "👥 Team Organization & DRI",
+    members: [
+      { role_zh: "專案贊助人 (Sponsor)", role_en: "Project Sponsor", name_zh: "ASML 全球製造營運執行副總 (EVP Operations)", name_en: "EVP ASML Manufacturing" },
+      { role_zh: "專案隊長 (Leader / DRI)", role_en: "Project Leader (MBB)", name_zh: "潔淨裝配精實大師黑帶 (Cleanroom MBB)", name_en: "Lead Manufacturing MBB" },
+      { role_zh: "光學工程主管 (Optics Lead)", role_en: "POB Systems Architect", name_zh: "Zeiss-ASML 物鏡整合主任架構師", name_en: "Staff Optical Alignment Eng" },
+      { role_zh: "真空與機械主任 (Vacuum Lead)", role_en: "Vacuum & Mechanics Lead", name_zh: "超高真空密封資深主管 (Vacuum SME)", name_en: "Senior Vacuum Systems SME" },
+      { role_zh: "品管品質總監 (Quality Lead)", role_en: "Factory Quality Director", name_zh: "出廠品質驗收與 AMC 監測經理", name_en: "Cleanliness & AMC QA Mgr" },
+      { role_zh: "供應鏈整合經理 (Supply Chain)", role_en: "Supply Chain Manager", name_zh: "高階模組物流與齊套排程主任", name_en: "Module Material Readiness Lead" }
+    ]
+  },
+  milestones: {
+    title_zh: "🏁 專案里程碑與關卡審查 (DMAIC Milestones)",
+    title_en: "🏁 DMAIC Milestones & Tollgates",
+    schedule: [
+      { phase: "Define (定義)", time_zh: "第 1~3 週 (10/01-10/20)", time_en: "Weeks 1-3", target_zh: "完成 Charter 核定、VSM 價值流程圖鎖定光學對位與測漏兩大瓶頸站點", target_en: "Charter sign-off, VSM identification of POB & leak bottlenecks" },
+      { phase: "Measure (測量)", time_zh: "第 4~6 週 (10/21-11/10)", time_en: "Weeks 4-6", target_zh: "完成組裝步驟工時 MSA 測量、建構單台組裝 86.4 天之各模組時間明細 Pareto", target_en: "Time-study MSA, module cycle time baseline Pareto chart" },
+      { phase: "Analyze (分析)", time_zh: "第 7~10 週 (11/11-12/08)", time_en: "Weeks 7-10", target_zh: "以魚骨圖與 5 Why 剖析密封圈微扭曲成因，確定 Hexapod 預調校最佳座標參數", target_en: "Root cause analysis on seal twist, DOE on hexapod pre-align" },
+      { phase: "Improve (改善)", time_zh: "第 11~15 週 (12/09-01/12)", time_en: "Weeks 11-15", target_zh: "導入快速真空密封導向工裝、並行化光學物鏡預調對接，驗證連 3 台小於 62 天", target_en: "Deploy fast-seal jig, parallel POB docking, achieve <62 days" },
+      { phase: "Control (控制)", time_zh: "第 16~18 週 (01/13-02/02)", time_en: "Weeks 16-18", target_zh: "標準作業 SOP 寫入數位裝配系統、實施每台出廠工時管制作圖、財務效益核准", target_en: "Standard work digital integration, SPC tracking, Finance audit" }
+    ]
+  }
+};
+
+const ASML_COT_DATA = [
+  {
+    category: "COT",
+    type_zh: "出廠週期時間特性 (Factory Assembly Cycle Time)",
+    type_en: "Factory Cycle Time (COT / Critical to Delivery)",
+    voc_zh: "客戶聲音 (TSMC/Intel)：「我們的 2nm 晶圓廠無塵室已經完工，EUV 曝光機必須準時送達開箱！」",
+    voc_en: "VOC (Fab Client): 'Our 2nm fab cleanroom is ready; ASML must deliver and hand over the tool without month-long delays!'",
+    driver_zh: "關鍵驅動要素：潔淨室測試艙（Clean Cabin）利用率、物鏡對接工時與測漏作業並行化",
+    driver_en: "Key Driver: Clean cabin bottleneck utilization, parallel optical docking & fast helium sniffing",
+    req_label: "COT / CTD 特性與量化規格",
+    req_desc_zh: "1. 廠內總組裝與出廠測試週期 (FAT Cycle Time) <strong>≦ 64 工作天</strong><br>2. 光學物鏡模組 (POB) 對接調準時間由 14.5 天縮短至 <strong>≦ 8.0 天</strong><br>3. 專機拆解打包防塵封裝時間 (De-rig & Packing) <strong>≦ 5.0 天</strong>",
+    req_desc_en: "1. Total Factory Assembly & FAT Cycle Time <= 64 working days<br>2. POB Optical Docking & Alignment <= 8.0 days (from 14.5 days)<br>3. De-rigging and air-cargo crating <= 5.0 days",
+    formula: "Target: Total FAT Days <= 64 days | POB Docking <= 8 days | FPY >= 94%"
+  },
+  {
+    category: "CTQ",
+    type_zh: "機台光學波前與套刻精度特性 (Optical Wavefront & Overlay)",
+    type_en: "Optical Wavefront Fidelity & Dynamic Overlay (CTQ)",
+    voc_zh: "客戶聲音：「光學像差如果超標，晶圓邊緣多重曝光圖案會產生偏移，整批晶圓將直接報廢！」",
+    voc_en: "VOC: 'If scanner wavefront aberration drifts, edge overlay breaks down causing millions in scrapped wafers.'",
+    driver_zh: "關鍵驅動要素：蔡司反射鏡六足機器人六自由度姿態定位精確度與波前干涉校正",
+    driver_en: "Key Driver: Hexapod 6-DOF mirror actuator calibration accuracy & in-situ wavefront interferometry",
+    req_label: "CTQ 特性與量化規格",
+    req_desc_zh: "1. 全視場光學波前像差均方根值 (Wavefront RMS) <strong>≦ 0.048 nm</strong><br>2. 動態工件台高速掃描套刻誤差 (Dedicated Chuck Overlay, DCO) <strong>≦ 1.10 nm</strong><br>3. 晶圓全域關鍵尺寸均勻度貢獻值 (CDU impact) <strong>≦ 0.10 nm</strong>",
+    req_desc_en: "1. Full-field optical wavefront RMS error <= 0.048 nm<br>2. Dynamic dedicated chuck overlay (DCO) <= 1.10 nm<br>3. Scanner-induced CD uniformity (CDU) contribution <= 0.10 nm",
+    formula: "Tolerance: Wavefront RMS <= 0.048nm | DCO <= 1.10nm | CDU <= 0.10nm"
+  },
+  {
+    category: "CTQ",
+    type_zh: "真空度與分子微污染控制 (Vacuum & AMC Cleanliness)",
+    type_en: "Vacuum Integrity & AMC Outgassing (CTQ)",
+    voc_zh: "客戶聲音：「高功率 EUV 光束照射下，腔體內絕不能有微量碳氫化合物，否則會永久污染反射鏡！」",
+    voc_en: "VOC: 'Under 250W EUV irradiation, zero hydrocarbon outgassing is tolerated, or Zeiss mirrors suffer irreversible degradation!'",
+    driver_zh: "關鍵驅動要素：超高真空法蘭密封扭力標準化與組裝環境空氣分子污染物 (AMC) 控制",
+    driver_en: "Key Driver: Standardized torque on vacuum copper/elastomer gaskets & stringent airborne molecular control",
+    req_label: "CTQ 特性與量化規格",
+    req_desc_zh: "1. 氦氣測漏極限率 (Helium Leak Rate) <strong>≦ 1.0 × 10⁻¹⁰ mbar·l/s</strong><br>2. 腔體殘餘氣體分析 (RGA) 碳氫化合物分壓 <strong>≦ 5.0 × 10⁻¹² mbar</strong><br>3. 晶圓裝載區空氣落塵顆粒數 (≧0.1μm) <strong>0 顆粒/m³ (ISO Class 1)</strong>",
+    req_desc_en: "1. Vacuum Helium Leak Rate <= 1.0 x 10^-10 mbar.l/s<br>2. Residual Gas Analysis (RGA) total hydrocarbon partial pressure <= 5.0 x 10^-12 mbar<br>3. Airborne particulate count (>=0.1 micron) = 0 particles/m3 (ISO Class 1)",
+    formula: "Target: Leak Rate <= 1.0e-10 mbar.l/s | RGA Hydrocarbon <= 5.0e-12 mbar"
+  }
+];
+
+function switchDefineCase(caseName){
+  activeDefineCase = caseName;
+
+  // Update switcher buttons in all 3 panels
+  const allFabBtns = [document.getElementById('caseBtnSipocFab'), document.getElementById('caseBtnCharterFab'), document.getElementById('caseBtnCotFab')];
+  const allAsmlBtns = [document.getElementById('caseBtnSipocAsml'), document.getElementById('caseBtnCharterAsml'), document.getElementById('caseBtnCotAsml')];
+
+  if(caseName === 'asml'){
+    allFabBtns.forEach(b => { if(b) b.classList.remove('active'); });
+    allAsmlBtns.forEach(b => { if(b) b.classList.add('active'); });
+
+    const badgeS = document.getElementById('badgeSipocCase');
+    if(badgeS) badgeS.innerHTML = '🔬 <span class="zh">案例：ASML EUV 曝光機組裝廠 (Project Apollo)</span><span class="en">Preset: ASML EUV Factory (Apollo)</span>';
+    const badgeC = document.getElementById('badgeCharterCase');
+    if(badgeC) badgeC.innerHTML = '🔬 <span class="zh">專案代號：Project Apollo-NXE</span><span class="en">Codename: Project Apollo-NXE</span>';
+    const badgeCot = document.getElementById('badgeCotCase');
+    if(badgeCot) badgeCot.innerHTML = '🔬 <span class="zh">指標：出廠交期縮短與光學精度</span><span class="en">Metrics: Cycle Time & Optics CTQ</span>';
+  } else {
+    allFabBtns.forEach(b => { if(b) b.classList.add('active'); });
+    allAsmlBtns.forEach(b => { if(b) b.classList.remove('active'); });
+
+    const badgeS = document.getElementById('badgeSipocCase');
+    if(badgeS) badgeS.innerHTML = '⚡ <span class="zh">案例：晶圓廠 N3 製程 (Project Aegis)</span><span class="en">Preset: Fab N3 (Project Aegis)</span>';
+    const badgeC = document.getElementById('badgeCharterCase');
+    if(badgeC) badgeC.innerHTML = '⚡ <span class="zh">專案代號：Project Aegis</span><span class="en">Codename: Project Aegis</span>';
+    const badgeCot = document.getElementById('badgeCotCase');
+    if(badgeCot) badgeCot.innerHTML = '⚡ <span class="zh">指標：N3 晶圓良率與交期驅動</span><span class="en">Metrics: Fab N3 Yield & OTD</span>';
+  }
+
+  renderSipocTemplate();
+  renderCharterTemplate();
+  renderCotTemplate();
+}
+
+function getActiveSipocData(){
+  return activeDefineCase === 'asml' ? ASML_SIPOC_DATA : SEMICON_SIPOC_DATA;
+}
+
+function getActiveCharterData(){
+  return activeDefineCase === 'asml' ? ASML_CHARTER_DATA : SEMICON_CHARTER_DATA;
+}
+
+function getActiveCotData(){
+  return activeDefineCase === 'asml' ? ASML_COT_DATA : SEMICON_COT_DATA;
+}
+
 function renderSipocTemplate(){
   const container = document.getElementById('sipocGridContainer');
   if(!container) return;
-  const d = SEMICON_SIPOC_DATA;
+  const d = getActiveSipocData();
 
   container.innerHTML = `
     <div class="sipoc-col s">
@@ -23552,7 +23951,7 @@ function renderSipocTemplate(){
 function renderCharterTemplate(){
   const container = document.getElementById('charterGridContainer');
   if(!container) return;
-  const d = SEMICON_CHARTER_DATA;
+  const d = getActiveCharterData();
 
   container.innerHTML = `
     <div class="charter-box">
@@ -23630,8 +24029,9 @@ function renderCharterTemplate(){
 function renderCotTemplate(){
   const container = document.getElementById('cotTreeContainer');
   if(!container) return;
+  const cotList = getActiveCotData();
 
-  container.innerHTML = SEMICON_COT_DATA.map((item, idx) => `
+  container.innerHTML = cotList.map((item, idx) => `
     <div class="cot-branch-card">
       <div class="cot-branch-header">
         <div class="cot-branch-title">
@@ -23695,8 +24095,9 @@ function copyTextToClipboard(text, successMsg) {
 }
 
 function copySipocAsMarkdown(){
-  const d = SEMICON_SIPOC_DATA;
-  let md = '# 12-inch Fab N3 Node SIPOC Process Map (Project Aegis)\n\n';
+  const d = getActiveSipocData();
+  const caseTitle = activeDefineCase === 'asml' ? 'ASML EUV Scanner Factory SIPOC (Project Apollo-NXE)' : '12-inch Fab N3 Node SIPOC Process Map (Project Aegis)';
+  let md = '# ' + caseTitle + '\n\n';
   md += '| Phase | Title | Details |\n';
   md += '|---|---|---|\n';
   d.suppliers.forEach(s => { md += `| **Supplier** | ${s.title_zh} (${s.title_en}) | ${s.desc_zh} |\n`; });
@@ -23708,8 +24109,9 @@ function copySipocAsMarkdown(){
 }
 
 function copyCharterAsMarkdown(){
-  const d = SEMICON_CHARTER_DATA;
-  let md = '# Project Charter: N3 Edge Die Yield Enhancement (Project Aegis)\n\n';
+  const d = getActiveCharterData();
+  const caseTitle = activeDefineCase === 'asml' ? 'Project Charter: ASML EUV Factory Cycle Time Reduction (Project Apollo-NXE)' : 'Project Charter: N3 Edge Die Yield Enhancement (Project Aegis)';
+  let md = '# ' + caseTitle + '\n\n';
   md += '## 1. Business Case\n' + d.businessCase.content_zh + '\n\n';
   md += '## 2. Problem Statement\n' + d.problemStatement.content_zh.replace(/<[^>]+>/g, '') + '\n\n';
   md += '## 3. Goal Statement (SMART)\n' + d.goalStatement.content_zh.replace(/<br>/g, '\n').replace(/<[^>]+>/g, '') + '\n\n';
@@ -23722,8 +24124,10 @@ function copyCharterAsMarkdown(){
 }
 
 function copyCotAsMarkdown(){
-  let md = '# CTQ / COT Tree Analysis (Project Aegis)\n\n';
-  SEMICON_COT_DATA.forEach((item, i) => {
+  const cotList = getActiveCotData();
+  const caseTitle = activeDefineCase === 'asml' ? 'ASML EUV Scanner Factory CTQ / COT Tree Analysis' : 'CTQ / COT Tree Analysis (Project Aegis)';
+  let md = '# ' + caseTitle + '\n\n';
+  cotList.forEach((item, i) => {
     md += `### Branch ${i+1}: [${item.category}] ${item.type_zh}\n`;
     md += `- **VOC (Voice of Customer)**: ${item.voc_zh}\n`;
     md += `- **Key Driver**: ${item.driver_zh}\n`;
@@ -23738,20 +24142,22 @@ function initDefineTemplates(){
   renderCharterTemplate();
   renderCotTemplate();
 
+  const getCaseNameZh = () => activeDefineCase === 'asml' ? 'ASML EUV 曝光機組裝廠案例' : '12 吋晶圓廠 N3 先進製程案例';
+
   const btnResetSipoc = document.getElementById('btnResetSipocSemicon');
-  if(btnResetSipoc) btnResetSipoc.onclick = () => { renderSipocTemplate(); alert('已重新載入半導體 SIPOC 案例！'); };
+  if(btnResetSipoc) btnResetSipoc.onclick = () => { renderSipocTemplate(); alert('已重新載入【' + getCaseNameZh() + '】SIPOC 流程圖！'); };
 
   const btnCopySipoc = document.getElementById('btnCopySipocMd');
   if(btnCopySipoc) btnCopySipoc.onclick = copySipocAsMarkdown;
 
   const btnResetCharter = document.getElementById('btnResetCharterSemicon');
-  if(btnResetCharter) btnResetCharter.onclick = () => { renderCharterTemplate(); alert('已重新載入半導體 Project Charter 案例！'); };
+  if(btnResetCharter) btnResetCharter.onclick = () => { renderCharterTemplate(); alert('已重新載入【' + getCaseNameZh() + '】Project Charter 專案憲章！'); };
 
   const btnCopyCharter = document.getElementById('btnCopyCharterMd');
   if(btnCopyCharter) btnCopyCharter.onclick = copyCharterAsMarkdown;
 
   const btnResetCot = document.getElementById('btnResetCotSemicon');
-  if(btnResetCot) btnResetCot.onclick = () => { renderCotTemplate(); alert('已重新載入半導體 CTQ / COT 案例！'); };
+  if(btnResetCot) btnResetCot.onclick = () => { renderCotTemplate(); alert('已重新載入【' + getCaseNameZh() + '】CTQ / COT 關鍵品質樹！'); };
 
   const btnCopyCot = document.getElementById('btnCopyCotMd');
   if(btnCopyCot) btnCopyCot.onclick = copyCotAsMarkdown;

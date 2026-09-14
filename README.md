@@ -69,11 +69,16 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
 
 ### 2. 🔄 DMAIC / DMADV 雙循環與專案定義三大核心模板 (Define Phase Core Matrix)
 - **五合一導覽分頁**：緊密整合既有流程改善 `DMAIC`、新流程設計 `DMADV`、高階流程界定 `SIPOC 流程圖`、專案立項契約 `Project Charter 專案憲章` 與關鍵需求轉化 `CTQ / COT 關鍵品質與交付特性樹`。
-- **真實 12 吋晶圓廠 N3 先進製程實戰案例 (Project Aegis)**：
-  - **SIPOC 流程圖**：完整收錄矽晶圓基板商、EUV 光阻化學材料、ASML Scanner / Lam 乾蝕刻機台、超純水 UPW/CDA、五大高階製程步驟（旋塗、EUV 曝光、PEB 顯影、乾蝕刻、Inline CD-SEM/KLA 檢驗）、CD 均勻度與 Klarf 缺陷圖譜輸出、以及下游 CMP、良率整合 (YE/PIE) 與 Tier-1 晶片客戶。
-  - **Project Charter 專案憲章 (六宮格精實版)**：聚焦 N3 晶圓邊緣良率自 84.2% 提升至 ≧ 92.5%、缺陷密度 D0 降至 0.045/cm²、年化節省 165 萬美元之 SMART 目標陳述、嚴謹界定 In-Scope 與 Out-of-Scope、跨部門 DRI 職掌與 DMAIC 16 週里程碑審查。
-  - **CTQ / COT 關鍵品質樹**：將 VOC 客戶聲音分解為關鍵驅動因子（Drivers），向下轉化為可量測之關鍵品質特性（CTQ，如 CD 3.2nm ±0.15nm、D0 ≦ 0.045/cm²）與關鍵交付營運時間特性（COT/CTD，如單批過站 Cycle Time ≦ 4.2h、機台換模 Setup ≦ 12min）。
-- **一鍵式生產力功能**：支援一鍵還原半導體真實範例、一鍵複製為標準格式化 Markdown 報告。
+- **雙大頂級實戰案例即時切換 (Dual Real-World Industry Presets)**：
+  - ⚡ **案例一：12 吋晶圓廠 N3 先進製程晶圓邊緣良率攻堅改善 (Project Aegis)**
+    - **SIPOC 流程圖**：完整收錄矽晶圓基板商、EUV 光阻化學材料、ASML Scanner / Lam 乾蝕刻機台、超純水 UPW/CDA、五大高階製程步驟（旋塗、EUV 曝光、PEB 顯影、乾蝕刻、Inline CD-SEM/KLA 檢驗）、CD 均勻度與 Klarf 缺陷圖譜輸出、以及下游 CMP、良率整合 (YE/PIE) 與 Tier-1 晶片客戶。
+    - **Project Charter 專案憲章 (六宮格精實版)**：聚焦 N3 晶圓邊緣良率自 84.2% 提升至 ≧ 92.5%、缺陷密度 D0 降至 0.045/cm²、年化節省 165 萬美元之 SMART 目標陳述、嚴謹界定 In-Scope 與 Out-of-Scope、跨部門 DRI 職掌與 DMAIC 16 週里程碑審查。
+    - **CTQ / COT 關鍵品質樹**：將 VOC 客戶聲音分解為關鍵驅動因子（Drivers），向下轉化為可量測之關鍵品質特性（CTQ，如 CD 3.2nm ±0.15nm、D0 ≦ 0.045/cm²）與關鍵交付營運時間特性（COT/CTD，如單批過站 Cycle Time ≦ 4.2h、機台換模 Setup ≦ 12min）。
+  - 🔬 **案例二：ASML 艾司摩爾 EUV 曝光機潔淨組裝廠 (Project Apollo-NXE)**
+    - **SIPOC 流程圖**：解構荷蘭 Veldhoven 超高潔淨組裝廠端到端流程，涵蓋蔡司 (Zeiss SMT) 光學投影鏡箱 (POB)、TRUMPF 30kW CO2 脈衝雷射、Cymer 錫滴產生器、ISO 1 級超高真空主機架裝配、物鏡雷射干涉調對、TwinScan 雙工件台磁浮校正、Intermediate Focus 250W EUV 點火導通驗證、動態套刻出廠測試 (FAT)，以及台積電、Intel、美光等 GigaFab 客戶開箱驗收 (SAT)。
+    - **Project Charter 專案憲章 (六宮格精實版)**：針對一台造價高達 1.8~3.5 億歐元之 EUV 機台，解決工廠出廠測試 (FAT) 平均耗時 86.4 天之產能瓶頸，設定在 18 週內將組裝週期壓縮至 ≦ 64.0 天 (-25.9%)、初檢合格率提升至 ≧ 94%、年化釋放 4 台高階 EUV 機台產能並加速 7.2 億歐元營收認列之宏大目標。
+    - **CTQ / COT 關鍵品質樹**：將全球客戶「準時交機開箱」與「零光學像差」聲音拆解為出廠週期時間特性（COT: 總 FAT 週期 ≦ 64 天、POB 物鏡對位 ≦ 8.0 天）、光學波前與套刻特性（CTQ: 波前像差 RMS ≦ 0.048nm、動態套刻 DCO ≦ 1.10nm）、以及超高真空與分子微污染特性（CTQ: 氦氣測漏 ≦ 1.0×10⁻¹⁰ mbar·l/s、RGA 碳氫化合物殘留 ≦ 5.0×10⁻¹² mbar）。
+- **一鍵式生產力功能**：支援一鍵切換/重設晶圓廠或 ASML 機台案例、一鍵複製為標準格式化 Markdown 報告。
 
 ### 3. 🎙️ 精實會議與高階簡報表達藝術 (STAR vs. CARL)
 - **精實會議推進助理**：
