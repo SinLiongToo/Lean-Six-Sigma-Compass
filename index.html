@@ -675,7 +675,453 @@
   [lang-mode="en"] .zh{display:none;}
   [lang-mode="zh"] .en{display:none;}
 
-  /* DMAIC / DMADV Toggle */
+  /* DMAIC / DMADV & Define Templates Toggle */
+  .dmaic-toggle-bar{
+    display:flex;gap:8px;margin-bottom:20px;background:rgba(255,255,255,0.02);
+    padding:6px;border-radius:10px;border:1px solid var(--line);width:fit-content;
+    flex-wrap:wrap;
+  }
+  [data-theme="light"] .dmaic-toggle-bar{background:rgba(15,27,45,0.02);}
+
+  /* Define Templates Panels */
+  .define-template-panel {
+    display: none;
+    animation: fade .25s ease;
+  }
+  .define-template-panel.active {
+    display: block;
+  }
+  .dt-header-card {
+    background: rgba(245, 166, 35, 0.05);
+    border: 1px solid rgba(245, 166, 35, 0.25);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  [data-theme="light"] .dt-header-card {
+    background: #fffbeb;
+    border-color: #fde68a;
+  }
+  .dt-header-title h3 {
+    margin: 0 0 4px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dt-header-title p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .dt-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .dt-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all .15s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dt-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(245, 166, 35, 0.08);
+  }
+  .dt-btn.primary {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+  }
+  .dt-btn.primary:hover {
+    filter: brightness(1.08);
+  }
+  [data-theme="light"] .dt-btn {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #334155;
+  }
+  [data-theme="light"] .dt-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: #fffbeb;
+  }
+  [data-theme="light"] .dt-btn.primary {
+    background: var(--amber) !important;
+    color: #ffffff !important;
+    border-color: var(--amber) !important;
+  }
+
+  /* Semiconductor Banner */
+  .sc-preset-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(127, 181, 160, 0.15);
+    color: var(--sage);
+    border: 1px solid rgba(127, 181, 160, 0.3);
+  }
+
+  /* SIPOC Grid */
+  .sipoc-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+  .sipoc-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(210px, 1fr));
+    gap: 14px;
+    min-width: 1080px;
+  }
+  .sipoc-col {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  [data-theme="light"] .sipoc-col {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .sipoc-col-header {
+    padding: 12px 14px;
+    font-weight: 800;
+    font-size: 13.5px;
+    letter-spacing: .02em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .sipoc-col.s .sipoc-col-header { background: rgba(91, 127, 166, 0.15); color: #7aa5d2; border-bottom-color: rgba(91, 127, 166, 0.3); }
+  .sipoc-col.i .sipoc-col-header { background: rgba(127, 181, 160, 0.15); color: var(--sage); border-bottom-color: rgba(127, 181, 160, 0.3); }
+  .sipoc-col.p .sipoc-col-header { background: rgba(245, 166, 35, 0.15); color: var(--amber); border-bottom-color: rgba(245, 166, 35, 0.3); }
+  .sipoc-col.o .sipoc-col-header { background: rgba(232, 141, 90, 0.15); color: #f09a6c; border-bottom-color: rgba(232, 141, 90, 0.3); }
+  .sipoc-col.c .sipoc-col-header { background: rgba(175, 130, 220, 0.15); color: #c49df5; border-bottom-color: rgba(175, 130, 220, 0.3); }
+  [data-theme="light"] .sipoc-col.s .sipoc-col-header { background: #e0f2fe; color: #0369a1; }
+  [data-theme="light"] .sipoc-col.i .sipoc-col-header { background: #dcfce7; color: #15803d; }
+  [data-theme="light"] .sipoc-col.p .sipoc-col-header { background: #fef3c7; color: #b45309; }
+  [data-theme="light"] .sipoc-col.o .sipoc-col-header { background: #ffedd5; color: #c2410c; }
+  [data-theme="light"] .sipoc-col.c .sipoc-col-header { background: #f3e8ff; color: #7e22ce; }
+  .sipoc-col-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .sipoc-item-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    position: relative;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  [data-theme="light"] .sipoc-item-card {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .sipoc-item-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-1px);
+  }
+  .sipoc-item-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .sipoc-item-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .sipoc-proc-step {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .sipoc-step-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Project Charter 6-Box Grid */
+  .charter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 860px) {
+    .charter-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .charter-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  [data-theme="light"] .charter-box {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .charter-box-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--amber);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    letter-spacing: .02em;
+  }
+  .charter-box-content {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.65;
+    flex: 1;
+  }
+  .charter-box-content ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+  }
+  .charter-box-content li {
+    margin-bottom: 6px;
+  }
+  .charter-highlight {
+    background: rgba(245, 166, 35, 0.08);
+    border-left: 3px solid var(--amber);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    margin: 8px 0;
+    font-weight: 600;
+  }
+  [data-theme="light"] .charter-highlight {
+    background: #fffbeb;
+  }
+  .charter-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .charter-team-member {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  [data-theme="light"] .charter-team-member {
+    background: #f8fafc;
+  }
+  .charter-role-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .charter-milestone-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+  .charter-milestone-table th, .charter-milestone-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  .charter-milestone-table th {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* CTQ / COT Tree */
+  .cot-tree-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .cot-branch-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  [data-theme="light"] .cot-branch-card {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .cot-branch-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cot-branch-title {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cot-flow {
+    display: grid;
+    grid-template-columns: 1.2fr auto 1.3fr auto 2fr;
+    align-items: center;
+    gap: 12px;
+  }
+  @media (max-width: 900px) {
+    .cot-flow {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .cot-arrow {
+      transform: rotate(90deg);
+      text-align: center;
+      margin: 2px 0;
+    }
+  }
+  .cot-node {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  [data-theme="light"] .cot-node {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .cot-node-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cot-node.voc .cot-node-label { color: #5B7FA6; }
+  .cot-node.driver .cot-node-label { color: var(--sage); }
+  .cot-node.ctq .cot-node-label { color: var(--amber); }
+  .cot-node.cot .cot-node-label { color: #e88d5a; }
+  [data-theme="light"] .cot-node.voc .cot-node-label { color: #0284c7; }
+  [data-theme="light"] .cot-node.driver .cot-node-label { color: #16a34a; }
+  [data-theme="light"] .cot-node.ctq .cot-node-label { color: #d97706; }
+  [data-theme="light"] .cot-node.cot .cot-node-label { color: #ea580c; }
+  .cot-node-text {
+    font-size: 12.8px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .cot-metric-box {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: rgba(245, 166, 35, 0.08);
+    border-radius: 6px;
+    border-left: 3px solid var(--amber);
+    font-size: 11.5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: var(--amber);
+  }
+  [data-theme="light"] .cot-metric-box {
+    background: #fffbeb;
+    color: #b45309;
+  }
+  .cot-arrow {
+    color: var(--muted);
+    font-size: 18px;
+    font-weight: 800;
+    user-select: none;
+  }
+
+  /* Define Template Guide Box */
+  .dt-guide-box {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+  [data-theme="light"] .dt-guide-box {
+    background: rgba(15, 27, 45, 0.015);
+  }
+  .dt-guide-box b {
+    color: var(--amber);
+  }
+
   .dmaic-toggle-bar{
     display:flex;gap:8px;margin-bottom:20px;background:rgba(255,255,255,0.02);
     padding:6px;border-radius:10px;border:1px solid var(--line);width:fit-content;
@@ -5976,7 +6422,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.47 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-12 06:55</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.48 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-14 16:46</span></span>
         </div>
       </div>
     </div>
@@ -6287,12 +6733,86 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span class="en">The core LSS frameworks. DMAIC is for improving existing processes, while DMADV (DFSS) is for designing new processes/products from scratch. Click a wedge to see details.</span>
         </p>
         <div class="dmaic-toggle-bar">
-          <button class="toggle-btn active" id="toggleDmaic">DMAIC (改善/Improve)</button>
-          <button class="toggle-btn" id="toggleDmadv">DMADV (設計/Design)</button>
+          <button class="toggle-btn active" id="toggleDmaic"><span class="zh">DMAIC (改善)</span><span class="en">DMAIC (Improve)</span></button>
+          <button class="toggle-btn" id="toggleDmadv"><span class="zh">DMADV (設計)</span><span class="en">DMADV (Design)</span></button>
+          <button class="toggle-btn" id="toggleSipoc">📋 <span class="zh">SIPOC 流程圖</span><span class="en">SIPOC Process Map</span></button>
+          <button class="toggle-btn" id="toggleCharter">📜 <span class="zh">Project Charter 專案憲章</span><span class="en">Project Charter</span></button>
+          <button class="toggle-btn" id="toggleCot">🎯 <span class="zh">CTQ / COT 關鍵品質樹</span><span class="en">CTQ / COT Tree</span></button>
         </div>
-        <div class="dmaic-wrap">
+        <div class="dmaic-wrap" id="dmaicWrapContainer">
           <svg class="wheel" viewBox="0 0 260 260" id="wheelSvg"></svg>
           <div class="dmaic-detail" id="dmaicDetail"></div>
+        </div>
+
+        <!-- 1. SIPOC Process Map Panel -->
+        <div class="define-template-panel" id="panelSipoc">
+          <div class="dt-header-card">
+            <div class="dt-header-title">
+              <h3>📋 <span class="zh">SIPOC 高階流程圖分析模板</span><span class="en">SIPOC High-Level Process Map Template</span></h3>
+              <p>
+                <span class="zh"><strong>Suppliers 供應端 ➔ Inputs 輸入端 ➔ Process 製程 ➔ Outputs 產出端 ➔ Customers 客戶端</strong>。界定專案邊界、防範範疇蔓延（Scope Creep）的第一道防線。</span>
+                <span class="en">Defines the boundary of the process from end to end before drilling down into granular sub-steps. Prevents scope creep.</span>
+              </p>
+            </div>
+            <div class="dt-actions">
+              <span class="sc-preset-badge">⚡ <span class="zh">半導體真實晶圓廠案例</span><span class="en">12-Inch Fab N3 Node Example</span></span>
+              <button class="dt-btn primary" id="btnResetSipocSemicon"><span class="zh">🔄 載入半導體案例</span><span class="en">🔄 Load Fab Case</span></button>
+              <button class="dt-btn" id="btnCopySipocMd"><span class="zh">📋 複製為 Markdown</span><span class="en">📋 Copy Markdown</span></button>
+            </div>
+          </div>
+          <div class="sipoc-container">
+            <div class="sipoc-grid" id="sipocGridContainer"></div>
+          </div>
+          <div class="dt-guide-box">
+            <span class="zh">💡 <strong>實務教練提示 (Coach Tip)：</strong>在半導體先進製程（如 N3/N2），黃光微影 (Lithography) 與乾蝕刻 (Dry Etch) 緊密耦合。繪製 SIPOC 時務必將光阻化學品純度、Scanner 機台 Recipe 以及 CDA/UPW 等基礎設施精確列為 Inputs，並明確定義 Outputs 之量測指標（如 CD 關鍵尺寸與 Defect Density），避免進入 Measure 階段時指標脫鉤。</span>
+            <span class="en">💡 <strong>Coach Tip:</strong> In advanced semiconductor manufacturing (e.g. N3/N2 nodes), lithography and etch processes are tightly coupled. Always explicitly capture chemicals, scanner recipes, and facility purities as Inputs, with measurable metrics (CD uniformity, Klarf defect maps) as Outputs.</span>
+          </div>
+        </div>
+
+        <!-- 2. Project Charter Panel -->
+        <div class="define-template-panel" id="panelCharter">
+          <div class="dt-header-card">
+            <div class="dt-header-title">
+              <h3>📜 <span class="zh">Project Charter 專案憲章模板 (六宮格精實版)</span><span class="en">Project Charter Template (Six-Box Lean Matrix)</span></h3>
+              <p>
+                <span class="zh">專案立項契約書：獲得高階贊助人（Sponsor）授權與跨部門資源承諾的法定依據。</span>
+                <span class="en">The official project contract between Champion/Sponsor and project team, establishing problem, goal, scope, and cross-functional DRI.</span>
+              </p>
+            </div>
+            <div class="dt-actions">
+              <span class="sc-preset-badge">⚡ <span class="zh">專案代號：Project Aegis</span><span class="en">Codename: Project Aegis</span></span>
+              <button class="dt-btn primary" id="btnResetCharterSemicon"><span class="zh">🔄 載入半導體案例</span><span class="en">🔄 Load Fab Case</span></button>
+              <button class="dt-btn" id="btnCopyCharterMd"><span class="zh">📋 複製為 Markdown</span><span class="en">📋 Copy Markdown</span></button>
+            </div>
+          </div>
+          <div class="charter-grid" id="charterGridContainer"></div>
+          <div class="dt-guide-box">
+            <span class="zh">💡 <strong>專案審查重點 (Gate Review Checklist)：</strong>好的專案憲章「問題陳述」絕不能包含預設立場或解決方案（例如寫成「因為工程師沒校正機台導致良率低」即犯了大忌）。目標陳述必須嚴格符合 <strong>SMART 原則</strong>（具體、可衡量、可達成、相關性、明確時限），且必須清晰劃分 In-Scope 與 Out-of-Scope 以免引發跨模組推諉。</span>
+            <span class="en">💡 <strong>Gate Review Checklist:</strong> A robust Problem Statement never speculates causes or proposes premature solutions. Goal statements must strictly adhere to SMART criteria with a clearly defined baseline, target, and completion date. Out-of-Scope boundaries prevent endless scope creep.</span>
+          </div>
+        </div>
+
+        <!-- 3. CTQ / COT Tree Panel -->
+        <div class="define-template-panel" id="panelCot">
+          <div class="dt-header-card">
+            <div class="dt-header-title">
+              <h3>🎯 <span class="zh">CTQ / COT 關鍵品質與交付特性樹 (VOC 轉化矩陣)</span><span class="en">CTQ & COT Tree (Voice of Customer Translation Matrix)</span></h3>
+              <p>
+                <span class="zh">將客戶主觀、模糊的聲音（VOC），經過驅動要素（Drivers）向下展開為具體可量測的 <strong>CTQ（關鍵品質特性）</strong> 與 <strong>COT/CTD（關鍵交付與運營時間特性）</strong>。</span>
+                <span class="en">Systematically decomposes qualitative Voice of Customer (VOC) into measurable, verifiable technical specifications (Critical to Quality & Critical to Delivery).</span>
+              </p>
+            </div>
+            <div class="dt-actions">
+              <span class="sc-preset-badge">⚡ <span class="zh">N3 晶圓良率與交期驅動</span><span class="en">N3 Yield & Cycle Time Drivers</span></span>
+              <button class="dt-btn primary" id="btnResetCotSemicon"><span class="zh">🔄 載入半導體案例</span><span class="en">🔄 Load Fab Case</span></button>
+              <button class="dt-btn" id="btnCopyCotMd"><span class="zh">📋 複製為 Markdown</span><span class="en">📋 Copy Markdown</span></button>
+            </div>
+          </div>
+          <div class="cot-tree-container" id="cotTreeContainer"></div>
+          <div class="dt-guide-box">
+            <span class="zh">💡 <strong>CTQ vs. COT/CTD 分野：</strong><strong>CTQ (Critical to Quality)</strong> 關注產品本身的物理、化學、電性與缺陷規格（如 Critical Dimension 3.2nm ±0.15nm）；<strong>COT (Critical to Operational Time / Critical to Delivery)</strong> 則聚焦於製程周轉率、換線時間、急件過站周期（如 Cycle Time ≦ 36h、Recipe Download ≦ 15min），確保品質改善不以犧牲產線產能與交期為代價。</span>
+            <span class="en">💡 <strong>CTQ vs. COT Distinction:</strong> CTQ focuses on intrinsic physical, electrical, and defect specifications, whereas COT/CTD focuses on manufacturing cycle time, machine setup/recipe changeover, and on-time delivery commitments.</span>
+          </div>
         </div>
       </section>
 
@@ -14983,15 +15503,40 @@ function getActivePhases(){
 }
 
 function updateToggleButtons(){
-  const toggleDmaic = document.getElementById('toggleDmaic');
-  const toggleDmadv = document.getElementById('toggleDmadv');
-  if(!toggleDmaic || !toggleDmadv) return;
-  if(state.cycle === 'dmadv'){
-    toggleDmadv.classList.add('active');
-    toggleDmaic.classList.remove('active');
+  const btnDmaic = document.getElementById('toggleDmaic');
+  const btnDmadv = document.getElementById('toggleDmadv');
+  const btnSipoc = document.getElementById('toggleSipoc');
+  const btnCharter = document.getElementById('toggleCharter');
+  const btnCot = document.getElementById('toggleCot');
+  const wrapDmaic = document.getElementById('dmaicWrapContainer');
+  const panelSipoc = document.getElementById('panelSipoc');
+  const panelCharter = document.getElementById('panelCharter');
+  const panelCot = document.getElementById('panelCot');
+
+  const btns = [btnDmaic, btnDmadv, btnSipoc, btnCharter, btnCot];
+  btns.forEach(b => { if(b) b.classList.remove('active'); });
+
+  if(wrapDmaic) wrapDmaic.style.display = 'none';
+  if(panelSipoc) panelSipoc.classList.remove('active');
+  if(panelCharter) panelCharter.classList.remove('active');
+  if(panelCot) panelCot.classList.remove('active');
+
+  const c = state.cycle || 'dmaic';
+  if(c === 'dmadv'){
+    if(btnDmadv) btnDmadv.classList.add('active');
+    if(wrapDmaic) wrapDmaic.style.display = '';
+  } else if(c === 'sipoc'){
+    if(btnSipoc) btnSipoc.classList.add('active');
+    if(panelSipoc) panelSipoc.classList.add('active');
+  } else if(c === 'charter'){
+    if(btnCharter) btnCharter.classList.add('active');
+    if(panelCharter) panelCharter.classList.add('active');
+  } else if(c === 'cot'){
+    if(btnCot) btnCot.classList.add('active');
+    if(panelCot) panelCot.classList.add('active');
   } else {
-    toggleDmaic.classList.add('active');
-    toggleDmadv.classList.remove('active');
+    if(btnDmaic) btnDmaic.classList.add('active');
+    if(wrapDmaic) wrapDmaic.style.display = '';
   }
 }
 
@@ -22647,6 +23192,571 @@ function init(){
   // Initialize Finance Section
   initFinanceSection();
 
+
+/* ==========================================================================
+   Define Phase Core Templates: SIPOC, Project Charter, CTQ/COT Tree
+   Real Semiconductor 12-inch Fab N3 Node Case (Project Aegis)
+   ========================================================================== */
+
+const SEMICON_SIPOC_DATA = {
+  suppliers: [
+    {
+      title_zh: "矽晶圓基板原廠",
+      title_en: "Raw Wafer Substrate Vendors",
+      desc_zh: "GlobalWafers (環球晶) / SUMCO 供應 12 吋 P- Prime 級雙面拋光測試與量產晶圓。",
+      desc_en: "Supplies 300mm P- Prime double-side polished prime & monitor test wafers."
+    },
+    {
+      title_zh: "先進光阻與化學材料商",
+      title_en: "Advanced Photoresist & Chemicals",
+      desc_zh: "JSR / TOK (東京應化) 供應 EUV 金屬氧化物與化學增幅光阻液、邊緣除膠溶劑 (EBR)。",
+      desc_en: "EUV MOx & CAR photoresist, Bottom Anti-Reflective Coating (BARC), and Edge Bead Removal (EBR) solvent."
+    },
+    {
+      title_zh: "先進設備原廠",
+      title_en: "Front-End Equipment OEMs",
+      desc_zh: "ASML (High-NA EUV Scanner)、Lam Research (乾蝕刻機)、AMAT (薄膜沈積)、KLA (缺陷檢測)。",
+      desc_en: "ASML (High-NA EUV Scanner), Lam Research (Plasma Etchers), AMAT (PVD/CVD), KLA (Defect Metrology)."
+    },
+    {
+      title_zh: "廠務基礎設施處",
+      title_en: "Fab Facilities & Infrastructure",
+      desc_zh: "提供 Class 1 超潔淨室氣流環境、超純水 (UPW 18.2 MΩ·cm)、高純特氣 (Ar/CF4/O2) 與潔淨乾燥空氣 (CDA)。",
+      desc_en: "Class 1 Cleanroom airflow, Ultra-Pure Water (18.2 MΩ·cm), specialty gases, and Clean Dry Air (CDA)."
+    },
+    {
+      title_zh: "上游製程模組",
+      title_en: "Upstream Process Modules",
+      desc_zh: "前段擴散與薄膜模組（Thin Film & Diffusion），交付完成閘極介電層長成之晶圓批。",
+      desc_en: "Thin Film & Diffusion modules delivering incoming wafers with pre-patterned gate stacks."
+    }
+  ],
+  inputs: [
+    {
+      title_zh: "12 吋晶圓批號 (Carrier)",
+      title_en: "300mm FOUP Production Lots",
+      desc_zh: "每批 25 片 12 吋晶圓，表面平坦度需滿足 TTV ≦ 12nm，無肉眼可見刮痕與微塵顆粒。",
+      desc_en: "25 wafers/FOUP with Total Thickness Variation (TTV) <= 12nm, zero macro scratch/particulates."
+    },
+    {
+      title_zh: "EUV 光罩 (Reticle)",
+      title_en: "EUV Photomask / Reticle",
+      desc_zh: "符合 N3 金屬閘極圖案之 EUV 多層膜光罩，表面具備碳奈米管防護膜 (Pellicle)。",
+      desc_en: "N3 gate-level EUV multilayer mask with pellicle, qualified with zero critical haze defects."
+    },
+    {
+      title_zh: "機台設定配方 (Recipe)",
+      title_en: "Equipment Process Recipe",
+      desc_zh: "曝光能量劑量 (Dose: 38.5 mJ/cm²)、焦點偏移 (Focus: -10nm)、電漿射頻功率與腔體真空度。",
+      desc_en: "Exposure Dose (38.5 mJ/cm²), Focus Offset (-10nm), Etch RF Bias (1200W), chamber pressure."
+    },
+    {
+      title_zh: "製程耗材與化學品批次",
+      title_en: "Chemicals & Process Consumables",
+      desc_zh: "感光光阻 (PR)、顯影液 (TMAH 2.38%)、蝕刻鈍化氣體 (C4F8/CHF3)、靜電吸盤 (ESC) 表面狀態。",
+      desc_en: "Photoresist lot, developer (TMAH 2.38%), etching gases, and Electrostatic Chuck (ESC) status."
+    },
+    {
+      title_zh: "APC 先進製程控制模型",
+      title_en: "Advanced Process Control (APC)",
+      desc_zh: "依據上一批反饋數據動態調校之閉迴路補償補正值（Run-to-Run Dose & Overlay offset）。",
+      desc_en: "Run-to-Run closed-loop feedback offsets for dose, focus, and cross-wafer overlay alignment."
+    }
+  ],
+  process: [
+    {
+      step: 1,
+      title_zh: "晶圓表面前處理與光阻旋塗",
+      title_en: "Surface Prep & Resist Coating",
+      desc_zh: "晶圓邊緣預清洗 ➔ 蒸鍍 HMDS 附著劑 ➔ 旋轉塗布先進光阻 ➔ 晶圓邊緣去除 (EBR) ➔ 軟烘烤 (Soft Bake 110°C)。",
+      desc_en: "Wafer pre-clean -> HMDS priming -> Precision spin-coat -> Optical Edge Bead Removal (EBR) -> Soft Bake 110°C."
+    },
+    {
+      step: 2,
+      title_zh: "EUV 極紫外光步進掃描曝光",
+      title_en: "EUV Scanner Photolithography",
+      desc_zh: "利用 ASML Scanner 進行精準對位與圖案曝光，維持全晶面曝光劑量均勻度與邊緣曝光穩定性。",
+      desc_en: "Sub-nanometer alignment followed by EUV pattern projection with edge die dose compensation."
+    },
+    {
+      step: 3,
+      title_zh: "曝光後烘烤與顯影成形",
+      title_en: "Post-Exposure Bake (PEB) & Dev",
+      desc_zh: "PEB 熱處理激發酸催化反應 ➔ 噴霧顯影去除未硬化光阻 ➔ 純水洗淨並旋乾，形成光阻圖案。",
+      desc_en: "PEB acid-catalysis reaction -> Puddle development -> Deionized water rinse & spin dry to form resist patterns."
+    },
+    {
+      step: 4,
+      title_zh: "電漿乾蝕刻圖案轉移",
+      title_en: "Dry Plasma Anisotropic Etch",
+      desc_zh: "利用感應耦合電漿 (ICP) 深入蝕刻介電薄膜，配合邊緣同心圓環氣流補償調整邊界蝕刻速率。",
+      desc_en: "Inductively coupled plasma dry etch with dual-zone tuning gas ring for wafer edge profile compensation."
+    },
+    {
+      step: 5,
+      title_zh: "在線關鍵尺寸與光學缺陷檢驗",
+      title_en: "Inline Metrology & Defect Scan",
+      desc_zh: "CD-SEM 量測晶圓邊緣晶粒關鍵尺寸均勻性 ➔ KLA 明暗視野光學檢驗機掃描邊緣微塵與剝離缺陷。",
+      desc_en: "CD-SEM verifies critical dimension uniformity -> High-speed KLA brightfield scan logs defect maps."
+    }
+  ],
+  outputs: [
+    {
+      title_zh: "微影圖案轉移完成之晶圓",
+      title_en: "Patterned 300mm Production Wafers",
+      desc_zh: "完成微影與蝕刻之 12 吋生產晶圓，線路結構完整無橋接 (Bridge) 或斷線 (Line Break)。",
+      desc_en: "Fully etched wafers with verified pattern fidelity and zero gross bridging or pinching defects."
+    },
+    {
+      title_zh: "關鍵尺寸量測值 (CD Data)",
+      title_en: "Critical Dimension Uniformity",
+      desc_zh: "中心至邊緣 CD 均勻度：目標值 3.20nm ± 0.15nm (3σ ≦ 0.12nm)，無邊緣剝蝕突異。",
+      desc_en: "Center-to-edge CD uniformity: target 3.20nm +/- 0.15nm (3-sigma <= 0.12nm across wafer)."
+    },
+    {
+      title_zh: "晶圓缺陷圖譜 (Klarf Defect File)",
+      title_en: "Klarf Format Defect Map",
+      desc_zh: "數位缺陷分類圖檔（包含微粒、殘膠、孔洞），邊緣環狀缺陷密度 D0 ≦ 0.048 defects/cm²。",
+      desc_en: "Defect coordinate map file; wafer edge zone D0 defect density <= 0.048 defects/cm²."
+    },
+    {
+      title_zh: "機台運轉參數記錄檔 (FDC Log)",
+      title_en: "Fault Detection & Classification",
+      desc_zh: "記錄腔體溫度震盪、真空泵頻率、光阻泵吐出壓力的完整時間序列工程日誌。",
+      desc_en: "Time-series sensor telemetry capturing chamber RF impedance, pressure, and bake temperature."
+    },
+    {
+      title_zh: "電子派工放行狀態 (MES Release)",
+      title_en: "MES Lot Track & Release",
+      desc_zh: "通過 Inline SPC 規則檢驗合格之批號，系統自動放行並派工至下一站 CMP 研磨製程。",
+      desc_en: "Automated MES status clearance routed to downstream Chemical Mechanical Planarization (CMP)."
+    }
+  ],
+  customers: [
+    {
+      title_zh: "下游化學機械研磨模組 (CMP)",
+      title_en: "Downstream CMP Module",
+      desc_zh: "接收完成圖案轉移之晶圓，進行氧化層與金屬表面平坦化研磨加工。",
+      desc_en: "Receives wafers to perform planarization; requires smooth topography to prevent slurry puddling."
+    },
+    {
+      title_zh: "晶圓良率工程處 (YE / PIE)",
+      title_en: "Yield Enhancement & PIE",
+      desc_zh: "製程整合工程處，依據缺陷圖譜追蹤 WAT 電性良率與邊緣晶粒有效良品率。",
+      desc_en: "Tracks wafer acceptance test (WAT) electrical yields and wafer-edge functional die count."
+    },
+    {
+      title_zh: "終端晶片無晶圓廠客戶 (Fabless)",
+      title_en: "Fabless Chip Tier-1 Customers",
+      desc_zh: "Apple, NVIDIA, AMD, Qualcomm 等頂級客戶，要求最高產能晶片供給與穩定失效率。",
+      desc_en: "Tier-1 high-performance computing customers requiring reliable silicon delivery commitments."
+    },
+    {
+      title_zh: "先進委外封裝測試廠 (OSAT/CoWoS)",
+      title_en: "Advanced Packaging OSAT (CoWoS)",
+      desc_zh: "執行晶圓凸塊 (Bumping)、晶粒切割 (Dicing) 與 2.5D/3D 先進異質整合封裝。",
+      desc_en: "Performs wafer dicing and 2.5D/3D advanced interposer stacking on qualified good edge dies."
+    },
+    {
+      title_zh: "廠長室與營運管理高層",
+      title_en: "Fab Operations & General Manager",
+      desc_zh: "定期檢視每週晶圓出貨良率指數（Overall Fab Yield）、報廢率與製程晶圓毛利。",
+      desc_en: "Monitors overall monthly fab yield, scrap cost reduction, and capacity utilization."
+    }
+  ]
+};
+
+const SEMICON_CHARTER_DATA = {
+  businessCase: {
+    title_zh: "💼 商業背景 (Business Case)",
+    title_en: "💼 Business Case",
+    content_zh: "晶圓廠 N3 先進製程進入量產爬坡階段（High-Volume Ramp-up）。隨著晶圓產能由每月 25,000 片提升至 45,000 片，晶圓邊緣 5mm 環形區域（Wafer Edge Zone）之電性測試良率持續低迷。這直接限制了每片 12 吋晶圓可切割的有效晶粒數（Gross Die per Wafer），造成顯著的製造成本浪費並侵蝕先進製程毛利。若不及時改善，將危及下一季度對頂級 AI 晶片客戶的合約出貨承諾。",
+    content_en: "As the 300mm Fab ramps N3 node production from 25k to 45k wafers/month, the 5mm wafer edge perimeter exhibits persistently degraded electrical yield. This edge-exclusion penalty reduces usable gross dies per wafer, driving up manufacturing costs and threatening high-margin contract fulfillment for Tier-1 AI accelerator clients in the upcoming quarter."
+  },
+  problemStatement: {
+    title_zh: "⚠️ 問題陳述 (Problem Statement)",
+    title_en: "⚠️ Problem Statement",
+    content_zh: "在過去 3 個月（2026 Q2）內，12 吋 N3 產線晶圓邊緣（距邊緣 0~5mm 區域）的平均電性測試良率僅為 <strong>84.2%</strong>（缺陷密度 D0 平均達 <strong>0.118 defects/cm²</strong>），遠低於公司內部設定之良率基準目標 <strong>92.0%</strong>。此邊緣失效問題導致每月平均損失 1,280 顆高階良品晶粒，折合每個月約 <strong>180 萬美元</strong> 的報廢、降級與保固風險成本。",
+    content_en: "Over the past 3 months (2026 Q2), wafer-edge electrical yield (outer 0-5mm annular ring) has averaged only 84.2% with defect density D0 reaching 0.118 defects/cm2, falling far below the fab threshold of 92.0%. This defect fallout results in a loss of ~1,280 premium dies monthly, costing an estimated $1.8M/month in scrap and lost margin."
+  },
+  goalStatement: {
+    title_zh: "🎯 目標陳述 (Goal Statement - SMART)",
+    title_en: "🎯 Goal Statement (SMART)",
+    content_zh: "本專案自 2026 年 10 月 1 日起啟動，在 <strong>16 週（4 個月）內</strong>：<br>1. 將晶圓邊緣區域（0~5mm）良率從基準 <strong>84.2% 提升至 ≧ 92.5%</strong>。<br>2. 將邊緣微影與蝕刻之綜合缺陷密度 D0 由 0.118 降低至 <strong>≦ 0.045 defects/cm²</strong>。<br>3. 將關鍵尺寸均勻度 3σ 偏差自 0.28nm 收斂至 <strong>≦ 0.14nm</strong>。<br>4. 預期實現年化成本節省（Direct Financial Saving）達 <strong>1,650,000 美元</strong>。",
+    content_en: "Within 16 weeks (by end of 2026 Q4):<br>1. Boost wafer edge yield from baseline 84.2% to >= 92.5%.<br>2. Cut edge D0 defect density from 0.118 to <= 0.045 defects/cm2.<br>3. Tighten edge Critical Dimension 3-sigma uniformity from 0.28nm to <= 0.14nm.<br>4. Deliver audited annual savings of $1,650,000 without degrading wafer cycle time."
+  },
+  scope: {
+    title_zh: "📐 專案範圍 (Project Scope)",
+    title_en: "📐 Project Scope",
+    inScope_zh: "<strong>In-Scope (納入範疇)：</strong><br>• 12 吋 Fab 3A 產線 N3 EUV 黃光微影模組之光阻旋塗均勻度、邊緣去除 (EBR) 寬度控制。<br>• 乾蝕刻機台邊緣聚焦環 (Focus Ring) 磨耗補償、邊界氣流配方 (Dual Gas Tuning)。<br>• 晶圓邊緣光學與電性計量站點之量測重複性驗證 (Gage R&R)。",
+    inScope_en: "<strong>In-Scope:</strong><br>• Litho photoresist edge bead removal (EBR) dispense & scanner edge dose compensation.<br>• Dry etch focus ring erosion compensation and edge gas tuning recipes on Lam chambers.<br>• Metrology MSA & Gage R&R validation on CD-SEM and KLA edge inspection tools.",
+    outScope_zh: "<strong>Out-of-Scope (排除範疇)：</strong><br>• 矽晶圓原材料基板之晶圓切片結晶技術變更。<br>• 下游客戶晶片底層電路設計 (Circuit Netlist) 或封裝基板架構變更。<br>• 機台腔體硬體大規模拆裝重構（僅允許軟體 Recipe 與既有消耗件參數調整）。",
+    outScope_en: "<strong>Out-of-Scope:</strong><br>• Raw silicon wafer crystal ingot growth alterations with raw wafer vendors.<br>• Client IC circuit schematic or packaging ball layout changes.<br>• Massive capital hardware rebuilds (restricted to recipe, software, and consumable tuning)."
+  },
+  team: {
+    title_zh: "👥 團隊組織與職掌 (Team Roles)",
+    title_en: "👥 Team Organization & DRI",
+    members: [
+      { role_zh: "專案贊助人 (Sponsor)", role_en: "Project Sponsor", name_zh: "廠務營運協理 / Fab Director (VP)", name_en: "Fab Operations VP" },
+      { role_zh: "專案隊長 (Leader / DRI)", role_en: "Project Leader (Black Belt)", name_zh: "資深黑帶製程整合工程師 (PIE BB)", name_en: "Sr. PIE Black Belt" },
+      { role_zh: "微影製程專家 (PE Lead)", role_en: "Litho Process Lead", name_zh: "黃光微影主任工程師 (Litho PE)", name_en: "Staff Lithography PE" },
+      { role_zh: "蝕刻設備專家 (EE Lead)", role_en: "Etch Equipment Lead", name_zh: "乾蝕刻設備副理 (Etch EE Manager)", name_en: "Etch Equipment Manager" },
+      { role_zh: "品保工程師 (QA / CQE)", role_en: "Quality Lead (CQE)", name_zh: "品保處客訴良率黑帶 (CQE)", name_en: "Customer Quality Black Belt" },
+      { role_zh: "財務審計專員 (Finance)", role_en: "Finance Controller", name_zh: "廠務管理成本會計師 (Cost CPA)", name_en: "Operations Cost Controller" }
+    ]
+  },
+  milestones: {
+    title_zh: "🏁 專案里程碑與關卡審查 (DMAIC Milestones)",
+    title_en: "🏁 DMAIC Milestones & Tollgates",
+    schedule: [
+      { phase: "Define (定義)", time_zh: "第 1~3 週 (10/01-10/20)", time_en: "Weeks 1-3", target_zh: "完成 Charter 核准、SIPOC 流程邊界與初版 CTQ 規格矩陣", target_en: "Charter sign-off, SIPOC boundaries, VOC translation" },
+      { phase: "Measure (測量)", time_zh: "第 4~6 週 (10/21-11/10)", time_en: "Weeks 4-6", target_zh: "完成 CD-SEM Gage R&R (GRR < 9%)、確立基準製程能力 Cp/Cpk", target_en: "MSA Gage R&R validation, baseline capability baseline" },
+      { phase: "Analyze (分析)", time_zh: "第 7~9 週 (11/11-12/01)", time_en: "Weeks 7-9", target_zh: "DOE 實驗因子篩選、鎖定 Focus Ring 磨耗與 EBR 氣流之交互作用", target_en: "Root cause multi-vari analysis, DOE screening" },
+      { phase: "Improve (改善)", time_zh: "第 10~13 週 (12/02-12/28)", time_en: "Weeks 10-13", target_zh: "導入最佳化動態 Recipe、驗證連續 100 批邊緣良率達標 92.8%", target_en: "Dynamic recipe pilot, confirmation runs >= 92.5%" },
+      { phase: "Control (控制)", time_zh: "第 14~16 週 (12/29-01/18)", time_en: "Weeks 14-16", target_zh: "建立 SPC 邊緣即時管制作圖、標準作業 SOP 上線、財務效益結算", target_en: "SPC edge monitoring, SOP sign-off, financial audit" }
+    ]
+  }
+};
+
+const SEMICON_COT_DATA = [
+  {
+    category: "CTQ",
+    type_zh: "品質與缺陷特性 (Quality & Defectivity)",
+    type_en: "Quality & Defectivity Metric",
+    voc_zh: "客戶聲音：「晶片在邊緣不能出現未知殘膠或漏電流，否則高溫老化測試會燒毀！」",
+    voc_en: "VOC: 'Edge dies must not exhibit micro-bridging or high leakage current during burn-in test!'",
+    driver_zh: "關鍵驅動要素：光阻顯影殘留清除完整度與乾蝕刻邊界離子鞘層均勻度",
+    driver_en: "Key Driver: Complete photoresist residue clearance & plasma sheath boundary uniformity",
+    req_label: "CTQ 特性與量化規格",
+    req_desc_zh: "1. 邊緣 0~5mm 區域缺陷密度 D0 <strong>≦ 0.045 defects/cm²</strong><br>2. 閘極接觸電阻 Rc <strong>≦ 11.5 Ω</strong> (製程能力指標 Cpk ≧ 1.67)<br>3. 絕緣層擊穿電壓 Vbd <strong>≧ 3.85 V</strong>",
+    req_desc_en: "1. Wafer-edge D0 Defect Density <= 0.045 defects/cm2<br>2. Gate Contact Resistance Rc <= 11.5 ohm (Cpk >= 1.67)<br>3. Dielectric Breakdown Voltage Vbd >= 3.85 V",
+    formula: "Target: D0 <= 0.045 /cm² | Cpk = min((USL-μ)/3σ, (μ-LSL)/3σ) >= 1.67"
+  },
+  {
+    category: "CTQ",
+    type_zh: "微影尺寸精度特性 (Lithography Critical Dimension)",
+    type_en: "Critical Dimension (CD) Uniformity",
+    voc_zh: "客戶聲音：「所有核心邏輯閘門線寬必須一致，避免跨晶粒運算頻率失衡偏差。」",
+    voc_en: "VOC: 'Gate channel dimensions must remain ultra-consistent across the full wafer to avoid core frequency mismatch.'",
+    driver_zh: "關鍵驅動要素：EUV 邊界光學干涉修正 (OPC) 與邊緣烘烤溫度場控制",
+    driver_en: "Key Driver: EUV Edge Optical Proximity Correction & PEB plate thermal field uniformity",
+    req_label: "CTQ 特性與量化規格",
+    req_desc_zh: "1. 閘極關鍵尺寸 CD 目標值：<strong>3.20 nm ± 0.15 nm</strong><br>2. 全晶面 CD 3σ 偏差 <strong>≦ 0.12 nm</strong><br>3. 微影對位誤差 (Overlay Error) <strong>≦ 1.10 nm</strong>",
+    req_desc_en: "1. Gate CD Target: 3.20 nm +/- 0.15 nm (USL=3.35, LSL=3.05)<br>2. Full-Wafer CD 3-sigma deviation <= 0.12 nm<br>3. Scanner Overlay Error <= 1.10 nm",
+    formula: "Tolerance: CD = 3.20 ± 0.15 nm | 3σ <= 0.12 nm | Overlay <= 1.1 nm"
+  },
+  {
+    category: "COT",
+    type_zh: "運營交期與周轉特性 (Operational Time & Delivery)",
+    type_en: "Operational Time & Delivery Metric (COT / CTD)",
+    voc_zh: "客戶聲音：「改善方案上線不能拖長批號生產時間，必須維持承諾每週產出片數！」",
+    voc_en: "VOC: 'Improvement actions must not choke production line throughput or delay hot-lot cycle time commitments!'",
+    driver_zh: "關鍵驅動要素：Recipe 自動下載防呆 (Recipe Auto-Download) 與試驗批換線時間",
+    driver_en: "Key Driver: Automated recipe dispatching without manual engineering intervention & fast changeover",
+    req_label: "COT / CTD 特性與量化規格",
+    req_desc_zh: "1. 微影與蝕刻模組站點單批周轉時間 (Cycle Time) <strong>≦ 4.2 小時/站</strong><br>2. 蝕刻機台換模與配方切換時間 (Recipe Setup Time) <strong>≦ 12 分鐘</strong><br>3. 工程試驗批與量產批混線派工準時交件率 (On-Time Delivery) <strong>≧ 99.2%</strong>",
+    req_desc_en: "1. Module Lot Turn-Around Time (Cycle Time) <= 4.2 hours/station<br>2. Etch Recipe Switch & Consumable Setup Time <= 12 minutes<br>3. Mixed Lot Production On-Time Delivery (OTD) >= 99.2%",
+    formula: "Target: Cycle Time <= 4.2 hrs/stn | Setup <= 12 min | OTD >= 99.2%"
+  }
+];
+
+// Template rendering functions
+function renderSipocTemplate(){
+  const container = document.getElementById('sipocGridContainer');
+  if(!container) return;
+  const d = SEMICON_SIPOC_DATA;
+
+  container.innerHTML = `
+    <div class="sipoc-col s">
+      <div class="sipoc-col-header">
+        <span><span class="zh">S - 供應端</span><span class="en">S - Suppliers</span></span>
+        <span style="opacity:0.7;">(${d.suppliers.length})</span>
+      </div>
+      <div class="sipoc-col-body">
+        ${d.suppliers.map(item => `
+          <div class="sipoc-item-card">
+            <div class="sipoc-item-title"><span class="zh">${item.title_zh}</span><span class="en">${item.title_en}</span></div>
+            <div class="sipoc-item-desc"><span class="zh">${item.desc_zh}</span><span class="en">${item.desc_en}</span></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="sipoc-col i">
+      <div class="sipoc-col-header">
+        <span><span class="zh">I - 輸入端</span><span class="en">I - Inputs</span></span>
+        <span style="opacity:0.7;">(${d.inputs.length})</span>
+      </div>
+      <div class="sipoc-col-body">
+        ${d.inputs.map(item => `
+          <div class="sipoc-item-card">
+            <div class="sipoc-item-title"><span class="zh">${item.title_zh}</span><span class="en">${item.title_en}</span></div>
+            <div class="sipoc-item-desc"><span class="zh">${item.desc_zh}</span><span class="en">${item.desc_en}</span></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="sipoc-col p">
+      <div class="sipoc-col-header">
+        <span><span class="zh">P - 製程流程</span><span class="en">P - Process</span></span>
+        <span style="opacity:0.7;">(5 Steps)</span>
+      </div>
+      <div class="sipoc-col-body">
+        ${d.process.map(item => `
+          <div class="sipoc-item-card">
+            <div class="sipoc-proc-step">
+              <span class="sipoc-step-badge">${item.step}</span>
+              <div style="flex:1;">
+                <div class="sipoc-item-title"><span class="zh">${item.title_zh}</span><span class="en">${item.title_en}</span></div>
+                <div class="sipoc-item-desc"><span class="zh">${item.desc_zh}</span><span class="en">${item.desc_en}</span></div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="sipoc-col o">
+      <div class="sipoc-col-header">
+        <span><span class="zh">O - 產出端</span><span class="en">O - Outputs</span></span>
+        <span style="opacity:0.7;">(${d.outputs.length})</span>
+      </div>
+      <div class="sipoc-col-body">
+        ${d.outputs.map(item => `
+          <div class="sipoc-item-card">
+            <div class="sipoc-item-title"><span class="zh">${item.title_zh}</span><span class="en">${item.title_en}</span></div>
+            <div class="sipoc-item-desc"><span class="zh">${item.desc_zh}</span><span class="en">${item.desc_en}</span></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="sipoc-col c">
+      <div class="sipoc-col-header">
+        <span><span class="zh">C - 客戶端</span><span class="en">C - Customers</span></span>
+        <span style="opacity:0.7;">(${d.customers.length})</span>
+      </div>
+      <div class="sipoc-col-body">
+        ${d.customers.map(item => `
+          <div class="sipoc-item-card">
+            <div class="sipoc-item-title"><span class="zh">${item.title_zh}</span><span class="en">${item.title_en}</span></div>
+            <div class="sipoc-item-desc"><span class="zh">${item.desc_zh}</span><span class="en">${item.desc_en}</span></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderCharterTemplate(){
+  const container = document.getElementById('charterGridContainer');
+  if(!container) return;
+  const d = SEMICON_CHARTER_DATA;
+
+  container.innerHTML = `
+    <div class="charter-box">
+      <div class="charter-box-title"><span class="zh">${d.businessCase.title_zh}</span><span class="en">${d.businessCase.title_en}</span></div>
+      <div class="charter-box-content">
+        <p><span class="zh">${d.businessCase.content_zh}</span><span class="en">${d.businessCase.content_en}</span></p>
+      </div>
+    </div>
+
+    <div class="charter-box">
+      <div class="charter-box-title"><span class="zh">${d.problemStatement.title_zh}</span><span class="en">${d.problemStatement.title_en}</span></div>
+      <div class="charter-box-content">
+        <p><span class="zh">${d.problemStatement.content_zh}</span><span class="en">${d.problemStatement.content_en}</span></p>
+      </div>
+    </div>
+
+    <div class="charter-box">
+      <div class="charter-box-title"><span class="zh">${d.goalStatement.title_zh}</span><span class="en">${d.goalStatement.title_en}</span></div>
+      <div class="charter-box-content">
+        <div class="charter-highlight">
+          <span class="zh">${d.goalStatement.content_zh}</span>
+          <span class="en">${d.goalStatement.content_en}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="charter-box">
+      <div class="charter-box-title"><span class="zh">${d.scope.title_zh}</span><span class="en">${d.scope.title_en}</span></div>
+      <div class="charter-box-content">
+        <p><span class="zh">${d.scope.inScope_zh}</span><span class="en">${d.scope.inScope_en}</span></p>
+        <p style="margin-top:10px;"><span class="zh">${d.scope.outScope_zh}</span><span class="en">${d.scope.outScope_en}</span></p>
+      </div>
+    </div>
+
+    <div class="charter-box">
+      <div class="charter-box-title"><span class="zh">${d.team.title_zh}</span><span class="en">${d.team.title_en}</span></div>
+      <div class="charter-box-content">
+        <div class="charter-team-grid">
+          ${d.team.members.map(m => `
+            <div class="charter-team-member">
+              <div class="charter-role-tag"><span class="zh">${m.role_zh}</span><span class="en">${m.role_en}</span></div>
+              <div style="font-weight:700;"><span class="zh">${m.name_zh}</span><span class="en">${m.name_en}</span></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="charter-box">
+      <div class="charter-box-title"><span class="zh">${d.milestones.title_zh}</span><span class="en">${d.milestones.title_en}</span></div>
+      <div class="charter-box-content">
+        <table class="charter-milestone-table">
+          <thead>
+            <tr>
+              <th><span class="zh">階段</span><span class="en">Phase</span></th>
+              <th><span class="zh">預估時程</span><span class="en">Timeline</span></th>
+              <th><span class="zh">關鍵交付驗收標的</span><span class="en">Key Gate Deliverable</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${d.milestones.schedule.map(s => `
+              <tr>
+                <td style="font-weight:700; white-space:nowrap; color:var(--amber);">${s.phase}</td>
+                <td style="white-space:nowrap;"><span class="zh">${s.time_zh}</span><span class="en">${s.time_en}</span></td>
+                <td><span class="zh">${s.target_zh}</span><span class="en">${s.target_en}</span></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function renderCotTemplate(){
+  const container = document.getElementById('cotTreeContainer');
+  if(!container) return;
+
+  container.innerHTML = SEMICON_COT_DATA.map((item, idx) => `
+    <div class="cot-branch-card">
+      <div class="cot-branch-header">
+        <div class="cot-branch-title">
+          <span>#0${idx+1}</span>
+          <span>${item.category === 'CTQ' ? '🎯' : '⏱️'}</span>
+          <span><span class="zh">${item.type_zh}</span><span class="en">${item.type_en}</span></span>
+        </div>
+        <span class="sc-preset-badge">${item.category}</span>
+      </div>
+      <div class="cot-flow">
+        <!-- 1. VOC Node -->
+        <div class="cot-node voc">
+          <div class="cot-node-label">📢 <span class="zh">Voice of Customer (VOC)</span><span class="en">Voice of Customer (VOC)</span></div>
+          <div class="cot-node-text"><span class="zh">${item.voc_zh}</span><span class="en">${item.voc_en}</span></div>
+        </div>
+
+        <div class="cot-arrow">➔</div>
+
+        <!-- 2. Driver Node -->
+        <div class="cot-node driver">
+          <div class="cot-node-label">⚙️ <span class="zh">Key Issue / Driver</span><span class="en">Key Issue / Driver</span></div>
+          <div class="cot-node-text"><span class="zh">${item.driver_zh}</span><span class="en">${item.driver_en}</span></div>
+        </div>
+
+        <div class="cot-arrow">➔</div>
+
+        <!-- 3. CTQ/COT Metric Node -->
+        <div class="cot-node ${item.category.toLowerCase()}">
+          <div class="cot-node-label">🎯 <span class="zh">${item.req_label}</span><span class="en">${item.category} Specification</span></div>
+          <div class="cot-node-text"><span class="zh">${item.req_desc_zh}</span><span class="en">${item.req_desc_en}</span></div>
+          <div class="cot-metric-box">${item.formula}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Copy helpers
+function copyTextToClipboard(text, successMsg) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert(successMsg);
+    }).catch(err => {
+      prompt('請手動複製以下內容 / Copy text below:', text);
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      alert(successMsg);
+    } catch(e) {
+      prompt('請手動複製以下內容 / Copy text below:', text);
+    }
+    document.body.removeChild(ta);
+  }
+}
+
+function copySipocAsMarkdown(){
+  const d = SEMICON_SIPOC_DATA;
+  let md = '# 12-inch Fab N3 Node SIPOC Process Map (Project Aegis)\n\n';
+  md += '| Phase | Title | Details |\n';
+  md += '|---|---|---|\n';
+  d.suppliers.forEach(s => { md += `| **Supplier** | ${s.title_zh} (${s.title_en}) | ${s.desc_zh} |\n`; });
+  d.inputs.forEach(i => { md += `| **Input** | ${i.title_zh} (${i.title_en}) | ${i.desc_zh} |\n`; });
+  d.process.forEach(p => { md += `| **Process Step ${p.step}** | ${p.title_zh} (${p.title_en}) | ${p.desc_zh} |\n`; });
+  d.outputs.forEach(o => { md += `| **Output** | ${o.title_zh} (${o.title_en}) | ${o.desc_zh} |\n`; });
+  d.customers.forEach(c => { md += `| **Customer** | ${c.title_zh} (${c.title_en}) | ${c.desc_zh} |\n`; });
+  copyTextToClipboard(md, '✅ SIPOC 流程圖已複製為 Markdown 格式！\nSIPOC Process Map copied to clipboard!');
+}
+
+function copyCharterAsMarkdown(){
+  const d = SEMICON_CHARTER_DATA;
+  let md = '# Project Charter: N3 Edge Die Yield Enhancement (Project Aegis)\n\n';
+  md += '## 1. Business Case\n' + d.businessCase.content_zh + '\n\n';
+  md += '## 2. Problem Statement\n' + d.problemStatement.content_zh.replace(/<[^>]+>/g, '') + '\n\n';
+  md += '## 3. Goal Statement (SMART)\n' + d.goalStatement.content_zh.replace(/<br>/g, '\n').replace(/<[^>]+>/g, '') + '\n\n';
+  md += '## 4. Project Scope\n' + d.scope.inScope_zh.replace(/<br>/g, '\n').replace(/<[^>]+>/g, '') + '\n\n' + d.scope.outScope_zh.replace(/<br>/g, '\n').replace(/<[^>]+>/g, '') + '\n\n';
+  md += '## 5. Team Roles & DRI\n';
+  d.team.members.forEach(m => { md += `- **${m.role_zh}**: ${m.name_zh}\n`; });
+  md += '\n## 6. Milestones\n';
+  d.milestones.schedule.forEach(s => { md += `- **${s.phase}** (${s.time_zh}): ${s.target_zh}\n`; });
+  copyTextToClipboard(md, '✅ Project Charter 專案憲章已複製為 Markdown 格式！\nProject Charter copied to clipboard!');
+}
+
+function copyCotAsMarkdown(){
+  let md = '# CTQ / COT Tree Analysis (Project Aegis)\n\n';
+  SEMICON_COT_DATA.forEach((item, i) => {
+    md += `### Branch ${i+1}: [${item.category}] ${item.type_zh}\n`;
+    md += `- **VOC (Voice of Customer)**: ${item.voc_zh}\n`;
+    md += `- **Key Driver**: ${item.driver_zh}\n`;
+    md += `- **Specification**: ${item.req_desc_zh.replace(/<br>/g, '; ').replace(/<[^>]+>/g, '')}\n`;
+    md += `- **Metric Formula**: ${item.formula}\n\n`;
+  });
+  copyTextToClipboard(md, '✅ CTQ / COT 關鍵品質樹已複製為 Markdown 格式！\nCTQ/COT Tree copied to clipboard!');
+}
+
+function initDefineTemplates(){
+  renderSipocTemplate();
+  renderCharterTemplate();
+  renderCotTemplate();
+
+  const btnResetSipoc = document.getElementById('btnResetSipocSemicon');
+  if(btnResetSipoc) btnResetSipoc.onclick = () => { renderSipocTemplate(); alert('已重新載入半導體 SIPOC 案例！'); };
+
+  const btnCopySipoc = document.getElementById('btnCopySipocMd');
+  if(btnCopySipoc) btnCopySipoc.onclick = copySipocAsMarkdown;
+
+  const btnResetCharter = document.getElementById('btnResetCharterSemicon');
+  if(btnResetCharter) btnResetCharter.onclick = () => { renderCharterTemplate(); alert('已重新載入半導體 Project Charter 案例！'); };
+
+  const btnCopyCharter = document.getElementById('btnCopyCharterMd');
+  if(btnCopyCharter) btnCopyCharter.onclick = copyCharterAsMarkdown;
+
+  const btnResetCot = document.getElementById('btnResetCotSemicon');
+  if(btnResetCot) btnResetCot.onclick = () => { renderCotTemplate(); alert('已重新載入半導體 CTQ / COT 案例！'); };
+
+  const btnCopyCot = document.getElementById('btnCopyCotMd');
+  if(btnCopyCot) btnCopyCot.onclick = copyCotAsMarkdown;
+}
+
   // Initialize Brainstorm & Visualization Section
   initBrainstorm();
   initAitechCompass();
@@ -22657,6 +23767,10 @@ function init(){
   loadState();
   const toggleDmaicBtn = document.getElementById('toggleDmaic');
   const toggleDmadvBtn = document.getElementById('toggleDmadv');
+  const toggleSipocBtn = document.getElementById('toggleSipoc');
+  const toggleCharterBtn = document.getElementById('toggleCharter');
+  const toggleCotBtn = document.getElementById('toggleCot');
+
   if(toggleDmaicBtn) {
     toggleDmaicBtn.onclick = () => {
       state.cycle = 'dmaic';
@@ -22677,6 +23791,31 @@ function init(){
       renderDmaicDetail();
     };
   }
+  if(toggleSipocBtn) {
+    toggleSipocBtn.onclick = () => {
+      state.cycle = 'sipoc';
+      saveState();
+      updateToggleButtons();
+      renderSipocTemplate();
+    };
+  }
+  if(toggleCharterBtn) {
+    toggleCharterBtn.onclick = () => {
+      state.cycle = 'charter';
+      saveState();
+      updateToggleButtons();
+      renderCharterTemplate();
+    };
+  }
+  if(toggleCotBtn) {
+    toggleCotBtn.onclick = () => {
+      state.cycle = 'cot';
+      saveState();
+      updateToggleButtons();
+      renderCotTemplate();
+    };
+  }
+  initDefineTemplates();
   renderMindset();
   renderBelt();
   renderWheel();

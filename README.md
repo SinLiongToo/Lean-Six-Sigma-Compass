@@ -34,7 +34,7 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
  ├── 01. 核心思維 (Mindset)
  ├── 02. 證照地圖與模擬考試 (Belt Map & Exam Engine)
  ├── 03. 個人專案診斷與證照推薦 (Personal Project Diagnostics & Belt Recommendation)
- ├── 04. DMAIC / DMADV 雙循環 (DMAIC & DMADV Cycles)
+ ├── 04. DMAIC / DMADV 雙循環與專案定義三大核心模板 (DMAIC, DMADV, SIPOC, Project Charter, CTQ/COT Tree)
  ├── 05. 精實六標準差導入路徑 (Roadmap)
  ├── 06. 真實案例與討論筆記 (Case Notes)
  ├── 07. 實戰工具地圖 (Tool Map)
@@ -67,7 +67,15 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
   - `原始考題 (Raw)`：直接檢視考題的 Markdown 原始文件。
 - **試卷庫與本機資料夾載入**：內建白帶、黃帶、綠帶、黑帶等 DMAIC 各階段試卷，支援批次載入本機 Markdown 考卷。
 
-### 2. 🎙️ 精實會議與高階簡報表達藝術 (STAR vs. CARL)
+### 2. 🔄 DMAIC / DMADV 雙循環與專案定義三大核心模板 (Define Phase Core Matrix)
+- **五合一導覽分頁**：緊密整合既有流程改善 `DMAIC`、新流程設計 `DMADV`、高階流程界定 `SIPOC 流程圖`、專案立項契約 `Project Charter 專案憲章` 與關鍵需求轉化 `CTQ / COT 關鍵品質與交付特性樹`。
+- **真實 12 吋晶圓廠 N3 先進製程實戰案例 (Project Aegis)**：
+  - **SIPOC 流程圖**：完整收錄矽晶圓基板商、EUV 光阻化學材料、ASML Scanner / Lam 乾蝕刻機台、超純水 UPW/CDA、五大高階製程步驟（旋塗、EUV 曝光、PEB 顯影、乾蝕刻、Inline CD-SEM/KLA 檢驗）、CD 均勻度與 Klarf 缺陷圖譜輸出、以及下游 CMP、良率整合 (YE/PIE) 與 Tier-1 晶片客戶。
+  - **Project Charter 專案憲章 (六宮格精實版)**：聚焦 N3 晶圓邊緣良率自 84.2% 提升至 ≧ 92.5%、缺陷密度 D0 降至 0.045/cm²、年化節省 165 萬美元之 SMART 目標陳述、嚴謹界定 In-Scope 與 Out-of-Scope、跨部門 DRI 職掌與 DMAIC 16 週里程碑審查。
+  - **CTQ / COT 關鍵品質樹**：將 VOC 客戶聲音分解為關鍵驅動因子（Drivers），向下轉化為可量測之關鍵品質特性（CTQ，如 CD 3.2nm ±0.15nm、D0 ≦ 0.045/cm²）與關鍵交付營運時間特性（COT/CTD，如單批過站 Cycle Time ≦ 4.2h、機台換模 Setup ≦ 12min）。
+- **一鍵式生產力功能**：支援一鍵還原半導體真實範例、一鍵複製為標準格式化 Markdown 報告。
+
+### 3. 🎙️ 精實會議與高階簡報表達藝術 (STAR vs. CARL)
 - **精實會議推進助理**：
   - 雙披薩原則 (Two-Pizza Rule) 檢查與 60 分鐘時間箱 (Timeboxing)。
   - 3W 推進原則（Who does What by When）與單一 DRI 課責檢核。
@@ -77,19 +85,19 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
   - 內建三大實戰範例（晶圓廠副總良率轉型、主任架構師高並發升級、資深工程師機台 DOE）。
   - 即時生成 4 大 Slide 骨架與**高管 3 分鐘電梯演說腳本**，支援一鍵複製。
 
-### 3. 🛡️ 職場說不的藝術與防禦手冊 (Workplace Defense Playbook)
+### 4. 🛡️ 職場說不的藝術與防禦手冊 (Workplace Defense Playbook)
 - **四大防禦模組與 14 大實戰金句**：Level 1 初階優雅婉拒、Level 2 資產與合規防禦（資安授權/維護成本轉嫁）、Level 3 突發救火與甩鍋防禦（合規防背鍋/顧問式指路）、Level 4 工程數據與邏輯防禦（14 大職場防身神功，涵蓋防後見之明事後諸葛、防事後歸因、防通靈式需求、防倉促定罪等）。
 - **智能情境話術生成器**：依對象（直屬主管/跨部門主管/平級/客戶）與風格即時生成專業中英文溝通話術。
 
-### 4. 📊 財務分析與精實機會 (Financial Analysis & Lean Opportunities)
+### 5. 📊 財務分析與精實機會 (Financial Analysis & Lean Opportunities)
 - **精實財務診斷與成本拆解**：COGS、OPEX、CapEx、OCF、FCF、CCC 現金循環週期即時計算與星號優先級評估。
 - **財報分析與 GAAP vs. Non-GAAP 避坑指南**：解析 SBC 股權激勵、無形資產攤銷等非現金調整，內建 TSMC、Nvidia、AMD、Apple、ASML 等科技巨頭毛利行業基準。
 
-### 5. 🧭 科技與半導體/AI 發展史羅盤 (Tech History Compass)
+### 6. 🧭 科技與半導體/AI 發展史羅盤 (Tech History Compass)
 - **七大科技歷史軌道**：人工智慧 (AI)、計算架構 (Computing)、半導體製程與封測 (Semiconductors - CoWoS/High-NA EUV/ATE 測試)、網際網路 (Internet)、通訊 (Communications)、儲存與記憶體 (Storage & HBM)、太空科技 (Space)。
 - **平行時間軸 (Parallel View)**：1940～2027 年全球跨領域科技突破橫向對照。
 
-### 6. 🏛️ 企業組織全景架構與跨部門升級求助板模 (Org Chart & Escalation Playbook)
+### 7. 🏛️ 企業組織全景架構與跨部門升級求助板模 (Org Chart & Escalation Playbook)
 - **雙架構模式切換**：
   - `半導體與高科技製造業全景架構`：深入覆蓋晶圓代工 (Foundry)、IDM 與封測 12 大核心部門（經營決策 C-Suite、先進製程研發 TD、製程整合 PIE、模組 PE、設備 EE、製造營運 Fab Ops、廠務與環安衛 Facility/EHS、品質可靠度 QA/CQE、供應鏈外包 Sourcing/OSAT、業務 FAE、CIM 自動化 MES、財務成本會計）。
   - `跨國通用型大企業矩陣架構`：完整解構事業群 (BU P&L) × 區域市場 (Geographies) × 總部共享職能 (Platform, Ops, QA, IT, FP&A, HRBP, Legal) 雙軸矩陣與實線/虛線回報鏈。
@@ -98,11 +106,11 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
 - **精實升級三大黃金法則與避坑對照表**：強調「No Surprises 拒絕背刺預先告知」、「帶著方案升級 (Option A vs B)」、「對事不對人 (Data & Timeline)」，對比健康精實升級與有害職場打小報告之關鍵差異。
 - **跨部門升級通報備忘錄產生器 (Escalation Memo Generator)**：輸入阻礙與商業衝擊、已嘗試協商努力、選項 A/B 與具體裁決請求，一鍵生成結構化高管專用中英文 Markdown / Email 報告。
 
-### 7. 📚 相關推薦書籍 (45 本經典跨領域書庫)
+### 8. 📚 相關推薦書籍 (45 本經典跨領域書庫)
 精選與精實六標準差、心智模型、數據檢驗、專注力、敏捷試錯與生成式 AI 深度結合的 45 本跨界經典著作：
 - 《專注力協定》、《別自個兒用餐》、《投資最重要的事》、《職場人的生成式AI工作法》、《寫下來，事情就會發生》、《當下的力量》、《我可能錯了》、《5秒法則》、《做自己的人生財務長》、《跨能致勝》、《給予》、《真確》、《刻意練習》、《精實創業》、《豐田模式》、《目標：限制理論》、《原子習慣》、《致富心態》、《深度工作力》、《窮查理的普通常識》、《聰明犯錯》、《卡內基溝通與人際關係》、《當我談跑步時我談些什麼》、《垃圾車法則》、《活出意義來》、《與成功有約》等。
 
-### 8. 🧮 實用工程與管理運算工具箱 (Calculators)
+### 9. 🧮 實用工程與管理運算工具箱 (Calculators)
 - **FMEA RPN 計算器**（嚴重度 S / 發生度 O / 難檢度 D）
 - **Pugh 概念決策矩陣**（加權評分與基準方案對比）
 - **OEE 綜合設備效率模擬器**（可用率 × 表現率 × 品質良率）
