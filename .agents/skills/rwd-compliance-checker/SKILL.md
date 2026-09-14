@@ -1,47 +1,71 @@
 ---
 name: rwd-compliance-checker
-description: Enforce and verify Responsive Web Design (RWD), mobile touch optimization, and iOS/Android compatibility across all HTML, CSS, and JS changes.
+description: Enforce and verify Responsive Web Design (RWD), mobile touch optimization, JavaScript syntax, and interactive event scoping (button clickability) across all HTML, CSS, and JS changes.
 ---
 
-# RWD Compliance & Mobile Optimization Skill
+# RWD Compliance, Mobile Optimization & Event Scope Integrity Skill
 
-This skill enforces strict Responsive Web Design (RWD) and mobile experience standards whenever frontend code (HTML, CSS, JavaScript) is created or updated in this repository.
+This skill enforces strict Responsive Web Design (RWD), mobile experience standards, and interactive event scope integrity whenever frontend code (HTML, CSS, JavaScript) is created or updated in this repository.
 
-## 📱 Mandatory RWD Checklist
+## 📱 Mandatory Quality & Architecture Checklist
 
-1. **Viewport & Safe Area Insets**:
-   - Meta tag must specify: `<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">`.
-   - Top and bottom elements must respect iPhone notch and home indicator: `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`.
+### 1. Viewport & Safe Area Insets
+- Meta tag must specify: `<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">`.
+- Top and bottom elements must respect iPhone notch and home indicator: `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`.
 
-2. **iOS Safari & Mobile Viewport Units**:
-   - Modal overlays, drawers, and full-screen dialogs must use `100dvh` (dynamic viewport height) to adjust smoothly when the on-screen virtual keyboard opens.
-   - Text inputs must have `font-size: 16px !important;` to prevent iOS Safari auto-zoom.
+### 2. iOS Safari & Mobile Viewport Units
+- Modal overlays, drawers, and full-screen dialogs must use `100dvh` (dynamic viewport height) to adjust smoothly when the on-screen virtual keyboard opens.
+- Text inputs must have `font-size: 16px !important;` to prevent iOS Safari auto-zoom.
 
-3. **Touch Targets & Gestures**:
-   - All clickable items, buttons, chips, and nav items must have:
-     - `touch-action: manipulation;`
-     - `-webkit-tap-highlight-color: transparent;`
-     - Minimum tap target size (e.g. padding >= 8px 12px or min-height >= 36px/44px).
+### 3. Touch Targets & Gestures
+- All clickable items, buttons, chips, and nav items must have:
+  - `touch-action: manipulation;`
+  - `-webkit-tap-highlight-color: transparent;`
+  - Minimum tap target size (e.g. padding >= 8px 12px or min-height >= 36px/44px).
 
-4. **Orientation Adaptation (Portrait vs. Landscape)**:
-   - **Portrait Phone (`<= 768px`, height > width)**:
-     - Sticky Header with top navigation.
-     - Bottom-right floating menu FAB (`🧭 目錄`).
-     - Search modal anchors to the very top.
-   - **Landscape Phone (`<= 960px`, height <= 500px)**:
-     - Sidebar can be collapsed via `[◀]` button into `.sidebar-collapsed` to grant 100% full screen width to data tables/canvases.
-     - Floating expand button (`[▶ 展開選單]`) available to restore sidebar.
+### 4. Orientation Adaptation (Portrait vs. Landscape)
+- **Portrait Phone (`<= 768px`, height > width)**:
+  - Sticky Header with top navigation.
+  - Bottom-right floating menu FAB (`🧭 目錄`).
+  - Search modal anchors to the very top.
+- **Landscape Phone (`<= 960px`, height <= 500px)**:
+  - Sidebar can be collapsed via `[◀]` button into `.sidebar-collapsed` to grant 100% full screen width to data tables/canvases.
+  - Floating expand button (`[▶ 展開選單]`) available to restore sidebar.
 
-5. **Horizontal Scroll Containment**:
-   - Wide components (VSM canvas, parallel timeline lane, comparison matrix) must be contained in `overflow-x: auto; -webkit-overflow-scrolling: touch;` containers without causing whole-body horizontal scrolling.
+### 5. Horizontal Scroll Containment
+- Wide components (VSM canvas, parallel timeline lane, comparison matrix) must be contained in `overflow-x: auto; -webkit-overflow-scrolling: touch;` containers without causing whole-body horizontal scrolling.
+
+### 6. Interactive Event & Global Scope Integrity (Button/Action Clickability) ⚠️
+- **The Issue**: Browsers execute inline HTML event handlers (`onclick="foo(...)"`, `onchange="..."`, etc.) strictly in the global scope (`window`).
+- **The Rule**:
+  - If a function is declared inside a local scope or initialization closure (such as `function init() { function foo() { ... } }`), it is NOT accessible in `window` and clicking the button will fail silently with `ReferenceError`.
+  - **Always explicitly export to `window`**:
+    ```javascript
+    function foo() { ... }
+    window.foo = foo;
+    ```
+  - Or bind DOM events programmatically inside initialization:
+    ```javascript
+    const btn = document.getElementById('myBtn');
+    if (btn) btn.onclick = () => foo();
+    ```
+  - The verification script automatically scans all inline handlers against JavaScript AST/scopes and flags any unexported or missing functions as blocking build errors.
+
+---
 
 ## 🚀 Execution & Verification Command
 
-Whenever HTML, CSS, or JS files are modified, run the automated RWD compliance test:
+Whenever HTML, CSS, or JS files are modified, run the automated verification suite:
 
 ```bash
 node .agents/skills/rwd-compliance-checker/scripts/check_rwd.js
 ```
+
+This automated test checks:
+1. All 8 RWD & Mobile compatibility standards.
+2. JavaScript syntax validity in all `<script>` tags.
+3. 100% reachability of all inline event handlers (prevents unexported closure bugs).
+4. Byte-for-byte synchronization between `index.html` and `lean-six-sigma-compass.html`.
 
 Both `index.html` and `lean-six-sigma-compass.html` must pass with **0 errors** before committing.
 
@@ -55,7 +79,7 @@ After every HTML/CSS/JS change:
 # 1. Sync files
 Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force
 
-# 2. Verify RWD compliance
+# 2. Verify compliance & event integrity
 node .agents/skills/rwd-compliance-checker/scripts/check_rwd.js
 
 # 3. Commit and push
