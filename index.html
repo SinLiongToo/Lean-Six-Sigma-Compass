@@ -6490,7 +6490,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>📅 <a href="https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">自適應甘特規劃與覆盤範本</span><span class="en">Adaptive Gantt Planner &amp; Reusable Retrospective Template</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.49 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-14 18:22</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.50 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-15 05:38</span></span>
         </div>
       </div>
     </div>
@@ -23847,6 +23847,7 @@ function switchDefineCase(caseName){
   renderCharterTemplate();
   renderCotTemplate();
 }
+window.switchDefineCase = switchDefineCase;
 
 function getActiveSipocData(){
   return activeDefineCase === 'asml' ? ASML_SIPOC_DATA : SEMICON_SIPOC_DATA;
@@ -24138,6 +24139,26 @@ function copyCotAsMarkdown(){
 }
 
 function initDefineTemplates(){
+  window.switchDefineCase = switchDefineCase;
+
+  // Explicitly bind click handlers to preset case switch buttons across all 3 panels
+  ['Sipoc', 'Charter', 'Cot'].forEach(panel => {
+    const fabBtn = document.getElementById('caseBtn' + panel + 'Fab');
+    const asmlBtn = document.getElementById('caseBtn' + panel + 'Asml');
+    if (fabBtn) {
+      fabBtn.onclick = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        switchDefineCase('fab');
+      };
+    }
+    if (asmlBtn) {
+      asmlBtn.onclick = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        switchDefineCase('asml');
+      };
+    }
+  });
+
   renderSipocTemplate();
   renderCharterTemplate();
   renderCotTemplate();
