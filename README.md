@@ -165,12 +165,12 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
 
 | 工具名稱 | 說明 | 連結 |
 |---|---|---|
-| ⏱️ **動態排程工具 (Dynamic Scheduler)** | 多任務動態甘特排程、關鍵路徑與工時負荷分配工具 | [線上體驗](https://sinliongtoo.github.io/dynamic-schedule-tool/) |
-| 🪙 **工作的管見 (My Two Cents on Work)** | 職場生存與成長的 20 大工作原則避坑卡牌（中英台三語對照） | [線上體驗](https://sinliongtoo.github.io/my_priciple_card/) |
-| 📅 **自適應甘特規劃與覆盤範本** | 敏捷自適應甘特圖規劃與可重複覆盤範本產生器 | [線上體驗](https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/) |
-| 🛠️ **Masa 精實專家工作區** | 專為精實管理顧問與工程師打造之綜合工作台 | [線上體驗](https://sinliongtoo.github.io/LeanExpertWorkspace/) |
-| 📊 **財務與 OpEx 戰略儀表板** | 企業財務報表對比、OpEx 成本結構與精實效益分析看板 | [線上體驗](https://sinliongtoo.github.io/financialreport_comparsion/) |
-| 📄 **個人履歷 (CV)** | Masa Tu 個人資歷、專案成果與專業技能檔案 | [線上檢視](https://SinLiongToo.github.io/kojin_kilok_CV/) |
+| ⏱️ **動態排程工具 (Dynamic Scheduler)** | 多任務動態甘特排程、關鍵路徑與工時負荷分配工具 | [線上體驗](https://dynamic-schedule-tool.pages.dev/) |
+| 🪙 **工作的管見 (My Two Cents on Work)** | 職場生存與成長的 20 大工作原則避坑卡牌（中英台三語對照） | [線上體驗](https://my-priciple-card.pages.dev/) |
+| 📅 **自適應甘特規劃與覆盤範本** | 敏捷自適應甘特圖規劃與可重複覆盤範本產生器 | [線上體驗](https://webapp-project-gantt-chart-to-makedown-file.pages.dev/) |
+| 🛠️ **Masa 精實專家工作區** | 專為精實管理顧問與工程師打造之綜合工作台 | [線上體驗](https://leanexpertworkspace.pages.dev/) |
+| 📊 **財務與 OpEx 戰略儀表板** | 企業財務報表對比、OpEx 成本結構與精實效益分析看板 | [線上體驗](https://financialreport-comparsion.pages.dev/) |
+| 📄 **個人履歷 (CV)** | Masa Tu 個人資歷、專案成果與專業技能檔案 | [線上檢視](https://kojin-kilok-cv.pages.dev/) |
 
 ---
 
