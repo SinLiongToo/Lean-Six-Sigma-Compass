@@ -36,7 +36,7 @@ Whenever a new feature, section, book, or content change is introduced:
 2. **Synchronize to `lean-six-sigma-compass.html`**:
    - Always copy to keep byte-for-byte sync: `Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force`
 3. **Update `README.md`**:
-   - Keep module lists, book counts (e.g. `45 本跨領域經典精實書庫`), and feature summaries in sync.
+   - Keep module lists, book counts (e.g. `46 本跨領域經典精實書庫`), and feature summaries in sync.
 
 ---
 
@@ -97,7 +97,7 @@ Each book requires **two additions** (no JS changes needed):
 
 > All three JS functions (`initBookCollapse`, `toggleBooksGrid`, `buildBooksTitleList`) wire up new cards automatically — no extra JS needed when adding books.
 
-### Books Added (as of 2026-09-05)
+### Books Added (as of 2026-09-15)
 
 | # | 中文書名 | English Title | CSS slug | Key Theme |
 |---|---|---|---|---|
@@ -146,6 +146,7 @@ Each book requires **two additions** (no JS changes needed):
 | 43 | 投資最重要的事 | The Most Important Thing | `most-important-thing` | Second-Level Thinking, Margin of Safety, Priority Identification, FSPIRE Resilience |
 | 44 | 別自個兒用餐 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
 | 45 | 專注力協定 | Indistractable | `indistractable` | Pre-commitments, Identity Pacts, Price Pacts, Cognitive Poka-Yoke, Lean Quality |
+| 46 | 迎變世代 | Adapt: Why Success Always Starts with Failure | `adapt-harford` | VUCA Adaptation, Safe-to-Fail, Lean Fundamentals |
 
 ---
 
