@@ -36,7 +36,16 @@ Whenever a new feature, section, book, or content change is introduced:
 2. **Synchronize to `lean-six-sigma-compass.html`**:
    - Always copy to keep byte-for-byte sync: `Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force`
 3. **Update `README.md`**:
-   - Keep module lists, book counts (e.g. `46 本跨領域經典精實書庫`), and feature summaries in sync.
+   - Keep module lists, book counts (e.g. `46 本跨領域經典精實書庫`), ecosystem links, and feature summaries in sync.
+
+---
+
+## 🌐 Dual-Channel Cloud Hosting & Continuous Deployment
+Every `git push origin main` automatically deploys and mirrors the site to:
+1. **GitHub Pages (Primary)**: `https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/`
+2. **Cloudflare Pages (Mirror / Corporate Firewall Friendly)**: `https://lean-six-sigma-compass.pages.dev/`
+   - Bypasses corporate proxy/firewalls that block `*.github.io`.
+   - Zero-config auto build on Cloudflare edge network.
 
 ---
 

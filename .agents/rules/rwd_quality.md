@@ -27,3 +27,8 @@ Whenever you update or modify HTML, CSS, or JavaScript in this project:
 
 4. **100% File Synchronization & Zero Errors**:
    - Confirm that both `index.html` and `lean-six-sigma-compass.html` remain 100% synchronized and pass all checks with **0 errors**.
+
+5. **Dual-Channel Cloud Hosting & Continuous Deployment**:
+   - Pushing commits to `main` automatically deploys to both:
+     - **GitHub Pages**: `https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/`
+     - **Cloudflare Pages**: `https://lean-six-sigma-compass.pages.dev/` (for corporate firewall bypass)

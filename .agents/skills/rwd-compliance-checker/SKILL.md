@@ -71,12 +71,12 @@ Both `index.html` and `lean-six-sigma-compass.html` must pass with **0 errors** 
 
 ---
 
-## 📋 File Sync Workflow
+## 📋 File Sync & Dual Deployment Workflow
 
 After every HTML/CSS/JS change:
 
 ```powershell
-# 1. Sync files
+# 1. Sync files (index.html is the single source of truth)
 Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force
 
 # 2. Verify compliance & event integrity
@@ -89,6 +89,13 @@ git push
 ```
 
 > ⚠️ Use semicolons (`;`) not `&&` in PowerShell for chaining commands.
+
+### 🌐 Dual-Channel Cloud Hosting & Enterprise Firewall Friendly
+Pushing commits to `main` automatically deploys and mirrors the site to two independent platforms:
+1. **GitHub Pages (Primary)**: `https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/`
+2. **Cloudflare Pages (Mirror / Corporate Firewall Friendly)**: `https://lean-six-sigma-compass.pages.dev/`
+   - Bypasses corporate proxies and firewalls that block `*.github.io`.
+   - Hosted on Cloudflare's global Anycast edge network with zero build configuration (Preset: `None`, Build command: blank, Output dir: `/`).
 
 ---
 

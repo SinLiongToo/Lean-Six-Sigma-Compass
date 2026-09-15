@@ -1,6 +1,7 @@
 # Lean Six Sigma Compass (Masa Tu 精實六標準差羅盤)
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen?style=flat-square&logo=github)](https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/)
+[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-Live%20Mirror-F38020?style=flat-square&logo=cloudflare)](https://lean-six-sigma-compass.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Zero Dependency](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20HTML%2FCSS%2FJS)-orange?style=flat-square)](#)
 
@@ -13,6 +14,10 @@
 ## 🌟 核心設計特色
 
 - 🟢 **100% 綠色單檔案 (Single File Web App)**：開箱即用，離線支援，零資安隱憂。
+- 🛡️ **雙軌雲端託管與企業內網穿透 (Dual Cloud Hosting & Firewall Friendly)**：
+  - 同步部署於 **GitHub Pages** (`sinliongtoo.github.io`) 與 **Cloudflare Pages** 全球邊緣網路 (`lean-six-sigma-compass.pages.dev`)。
+  - 有效解決高科技晶圓廠、金融機構或大型企業防火牆針對 `*.github.io` 網段的全面阻擋政策，確保隨時可順暢連線存取。
+  - 本地每次 `git push` 即自動驅動兩大平台秒級同步構建與部署。
 - 🌓 **智慧雙主題模式**：支援深色星空主題（Dark Mode，預設）與典雅高對比淺色主題（Light Mode）無縫切換。
 - 🌐 **雙語即時切換 (Bilingual Toggle)**：全站支援繁體中文（預設）與英文（English）一鍵即時切換。
 - 📱 **極致行動體驗 (Mobile & iOS Safari Native Optimized)**：
@@ -142,6 +147,30 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
    ```
 2. 進入專案的 **Settings** -> **Pages**。
 3. 在 **Build and deployment** 下選擇 **Branch**: `main`、資料夾 `/ (root)`，點選 **Save** 即可自動發佈上線。
+
+### 鏡像部署至 Cloudflare Pages (免受企業防火牆阻擋)
+1. 登入 [Cloudflare Dashboard](https://dash.cloudflare.com/) 進入 **Workers & Pages** -> **Create application** -> **Pages**。
+2. 點擊 **Connect to Git** 授權並選取 `SinLiongToo/Lean-Six-Sigma-Compass` 儲存庫。
+3. 設定：
+   - **Framework preset**: `None`
+   - **Build command**: (保持空白)
+   - **Build output directory**: `/`
+4. 點擊 **Save and Deploy**，即可在 `https://lean-six-sigma-compass.pages.dev` 獲得由 Cloudflare 全球 Anycast CDN 加速之鏡像，未來每次 `git push origin main` 皆會全自動同步發布。
+
+---
+
+## 🔗 實戰生態系與衍生工具庫 (Ecosystem Suite)
+
+頂部 Header 整合了 Masa 個人精實管理、專案規劃與思考架構之實戰生態系：
+
+| 工具名稱 | 說明 | 連結 |
+|---|---|---|
+| ⏱️ **動態排程工具 (Dynamic Scheduler)** | 多任務動態甘特排程、關鍵路徑與工時負荷分配工具 | [線上體驗](https://sinliongtoo.github.io/dynamic-schedule-tool/) |
+| 🪙 **工作的管見 (My Two Cents on Work)** | 職場生存與成長的 20 大工作原則避坑卡牌（中英台三語對照） | [線上體驗](https://sinliongtoo.github.io/my_priciple_card/) |
+| 📅 **自適應甘特規劃與覆盤範本** | 敏捷自適應甘特圖規劃與可重複覆盤範本產生器 | [線上體驗](https://sinliongtoo.github.io/WEBAPP_project-gantt-chart-to-makedown-file/) |
+| 🛠️ **Masa 精實專家工作區** | 專為精實管理顧問與工程師打造之綜合工作台 | [線上體驗](https://sinliongtoo.github.io/LeanExpertWorkspace/) |
+| 📊 **財務與 OpEx 戰略儀表板** | 企業財務報表對比、OpEx 成本結構與精實效益分析看板 | [線上體驗](https://sinliongtoo.github.io/financialreport_comparsion/) |
+| 📄 **個人履歷 (CV)** | Masa Tu 個人資歷、專案成果與專業技能檔案 | [線上檢視](https://SinLiongToo.github.io/kojin_kilok_CV/) |
 
 ---
 
