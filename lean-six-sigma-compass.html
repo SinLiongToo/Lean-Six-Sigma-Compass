@@ -515,8 +515,25 @@
     background:rgba(127,181,160,0.025);border-color:rgba(127,181,160,0.18);
   }
   .dmaic-subcard.formulas .card-title{color:var(--sage);}
-  .dmaic-subcard.formulas li{font-family:inherit;}
+  .dmaic-subcard.formulas li{font-family:inherit;line-height:1.7;margin-bottom:4px;}
   .dmaic-subcard.formulas b{color:var(--sage);}
+  .dmaic-subcard.formulas code{
+    display:inline-block;
+    background:rgba(127,181,160,0.08);
+    border:1px solid rgba(127,181,160,0.28);
+    color:var(--sage);
+    padding:2px 8px;
+    border-radius:6px;
+    font-family:Consolas,"Segoe UI Mono",monospace;
+    font-size:12.8px;
+    font-weight:700;
+    margin:2px 0;
+  }
+  [data-theme="light"] .dmaic-subcard.formulas code{
+    background:#f0fdf4;
+    border-color:#bbf7d0;
+    color:#15803d;
+  }
 
   /* tool map table */
   table.toolmap{width:100%;border-collapse:collapse;font-size:12.8px;}
@@ -6956,7 +6973,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.56 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-16 14:15</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.57 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-16 15:00</span></span>
         </div>
       </div>
     </div>
@@ -15494,12 +15511,12 @@ const DMAIC = [
     },
     formulas: {
       zh: [
-        '<b>DPMO (每百萬機會缺陷數)：</b>\\\\(DPMO = \\\\frac{Defects \\\\times 1,000,000}{Units \\\\times Opportunities}\\\\)。',
-        '<b>Cpk (製程能力指數)：</b>\\\\(Cpk = \\\\min\\\\left(\\\\frac{USL - \\\\mu}{3\\\\sigma}, \\\\frac{\\\\mu - LSL}{3\\\\sigma}\\\\right)\\\\)。'
+        '<b>DPMO (每百萬機會缺陷數)：</b><code>DPMO = (Defects × 1,000,000) / (Units × Opportunities)</code>。',
+        '<b>Cpk (製程能力指數)：</b><code>Cpk = min[ (USL - μ) / 3σ, (μ - LSL) / 3σ ]</code>。'
       ],
       en: [
-        '<b>DPMO:</b> \\\\(DPMO = \\\\frac{Defects \\\\times 1,000,000}{Units \\\\times Opportunities}\\\\).',
-        '<b>Cpk:</b> \\\\(Cpk = \\\\min\\\\left(\\\\frac{USL - \\\\mu}{3\\\\sigma}, \\\\frac{\\\\mu - LSL}{3\\\\sigma}\\\\right)\\\\).'
+        '<b>DPMO (Defects Per Million Opportunities):</b> <code>DPMO = (Defects × 1,000,000) / (Units × Opportunities)</code>.',
+        '<b>Cpk (Process Capability Index):</b> <code>Cpk = min[ (USL - μ) / 3σ, (μ - LSL) / 3σ ]</code>.'
       ]
     }
   },
@@ -15608,10 +15625,10 @@ const DMAIC = [
     },
     formulas: {
       zh: [
-        '<b>改善良率增幅：</b>\\\\(\\Delta Yield = Yield_{After} - Yield_{Before}\\\\)。'
+        '<b>改善良率增幅 (Δ Yield)：</b><code>ΔYield = Yield_After - Yield_Before</code>。'
       ],
       en: [
-        '<b>Yield Improvement:</b> \\\\(\\Delta Yield = Yield_{After} - Yield_{Before}\\\\).'
+        '<b>Yield Improvement (Δ Yield):</b> <code>ΔYield = Yield_After - Yield_Before</code>.'
       ]
     }
   },
@@ -15666,10 +15683,10 @@ const DMAIC = [
     },
     formulas: {
       zh: [
-        '<b>Shewhart 管制界限 (UCL/LCL)：</b>區分隨機變異與異常變異的統計界限。公式：\\\\(UCL = \\\\mu + 3\\\\sigma\\\\) 與 \\\\(LCL = \\\\mu - 3\\\\sigma\\\\)。當點越過管制界限時即為失控，應啟動 OCAP 排除異常原因。'
+        '<b>Shewhart 管制界限 (UCL/LCL)：</b>區分隨機變異與異常變異的統計界限。公式：<code>UCL = μ + 3σ</code> 與 <code>LCL = μ - 3σ</code>。當點越過管制界限時即為失控，應啟動 OCAP 排除異常原因。'
       ],
       en: [
-        '<b>Shewhart Control Limits (UCL/LCL):</b> Statistical boundaries used to distinguish common cause variation from special cause variation (not specification limits!). Formula: \\\\(UCL = \\\\mu + 3\\\\sigma\\\\) and \\\\(LCL = \\\\mu - 3\\\\sigma\\\\). Points outside these limits signal the presence of special cause variation, triggering the OCAP.'
+        '<b>Shewhart Control Limits (UCL/LCL):</b> Statistical boundaries used to distinguish common cause variation from special cause variation (not specification limits!). Formula: <code>UCL = μ + 3σ</code> and <code>LCL = μ - 3σ</code>. Points outside these limits signal special cause variation, triggering the OCAP.'
       ]
     }
   },
@@ -15732,12 +15749,12 @@ const DMAIC = [
     },
     formulas: {
       zh: [
-        '<b>RPN (風險優先數)：</b>\\\\(RPN = \\\\text{嚴重度(S)} \\\\times \\\\text{發生度(O)} \\\\times \\\\text{偵測度(D)}\\\\)。',
-        '<b>RSS 均方根公差疊加法：</b>\\\\(T_{\\\\text{sys}} = \\\\sqrt{T_1^2 + T_2^2 + \\\\dots + T_n^2}\\\\)。'
+        '<b>RPN (風險優先數)：</b><code>RPN = 嚴重度 (S) × 發生度 (O) × 偵測度 (D)</code>。',
+        '<b>RSS 均方根公差疊加法：</b><code>T_sys = √(T₁² + T₂² + ... + Tₙ²)</code>。'
       ],
       en: [
-        '<b>RPN (Risk Priority Number):</b> \\\\(RPN = S \\\\times O \\\\times D\\\\).',
-        '<b>RSS (Root Sum Squares) Tolerance Stacking:</b> \\\\(T_{\\\\text{sys}} = \\\\sqrt{T_1^2 + T_2^2 + \\\\dots + T_n^2}\\\\).'
+        '<b>RPN (Risk Priority Number):</b> <code>RPN = S × O × D</code>.',
+        '<b>RSS (Root Sum Squares) Tolerance Stacking:</b> <code>T_sys = √(T₁² + T₂² + ... + Tₙ²)</code>.'
       ]
     }
   },
@@ -15790,10 +15807,10 @@ const DMAIC = [
     },
     formulas: {
       zh: [
-        '<b>Ppk (製程性能指數)：</b>與 Cpk 相似，但使用樣本標準差 \\\\(s\\\\) 評估整體性能，而非組內變異：\\\\(Ppk = \\\\min\\\\left(\\\\frac{USL - \\\\mu}{3\\\\cdot s}, \\\\frac{\\\\mu - LSL}{3\\\\cdot s}\\\\right)\\\\)。'
+        '<b>Ppk (製程性能指數)：</b>與 Cpk 相似，但使用整體樣本標準差 <i>s</i> 評估整體性能，而非組內變異：<code>Ppk = min[ (USL - μ) / (3·s), (μ - LSL) / (3·s) ]</code>。'
       ],
       en: [
-        '<b>Ppk:</b> Similar to Cpk but uses overall sample standard deviation \\\\(s\\\\): \\\\(Ppk = \\\\min\\\\left(\\\\frac{USL - \\\\mu}{3\\\\cdot s}, \\\\frac{\\\\mu - LSL}{3\\\\cdot s}\\\\right)\\\\).'
+        '<b>Ppk (Process Performance Index):</b> Similar to Cpk but uses overall sample standard deviation <i>s</i>: <code>Ppk = min[ (USL - μ) / (3·s), (μ - LSL) / (3·s) ]</code>.'
       ]
     }
   }
