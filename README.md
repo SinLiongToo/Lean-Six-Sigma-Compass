@@ -1,6 +1,6 @@
 # Lean Six Sigma Compass (Masa Tu 精實六標準差羅盤)
 
-[![Version](https://img.shields.io/badge/Version-v2.57-brightgreen?style=flat-square)](#)
+[![Version](https://img.shields.io/badge/Version-v2.58-brightgreen?style=flat-square)](#)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen?style=flat-square&logo=github)](https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-Live%20Mirror-F38020?style=flat-square&logo=cloudflare)](https://lean-six-sigma-compass.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -144,7 +144,10 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
 - **FMEA RPN 計算器**（嚴重度 S / 發生度 O / 難檢度 D）
 - **Pugh 概念決策矩陣**（加權評分與基準方案對比）
 - **OEE 綜合設備效率模擬器**（可用率 × 表現率 × 品質良率）
-- **5S / 6S (EHS) 現場稽核系統**（動態 6 軸雷達圖與 Markdown 報告匯出）
+- **5S / 6S (EHS) 現場稽核與無塵室零污染防線系統**：
+  - 支援「標準 5S 模式」、「6S / EHS 整合模式」與「🔬 半導體無塵室 6S 極致模式 (Cleanroom Strict 6S)」。
+  - 嚴格界定無塵室四大紅線：① 身上禁物與進門管制（禁化妝品/香水等 VOC 來源、禁普通紙筆、禁手機飾品硬幣、開箱室脫除外箱瓦楞紙）；② 阻絕 VOC 與 AMC 分子污染（禁非認證膠帶/矽膠、密封件高溫除氣、電子級 IPA 單向擦拭）；③ FOD 異物掉落防呆（機台與晶圓上方 100% 工具繫繩 Tool Tethering、無塵衣口袋淨空、維修前後零組件 100% 清點對齊防晶圓碎裂）；④ 嚴禁隨意觸碰防線（晶圓表面/FOUP內部/光罩/腔壁絕對零徒手碰觸、嚴禁倚靠機台外殼、真空吸筆專用移載、定點更換無塵丁腈手套）。
+  - 動態 6 軸雷達圖與高規格無塵室現場稽核 Markdown 報告匯出。
 - **RACI 職責分配矩陣編輯器**
 - **專案財務效益節省計算機**（投資回收期與 ROI 報表）
 - **360° 領導力回饋評估工具**（喬哈里窗、盲點與潛在優勢診斷）

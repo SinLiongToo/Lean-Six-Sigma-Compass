@@ -175,6 +175,18 @@ The Agile Scrum module (Section 21) bridges Lean, Six Sigma, and Agile framework
 
 ---
 
+## 🔬 Cleanroom 5S / 6S Zero-Contamination Architecture & Protocol
+In semiconductor fabs, advanced packaging (CoWoS), and EUV optical assembly:
+- **Mode Switching**: `set5sMode(mode)` supports `'5s'`, `'6s'`, and `'cleanroom'`.
+- **Global Event Scoping**: `window.set5sMode = set5sMode;` and `window.init5sTool = init5sTool;`.
+- **Four Red-Line Pillars**:
+  1. **Banned Personal Items & Entrance Gate**: Zero cosmetics/perfumes (VOCs), zero cellulose paper/pens, zero personal electronics/jewelry/coins, outer cardboard unpacked in airlock.
+  2. **VOC & AMC Prevention**: Zero uncertified tapes/silicone outgassing, thermal outgassing verified, semiconductor-grade IPA unidirectional wiping.
+  3. **FOD Prevention & Tool Tethering**: 100% tool lanyards over wafers/chambers, empty bunny suit pockets, 100% screw reconciliation.
+  4. **Strict Zero-Touch Wafer/Chamber**: Never touch wafer surfaces or reticles with hands, no leaning against tool frames, vacuum wand handling, don fresh nitrile gloves.
+
+---
+
 ## 📐 Mathematical & Formula Presentation Rule
 - The app does not load MathJax or KaTeX CDN scripts.
 - Never output raw LaTeX syntax (`\frac`, `\mu`, `\sigma`, `\Delta`, `\times`, `\sqrt`, `\cdot`, `\rightarrow`) or enclose in LaTeX delimiters (`$...$`, `\(...\)`).

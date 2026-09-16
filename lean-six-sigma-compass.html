@@ -6973,7 +6973,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.57 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-16 15:00</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.58 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-16 16:30</span></span>
         </div>
       </div>
     </div>
@@ -7697,9 +7697,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <div class="calc-box">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
               <h3 style="margin:0;"><span class="zh">5S / 6S 現場稽核與環安衛 (EHS) 評分工具</span><span class="en">5S / 6S Shop Floor Audit & EHS Scoring Tool</span></h3>
-              <div style="display:flex; gap:6px;">
+              <div style="display:flex; gap:6px; flex-wrap:wrap;">
                 <button class="ctrl-btn active" id="btn5sMode5" style="padding:4px 10px; font-size:12px;"><span class="zh">標準 5S 模式</span><span class="en">Classic 5S</span></button>
                 <button class="ctrl-btn" id="btn5sMode6" style="padding:4px 10px; font-size:12px;"><span class="zh">6S / EHS 整合模式</span><span class="en">6S + EHS Mode</span></button>
+                <button class="ctrl-btn" id="btn5sModeCleanroom" style="padding:4px 10px; font-size:12px;"><span class="zh">🔬 半導體無塵室 6S 極致模式</span><span class="en">🔬 Cleanroom Strict 6S</span></button>
               </div>
             </div>
 
@@ -7707,6 +7708,111 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               <span class="zh">評分標準：1分-極差（混亂/髒污/安全隱患）；3分-合格（基本標示/清潔/符合EHS規定）；5分-極佳（全面防呆/自律維持/主動環安衛防護）。</span>
               <span class="en">Rating: 1-Poor (Messy/Hazards); 3-Pass (Basic labels/Clean/EHS Compliant); 5-Excellent (Mistake-proofing/Sustained/Proactive EHS).</span>
             </p>
+
+            <!-- Cleanroom 6S Red-Line Protocols Box -->
+            <div id="cleanroomProtocolBox" style="display:none; margin-bottom:18px; background:linear-gradient(135deg, rgba(74,144,226,0.08) 0%, rgba(245,166,35,0.06) 100%); border:1px solid rgba(74,144,226,0.3); border-radius:12px; padding:14px 16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; border-bottom:1px solid rgba(74,144,226,0.2); padding-bottom:8px;">
+                <div style="font-weight:800; font-size:14px; color:#4a90e2; display:flex; align-items:center; gap:6px;">
+                  <span>🔬</span>
+                  <span class="zh">半導體與高科技無塵室 6S 紅線管制守則 (ISO Class 1~5 / Class 1~100)</span>
+                  <span class="en">Cleanroom 6S Red-Line Protocols: Zero Contamination, VOC & FOD Defense</span>
+                </div>
+                <span style="font-size:11px; background:rgba(74,144,226,0.15); color:#4a90e2; padding:2px 8px; border-radius:10px; font-weight:700;">
+                  <span class="zh">晶圓/光罩/EUV 零缺陷防線</span><span class="en">Wafer & Lens Zero-Defect Defense</span>
+                </span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
+                <!-- Card 1: 身上禁止與進門管制 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                  <div style="font-weight:700; color:#E88D5A; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                    <span>🚫</span>
+                    <span class="zh">身上禁物與進門管制 (Prohibited Items)</span>
+                    <span class="en">Prohibited Items on Body</span>
+                  </div>
+                  <div style="color:var(--muted);">
+                    <span class="zh">
+                      • <strong>嚴禁化妝品/香水/乳液/髮膠</strong>：含高濃度揮發性有機物 (VOC) 與矽油微粒，會造成光學鏡面化學霧化 (Haze) 與晶圓表面吸附污染。<br>
+                      • <strong>嚴禁普通紙筆/木製筆/立可白</strong>：木質植物纖維摩擦每分鐘釋放數萬顆微粒；100% 換用防靜電合成無塵紙 (Cleanroom Paper) 與專用筆。<br>
+                      • <strong>嚴禁個人手機/飾品/手錶/硬幣</strong>：金屬摩擦發屑且極易鬆脫掉入機台；進室前全面取下置於更衣室置物櫃。<br>
+                      • <strong>嚴禁外箱瓦楞紙箱/木箱/食物飲料</strong>：海量纖維與發塵源；外包裝須在開箱室 (Unpacking Room) 脫除並以 IPA 擦拭後方可進入。
+                    </span>
+                    <span class="en">
+                      • <strong>Zero Cosmetics, Perfumes, Lotions & Gels</strong>: Packed with VOCs and silicones causing optical haze and wafer surface contamination.<br>
+                      • <strong>No Cellulose Paper, Wooden Pencils, or Correction Fluid</strong>: Regular paper sheds tens of thousands of particles; use synthetic cleanroom paper only.<br>
+                      • <strong>No Personal Phones, Jewelry, Watches & Coins</strong>: Prevents metal abrasion flakes and accidental drops into mechanisms.<br>
+                      • <strong>No Corrugated Cardboard, Wood Boxes, Food or Drinks</strong>: Must unpack in clean anteroom and wipe items with IPA before entry.
+                    </span>
+                  </div>
+                </div>
+                <!-- Card 2: 阻絕 VOC 與 AMC 分子污染 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                  <div style="font-weight:700; color:var(--amber); margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                    <span>💨</span>
+                    <span class="zh">VOC 與氣態分子污染阻絕 (AMC Control)</span>
+                    <span class="en">VOC & AMC Contamination Control</span>
+                  </div>
+                  <div style="color:var(--muted);">
+                    <span class="zh">
+                      • <strong>非無塵認證膠帶/膠水嚴格禁入</strong>：普通膠帶殘膠揮發有機氣體，會導致金氧半導體 (MOSFET) 閘極氧化層擊穿。<br>
+                      • <strong>零矽膠 (Silicone Outgassing) 防線</strong>：矽烷與矽氧烷氣體接觸高溫退火爐管或 EUV 射束會形成不可逆二氧化矽積碳。<br>
+                      • <strong>治具與墊圈高溫除氣檢定</strong>：進腔體之密封件 (Gaskets/O-rings) 須通過熱釋氣 (Thermal Outgassing) 驗證。<br>
+                      • <strong>化學溶劑單向擦拭</strong>：僅限使用電子級高純度 IPA (70% IPA / 30% UPW) 搭配低發塵無塵布平行單向擦拭。
+                    </span>
+                    <span class="en">
+                      • <strong>Ban Non-Certified Tapes & Adhesives</strong>: Residual outgassing causes gate oxide breakdown in advanced transistors.<br>
+                      • <strong>Zero Silicone Outgassing Policy</strong>: Siloxanes react under EUV/thermal exposure to form irreversible SiO2 carbon deposits on optics.<br>
+                      • <strong>Vacuum Gasket Outgassing Certification</strong>: Vacuum components must undergo thermal vacuum outgassing certification.<br>
+                      • <strong>Unidirectional Chemical Wiping</strong>: Use semiconductor-grade IPA (70/30 UPW) with low-lint poly wipes wiped in one parallel direction.
+                    </span>
+                  </div>
+                </div>
+                <!-- Card 3: FOD 異物掉落防呆與工具繫繩 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                  <div style="font-weight:700; color:#50E3C2; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                    <span>🛡️</span>
+                    <span class="zh">FOD 異物掉落防呆與繫繩 (FOD Prevention)</span>
+                    <span class="en">FOD Prevention & Tool Tethering</span>
+                  </div>
+                  <div style="color:var(--muted);">
+                    <span class="zh">
+                      • <strong>機台維修 100% 工具繫繩 (Tool Tethering)</strong>：在晶圓傳輸機台 (EFEM) 或製程腔體 (Chamber) 上方作業時，板手、螺絲起子必須配戴安全繫繩繫於手腕或機架，防脫手墜落。<br>
+                      • <strong>防止晶圓碎裂 (Wafer Scrapping)</strong>：任何微小螺絲或零件掉入 FOUP 晶圓盒或機械手臂，在每分鐘數千轉高速傳動下將引發整批晶圓爆破碎裂巨災。<br>
+                      • <strong>口袋淨空原則</strong>：連身無塵衣口袋嚴格清空，胸前口袋嚴禁插筆或置放任何零散墊圈，杜絕彎腰俯身時物件滑出掉落。<br>
+                      • <strong>零組件前後計數稽核 (Part Reconciliation)</strong>：維修前清點螺絲總數，裝配完畢 100% 複查剩餘零組件，確認「零零件遺留於機台內」。
+                    </span>
+                    <span class="en">
+                      • <strong>100% Tool Tethering / Lanyard</strong>: All wrenches, screwdrivers, and probes must be tethered to wrist or frame when working above open wafers or chambers.<br>
+                      • <strong>Prevent Catastrophic Wafer Scrapping</strong>: A single dropped screw inside a FOUP or robot arm causes massive wafer shattering at high speeds.<br>
+                      • <strong>Empty Pocket Protocol</strong>: No pens or loose washers allowed in chest or bunny suit pockets to prevent falling when leaning forward.<br>
+                      • <strong>100% Part Reconciliation</strong>: Exact count of screws/fasteners verified before and after PM — zero loose parts left behind.
+                    </span>
+                  </div>
+                </div>
+                <!-- Card 4: 嚴禁隨意觸碰與晶圓保護 -->
+                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                  <div style="font-weight:700; color:#BD10E0; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
+                    <span>⛔</span>
+                    <span class="zh">嚴禁隨意觸碰防線 (Strict No-Touch Protocol)</span>
+                    <span class="en">Strict Zero-Touch & Wafer Protection</span>
+                  </div>
+                  <div style="color:var(--muted);">
+                    <span class="zh">
+                      • <strong>絕對禁止徒手/手套碰觸關鍵部位</strong>：晶圓表面 (Wafer)、晶圓盒內部齒條 (FOUP teeth)、光罩 (Reticle)、真空腔體內壁與石英件絕對嚴禁直接用手或手套觸碰。<br>
+                      • <strong>人體手汗鈉/鉀離子致命性</strong>：即使戴著無塵手套，手套表面殘留之微粒與有機薄膜亦會污染極紫外光 (EUV) 反射鏡與超薄介電層。<br>
+                      • <strong>嚴禁倚靠或趴在機台</strong>：嚴禁手肘或身體倚靠機台外殼、Loadport 傳輸門或量測檯面，防止無塵衣摩擦產生百萬微粒並防止微震動破壞機台水平對位精度。<br>
+                      • <strong>專用真空吸筆 (Vacuum Wand) 移載</strong>：晶圓移載必須 100% 使用專用真空吸筆，或以專用鐵氟龍鑷子輕夾晶圓邊緣 3mm 禁限區 (Edge Exclusion Zone)；接觸關鍵站前必須在該站立即更換全新超潔淨無塵丁腈手套。
+                    </span>
+                    <span class="en">
+                      • <strong>Strict Zero-Touch on Critical Surfaces</strong>: Never touch wafer surface, FOUP interior slots, reticles, vacuum chamber walls, or quartzware with gloved hands.<br>
+                      • <strong>Lethal Sodium & Organic Ionic Poisoning</strong>: Glove oils and residues instantly degrade gate dielectric films and EUV multi-layer mirrors.<br>
+                      • <strong>No Leaning or Resting on Tools</strong>: Never lean against EFEMs, loadports, or metrology granite tables — avoids particle generation and mechanical vibration.<br>
+                      • <strong>Mandatory Vacuum Wand & Edge Handling</strong>: Use specialized vacuum wands or Teflon tweezers touching wafer edge (3mm exclusion zone) only. Don fresh Class 10 nitrile gloves before handling.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="oee-layout">
               <div>
                 <!-- 1S Seiri -->
@@ -7727,6 +7833,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                     <span class="zh"><b>現場檢查</b>：區分要與不要的物品，將不要的（如廢料、損壞工夾具、過期報表）清除，現場無雜物堆積。</span>
                     <span class="en"><b>Audit Point</b>: Distinguish between needed and unneeded items. Red-tag and discard trash, broken tools, and scrap. No clutter.</span>
                   </p>
+                  <div class="s5-cleanroom-note" style="display:none; margin-top:6px; background:rgba(74,144,226,0.08); border-left:3px solid #4a90e2; padding:4px 8px; border-radius:0 4px 4px 0; font-size:11.5px; line-height:1.5;">
+                    <span class="zh">🔬 <strong>無塵室 6S 焦點</strong>：落實「身上禁物」清查（嚴禁化妝品、香水、乳液、髮膠等 VOC 來源；嚴禁普通紙筆、手機飾品硬幣、瓦楞紙箱與食物）。所有零配件必須在開箱室脫除外箱並以 IPA 擦拭進入。</span>
+                    <span class="en">🔬 <strong>Cleanroom 6S Focus</strong>: Strictly audit personal banned items (no cosmetics/perfumes with VOCs, no regular paper/pens, no personal electronics/jewelry, no cardboard boxes or food). Unpack in outer airlock and wipe with IPA.</span>
+                  </div>
                 </div>
                 <!-- 2S Seiton -->
                 <div class="s5-row" style="margin-bottom:18px; border-bottom: 1px dashed var(--line); padding-bottom:12px;">
@@ -7746,6 +7856,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                     <span class="zh"><b>現場檢查</b>：定位（有固定位置）、定量（有數量標示）、定名（有清晰標牌/標線）。物品能在30秒內找到。</span>
                     <span class="en"><b>Audit Point</b>: Place for everything, and everything in its place. Clear labels, shadows, boundary lines, and max/min inventory markings. Retrieve in 30s.</span>
                   </p>
+                  <div class="s5-cleanroom-note" style="display:none; margin-top:6px; background:rgba(74,144,226,0.08); border-left:3px solid #4a90e2; padding:4px 8px; border-radius:0 4px 4px 0; font-size:11.5px; line-height:1.5;">
+                    <span class="zh">🔬 <strong>無塵室 6S 焦點</strong>：維修工具 100% 裝設防掉落繫繩 (Tool Tethering)，防止螺絲起子、板手墜入 FOUP 晶圓盒或製程腔體造成晶圓碎裂 (Wafer Scrapping)；真空吸筆與鐵氟龍鑷子定位放置；零件進出 100% 清點對齊防止零件遺留。</span>
+                    <span class="en">🔬 <strong>Cleanroom 6S Focus</strong>: Mandatory 100% tool tethering (lanyards) to prevent tools from falling into open FOUPs or chambers causing wafer shattering; dedicated stands for vacuum wands; 100% screw count reconciliation before closing.</span>
+                  </div>
                 </div>
                 <!-- 3S Seiso -->
                 <div class="s5-row" style="margin-bottom:18px; border-bottom: 1px dashed var(--line); padding-bottom:12px;">
@@ -7765,6 +7879,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                     <span class="zh"><b>現場檢查</b>：清掃地面、牆壁、設備、治具，清除油污、粉塵與化學品洩漏，並消除洩漏源頭。</span>
                     <span class="en"><b>Audit Point</b>: Clean all surfaces, floors, walls, and machines. Find and eliminate root causes of leaks, oil, and dust. Daily sweep.</span>
                   </p>
+                  <div class="s5-cleanroom-note" style="display:none; margin-top:6px; background:rgba(74,144,226,0.08); border-left:3px solid #4a90e2; padding:4px 8px; border-radius:0 4px 4px 0; font-size:11.5px; line-height:1.5;">
+                    <span class="zh">🔬 <strong>無塵室 6S 焦點</strong>：全面採用低發塵長纖維無塵布 (Low-lint Poly Wipe) 搭配電子級高純度 IPA (70% IPA / 30% UPW) 進行平行單向擦拭；嚴禁使用非認證揮發性清潔劑與普通棉布；每日確認即時空氣落塵顆粒數 (LPC) 與表面靜電壓。</span>
+                    <span class="en">🔬 <strong>Cleanroom 6S Focus</strong>: Clean exclusively with semiconductor-grade IPA and low-lint poly wipes using unidirectional strokes; ban unauthorized volatile solvents and cotton rags; monitor particle counters (LPC) daily.</span>
+                  </div>
                 </div>
                 <!-- 4S Seiketsu -->
                 <div class="s5-row" style="margin-bottom:18px; border-bottom: 1px dashed var(--line); padding-bottom:12px;">
@@ -7784,6 +7902,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                     <span class="zh"><b>現場檢查</b>：將前 3S 成果標準化（制訂 SOP、目視化管制圖、清掃檢核表），並增設防錯設計。</span>
                     <span class="en"><b>Audit Point</b>: Standardize Seiri, Seiton, and Seiso practices via cleaning schedules, audit sheets, and visual management rules.</span>
                   </p>
+                  <div class="s5-cleanroom-note" style="display:none; margin-top:6px; background:rgba(74,144,226,0.08); border-left:3px solid #4a90e2; padding:4px 8px; border-radius:0 4px 4px 0; font-size:11.5px; line-height:1.5;">
+                    <span class="zh">🔬 <strong>無塵室 6S 焦點</strong>：建立「嚴禁隨意碰觸晶圓/光罩/腔體 (Strict No-Touch)」與「嚴禁倚靠機台」作業 SOP；晶圓移載 100% 規範使用真空吸筆 (Vacuum Wand)；接觸關鍵件前必須更換全新超潔淨無塵丁腈手套；落實氣閘門吹淋 15 秒與更衣檢核。</span>
+                    <span class="en">🔬 <strong>Cleanroom 6S Focus</strong>: Standardize strict "No-Touch Wafer/Optics/Chamber" and "No Leaning on EFEM Tools" SOPs; mandate vacuum wand handling; don fresh nitrile gloves before critical steps; enforce 15s Air Shower rotations.</span>
+                  </div>
                 </div>
                 <!-- 5S Shitsuke -->
                 <div class="s5-row" id="row5sShitsuke" style="margin-bottom:18px; border-bottom: 1px dashed var(--line); padding-bottom:12px;">
@@ -7803,6 +7925,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                     <span class="zh"><b>現場檢查</b>：員工遵守紀律、穿戴防護具、主動維護標準並持續提出改善案，稽核成為日常習慣。</span>
                     <span class="en"><b>Audit Point</b>: Standard work habits built. Operators follow rules, perform self-audits, and proactively report anomalies.</span>
                   </p>
+                  <div class="s5-cleanroom-note" style="display:none; margin-top:6px; background:rgba(74,144,226,0.08); border-left:3px solid #4a90e2; padding:4px 8px; border-radius:0 4px 4px 0; font-size:11.5px; line-height:1.5;">
+                    <span class="zh">🔬 <strong>無塵室 6S 焦點</strong>：建立無塵室行為自律習慣（行動平緩嚴禁跑跳揮手，人體劇烈動作產塵增加百倍）；嚴禁站在晶圓上風處攔截垂直層流；落實進食與抽菸後徹底漱口、洗手與呼氣靜態微粒排除。</span>
+                    <span class="en">🔬 <strong>Cleanroom 6S Focus</strong>: Cultivate cleanroom self-discipline: walk smoothly (no running or brisk gestures which spike particle counts by 100×); never stand upwind in laminar airflow; enforce mandatory mouth rinsing and hand washing after eating/smoking.</span>
+                  </div>
                 </div>
                 <!-- 6S Safety & EHS -->
                 <div class="s5-row" id="row6sSafety" style="display:none; margin-bottom:18px; padding-bottom:4px;">
@@ -7830,6 +7956,10 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                       <br>• <strong>Health</strong>: Adequate ventilation/lighting, noise controls, ergonomic setups preventing lifting strain.
                     </span>
                   </p>
+                  <div class="s5-cleanroom-note" style="display:none; margin-top:6px; background:rgba(74,144,226,0.08); border-left:3px solid #4a90e2; padding:4px 8px; border-radius:0 4px 4px 0; font-size:11.5px; line-height:1.5;">
+                    <span class="zh">🔬 <strong>無塵室 6S 焦點</strong>：確認特氣毒氣偵測警報系統 (TGMS) 正常運作；強酸鹼化學防護袖套/圍裙/面罩配置完備；入室前強制通過防靜電鞋測儀 (ESD Tester) 並確認地線導通，避免靜電放電擊穿晶圓。</span>
+                    <span class="en">🔬 <strong>Cleanroom 6S Focus</strong>: Verify toxic gas monitoring systems (TGMS); full chemical PPE (face shields, acid aprons); mandatory ESD footwear/wristband test passing (<100V) before entering to prevent electrostatic discharge wafer damage.</span>
+                  </div>
                 </div>
               </div>
 
@@ -15817,12 +15947,12 @@ const DMAIC = [
 ];
 
 const TOOLS = [
-  {name:'5S / 6S 現場管理與環安衛 (EHS)', pill:'white', pilltxt:'White/Yellow', phase_zh:'定義/衡量/改善', phase_en:'Define/Measure/Improve',
-    zh:'整理、整頓、清掃、清潔、素養，並整合安全與環境健康 (Safety & EHS)，建立防呆、零災害與高可視性作業現場。',
-    en:'Sort, Straighten, Shine, Standardize, Sustain, plus Safety & EHS; builds a visual, disciplined, and zero-accident workspace.',
-    sc_zh:'化學機械研磨 (CMP) 區化學品混放且測試治具雜亂，導入 6S + EHS 劃分酸鹼防洩漏槽、設置 SDS 標示與影子工具板。',
-    sc_en:'CMP chemical supply bay had mixed storage and tool clutter; implemented 6S + EHS with secondary containment, SDS labels, and shadow boards.',
-    sw:['Excel 5S/6S 查核表', 'EHS 安全檢核表']},
+  {name:'5S / 6S 現場管理與環安衛 (EHS / Cleanroom 6S)', pill:'white', pilltxt:'White/Yellow', phase_zh:'定義/衡量/改善', phase_en:'Define/Measure/Improve',
+    zh:'整理、整頓、清掃、清潔、素養，並整合安全與環境健康 (Safety & EHS)。在半導體無塵室更擴充為「嚴禁身上化妝品/普通紙筆等 VOC 與發塵源」、「工具 100% 繫繩防異物掉落 (FOD)」、「絕對禁止徒手碰觸晶圓/光罩/腔壁」、「真空吸筆移載與零倚靠機台」之高階零污染管制。',
+    en:'Sort, Set in Order, Shine, Standardize, Sustain, plus Safety & EHS. In semiconductor cleanrooms, elevated to strict protocols: banning personal VOC/cosmetics & regular paper, 100% tool tethering against FOD, strict no-touch wafer/optics/chamber rules, and vacuum wand handling.',
+    sc_zh:'12 吋先進晶圓廠與 EUV 裝配室導入無塵室 6S，規範禁止攜入普通紙筆與香水以防 VOC/AMC 霧化、機台維修全數繫繩防工具掉落砸碎晶圓、晶圓傳輸站落實零徒手觸碰與雙層無塵手套更換。',
+    sc_en:'12-inch wafer fab & EUV assembly implemented Cleanroom 6S: banned non-cleanroom paper and cosmetics to eliminate VOC/AMC haze, mandated tool tethering against FOD wafer breakage, and enforced zero-touch wafer/chamber protocols.',
+    sw:['Excel 5S/6S 查核表', '無塵室 6S 稽核評分單 (Cleanroom Audit)', 'EHS 安全檢核表']},
   {name:'VSM 價值流程圖', pill:'green', pilltxt:'Green/Black', phase_zh:'定義/衡量', phase_en:'Define/Measure',
     zh:'分析資訊流與物質流，識別流程中所有非增值浪費與瓶頸。',
     en:'Value Stream Mapping analyzes flow of materials and info to identify non-value added wastes.',
@@ -16164,6 +16294,18 @@ const REAL_CASES = [
     src:'https://www.investopedia.com/terms/w/worldcom.asp'}];
 
 const GLOSSARY = [
+  {zh:'Cleanroom 5S (半導體無塵室 5S/6S 管制規範)', en:'Cleanroom 5S / 6S Protocols',
+    zh_d:'精實 5S 在半導體晶圓製造 (Foundry)、先進封裝 (CoWoS) 與 EUV 光學裝配廠的最高等級實踐。將基礎整頓延伸為「嚴禁身上化妝品/香水等揮發性有機物 (VOC)」、「全面禁止普通紙筆與瓦楞紙箱以絕微粒 (Particulate)」、「機台與晶圓上方作業 100% 工具繫繩防異物掉落 (FOD)」、「晶圓/光罩/腔體內壁絕對禁止徒手碰觸 (Strict No-Touch)」以及「真空吸筆移載與零倚靠機台」，是守護先進奈米製程良率與避免整批晶圓報廢的紅線防禦體系。',
+    en_d:'The ultimate implementation of Lean 5S in semiconductor fabs, advanced packaging, and EUV cleanrooms. Elevates classical 5S into strict red-line quality gates: banning personal cosmetics/perfumes (VOC sources), prohibiting cellulose paper and corrugated boxes, enforcing 100% tool tethering against Foreign Object Debris (FOD), mandating strict zero-touch on wafers and chambers, and requiring vacuum wand handling to ensure zero-defect yield.'},
+  {zh:'FOD 異物掉落與損害防護 (Foreign Object Debris / Damage)', en:'FOD (Foreign Object Debris / Damage)',
+    zh_d:'航太工程與半導體晶圓廠的致命風險防範機制。指任何不屬於作業區域的外來物質、工具或零件（如脫落的螺絲、墊片、探針、落塵碎屑）。在無塵室維修機台（EFEM、Loadport、反應腔體 Chamber）時，掉落的螺絲若落入 FOUP 晶圓盒或傳送機械手臂，高速運轉下將引發整批 25 片晶圓爆碎 (Wafer Scrapping) 或機構嚴重撞毀。防護對策包括：100% 工具防墜繫繩 (Tool Tethering)、連身無塵衣口袋淨空、維修前後零組件 100% 計數對齊 (Part Reconciliation)。',
+    en_d:'A critical aerospace and wafer fab protocol preventing loose external substances, tools, or parts from damaging products or equipment. In semiconductor tools, a single dropped screw into a FOUP or robot arm causes catastrophic wafer shattering at operational speeds. Prevented via 100% tool tethering (lanyards), empty bunny suit pockets, and strict part reconciliation before and after maintenance.'},
+  {zh:'VOC 與 AMC 氣態分子污染 (Volatile Organic Compounds & AMC)', en:'VOC & AMC (Airborne Molecular Contamination)',
+    zh_d:'氣態分子污染物 (Airborne Molecular Contamination, AMC) 與揮發性有機化合物 (VOC)。在先進微縮製程中，人體身上的化妝品、香水、髮膠、護手霜，以及非無塵認證的膠帶殘膠與未除氣矽膠 (Silicone)，皆會揮發出微量有機分子。這些有機氣體會吸附在裸晶圓活性矽表面形成化學霧化 (Haze)，導致高溫退火時閘極氧化層擊穿，或在極紫外光 (EUV) 高能輻射下與光學反射鏡鍍膜反應形成不可逆的積碳損壞。',
+    en_d:'Airborne Molecular Contamination (AMC) including volatile organic chemicals (VOCs) and siloxanes emitted from cosmetics, perfumes, hair gels, uncertified adhesives, or silicone seals. In advanced semiconductor manufacturing, trace VOCs condense onto bare silicon wafers creating optical haze, degrading gate oxide integrity, or forming irreversible carbon deposits on EUV mirrors under high-energy exposure.'},
+  {zh:'No-Touch Protocol 晶圓與腔體零接觸防線 (Strict No-Touch)', en:'No-Touch Protocol (Wafer & Chamber Zero Touch)',
+    zh_d:'無塵室最高等級品質防禦準則。絕對禁止操作員或工程師以徒手或戴手套之雙手直接碰觸晶圓表面 (Wafer Surface)、晶圓盒齒條 (FOUP Interior)、光罩 (Reticle)、真空腔體內壁 (Chamber Wall) 與石英件。人體皮膚油脂與鈉/鉀離子（即使隔著手套）會致命性破壞閘極薄膜；此外嚴禁身體倚靠機台或 Loadport 傳送門以防摩擦發塵與震動。晶圓移載必須 100% 依循專用真空吸筆 (Vacuum Wand) 或鐵氟龍防刮鑷子（僅夾持 3mm 邊緣禁限區），接觸關鍵件前須在該站更換全新超潔淨丁腈手套。',
+    en_d:'A mandatory cleanroom quality rule strictly forbidding any manual contact (even with gloved hands) on active wafer surfaces, FOUP slots, reticles, chamber walls, or quartzware. Body oils, sodium, and potassium ions instantly contaminate gate oxides and high-vacuum assemblies. Also bans leaning on EFEM tools. Handling is restricted to vacuum wands or Teflon tweezers on the 3mm edge exclusion zone, with mandatory fresh nitrile glove replacement.'},
   {zh:'Scrum (敏捷專案管理框架)', en:'Scrum (Agile Framework)',
     zh_d:'由竹內弘高與野中郁次郎於 1986 年《新新產品開發遊戲》奠基，後由 Jeff Sutherland 與 Ken Schwaber 正式形式化的敏捷框架。專為應對高不確定性與複雜環境設計，基於「經驗主義三大支柱（透明、檢視、調適）」與五大核心價值（承諾、專注、開放、尊重、勇氣）。以 3 大角色 (PO, SM, Devs)、5 大時間箱事件 (Sprint, Planning, Daily, Review, Retro) 與 3 大產出物 (Product Backlog, Sprint Backlog, Increment) 為核心骨架，透過短週期衝刺持續交付具商業價值的可用增量。',
     en_d:'An empirical, iterative Agile framework formalised by Jeff Sutherland and Ken Schwaber, rooted in Takeuchi and Nonaka\'s 1986 HBR paper on rugby-style cross-functional teaming. Built on three pillars of empiricism (Transparency, Inspection, Adaptation) and five values, Scrum organizes work into 3 roles, 5 events, and 3 artifacts to deliver potentially shippable increments in short, timeboxed Sprints.'},
@@ -18965,38 +19107,64 @@ function set5sMode(mode) {
   s5Mode = mode;
   const btn5 = document.getElementById('btn5sMode5');
   const btn6 = document.getElementById('btn5sMode6');
+  const btnCR = document.getElementById('btn5sModeCleanroom');
   const rowSafety = document.getElementById('row6sSafety');
   const row5sShitsuke = document.getElementById('row5sShitsuke');
-  if(btn5 && btn6) {
-    if(mode === '6s') {
-      btn5.classList.remove('active');
+  const protocolBox = document.getElementById('cleanroomProtocolBox');
+  const crNotes = document.querySelectorAll('.s5-cleanroom-note');
+
+  if(btn5 && btn6 && btnCR) {
+    btn5.classList.remove('active');
+    btn6.classList.remove('active');
+    btnCR.classList.remove('active');
+
+    if(mode === 'cleanroom') {
+      btnCR.classList.add('active');
+      if(rowSafety) rowSafety.style.display = 'block';
+      if(row5sShitsuke) {
+        row5sShitsuke.style.borderBottom = '1px dashed var(--line)';
+        row5sShitsuke.style.paddingBottom = '12px';
+      }
+      if(protocolBox) protocolBox.style.display = 'block';
+      crNotes.forEach(el => el.style.display = 'block');
+    } else if(mode === '6s') {
       btn6.classList.add('active');
       if(rowSafety) rowSafety.style.display = 'block';
       if(row5sShitsuke) {
         row5sShitsuke.style.borderBottom = '1px dashed var(--line)';
         row5sShitsuke.style.paddingBottom = '12px';
       }
+      if(protocolBox) protocolBox.style.display = 'none';
+      crNotes.forEach(el => el.style.display = 'none');
     } else {
-      btn6.classList.remove('active');
       btn5.classList.add('active');
       if(rowSafety) rowSafety.style.display = 'none';
       if(row5sShitsuke) {
         row5sShitsuke.style.borderBottom = 'none';
         row5sShitsuke.style.paddingBottom = '4px';
       }
+      if(protocolBox) protocolBox.style.display = 'none';
+      crNotes.forEach(el => el.style.display = 'none');
     }
   }
   update5sScore();
 }
+window.set5sMode = set5sMode;
 
 function render5sChart() {
   const svg = document.getElementById('svg5s');
   if(!svg) return;
   const cx = 50, cy = 50, r = 32;
-  const is6s = (s5Mode === '6s');
+  const is6s = (s5Mode === '6s' || s5Mode === 'cleanroom');
+  const isCleanroom = (s5Mode === 'cleanroom');
   const count = is6s ? 6 : 5;
-  const labels = is6s ? ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain', 'Safety/EHS'] : ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain'];
-  const zhLabels = is6s ? ['整理', '整頓', '清掃', '清潔', '素養', '安全/EHS'] : ['整理', '整頓', '清掃', '清潔', '素養'];
+
+  const labels = isCleanroom 
+    ? ['Sort/Banned', 'Set/Tether', 'Shine/LowLint', 'Std/NoTouch', 'Sustain/Habit', 'Cleanroom EHS']
+    : (is6s ? ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain', 'Safety/EHS'] : ['Sort', 'Set Order', 'Shine', 'Standardize', 'Sustain']);
+  const zhLabels = isCleanroom
+    ? ['整理/禁物', '整頓/繫繩', '清掃/低發塵', '清潔/零觸碰', '素養/自律', '無塵安衛']
+    : (is6s ? ['整理', '整頓', '清掃', '清潔', '素養', '安全/EHS'] : ['整理', '整頓', '清掃', '清潔', '素養']);
   const scoreKeys = is6s ? ['seiri', 'seiton', 'seiso', 'seiketsu', 'shitsuke', 'safety'] : ['seiri', 'seiton', 'seiso', 'seiketsu', 'shitsuke'];
 
   let gridPolygons = '';
@@ -19050,13 +19218,14 @@ function render5sChart() {
     if (angle > 0 && angle < Math.PI) y += 3;
     const lang = state.lang;
     const txtVal = lang === 'zh' ? zhLabels[i] : labels[i];
-    texts += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" font-size="${is6s ? '4.0' : '4.5'}" font-weight="800" fill="var(--muted)">${txtVal}</text>`;
+    texts += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" font-size="${is6s ? '3.8' : '4.5'}" font-weight="800" fill="var(--muted)">${txtVal}</text>`;
   }
   svg.innerHTML = gridPolygons + spokes + valPolygon + dots + texts;
 }
 
 function update5sScore() {
-  const is6s = (s5Mode === '6s');
+  const is6s = (s5Mode === '6s' || s5Mode === 'cleanroom');
+  const isCleanroom = (s5Mode === 'cleanroom');
   const total = is6s 
     ? (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke + s5Scores.safety)
     : (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke);
@@ -19067,7 +19236,9 @@ function update5sScore() {
   if(elVerdict) {
     const ratio = total / maxScore;
     if(ratio >= 0.86) {
-      elVerdict.innerHTML = `<span class="zh" style="color:var(--sage); font-weight:800;">⭐ 自律卓越 (Sustained)</span><span class="en" style="color:var(--sage); font-weight:800;">⭐ Sustained</span>`;
+      elVerdict.innerHTML = isCleanroom
+        ? `<span class="zh" style="color:var(--sage); font-weight:800;">⭐ 無塵卓越 (Class 1 Standard Met)</span><span class="en" style="color:var(--sage); font-weight:800;">⭐ Class 1 Sustained</span>`
+        : `<span class="zh" style="color:var(--sage); font-weight:800;">⭐ 自律卓越 (Sustained)</span><span class="en" style="color:var(--sage); font-weight:800;">⭐ Sustained</span>`;
     } else if(ratio >= 0.6) {
       elVerdict.innerHTML = `<span class="zh" style="color:var(--amber); font-weight:800;">👍 合格維持 (Standard Met)</span><span class="en" style="color:var(--amber); font-weight:800;">👍 Standard Met</span>`;
     } else {
@@ -19078,43 +19249,64 @@ function update5sScore() {
   if(elFeedback) {
     const feedbackItems = [];
     if(s5Scores.seiri < 3) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '❌ <b>1S 整理 (無塵室禁物與 VOC 管制不足)</b>：現場疑似存在違禁品（化妝品/香水/乳液等高 VOC 來源、普通紙筆或外箱瓦楞紙）。建議立即落實開箱室 (Unpacking Room) 脫包裝，全面換用無塵合成紙。',
+        en: '❌ <b>1S Sort (Cleanroom Banned Items / VOC Deficiency)</b>: Potential prohibited items found (cosmetics/perfumes, regular paper, cardboard). Mandate outer unpacking and synthetic cleanroom paper.'
+      } : {
         zh: '❌ <b>1S 整理不足</b>：現場可能存在大量堆積的閒置品或廢料。建議立即啟動<b>「紅單運動 (Red Tagging)」</b>，限期清除無用之物。',
         en: '❌ <b>1S Sort Deficiency</b>: Too much clutter/scrap on site. Recommend launching a <b>Red Tag campaign</b> to clear unneeded items.'
       });
     }
     if(s5Scores.seiton < 3) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '❌ <b>2S 整頓 (FOD 工具繫繩與定位不足)</b>：機台上方作業之工具未 100% 裝設防掉落繫繩 (Tool Tethering)，存在螺絲/工具掉入 FOUP 或腔體砸碎晶圓 (Wafer Scrapping) 之極高風險。應強制實施手腕繫繩與零件前後清點對齊。',
+        en: '❌ <b>2S Set-in-Order (FOD & Tool Tethering Deficiency)</b>: Missing tool lanyards when working above wafers/chambers. Enforce 100% tool tethering and screw reconciliation to prevent catastrophic wafer breakage.'
+      } : {
         zh: '❌ <b>2S 整頓不足</b>：物品定位標示不清，尋找時間長。建議實施<b>「影子定位板 (Shadow Board)」</b>與雙色通道劃線標牌。',
         en: '❌ <b>2S Set-in-Order Deficiency</b>: Missing location lines and labels. Implement <b>shadow boards</b> and color-coded boundary markers.'
       });
     }
     if(s5Scores.seiso < 3) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '❌ <b>3S 清掃 (低發塵無塵擦拭不足)</b>：發現擦拭未遵行平行單向原則或使用非認證溶劑。應全面採用低發塵長纖維無塵布 (Low-lint Poly Wipe) 與電子級高純度 IPA (70/30)，並每日檢測 LPC 落塵數。',
+        en: '❌ <b>3S Shine (Low-Lint Wiping Deficiency)</b>: Bidirectional wiping or unauthorized solvents detected. Enforce unidirectional wipes with semiconductor-grade IPA and low-lint poly wipes, verifying LPC counts daily.'
+      } : {
         zh: '❌ <b>3S 清掃不足</b>：設備或地面有漏油、髒污。應將清掃結合設備自主點檢，徹底查明並修復洩漏源（如油封失效）。',
         en: '❌ <b>3S Shine Deficiency</b>: Grease or leak spotted. Combine daily sweeping with autonomous maintenance inspections to fix the source.'
       });
     }
     if(s5Scores.seiketsu < 3) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '❌ <b>4S 清潔 (零徒手碰觸與防倚靠標準不足)</b>：現場存在徒手碰觸晶圓/光罩/腔體或倚靠機台外殼之隱患。應嚴格標準化「Strict No-Touch」與真空吸筆 (Vacuum Wand) 移載 SOP，定點更換超潔淨丁腈手套。',
+        en: '❌ <b>4S Standardize (Strict No-Touch SOP Deficiency)</b>: Risk of manual contact with wafers, reticles, or chambers, or operators leaning against EFEMs. Enforce strict No-Touch protocols and vacuum wand handling.'
+      } : {
         zh: '❌ <b>4S 清潔不足</b>：缺乏維護 5S 的制度或檢核表。應建立<b>「5S 責任地圖」與清掃檢核 SOP</b>，以制度化維持前 3S 成果。',
         en: '❌ <b>4S Standardize Deficiency</b>: Missing routine audit sheets. Publish a <b>5S ownership map and visual inspection checklists</b>.'
       });
     }
     if(s5Scores.shitsuke < 3) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '❌ <b>5S 素養 (無塵自律與人體產塵控制不足)</b>：人員動作過快或在晶圓上風處攔截層流。應宣導行動平緩原則（劇烈動作使產塵增加百倍），落實進食與吸菸後徹底漱口與呼氣微粒排除自律。',
+        en: '❌ <b>5S Sustain (Cleanroom Discipline Deficiency)</b>: Fast movements or operators standing upwind in laminar airflow. Reiterate smooth movement principles and mandatory mouth rinsing after meals/smoking.'
+      } : {
         zh: '❌ <b>5S 素養不足</b>：紀律鬆散，習慣未養成。建議導入<b>「分層程序稽核 (LPA)」</b>與日常班前會 (Toolbox Talk) 宣導。',
         en: '❌ <b>5S Sustain Deficiency</b>: Compliance issues. Introduce <b>Layered Process Audits (LPA)</b> and morning team huddles.'
       });
     }
     if(is6s && s5Scores.safety < 3) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '🚨 <b>6S 無塵室安全與 EHS 不足</b>：特氣毒氣偵測警報 (TGMS) 巡檢、酸鹼防護具或 ESD 防靜電接地存在盲點。應落實進門防靜電鞋測儀 (<100V) 刷卡驗證，確保急救六氟靈與洗眼器暢通。',
+        en: '🚨 <b>6S Cleanroom Safety & EHS Deficiency</b>: Gaps in TGMS toxic gas detection, chemical splash PPE, or ESD grounding. Enforce mandatory ESD shoe testing (<100V) and emergency eyewash clearance.'
+      } : {
         zh: '🚨 <b>6S 安全與環安衛 (EHS) 不足</b>：現場存在安全防護盲點、PPE 未確實穿戴、化學品 SDS/GHS 標示不明或人因工學風險。建議立即執行「風險評估 (Risk Assessment)」、落實 LOTO 能量隔離並檢查防洩漏盛盤。',
         en: '🚨 <b>6S Safety & EHS Deficiency</b>: Potential hazards spotted (PPE compliance, chemical storage SDS/GHS, or ergonomic strain). Immediately conduct a Risk Assessment, enforce LOTO protocols, and verify secondary spill containment.'
       });
     }
     if(feedbackItems.length === 0) {
-      feedbackItems.push({
+      feedbackItems.push(isCleanroom ? {
+        zh: '🎉 <b>無塵室 6S 稽核表現卓越！</b> 現場符合半導體晶圓廠 Class 1 / ISO Class 1~5 潔淨水準，身上禁物清查、100% 工具繫繩防墜 (FOD)、晶圓零徒手碰觸與層流保護自律均落實無誤！',
+        en: '🎉 <b>Outstanding Cleanroom 6S Audit!</b> Meets ISO Class 1~5 fab cleanliness standards with zero banned items, 100% tool tethering (FOD prevention), zero-touch wafer/chamber protocols, and disciplined laminar airflow practices!'
+      } : {
         zh: `🎉 <b>稽核表現優異！</b> 現場 ${is6s ? '6S/EHS' : '5S'} 維持狀態良好，已進入常態標準化與自主維持階段。建議持續實施分層程序稽核 (LPA)，以維持自律。`,
         en: `🎉 <b>Excellent Audit Score!</b> ${is6s ? '6S/EHS' : '5S'} habits are well-established. Keep running Layered Process Audits (LPA) to maintain self-discipline.`
       });
@@ -19142,14 +19334,17 @@ function init5sTool() {
 
   const btn5 = document.getElementById('btn5sMode5');
   const btn6 = document.getElementById('btn5sMode6');
+  const btnCR = document.getElementById('btn5sModeCleanroom');
   if(btn5) btn5.onclick = () => set5sMode('5s');
   if(btn6) btn6.onclick = () => set5sMode('6s');
+  if(btnCR) btnCR.onclick = () => set5sMode('cleanroom');
 
   const btnExport = document.getElementById('btnExport5s');
   if(btnExport) {
     btnExport.onclick = () => {
       const lang = state.lang;
-      const is6s = (s5Mode === '6s');
+      const is6s = (s5Mode === '6s' || s5Mode === 'cleanroom');
+      const isCleanroom = (s5Mode === 'cleanroom');
       const maxScore = is6s ? 30 : 25;
       const total = is6s 
         ? (s5Scores.seiri + s5Scores.seiton + s5Scores.seiso + s5Scores.seiketsu + s5Scores.shitsuke + s5Scores.safety)
@@ -19158,18 +19353,26 @@ function init5sTool() {
       const ds = now.toISOString().split('T')[0];
       let md = '';
       if(lang === 'zh') {
-        md += `# ${is6s ? '6S (5S + EHS 環安衛)' : '5S'} 現場稽核評分單\n\n`;
-        md += `**稽核日期**：${ds}  |  **稽核模式**：${is6s ? '6S / EHS 整合模式' : '標準 5S 模式'}  |  **稽核總得分**：${total} / ${maxScore}\n\n---\n\n`;
+        const modeTitle = isCleanroom ? '半導體/高科技無塵室 6S (Cleanroom Strict 6S)' : (is6s ? '6S (5S + EHS 環安衛)' : '5S');
+        md += `# ${modeTitle} 現場稽核評分單\n\n`;
+        md += `**稽核日期**：${ds}  |  **稽核模式**：${isCleanroom ? '半導體無塵室 6S 極致模式 (Cleanroom Strict 6S)' : (is6s ? '6S / EHS 整合模式' : '標準 5S 模式')}  |  **稽核總得分**：${total} / ${maxScore}\n\n---\n\n`;
+        if(isCleanroom) {
+          md += `## 無塵室四大紅線管制守則執行檢核\n\n`;
+          md += `1. **🚫 身上禁物管制**：嚴禁化妝品/香水/乳液/髮膠 (VOC來源)、嚴禁普通紙筆 (使用無塵合成紙)、嚴禁手機/手錶/飾品/硬幣、外箱瓦楞紙全面於開箱室脫除。\n`;
+          md += `2. **💨 VOC / AMC 阻絕**：禁非認證膠帶/矽膠配件、真空零件通過高溫除氣驗證、電子級高純度 IPA (70/30) 單向擦拭。\n`;
+          md += `3. **🛡️ FOD 異物防墜與繫繩**：機台/晶圓上方作業 100% 工具繫繩 (Tool Tethering)、連身無塵衣口袋淨空、維修前後零組件 100% 清點無遺留。\n`;
+          md += `4. **⛔ 晶圓與腔體嚴禁隨意觸碰**：晶圓表面/FOUP齒條/光罩/腔壁絕對零徒手碰觸、嚴禁倚靠機台、專用真空吸筆移載、定點更換超潔淨無塵手套。\n\n---\n\n`;
+        }
         md += `## 評分明細\n\n`;
         md += `| 面向 | 得分 | 現場要求指標 |\n`;
         md += `|---|---|---|\n`;
-        md += `| 1S 整理 (Sort) | ${s5Scores.seiri} 分 | 區分要與不要，清理廢料無雜物 |\n`;
-        md += `| 2S 整頓 (Set in Order) | ${s5Scores.seiton} 分 | 定位、定量、定名，30秒內可找到物品 |\n`;
-        md += `| 3S 清掃 (Shine) | ${s5Scores.seiso} 分 | 掃除髒污、漏油，根治洩漏源頭 |\n`;
-        md += `| 4S 清潔 (Standardize) | ${s5Scores.seiketsu} 分 | 成果標準化，建立 SOP 與清掃檢核表 |\n`;
-        md += `| 5S 素養 (Sustain) | ${s5Scores.shitsuke} 分 | 全員遵守標準紀律，養成自主維護習慣 |\n`;
+        md += `| 1S 整理 (Sort) | ${s5Scores.seiri} 分 | ${isCleanroom ? '身上禁物清查（禁化妝品/香水/普通紙筆/飾品/瓦楞紙箱），開箱室脫包裝' : '區分要與不要，清理廢料無雜物'} |\n`;
+        md += `| 2S 整頓 (Set in Order) | ${s5Scores.seiton} 分 | ${isCleanroom ? '維修工具 100% 防墜繫繩 (Tool Tethering)，真空吸筆定位放置，零件前後計數清點' : '定位、定量、定名，30秒內可找到物品'} |\n`;
+        md += `| 3S 清掃 (Shine) | ${s5Scores.seiso} 分 | ${isCleanroom ? '低發塵長纖維無塵布 + 電子級 IPA 單向擦拭，杜絕 VOC 殘留，LPC 落塵數監控' : '掃除髒污、漏油，根治洩漏源頭'} |\n`;
+        md += `| 4S 清潔 (Standardize) | ${s5Scores.seiketsu} 分 | ${isCleanroom ? '晶圓/光罩/腔體「零徒手觸碰」與「禁止倚靠機台」標準化，真空吸筆移載，定點更換丁腈手套' : '成果標準化，建立 SOP 與清掃檢核表'} |\n`;
+        md += `| 5S 素養 (Sustain) | ${s5Scores.shitsuke} 分 | ${isCleanroom ? '無塵行為自律（行動平緩嚴禁跑跳揮手），層流下風處避讓，進食/吸菸後徹底漱口洗手' : '全員遵守標準紀律，養成自主維護習慣'} |\n`;
         if(is6s) {
-          md += `| 6S 安全與環安衛 (Safety & EHS) | ${s5Scores.safety} 分 | PPE穿戴、LOTO隔離、SDS標示、人因工學防護 |\n`;
+          md += `| 6S 安全與環安衛 (Safety & EHS) | ${s5Scores.safety} 分 | ${isCleanroom ? '特氣毒氣監測 (TGMS) 正常，酸鹼防護具齊備，防靜電鞋測儀 (<100V) 導通' : 'PPE穿戴、LOTO隔離、SDS標示、人因工學防護'} |\n`;
         }
         md += `\n## 診斷建議與改善對策\n\n`;
         const feedbackContainer = document.getElementById('feedback5s');
@@ -19179,18 +19382,26 @@ function init5sTool() {
           });
         }
       } else {
-        md += `# ${is6s ? '6S (5S + Safety & EHS)' : '5S'} Shop Floor Audit Sheet\n\n`;
-        md += `**Date**: ${ds}  |  **Mode**: ${is6s ? '6S + EHS Mode' : 'Classic 5S'}  |  **Total Score**: ${total} / ${maxScore}\n\n---\n\n`;
+        const modeTitle = isCleanroom ? 'Semiconductor Cleanroom 6S (Strict Protocol)' : (is6s ? '6S (5S + Safety & EHS)' : '5S');
+        md += `# ${modeTitle} Shop Floor Audit Sheet\n\n`;
+        md += `**Date**: ${ds}  |  **Mode**: ${isCleanroom ? 'Cleanroom Strict 6S Mode' : (is6s ? '6S + EHS Mode' : 'Classic 5S')}  |  **Total Score**: ${total} / ${maxScore}\n\n---\n\n`;
+        if(isCleanroom) {
+          md += `## Cleanroom Red-Line Quality Gate Verifications\n\n`;
+          md += `1. **🚫 Banned Items on Body**: Strict zero cosmetics/perfumes (VOCs), zero cellulose paper/pens, zero jewelry/phones, outer cardboard unpacked in airlock.\n`;
+          md += `2. **💨 VOC & AMC Prevention**: Zero uncertified tapes/silicone outgassing, thermal outgassing verified, semiconductor-grade IPA unidirectional wiping.\n`;
+          md += `3. **🛡️ FOD Prevention & Tool Tethering**: 100% tool lanyards over wafers/chambers, empty bunny suit pockets, 100% screw reconciliation.\n`;
+          md += `4. **⛔ Strict Zero-Touch Wafer/Chamber**: Never touch wafer surfaces or reticles with hands, no leaning against tool frames, vacuum wand handling, don fresh nitrile gloves.\n\n---\n\n`;
+        }
         md += `## Score Details\n\n`;
         md += `| S Aspect | Score | Audit Criteria |\n`;
         md += `|---|---|---|\n`;
-        md += `| 1S Sort (Seiri) | ${s5Scores.seiri} / 5 | Clear unneeded clutter, scrap, red-tagging |\n`;
-        md += `| 2S Set in Order (Seiton) | ${s5Scores.seiton} / 5 | Label locations, limits, shadow boards |\n`;
-        md += `| 3S Shine (Seiso) | ${s5Scores.seiso} / 5 | Clean dirt, oil leaks, identify sources |\n`;
-        md += `| 4S Standardize (Seiketsu) | ${s5Scores.seiketsu} / 5 | Standardize schedules, SOPs, visual tools |\n`;
-        md += `| 5S Sustain (Shitsuke) | ${s5Scores.shitsuke} / 5 | Active audits, wearing PPE, routine compliance |\n`;
+        md += `| 1S Sort (Seiri) | ${s5Scores.seiri} / 5 | ${isCleanroom ? 'Prohibited item audit (no cosmetics/perfumes, no cellulose paper, no cardboard), airlock unpacking' : 'Clear unneeded clutter, scrap, red-tagging'} |\n`;
+        md += `| 2S Set in Order (Seiton) | ${s5Scores.seiton} / 5 | ${isCleanroom ? '100% tool tethering (lanyards) against FOD wafer damage, vacuum wand docking, part reconciliation' : 'Label locations, limits, shadow boards'} |\n`;
+        md += `| 3S Shine (Seiso) | ${s5Scores.seiso} / 5 | ${isCleanroom ? 'Low-lint polycellulose wipes + electronic IPA unidirectional wiping, zero VOC haze, LPC monitoring' : 'Clean dirt, oil leaks, identify sources'} |\n`;
+        md += `| 4S Standardize (Seiketsu) | ${s5Scores.seiketsu} / 5 | ${isCleanroom ? 'Strict No-Touch wafer/chamber SOPs, zero leaning on tools, vacuum wand usage, fresh nitrile gloves' : 'Standardize schedules, SOPs, visual tools'} |\n`;
+        md += `| 5S Sustain (Shitsuke) | ${s5Scores.shitsuke} / 5 | ${isCleanroom ? 'Slow movement discipline (no running/arm swinging), laminar downflow awareness, post-meal mouth rinsing' : 'Active audits, wearing PPE, routine compliance'} |\n`;
         if(is6s) {
-          md += `| 6S Safety & EHS | ${s5Scores.safety} / 5 | PPE compliance, LOTO, chemical SDS/GHS, ergonomics |\n`;
+          md += `| 6S Safety & EHS | ${s5Scores.safety} / 5 | ${isCleanroom ? 'TGMS toxic gas monitoring functional, chemical PPE available, ESD footwear tested (<100V)' : 'PPE compliance, LOTO, chemical SDS/GHS, ergonomics'} |\n`;
         }
         md += `\n## Diagnostic Recommendations\n\n`;
         const feedbackContainer = document.getElementById('feedback5s');
@@ -19204,7 +19415,7 @@ function init5sTool() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${is6s ? '6S_EHS' : '5S'}_Audit_Report_${ds}.md`;
+      a.download = `${isCleanroom ? 'Cleanroom_6S' : (is6s ? '6S_EHS' : '5S')}_Audit_Report_${ds}.md`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -19213,6 +19424,7 @@ function init5sTool() {
   }
   update5sScore();
 }
+window.init5sTool = init5sTool;
 
 let tpsState = {
   weights: { cost: 25, quality: 25, mgmt: 25, due: 25 },
@@ -27783,16 +27995,18 @@ const DOD_DOR_DATA = {
     ]
   },
   fab: {
-    nameZh: '半導體與機台改善專案情境',
+    nameZh: '半導體晶圓廠與機台工程情境',
     nameEn: 'Semiconductor & Fab Engineering',
     dor: [
       { textZh: '製程問題陳述與 CTQ 規格界定明確（含 Baseline 與目標值）', textEn: 'Problem statement and CTQ targets quantified', checked: true },
       { textZh: '機台 DOE 實驗計畫與測試晶圓樣品 (Dummy/Test Wafers) 配額已到位', textEn: 'DOE plan and test wafer budget secured', checked: true },
       { textZh: '量測系統分析 (MSA / Gage R&R) 評估合格 (P/T < 10% 或 < 30%)', textEn: 'Measurement System Analysis (MSA) passed', checked: true },
-      { textZh: '跨模組協調（PE/EE/PIE）已完成，機台停機維修窗口已核准', textEn: 'Cross-module alignment cleared with tool window', checked: true }
+      { textZh: '跨模組協調（PE/EE/PIE）已完成，機台停機維修窗口已核准', textEn: 'Cross-module alignment cleared with tool window', checked: true },
+      { textZh: '無塵室 6S 進門防線點檢：身上無化妝品/香水(VOC)、無普通紙筆、工具 100% 裝設防墜繫繩 (FOD Tethering)', textEn: 'Cleanroom 6S check: zero cosmetics/perfume (VOCs), zero regular paper, 100% tool tethering against FOD', checked: true }
     ],
     dod: [
       { textZh: '機台驗證數據集收集完備，Cpk 顯著提升並通過雙尾 t 檢定 (p < 0.05)', textEn: 'Cpk verified with statistically significant t-test', checked: false },
+      { textZh: '無塵室零污染與 FOD 驗收：晶圓與腔體零徒手碰觸 (Strict No-Touch)、維修螺絲/零件 100% 清點無遺留 (Zero FOD)、LPC 落塵監測恢復 Class 1', textEn: 'Cleanroom zero-defect verified: strict no-touch wafer/chamber, 100% screw reconciliation (zero FOD), LPC Class 1 verified', checked: false },
       { textZh: '標準作業程序書 (SOP / OCAP) 已完成修訂並通過線上文管發行', textEn: 'SOP / OCAP revised and published in DMS', checked: false },
       { textZh: '現場技術員與操作員 (Line Operators) 完成新作業技能簽核培訓', textEn: 'Line operators trained & certified on new SOP', checked: false },
       { textZh: '機台 FMEA 檔案完成更新（RPN 發生度 O 或難檢度 D 顯著壓降）', textEn: 'FMEA updated with reduced RPN scores', checked: false },
