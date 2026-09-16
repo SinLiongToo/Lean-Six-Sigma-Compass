@@ -32,10 +32,10 @@
 
 ---
 
-## 🧭 全站 23 大核心模組架構
+## 🧭 全站 24 大核心模組架構
 
 ```
-Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
+Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
  ├── 01. 核心思維 (Mindset)
  ├── 02. 證照地圖與模擬考試 (Belt Map & Exam Engine)
  ├── 03. 個人專案診斷與證照推薦 (Personal Project Diagnostics & Belt Recommendation)
@@ -56,9 +56,10 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
  ├── 18. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)
  ├── 19. 科技與半導體/AI 發展史羅盤 (Tech, Semiconductor & AI History Compass)
  ├── 20. 精實數位轉型與智慧製造 (Lean Digital Transformation & DX)
- ├── 21. 企業組織全景架構與跨部門升級求助板模 (Org Chart & Cross-Functional Escalation Playbook)
- ├── 22. 相關推薦書籍 (46 本跨領域經典精實書庫)
- └── 23. 詞彙釋義 (Glossary - 55+ 條核心術語全景辭典)
+ ├── 21. 敏捷 Scrum 實戰與精實整合羅盤 (Agile Scrum Playbook, Lean vs 6σ vs Scrum Compass & DoD/DoR Quality Gates)
+ ├── 22. 企業組織全景架構與跨部門升級求助板模 (Org Chart & Cross-Functional Escalation Playbook)
+ ├── 23. 相關推薦書籍 (46 本跨領域經典精實書庫)
+ └── 24. 詞彙釋義 (Glossary - 65+ 條核心術語全景辭典)
 ```
 
 ---
@@ -116,11 +117,25 @@ Masa Tu 精實六標準差羅盤 (共 23 大核心模組)
 - **精實升級三大黃金法則與避坑對照表**：強調「No Surprises 拒絕背刺預先告知」、「帶著方案升級 (Option A vs B)」、「對事不對人 (Data & Timeline)」，對比健康精實升級與有害職場打小報告之關鍵差異。
 - **跨部門升級通報備忘錄產生器 (Escalation Memo Generator)**：輸入阻礙與商業衝擊、已嘗試協商努力、選項 A/B 與具體裁決請求，一鍵生成結構化高管專用中英文 Markdown / Email 報告。
 
-### 8. 📚 相關推薦書籍 (46 本經典跨領域書庫)
+### 8. 🏉 敏捷 Scrum 實戰指南與品質雙門禁工坊 (Agile Scrum Playbook & Quality Gates)
+- **Scrum 3-5-3 經典骨架全景**：解構 3 大核心角色（PO 價值優化、SM 僕人領導、Developers 跨職能交付）、5 大時間箱儀軌（Sprint、Planning、Daily 15-min 站會、Review 成果展示、Retrospective 衝刺回顧）與 3 大產出物承諾（Product Goal、Sprint Goal、DoD 完工定義）。
+- **Lean vs. 6σ vs. Scrum 決策羅盤與 Cynefin 複雜度導航**：
+  - 引導判斷「清晰/繁複/複雜/混亂」四象限情境，解決方法論錯置問題。
+  - **Agile DMAIC 實戰指南**：示範如何將長達 3~6 個月的六標準差專案拆解為 2 週一期的雙週衝刺，兼具統計嚴謹度與敏捷交付速度。
+- **DoD vs. DoR 雙品質門禁工坊 (Dual Quality Gates Workshop)**：
+  - **DoR (準備就緒定義)**：開工前的「進料防呆 (Poka-Yoke / IQC)」，杜絕規格不清造成的等待與重工浪費。
+  - **DoD (完工定義)**：交件前的「出廠標準 (Standard Work / OQC)」，杜絕假性完工與技術債外溢。
+  - 內建軟體研發/AI、半導體晶圓廠工程、企業跨部門流程三大情境預設點檢清單，支援自訂與一鍵匯出 Markdown 驗收卡。
+- **三大敏捷實戰工具箱**：
+  - **User Story & INVEST 產生器**：標準「身為/想要/以便於」句型，搭配 Given-When-Then 驗收準則與 INVEST 點檢。
+  - **Sprint Retrospective 敏捷回顧樣板**：支援 Sailboat 帆船法（風力/沉錨/暗礁/島嶼）、4Ls 模型與 Start-Stop-Continue，即時產出 Kaizen 行動計畫。
+  - **Planning Poker 費氏數列估算速查**：深入破除「故事點 = 工時」的虛假精確迷思。
+
+### 9. 📚 相關推薦書籍 (46 本經典跨領域書庫)
 精選與精實六標準差、心智模型、數據檢驗、專注力、敏捷試錯、迎變世代與生成式 AI 深度結合的 46 本跨界經典著作：
 - 《迎變世代》、《專注力協定》、《別自個兒用餐》、《投資最重要的事》、《職場人的生成式AI工作法》、《寫下來，事情就會發生》、《當下的力量》、《我可能錯了》、《5秒法則》、《做自己的人生財務長》、《跨能致勝》、《給予》、《真確》、《刻意練習》、《精實創業》、《豐田模式》、《目標：限制理論》、《原子習慣》、《致富心態》、《深度工作力》、《窮查理的普通常識》、《聰明犯錯》、《卡內基溝通與人際關係》、《當我談跑步時我談些什麼》、《垃圾車法則》、《活出意義來》、《與成功有約》等。
 
-### 9. 🧮 實用工程與管理運算工具箱 (Calculators)
+### 10. 🧮 實用工程與管理運算工具箱 (Calculators)
 - **FMEA RPN 計算器**（嚴重度 S / 發生度 O / 難檢度 D）
 - **Pugh 概念決策矩陣**（加權評分與基準方案對比）
 - **OEE 綜合設備效率模擬器**（可用率 × 表現率 × 品質良率）

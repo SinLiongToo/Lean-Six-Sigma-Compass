@@ -151,3 +151,22 @@ The following functions wire up all book cards automatically on page load:
 - `initBookCollapse()` — per-card collapse toggle + count badge injection
 - `buildBooksTitleList()` — interactive clickable chip list of all book titles (shown when section is collapsed; click to expand, jump to card & pulse highlight)
 - `toggleBooksGrid()` — section-level expand/collapse button handler
+
+---
+
+## 🏉 Agile Scrum Module Patterns (`data-section="scrum"`)
+
+When maintaining or extending the Agile Scrum module (Section 21):
+- **Sub-tab Architecture**: `switchScrumTab(tabId)` toggles between `['core', 'compass', 'gates', 'tools']`.
+- **Scrum 3-5-3 Data**: Managed in `SCRUM_353_DATA`, interactive selection via `selectScrumItem(category, itemId)`.
+- **Cynefin Complexity Navigator**: Managed in `CYNEFIN_EVAL_DATA` across 4 quadrants (`clear`, `complicated`, `complex`, `chaotic`), evaluated via `evaluateCynefin(domainKey)`.
+- **DoD / DoR Quality Gates Workshop**:
+  - Context presets: `DOD_DOR_DATA` across 3 presets (`sw`, `fab`, `ops`), switched via `switchDodDorContext(ctxKey)`.
+  - Checklist manipulation: `toggleChecklistItem(gateType, index)`, `addCustomChecklistItem(gateType)`, `resetDodDorChecklist()`.
+  - Export: `generateDodDorMarkdown()`, `copyDodDorMarkdown()`.
+- **Interactive Agile Toolkit**:
+  - User Story & INVEST: `generateUserStoryCard()`, `copyUserStoryCard()`.
+  - Sprint Retrospective (Kaizen): `RETRO_FRAMEWORKS` supporting `sailboat`, `4ls`, `ssc`, handled by `switchRetroFramework(fKey)` and `copyRetroActionPlan()`.
+  - Planning Poker (Fibonacci): `POKER_SCALE_DATA`, selected via `selectPokerCard(point)`.
+- **Event Scoping Rule**: All inline handlers in the Scrum module (`onclick="switchScrumTab(...)"`, `onclick="selectScrumItem(...)"`, etc.) must remain explicitly exported to `window` (`window.switchScrumTab = switchScrumTab;`, etc.) to guarantee 100% reachability verification.
+

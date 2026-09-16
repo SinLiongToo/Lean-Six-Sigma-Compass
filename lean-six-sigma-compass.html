@@ -5386,7 +5386,465 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
      17. VALUE STREAM MAPPING (VSM) BUILDER CSS
      ========================================================================== */
   
-  /* ==================== 21. ORG CHART & CROSS-FUNCTIONAL ESCALATION PLAYBOOK ==================== */
+  
+  /* ==================== 21. AGILE SCRUM & LEAN INTEGRATION CSS ==================== */
+  .scrum-wrap { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+
+  .scrum-banner {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid #3b82f6;
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  [data-theme="light"] .scrum-banner {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    border-left: 4px solid #2563eb;
+  }
+  .scrum-banner-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  [data-theme="light"] .scrum-banner-title { color: #1d4ed8; }
+
+  .scrum-subnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 8px 12px;
+  }
+  .scrum-subnav-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all .2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .scrum-subnav-btn:hover {
+    background: rgba(245, 166, 35, 0.08);
+    color: var(--amber);
+    border-color: rgba(245, 166, 35, 0.2);
+  }
+  .scrum-subnav-btn.active {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+    box-shadow: 0 2px 8px rgba(245, 166, 35, 0.25);
+  }
+
+  .scrum-panel {
+    display: none;
+    flex-direction: column;
+    gap: 22px;
+    animation: fadeIn .25s ease forwards;
+  }
+  .scrum-panel.active {
+    display: flex;
+  }
+
+  /* 3-5-3 Pillar grid */
+  .scrum-353-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .scrum-pillar-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .scrum-pillar-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+  }
+  .scrum-pillar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .scrum-pillar-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .scrum-pillar-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--amber);
+  }
+  .scrum-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .scrum-item-box {
+    background: rgba(248, 244, 237, 0.03);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all .2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .scrum-item-box:hover, .scrum-item-box.selected {
+    background: rgba(245, 166, 35, 0.08);
+    border-color: var(--amber);
+  }
+  .scrum-item-box-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .scrum-item-box-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Detail Card for selected 3-5-3 item */
+  .scrum-detail-view {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Cynefin & Matrix */
+  .scrum-matrix-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    background: var(--panel);
+  }
+  .scrum-matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .scrum-matrix-table th, .scrum-matrix-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .scrum-matrix-table th:last-child, .scrum-matrix-table td:last-child {
+    border-right: none;
+  }
+  .scrum-matrix-table th {
+    background: rgba(245, 166, 35, 0.08);
+    color: var(--amber);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Cynefin quadrants */
+  .cynefin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .cynefin-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all .2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cynefin-card:hover, .cynefin-card.active {
+    border-color: var(--amber);
+    background: rgba(245, 166, 35, 0.05);
+  }
+  .cynefin-card-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  /* DoD & DoR Workshop Styles */
+  .gates-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .gates-workspace { grid-template-columns: 1fr; }
+  }
+  .gate-column {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .gate-column.dor-col { border-top: 4px solid #3b82f6; }
+  .gate-column.dod-col { border-top: 4px solid #10b981; }
+
+  .gate-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .gate-title {
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .gate-subtitle {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .gate-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(248, 244, 237, 0.03);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    transition: background .2s ease;
+  }
+  .checklist-item:hover {
+    background: rgba(245, 166, 35, 0.04);
+  }
+  .checklist-item.checked {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--amber);
+  }
+  .checklist-label {
+    flex: 1;
+    font-size: 13.5px;
+    line-height: 1.45;
+    cursor: pointer;
+  }
+  .checklist-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .checklist-progress-fill {
+    height: 100%;
+    background: #10b981;
+    width: 0%;
+    transition: width .3s ease;
+  }
+
+  /* Tools Tab: Form inputs, Poker Cards, Retro boards */
+  .scrum-tool-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .scrum-input, .scrum-select, .scrum-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(248, 244, 237, 0.04);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    font-size: 16px !important; /* Prevent iOS zoom */
+    font-family: inherit;
+    transition: border-color .2s ease;
+    box-sizing: border-box;
+  }
+  .scrum-input:focus, .scrum-select:focus, .scrum-textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+    background: rgba(248, 244, 237, 0.07);
+  }
+  .scrum-textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+  }
+
+  /* Planning Poker Grid */
+  .poker-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 12px 0;
+  }
+  .poker-card-btn {
+    width: 54px;
+    height: 76px;
+    border-radius: 8px;
+    border: 2px solid var(--panel-border);
+    background: var(--panel);
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .poker-card-btn:hover, .poker-card-btn.selected {
+    border-color: var(--amber);
+    background: var(--amber);
+    color: var(--navy);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
+  }
+
+  /* Retro Board Columns */
+  .retro-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .retro-column {
+    background: rgba(248, 244, 237, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .retro-col-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Buttons */
+  .scrum-action-btn {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all .15s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 40px;
+  }
+  .scrum-action-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .scrum-action-btn.primary {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+  }
+  .scrum-action-btn.primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .scrum-preview-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px;
+    font-family: Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    white-space: pre-wrap;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  [data-theme="light"] .scrum-preview-box {
+    background: #f1f5f9;
+    color: #0f172a;
+  }
+
+  /* ==================== 22. ORG CHART & CROSS-FUNCTIONAL ESCALATION PLAYBOOK ==================== */
   .orgchart-wrap { display: flex; flex-direction: column; gap: 24px; width: 100%; }
   
   .orgchart-banner {
@@ -6498,7 +6956,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.54 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-15 11:36</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.55 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-16 10:55</span></span>
         </div>
       </div>
     </div>
@@ -12332,7 +12790,626 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
 
       
-      <!-- ==================== 21. ORG CHART & CROSS-FUNCTIONAL ESCALATION PLAYBOOK ==================== -->
+      
+      <!-- ==================== 21. AGILE SCRUM & LEAN INTEGRATION ==================== -->
+      <section class="section" data-section="scrum">
+        <h2>
+          <span class="zh">敏捷 Scrum 實戰指南、Lean-Agile 決策羅盤與品質雙門禁工坊</span>
+          <span class="en">Agile Scrum Playbook, Lean-Agile Decision Compass & Dual Quality Gates Workshop</span>
+        </h2>
+        <p class="lead">
+          <span class="zh">Scrum 的精神源自 1986 年野中郁次郎與竹內弘高研究本田、佳能等日本頂尖企業的「橄欖球式跨職能團隊（The New New Product Development Game）」。在現代卓越營運中，<strong>精實（Lean）</strong>專注於重複流程中的消除浪費與極致流動；<strong>六標準差（Six Sigma）</strong>專注於關鍵製程的變異消除與零缺陷；而<strong>敏捷（Scrum）</strong>則專注於高不確定性與易變環境中，以<strong>短週期衝刺（Sprint）與高頻反思（Retrospective）</strong>快速試錯交付商業價值。透過 <strong>DoR（進料防呆）</strong> 與 <strong>DoD（出廠品質門禁）</strong>，三者形成強大的現代精實敏捷轉型引擎。</span>
+          <span class="en">Scrum traces its lineage to Takeuchi and Nonaka's 1986 HBR study of elite Japanese manufacturing. While <strong>Lean</strong> focuses on waste elimination and continuous flow, and <strong>Six Sigma</strong> on variation reduction and zero defects, <strong>Scrum</strong> empowers teams navigating high complexity to inspect, adapt, and deliver value rapidly via <strong>timeboxed Sprints and Retrospectives</strong>. Reinforced by <strong>DoR (Input Poka-Yoke)</strong> and <strong>DoD (Output Quality Standards)</strong>, they constitute a unified Lean-Agile operational excellence ecosystem.</span>
+        </p>
+
+        <div class="scrum-wrap">
+          <!-- Top Guidance Banner -->
+          <div class="scrum-banner">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+              <div class="scrum-banner-title">
+                <span>🏉</span>
+                <span class="zh">Lean、Six Sigma 與 Scrum 的三位一體現代融合 (The Operational Excellence Trifecta)</span>
+                <span class="en">The Modern Operational Excellence Trifecta: Lean + Six Sigma + Scrum</span>
+              </div>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <span class="scrum-pillar-badge">
+                  <span class="zh">Cynefin 複雜度適配</span><span class="en">Cynefin Adaptive</span>
+                </span>
+                <span class="scrum-pillar-badge" style="background:rgba(16,185,129,0.15); color:#10b981;">
+                  <span class="zh">DoR/DoD 雙重門禁</span><span class="en">Dual Quality Gates</span>
+                </span>
+              </div>
+            </div>
+            <div style="font-size:13px; line-height:1.6; color:var(--muted);">
+              <span class="zh">「若流程是已知的、可重複的，用精實消除浪費、用六標準差消除變異；若需求是不確定的、技術是探索性的，用 Scrum 快速迭代，並用 DoD/DoR 守護品質底線。」</span>
+              <span class="en">"If the process is repeatable, apply Lean to cut waste and Six Sigma to slash variance. If requirements and tech are ambiguous, apply Scrum to iterate rapidly while enforcing DoD/DoR as quality baselines."</span>
+            </div>
+          </div>
+
+          <!-- Sub Navigation Tabs -->
+          <div class="scrum-subnav">
+            <button type="button" class="scrum-subnav-btn active" id="scrumTabBtn-core" onclick="switchScrumTab('core')">
+              <span>🧭</span><span class="zh">Scrum 3-5-3 核心架構</span><span class="en">Scrum 3-5-3 Framework</span>
+            </button>
+            <button type="button" class="scrum-subnav-btn" id="scrumTabBtn-compass" onclick="switchScrumTab('compass')">
+              <span>⚖️</span><span class="zh">Lean vs 6σ vs Scrum 決策羅盤</span><span class="en">Lean vs 6σ vs Scrum Compass</span>
+            </button>
+            <button type="button" class="scrum-subnav-btn" id="scrumTabBtn-gates" onclick="switchScrumTab('gates')">
+              <span>🛡️</span><span class="zh">DoD vs DoR 雙門禁工坊</span><span class="en">DoD vs DoR Quality Gates</span>
+            </button>
+            <button type="button" class="scrum-subnav-btn" id="scrumTabBtn-tools" onclick="switchScrumTab('tools')">
+              <span>🛠️</span><span class="zh">敏捷實戰工具箱</span><span class="en">Agile Practical Toolkit</span>
+            </button>
+          </div>
+
+          <!-- ==================== SUB-PANEL 1: 3-5-3 FRAMEWORK ==================== -->
+          <div class="scrum-panel active" id="scrumPanel-core">
+            <div class="scrum-353-container">
+              <!-- 3 Roles -->
+              <div class="scrum-pillar-card">
+                <div class="scrum-pillar-head">
+                  <div class="scrum-pillar-title"><span>👤</span><span class="zh">3 大核心職責 (Roles)</span><span class="en">3 Roles / Accountabilities</span></div>
+                  <div class="scrum-pillar-badge">Who</div>
+                </div>
+                <div class="scrum-item-list">
+                  <div class="scrum-item-box selected" id="scrumBox-role_po" onclick="selectScrumItem('role', 'role_po')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">產品負責人 (Product Owner)</span><span class="en">Product Owner (PO)</span>
+                      <span>🎯</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">決定「做什麼 (What)」與「商業價值極大化」。管理 Product Backlog 與利害關係人期待。</span>
+                      <span class="en">Defines "What" & optimizes product value. Owns Product Backlog & stakeholder alignment.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-role_sm" onclick="selectScrumItem('role', 'role_sm')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">敏捷教練 (Scrum Master)</span><span class="en">Scrum Master (SM)</span>
+                      <span>🛡️</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">僕人式領導 (Servant Leader)。掃除阻礙 (Impediments)，維護 Scrum 框架與團隊心智健康。</span>
+                      <span class="en">Servant leader. Removes impediments, champions Scrum values and protects team focus.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-role_dev" onclick="selectScrumItem('role', 'role_dev')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">跨職能開發團隊 (Developers)</span><span class="en">Developers (Cross-Functional)</span>
+                      <span>⚡</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">決定「如何做 (How)」並在每個衝刺交付符合 DoD 的可用增量。自組織且跨職能具備全技能。</span>
+                      <span class="en">Defines "How", self-managing & cross-functional. Delivers Done increment every Sprint.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5 Events -->
+              <div class="scrum-pillar-card">
+                <div class="scrum-pillar-head">
+                  <div class="scrum-pillar-title"><span>⏳</span><span class="zh">5 大時間箱儀軌 (Events)</span><span class="en">5 Events / Ceremonies</span></div>
+                  <div class="scrum-pillar-badge">When</div>
+                </div>
+                <div class="scrum-item-list">
+                  <div class="scrum-item-box" id="scrumBox-evt_sprint" onclick="selectScrumItem('event', 'evt_sprint')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">1. 衝刺 (Sprint Container)</span><span class="en">1. Sprint Container</span>
+                      <span>🔄</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">1~4 週固定時間箱。所有其他事件的容器，保持節奏穩定（防止 Parkinson 拖延）。</span>
+                      <span class="en">1-4 week fixed timebox. Container for all other events to maintain sustainable cadence.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-evt_plan" onclick="selectScrumItem('event', 'evt_plan')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">2. 衝刺規劃會 (Sprint Planning)</span><span class="en">2. Sprint Planning</span>
+                      <span>📋</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">確立衝刺目標 (Sprint Goal)、選取待辦項目 (What) 並規劃具體執行任務 (How)。</span>
+                      <span class="en">Establishes Sprint Goal, selects backlog items (What) and crafts the execution plan (How).</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-evt_daily" onclick="selectScrumItem('event', 'evt_daily')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">3. 每日站會 (Daily Scrum)</span><span class="en">3. Daily Scrum (15-min)</span>
+                      <span>⏱️</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">每日 15 分鐘同步對齊，檢視衝刺目標達成進度並及時暴露阻礙（非進度批鬥會！）。</span>
+                      <span class="en">15-minute daily sync for Developers to inspect progress toward Sprint Goal and flag blockers.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-evt_review" onclick="selectScrumItem('event', 'evt_review')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">4. 衝刺檢視會 (Sprint Review)</span><span class="en">4. Sprint Review</span>
+                      <span>🎉</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">向利害關係人展示「可運作的增量」，蒐集真實反饋並動態調整後續產品待辦清單。</span>
+                      <span class="en">Inspect the increment with stakeholders, gather real feedback and adapt Product Backlog.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-evt_retro" onclick="selectScrumItem('event', 'evt_retro')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">5. 衝刺回顧會 (Retrospective)</span><span class="en">5. Sprint Retrospective</span>
+                      <span>💡</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh">團隊內部的 Kaizen 持續改善會議！檢討人際協作、流程與工具，產出具體行動清單。</span>
+                      <span class="en">The team's Kaizen continuous improvement ritual! Inspects team dynamics and crafts actions.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3 Artifacts & Commitments -->
+              <div class="scrum-pillar-card">
+                <div class="scrum-pillar-head">
+                  <div class="scrum-pillar-title"><span>📦</span><span class="zh">3 大產出物與承諾 (Artifacts)</span><span class="en">3 Artifacts & Commitments</span></div>
+                  <div class="scrum-pillar-badge">What</div>
+                </div>
+                <div class="scrum-item-list">
+                  <div class="scrum-item-box" id="scrumBox-art_product" onclick="selectScrumItem('artifact', 'art_product')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">產品待辦清單 (Product Backlog)</span><span class="en">Product Backlog</span>
+                      <span>📑</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh"><strong>承諾：產品目標 (Product Goal)</strong>。按價值排序的單一真實來源需求清單。</span>
+                      <span class="en"><strong>Commitment: Product Goal</strong>. The single source of prioritized requirements.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-art_sprint" onclick="selectScrumItem('artifact', 'art_sprint')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">衝刺待辦清單 (Sprint Backlog)</span><span class="en">Sprint Backlog</span>
+                      <span>📌</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh"><strong>承諾：衝刺目標 (Sprint Goal)</strong>。開發團隊在當前衝刺承諾完成的任務子集。</span>
+                      <span class="en"><strong>Commitment: Sprint Goal</strong>. Highly focused plan crafted by and for Developers.</span>
+                    </div>
+                  </div>
+                  <div class="scrum-item-box" id="scrumBox-art_increment" onclick="selectScrumItem('artifact', 'art_increment')">
+                    <div class="scrum-item-box-title">
+                      <span class="zh">產品增量 (Increment)</span><span class="en">Increment</span>
+                      <span>🚀</span>
+                    </div>
+                    <div class="scrum-item-box-sub">
+                      <span class="zh"><strong>承諾：完工定義 (Definition of Done, DoD)</strong>。達到上線標準的可用成果。</span>
+                      <span class="en"><strong>Commitment: Definition of Done (DoD)</strong>. Potentially shippable quality increment.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detail Breakdown Box -->
+            <div class="scrum-detail-view" id="scrumDetailView">
+              <!-- Rendered dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- ==================== SUB-PANEL 2: LEAN VS 6σ VS SCRUM COMPASS ==================== -->
+          <div class="scrum-panel" id="scrumPanel-compass">
+            <!-- Cynefin Interactive Navigator -->
+            <div class="scrum-tool-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <h3 style="margin:0 0 4px 0; color:var(--amber);">
+                    <span class="zh">Cynefin 複雜度情境導航：何時用 Lean？何時用 6σ？何時用 Scrum？</span>
+                    <span class="en">Cynefin Complexity Compass: When to use Lean, Six Sigma, or Scrum?</span>
+                  </h3>
+                  <p style="margin:0; font-size:13px; color:var(--muted);">
+                    <span class="zh">依據問題領域的因果關係與不確定性，點選下方四種情境以獲取最適方法論建議：</span>
+                    <span class="en">Click on a Cynefin quadrant based on cause-effect predictability to get the optimal methodology:</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="cynefin-grid">
+                <div class="cynefin-card active" id="cynefin-clear" onclick="evaluateCynefin('clear')">
+                  <div class="cynefin-card-badge" style="background:rgba(16,185,129,0.15); color:#10b981;">
+                    <span class="zh">清晰領域 (Clear / Simple)</span><span class="en">Clear / Simple</span>
+                  </div>
+                  <div style="font-weight:700; font-size:14px; margin-bottom:4px;">
+                    <span class="zh">感知 $ightarrow$ 分類 $ightarrow$ 響應</span><span class="en">Sense $ightarrow$ Categorize $ightarrow$ Respond</span>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); line-height:1.4;">
+                    <span class="zh">已知已知 (Known Knowns)。因果關係顯而易見。最佳實務（Best Practice）。</span>
+                    <span class="en">Known Knowns. Self-evident cause-and-effect. Governed by Best Practices.</span>
+                  </div>
+                </div>
+
+                <div class="cynefin-card" id="cynefin-complicated" onclick="evaluateCynefin('complicated')">
+                  <div class="cynefin-card-badge" style="background:rgba(59,130,246,0.15); color:#3b82f6;">
+                    <span class="zh">繁複領域 (Complicated)</span><span class="en">Complicated</span>
+                  </div>
+                  <div style="font-weight:700; font-size:14px; margin-bottom:4px;">
+                    <span class="zh">感知 $ightarrow$ 分析 $ightarrow$ 響應</span><span class="en">Sense $ightarrow$ Analyze $ightarrow$ Respond</span>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); line-height:1.4;">
+                    <span class="zh">已知未知 (Known Unknowns)。需專家分析與數據統計（良好實務 Good Practice）。</span>
+                    <span class="en">Known Unknowns. Requires expert analysis & statistics (Good Practice).</span>
+                  </div>
+                </div>
+
+                <div class="cynefin-card" id="cynefin-complex" onclick="evaluateCynefin('complex')">
+                  <div class="cynefin-card-badge" style="background:rgba(245,166,35,0.15); color:var(--amber);">
+                    <span class="zh">複雜領域 (Complex) ★Scrum 主戰場</span><span class="en">Complex ★Scrum Sweet Spot</span>
+                  </div>
+                  <div style="font-weight:700; font-size:14px; margin-bottom:4px;">
+                    <span class="zh">探測 $ightarrow$ 感知 $ightarrow$ 響應</span><span class="en">Probe $ightarrow$ Sense $ightarrow$ Respond</span>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); line-height:1.4;">
+                    <span class="zh">未知未知 (Unknown Unknowns)。需求易變、因果事後才明朗（湧現實務 Emergent Practice）。</span>
+                    <span class="en">Unknown Unknowns. Unpredictable, emergent patterns. Safe-to-fail experiments.</span>
+                  </div>
+                </div>
+
+                <div class="cynefin-card" id="cynefin-chaotic" onclick="evaluateCynefin('chaotic')">
+                  <div class="cynefin-card-badge" style="background:rgba(239,68,68,0.15); color:#ef4444;">
+                    <span class="zh">混亂領域 (Chaotic)</span><span class="en">Chaotic</span>
+                  </div>
+                  <div style="font-weight:700; font-size:14px; margin-bottom:4px;">
+                    <span class="zh">行動 $ightarrow$ 感知 $ightarrow$ 響應</span><span class="en">Act $ightarrow$ Sense $ightarrow$ Respond</span>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); line-height:1.4;">
+                    <span class="zh">危機救火 (Crisis/Firefighting)。先止血建立秩序，再轉入複雜或繁複領域。</span>
+                    <span class="en">Crisis and severe disruption. Act immediately to stem the bleeding and restore order.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cynefin Recommendation Output -->
+              <div id="cynefinOutput" style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-left:4px solid var(--amber); border-radius:8px; padding:16px;">
+                <!-- Filled dynamically -->
+              </div>
+            </div>
+
+            <!-- Deep Comparison Matrix Table -->
+            <div class="scrum-tool-card">
+              <h3 style="margin:0 0 10px 0; color:var(--amber);">
+                <span class="zh">Lean (精實) vs. Six Sigma (六標準差) vs. Scrum (敏捷) 全景對照矩陣</span>
+                <span class="en">Lean vs. Six Sigma vs. Scrum Cross-Disciplinary Comparison Matrix</span>
+              </h3>
+              <div class="scrum-matrix-table-wrap">
+                <table class="scrum-matrix-table">
+                  <thead>
+                    <tr>
+                      <th><span class="zh">比較維度</span><span class="en">Dimension</span></th>
+                      <th><span class="zh">精實生產 (Lean / TPS)</span><span class="en">Lean (TPS)</span></th>
+                      <th><span class="zh">六標準差 (Six Sigma)</span><span class="en">Six Sigma (6σ)</span></th>
+                      <th><span class="zh">敏捷 Scrum (Agile)</span><span class="en">Agile Scrum</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong><span class="zh">核心哲學與使命</span><span class="en">Core Philosophy</span></strong></td>
+                      <td><span class="zh">消除浪費 (Muda)、縮短前置時間 (PLT)、極致流動</span><span class="en">Eliminate waste, compress lead time, continuous flow</span></td>
+                      <td><span class="zh">消除變異、追求極致品質 (3.4 DPMO)</span><span class="en">Eliminate variation, near-zero defects (3.4 DPMO)</span></td>
+                      <td><span class="zh">在不確定與複雜中快速試錯、極大化商業價值</span><span class="en">Empirical adaptation in complexity, maximize value</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong><span class="zh">典型應用場景</span><span class="en">Primary Context</span></strong></td>
+                      <td><span class="zh">製造產線、供應鏈、重複性業務流程、物流</span><span class="en">Manufacturing lines, supply chains, logistics</span></td>
+                      <td><span class="zh">半導體高精度製程、公差分析、機台良率、可靠度</span><span class="en">High-precision fab processes, yield, tolerances</span></td>
+                      <td><span class="zh">軟體與演算法研發、新產品開發 (NPD)、DX 數位轉型</span><span class="en">Software/AI R&D, new product dev, DX transformation</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong><span class="zh">節奏與批次大小</span><span class="en">Cadence & Batch</span></strong></td>
+                      <td><span class="zh">連續流 (One-Piece Flow)，拉動 (Pull) 批次極小化</span><span class="en">One-Piece Flow, pull-driven minimal batch</span></td>
+                      <td><span class="zh">專案里程碑式推進（通常 3~6 個月）</span><span class="en">Project milestones (typically 3-6 months)</span></td>
+                      <td><span class="zh">固定時間箱衝刺 (1~2 週 Sprint) 短週期增量</span><span class="en">Fixed timebox sprints (1-2 weeks) iterative increments</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong><span class="zh">品質保證機制</span><span class="en">Quality Assurance</span></strong></td>
+                      <td><span class="zh">自働化 (Jidoka)、防呆 (Poka-Yoke)、安燈停線</span><span class="en">Jidoka, Poka-Yoke, Andon cord shutdown</span></td>
+                      <td><span class="zh">管制圖 (SPC)、Cpk/Ppk、MSA 量測系統分析、DOE</span><span class="en">SPC control charts, Cpk/Ppk, MSA, DOE experiments</span></td>
+                      <td><span class="zh">完工定義 (DoD)、自動化測試 CI/CD、Peer Review</span><span class="en">Definition of Done (DoD), CI/CD, Peer Review</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong><span class="zh">改善反思機制</span><span class="en">Improvement Loop</span></strong></td>
+                      <td><span class="zh">Kaizen (改善)、現場 Gemba 走動、PDCA</span><span class="en">Kaizen, Gemba walks, PDCA</span></td>
+                      <td><span class="zh">DMAIC (定義-量測-分析-改善-控制)</span><span class="en">DMAIC (Define-Measure-Analyze-Improve-Control)</span></td>
+                      <td><span class="zh">Sprint Retrospective (衝刺回顧會議)</span><span class="en">Sprint Retrospective (Every 1-2 weeks)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong><span class="zh">角色對照映射</span><span class="en">Role Mapping</span></strong></td>
+                      <td><span class="zh">Value Stream Manager、現場班組長、Kaizen 顧問</span><span class="en">Value Stream Manager, Gemba Lead, Kaizen Sensei</span></td>
+                      <td><span class="zh">Champion、黑帶大師 (MBB)、黑帶 (BB)、綠帶 (GB)</span><span class="en">Champion, Master Black Belt, Black Belt, Green Belt</span></td>
+                      <td><span class="zh">Product Owner、Scrum Master、Developers</span><span class="en">Product Owner, Scrum Master, Developers</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Agile DMAIC Playbook -->
+            <div class="scrum-tool-card" style="border-left:4px solid #10b981;">
+              <h3 style="margin:0 0 6px 0; color:#10b981;">
+                <span class="zh">💡 敏捷化 DMAIC (Agile DMAIC)：如何用 2 週衝刺推進六標準差黑帶專案？</span>
+                <span class="en">Agile DMAIC: Accelerating Six Sigma Projects with 2-Week Sprints</span>
+              </h3>
+              <p style="margin:0 0 14px 0; font-size:13px; color:var(--muted); line-height:1.6;">
+                <span class="zh">傳統 DMAIC 常因「分析階段 (Analyze) 數據蒐集耗費數月、客戶中途改變需求、交付拖延」而成為沉重負擔。Agile DMAIC 將長達 20 週的專案切片為 10 個「雙週 Sprint」：</span>
+                <span class="en">Traditional DMAIC often suffers from prolonged analysis phases and changing customer priorities. Agile DMAIC breaks a 20-week project into ten 2-week Sprints:</span>
+              </p>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+                <div style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-radius:8px; padding:12px;">
+                  <div style="font-weight:700; color:var(--amber); margin-bottom:4px;">Sprint 1~2: Define & SIPOC</div>
+                  <div style="font-size:12px; color:var(--muted);">聚焦產出 Project Charter 與 CTQ 樹。Sprint Review 時邀請 Sponsor 簽核。</div>
+                </div>
+                <div style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-radius:8px; padding:12px;">
+                  <div style="font-weight:700; color:#3b82f6; margin-bottom:4px;">Sprint 3~4: Measure & MSA</div>
+                  <div style="font-size:12px; color:var(--muted);">建立自動化量測腳本，完成 Gage R&R，產出基準 Cpk 數據增量。</div>
+                </div>
+                <div style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-radius:8px; padding:12px;">
+                  <div style="font-weight:700; color:#ec4899; margin-bottom:4px;">Sprint 5~6: Analyze & Hypothesis</div>
+                  <div style="font-size:12px; color:var(--muted);">每衝刺驗證 1~2 個根本原因假說（魚骨圖+回歸分析），快速篩除無效因子。</div>
+                </div>
+                <div style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-radius:8px; padding:12px;">
+                  <div style="font-weight:700; color:#10b981; margin-bottom:4px;">Sprint 7~8: Improve & Pilot</div>
+                  <div style="font-size:12px; color:var(--muted);">小批量試點改善方案（Poka-Yoke / 機台參數優化），獲取現場即時反饋。</div>
+                </div>
+                <div style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-radius:8px; padding:12px;">
+                  <div style="font-weight:700; color:#8b5cf6; margin-bottom:4px;">Sprint 9~10: Control & Standard</div>
+                  <div style="font-size:12px; color:var(--muted);">上線即時 SPC 警報，更新 SOP 並將日常管制移交 Process Owner。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== SUB-PANEL 3: DOD VS DOR WORKSHOP ==================== -->
+          <div class="scrum-panel" id="scrumPanel-gates">
+            <!-- Concept Explainer Card -->
+            <div class="scrum-banner" style="background:rgba(16,185,129,0.08); border-left:4px solid #10b981;">
+              <div style="font-size:15px; font-weight:700; color:#10b981; margin-bottom:6px;">
+                <span>🛡️</span>
+                <span class="zh">精實工程師的雙重品質守門員：DoR 是進料 IQC，DoD 是出廠 OQC</span>
+                <span class="en">The Engineer's Dual Quality Gates: DoR as IQC, DoD as OQC</span>
+              </div>
+              <div style="font-size:13px; line-height:1.6; color:var(--muted);">
+                <span class="zh">
+                  <strong>• DoR (Definition of Ready - 準備就緒定義)</strong>：工作<strong>開工前</strong>的防呆門禁（Poka-Yoke）。嚴格杜絕「需求模糊、缺少測試樣品、未釐清相依性」的任務被拉入衝刺，<strong>拒絕垃圾輸入，杜絕等待與重工浪費</strong>。<br>
+                  <strong>• DoD (Definition of Done - 完工定義)</strong>：工作<strong>交件前</strong>的出廠標準（Standard Work）。團隊對所有產出的通用承諾（單元測試、代碼審查、SOP更新、無資安漏洞），<strong>拒絕假性完工，杜絕技術債流向下游</strong>。
+                </span>
+                <span class="en">
+                  <strong>• DoR (Definition of Ready)</strong>: Pre-flight gatekeeper (Poka-Yoke). Halts unvetted stories with ambiguous specs or missing inputs. <strong>Prevents garbage in, eliminates waiting waste</strong>.<br>
+                  <strong>• DoD (Definition of Done)</strong>: Shipping quality standard (Standard Work). Universal criteria (code review, testing, documentation, zero security flaws) before claiming Done. <strong>Prevents technical debt from polluting downstream</strong>.
+                </span>
+              </div>
+            </div>
+
+            <!-- Context Preset Selector -->
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; background:var(--panel); border:1px solid var(--panel-border); border-radius:10px; padding:12px 18px;">
+              <div style="font-weight:700; font-size:14px;">
+                <span>🎯</span> <span class="zh">選擇工程與業務情境模板：</span><span class="en">Select Engineering/Business Preset:</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="scrum-action-btn primary" id="gatePreset-sw" onclick="switchDodDorContext('sw')">
+                  <span>💻</span><span class="zh">軟體開發與 AI 演算法</span><span class="en">Software & AI</span>
+                </button>
+                <button type="button" class="scrum-action-btn" id="gatePreset-fab" onclick="switchDodDorContext('fab')">
+                  <span>🔬</span><span class="zh">半導體/硬體良率專案</span><span class="en">Semiconductor & Fab</span>
+                </button>
+                <button type="button" class="scrum-action-btn" id="gatePreset-ops" onclick="switchDodDorContext('ops')">
+                  <span>🏢</span><span class="zh">企業流程與跨部門專案</span><span class="en">Operations & Business</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Dual Column Checklist Workshop -->
+            <div class="gates-workspace">
+              <!-- DoR Column -->
+              <div class="gate-column dor-col">
+                <div class="gate-header">
+                  <div>
+                    <div class="gate-title" style="color:#3b82f6;">
+                      <span>🛑</span><span>DoR 準備就緒檢核 (開工防呆)</span>
+                    </div>
+                    <div class="gate-subtitle">
+                      <span class="zh">必須全數通過方可拉入 Sprint 開工</span>
+                      <span class="en">Must 100% pass before starting Sprint</span>
+                    </div>
+                  </div>
+                  <div style="font-size:13px; font-weight:700; color:#3b82f6;" id="dorProgressText">0%</div>
+                </div>
+                <div class="checklist-progress-bar">
+                  <div class="checklist-progress-fill" id="dorProgressFill" style="background:#3b82f6; width:0%;"></div>
+                </div>
+                <div class="gate-checklist" id="dorChecklistContainer">
+                  <!-- Rendered by JS -->
+                </div>
+                <div style="display:flex; gap:8px; margin-top:8px;">
+                  <input type="text" class="scrum-input" id="newDorInput" placeholder="+ 新增自訂 DoR 項目 (Add custom DoR)..." style="font-size:13px !important; padding:6px 10px;">
+                  <button type="button" class="scrum-action-btn" onclick="addCustomChecklistItem('dor')">新增</button>
+                </div>
+              </div>
+
+              <!-- DoD Column -->
+              <div class="gate-column dod-col">
+                <div class="gate-header">
+                  <div>
+                    <div class="gate-title" style="color:#10b981;">
+                      <span>✅</span><span>DoD 完工定義檢核 (出廠品質)</span>
+                    </div>
+                    <div class="gate-subtitle">
+                      <span class="zh">必須全數通過方可列入可交付增量</span>
+                      <span class="en">Must 100% pass before marking Done</span>
+                    </div>
+                  </div>
+                  <div style="font-size:13px; font-weight:700; color:#10b981;" id="dodProgressText">0%</div>
+                </div>
+                <div class="checklist-progress-bar">
+                  <div class="checklist-progress-fill" id="dodProgressFill" style="background:#10b981; width:0%;"></div>
+                </div>
+                <div class="gate-checklist" id="dodChecklistContainer">
+                  <!-- Rendered by JS -->
+                </div>
+                <div style="display:flex; gap:8px; margin-top:8px;">
+                  <input type="text" class="scrum-input" id="newDodInput" placeholder="+ 新增自訂 DoD 項目 (Add custom DoD)..." style="font-size:13px !important; padding:6px 10px;">
+                  <button type="button" class="scrum-action-btn" onclick="addCustomChecklistItem('dod')">新增</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Export & Copy Action Bar -->
+            <div class="scrum-tool-card" style="flex-direction:row; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+              <div>
+                <div style="font-weight:700; font-size:14px;">
+                  <span class="zh">📋 匯出標準 Markdown 專案品質門禁驗收卡</span>
+                  <span class="en">Export Standard Markdown Quality Gate Card</span>
+                </div>
+                <div style="font-size:12px; color:var(--muted);">
+                  <span class="zh">可直接貼在 Jira 任務描述、GitHub Issue、PR 模板或會議紀錄中作為品質契約</span>
+                  <span class="en">Copy directly to Jira description, GitHub issue, PR template or Wiki</span>
+                </div>
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button type="button" class="scrum-action-btn" onclick="resetDodDorChecklist()">
+                  <span>🔄</span><span class="zh">重設點檢</span><span class="en">Reset</span>
+                </button>
+                <button type="button" class="scrum-action-btn primary" onclick="copyDodDorMarkdown()">
+                  <span>📋</span><span class="zh">一鍵複製 Markdown 檢核卡</span><span class="en">Copy Markdown Card</span>
+                </button>
+              </div>
+            </div>
+            <pre class="scrum-preview-box" id="gatePreviewBox"></pre>
+          </div>
+
+          <!-- ==================== SUB-PANEL 4: AGILE TOOLKIT ==================== -->
+          <div class="scrum-panel" id="scrumPanel-tools">
+            <!-- Tool 1: User Story & INVEST Generator -->
+            <div class="scrum-tool-card">
+              <h3 style="margin:0 0 6px 0; color:var(--amber);">
+                <span>📝</span>
+                <span class="zh">工具 ①：User Story (使用者故事) & INVEST 檢核產生器</span>
+                <span class="en">Tool 1: User Story & INVEST Criteria Generator</span>
+              </h3>
+              <p style="margin:0 0 14px 0; font-size:13px; color:var(--muted);">
+                <span class="zh">使用者故事是將 VOC（客戶聲音）轉化為具體可執行微小增量的標準工具，避免寫出「只有規格沒有商業目的」的自嗨功能。</span>
+                <span class="en">User Stories capture the Voice of Customer (VOC) in lean increments, ensuring every task delivers demonstrable business value.</span>
+              </p>
+
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+                <div>
+                  <label style="font-size:12.5px; font-weight:700; color:var(--muted); display:block; margin-bottom:4px;">
+                    <span class="zh">身為 (As a - 角色/對象)：</span><span class="en">As a (Role):</span>
+                  </label>
+                  <input type="text" class="scrum-input" id="storyRole" value="晶圓廠良率工程師 (YE)" placeholder="例如：半導體設備工程師、品管主管、終端用戶" oninput="generateUserStoryCard()">
+                </div>
+                <div>
+                  <label style="font-size:12.5px; font-weight:700; color:var(--muted); display:block; margin-bottom:4px;">
+                    <span class="zh">我想要 (I want - 期望功能/動作)：</span><span class="en">I want (Action/Feature):</span>
+                  </label>
+                  <input type="text" class="scrum-input" id="storyAction" value="能在 5 秒內自動比對當前 Lot 與歷史同批良率圖譜 (Wafer Map)" placeholder="例如：一鍵產出 A3 報告、接收機台即時 SPC 預警" oninput="generateUserStoryCard()">
+                </div>
+                <div>
+                  <label style="font-size:12.5px; font-weight:700; color:var(--muted); display:block; margin-bottom:4px;">
+                    <span class="zh">以便於 (So that - 商業效益/價值)：</span><span class="en">So that (Benefit/Value):</span>
+                  </label>
+                  <input type="text" class="scrum-input" id="storyBenefit" value="迅速識別邊緣刮傷缺陷根本原因，避免整批 25 片晶圓報廢浪費" placeholder="例如：縮減 50% 換線工時、杜絕漏檢缺陷" oninput="generateUserStoryCard()">
+                </div>
+              </div>
+
+              <div style="margin-top:10px;">
+                <label style="font-size:12.5px; font-weight:700; color:var(--muted); display:block; margin-bottom:4px;">
+                  <span class="zh">驗收準則 (Acceptance Criteria - Given / When / Then 語法)：</span><span class="en">Acceptance Criteria (Given/When/Then):</span>
+                </label>
+                <textarea class="scrum-textarea" id="storyAC" oninput="generateUserStoryCard()">Given 該 Lot 晶圓完成測試機台掃描並產生 Klarf 檔
+When 工程師點擊「良率智能比對」按鈕
+Then 系統在 5 秒內完成圖譜聚類並標記缺陷相似度高於 90% 的歷史紀錄</textarea>
+              </div>
+
+              <!-- INVEST principle chips -->
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:8px;">
+                <span style="font-size:12px; font-weight:700; color:var(--amber);">INVEST 點檢：</span>
+                <label style="font-size:12px; display:inline-flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="inv-i" checked onchange="generateUserStoryCard()"> I 獨立 (Independent)</label>
+                <label style="font-size:12px; display:inline-flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="inv-n" checked onchange="generateUserStoryCard()"> N 可協商 (Negotiable)</label>
+                <label style="font-size:12px; display:inline-flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="inv-v" checked onchange="generateUserStoryCard()"> V 有價值 (Valuable)</label>
+                <label style="font-size:12px; display:inline-flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="inv-e" checked onchange="generateUserStoryCard()"> E 可估算 (Estimable)</label>
+                <label style="font-size:12px; display:inline-flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="inv-s" checked onchange="generateUserStoryCard()"> S 粒度小 (Small)</label>
+                <label style="font-size:12px; display:inline-flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="inv-t" checked onchange="generateUserStoryCard()"> T 可測試 (Testable)</label>
+              </div>
+
+              <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+                <button type="button" class="scrum-action-btn primary" onclick="copyUserStoryCard()">
+                  <span>📋</span><span class="zh">複製 User Story 卡片</span><span class="en">Copy Story Card</span>
+                </button>
+              </div>
+              <pre class="scrum-preview-box" id="storyPreviewBox"></pre>
+            </div>
+
+            <!-- Tool 2: Retrospective (Sailboat & 4Ls) Generator -->
+            <div class="scrum-tool-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <h3 style="margin:0 0 4px 0; color:var(--amber);">
+                    <span>⛵</span>
+                    <span class="zh">工具 ②：Sprint Retrospective (敏捷回顧與 Kaizen 行動產生器)</span>
+                    <span class="en">Tool 2: Sprint Retrospective & Kaizen Action Plan Generator</span>
+                  </h3>
+                  <p style="margin:0; font-size:13px; color:var(--muted);">
+                    <span class="zh">回顧會是 Scrum 核心的 Kaizen 持續改善儀軌。支援 Sailboat（帆船法）、4Ls 與 Start-Stop-Continue 模型：</span>
+                    <span class="en">Retrospective is the Scrum equivalent of a Kaizen Event. Supports Sailboat, 4Ls, and Start-Stop-Continue:</span>
+                  </p>
+                </div>
+                <div style="display:flex; gap:6px;">
+                  <button type="button" class="scrum-action-btn primary" id="retroBtn-sailboat" onclick="switchRetroFramework('sailboat')">⛵ 帆船法</button>
+                  <button type="button" class="scrum-action-btn" id="retroBtn-4ls" onclick="switchRetroFramework('4ls')">💡 4Ls 模型</button>
+                  <button type="button" class="scrum-action-btn" id="retroBtn-ssc" onclick="switchRetroFramework('ssc')">🎯 Start-Stop-Continue</button>
+                </div>
+              </div>
+
+              <div class="retro-columns-grid" id="retroColumnsContainer">
+                <!-- Rendered dynamically by JS -->
+              </div>
+
+              <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:10px;">
+                <button type="button" class="scrum-action-btn primary" onclick="copyRetroActionPlan()">
+                  <span>📋</span><span class="zh">一鍵複製 Kaizen 行動計畫</span><span class="en">Copy Kaizen Plan</span>
+                </button>
+              </div>
+              <pre class="scrum-preview-box" id="retroPreviewBox"></pre>
+            </div>
+
+            <!-- Tool 3: Planning Poker & Complexity Guide -->
+            <div class="scrum-tool-card">
+              <h3 style="margin:0 0 6px 0; color:var(--amber);">
+                <span>🃏</span>
+                <span class="zh">工具 ③：Planning Poker (費氏數列) 估算速查與相對複雜度對照</span>
+                <span class="en">Tool 3: Planning Poker (Fibonacci) Relative Estimation Guide</span>
+              </h3>
+              <p style="margin:0 0 10px 0; font-size:13px; color:var(--muted); line-height:1.5;">
+                <span class="zh">敏捷估算評估的是<strong>「工作複雜度、不確定性與工作量」</strong>的相對比例，而非絕對小時。這打破了傳統「用虛假精確工時互相推諉」的浪費。點選撲克牌查看標準定義：</span>
+                <span class="en">Agile estimation measures relative <strong>complexity, uncertainty, and effort</strong> rather than false-precision hours. Click a card to view standard benchmarks:</span>
+              </p>
+
+              <div class="poker-cards-grid">
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('0.5')">0.5</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('1')">1</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('2')">2</button>
+                <button type="button" class="poker-card-btn selected" onclick="selectPokerCard('3')">3</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('5')">5</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('8')">8</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('13')">13</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('20')">20</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('40')">40</button>
+                <button type="button" class="poker-card-btn" onclick="selectPokerCard('?')">?</button>
+              </div>
+
+              <div id="pokerCardDetailBox" style="background:rgba(248,244,237,0.03); border:1px solid var(--line); border-left:4px solid var(--amber); border-radius:8px; padding:16px;">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 22. ORG CHART & CROSS-FUNCTIONAL ESCALATION PLAYBOOK ==================== -->
       <section class="section" data-section="orgchart">
         <h2>
           <span class="zh">企業組織全景架構、權責分工與跨部門升級求助板模</span>
@@ -14242,6 +15319,7 @@ const SECTIONS = [
   {id:'vsm', zh:'價值流程圖 VSM 互動產生器', en:'Value Stream Mapping (VSM) Builder'},
   {id:'aitech', zh:'科技與半導體/AI 發展史羅盤', en:'Tech, Semiconductor & AI History Compass'},
   {id:'leandx', zh:'精實數位轉型與智慧製造 (半導體/高科技 DX)', en:'Lean Digital Transformation & Smart Manufacturing'},
+  {id:'scrum', zh:'敏捷 Scrum 實戰與精實整合羅盤', en:'Agile Scrum & Lean Integration'},
   {id:'orgchart', zh:'企業組織全景架構與跨部門升級求助板模', en:'Org Chart & Escalation Playbook'},
   {id:'books', zh:'相關推薦書籍', en:'Recommended Books'},
   {id:'glossary', zh:'詞彙釋義', en:'Glossary'},
@@ -15069,6 +16147,36 @@ const REAL_CASES = [
     src:'https://www.investopedia.com/terms/w/worldcom.asp'}];
 
 const GLOSSARY = [
+  {zh:'Scrum (敏捷專案管理框架)', en:'Scrum (Agile Framework)',
+    zh_d:'由竹內弘高與野中郁次郎於 1986 年《新新產品開發遊戲》奠基，後由 Jeff Sutherland 與 Ken Schwaber 正式形式化的敏捷框架。專為應對高不確定性與複雜環境設計，基於「經驗主義三大支柱（透明、檢視、調適）」與五大核心價值（承諾、專注、開放、尊重、勇氣）。以 3 大角色 (PO, SM, Devs)、5 大時間箱事件 (Sprint, Planning, Daily, Review, Retro) 與 3 大產出物 (Product Backlog, Sprint Backlog, Increment) 為核心骨架，透過短週期衝刺持續交付具商業價值的可用增量。',
+    en_d:'An empirical, iterative Agile framework formalised by Jeff Sutherland and Ken Schwaber, rooted in Takeuchi and Nonaka\'s 1986 HBR paper on rugby-style cross-functional teaming. Built on three pillars of empiricism (Transparency, Inspection, Adaptation) and five values, Scrum organizes work into 3 roles, 5 events, and 3 artifacts to deliver potentially shippable increments in short, timeboxed Sprints.'},
+  {zh:'DoD 完工定義 (Definition of Done)', en:'DoD (Definition of Done)',
+    zh_d:'Scrum 產出物「產品增量」的正式品質承諾。由團隊全員共同制定並遵守的通用品質契約（如通過同儕審查、單元測試覆蓋率 $\\ge 80\\%$、通過資安弱點掃描、完成 Staging 部署與更新文件）。相當於精實生產中的「出廠品質檢驗 (OQC) / 標準作業 (Standard Work)」。只要有一項未達標即視為未完成，絕不允許假性完工（Done is not Done）與技術債流向下游。',
+    en_d:'A formal commitment for the Scrum Increment defining the universal quality criteria (peer review, automated tests, security scans, documentation) required before an item is declared complete. Equivalent to Lean Outgoing Quality Control (OQC) and Standard Work, preventing defective output and technical debt.'},
+  {zh:'DoR 準備就緒定義 (Definition of Ready)', en:'DoR (Definition of Ready)',
+    zh_d:'敏捷團隊在衝刺規劃 (Sprint Planning) 時的「進料防呆門禁 (Poka-Yoke)」。定義了一個工作項目在被允許拉入衝刺開始開發之前，必須滿足的前提清單（如商業價值清晰、滿足 INVEST 原則、驗收條件明確、外部相依性已排除、工作量已相對估算）。若未達 DoR，團隊有權拒絕開工，藉此杜絕需求不清造成的工序卡關、等待與重工浪費。',
+    en_d:'A quality gate and Poka-Yoke standard ensuring backlog items satisfy critical prerequisites (INVEST criteria, clear acceptance criteria, dependencies cleared, estimated) before developers commit to them in Sprint Planning, preventing rework and idle waiting waste.'},
+  {zh:'Sprint 衝刺 (時間箱容器)', en:'Sprint (Timeboxed Container)',
+    zh_d:'Scrum 中固定長度（1~4 週，通常為 2 週）的時間箱 (Timebox)，所有其他敏捷事件的容器。每個衝刺皆以確立衝刺目標 (Sprint Goal) 為起點，以產出符合 DoD 的可用增量為終點。固定節奏有助於團隊建立可持續的步調（相當於精實平準化 Heijunka），有效防止帕金森定律（Parkinson\'s Law，工作膨脹填滿可用時間）導致的拖延。',
+    en_d:'A fixed-length timebox of 1 to 4 weeks wherein all work occurs. Acts as a cadence pacemaker (similar to Lean Takt and Heijunka), containing Sprint Planning, Daily Scrums, Review, and Retrospective to achieve a specific Sprint Goal without task creep.'},
+  {zh:'Product Owner 產品負責人 (PO)', en:'Product Owner (PO)',
+    zh_d:'Scrum 三大角色之一，代表客戶與業務利害關係人的聲音（VOC）。全權負責產品願景、確定待辦清單項目的優先順序（Prioritization），決定「做什麼 (What)」與「何時做」，最大化團隊交付的商業價值與投資報酬率 (ROI)。相當於精實專案中的 Champion 或 Process Owner。',
+    en_d:'The single person responsible for maximizing product value and managing the Product Backlog. Acts as the sole voice of the customer and business stakeholders, defining What to build and aligning team output with commercial ROI.'},
+  {zh:'Scrum Master 敏捷教練 (SM)', en:'Scrum Master (SM)',
+    zh_d:'Scrum 三大角色之一，以僕人式領導 (Servant Leadership) 為核心。專注於確保團隊深入理解並落實 Scrum 價值與實務，負責為團隊掃除外部干擾與流程阻礙 (Impediments)，促進跨部門協調並建立高心理安全感的持續改善環境。相當於精實六標準差中的黑帶教練 (Black Belt Coach / Kaizen Sensei)。',
+    en_d:'A servant-leader who coaches the team in Scrum theory and practice. Accountable for team effectiveness by removing organizational impediments, facilitating events, and shielding developers from disruptive scope changes.'},
+  {zh:'User Story 使用者故事 & INVEST 原則', en:'User Story & INVEST Criteria',
+    zh_d:'以終端用戶視角描述功能價值的敏捷工具，標準句型為「身為 [角色]，我想要 [功能]，以便於 [商業價值]」。撰寫良好的故事應符合 INVEST 六大品質原則：Independent (獨立)、Negotiable (可協商)、Valuable (有價值)、Estimable (可估算)、Small (粒度小/可單次衝刺交付)、Testable (可測試驗收)。',
+    en_d:'A lightweight requirement representation capturing who wants what and why from an end-user perspective. High-quality stories adhere to INVEST: Independent, Negotiable, Valuable, Estimable, Small, and Testable.'},
+  {zh:'Story Points 故事點 (相對複雜度估算)', en:'Story Points (Relative Estimation)',
+    zh_d:'敏捷團隊用以評估任務「工作量、複雜度與不確定性」的相對度量單位，常採用費氏數列 (0.5, 1, 2, 3, 5, 8, 13...) 透過 Planning Poker 進行集體估算。故事點並非絕對工時，旨在破壞傳統「用虛假精確小時互踢皮球」的浪費，著重於跨任務間的相對比例與團隊長期的速率趨勢 (Velocity)。',
+    en_d:'An abstract unit of measure used by agile teams to express the relative effort, complexity, and uncertainty of a backlog item. Commonly estimated using Fibonacci scale Planning Poker, decoupling estimation from misleading hourly time commitments.'},
+  {zh:'Sprint Retrospective 衝刺回顧 (敏捷 Kaizen)', en:'Sprint Retrospective (Agile Kaizen)',
+    zh_d:'Scrum 團隊在每個衝刺末期進行的自我復盤與持續改善會議。團隊深入檢討人際溝通、工具工序與 DoD 遵守狀況，辨識痛點瓶頸（運用帆船法、4Ls 或 Start-Stop-Continue），並產出具體可追蹤的改善行動項納入下一衝刺的待辦清單，是精實 Kaizen 精神在軟體與敏捷組織中的最佳實踐。',
+    en_d:'A dedicated team meeting at the conclusion of every Sprint to inspect dynamics, processes, tools, and quality definitions. Identifies actionable Kaizen improvements for immediate adoption in subsequent Sprints.'},
+  {zh:'Cynefin 複雜度決策框架 (Cynefin Framework)', en:'Cynefin Framework',
+    zh_d:'由 Dave Snowden 開發的決策框架，將問題情境劃分為五個領域：清晰 (Clear，感知-分類-響應，適用標準作業/防呆)、繁複 (Complicated，感知-分析-響應，已知未知，適用六標準差 DMAIC/專家分析)、複雜 (Complex，探測-感知-響應，未知未知，適用 Scrum 敏捷迭代)、混亂 (Chaotic，行動-感知-響應，適用危機止血) 及混淆 (Disorder)。指引管理者依問題本質選用最適工具，避免方法論錯置。',
+    en_d:'A sense-making framework by Dave Snowden categorizing problem contexts into Clear (Best Practice / Lean Standard Work), Complicated (Good Practice / Six Sigma DMAIC), Complex (Emergent / Agile Scrum), Chaotic (Novel / Rapid Crisis Response), and Disorder.'},
   {zh:'VSM 價值流程圖 (Value Stream Mapping)', en:'VSM (Value Stream Mapping)',
     zh_d:'精實生產的核心可視化架構，用於全面審視與設計產品或服務自供應商端到端交付至客戶手中的物料流（Material Flow）與資訊流（Information Flow）。圖表中繪製工序數據方塊（包含 C/T、C/O、Uptime、FPY、WIP 等參數）與底部時間階梯線（Time Ladder），清晰拆解「增值時間 (VA)」與「非增值前置時間 (PLT)」，作為消除系統性浪費 (Muda) 與規劃拉式 (Pull) 未來狀態圖的核心指引。',
     en_d:'A foundational Lean visualization framework used to analyze and design the end-to-end material and information flows required to deliver a product or service from supplier to customer. Incorporates process data boxes (C/T, C/O, Uptime, FPY, WIP) and a bottom timeline ladder separating Value-Added (VA) time from Non-Value-Added lead time (PLT), serving as the blueprint for eliminating systemic waste and architecting a future state.'},
@@ -16430,6 +17538,7 @@ function render(){
   if (typeof renderRtCurrentView === 'function') {
     renderRtCurrentView();
   }
+  if (state.section === 'scrum' && typeof initScrumModule === 'function') { initScrumModule(); }
   if (state.section === 'orgchart' && typeof renderOrgNodes === 'function') { renderOrgNodes(); }
   if (state.section === 'finance' && typeof calculateFinance === 'function') {
     calculateFinance();
@@ -26470,7 +27579,706 @@ function vsmExportMarkdown() {
 
 
 
-/* ==================== 21. ORG CHART & ESCALATION PLAYBOOK LOGIC ==================== */
+
+/* ==================== 21. AGILE SCRUM & LEAN INTEGRATION LOGIC ==================== */
+let currentScrumTab = 'core';
+let activeScrumItemId = 'role_po';
+let activeCynefinDomain = 'clear';
+let currentGateContext = 'sw';
+let currentRetroFramework = 'sailboat';
+let activePokerPoint = '3';
+
+const SCRUM_353_DATA = {
+  role_po: {
+    category: 'role',
+    titleZh: '產品負責人 (Product Owner, PO)',
+    titleEn: 'Product Owner (PO)',
+    badge: '價值決策者 (Value Optimizer)',
+    missionZh: '作為「客戶聲音 (VOC)」與商業利害關係人的唯一對齊窗口。負責定義產品願景、確定待辦清單項目的優先順序（Prioritization），確保團隊每一分工程資源都投在最具商業衝擊力（ROI）的功能上。',
+    missionEn: 'The sole champion of the Voice of Customer (VOC). Defines the product vision and prioritizes the Product Backlog to maximize return on investment (ROI).',
+    leanMappingZh: '相當於精實六標準差中的「Project Champion / Process Owner」，掌管專案憲章 (Project Charter) 的商業目標與問題陳述。',
+    leanMappingEn: 'Analogous to LSS Project Champion or Process Owner, safeguarding commercial value and SMART targets.',
+    inputsOutputsZh: '【輸入】客戶需求、市場洞察、商業策略、利害關係人回饋。<br>【輸出】排序明確的 Product Backlog、Product Goal、精確的驗收條件。',
+    inputsOutputsEn: '【Inputs】VOC, market dynamics, business goals.<br>【Outputs】Prioritized Product Backlog, Product Goal, clear Acceptance Criteria.',
+    antiPatternsZh: '• <strong>傳話筒 PO</strong>：沒有決策權，事事要向上請示，拖垮敏捷速度。<br>• <strong>功能工廠 (Feature Factory)</strong>：只追求交付功能數量，不管是否真的為客戶創造商業價值。<br>• <strong>微觀管理者</strong>：干涉工程師如何實作代碼，破壞團隊自組織。',
+    antiPatternsEn: '• Order-taker PO lacking authority.<br>• Feature factory output obsession.<br>• Micro-managing technical execution.'
+  },
+  role_sm: {
+    category: 'role',
+    titleZh: '敏捷教練 / 敏捷大師 (Scrum Master, SM)',
+    titleEn: 'Scrum Master (SM)',
+    badge: '僕人式領導 (Servant Leader)',
+    missionZh: '為團隊掃除前進路上的所有阻礙（Impediments），保護團隊專注於衝刺目標，免受外部干擾。促進 Scrum 儀軌高效運作，引導團隊落實透明、檢視與調適（Empiricism）。',
+    missionEn: 'Servant leader who removes impediments, shields the team from external distractions, and fosters self-management and continuous improvement.',
+    leanMappingZh: '相當於精實六標準差中的「黑帶教練 (Black Belt Coach / Kaizen Sensei)」，不直接下指令，而是透過提問與框架賦能團隊。',
+    leanMappingEn: 'Analogous to an LSS Black Belt or Kaizen Sensei, facilitating problem-solving and systemic flow.',
+    inputsOutputsZh: '【輸入】團隊卡點、溝通障礙、跨部門協作壁壘。<br>【輸出】高心理安全感環境、被清除的障礙清單、成熟的自組織文化。',
+    inputsOutputsEn: '【Inputs】Blockers, cross-team friction.<br>【Outputs】Safe team environment, eliminated impediments, agile maturity.',
+    antiPatternsZh: '• <strong>敏捷警察 (Scrum Police)</strong>：死板拘泥於形式教條，失去靈活性。<br>• <strong>行政打雜小秘書</strong>：只負責訂會議室與排日程，完全沒有解決系統性阻礙的能力。<br>• <strong>隱形專案經理 (Secret PM)</strong>：假借站會實行傳統指揮控制（Command & Control）。',
+    antiPatternsEn: '• Dogmatic process police.<br>• Meeting scheduler clerk.<br>• Secret micromanaging PM.'
+  },
+  role_dev: {
+    category: 'role',
+    titleZh: '跨職能開發團隊 (Developers)',
+    titleEn: 'Developers (Cross-Functional Team)',
+    badge: '交付完工增量 (Done Increments)',
+    missionZh: '由工程、設計、測試、維運等全技能成員組成的跨職能團隊。共同決定「如何執行 (How)」，嚴格遵守完工定義 (DoD)，在每個衝刺交付高質量的可用產出。',
+    missionEn: 'Cross-functional professionals with all skills necessary to turn backlog items into potentially releasable increments.',
+    leanMappingZh: '相當於精實現場中的「多技能多能工 (Multi-Skilled Operators)」與自主改善小組，具有現場拉動 Andon 繩的自主權。',
+    leanMappingEn: 'Equivalent to Lean multi-skilled Gemba teams with full authority to pull the Andon cord.',
+    inputsOutputsZh: '【輸入】Sprint Backlog、DoR 合格的 User Stories、DoD 標準。<br>【輸出】通過驗收的產品增量 (Increment)、更新的技術架構與測試報告。',
+    inputsOutputsEn: '【Inputs】Sprint Backlog, DoR-ready stories.<br>【Outputs】Shippable Done increment, automated tests, documentation.',
+    antiPatternsZh: '• <strong>部門牆隔閡 (Skill Silos)</strong>：前端只做前端、測試只測自己的，沒有全員共享責任。<br>• <strong>草率完工 (Done is not Done)</strong>：跳過單元測試或文檔撰寫，累積大量隱性技術債。',
+    antiPatternsEn: '• Siloed skill islands avoiding shared accountability.<br>• Cutting testing corners leading to technical debt.'
+  },
+  evt_sprint: {
+    category: 'event',
+    titleZh: '1. 衝刺 (Sprint Container)',
+    titleEn: '1. Sprint (Cadence Container)',
+    badge: '1~4 週固定節奏 (Timebox)',
+    missionZh: '所有其他 Scrum 事件的基礎容器。設定固定的時間長度（通常 2 週），期間不允許任意變更衝刺目標，為團隊建立可預測的專注工作節奏。',
+    missionEn: 'The heartbeat of Scrum. A fixed-length timebox (1-4 weeks) where all other events occur, ensuring focus and sustainable cadence.',
+    leanMappingZh: '相當於精實生產的「定拍節拍 (Takt Time)」與「平準化生產 (Heijunka)」，防止急緩不均 (Mura)。',
+    leanMappingEn: 'Analogous to Lean Takt Time and Heijunka (level scheduling), smoothing workload volatility.',
+    inputsOutputsZh: '【輸入】Product Goal、團隊速率與產能。<br>【輸出】至少一個滿足 DoD 的產品增量 (Increment)。',
+    inputsOutputsEn: '【Inputs】Product Goal, capacity.<br>【Outputs】Shippable Done increment.',
+    antiPatternsZh: '• <strong>任意拉長衝刺</strong>：因為做不完而臨時延展 Sprint 結束時間，破壞節奏律動。<br>• <strong>隨意插單 (Scope Creep)</strong>：外部主管隨意指派臨時突發工作，破壞衝刺目標。',
+    antiPatternsEn: '• Extending sprints when behind.<br>• Uncontrolled scope injection mid-sprint.'
+  },
+  evt_plan: {
+    category: 'event',
+    titleZh: '2. 衝刺規劃會 (Sprint Planning)',
+    titleEn: '2. Sprint Planning',
+    badge: '錨定目標與任務分解',
+    missionZh: '團隊在衝刺開始時召開，回答三個核心問題：① 為什麼這個衝刺有價值？(Sprint Goal) ② 能在這個衝刺中完成什麼？(What) ③ 如何完成所選工作？(How)。',
+    missionEn: 'Initiates the Sprint by answering: Why is this Sprint valuable? What can be Done? How will the chosen work get done?',
+    leanMappingZh: '相當於精實的「投產排程會與防呆檢查 (Pre-flight Poka-Yoke)」，落實 DoR 門禁過濾。',
+    leanMappingEn: 'Aligns with Lean pre-flight planning and DoR input quality screening.',
+    inputsOutputsZh: '【輸入】Product Backlog、過往團隊速率、團隊產能。<br>【輸出】Sprint Goal、Sprint Backlog（分解至 1~2 天粒度的任務）。',
+    inputsOutputsEn: '【Inputs】Product Backlog, velocity.<br>【Outputs】Sprint Goal, Sprint Backlog.',
+    antiPatternsZh: '• <strong>沒有 Sprint Goal</strong>：只挑了一堆零散工作項，缺乏統一的凝聚焦點。<br>• <strong>PO 單方面指派工時</strong>：由 PO 規定每個人要花幾小時，剝奪開發團隊估算自主權。',
+    antiPatternsEn: '• Lack of cohesive Sprint Goal.<br>• PO dictating technical estimates.'
+  },
+  evt_daily: {
+    category: 'event',
+    titleZh: '3. 每日站會 (Daily Scrum)',
+    titleEn: '3. Daily Scrum (15-min)',
+    badge: '15 分鐘快速同步檢視',
+    missionZh: '專為 Developers 設計的 15 分鐘站立同步會。核心在於檢視朝向「衝刺目標」的推進狀況，發現並暴露阻礙，及時調整當天的作戰計畫。',
+    missionEn: 'A 15-minute daily event for Developers to inspect progress toward the Sprint Goal and adapt the plan for the next 24 hours.',
+    leanMappingZh: '相當於精實製造現場的「每日 Tier 1 站會 (Gemba Standup)」，迅速對齊進度與安全品質異常。',
+    leanMappingEn: 'Equivalent to daily Tier 1 Gemba Standups in lean factories for rapid anomaly detection.',
+    inputsOutputsZh: '【輸入】過去 24 小時完成進展、當前阻礙 (Blockers)。<br>【輸出】未來 24 小時作戰協作共識、更新的 Sprint 看板。',
+    inputsOutputsEn: '【Inputs】24h progress, impediments.<br>【Outputs】Synchronized collaboration plan, updated board.',
+    antiPatternsZh: '• <strong>進度匯報批鬥會</strong>：每個人輪流對主管念報告，沒有橫向協作溝通。<br>• <strong>嚴重超時拖沓</strong>：陷入技術細節爭吵超過 30 分鐘（應於會後 Parking Lot 另行討論）。',
+    antiPatternsEn: '• Status reporting to the manager.<br>• Drifting into deep technical debates.'
+  },
+  evt_review: {
+    category: 'event',
+    titleZh: '4. 衝刺檢視會 (Sprint Review)',
+    titleEn: '4. Sprint Review',
+    badge: '成果展示與即時反饋',
+    missionZh: '在衝刺末期，團隊與利害關係人共同檢視產出的「真實增量」。非單純投影片報告，而是實際操作演練，討論市場變化並協同調整接下來的 Product Backlog。',
+    missionEn: 'Collaborative session with stakeholders to inspect the increment and adapt the Product Backlog based on real feedback.',
+    leanMappingZh: '相當於新產品試產的「顧客試跑評審 (Customer Buy-off & VOC Review)」。',
+    leanMappingEn: 'Analogous to pilot run customer buy-offs and Voice of Customer feedback loops.',
+    inputsOutputsZh: '【輸入】已達到 DoD 的產品增量、市場最新動態。<br>【輸出】利害關係人反饋、調整優先順序後的 Product Backlog。',
+    inputsOutputsEn: '【Inputs】Done increment, market signals.<br>【Outputs】Feedback, adjusted Product Backlog.',
+    antiPatternsZh: '• <strong>只看投影片 (PPT Demo)</strong>：不展示真實驗收成果，掩蓋系統真實狀態。<br>• <strong>變成正式審判大會</strong>：利害關係人當場苛責試錯，破壞心理安全感。',
+    antiPatternsEn: '• Slide deck presentation instead of live demo.<br>• Punitive interrogation environment.'
+  },
+  evt_retro: {
+    category: 'event',
+    titleZh: '5. 衝刺回顧會 (Sprint Retrospective)',
+    titleEn: '5. Sprint Retrospective',
+    badge: '團隊持續改善 (Kaizen Event)',
+    missionZh: '團隊在衝刺結束時的內部深度反思。檢視人際協作、流程工序、技術工具與 DoD 的健康度，找出瓶頸並落實 1~2 項具體改進行動放入下個衝刺。',
+    missionEn: 'The team inspects how the last Sprint went regarding individuals, interactions, processes, and tools, creating an actionable Kaizen plan.',
+    leanMappingZh: 'Scrum 中的「Kaizen 改善大會與 PDCA 閉環」！現場自我反思與標準作業升級。',
+    leanMappingEn: 'The exact equivalent of a Lean Kaizen Event and PDCA loop for continuous team evolution.',
+    inputsOutputsZh: '【輸入】上一衝刺的數據指標（燃盡圖、未完成項、心理感受）。<br>【輸出】可追蹤的改善行動項（Who, What, When）與更新的 DoD。',
+    inputsOutputsEn: '【Inputs】Sprint metrics, team sentiment.<br>【Outputs】Actionable Kaizen items, revised DoD.',
+    antiPatternsZh: '• <strong>牢騷抱怨大會</strong>：只有發洩情緒，沒有產出可追蹤的改善行動計畫。<br>• <strong>行動項不了了之</strong>：訂了一堆改善計畫，下一衝刺沒有人跟進驗收。',
+    antiPatternsEn: '• Complaint session without constructive actions.<br>• Unfollowed Kaizen action promises.'
+  },
+  art_product: {
+    category: 'artifact',
+    titleZh: '產品待辦清單 (Product Backlog)',
+    titleEn: 'Product Backlog',
+    badge: '承諾：產品目標 (Product Goal)',
+    missionZh: '產品所有已知需求的單一真實來源。永遠處於動態演進狀態（Emergent & Ordered），由 PO 全權維護排序，高優先級項目拆解至符合 DoR 的可開發顆粒度。',
+    missionEn: 'An emergent, ordered list of what is needed to improve the product. The single source of work for the team.',
+    leanMappingZh: '相當於精實價值流中待拉動的「總訂單庫存與客戶需求矩陣 (Order Backlog)」。',
+    leanMappingEn: 'Comparable to an open customer order book and CTQ demand pipeline awaiting pull.',
+    inputsOutputsZh: '【輸入】商業策略、VOC、缺陷修正、技術架構重構項。<br>【輸出】清晰排序的 User Story 清單、長期產品路線圖。',
+    inputsOutputsEn: '【Inputs】Strategy, VOC, bugs, refactoring.<br>【Outputs】Ordered User Stories, roadmap.',
+    antiPatternsZh: '• <strong>許願池黑洞</strong>：塞滿數百條從不清理的過期需求，無人維護。<br>• <strong>雙頭馬車</strong>：多位長官各自維護自己的待辦清單，工程師無所適從。',
+    antiPatternsEn: '• Stagnant wish-list black hole.<br>• Multiple competing backlog sources.'
+  },
+  art_sprint: {
+    category: 'artifact',
+    titleZh: '衝刺待辦清單 (Sprint Backlog)',
+    titleEn: 'Sprint Backlog',
+    badge: '承諾：衝刺目標 (Sprint Goal)',
+    missionZh: '由衝刺目標 (Why)、選入的待辦項目 (What) 與具體實作任務 (How) 組成。高度可視化（實體或數位看板），由開發團隊全員共同擁有並即時更新。',
+    missionEn: 'Composed of the Sprint Goal (Why), selected items (What), and an actionable delivery plan (How). Owned by Developers.',
+    leanMappingZh: '相當於產線現場的「在製品看板 (WIP Kanban Board)」，直觀呈現生產節奏與瓶頸。',
+    leanMappingEn: 'Direct analog to a shopfloor visual WIP Kanban board controlling flow.',
+    inputsOutputsZh: '【輸入】選定的 Product Backlog 項目、DoR 檢核結果。<br>【輸出】即時任務看板（To Do, In Progress, Review, Done）。',
+    inputsOutputsEn: '【Inputs】Selected backlog items, DoR pass.<br>【Outputs】Live visual board tracking tasks.',
+    antiPatternsZh: '• <strong>看板不即時更新</strong>：任務卡在 In Progress 好幾天沒動靜，失去可視化預警價值。<br>• <strong>非衝刺任務暗中偷渡</strong>：私下做未經公開排入的工作，混淆團隊產能。',
+    antiPatternsEn: '• Outdated board obscuring actual WIP.<br>• Shadow tasks slipping under the radar.'
+  },
+  art_increment: {
+    category: 'artifact',
+    titleZh: '產品增量 (Increment)',
+    titleEn: 'Increment',
+    badge: '承諾：完工定義 (Definition of Done)',
+    missionZh: '朝向產品目標邁進的具體踏腳石。每個增量必須具備可用性（Usable），完全滿足團隊共同制定的 DoD，即使 PO 決定當下不上線，在品質上也必須處於隨時可發布狀態。',
+    missionEn: 'A concrete stepping stone toward the Product Goal. Must be usable and meet the Definition of Done (DoD).',
+    leanMappingZh: '相當於精實流程中「100% 通過出廠檢驗 (OQC) 的無缺陷合格品」，杜絕不良品流向下游。',
+    leanMappingEn: 'Matches Lean defect-free finished goods passing 100% outgoing quality verification.',
+    inputsOutputsZh: '【輸入】完成實作與測試的任務項。<br>【輸出】高可靠度的產品功能、更新的發布日誌與使用者手冊。',
+    inputsOutputsEn: '【Inputs】Completed and tested tasks.<br>【Outputs】Shippable product feature, release notes.',
+    antiPatternsZh: '• <strong>半成品交付 (Done-ish)</strong>：只有前端介面、後端沒接上或沒做測試，自欺欺人。<br>• <strong>累積技術債交付</strong>：雖然能動但架構極度脆弱，後續維護成本劇增。',
+    antiPatternsEn: '• Delivering half-baked features.<br>• Shipping technical debt bombs.'
+  }
+};
+
+const DOD_DOR_DATA = {
+  sw: {
+    nameZh: '軟體研發與 AI 演算法情境',
+    nameEn: 'Software & AI R&D',
+    dor: [
+      { textZh: '商業價值與目標用戶明確（滿足 User Story 身為/想要/以便於 句型）', textEn: 'User Story follows Role-Action-Benefit format', checked: true },
+      { textZh: '驗收準則 (Acceptance Criteria) 具體且符合 Given-When-Then 可測試語法', textEn: 'Acceptance Criteria written in Given-When-Then', checked: true },
+      { textZh: '外部相依性（API 授權、資料庫存取、模型訓練數據集）已就緒', textEn: 'External dependencies (APIs, data access) cleared', checked: true },
+      { textZh: 'UI/UX 設計稿或架構規格書已完成評審，無未決盲點', textEn: 'UX mockups & architecture reviewed', checked: true },
+      { textZh: '工作量已估算且符合 Small 原則（故事點 $\le 8$，單一衝刺可交付）', textEn: 'Story points estimated & appropriately sized (<= 8)', checked: true }
+    ],
+    dod: [
+      { textZh: '程式碼通過同儕審查 (Peer Code Review 至少 1 位資深工程師 Approve)', textEn: 'Code reviewed & approved by peer engineer', checked: false },
+      { textZh: '自動化單元測試覆蓋率 $\ge 80\%$ 且測試案例 100% 通過', textEn: 'Unit test coverage >= 80% with 100% pass rate', checked: false },
+      { textZh: '通過靜態資安掃描 (SonarQube 0 Blocker/Critical，Linting 0 Error)', textEn: 'Static security scan passed with 0 critical issues', checked: false },
+      { textZh: '已成功自動部署至測試環境 (Staging/Sandbox) 並完成端到端驗證', textEn: 'Successfully deployed and verified on Staging', checked: false },
+      { textZh: 'API 規格文件 (Swagger/Postman) 與系統變更日誌更新完畢', textEn: 'API docs & release notes updated', checked: false },
+      { textZh: 'Product Owner (PO) 親自依據驗收準則驗收通過簽字', textEn: 'PO verified and accepted against AC', checked: false }
+    ]
+  },
+  fab: {
+    nameZh: '半導體與機台改善專案情境',
+    nameEn: 'Semiconductor & Fab Engineering',
+    dor: [
+      { textZh: '製程問題陳述與 CTQ 規格界定明確（含 Baseline 與目標值）', textEn: 'Problem statement and CTQ targets quantified', checked: true },
+      { textZh: '機台 DOE 實驗計畫與測試晶圓樣品 (Dummy/Test Wafers) 配額已到位', textEn: 'DOE plan and test wafer budget secured', checked: true },
+      { textZh: '量測系統分析 (MSA / Gage R&R) 評估合格 ($P/T < 10\%$ 或 $< 30\%$)', textEn: 'Measurement System Analysis (MSA) passed', checked: true },
+      { textZh: '跨模組協調（PE/EE/PIE）已完成，機台停機維修窗口已核准', textEn: 'Cross-module alignment cleared with tool window', checked: true }
+    ],
+    dod: [
+      { textZh: '機台驗證數據集收集完備，Cpk 顯著提升並通過雙尾 $t$ 檢定 ($p < 0.05$)', textEn: 'Cpk verified with statistically significant t-test', checked: false },
+      { textZh: '標準作業程序書 (SOP / OCAP) 已完成修訂並通過線上文管發行', textEn: 'SOP / OCAP revised and published in DMS', checked: false },
+      { textZh: '現場技術員與操作員 (Line Operators) 完成新作業技能簽核培訓', textEn: 'Line operators trained & certified on new SOP', checked: false },
+      { textZh: '機台 FMEA 檔案完成更新（RPN 發生度 O 或難檢度 D 顯著壓降）', textEn: 'FMEA updated with reduced RPN scores', checked: false },
+      { textZh: '即時 SPC 管制圖規則與 OOC/OOS 自動簡訊警報佈署上線', textEn: 'SPC real-time control limits deployed in MES', checked: false }
+    ]
+  },
+  ops: {
+    nameZh: '企業流程與跨部門專案情境',
+    nameEn: 'Operations & Business Transformation',
+    dor: [
+      { textZh: '專案贊助人 (Sponsor) 與跨部門主責 DRI 完成專案憲章對齊簽核', textEn: 'Sponsor and cross-department DRIs aligned', checked: true },
+      { textZh: '流程利害關係人與受衝擊員工名單界定清晰 (RACI 矩陣就緒)', textEn: 'RACI matrix and impacted stakeholder list defined', checked: true },
+      { textZh: '預估財務效益 (Hard/Soft Savings) 經財務部門初審合規', textEn: 'Financial savings vetted by finance partners', checked: true }
+    ],
+    dod: [
+      { textZh: '新作業流程雙語操作手冊與 FAQ 知識庫發佈上線', textEn: 'Bilingual user manual & FAQ published', checked: false },
+      { textZh: '核心業務看板與週報自動化報表上線並移交維運負責人', textEn: 'Automated weekly dashboard handed over to Ops', checked: false },
+      { textZh: '連續兩週營運監控，未發生未預期系統故障或合規違規', textEn: '2 consecutive weeks of stable operations', checked: false },
+      { textZh: '跨部門結案分享會完成，沉澱組織知識資產 (A3 報告歸檔)', textEn: 'Post-mortem A3 shared and archived', checked: false }
+    ]
+  }
+};
+
+const CYNEFIN_EVAL_DATA = {
+  clear: {
+    titleZh: '清晰領域 (Clear / Simple) —— 最佳實務 (Best Practice)',
+    titleEn: 'Clear Domain: Best Practice',
+    color: '#10b981',
+    analogyZh: '【情境特徵】因果關係顯而易見。每個人都知道規則與步驟（例如：標準零件鎖附、出勤打卡、日常 5S 整理）。',
+    analogyEn: '【Characteristics】Self-evident cause and effect. Governed by clear SOPs and standards.',
+    recommendZh: '<strong>推薦方法論：精實標準作業 (Lean Standard Work) + 防呆 (Poka-Yoke)</strong><br>此領域不需動用複雜的 Scrum Sprints 或高深統計。只需制定防呆機制、落實 SOP，防止人為疏失即可。',
+    recommendEn: '<strong>Recommended: Lean Standard Work + Poka-Yoke</strong>. Do not overcomplicate with heavy Scrum ceremonies.'
+  },
+  complicated: {
+    titleZh: '繁複領域 (Complicated) —— 良好實務 (Good Practice)',
+    titleEn: 'Complicated Domain: Good Practice',
+    color: '#3b82f6',
+    analogyZh: '【情境特徵】因果關係存在但需要專業分析才能看清（已知未知）。可能有多種正確解答（例如：半導體機台參數調校、良率缺陷根本原因追查、財務報表分析）。',
+    analogyEn: '【Characteristics】Cause and effect requires expert analysis (Known Unknowns). Multiple right answers possible.',
+    recommendZh: '<strong>推薦方法論：六標準差 (Six Sigma DMAIC) + 精實價值流圖 (Lean VSM)</strong><br>由黑帶/綠帶專家帶領，透過統計檢定、DOE 實驗設計與資料科學，找出轉移函數 $Y = f(X)$ 並收斂變異。',
+    recommendEn: '<strong>Recommended: Six Sigma DMAIC + Lean VSM</strong>. Use expert statistical analysis and hypothesis testing.'
+  },
+  complex: {
+    titleZh: '複雜領域 (Complex) —— 湧現實務 (Emergent Practice) ★ Scrum 主戰場',
+    titleEn: 'Complex Domain: Emergent Practice (Scrum Sweet Spot)',
+    color: 'var(--amber)',
+    analogyZh: '【情境特徵】因果關係只有在事後回顧時才看得懂（未知未知）。需求不斷變更、技術充滿不確定性（例如：AI 演算法探索、數位轉型新商業模式、新產品市場驗證）。',
+    analogyEn: '【Characteristics】Cause and effect only clear in retrospect (Unknown Unknowns). Volatile requirements.',
+    recommendZh: '<strong>推薦方法論：敏捷 Scrum (Agile Scrum) + 精實創業 (Lean Startup)</strong><br>在此領域千萬不要企圖花半年做完美規劃！必須採取「探測-感知-響應 (Probe-Sense-Respond)」，以 1~2 週的短衝刺快速上線 MVP 收集真實回饋，用 DoD 守護品質底線。',
+    recommendEn: '<strong>Recommended: Agile Scrum + Lean Startup</strong>. Probe-Sense-Respond via rapid Sprints and MVPs.'
+  },
+  chaotic: {
+    titleZh: '混亂領域 (Chaotic) —— 新穎實務 (Novel Practice)',
+    titleEn: 'Chaotic Domain: Novel Practice',
+    color: '#ef4444',
+    analogyZh: '【情境特徵】發生嚴重危機或災難，沒有因果關係可循（例如：產線大停電、嚴重資安勒索病毒入侵、供應鏈全面斷鏈）。',
+    analogyEn: '【Characteristics】Immediate crisis with zero predictability (e.g. major fab outage, cyberattack).',
+    recommendZh: '<strong>推薦方法論：指揮控制止血 (Crisis Management) $\rightarrow$ 看板 (Kanban) 建立秩序</strong><br>不要在此時開衝刺規劃會！立即由指揮官下達指令建立安全邊界，止血後迅速將問題引導進入繁複或複雜領域處理。',
+    recommendEn: '<strong>Recommended: Immediate Crisis Action $\rightarrow$ Kanban to stabilize flow</strong>. Establish order first.'
+  }
+};
+
+const RETRO_FRAMEWORKS = {
+  sailboat: {
+    nameZh: '⛵ 帆船法 (Sailboat Retrospective)',
+    cols: [
+      { id: 'wind', icon: '💨', nameZh: '順風 (Wind)', descZh: '推動我們前進的力量與成功要素', defaultZh: '自動化測試腳本讓我們省下 40% 回歸測試時間' },
+      { id: 'anchor', icon: '⚓', nameZh: '沉錨 (Anchors)', descZh: '拖慢我們速度的內部阻礙與瓶頸', defaultZh: '外部機台測試權限審批流程耗費 3 天等待浪費' },
+      { id: 'rocks', icon: '🪨', nameZh: '暗礁 (Rocks)', descZh: '可能在未來撞沉團隊的潛在風險', defaultZh: '下個月即將迎來重大系統架構遷移，缺少回滾 SOP' },
+      { id: 'island', icon: '🏝️', nameZh: '島嶼 (Island)', descZh: '團隊共同追求的願景與下一衝刺目標', defaultZh: '下一 Sprint 達成初次良品率 (FPY) 95% 且零重測' }
+    ]
+  },
+  '4ls': {
+    nameZh: '💡 4Ls 模型 (Liked, Learned, Lacked, Longed For)',
+    cols: [
+      { id: 'liked', icon: '❤️', nameZh: 'Liked (喜歡)', descZh: '本次衝刺做得好的成功亮點', defaultZh: '每日站會嚴格控制在 12 分鐘內結束，效率極高' },
+      { id: 'learned', icon: '🧠', nameZh: 'Learned (學到)', descZh: '從失敗或實驗中獲得的關鍵經驗', defaultZh: '及早與廠務確認電力負載，能避免測試中斷' },
+      { id: 'lacked', icon: '⚠️', nameZh: 'Lacked (缺乏)', descZh: '本次衝刺中缺少的資源或資訊', defaultZh: '缺少足夠的測試晶圓數據樣本' },
+      { id: 'longed', icon: '✨', nameZh: 'Longed for (渴望)', descZh: '希望未來能夠擁有的工具或環境', defaultZh: '希望擁有獨立隔離的演算法 Sandbox 測試環境' }
+    ]
+  },
+  ssc: {
+    nameZh: '🎯 Start - Stop - Continue 模型',
+    cols: [
+      { id: 'start', icon: '🟢', nameZh: 'Start (開始做)', descZh: '新建議：下個衝刺應啟動的新好習慣', defaultZh: '在開工前嚴格依據 DoR 檢核清單過濾需求' },
+      { id: 'stop', icon: '🔴', nameZh: 'Stop (停止做)', descZh: '需除錯：造成浪費、應該立刻停止的壞習慣', defaultZh: '停止在衝刺中途私下插入未經 PO 排序的突發雜事' },
+      { id: 'continue', icon: '🔵', nameZh: 'Continue (保持做)', descZh: '維持：行之有效、應該繼續保持的優良實務', defaultZh: '繼續維持每天雙人結對審查代碼與 FMEA' }
+    ]
+  }
+};
+
+const POKER_SCALE_DATA = {
+  '0.5': { tShirt: 'XS', nameZh: '極微型任務', descZh: '幾乎沒有不確定性，只需數十分鐘即可完成，例如修改一處文字或替換既有圖示。' },
+  '1': { tShirt: 'XS', nameZh: '微型任務', descZh: '目標明確且完全熟悉的工作，無外部依賴，例如調整已知參數或更新單一規格書。' },
+  '2': { tShirt: 'S', nameZh: '小型任務', descZh: '稍微需要一點構思，但路徑非常清晰，無技術瓶頸（例如建立一個標準 CRUD API 介面）。' },
+  '3': { tShirt: 'M', nameZh: '中小型標準任務 (基準牌)', nameEn: 'Baseline Reference', descZh: '常見的標準工作項。包含常規業務邏輯與單元測試，無重大未知風險。團隊常以此作為 3 點基準。' },
+  '5': { tShirt: 'M', nameZh: '中型任務', descZh: '具有一定複雜度，涉及多個模組聯動或有少許外部相依性，需要謹慎思考邊界測試。' },
+  '8': { tShirt: 'L', nameZh: '大型任務 (單一衝刺極限)', descZh: '高度複雜且工作量大。若再大就必須拆解！建議團隊檢討能否拆成 3 + 5 兩個故事。' },
+  '13': { tShirt: 'XL (史詩級 Epic)', descZh: '【警報！太大必須拆解】不確定性過高或工作量太大，絕對不准直接拉進單一衝刺，必須在 Backlog Refinement 拆解！' },
+  '20': { tShirt: 'XXL (巨型專案)', descZh: '【嚴重超標】需要跨部門協調的大型功能或重大架構重構，必須進行故事地圖拆解 (Story Mapping)。' },
+  '40': { tShirt: '巨大未知領域', descZh: '完全未知的黑天鵝領域，應先安排一個 1~2 點的「探針任務 (Spike)」進行技術可行性調查。' },
+  '?': { tShirt: '資訊不足 / 無法估算', descZh: '資訊嚴重不足或需求極度模糊！請 Product Owner 依據 DoR 補足資訊後再重新評估。' }
+};
+
+function switchScrumTab(tabId) {
+  currentScrumTab = tabId;
+  const tabs = ['core', 'compass', 'gates', 'tools'];
+  tabs.forEach(t => {
+    const btn = document.getElementById('scrumTabBtn-' + t);
+    const panel = document.getElementById('scrumPanel-' + t);
+    if (btn) btn.classList.toggle('active', t === tabId);
+    if (panel) panel.classList.toggle('active', t === tabId);
+  });
+  if (tabId === 'gates') {
+    renderDodDorChecklists();
+  } else if (tabId === 'tools') {
+    generateUserStoryCard();
+    renderRetroColumns();
+    selectPokerCard(activePokerPoint);
+  }
+}
+
+function selectScrumItem(category, itemId) {
+  activeScrumItemId = itemId;
+  document.querySelectorAll('.scrum-item-box').forEach(b => b.classList.remove('selected'));
+  const targetBox = document.getElementById('scrumBox-' + itemId);
+  if (targetBox) targetBox.classList.add('selected');
+
+  const data = SCRUM_353_DATA[itemId];
+  const detailEl = document.getElementById('scrumDetailView');
+  if (!data || !detailEl) return;
+
+  detailEl.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <div style="font-size:17px; font-weight:700; color:var(--amber);">
+        <span class="zh">${data.titleZh}</span><span class="en">${data.titleEn}</span>
+      </div>
+      <span class="scrum-pillar-badge">${data.badge}</span>
+    </div>
+    <div>
+      <div style="font-weight:700; font-size:13.5px; color:var(--ink); margin-bottom:4px;">
+        🎯 <span class="zh">核心使命 (Mission)</span><span class="en">Core Mission</span>
+      </div>
+      <div style="font-size:13.5px; line-height:1.6; color:var(--muted);">
+        <span class="zh">${data.missionZh}</span><span class="en">${data.missionEn}</span>
+      </div>
+    </div>
+    <div style="background:rgba(245,166,35,0.06); border-left:3px solid var(--amber); border-radius:6px; padding:10px 14px;">
+      <div style="font-weight:700; font-size:13px; color:var(--amber); margin-bottom:2px;">
+        💡 <span class="zh">精實六標準差跨界對照 (LSS Cross-Mapping)</span><span class="en">LSS Mapping</span>
+      </div>
+      <div style="font-size:13px; color:var(--ink); line-height:1.5;">
+        <span class="zh">${data.leanMappingZh}</span><span class="en">${data.leanMappingEn}</span>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+      <div style="background:rgba(248,244,237,0.02); border:1px solid var(--line); border-radius:8px; padding:12px;">
+        <div style="font-weight:700; font-size:13px; color:#3b82f6; margin-bottom:4px;">
+          📥/📤 <span class="zh">關鍵輸入與輸出</span><span class="en">Inputs & Outputs</span>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:var(--muted);">
+          <span class="zh">${data.inputsOutputsZh}</span><span class="en">${data.inputsOutputsEn}</span>
+        </div>
+      </div>
+      <div style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.2); border-radius:8px; padding:12px;">
+        <div style="font-weight:700; font-size:13px; color:#ef4444; margin-bottom:4px;">
+          🚫 <span class="zh">高頻反模式避坑 (Anti-Patterns)</span><span class="en">Anti-Patterns to Avoid</span>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:var(--muted);">
+          <span class="zh">${data.antiPatternsZh}</span><span class="en">${data.antiPatternsEn}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function evaluateCynefin(domainKey) {
+  activeCynefinDomain = domainKey;
+  document.querySelectorAll('.cynefin-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById('cynefin-' + domainKey);
+  if (card) card.classList.add('active');
+
+  const data = CYNEFIN_EVAL_DATA[domainKey];
+  const outEl = document.getElementById('cynefinOutput');
+  if (!data || !outEl) return;
+
+  outEl.style.borderLeftColor = data.color;
+  outEl.innerHTML = `
+    <div style="font-weight:700; font-size:15px; color:${data.color}; margin-bottom:6px;">
+      <span class="zh">${data.titleZh}</span><span class="en">${data.titleEn}</span>
+    </div>
+    <div style="font-size:13px; color:var(--muted); margin-bottom:10px; line-height:1.5;">
+      <span class="zh">${data.analogyZh}</span><span class="en">${data.analogyEn}</span>
+    </div>
+    <div style="background:rgba(0,0,0,0.15); border-radius:6px; padding:10px 14px; font-size:13.5px; line-height:1.6; color:var(--ink);">
+      <span class="zh">${data.recommendZh}</span><span class="en">${data.recommendEn}</span>
+    </div>
+  `;
+}
+
+function switchDodDorContext(ctxKey) {
+  currentGateContext = ctxKey;
+  ['sw', 'fab', 'ops'].forEach(k => {
+    const btn = document.getElementById('gatePreset-' + k);
+    if (btn) btn.classList.toggle('primary', k === ctxKey);
+  });
+  renderDodDorChecklists();
+}
+
+function renderDodDorChecklists() {
+  const data = DOD_DOR_DATA[currentGateContext];
+  if (!data) return;
+
+  const dorContainer = document.getElementById('dorChecklistContainer');
+  const dodContainer = document.getElementById('dodChecklistContainer');
+
+  if (dorContainer) {
+    dorContainer.innerHTML = data.dor.map((item, idx) => `
+      <div class="checklist-item ${item.checked ? 'checked' : ''}" onclick="toggleChecklistItem('dor', ${idx})">
+        <input type="checkbox" ${item.checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleChecklistItem('dor', ${idx});">
+        <span class="checklist-label"><span class="zh">${item.textZh}</span><span class="en">${item.textEn}</span></span>
+      </div>
+    `).join('');
+  }
+
+  if (dodContainer) {
+    dodContainer.innerHTML = data.dod.map((item, idx) => `
+      <div class="checklist-item ${item.checked ? 'checked' : ''}" onclick="toggleChecklistItem('dod', ${idx})">
+        <input type="checkbox" ${item.checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleChecklistItem('dod', ${idx});">
+        <span class="checklist-label"><span class="zh">${item.textZh}</span><span class="en">${item.textEn}</span></span>
+      </div>
+    `).join('');
+  }
+
+  updateDodDorProgress();
+  updateDodDorPreview();
+}
+
+function toggleChecklistItem(gateType, index) {
+  const data = DOD_DOR_DATA[currentGateContext];
+  if (!data) return;
+  const list = gateType === 'dor' ? data.dor : data.dod;
+  if (list && list[index]) {
+    list[index].checked = !list[index].checked;
+    renderDodDorChecklists();
+  }
+}
+
+function addCustomChecklistItem(gateType) {
+  const inputId = gateType === 'dor' ? 'newDorInput' : 'newDodInput';
+  const inputEl = document.getElementById(inputId);
+  if (!inputEl || !inputEl.value.trim()) return;
+
+  const val = inputEl.value.trim();
+  const data = DOD_DOR_DATA[currentGateContext];
+  if (!data) return;
+
+  const list = gateType === 'dor' ? data.dor : data.dod;
+  list.push({ textZh: val, textEn: val, checked: true });
+  inputEl.value = '';
+  renderDodDorChecklists();
+}
+
+function resetDodDorChecklist() {
+  const data = DOD_DOR_DATA[currentGateContext];
+  if (!data) return;
+  data.dor.forEach(item => item.checked = true);
+  data.dod.forEach(item => item.checked = false);
+  renderDodDorChecklists();
+}
+
+function updateDodDorProgress() {
+  const data = DOD_DOR_DATA[currentGateContext];
+  if (!data) return;
+
+  const dorTotal = data.dor.length;
+  const dorPassed = data.dor.filter(i => i.checked).length;
+  const dorPct = dorTotal ? Math.round((dorPassed / dorTotal) * 100) : 0;
+  const dorProgText = document.getElementById('dorProgressText');
+  const dorFill = document.getElementById('dorProgressFill');
+  if (dorProgText) dorProgText.textContent = `${dorPassed}/${dorTotal} (${dorPct}% ${dorPct === 100 ? '🟢 准予開工' : '🛑 門禁未過'})`;
+  if (dorFill) dorFill.style.width = dorPct + '%';
+
+  const dodTotal = data.dod.length;
+  const dodPassed = data.dod.filter(i => i.checked).length;
+  const dodPct = dodTotal ? Math.round((dodPassed / dodTotal) * 100) : 0;
+  const dodProgText = document.getElementById('dodProgressText');
+  const dodFill = document.getElementById('dodProgressFill');
+  if (dodProgText) dodProgText.textContent = `${dodPassed}/${dodTotal} (${dodPct}% ${dodPct === 100 ? '🟢 准予交付' : '⚠️ 假性完工'})`;
+  if (dodFill) dodFill.style.width = dodPct + '%';
+}
+
+function generateDodDorMarkdown() {
+  const data = DOD_DOR_DATA[currentGateContext];
+  if (!data) return '';
+
+  let md = `# 🛡️ 敏捷專案品質雙門禁驗收卡 (Quality Gate Card)
+- **情境類別**：${data.nameZh} (${data.nameEn})
+- **產生時間**：${new Date().toISOString().replace('T', ' ').slice(0, 16)}
+
+---
+
+### 🛑 1. DoR (Definition of Ready) 準備就緒檢核 —— 【開工進料防呆】
+> 必須全部滿足，方准許拉入 Sprint 開工：
+`;
+  data.dor.forEach(item => {
+    md += `- [${item.checked ? 'x' : ' '}] ${item.textZh}\n`;
+  });
+
+  md += `\n### ✅ 2. DoD (Definition of Done) 完工定義檢核 —— 【出廠品質承諾】\n> 必須全部達標，方可宣告完成並納入發布增量：\n`;
+  data.dod.forEach(item => {
+    md += `- [${item.checked ? 'x' : ' '}] ${item.textZh}\n`;
+  });
+
+  md += `\n---\n*遵循精實六標準差與敏捷品質防護原則。Generated by Masa Tu Lean Six Sigma Compass*`;
+  return md;
+}
+
+function updateDodDorPreview() {
+  const box = document.getElementById('gatePreviewBox');
+  if (box) box.textContent = generateDodDorMarkdown();
+}
+
+function copyDodDorMarkdown() {
+  const text = generateDodDorMarkdown();
+  const isZh = (document.body.getAttribute('lang-mode') || 'zh') === 'zh';
+  navigator.clipboard.writeText(text).then(() => {
+    alert(isZh ? '✅ 品質門禁 Markdown 檢核卡已成功複製至剪貼簿！' : '✅ Quality Gate Markdown card copied to clipboard!');
+  }).catch(() => {
+    prompt(isZh ? '請複製以下 Markdown 檢核卡：' : 'Please copy Markdown below:', text);
+  });
+}
+
+function generateUserStoryCard() {
+  const role = (document.getElementById('storyRole')?.value || '').trim();
+  const action = (document.getElementById('storyAction')?.value || '').trim();
+  const benefit = (document.getElementById('storyBenefit')?.value || '').trim();
+  const ac = (document.getElementById('storyAC')?.value || '').trim();
+
+  const invI = document.getElementById('inv-i')?.checked;
+  const invN = document.getElementById('inv-n')?.checked;
+  const invV = document.getElementById('inv-v')?.checked;
+  const invE = document.getElementById('inv-e')?.checked;
+  const invS = document.getElementById('inv-s')?.checked;
+  const invT = document.getElementById('inv-t')?.checked;
+
+  const md = `## 📝 User Story (使用者故事卡)
+- **身為 (As a)**: ${role}
+- **我想要 (I want)**: ${action}
+- **以便於 (So that)**: ${benefit}
+
+### 📋 驗收準則 (Acceptance Criteria)
+\`\`\`gherkin
+${ac}
+\`\`\`
+
+### 🔍 INVEST 原則點檢
+- [${invI ? 'x' : ' '}] **I** (Independent 獨立性)
+- [${invN ? 'x' : ' '}] **N** (Negotiable 可協商)
+- [${invV ? 'x' : ' '}] **V** (Valuable 具備客戶價值)
+- [${invE ? 'x' : ' '}] **E** (Estimable 可相對估算)
+- [${invS ? 'x' : ' '}] **S** (Small 粒度足夠小，單一衝刺可交付)
+- [${invT ? 'x' : ' '}] **T** (Testable 具備清晰測試驗證手段)
+`;
+
+  const box = document.getElementById('storyPreviewBox');
+  if (box) box.textContent = md.trim();
+  return md.trim();
+}
+
+function copyUserStoryCard() {
+  const text = generateUserStoryCard();
+  const isZh = (document.body.getAttribute('lang-mode') || 'zh') === 'zh';
+  navigator.clipboard.writeText(text).then(() => {
+    alert(isZh ? '✅ User Story 卡片已成功複製至剪貼簿！' : '✅ User Story card copied to clipboard!');
+  }).catch(() => {
+    prompt(isZh ? '請複製以下卡片：' : 'Please copy card below:', text);
+  });
+}
+
+function switchRetroFramework(fKey) {
+  currentRetroFramework = fKey;
+  ['sailboat', '4ls', 'ssc'].forEach(k => {
+    const btn = document.getElementById('retroBtn-' + k);
+    if (btn) btn.classList.toggle('primary', k === fKey);
+  });
+  renderRetroColumns();
+}
+
+function renderRetroColumns() {
+  const fw = RETRO_FRAMEWORKS[currentRetroFramework];
+  const container = document.getElementById('retroColumnsContainer');
+  if (!fw || !container) return;
+
+  container.innerHTML = fw.cols.map(col => `
+    <div class="retro-column">
+      <div class="retro-col-header">
+        <span>${col.icon}</span>
+        <span>${col.nameZh}</span>
+      </div>
+      <div style="font-size:11.5px; color:var(--muted); line-height:1.3;">${col.descZh}</div>
+      <textarea class="scrum-textarea" id="retroCol-${col.id}" oninput="updateRetroPreview()" style="min-height:95px; font-size:13.5px !important;">${col.defaultZh}</textarea>
+    </div>
+  `).join('');
+
+  updateRetroPreview();
+}
+
+function generateRetroPlanMarkdown() {
+  const fw = RETRO_FRAMEWORKS[currentRetroFramework];
+  if (!fw) return '';
+
+  let md = `# 💡 Sprint Retrospective 衝刺回顧與 Kaizen 行動計畫
+- **回顧模型**：${fw.nameZh}
+- **會議時間**：${new Date().toISOString().replace('T', ' ').slice(0, 16)}
+
+---
+`;
+
+  fw.cols.forEach(col => {
+    const text = document.getElementById('retroCol-' + col.id)?.value || '';
+    md += `### ${col.icon} ${col.nameZh}\n${text.trim() || '（無記錄）'}\n\n`;
+  });
+
+  md += `### 🎯 下個衝刺 Kaizen 承諾行動項 (Action Items - Who / What / When)
+1. [ ] **【行動 1】**: _________________ (主責人: _______, 完成日: _______)
+2. [ ] **【行動 2】**: _________________ (主責人: _______, 完成日: _______)
+
+---
+*Generated by Masa Tu Lean Six Sigma Compass (Agile Kaizen Retrospective)*`;
+
+  return md;
+}
+
+function updateRetroPreview() {
+  const box = document.getElementById('retroPreviewBox');
+  if (box) box.textContent = generateRetroPlanMarkdown();
+}
+
+function copyRetroActionPlan() {
+  const text = generateRetroPlanMarkdown();
+  const isZh = (document.body.getAttribute('lang-mode') || 'zh') === 'zh';
+  navigator.clipboard.writeText(text).then(() => {
+    alert(isZh ? '✅ 敏捷回顧 Kaizen 行動計畫已成功複製至剪貼簿！' : '✅ Retrospective Kaizen Plan copied to clipboard!');
+  }).catch(() => {
+    prompt(isZh ? '請複製以下計畫：' : 'Please copy plan below:', text);
+  });
+}
+
+function selectPokerCard(point) {
+  activePokerPoint = point;
+  document.querySelectorAll('.poker-card-btn').forEach(btn => {
+    btn.classList.toggle('selected', btn.textContent.trim() === point);
+  });
+
+  const data = POKER_SCALE_DATA[point];
+  const box = document.getElementById('pokerCardDetailBox');
+  if (!data || !box) return;
+
+  box.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <div style="font-size:16px; font-weight:700; color:var(--amber);">
+        🃏 故事點 (Story Points): ${point} 點 —— ${data.nameZh}
+      </div>
+      <span class="scrum-pillar-badge">尺碼對照：${data.tShirt}</span>
+    </div>
+    <div style="font-size:13.5px; line-height:1.6; color:var(--ink); margin-top:8px;">
+      ${data.descZh}
+    </div>
+    <div style="margin-top:10px; font-size:12px; color:var(--muted); border-top:1px solid var(--line); padding-top:6px;">
+      💡 <strong>精實防呆提醒</strong>：故事點不是工時！若硬性將「1 點 = 8 小時」，團隊將陷入膨脹點數的虛偽遊戲。故事點是用來衡量「相對於基準牌（3點）的複雜度與風險不確定性」。
+    </div>
+  `;
+}
+
+function initScrumModule() {
+  selectScrumItem('role', activeScrumItemId);
+  evaluateCynefin(activeCynefinDomain);
+  renderDodDorChecklists();
+  generateUserStoryCard();
+  renderRetroColumns();
+  selectPokerCard(activePokerPoint);
+}
+
+// Global scope export for RWD compliance and inline event handlers
+window.switchScrumTab = switchScrumTab;
+window.selectScrumItem = selectScrumItem;
+window.evaluateCynefin = evaluateCynefin;
+window.switchDodDorContext = switchDodDorContext;
+window.toggleChecklistItem = toggleChecklistItem;
+window.addCustomChecklistItem = addCustomChecklistItem;
+window.resetDodDorChecklist = resetDodDorChecklist;
+window.copyDodDorMarkdown = copyDodDorMarkdown;
+window.generateUserStoryCard = generateUserStoryCard;
+window.copyUserStoryCard = copyUserStoryCard;
+window.switchRetroFramework = switchRetroFramework;
+window.renderRetroColumns = renderRetroColumns;
+window.updateRetroPreview = updateRetroPreview;
+window.copyRetroActionPlan = copyRetroActionPlan;
+window.selectPokerCard = selectPokerCard;
+window.initScrumModule = initScrumModule;
+
+/* ==================== 22. ORG CHART & ESCALATION PLAYBOOK LOGIC ==================== */
 const ORG_DATA_SEMI = [
   {
     "id": "semi_exec",
