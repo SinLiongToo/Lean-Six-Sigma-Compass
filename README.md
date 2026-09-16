@@ -1,5 +1,6 @@
 # Lean Six Sigma Compass (Masa Tu 精實六標準差羅盤)
 
+[![Version](https://img.shields.io/badge/Version-v2.57-brightgreen?style=flat-square)](#)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen?style=flat-square&logo=github)](https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-Live%20Mirror-F38020?style=flat-square&logo=cloudflare)](https://lean-six-sigma-compass.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -18,6 +19,9 @@
   - 同步部署於 **GitHub Pages** (`sinliongtoo.github.io`) 與 **Cloudflare Pages** 全球邊緣網路 (`lean-six-sigma-compass.pages.dev`)。
   - 有效解決高科技晶圓廠、金融機構或大型企業防火牆針對 `*.github.io` 網段的全面阻擋政策，確保隨時可順暢連線存取。
   - 本地每次 `git push` 即自動驅動兩大平台秒級同步構建與部署。
+- 📐 **零依賴純原生 Unicode 工程公式系統 (Zero-Dependency Pure Native Unicode Formula System)**：
+  - 全站捨棄肥大且容易受防火牆或 CDN 網路阻擋的 MathJax / KaTeX 外部函式庫，工程公式（如 DPMO、Cpk、Ppk、ΔYield、休哈特管制界限 UCL/LCL、FMEA RPN、RSS 公差分析）全面標準化為高對比 Monospace 等寬 `<code>` 徽章。
+  - 採用純原生標準 Unicode 符號（`×`、`μ`、`σ`、`Δ`、`√`、`²`、`·`、`≦`、`≧`、`→`），搭配自動折行防溢出排版，杜絕 LaTeX 渲染亂碼，跨裝置零延遲極速呈現。
 - 🌓 **智慧雙主題模式**：支援深色星空主題（Dark Mode，預設）與典雅高對比淺色主題（Light Mode）無縫切換。
 - 🌐 **雙語即時切換 (Bilingual Toggle)**：全站支援繁體中文（預設）與英文（English）一鍵即時切換。
 - 📱 **極致行動體驗 (Mobile & iOS Safari Native Optimized)**：
@@ -84,6 +88,7 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
     - **SIPOC 流程圖**：解構荷蘭 Veldhoven 超高潔淨組裝廠端到端流程，涵蓋蔡司 (Zeiss SMT) 光學投影鏡箱 (POB)、TRUMPF 30kW CO2 脈衝雷射、Cymer 錫滴產生器、ISO 1 級超高真空主機架裝配、物鏡雷射干涉調對、TwinScan 雙工件台磁浮校正、Intermediate Focus 250W EUV 點火導通驗證、動態套刻出廠測試 (FAT)，以及台積電、Intel、美光等 GigaFab 客戶開箱驗收 (SAT)。
     - **Project Charter 專案憲章 (六宮格精實版)**：針對一台造價高達 1.8~3.5 億歐元之 EUV 機台，解決工廠出廠測試 (FAT) 平均耗時 86.4 天之產能瓶頸，設定在 18 週內將組裝週期壓縮至 ≦ 64.0 天 (-25.9%)、初檢合格率提升至 ≧ 94%、年化釋放 4 台高階 EUV 機台產能並加速 7.2 億歐元營收認列之宏大目標。
     - **CTQ / COT 關鍵品質樹**：將全球客戶「準時交機開箱」與「零光學像差」聲音拆解為出廠週期時間特性（COT: 總 FAT 週期 ≦ 64 天、POB 物鏡對位 ≦ 8.0 天）、光學波前與套刻特性（CTQ: 波前像差 RMS ≦ 0.048nm、動態套刻 DCO ≦ 1.10nm）、以及超高真空與分子微污染特性（CTQ: 氦氣測漏 ≦ 1.0×10⁻¹⁰ mbar·l/s、RGA 碳氫化合物殘留 ≦ 5.0×10⁻¹² mbar）。
+- **DMAIC 核心工程公式徽章庫**：收錄 Measure 階段（$DPMO$、製程能力指標 $C_{pk}$）、Improve 階段（良率改善 $\Delta\text{Yield}$）、Control 階段（休哈特管制界限 $UCL = \mu + 3\sigma$ / $LCL = \mu - 3\sigma$）、Design 階段（$RPN = S \times O \times D$、容差公差平方和疊加 $RSS$）與 Verify 階段（長期製程性能指標 $P_{pk}$）等標準計算式，以純原生 Unicode Monospace 徽章精確呈現，支援移動端自動折行。
 - **一鍵式生產力功能**：支援一鍵切換/重設晶圓廠或 ASML 機台案例、一鍵複製為標準格式化 Markdown 報告。
 
 ### 3. 🎙️ 精實會議與高階簡報表達藝術 (STAR vs. CARL)

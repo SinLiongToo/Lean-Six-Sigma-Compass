@@ -266,10 +266,36 @@ function checkFileIntegrity(filePath) {
   }
 
   // ==========================================
-  // 4. Version Badge Verification
+  // 4. Formula & Typography Formatting Integrity
+  // ==========================================
+  console.log(`\n--- [Section 4: Formula & Typography Integrity] ---`);
+  const rawLatexRegexes = [
+    { pattern: /\\frac\{/g, name: '\\frac{...}' },
+    { pattern: /\$[^$\n]*\\(?:mu|sigma|Delta|sqrt|cdot|times|le|ge)[^$\n]*\$/g, name: 'raw LaTeX inline math ($...$)' },
+    { pattern: /\$\s*ightarrow\$/gi, name: 'malformed \\rightarrow ($ ightarrow$)' },
+    { pattern: /\\(?:mu|sigma|Delta|sqrt|cdot)\b/g, name: 'raw LaTeX symbols (\\mu, \\sigma, etc.)' }
+  ];
+
+  let formulaWarningsCount = 0;
+  for (const { pattern, name } of rawLatexRegexes) {
+    const matches = content.match(pattern);
+    if (matches && matches.length > 0) {
+      warnings.push(`Detected ${matches.length} instance(s) of ${name}. Math formulas should use clean Unicode symbols (×, μ, σ, Δ, √, ², ≦, ≧, →) wrapped in <code> tags instead of raw LaTeX.`);
+      formulaWarningsCount++;
+    }
+  }
+
+  if (formulaWarningsCount === 0) {
+    console.log(`✓ Clean Unicode formula formatting verified (0 raw LaTeX fragments detected).`);
+  } else {
+    console.log(`⚠️ Found ${formulaWarningsCount} raw LaTeX pattern issues.`);
+  }
+
+  // ==========================================
+  // 5. Version Badge Verification
   // ==========================================
   if (path.basename(filePath) === 'index.html') {
-    console.log(`\n--- [Section 4: Version & Release Badge] ---`);
+    console.log(`\n--- [Section 5: Version & Release Badge] ---`);
     const versionMatch = content.match(/id=["']versionBadge["'][^>]*>([^<]+(?:<span[^>]*>[^<]+<\/span>)?)/);
     if (versionMatch) {
       console.log(`✓ Version badge found: ${versionMatch[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()}`);

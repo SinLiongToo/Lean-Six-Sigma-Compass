@@ -51,6 +51,21 @@ This skill enforces strict Responsive Web Design (RWD), mobile experience standa
     ```
   - The verification script automatically scans all inline handlers against JavaScript AST/scopes and flags any unexported or missing functions as blocking build errors.
 
+### 7. Mathematical & Scientific Formula Presentation Standard (Zero External Dependencies) 📐
+- **The Issue**: The application does NOT bundle or load external math typesetting libraries (MathJax / KaTeX) to preserve 100% offline, zero-dependency, ultra-fast single-file architecture. Raw LaTeX strings (e.g. `\frac`, `\mu`, `\sigma`, `\Delta`, `\times`, `\sqrt`, `\cdot`, `\rightarrow`) render as unparsed raw plaintext or garbled escape sequences (e.g. `$ ightarrow$`).
+- **The Rule**:
+  - **Standardize with Pure Unicode Math & Monospace Code Badges**: Always use semantic standard Unicode characters:
+    - Multiplication: `×` or `·`
+    - Greek symbols: `μ`, `σ`, `Δ`
+    - Roots and exponents: `√`, `²`, `³`, `ⁿ`
+    - Inequalities & Arrows: `≦`, `≧`, `≠`, `→`, `←`
+    - Subscripts / Fractions: Standard linear layout with brackets, e.g. `Cpk = min[(USL - μ) / 3σ, (μ - LSL) / 3σ]`, `UCL = μ + 3σ`, `DPMO = (D / (U × O)) × 1,000,000`.
+  - **Wrap in semantic `<code>` badges**:
+    ```html
+    <code>DPMO = (Defects / (Units × Opportunities)) × 1,000,000</code>
+    ```
+  - **Ensure responsive line wrapping**: Badges must have `word-break: break-word; white-space: normal;` to prevent breaking mobile layouts.
+
 ---
 
 ## 🚀 Execution & Verification Command
@@ -65,7 +80,9 @@ This automated test checks:
 1. All 8 RWD & Mobile compatibility standards.
 2. JavaScript syntax validity in all `<script>` tags.
 3. 100% reachability of all inline event handlers (prevents unexported closure bugs).
-4. Byte-for-byte synchronization between `index.html` and `lean-six-sigma-compass.html`.
+4. Mathematical formula typography integrity (zero raw LaTeX fragments or broken escape sequences).
+5. Header version badge presence and formatting.
+6. Byte-for-byte synchronization between `index.html` and `lean-six-sigma-compass.html`.
 
 Both `index.html` and `lean-six-sigma-compass.html` must pass with **0 errors** before committing.
 

@@ -9,12 +9,16 @@ Whenever you update or modify HTML, CSS, or JavaScript in this project:
      window.foo = foo;
      ```
    - Never leave an inline event handler pointing to an unexported local function, as this causes buttons/actions to fail silently with zero response.
-3. Execute the automated verification script:
+3. **Mathematical & Engineering Formula Presentation Standards (Zero-Dependency Pure Native Unicode)**:
+   - NEVER insert raw LaTeX markup (e.g. `\frac`, `\mu`, `\sigma`, `\Delta`, `\times`, `\sqrt`, `\cdot`, `\rightarrow`) or enclose formulas in LaTeX delimiters (`$...$`, `\(...\)`). The site maintains 100% offline zero-dependency architecture without MathJax/KaTeX.
+   - Standardize all formulas with native Unicode characters (`×`, `μ`, `σ`, `Δ`, `√`, `²`, `·`, `≦`, `≧`, `→`) wrapped in styled `<code>` badges.
+   - Ensure responsive wrapping on small screens (`word-break: break-word`).
+4. Execute the automated verification script:
    ```bash
    node .agents/skills/rwd-compliance-checker/scripts/check_rwd.js
    ```
-   This script verifies RWD, JS syntax in `<script>` tags, 100% reachability of all inline event handlers, and byte-for-byte file synchronization.
-4. Confirm that both `index.html` and `lean-six-sigma-compass.html` remain 100% synchronized and pass all checks with 0 errors before committing.
+   This script verifies RWD, JS syntax in `<script>` tags, 100% reachability of all inline event handlers, mathematical formula typography integrity, version badge, and byte-for-byte file synchronization.
+5. Confirm that both `index.html` and `lean-six-sigma-compass.html` remain 100% synchronized and pass all checks with 0 errors before committing.
 
 ---
 
@@ -156,6 +160,25 @@ Each book requires **two additions** (no JS changes needed):
 | 44 | 別自個兒用餐 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
 | 45 | 專注力協定 | Indistractable | `indistractable` | Pre-commitments, Identity Pacts, Price Pacts, Cognitive Poka-Yoke, Lean Quality |
 | 46 | 迎變世代 | Adapt: Why Success Always Starts with Failure | `adapt-harford` | VUCA Adaptation, Safe-to-Fail, Lean Fundamentals |
+
+---
+
+## 🏉 Agile Scrum Module Architecture (`data-section="scrum"`)
+
+The Agile Scrum module (Section 21) bridges Lean, Six Sigma, and Agile frameworks:
+- **Sub-tab Navigation**: `switchScrumTab(tabId)` handles 4 main views:
+  - `core`: Scrum 3-5-3 Classic Framework (`SCRUM_353_DATA`, `selectScrumItem()`)
+  - `compass`: Lean vs. 6σ vs. Scrum Decision Compass, Cynefin Complexity Navigator (`CYNEFIN_EVAL_DATA`, `evaluateCynefin()`), and Agile DMAIC Blueprint.
+  - `gates`: DoD vs. DoR Dual Quality Gates Workshop (`DOD_DOR_DATA` across SW, Fab, and Ops presets, `switchDodDorContext()`, `toggleChecklistItem()`, `generateDodDorMarkdown()`).
+  - `tools`: Interactive Agile Toolkit (User Story generator `generateUserStoryCard()`, Retrospective templates `switchRetroFramework()`, Planning Poker `selectPokerCard()`).
+- **Global Event Scoping**: All interactive functions referenced by inline `onclick` attributes must be explicitly exported to `window` (e.g. `window.switchScrumTab = switchScrumTab;`).
+
+---
+
+## 📐 Mathematical & Formula Presentation Rule
+- The app does not load MathJax or KaTeX CDN scripts.
+- Never output raw LaTeX syntax (`\frac`, `\mu`, `\sigma`, `\Delta`, `\times`, `\sqrt`, `\cdot`, `\rightarrow`) or enclose in LaTeX delimiters (`$...$`, `\(...\)`).
+- Use standard Unicode math symbols (`×`, `μ`, `σ`, `Δ`, `√`, `²`, `·`, `≦`, `≧`, `→`) wrapped in styled `<code>` badges with `word-break: break-word;`.
 
 ---
 
