@@ -6973,7 +6973,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.59 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-16 16:45</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.60 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-17 10:55</span></span>
         </div>
       </div>
     </div>
@@ -7711,7 +7711,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
 
             <!-- Cleanroom 6S Red-Line Protocols Box -->
             <div id="cleanroomProtocolBox" style="display:none; margin-bottom:18px; background:linear-gradient(135deg, rgba(74,144,226,0.08) 0%, rgba(245,166,35,0.06) 100%); border:1px solid rgba(74,144,226,0.3); border-radius:12px; padding:14px 16px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; border-bottom:1px solid rgba(74,144,226,0.2); padding-bottom:8px;">
+              <div class="cleanroom-protocol-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; border-bottom:1px solid rgba(74,144,226,0.2); padding-bottom:8px;">
                 <div style="font-weight:800; font-size:14px; color:#4a90e2; display:flex; align-items:center; gap:6px;">
                   <span>🔬</span>
                   <span class="zh">半導體與高科技無塵室 6S 紅線管制守則 (ISO Class 1~5 / Class 1~100)</span>
@@ -7723,7 +7723,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
               </div>
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
                 <!-- Card 1: 身上禁止與進門管制 -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                <div class="cleanroom-protocol-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
                   <div style="font-weight:700; color:#E88D5A; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
                     <span>🚫</span>
                     <span class="zh">身上禁物與進門管制 (Prohibited Items & Sweat Control)</span>
@@ -7747,7 +7747,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                   </div>
                 </div>
                 <!-- Card 2: 阻絕 VOC、氯污染與 AMC 分子污染 -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                <div class="cleanroom-protocol-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
                   <div style="font-weight:700; color:var(--amber); margin-bottom:4px; display:flex; align-items:center; gap:5px;">
                     <span>💨</span>
                     <span class="zh">VOC、氯污染與氣態分子阻絕 (AMC & Chloride Control)</span>
@@ -7771,7 +7771,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                   </div>
                 </div>
                 <!-- Card 3: FOD 異物掉落防呆與工具繫繩 -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                <div class="cleanroom-protocol-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
                   <div style="font-weight:700; color:#50E3C2; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
                     <span>🛡️</span>
                     <span class="zh">FOD 異物掉落防呆與繫繩 (FOD Prevention)</span>
@@ -7793,7 +7793,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                   </div>
                 </div>
                 <!-- Card 4: 嚴禁隨意觸碰與晶圓保護 -->
-                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
+                <div class="cleanroom-protocol-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6;">
                   <div style="font-weight:700; color:#BD10E0; margin-bottom:4px; display:flex; align-items:center; gap:5px;">
                     <span>⛔</span>
                     <span class="zh">嚴禁隨意觸碰防線 (Strict No-Touch Protocol)</span>
@@ -15376,7 +15376,7 @@ Then 系統在 5 秒內完成圖譜聚類並標記缺陷相似度高於 90% 的�
               </div>
             </div>
             <div class="book-info">
-              <h3><span class="zh">《迎變世代：大膽失敗，重新尋找成功的可能》</span><span class="en">Adapt: Why Success Always Starts with Failure</span></h3>
+              <h3><span class="zh">《迎變世代：臥底經濟學家，教你用失敗向成功對齊》</span><span class="en">Adapt: Why Success Always Starts with Failure</span></h3>
               <div class="book-meta">
                 <span class="chip"><span class="zh">作者：提姆·哈福特 (Tim Harford)</span><span class="en">Author: Tim Harford</span></span>
                 <span class="chip"><span class="zh">關聯：帕爾欽斯基原則 (Palchinsky Principles) · 敏捷安全試錯 (Safe-to-Fail Probes) · 豐田改善基本功 (Kaizen &amp; Genba Fundamentals) · 科技與人機協作 (Jidoka &amp; Low-Cost Intelligent Automation) · 心理安全感與快速回饋 (Psychological Safety &amp; Rapid Feedback)</span><span class="en">LSS Mapping: Palchinsky Principles · Safe-to-Fail Probes · Kaizen &amp; Genba Fundamentals · Jidoka &amp; Human-Centric Automation · Psychological Safety &amp; Rapid Feedback Loops</span></span>
@@ -18587,8 +18587,11 @@ function globalSearch(query){
     // Collect searchable containers within this section
     const targets = sec.querySelectorAll(
       '.mcard, .ccard, .gloss-item, .belt-body, .dmaic-subcard, .dmaic-goal-card,'+
-      ' tr.tool-row, .a3-section, .roadmap-card, .quiz-option, .chip, .calc-tab,'+
-      ' .scenario-box, h2, h3, h4, dt, dd, li, p.lead'
+      ' tr.tool-row, tr.s5-row, .a3-section, .roadmap-card, .quiz-option, .chip, .calc-tab,'+
+      ' .ctrl-btn, .s5-cleanroom-note, .honesty-note, .cleanroom-protocol-card, .cleanroom-protocol-header,'+
+      ' .scrum-pillar-card, .scrum-item-box, .scrum-tool-card, .cynefin-card, .gate-column,'+
+      ' .scrum-subnav-btn, .book-card, .book-title-main, .book-title-sub, .connection-title,'+
+      ' .scenario-box, h2, h3, h4, h5, dt, dd, li, p, th, td'
     );
 
     const seen = new Set();
@@ -18659,6 +18662,55 @@ function renderSearchResults(query){
 
       // Close search
       closeSearch();
+
+      // Smart Sub-panel / Tab / Mode Activation
+      try {
+        // 1. Calculator Tab Activation
+        const calcPanel = r.element.closest ? r.element.closest('.calc-panel') : null;
+        if(calcPanel && calcPanel.id){
+          const tabId = calcPanel.id.replace(/^panel/, 'tab');
+          const tabBtn = document.getElementById(tabId);
+          if(tabBtn && !tabBtn.classList.contains('active')){
+            tabBtn.click();
+          }
+        }
+
+        // 2. 5S Cleanroom Mode / 6S Mode Activation
+        const isCleanroom = r.element.id === 'btn5sModeCleanroom' ||
+                            (r.element.closest && r.element.closest('#cleanroomProtocolBox')) ||
+                            (r.element.closest && r.element.closest('.s5-cleanroom-note')) ||
+                            (r.element.classList && r.element.classList.contains('s5-cleanroom-note'));
+        if(isCleanroom && typeof set5sMode === 'function'){
+          set5sMode('cleanroom');
+        } else if(r.element.id === 'btn5sMode6' && typeof set5sMode === 'function'){
+          set5sMode('6s');
+        }
+
+        // 3. Scrum Sub-Tab Activation
+        const scrumPanel = r.element.closest ? r.element.closest('.scrum-panel') : null;
+        if(scrumPanel && scrumPanel.id){
+          const subId = scrumPanel.id.replace(/^scrumPanel-/, '');
+          if(typeof switchScrumTab === 'function'){
+            switchScrumTab(subId);
+          }
+        }
+
+        // 4. Books Grid Wrap & Book Card Collapsed State
+        const booksWrap = document.getElementById('booksGridWrap');
+        if(booksWrap && booksWrap.style.display === 'none'){
+          if(typeof toggleBooksGrid === 'function') toggleBooksGrid();
+        }
+        const bookCard = r.element.closest ? r.element.closest('.book-card') : null;
+        if(bookCard && bookCard.classList.contains('collapsed')){
+          bookCard.classList.remove('collapsed');
+        }
+
+        // 5. Expand HTML5 details if target is inside
+        const det = r.element.closest ? r.element.closest('details') : null;
+        if(det && !det.open) det.open = true;
+      } catch(e) {
+        console.warn('Search navigation sub-panel activation error:', e);
+      }
 
       // Scroll and flash
       setTimeout(()=>{
