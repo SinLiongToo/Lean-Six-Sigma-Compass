@@ -2113,6 +2113,287 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   .tps-example-table th, .tps-example-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
   .tps-example-table th { font-family: monospace; font-weight: 700; opacity: 0.7; font-size: 10.5px; text-transform: uppercase; }
 
+  /* Priority Subnav & RICE Matrix */
+  .priority-subnav {
+    display: flex;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .priority-tab-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all .2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .priority-tab-btn:hover {
+    background: rgba(245, 166, 35, 0.08);
+    color: var(--amber);
+    border-color: rgba(245, 166, 35, 0.2);
+  }
+  .priority-tab-btn.active {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+    box-shadow: 0 2px 8px rgba(245, 166, 35, 0.25);
+  }
+  .priority-panel {
+    display: none;
+  }
+  .priority-panel.active {
+    display: block;
+  }
+
+  .rice-layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .rice-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  .rice-box {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .rice-banner {
+    background: linear-gradient(135deg, rgba(74,144,226,0.08) 0%, rgba(245,166,35,0.08) 100%);
+    border: 1px solid rgba(245,166,35,0.25);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+  .rice-formula-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: monospace;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--amber);
+    margin-bottom: 10px;
+    word-break: break-word;
+  }
+  [data-theme="light"] .rice-formula-badge {
+    background: rgba(15, 27, 45, 0.05);
+  }
+  .rice-criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .rice-crit-pill {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+  [data-theme="light"] .rice-crit-pill {
+    background: rgba(15, 27, 45, 0.02);
+  }
+  .rice-score-preview {
+    background: rgba(245, 166, 35, 0.08);
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  .rice-score-num {
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--amber);
+  }
+  .rice-task-card {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .rice-task-card:hover {
+    border-color: rgba(245, 166, 35, 0.4);
+  }
+  @media (max-width: 640px) {
+    .rice-task-card {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .rice-task-card .tps-actions {
+      justify-content: flex-start;
+    }
+  }
+  .rice-badge-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .rice-score-tag {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid;
+    min-width: 70px;
+    text-align: center;
+  }
+  .rice-score-tag.tier-top {
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--amber);
+    border-color: rgba(245, 166, 35, 0.4);
+  }
+  .rice-score-tag.tier-mid {
+    background: rgba(74, 144, 226, 0.15);
+    color: #4a90e2;
+    border-color: rgba(74, 144, 226, 0.4);
+  }
+  .rice-score-tag.tier-low {
+    background: rgba(142, 154, 175, 0.15);
+    color: var(--muted);
+    border-color: rgba(142, 154, 175, 0.3);
+  }
+  .rice-quadrant-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    margin-top: 4px;
+    white-space: nowrap;
+  }
+  .rice-quad-quickwin {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.35);
+  }
+  .rice-quad-major {
+    background: rgba(155, 89, 182, 0.15);
+    color: #9b59b6;
+    border: 1px solid rgba(155, 89, 182, 0.35);
+  }
+  .rice-quad-fillin {
+    background: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.35);
+  }
+  .rice-quad-pit {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.35);
+  }
+  .rice-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .rice-chip {
+    font-family: monospace;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  [data-theme="light"] .rice-chip {
+    background: rgba(15, 27, 45, 0.03);
+  }
+  .rice-chip strong {
+    color: var(--ink);
+  }
+  .rice-quadrant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 680px) {
+    .rice-quadrant-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .rice-quad-cell {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+  }
+  .rice-quad-cell-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .rice-quad-cell-head h4 {
+    margin: 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rice-quad-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .rice-quad-item-pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  [data-theme="light"] .rice-quad-item-pill {
+    background: rgba(15, 27, 45, 0.02);
+  }
+
   /* ReqTrack CSS */
   .rt-tab-bar { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 10px; overflow-x: auto; }
   .rt-tab {
@@ -3799,6 +4080,9 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
   [data-theme="light"] .demo-box,
   [data-theme="light"] .calc-box,
   [data-theme="light"] .tps-box,
+  [data-theme="light"] .rice-box,
+  [data-theme="light"] .rice-task-card,
+  [data-theme="light"] .rice-quad-cell,
   [data-theme="light"] .finance-box,
   [data-theme="light"] .cert-org-card,
   [data-theme="light"] .rt-stat-card,
@@ -6973,7 +7257,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.60 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-17 10:55</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.61 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-17 11:35</span></span>
         </div>
       </div>
     </div>
@@ -8181,130 +8465,418 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
       </section>
 
       <section class="section" data-section="priority">
-        <h2><span class="zh">任務優先評分工具</span><span class="en">Task Priority Scorer</span></h2>
+        <h2><span class="zh">任務優先評分與 RICE 決策矩陣</span><span class="en">Task Priority Scorer & RICE Decision Matrix</span></h2>
         <p class="lead">
-          <span class="zh">基於成本、品質、管理偏好與截止日期，以加權指標科學化計算任務優先分數，並評估測試工時效率。</span>
-          <span class="en">Weighted priority scoring based on Cost, Quality, Mgmt Preference, and Due Date, with testing efficiency feedback.</span>
+          <span class="zh">提供雙軌科學決策工具：支援「經典多維加權評分（成本/品質/管理/截止日/工時效率）」與「產品與研發主流 RICE 決策矩陣（觸及率/影響力/信心度/投入成本）」，全面消除認知偏差、排定最佳執行路徑。</span>
+          <span class="en">Dual scientific decision engines: "Classic Weighted Priority (Cost, Quality, Mgmt, Urgency, Efficiency)" and industry-standard "RICE Matrix (Reach, Impact, Confidence, Effort)" to eliminate cognitive bias and sequence high-impact initiatives.</span>
         </p>
 
-        <div class="tps-layout">
-          <!-- LEFT: form + weights -->
-          <div class="tps-left-col">
-            <div class="tps-box" style="margin-bottom:18px;">
-              <h2 id="tpsFormTitle"><span class="zh">新增任務</span><span class="en">Add Task</span></h2>
-              <p class="hint"><span class="zh">填寫任務資訊與評分，系統會自動加權計算優先分數；測試工時則用來計算效率。</span><span class="en">Enter task info and scores — priority is computed from weights. Hours feed the efficiency rating.</span></p>
+        <!-- Sub Navigation Tabs -->
+        <div class="priority-subnav" id="prioritySubnav">
+          <button type="button" class="priority-tab-btn active" id="tabPriorityWeighted" onclick="switchPriorityTab('weighted')">
+            <span>⚖️</span>
+            <span class="zh">經典多維加權評分 (Weighted Scorer)</span>
+            <span class="en">Classic Weighted Scorer</span>
+          </button>
+          <button type="button" class="priority-tab-btn" id="tabPriorityRice" onclick="switchPriorityTab('rice')">
+            <span>🎯</span>
+            <span class="zh">RICE 矩陣優先級評估器 (RICE Matrix)</span>
+            <span class="en">RICE Matrix Prioritization</span>
+          </button>
+        </div>
 
-              <label class="tps-field">
-                <span class="lbl"><span class="zh">任務名稱</span><span class="en">Task name</span></span>
-                <input type="text" id="tpsTaskName" placeholder="e.g. 更換濺鍍腔體密封件 / Replace sputter seal" class="tps-input">
-              </label>
+        <!-- SUB-PANEL 1: WEIGHTED SCORER -->
+        <div class="priority-panel active" id="panelPriorityWeighted">
+          <div class="tps-layout">
+            <!-- LEFT: form + weights -->
+            <div class="tps-left-col">
+              <div class="tps-box" style="margin-bottom:18px;">
+                <h2 id="tpsFormTitle"><span class="zh">新增任務</span><span class="en">Add Task</span></h2>
+                <p class="hint"><span class="zh">填寫任務資訊與評分，系統會自動加權計算優先分數；測試工時則用來計算效率。</span><span class="en">Enter task info and scores — priority is computed from weights. Hours feed the efficiency rating.</span></p>
 
-              <label class="tps-field">
-                <span class="lbl"><span class="zh">說明（選填）</span><span class="en">Notes (optional)</span></span>
-                <textarea id="tpsTaskDesc" class="tps-textarea"></textarea>
-              </label>
+                <label class="tps-field">
+                  <span class="lbl"><span class="zh">任務名稱</span><span class="en">Task name</span></span>
+                  <input type="text" id="tpsTaskName" placeholder="e.g. 更換濺鍍腔體密封件 / Replace sputter seal" class="tps-input">
+                </label>
 
-              <div id="tpsCriteriaInputs"></div>
+                <label class="tps-field">
+                  <span class="lbl"><span class="zh">說明（選填）</span><span class="en">Notes (optional)</span></span>
+                  <textarea id="tpsTaskDesc" class="tps-textarea"></textarea>
+                </label>
 
-              <label class="tps-field">
-                <span class="lbl"><span class="zh">測試工時（小時）</span><span class="en">Testing hours used</span></span>
-                <input type="number" id="tpsHoursInput" min="0" step="0.5" value="0" class="tps-input">
-              </label>
+                <div id="tpsCriteriaInputs"></div>
 
-              <label class="tps-field">
-                <span class="lbl"><span class="zh">截止日期（選填）</span><span class="en">Due date (optional)</span></span>
-                <input type="date" id="tpsDueInput" class="tps-input">
-              </label>
+                <label class="tps-field">
+                  <span class="lbl"><span class="zh">測試工時（小時）</span><span class="en">Testing hours used</span></span>
+                  <input type="number" id="tpsHoursInput" min="0" step="0.5" value="0" class="tps-input">
+                </label>
 
-              <div style="display:flex; gap:8px; margin-top:6px;">
-                <button class="demo-btn" id="tpsSaveTaskBtn" style="flex:1;"><span class="zh">新增任務</span><span class="en">Add Task</span></button>
-                <button class="demo-btn secondary" id="tpsCancelEditBtn" style="display:none;"><span class="zh">取消</span><span class="en">Cancel</span></button>
-              </div>
-            </div>
+                <label class="tps-field">
+                  <span class="lbl"><span class="zh">截止日期（選填）</span><span class="en">Due date (optional)</span></span>
+                  <input type="date" id="tpsDueInput" class="tps-input">
+                </label>
 
-            <div class="tps-box">
-              <h2><span class="zh">權重設定</span><span class="en">Weights</span></h2>
-              <p class="hint"><span class="zh">分配四項條件的權重百分比，總和須為 100%。工時不列入權重，改以⚡效率分數呈現。</span><span class="en">Allocate weight percentages — must add up to 100%. Hours feed the separate ⚡ efficiency metric.</span></p>
-              <div id="tpsWeightConfig"></div>
-              <div class="tps-weight-total" id="tpsWeightTotal"></div>
-              <button class="demo-btn secondary" id="tpsNormalizeBtn" style="margin-top:10px; width:100%;"><span class="zh">自動調整為 100%</span><span class="en">Normalize to 100%</span></button>
-              <hr style="border:none; border-top:1px solid var(--line); margin:16px 0;">
-              <label class="tps-field" style="margin-bottom:0;">
-                <span class="lbl"><span class="zh">急迫度視窗（天）</span><span class="en">Urgency horizon (days)</span> <small><span class="zh">超過此天數視為不急迫</span><span class="en">beyond this = not urgent</span></small></span>
-                <input type="number" id="tpsHorizonInput" min="1" step="1" value="30" class="tps-input">
-              </label>
-            </div>
-          </div>
-
-          <!-- RIGHT: task list -->
-          <div class="tps-right-col">
-            <div class="tps-list-toolbar">
-              <h2><span class="zh">任務清單</span><span class="en">Tasks</span> (<span id="tpsTaskCount">0</span>)</h2>
-              <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-                <div class="tps-view-toggle" id="tpsViewToggle">
-                  <button class="tps-view-btn active" data-view="list"><span class="zh">清單</span><span class="en">List</span></button>
-                  <button class="tps-view-btn" data-view="gantt"><span class="zh">甘特圖</span><span class="en">Gantt</span></button>
+                <div style="display:flex; gap:8px; margin-top:6px;">
+                  <button class="demo-btn" id="tpsSaveTaskBtn" style="flex:1;"><span class="zh">新增任務</span><span class="en">Add Task</span></button>
+                  <button class="demo-btn secondary" id="tpsCancelEditBtn" style="display:none;"><span class="zh">取消</span><span class="en">Cancel</span></button>
                 </div>
-                <select class="tps-sort-select" id="tpsSortSelect">
-                  <option value="score-desc">↓ 優先分數</option>
+              </div>
+
+              <div class="tps-box">
+                <h2><span class="zh">權重設定</span><span class="en">Weights</span></h2>
+                <p class="hint"><span class="zh">分配四項條件的權重百分比，總和須為 100%。工時不列入權重，改以⚡效率分數呈現。</span><span class="en">Allocate weight percentages — must add up to 100%. Hours feed the separate ⚡ efficiency metric.</span></p>
+                <div id="tpsWeightConfig"></div>
+                <div class="tps-weight-total" id="tpsWeightTotal"></div>
+                <button class="demo-btn secondary" id="tpsNormalizeBtn" style="margin-top:10px; width:100%;"><span class="zh">自動調整為 100%</span><span class="en">Normalize to 100%</span></button>
+                <hr style="border:none; border-top:1px solid var(--line); margin:16px 0;">
+                <label class="tps-field" style="margin-bottom:0;">
+                  <span class="lbl"><span class="zh">急迫度視窗（天）</span><span class="en">Urgency horizon (days)</span> <small><span class="zh">超過此天數視為不急迫</span><span class="en">beyond this = not urgent</span></small></span>
+                  <input type="number" id="tpsHorizonInput" min="1" step="1" value="30" class="tps-input">
+                </label>
+              </div>
+            </div>
+
+            <!-- RIGHT: task list -->
+            <div class="tps-right-col">
+              <div class="tps-list-toolbar">
+                <h2><span class="zh">任務清單</span><span class="en">Tasks</span> (<span id="tpsTaskCount">0</span>)</h2>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                  <div class="tps-view-toggle" id="tpsViewToggle">
+                    <button class="tps-view-btn active" data-view="list"><span class="zh">清單</span><span class="en">List</span></button>
+                    <button class="tps-view-btn" data-view="gantt"><span class="zh">甘特圖</span><span class="en">Gantt</span></button>
+                  </div>
+                  <select class="tps-sort-select" id="tpsSortSelect">
+                    <option value="score-desc">↓ 優先分數</option>
+                  </select>
+                </div>
+              </div>
+              <div id="tpsTaskGrid" class="tps-task-grid"></div>
+              <div id="tpsEmptyState" class="tps-empty">
+                <span class="zh">尚無任務。使用左側表單新增第一筆任務。</span>
+                <span class="en">No tasks yet. Use the form on the left to add your first one.</span>
+              </div>
+              <div id="tpsGanttPanel" class="tps-gantt-panel" style="display:none;">
+                <div class="tps-gantt-axis" id="tpsGanttAxis"></div>
+                <div id="tpsGanttRows"></div>
+                <div class="tps-gantt-empty" id="tpsGanttEmpty" style="display:none;">
+                  <span class="zh">尚無設定截止日期的任務。</span>
+                  <span class="en">No tasks have a due date set yet.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Help Modal overlay -->
+          <div class="tps-modal-overlay" id="tpsHelpOverlay">
+            <div class="tps-modal" role="dialog" aria-modal="true" aria-labelledby="tpsHelpTitle">
+              <div class="tps-modal-head">
+                <h2 id="tpsHelpTitle"><span class="zh">這個工具怎麼運作</span><span class="en">How this tool works</span></h2>
+                <button class="tps-icon-btn" id="tpsHelpClose" aria-label="close">✕</button>
+              </div>
+              <div class="tps-modal-body">
+                <h3><span class="zh">1. 三項評分 + 截止日期 + 工時記錄</span><span class="en">1. Three scores + due date + hours logged</span></h3>
+                <p>
+                  <span class="zh">每個任務有三項 1–5 分的評分——成本影響、品質影響、管理層偏好，一律「分數越高＝越優先」。此外可填寫截止日期，系統會據此計算「急迫度」。測試工時另外記錄，不列入加權分數。</span>
+                  <span class="en">Each task gets three 1–5 scores — Cost Impact, Quality Impact, Management Preference — higher is always higher priority. Optional due date calculates urgency. Testing hours logged separately.</span>
+                </p>
+                <h3><span class="zh">2. 正規化（Normalize）</span><span class="en">2. Normalization</span></h3>
+                <p>
+                  <span class="zh">系統把三項評分換算成 0–100 的相對分數：最低值換為 0、最高值換為 100，其餘依比例內插。截止日則用固定公式：今天或已逾期 → 100 分；超過「急迫度視窗」天數（預設 30 天）→ 0 分；中間線性遞減。未設定截止日則為 0 分。</span>
+                  <span class="en">Converts 1–5 scores to a relative 0–100 scale: lowest becomes 0, highest becomes 100. Due date urgency uses a fixed formula: due today/overdue → 100; beyond the horizon (e.g. 30 days) → 0. No due date = 0.</span>
+                </p>
+                <h3><span class="zh">3. 權重百分比與優先分數</span><span class="en">3. Weights & Priority Score</span></h3>
+                <p>
+                  <span class="zh">優先分數 = Σ（每項正規化分數 × 該項權重%），總合 0–100 分。67–100分為高優先（橘黃色），34–66分為中優先（綠色），0–33分為低優先。</span>
+                  <span class="en">Priority score = Σ (each normalized score × its weight%), yielding a 0–100 range. 67–100 is high (amber), 34–66 is medium (sage), 0–33 is low.</span>
+                </p>
+                <h3><span class="zh">4. 效率分數（⚡）</span><span class="en">4. Efficiency score (⚡)</span></h3>
+                <p>
+                  <span class="zh">「效率分數」＝優先分數 ÷ 測試工時，代表每投入一小時測試能換得多少優先分數。工時為 0 時顯示「∞」（免費機會）。您可以依效率排序，找出「低投入、高產出」的任務。</span>
+                  <span class="en">Efficiency = priority score ÷ testing hours (points per hour). 0 hours shows "∞" (free win). Sort by efficiency to find low-effort, high-impact tasks.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-controls" style="margin-top:20px; justify-content: flex-start;">
+            <button class="demo-btn" id="tpsHelpBtn">? <span class="zh">使用說明</span><span class="en">Help</span></button>
+            <button class="demo-btn secondary" id="tpsSampleBtn"><span class="zh">載入範例</span><span class="en">Load Example</span></button>
+            <button class="demo-btn secondary" id="tpsExportJson"><span class="zh">匯出 JSON</span><span class="en">Export JSON</span></button>
+            <button class="demo-btn secondary" id="tpsExportMd"><span class="zh">匯出 Markdown 報表</span><span class="en">Export MD Report</span></button>
+            <button class="demo-btn secondary" id="tpsImportBtn"><span class="zh">匯入資料</span><span class="en">Import Data</span></button>
+            <input type="file" id="tpsImportFile" accept="application/json" style="display:none;">
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 2: RICE MATRIX -->
+        <div class="priority-panel" id="panelPriorityRice" style="display:none;">
+          <!-- RICE Knowledge & Formula Banner -->
+          <div class="rice-banner">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+              <div style="font-size:15px; font-weight:800; color:var(--amber); display:flex; align-items:center; gap:6px;">
+                <span>🎯</span>
+                <span class="zh">RICE 矩陣科學排程模型 (Sean McBride / Intercom)</span>
+                <span class="en">RICE Prioritization Matrix (Sean McBride / Intercom)</span>
+              </div>
+              <div class="rice-formula-badge">
+                RICE Score = (Reach × Impact × Confidence) ÷ Effort
+              </div>
+            </div>
+            <p style="margin:0; font-size:12.5px; color:var(--muted); line-height:1.5;">
+              <span class="zh">透過客觀量化「觸及規模、影響程度、信心指數、投入工時」，建立抗認知偏誤（去除主管個人偏好 HiPPO 與團隊盲目樂觀）的科學決策標準，專注於產生最高投資報酬率（ROI per unit effort）的專案。</span>
+              <span class="en">Systematically quantify Reach, Impact, Confidence, and Effort to eliminate subjective bias and wishful thinking, ensuring team resources maximize return on invested effort.</span>
+            </p>
+            <div class="rice-criteria-grid">
+              <div class="rice-crit-pill">
+                <strong style="color:var(--amber);">R - Reach (觸及規模)</strong><br>
+                <span class="zh">週期內受影響的用戶數、批次數或交易量 (如: 1,000人/月 或 300批/季)。</span>
+                <span class="en">People, batches, or transactions affected over a time period.</span>
+              </div>
+              <div class="rice-crit-pill">
+                <strong style="color:#50E3C2;">I - Impact (影響程度)</strong><br>
+                <span class="zh">每位受惠者的價值增量：3.0 巨大 | 2.0 高度 | 1.0 中等 | 0.5 低度 | 0.25 微幅。</span>
+                <span class="en">Per-user value lift: 3x Massive, 2x High, 1x Med, 0.5x Low, 0.25x Min.</span>
+              </div>
+              <div class="rice-crit-pill">
+                <strong style="color:#4A90E2;">C - Confidence (信心度)</strong><br>
+                <span class="zh">對數據的確信度：100% 高(實測數據) | 80% 中(質性/先例) | 50% 低(探索猜測)。</span>
+                <span class="en">Confidence level: 100% High data, 80% Medium, 50% Low / Moonshot.</span>
+              </div>
+              <div class="rice-crit-pill">
+                <strong style="color:#BD10E0;">E - Effort (投入成本)</strong><br>
+                <span class="zh">團隊總投入人月 (Person-Months) 或人週，作為分母衡量價值產出密度。</span>
+                <span class="en">Total person-months or person-weeks required from the team.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls: Presets, Export, Clear -->
+          <div class="demo-controls" style="margin-bottom:18px; justify-content:flex-start; flex-wrap:wrap; gap:8px;">
+            <button class="demo-btn secondary" id="ricePresetFab" onclick="loadRicePreset('fab')">
+              <span>🔬</span>
+              <span class="zh">載入半導體/製程改善範本</span>
+              <span class="en">Load Fab Kaizen Preset</span>
+            </button>
+            <button class="demo-btn secondary" id="ricePresetSaaS" onclick="loadRicePreset('saas')">
+              <span>📦</span>
+              <span class="zh">載入軟體產品/DX 範本</span>
+              <span class="en">Load SaaS / DX Preset</span>
+            </button>
+            <button class="demo-btn secondary" id="riceExportMd" onclick="exportRiceMarkdown()">
+              <span>📄</span>
+              <span class="zh">匯出 Markdown 決策報表</span>
+              <span class="en">Export Markdown</span>
+            </button>
+            <button class="demo-btn secondary" id="riceClearAll" onclick="clearRiceItems()" style="color:var(--amber);">
+              <span>🧹</span>
+              <span class="zh">清空所有項目</span>
+              <span class="en">Clear All Items</span>
+            </button>
+          </div>
+
+          <!-- Main Layout -->
+          <div class="rice-layout">
+            <!-- Left: Add / Edit Item Form -->
+            <div class="rice-box">
+              <h2 id="riceFormTitle" style="font-size:16px; margin:0 0 4px;">
+                <span class="zh">新增 RICE 評估項目</span><span class="en">Add RICE Item</span>
+              </h2>
+              <p class="hint" style="font-size:12px; opacity:0.6; margin:0 0 14px; line-height:1.5;">
+                <span class="zh">輸入項目名稱與預估的 R、I、C、E 數值，系統將自動即時計算 RICE 分數。</span>
+                <span class="en">Enter project parameters — RICE score is computed instantaneously.</span>
+              </p>
+
+              <label class="tps-field">
+                <span class="lbl"><span class="zh">項目 / 功能名稱</span><span class="en">Feature / Project Name</span></span>
+                <input type="text" id="riceItemName" placeholder="e.g. 晶圓缺陷 ADC 影像辨識 AI 模型" class="tps-input">
+              </label>
+
+              <label class="tps-field">
+                <span class="lbl"><span class="zh">類別 / 標籤</span><span class="en">Category / Tag</span></span>
+                <input type="text" id="riceItemCategory" placeholder="e.g. 晶圓製程 / 品質改善 / 客戶體驗" class="tps-input">
+              </label>
+
+              <label class="tps-field">
+                <span class="lbl">
+                  <span class="zh">Reach (觸及規模)</span><span class="en">Reach</span>
+                  <small><span class="zh">週期內總用戶數或晶圓批次</span><span class="en">Users/batches impacted</span></small>
+                </span>
+                <input type="number" id="riceItemReach" class="tps-input" min="1" step="1" value="1000" oninput="updateRiceScorePreview()">
+              </label>
+
+              <label class="tps-field">
+                <span class="lbl">
+                  <span class="zh">Impact (影響程度)</span><span class="en">Impact</span>
+                  <small><span class="zh">單一受惠者價值增量</span><span class="en">Per-user value lift</span></small>
+                </span>
+                <select id="riceItemImpact" class="tps-sort-select" style="width:100%;" onchange="updateRiceScorePreview()">
+                  <option value="3.0">3.0 - 巨大突破 (Massive Impact)</option>
+                  <option value="2.0" selected>2.0 - 高度顯著 (High Impact)</option>
+                  <option value="1.0">1.0 - 中等效益 (Medium Impact)</option>
+                  <option value="0.5">0.5 - 低度改善 (Low Impact)</option>
+                  <option value="0.25">0.25 - 微幅微調 (Minimal Impact)</option>
                 </select>
+              </label>
+
+              <label class="tps-field">
+                <span class="lbl">
+                  <span class="zh">Confidence (信心指數)</span><span class="en">Confidence</span>
+                  <small><span class="zh">抗樂觀偏差數據信任度</span><span class="en">Estimation certainty</span></small>
+                </span>
+                <select id="riceItemConfidence" class="tps-sort-select" style="width:100%;" onchange="updateRiceScorePreview()">
+                  <option value="1.0">100% (1.0) - 高信心 (High: 實測數據/真實調研)</option>
+                  <option value="0.8" selected>80% (0.8) - 中信心 (Medium: 質性數據/類似先例)</option>
+                  <option value="0.5">50% (0.5) - 低信心 (Low: 直覺假設/探索專案)</option>
+                </select>
+              </label>
+
+              <label class="tps-field">
+                <span class="lbl">
+                  <span class="zh">Effort (投入成本)</span><span class="en">Effort</span>
+                  <small><span class="zh">所需人月 (Person-Months) 或人週</span><span class="en">Person-months needed</span></small>
+                </span>
+                <input type="number" id="riceItemEffort" class="tps-input" min="0.1" step="0.1" value="2.0" oninput="updateRiceScorePreview()">
+              </label>
+
+              <!-- Real-time Score Preview -->
+              <div class="rice-score-preview">
+                <div>
+                  <div style="font-size:11px; opacity:0.7; font-weight:700; text-transform:uppercase;">
+                    <span class="zh">即時計算預覽 (RICE Preview)</span><span class="en">RICE Preview</span>
+                  </div>
+                  <div id="ricePreviewFormula" style="font-family:monospace; font-size:12px; color:var(--ink); margin-top:3px;">
+                    (1,000 × 2.0 × 80%) ÷ 2.0 = 800
+                  </div>
+                </div>
+                <div class="rice-score-num" id="ricePreviewScoreNum">800</div>
+              </div>
+
+              <div style="display:flex; gap:8px; margin-top:14px;">
+                <button class="demo-btn" id="riceSaveBtn" onclick="saveRiceItem()" style="flex:1;">
+                  <span class="zh">儲存項目</span><span class="en">Save Item</span>
+                </button>
+                <button class="demo-btn secondary" id="riceCancelBtn" onclick="resetRiceForm()" style="display:none;">
+                  <span class="zh">取消</span><span class="en">Cancel</span>
+                </button>
               </div>
             </div>
-            <div id="tpsTaskGrid" class="tps-task-grid"></div>
-            <div id="tpsEmptyState" class="tps-empty">
-              <span class="zh">尚無任務。使用左側表單新增第一筆任務。</span>
-              <span class="en">No tasks yet. Use the form on the left to add your first one.</span>
-            </div>
-            <div id="tpsGanttPanel" class="tps-gantt-panel" style="display:none;">
-              <div class="tps-gantt-axis" id="tpsGanttAxis"></div>
-              <div id="tpsGanttRows"></div>
-              <div class="tps-gantt-empty" id="tpsGanttEmpty" style="display:none;">
-                <span class="zh">尚無設定截止日期的任務。</span>
-                <span class="en">No tasks have a due date set yet.</span>
+
+            <!-- Right: Ranked List & 2x2 Quadrant -->
+            <div class="tps-right-col">
+              <div class="tps-list-toolbar">
+                <h2>
+                  <span class="zh">決策清單與四象限</span><span class="en">Rankings & Quadrants</span> (<span id="riceItemCount">0</span>)
+                </h2>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                  <div class="tps-view-toggle">
+                    <button class="tps-view-btn active" id="riceViewBtnList" onclick="setRiceView('list')">
+                      <span class="zh">📋 排行榜</span><span class="en">📋 Ranked List</span>
+                    </button>
+                    <button class="tps-view-btn" id="riceViewBtnQuad" onclick="setRiceView('quadrant')">
+                      <span class="zh">📊 四象限矩陣</span><span class="en">📊 2×2 Matrix</span>
+                    </button>
+                  </div>
+                  <select class="tps-sort-select" id="riceSortSelect" onchange="changeRiceSort(this.value)">
+                    <option value="rice-desc">↓ RICE 分數：高→低</option>
+                    <option value="rice-asc">↑ RICE 分數：低→高</option>
+                    <option value="reach-desc">↓ Reach (規模)：大→小</option>
+                    <option value="impact-desc">↓ Impact (影響)：高→低</option>
+                    <option value="effort-asc">↑ Effort (工時)：少→多</option>
+                    <option value="name">項目名稱 (A→Z)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- List View -->
+              <div id="riceTaskList" class="tps-task-grid"></div>
+
+              <!-- Quadrant View -->
+              <div id="riceQuadrantView" style="display:none;">
+                <div style="font-size:12px; color:var(--muted); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                  <span>
+                    <span class="zh">以項目價值中位數（Reach × Impact × Confidence）與投入成本中位數（Effort）劃分 4 大決策象限：</span>
+                    <span class="en">Divided into 4 quadrants using median Value (R×I×C) and median Effort:</span>
+                  </span>
+                  <span id="riceMedianInfo" style="font-family:monospace; font-size:11px; background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:6px; padding:2px 8px;"></span>
+                </div>
+                <div class="rice-quadrant-grid">
+                  <!-- Quadrant 1: Quick Wins -->
+                  <div class="rice-quad-cell" style="border-top: 3px solid #2ecc71;">
+                    <div class="rice-quad-cell-head">
+                      <h4 style="color:#2ecc71;">
+                        <span>🚀</span>
+                        <span class="zh">Quick Wins (速贏/優先)</span>
+                        <span class="en">Quick Wins</span>
+                      </h4>
+                      <span class="rice-quadrant-tag rice-quad-quickwin" id="riceCountQuickWin">0</span>
+                    </div>
+                    <p style="margin:0 0 10px; font-size:11px; color:var(--muted);">
+                      <span class="zh">高價值 × 低投入：投資報酬率極佳，應排在最優先執行清單。</span>
+                      <span class="en">High Value, Low Effort: Supreme ROI, sequence first.</span>
+                    </p>
+                    <div class="rice-quad-items" id="riceQuadItemsQuickWin"></div>
+                  </div>
+
+                  <!-- Quadrant 2: Major Projects -->
+                  <div class="rice-quad-cell" style="border-top: 3px solid #9b59b6;">
+                    <div class="rice-quad-cell-head">
+                      <h4 style="color:#9b59b6;">
+                        <span>💎</span>
+                        <span class="zh">Major Projects (重大戰略)</span>
+                        <span class="en">Major Projects</span>
+                      </h4>
+                      <span class="rice-quadrant-tag rice-quad-major" id="riceCountMajor">0</span>
+                    </div>
+                    <p style="margin:0 0 10px; font-size:11px; color:var(--muted);">
+                      <span class="zh">高價值 × 高投入：長期戰略核心，需謹慎規劃里程碑與分配資源。</span>
+                      <span class="en">High Value, High Effort: Strategic pillars, plan milestones.</span>
+                    </p>
+                    <div class="rice-quad-items" id="riceQuadItemsMajor"></div>
+                  </div>
+
+                  <!-- Quadrant 3: Fill-ins -->
+                  <div class="rice-quad-cell" style="border-top: 3px solid #3498db;">
+                    <div class="rice-quad-cell-head">
+                      <h4 style="color:#3498db;">
+                        <span>☕</span>
+                        <span class="zh">Fill-ins (次要填補)</span>
+                        <span class="en">Fill-ins</span>
+                      </h4>
+                      <span class="rice-quadrant-tag rice-quad-fillin" id="riceCountFillin">0</span>
+                    </div>
+                    <p style="margin:0 0 10px; font-size:11px; color:var(--muted);">
+                      <span class="zh">低價值 × 低投入：可作為衝刺空檔或新人上手的低成本練兵任務。</span>
+                      <span class="en">Low Value, Low Effort: Ideal for sprint buffers or onboarding.</span>
+                    </p>
+                    <div class="rice-quad-items" id="riceQuadItemsFillin"></div>
+                  </div>
+
+                  <!-- Quadrant 4: Money Pits -->
+                  <div class="rice-quad-cell" style="border-top: 3px solid #e74c3c;">
+                    <div class="rice-quad-cell-head">
+                      <h4 style="color:#e74c3c;">
+                        <span>⛔</span>
+                        <span class="zh">Money Pits (耗能錢坑)</span>
+                        <span class="en">Money Pits</span>
+                      </h4>
+                      <span class="rice-quadrant-tag rice-quad-pit" id="riceCountPit">0</span>
+                    </div>
+                    <p style="margin:0 0 10px; font-size:11px; color:var(--muted);">
+                      <span class="zh">低價值 × 高投入：效益低且消耗大量資源，應果斷廢棄或重新架構。</span>
+                      <span class="en">Low Value, High Effort: Poor ROI, deprioritize or drop.</span>
+                    </p>
+                    <div class="rice-quad-items" id="riceQuadItemsPit"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Empty State -->
+              <div id="riceEmptyState" class="tps-empty" style="display:none;">
+                <span class="zh">尚無 RICE 評估項目。使用左側表單新增或點擊上方「載入範本」。</span>
+                <span class="en">No RICE items yet. Add one via the form or click "Load Preset" above.</span>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Help Modal overlay -->
-        <div class="tps-modal-overlay" id="tpsHelpOverlay">
-          <div class="tps-modal" role="dialog" aria-modal="true" aria-labelledby="tpsHelpTitle">
-            <div class="tps-modal-head">
-              <h2 id="tpsHelpTitle"><span class="zh">這個工具怎麼運作</span><span class="en">How this tool works</span></h2>
-              <button class="tps-icon-btn" id="tpsHelpClose" aria-label="close">✕</button>
-            </div>
-            <div class="tps-modal-body">
-              <h3><span class="zh">1. 三項評分 + 截止日期 + 工時記錄</span><span class="en">1. Three scores + due date + hours logged</span></h3>
-              <p>
-                <span class="zh">每個任務有三項 1–5 分的評分——成本影響、品質影響、管理層偏好，一律「分數越高＝越優先」。此外可填寫截止日期，系統會據此計算「急迫度」。測試工時另外記錄，不列入加權分數。</span>
-                <span class="en">Each task gets three 1–5 scores — Cost Impact, Quality Impact, Management Preference — higher is always higher priority. Optional due date calculates urgency. Testing hours logged separately.</span>
-              </p>
-              <h3><span class="zh">2. 正規化（Normalize）</span><span class="en">2. Normalization</span></h3>
-              <p>
-                <span class="zh">系統把三項評分換算成 0–100 的相對分數：最低值換為 0、最高值換為 100，其餘依比例內插。截止日則用固定公式：今天或已逾期 → 100 分；超過「急迫度視窗」天數（預設 30 天）→ 0 分；中間線性遞減。未設定截止日則為 0 分。</span>
-                <span class="en">Converts 1–5 scores to a relative 0–100 scale: lowest becomes 0, highest becomes 100. Due date urgency uses a fixed formula: due today/overdue → 100; beyond the horizon (e.g. 30 days) → 0. No due date = 0.</span>
-              </p>
-              <h3><span class="zh">3. 權重百分比與優先分數</span><span class="en">3. Weights & Priority Score</span></h3>
-              <p>
-                <span class="zh">優先分數 = Σ（每項正規化分數 × 該項權重%），總合 0–100 分。67–100分為高優先（橘黃色），34–66分為中優先（綠色），0–33分為低優先。</span>
-                <span class="en">Priority score = Σ (each normalized score × its weight%), yielding a 0–100 range. 67–100 is high (amber), 34–66 is medium (sage), 0–33 is low.</span>
-              </p>
-              <h3><span class="zh">4. 效率分數（⚡）</span><span class="en">4. Efficiency score (⚡)</span></h3>
-              <p>
-                <span class="zh">「效率分數」＝優先分數 ÷ 測試工時，代表每投入一小時測試能換得多少優先分數。工時為 0 時顯示「∞」（免費機會）。您可以依效率排序，找出「低投入、高產出」的任務。</span>
-                <span class="en">Efficiency = priority score ÷ testing hours (points per hour). 0 hours shows "∞" (free win). Sort by efficiency to find low-effort, high-impact tasks.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="demo-controls" style="margin-top:20px; justify-content: flex-start;">
-          <button class="demo-btn" id="tpsHelpBtn">? <span class="zh">使用說明</span><span class="en">Help</span></button>
-          <button class="demo-btn secondary" id="tpsSampleBtn"><span class="zh">載入範例</span><span class="en">Load Example</span></button>
-          <button class="demo-btn secondary" id="tpsExportJson"><span class="zh">匯出 JSON</span><span class="en">Export JSON</span></button>
-          <button class="demo-btn secondary" id="tpsExportMd"><span class="zh">匯出 Markdown 報表</span><span class="en">Export MD Report</span></button>
-          <button class="demo-btn secondary" id="tpsImportBtn"><span class="zh">匯入資料</span><span class="en">Import Data</span></button>
-          <input type="file" id="tpsImportFile" accept="application/json" style="display:none;">
         </div>
       </section>
 
@@ -15459,7 +16031,7 @@ const SECTIONS = [
   {id:'tools', zh:'實戰工具', en:'Tools'},
   {id:'calculators', zh:'FMEA RPN | Pugh Matrix | OEE 模擬工具 | 5sAudit | RACI Matrix | 專案效益計算 | 360° 回饋評估', en:'FMEA RPN | Pugh Matrix | OEE Simulator tool | 5sAudit | RACI Matrix | Cost Savings | 360° Feedback'},
   {id:'a3', zh:'A3 回饋報告', en:'A3 Report'},
-  {id:'priority', zh:'任務優先評分', en:'Task Priority Scorer'},
+  {id:'priority', zh:'任務優先評分與 RICE 決策矩陣', en:'Task Priority Scorer & RICE Decision Matrix'},
   {id:'reqtrack', zh:'客戶需求追蹤', en:'Customer Requirement Tracker'},
   {id:'meeting', zh:'精實會議與高階簡報表達 (STAR vs. CARL)', en:'Lean Meeting & Executive Presentation (STAR vs. CARL)'},
   {id:'sayno', zh:'職場說不的藝術與防禦手冊', en:'Art of Saying No: Workplace Defense'},
@@ -18589,6 +19161,7 @@ function globalSearch(query){
       '.mcard, .ccard, .gloss-item, .belt-body, .dmaic-subcard, .dmaic-goal-card,'+
       ' tr.tool-row, tr.s5-row, .a3-section, .roadmap-card, .quiz-option, .chip, .calc-tab,'+
       ' .ctrl-btn, .s5-cleanroom-note, .honesty-note, .cleanroom-protocol-card, .cleanroom-protocol-header,'+
+      ' .priority-tab-btn, .rice-task-card, .rice-quad-cell, .rice-score-tag, .rice-formula-badge, .rice-crit-pill,'+
       ' .scrum-pillar-card, .scrum-item-box, .scrum-tool-card, .cynefin-card, .gate-column,'+
       ' .scrum-subnav-btn, .book-card, .book-title-main, .book-title-sub, .connection-title,'+
       ' .scenario-box, h2, h3, h4, h5, dt, dd, li, p, th, td'
@@ -18708,6 +19281,17 @@ function renderSearchResults(query){
         // 5. Expand HTML5 details if target is inside
         const det = r.element.closest ? r.element.closest('details') : null;
         if(det && !det.open) det.open = true;
+
+        // 6. Priority / RICE Sub-Tab Activation
+        const isRice = r.element.id === 'tabPriorityRice' ||
+                       (r.element.closest && r.element.closest('#panelPriorityRice'));
+        const isWeighted = r.element.id === 'tabPriorityWeighted' ||
+                          (r.element.closest && r.element.closest('#panelPriorityWeighted'));
+        if(isRice && typeof switchPriorityTab === 'function'){
+          switchPriorityTab('rice');
+        } else if(isWeighted && typeof switchPriorityTab === 'function'){
+          switchPriorityTab('weighted');
+        }
       } catch(e) {
         console.warn('Search navigation sub-panel activation error:', e);
       }
@@ -20088,7 +20672,596 @@ function initPriorityScorer() {
   }
 
   renderTpsTasks();
+  initRiceMatrix();
 }
+
+/* ==================== RICE MATRIX PRIORITIZATION ==================== */
+let riceEditingId = null;
+let riceView = 'list';
+let riceSort = 'rice-desc';
+const RICE_STORAGE_KEY = 'lss_rice_matrix_data';
+
+function riceEscape(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+const DEFAULT_RICE_ITEMS = [
+  {
+    id: 'rice-1',
+    name: '晶圓缺陷 ADC 影像辨識 AI 模型 (Wafer Defect Auto-Classification)',
+    category: '半導體改善',
+    reach: 1200,
+    impact: 2.0,
+    confidence: 0.8,
+    effort: 2.0,
+    created: Date.now() - 86400000 * 3
+  },
+  {
+    id: 'rice-2',
+    name: 'EUV 光罩微霧化氮氣淨化系統 (EUV Reticle Haze Purge System)',
+    category: '晶圓製程',
+    reach: 450,
+    impact: 3.0,
+    confidence: 0.8,
+    effort: 1.5,
+    created: Date.now() - 86400000 * 5
+  },
+  {
+    id: 'rice-3',
+    name: '機台預防保養 (PM) 週期延長 15% (Chamber PM Interval Extension)',
+    category: '設備維護',
+    reach: 300,
+    impact: 2.0,
+    confidence: 1.0,
+    effort: 0.8,
+    created: Date.now() - 86400000 * 2
+  },
+  {
+    id: 'rice-4',
+    name: '高階封裝 CoWoS 翹曲即時熱補償 (CoWoS Warpage Thermal Control)',
+    category: '先進封裝',
+    reach: 600,
+    impact: 3.0,
+    confidence: 0.5,
+    effort: 3.5,
+    created: Date.now() - 86400000 * 6
+  },
+  {
+    id: 'rice-5',
+    name: '庫存領料推車全面更換防靜電輪 (ESD Wheel Replacement on Carts)',
+    category: '5S/現場',
+    reach: 150,
+    impact: 0.5,
+    confidence: 1.0,
+    effort: 0.5,
+    created: Date.now() - 86400000 * 1
+  },
+  {
+    id: 'rice-6',
+    name: '未經驗證之次世代電漿清洗腔體改裝 (Unverified Chamber Retrofit)',
+    category: '研發探索',
+    reach: 80,
+    impact: 1.0,
+    confidence: 0.5,
+    effort: 4.0,
+    created: Date.now() - 86400000 * 7
+  }
+];
+
+let riceItems = [];
+
+function switchPriorityTab(tabId) {
+  const btnWeighted = document.getElementById('tabPriorityWeighted');
+  const btnRice = document.getElementById('tabPriorityRice');
+  const panelWeighted = document.getElementById('panelPriorityWeighted');
+  const panelRice = document.getElementById('panelPriorityRice');
+
+  if (!btnWeighted || !btnRice || !panelWeighted || !panelRice) return;
+
+  if (tabId === 'rice') {
+    btnRice.classList.add('active');
+    btnWeighted.classList.remove('active');
+    panelRice.style.display = 'block';
+    panelRice.classList.add('active');
+    panelWeighted.style.display = 'none';
+    panelWeighted.classList.remove('active');
+    renderRiceItems();
+    renderRiceQuadrants();
+  } else {
+    btnWeighted.classList.add('active');
+    btnRice.classList.remove('active');
+    panelWeighted.style.display = 'block';
+    panelWeighted.classList.add('active');
+    panelRice.style.display = 'none';
+    panelRice.classList.remove('active');
+  }
+}
+window.switchPriorityTab = switchPriorityTab;
+
+function loadRiceItems() {
+  try {
+    const raw = localStorage.getItem(RICE_STORAGE_KEY);
+    if (raw) {
+      riceItems = JSON.parse(raw);
+    } else {
+      riceItems = JSON.parse(JSON.stringify(DEFAULT_RICE_ITEMS));
+      saveRiceItems();
+    }
+  } catch (e) {
+    riceItems = JSON.parse(JSON.stringify(DEFAULT_RICE_ITEMS));
+  }
+}
+
+function saveRiceItems() {
+  try {
+    localStorage.setItem(RICE_STORAGE_KEY, JSON.stringify(riceItems));
+  } catch (e) {}
+}
+
+function calculateRiceScore(r, i, c, e) {
+  const reach = Number(r) || 0;
+  const impact = Number(i) || 0;
+  const confidence = Number(c) || 0;
+  const effort = Math.max(0.1, Number(e) || 1);
+  const score = (reach * impact * confidence) / effort;
+  return Math.round(score * 10) / 10;
+}
+
+function getRiceTierClass(score) {
+  if (score >= 800) return 'tier-top';
+  if (score >= 250) return 'tier-mid';
+  return 'tier-low';
+}
+
+function getMedianValues() {
+  if (riceItems.length === 0) return { medianValue: 500, medianEffort: 2.0 };
+  const values = riceItems.map(it => (Number(it.reach) || 0) * (Number(it.impact) || 0) * (Number(it.confidence) || 0)).sort((a,b) => a - b);
+  const efforts = riceItems.map(it => Number(it.effort) || 1).sort((a,b) => a - b);
+  const mid = Math.floor(values.length / 2);
+  const medianValue = values.length % 2 !== 0 ? values[mid] : ((values[mid - 1] + values[mid]) / 2);
+  const medianEffort = efforts.length % 2 !== 0 ? efforts[mid] : ((efforts[mid - 1] + efforts[mid]) / 2);
+  return { medianValue, medianEffort };
+}
+
+function getRiceQuadrant(item, medianValue, medianEffort) {
+  const value = (Number(item.reach) || 0) * (Number(item.impact) || 0) * (Number(item.confidence) || 0);
+  const effort = Math.max(0.1, Number(item.effort) || 1);
+
+  const isHighValue = value >= medianValue;
+  const isLowEffort = effort <= medianEffort;
+
+  if (isHighValue && isLowEffort) {
+    return {
+      type: 'quickwin',
+      badgeClass: 'rice-quad-quickwin',
+      zh: '🚀 Quick Win (速贏)',
+      en: '🚀 Quick Win'
+    };
+  } else if (isHighValue && !isLowEffort) {
+    return {
+      type: 'major',
+      badgeClass: 'rice-quad-major',
+      zh: '💎 重大戰略投資',
+      en: '💎 Major Project'
+    };
+  } else if (!isHighValue && isLowEffort) {
+    return {
+      type: 'fillin',
+      badgeClass: 'rice-quad-fillin',
+      zh: '☕ 次要填補',
+      en: '☕ Fill-in'
+    };
+  } else {
+    return {
+      type: 'pit',
+      badgeClass: 'rice-quad-pit',
+      zh: '⛔ 耗能錢坑',
+      en: '⛔ Money Pit'
+    };
+  }
+}
+
+function updateRiceScorePreview() {
+  const reach = Number(document.getElementById('riceItemReach')?.value) || 0;
+  const impact = Number(document.getElementById('riceItemImpact')?.value) || 1;
+  const confidence = Number(document.getElementById('riceItemConfidence')?.value) || 0.8;
+  const effort = Number(document.getElementById('riceItemEffort')?.value) || 1;
+
+  const score = calculateRiceScore(reach, impact, confidence, effort);
+  const scoreEl = document.getElementById('ricePreviewScoreNum');
+  const formulaEl = document.getElementById('ricePreviewFormula');
+
+  if (scoreEl) scoreEl.textContent = score.toLocaleString();
+  if (formulaEl) {
+    const confPct = Math.round(confidence * 100) + '%';
+    formulaEl.textContent = `(${reach.toLocaleString()} × ${impact} × ${confPct}) ÷ ${effort} = ${score.toLocaleString()}`;
+  }
+}
+window.updateRiceScorePreview = updateRiceScorePreview;
+
+function renderRiceItems() {
+  const container = document.getElementById('riceTaskList');
+  const countEl = document.getElementById('riceItemCount');
+  const emptyState = document.getElementById('riceEmptyState');
+  if (!container) return;
+
+  if (countEl) countEl.textContent = riceItems.length;
+
+  if (riceItems.length === 0) {
+    container.innerHTML = '';
+    if (emptyState && riceView === 'list') emptyState.style.display = 'block';
+    return;
+  }
+  if (emptyState) emptyState.style.display = 'none';
+
+  const { medianValue, medianEffort } = getMedianValues();
+
+  // Sorting
+  const sorted = [...riceItems].sort((a, b) => {
+    if (riceSort === 'rice-asc') {
+      return calculateRiceScore(a.reach, a.impact, a.confidence, a.effort) - calculateRiceScore(b.reach, b.impact, b.confidence, b.effort);
+    } else if (riceSort === 'reach-desc') {
+      return (Number(b.reach) || 0) - (Number(a.reach) || 0);
+    } else if (riceSort === 'impact-desc') {
+      return (Number(b.impact) || 0) - (Number(a.impact) || 0);
+    } else if (riceSort === 'effort-asc') {
+      return (Number(a.effort) || 0) - (Number(b.effort) || 0);
+    } else if (riceSort === 'name') {
+      return a.name.localeCompare(b.name);
+    } else {
+      return calculateRiceScore(b.reach, b.impact, b.confidence, b.effort) - calculateRiceScore(a.reach, a.impact, a.confidence, a.effort);
+    }
+  });
+
+  container.innerHTML = sorted.map((item, idx) => {
+    const score = calculateRiceScore(item.reach, item.impact, item.confidence, item.effort);
+    const tierClass = getRiceTierClass(score);
+    const quad = getRiceQuadrant(item, medianValue, medianEffort);
+    const confPct = Math.round(item.confidence * 100) + '%';
+    const quadLabel = state.lang === 'zh' ? quad.zh : quad.en;
+
+    return `
+      <div class="rice-task-card" data-rice-id="${item.id}">
+        <div class="rice-badge-col">
+          <div class="rice-score-tag ${tierClass}">${score.toLocaleString()}</div>
+          <span class="rice-quadrant-tag ${quad.badgeClass}">${quadLabel}</span>
+        </div>
+        <div class="tps-task-info">
+          <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+            <span style="font-family:monospace; font-size:11px; opacity:0.6; font-weight:700;">#${idx + 1}</span>
+            <span class="chip" style="font-size:10px; padding:1px 6px;">${riceEscape(item.category || 'General')}</span>
+          </div>
+          <h3 style="font-size:14px; font-weight:700; margin:0 0 4px; color:var(--ink); line-height:1.4;">${riceEscape(item.name)}</h3>
+          <div class="rice-chips">
+            <span class="rice-chip"><strong>R</strong> (Reach): ${Number(item.reach).toLocaleString()}</span>
+            <span class="rice-chip"><strong>I</strong> (Impact): ${item.impact}x</span>
+            <span class="rice-chip"><strong>C</strong> (Conf): ${confPct}</span>
+            <span class="rice-chip"><strong>E</strong> (Effort): ${item.effort} pm</span>
+          </div>
+        </div>
+        <div class="tps-actions">
+          <button class="tps-icon-btn" onclick="editRiceItem('${item.id}')" title="編輯 / Edit" aria-label="Edit">✏️</button>
+          <button class="tps-icon-btn" onclick="duplicateRiceItem('${item.id}')" title="複製 / Duplicate" aria-label="Duplicate">📋</button>
+          <button class="tps-icon-btn" onclick="deleteRiceItem('${item.id}')" title="刪除 / Delete" aria-label="Delete">🗑️</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRiceQuadrants() {
+  const medianInfoEl = document.getElementById('riceMedianInfo');
+  const countQuickWin = document.getElementById('riceCountQuickWin');
+  const countMajor = document.getElementById('riceCountMajor');
+  const countFillin = document.getElementById('riceCountFillin');
+  const countPit = document.getElementById('riceCountPit');
+
+  const itemsQuickWin = document.getElementById('riceQuadItemsQuickWin');
+  const itemsMajor = document.getElementById('riceQuadItemsMajor');
+  const itemsFillin = document.getElementById('riceQuadItemsFillin');
+  const itemsPit = document.getElementById('riceQuadItemsPit');
+
+  if (!itemsQuickWin) return;
+
+  const { medianValue, medianEffort } = getMedianValues();
+  if (medianInfoEl) {
+    medianInfoEl.textContent = `Value Median: ${Math.round(medianValue)} | Effort Median: ${medianEffort} pm`;
+  }
+
+  const quads = { quickwin: [], major: [], fillin: [], pit: [] };
+
+  riceItems.forEach(it => {
+    const q = getRiceQuadrant(it, medianValue, medianEffort);
+    const score = calculateRiceScore(it.reach, it.impact, it.confidence, it.effort);
+    quads[q.type].push({ ...it, score });
+  });
+
+  // Update counts
+  if (countQuickWin) countQuickWin.textContent = quads.quickwin.length;
+  if (countMajor) countMajor.textContent = quads.major.length;
+  if (countFillin) countFillin.textContent = quads.fillin.length;
+  if (countPit) countPit.textContent = quads.pit.length;
+
+  const renderPills = (arr) => {
+    if (arr.length === 0) {
+      return `<div style="font-size:11px; opacity:0.5; padding:10px 0; text-align:center;">${state.lang === 'zh' ? '無項目' : 'No items'}</div>`;
+    }
+    return arr.sort((a,b) => b.score - a.score).map(it => `
+      <div class="rice-quad-item-pill">
+        <span style="font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:200px;" title="${riceEscape(it.name)}">
+          ${riceEscape(it.name)}
+        </span>
+        <span style="font-family:monospace; font-weight:700; color:var(--amber); white-space:nowrap;">
+          ${it.score.toLocaleString()}
+        </span>
+      </div>
+    `).join('');
+  };
+
+  if (itemsQuickWin) itemsQuickWin.innerHTML = renderPills(quads.quickwin);
+  if (itemsMajor) itemsMajor.innerHTML = renderPills(quads.major);
+  if (itemsFillin) itemsFillin.innerHTML = renderPills(quads.fillin);
+  if (itemsPit) itemsPit.innerHTML = renderPills(quads.pit);
+}
+
+function saveRiceItem() {
+  const nameInput = document.getElementById('riceItemName');
+  const catInput = document.getElementById('riceItemCategory');
+  const reachInput = document.getElementById('riceItemReach');
+  const impactInput = document.getElementById('riceItemImpact');
+  const confInput = document.getElementById('riceItemConfidence');
+  const effortInput = document.getElementById('riceItemEffort');
+
+  const name = (nameInput?.value || '').trim();
+  if (!name) {
+    if (nameInput) nameInput.focus();
+    return;
+  }
+
+  const category = (catInput?.value || '').trim() || (state.lang === 'zh' ? '一般專案' : 'General');
+  const reach = Math.max(1, Math.round(Number(reachInput?.value) || 1));
+  const impact = Number(impactInput?.value) || 1.0;
+  const confidence = Number(confInput?.value) || 0.8;
+  const effort = Math.max(0.1, Number(effortInput?.value) || 1.0);
+
+  if (riceEditingId) {
+    const item = riceItems.find(it => it.id === riceEditingId);
+    if (item) {
+      item.name = name;
+      item.category = category;
+      item.reach = reach;
+      item.impact = impact;
+      item.confidence = confidence;
+      item.effort = effort;
+    }
+    riceEditingId = null;
+  } else {
+    riceItems.push({
+      id: 'rice-' + Date.now(),
+      name,
+      category,
+      reach,
+      impact,
+      confidence,
+      effort,
+      created: Date.now()
+    });
+  }
+
+  saveRiceItems();
+  resetRiceForm();
+  renderRiceItems();
+  renderRiceQuadrants();
+}
+window.saveRiceItem = saveRiceItem;
+
+function editRiceItem(id) {
+  const item = riceItems.find(it => it.id === id);
+  if (!item) return;
+
+  riceEditingId = id;
+  const nameInput = document.getElementById('riceItemName');
+  const catInput = document.getElementById('riceItemCategory');
+  const reachInput = document.getElementById('riceItemReach');
+  const impactInput = document.getElementById('riceItemImpact');
+  const confInput = document.getElementById('riceItemConfidence');
+  const effortInput = document.getElementById('riceItemEffort');
+  const formTitle = document.getElementById('riceFormTitle');
+  const saveBtn = document.getElementById('riceSaveBtn');
+  const cancelBtn = document.getElementById('riceCancelBtn');
+
+  if (nameInput) nameInput.value = item.name;
+  if (catInput) catInput.value = item.category || '';
+  if (reachInput) reachInput.value = item.reach;
+  if (impactInput) impactInput.value = item.impact;
+  if (confInput) confInput.value = item.confidence;
+  if (effortInput) effortInput.value = item.effort;
+
+  if (formTitle) formTitle.innerHTML = '<span class="zh">編輯 RICE 項目</span><span class="en">Edit RICE Item</span>';
+  if (saveBtn) saveBtn.innerHTML = '<span class="zh">更新項目</span><span class="en">Update Item</span>';
+  if (cancelBtn) cancelBtn.style.display = 'inline-block';
+
+  updateRiceScorePreview();
+  if (nameInput) nameInput.focus();
+}
+window.editRiceItem = editRiceItem;
+
+function duplicateRiceItem(id) {
+  const item = riceItems.find(it => it.id === id);
+  if (!item) return;
+  const copy = JSON.parse(JSON.stringify(item));
+  copy.id = 'rice-' + Date.now();
+  copy.name = copy.name + ' (Copy)';
+  copy.created = Date.now();
+  riceItems.push(copy);
+  saveRiceItems();
+  renderRiceItems();
+  renderRiceQuadrants();
+}
+window.duplicateRiceItem = duplicateRiceItem;
+
+function deleteRiceItem(id) {
+  const confirmMsg = state.lang === 'zh' ? '確定要刪除此 RICE 評估項目嗎？' : 'Delete this RICE item?';
+  if (!confirm(confirmMsg)) return;
+  riceItems = riceItems.filter(it => it.id !== id);
+  if (riceEditingId === id) resetRiceForm();
+  saveRiceItems();
+  renderRiceItems();
+  renderRiceQuadrants();
+}
+window.deleteRiceItem = deleteRiceItem;
+
+function resetRiceForm() {
+  riceEditingId = null;
+  const nameInput = document.getElementById('riceItemName');
+  const catInput = document.getElementById('riceItemCategory');
+  const reachInput = document.getElementById('riceItemReach');
+  const impactInput = document.getElementById('riceItemImpact');
+  const confInput = document.getElementById('riceItemConfidence');
+  const effortInput = document.getElementById('riceItemEffort');
+  const formTitle = document.getElementById('riceFormTitle');
+  const saveBtn = document.getElementById('riceSaveBtn');
+  const cancelBtn = document.getElementById('riceCancelBtn');
+
+  if (nameInput) nameInput.value = '';
+  if (catInput) catInput.value = '';
+  if (reachInput) reachInput.value = '1000';
+  if (impactInput) impactInput.value = '2.0';
+  if (confInput) confInput.value = '0.8';
+  if (effortInput) effortInput.value = '2.0';
+
+  if (formTitle) formTitle.innerHTML = '<span class="zh">新增 RICE 評估項目</span><span class="en">Add RICE Item</span>';
+  if (saveBtn) saveBtn.innerHTML = '<span class="zh">儲存項目</span><span class="en">Save Item</span>';
+  if (cancelBtn) cancelBtn.style.display = 'none';
+
+  updateRiceScorePreview();
+}
+window.resetRiceForm = resetRiceForm;
+
+function setRiceView(view) {
+  riceView = view;
+  const btnList = document.getElementById('riceViewBtnList');
+  const btnQuad = document.getElementById('riceViewBtnQuad');
+  const listContainer = document.getElementById('riceTaskList');
+  const quadContainer = document.getElementById('riceQuadrantView');
+  const emptyState = document.getElementById('riceEmptyState');
+
+  if (btnList && btnQuad) {
+    btnList.classList.toggle('active', view === 'list');
+    btnQuad.classList.toggle('active', view === 'quadrant');
+  }
+
+  if (view === 'quadrant') {
+    if (listContainer) listContainer.style.display = 'none';
+    if (quadContainer) quadContainer.style.display = 'block';
+    if (emptyState) emptyState.style.display = 'none';
+    renderRiceQuadrants();
+  } else {
+    if (quadContainer) quadContainer.style.display = 'none';
+    if (listContainer) listContainer.style.display = riceItems.length ? 'flex' : 'none';
+    if (emptyState) emptyState.style.display = riceItems.length ? 'none' : 'block';
+    renderRiceItems();
+  }
+}
+window.setRiceView = setRiceView;
+
+function changeRiceSort(sortVal) {
+  riceSort = sortVal;
+  renderRiceItems();
+}
+window.changeRiceSort = changeRiceSort;
+
+function loadRicePreset(type) {
+  const confirmMsg = state.lang === 'zh' ? '載入範本將會替換現有項目，確定要載入嗎？' : 'Loading preset will replace existing items. Continue?';
+  if (riceItems.length > 0 && !confirm(confirmMsg)) return;
+
+  if (type === 'saas') {
+    riceItems = [
+      { id: 'rice-s1', name: '購物車一鍵極速結帳 (1-Click Express Checkout)', category: '客戶體驗 / CRO', reach: 5000, impact: 2.0, confidence: 1.0, effort: 2.0, created: Date.now() },
+      { id: 'rice-s2', name: '搜尋即時自動補全與拼字糾錯 (Search Autocomplete & Spellcheck)', category: '產品功能', reach: 8000, impact: 1.0, confidence: 0.8, effort: 1.5, created: Date.now() },
+      { id: 'rice-s3', name: 'AI 智能客服自動分流 (AI Agent Support Routing)', category: '營運效能', reach: 2000, impact: 3.0, confidence: 0.5, effort: 4.0, created: Date.now() },
+      { id: 'rice-s4', name: '暗黑模式介面支援 (Dark Mode UI Theme)', category: 'UI/UX', reach: 3000, impact: 0.5, confidence: 1.0, effort: 0.5, created: Date.now() },
+      { id: 'rice-s5', name: '全站舊版架構微服務重構 (Monolith to Microservices Refactor)', category: '技術債 / 架構', reach: 1000, impact: 1.0, confidence: 0.5, effort: 6.0, created: Date.now() },
+      { id: 'rice-s6', name: '匯出自訂 PDF 報表功能 (Custom PDF Export)', category: '報表工具', reach: 600, impact: 0.5, confidence: 0.8, effort: 1.0, created: Date.now() }
+    ];
+  } else {
+    riceItems = JSON.parse(JSON.stringify(DEFAULT_RICE_ITEMS));
+  }
+
+  saveRiceItems();
+  resetRiceForm();
+  renderRiceItems();
+  renderRiceQuadrants();
+}
+window.loadRicePreset = loadRicePreset;
+
+function clearRiceItems() {
+  const confirmMsg = state.lang === 'zh' ? '確定要清空所有 RICE 評估項目嗎？' : 'Clear all RICE items?';
+  if (!confirm(confirmMsg)) return;
+  riceItems = [];
+  saveRiceItems();
+  resetRiceForm();
+  renderRiceItems();
+  renderRiceQuadrants();
+}
+window.clearRiceItems = clearRiceItems;
+
+function exportRiceMarkdown() {
+  if (riceItems.length === 0) {
+    alert(state.lang === 'zh' ? '目前尚無 RICE 項目可匯出' : 'No RICE items to export');
+    return;
+  }
+  const { medianValue, medianEffort } = getMedianValues();
+  const sorted = [...riceItems].sort((a, b) => {
+    const sA = calculateRiceScore(a.reach, a.impact, a.confidence, a.effort);
+    const sB = calculateRiceScore(b.reach, b.impact, b.confidence, b.effort);
+    return sB - sA;
+  });
+
+  let md = `# RICE Matrix 優先級評估決策報告\n\n`;
+  md += `> **公式**：\`RICE Score = (Reach × Impact × Confidence) ÷ Effort\`\n`;
+  md += `> **產出時間**：${new Date().toLocaleString()}\n\n`;
+  md += `| 排名 | 項目名稱 | 類別 | Reach | Impact | Confidence | Effort (人月) | RICE 得分 | 決策象限建議 |\n`;
+  md += `|---|---|---|---|---|---|---|---|---|\n`;
+
+  sorted.forEach((it, idx) => {
+    const score = calculateRiceScore(it.reach, it.impact, it.confidence, it.effort);
+    const quad = getRiceQuadrant(it, medianValue, medianEffort);
+    const confStr = Math.round(it.confidence * 100) + '%';
+    md += `| #${idx + 1} | ${it.name} | ${it.category} | ${Number(it.reach).toLocaleString()} | ${it.impact}x | ${confStr} | ${it.effort} | **${score.toLocaleString()}** | ${quad.zh} |\n`;
+  });
+
+  md += `\n### 象限分佈說明\n`;
+  md += `- 🚀 **Quick Wins (速贏/優先)**：高價值 (R×I×C) × 低投入 (Effort) — 建議排入近期 Sprint 最優先實施。\n`;
+  md += `- 💎 **Major Projects (重大戰略)**：高價值 × 高投入 — 具關鍵影響力但需分配長期資源。\n`;
+  md += `- ☕ **Fill-ins (次要填補)**：低價值 × 低投入 — 可做為排程空檔填補。\n`;
+  md += `- ⛔ **Money Pits (耗能淘汰)**：低價值 × 高投入 — 投資報酬率過低，應予以裁減或重新定義。\n`;
+
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `RICE_Matrix_Report_${new Date().toISOString().slice(0, 10)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+window.exportRiceMarkdown = exportRiceMarkdown;
+
+function initRiceMatrix() {
+  loadRiceItems();
+  updateRiceScorePreview();
+  renderRiceItems();
+  renderRiceQuadrants();
+}
+window.initRiceMatrix = initRiceMatrix;
 
 let rtState = {
   customers: [],

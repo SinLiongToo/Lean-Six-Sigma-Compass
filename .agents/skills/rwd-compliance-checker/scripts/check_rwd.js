@@ -13,14 +13,7 @@ function findFunctionScopes(jsCode) {
   const nestedFunctions = new Set();
   const windowExports = new Set();
 
-  let inSingleQuote = false;
-  let inDoubleQuote = false;
-  let inTemplate = false;
-  let inLineComment = false;
-  let inBlockComment = false;
-  let braceDepth = 0;
-
-  // Track window exports: window.foo = or window['foo'] = or window["foo"] =
+  // 1. Track window exports: window.foo = or window['foo'] = or window["foo"] =
   const winRegex = /window(?:\.([a-zA-Z0-9_$]+)|\[['"]([a-zA-Z0-9_$]+)['"]\])\s*=/g;
   let winMatch;
   while ((winMatch = winRegex.exec(jsCode)) !== null) {
@@ -28,69 +21,30 @@ function findFunctionScopes(jsCode) {
     if (fn) windowExports.add(fn);
   }
 
-  const len = jsCode.length;
-  for (let i = 0; i < len; i++) {
-    const char = jsCode[i];
-    const prevChar = i > 0 ? jsCode[i - 1] : '';
-    const nextChar = i < len - 1 ? jsCode[i + 1] : '';
+  // 2. Scan standard function declarations: function <name>(
+  // Top-level functions in standard scripts start at column 0 (no indentation)
+  const fnRegex = /^([ \t]*)function\s+([a-zA-Z0-9_$]+)\s*\(/gm;
+  let fnMatch;
+  while ((fnMatch = fnRegex.exec(jsCode)) !== null) {
+    const indent = fnMatch[1];
+    const fnName = fnMatch[2];
+    if (indent.length === 0) {
+      topLevelFunctions.add(fnName);
+    } else {
+      nestedFunctions.add(fnName);
+    }
+  }
 
-    if (inLineComment) {
-      if (char === '\n') inLineComment = false;
-      continue;
-    }
-    if (inBlockComment) {
-      if (char === '*' && nextChar === '/') {
-        inBlockComment = false;
-        i++;
-      }
-      continue;
-    }
-    if (inSingleQuote) {
-      if (char === "'" && prevChar !== '\\') inSingleQuote = false;
-      continue;
-    }
-    if (inDoubleQuote) {
-      if (char === '"' && prevChar !== '\\') inDoubleQuote = false;
-      continue;
-    }
-    if (inTemplate) {
-      if (char === '`' && prevChar !== '\\') inTemplate = false;
-      continue;
-    }
-
-    if (char === '/' && nextChar === '/') {
-      inLineComment = true;
-      i++;
-      continue;
-    }
-    if (char === '/' && nextChar === '*') {
-      inBlockComment = true;
-      i++;
-      continue;
-    }
-
-    if (char === "'") { inSingleQuote = true; continue; }
-    if (char === '"') { inDoubleQuote = true; continue; }
-    if (char === '`') { inTemplate = true; continue; }
-
-    // Check function declarations: function <name>(
-    if (char === 'f' && jsCode.substr(i, 8) === 'function') {
-      const rest = jsCode.substr(i + 8);
-      const fnMatch = rest.match(/^\s+([a-zA-Z0-9_$]+)\s*\(/);
-      if (fnMatch) {
-        const fnName = fnMatch[1];
-        if (braceDepth === 0) {
-          topLevelFunctions.add(fnName);
-        } else {
-          nestedFunctions.add(fnName);
-        }
-      }
-    }
-
-    if (char === '{') {
-      braceDepth++;
-    } else if (char === '}') {
-      if (braceDepth > 0) braceDepth--;
+  // 3. Scan top-level and nested variable function expressions: const/let/var <name> = function/() =>
+  const arrowRegex = /^([ \t]*)(?:const|let|var)\s+([a-zA-Z0-9_$]+)\s*=\s*(?:function|\([^)]*\)\s*=>|[a-zA-Z0-9_$]+\s*=>)/gm;
+  let arrowMatch;
+  while ((arrowMatch = arrowRegex.exec(jsCode)) !== null) {
+    const indent = arrowMatch[1];
+    const fnName = arrowMatch[2];
+    if (indent.length === 0) {
+      topLevelFunctions.add(fnName);
+    } else {
+      nestedFunctions.add(fnName);
     }
   }
 

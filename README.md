@@ -1,6 +1,6 @@
 # Lean Six Sigma Compass (Masa Tu 精實六標準差羅盤)
 
-[![Version](https://img.shields.io/badge/Version-v2.60-brightgreen?style=flat-square)](#)
+[![Version](https://img.shields.io/badge/Version-v2.61-brightgreen?style=flat-square)](#)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen?style=flat-square&logo=github)](https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-Live%20Mirror-F38020?style=flat-square&logo=cloudflare)](https://lean-six-sigma-compass.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -49,7 +49,7 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
  ├── 07. 實戰工具地圖 (Tool Map)
  ├── 08. 綜合模擬運算工具箱 (Calculators: FMEA / Pugh / OEE / 5S-6S / RACI / Savings / 360°)
  ├── 09. A3 回饋報告產生器 (A3 Lean Project Builder)
- ├── 10. 任務優先評分工具 (Task Priority Scorer - Eisenhower / ICE / WSJF / CD3)
+ ├── 10. 任務優先評分與 RICE 決策矩陣 (Task Priority Scorer & RICE Matrix - Eisenhower / ICE / WSJF / CD3 & RICE)
  ├── 11. 客戶需求追蹤系統 (ReqTrack)
  ├── 12. 精實會議與高階簡報表達藝術 (STAR vs. CARL Frameworks)
  ├── 13. 職場說不的藝術與防禦手冊 (Art of Saying No: Workplace Defense Playbook - 14 大實戰防身神功)
@@ -151,6 +151,17 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
 - **RACI 職責分配矩陣編輯器**
 - **專案財務效益節省計算機**（投資回收期與 ROI 報表）
 - **360° 領導力回饋評估工具**（喬哈里窗、盲點與潛在優勢診斷）
+
+### 11. ⚖️ 任務優先評分與 RICE 決策矩陣 (Task Priority Scorer & RICE Matrix)
+- **雙引導分頁切換 (Dual-Engine Tabs)**：
+  - `加權評分引擎 (Weighted Scorer)`：結合艾森豪矩陣 (Eisenhower)、ICE (Impact-Confidence-Ease)、WSJF (Weighted Shortest Job First) 與 CD3 (Cost of Delay divided by Duration) 多維評估。
+  - `RICE 優先矩陣 (RICE Matrix)`：矽谷科技巨頭與產品管理主流演算法 `RICE = (Reach × Impact × Confidence) ÷ Effort`，精確杜絕「嗓門最大者決定優先級」的 HiPPO 偏誤。
+- **2×2 價值 vs. 付出四象限矩陣圖 (2×2 Value vs. Effort Quadrant View)**：
+  - 依當前任務清單動態計算綜合價值（`Reach × Impact × Confidence`）與付出（`Effort`）中位數分割線。
+  - 即時歸類四象限：⚡ Quick Wins（速贏成果/首選推動）、🎯 Major Projects（戰略要務/排期衝刺）、🧩 Fill-ins（低耗填補/零碎時間執行）、⚠️ Money Pits（時間黑洞/重構或捨棄）。
+- **預設案例庫與匯出**：
+  - 內建「SaaS 軟體產品與數位轉型 DX」與「半導體晶圓廠良率改善與機台 Kaizen」兩大經典情境。
+  - 支援排序切換（RICE 分數、價值、付出、名稱）、卡片複製、編輯、以及一鍵匯出高管決策分析 Markdown 報告。
 
 ---
 
