@@ -40,7 +40,7 @@ Whenever a new feature, section, book, or content change is introduced:
 2. **Synchronize to `lean-six-sigma-compass.html`**:
    - Always copy to keep byte-for-byte sync: `Copy-Item -Path "index.html" -Destination "lean-six-sigma-compass.html" -Force`
 3. **Update `README.md`**:
-   - Keep module lists, book counts (e.g. `46 本跨領域經典精實書庫`), ecosystem links, and feature summaries in sync.
+   - Keep module lists, book counts (e.g. `48 本跨領域經典精實書庫`), ecosystem links, and feature summaries in sync.
 
 ---
 
@@ -104,7 +104,7 @@ Each book requires **two additions** (no JS changes needed):
 | Feature | Implementation | Element |
 |---|---|---|
 | **Dual View Switcher** | Switch between `list` (cards) and `graph` (Obsidian canvas network) | `switchBooksView(view)` JS, `#booksTabList`, `#booksTabGraph` |
-| **Obsidian Connection Graph** | Zero-dependency Canvas force-directed physics engine, 7 Theme Hubs + 46 books, 40+ synergy links, drag/zoom/pan/subgraph hover | Pure Vanilla Canvas Physics engine, `#booksGraphWrap`, `initBooksGraph()`, `reheatBooksGraph()` |
+| **Obsidian Connection Graph** | Zero-dependency Canvas force-directed physics engine, 7 Theme Hubs + 48 books, 40+ synergy links, drag/zoom/pan/subgraph hover | Pure Vanilla Canvas Physics engine, `#booksGraphWrap`, `initBooksGraph()`, `reheatBooksGraph()` |
 | **Graph Inspector Card** | Floating glassmorphism card with book metadata, theme chip, companion book links, and 1-click jump to full card | `#booksGraphInspector`, `jumpToBookFromInspector()`, `closeBooksGraphInspector()` |
 | **Per-card collapsible** | Click title row → hides cover + body, shows title + arrow only | `initBookCollapse()` JS |
 | **Section toggle button & Title chips** | Hides grid, shows interactive clickable chip list of all book titles when collapsed (click to expand, smooth-scroll & pulse highlight card) | `toggleBooksGrid()` + `buildBooksTitleList()` JS |
@@ -114,7 +114,7 @@ Each book requires **two additions** (no JS changes needed):
 > **Global Event Scoping**: All graph control functions (`switchBooksView`, `filterBooksGraph`, `handleBooksGraphSearch`, `clearBooksGraphSearch`, `zoomBooksGraph`, `resetBooksGraphView`, `toggleBooksGraphLabels`, `reheatBooksGraph`, `closeBooksGraphInspector`, `jumpToBookFromInspector`) MUST remain explicitly exported to `window`.
 
 
-### Books Added (as of 2026-09-15)
+### Books Added (as of 2026-09-19)
 
 | # | 中文書名 | English Title | CSS slug | Key Theme |
 |---|---|---|---|---|
@@ -164,6 +164,8 @@ Each book requires **two additions** (no JS changes needed):
 | 44 | 別自個兒用餐 | Never Eat Alone | `never-eat-alone` | Cross-Functional Teaming, Social Capital, Respect for People, Collaborative Kaizen |
 | 45 | 專注力協定 | Indistractable | `indistractable` | Pre-commitments, Identity Pacts, Price Pacts, Cognitive Poka-Yoke, Lean Quality |
 | 46 | 迎變世代 | Adapt: Why Success Always Starts with Failure | `adapt-harford` | VUCA Adaptation, Safe-to-Fail, Lean Fundamentals |
+| 47 | 深度數位大掃除 | Digital Minimalism | `digital-minimalism` | Waste Elimination, Focus, Rational Response |
+| 48 | 沒有Email的世界 | A World Without Email | `world-without-email` | Standard Work, Context Switching Muda, Process-Driven Workflow |
 
 ---
 
