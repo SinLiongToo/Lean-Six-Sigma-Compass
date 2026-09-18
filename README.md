@@ -1,6 +1,6 @@
 # Lean Six Sigma Compass (Masa Tu 精實六標準差羅盤)
 
-[![Version](https://img.shields.io/badge/Version-v2.64-brightgreen?style=flat-square)](#)
+[![Version](https://img.shields.io/badge/Version-v2.65-brightgreen?style=flat-square)](#)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen?style=flat-square&logo=github)](https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-Live%20Mirror-F38020?style=flat-square&logo=cloudflare)](https://lean-six-sigma-compass.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
