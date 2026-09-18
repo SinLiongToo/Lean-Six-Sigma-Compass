@@ -111,7 +111,7 @@ Each book requires **two additions** (no JS changes needed):
 | **Book count badge** | Auto-counts `.book-card` elements, injected into `#booksHeading` | `initBookCollapse()` JS |
 | **Bilingual** | All content uses `.zh` / `.en` span pairs (including title chips & graph) | Site-wide language toggle CSS |
 
-> **Global Event Scoping**: All graph control functions (`switchBooksView`, `filterBooksGraph`, `handleBooksGraphSearch`, `clearBooksGraphSearch`, `zoomBooksGraph`, `resetBooksGraphView`, `toggleBooksGraphLabels`, `reheatBooksGraph`, `closeBooksGraphInspector`, `jumpToBookFromInspector`, `updateBooksGraphLanguage`) MUST remain explicitly exported to `window`.
+> **Global Event Scoping**: All graph control functions (`switchBooksView`, `filterBooksGraph`, `handleBooksGraphSearch`, `clearBooksGraphSearch`, `zoomBooksGraph`, `resetBooksGraphView`, `toggleBooksGraphLabels`, `reheatBooksGraph`, `toggleSelectedNodePin`, `closeBooksGraphInspector`, `jumpToBookFromInspector`, `updateBooksGraphLanguage`) MUST remain explicitly exported to `window`.
 
 
 ### Books Added (as of 2026-09-19)
