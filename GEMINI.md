@@ -103,12 +103,16 @@ Each book requires **two additions** (no JS changes needed):
 
 | Feature | Implementation | Element |
 |---|---|---|
+| **Dual View Switcher** | Switch between `list` (cards) and `graph` (Obsidian canvas network) | `switchBooksView(view)` JS, `#booksTabList`, `#booksTabGraph` |
+| **Obsidian Connection Graph** | Zero-dependency Canvas force-directed physics engine, 7 Theme Hubs + 46 books, 40+ synergy links, drag/zoom/pan/subgraph hover | Pure Vanilla Canvas Physics engine, `#booksGraphWrap`, `initBooksGraph()`, `reheatBooksGraph()` |
+| **Graph Inspector Card** | Floating glassmorphism card with book metadata, theme chip, companion book links, and 1-click jump to full card | `#booksGraphInspector`, `jumpToBookFromInspector()`, `closeBooksGraphInspector()` |
 | **Per-card collapsible** | Click title row → hides cover + body, shows title + arrow only | `initBookCollapse()` JS |
 | **Section toggle button & Title chips** | Hides grid, shows interactive clickable chip list of all book titles when collapsed (click to expand, smooth-scroll & pulse highlight card) | `toggleBooksGrid()` + `buildBooksTitleList()` JS |
 | **Book count badge** | Auto-counts `.book-card` elements, injected into `#booksHeading` | `initBookCollapse()` JS |
-| **Bilingual** | All content uses `.zh` / `.en` span pairs (including title chips) | Site-wide language toggle CSS |
+| **Bilingual** | All content uses `.zh` / `.en` span pairs (including title chips & graph) | Site-wide language toggle CSS |
 
-> All three JS functions (`initBookCollapse`, `toggleBooksGrid`, `buildBooksTitleList`) wire up new cards automatically — no extra JS needed when adding books.
+> **Global Event Scoping**: All graph control functions (`switchBooksView`, `filterBooksGraph`, `handleBooksGraphSearch`, `clearBooksGraphSearch`, `zoomBooksGraph`, `resetBooksGraphView`, `toggleBooksGraphLabels`, `reheatBooksGraph`, `closeBooksGraphInspector`, `jumpToBookFromInspector`) MUST remain explicitly exported to `window`.
+
 
 ### Books Added (as of 2026-09-15)
 

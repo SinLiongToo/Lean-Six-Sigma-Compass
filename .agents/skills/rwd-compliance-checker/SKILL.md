@@ -66,7 +66,11 @@ This skill enforces strict Responsive Web Design (RWD), mobile experience standa
     ```
   - **Ensure responsive line wrapping**: Badges must have `word-break: break-word; white-space: normal;` to prevent breaking mobile layouts.
 
----
+### 8. Interactive Canvas & Physics Visualizations (Zero External Dependencies) 🕸️
+- Visual networking and data diagrams (e.g. Obsidian-style Books Connection Graph, VSM Interactive Canvas) must use native HTML5 `<canvas>` with self-contained vanilla JavaScript physics engines without external CDN libraries (D3, Cytoscape, etc.).
+- **High-DPI Retina Support**: Canvas rendering buffers must be scaled using `window.devicePixelRatio` (`canvas.width = rect.width * dpr; ctx.scale(dpr, dpr)`) for crisp rendering on Retina / 4K screens.
+- **Mobile Touch & Gestures**: Interactive canvas containers must specify `touch-action: none;` to ensure smooth multi-touch gestures (pan, pinch-to-zoom, node drag) without browser scroll interference.
+- **Defensive API Fallbacks**: New Canvas 2D APIs (such as `ctx.roundRect`) must include backwards-compatible fallbacks for older Safari/WebKit environments.
 
 ## 🚀 Execution & Verification Command
 

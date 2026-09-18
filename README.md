@@ -1,6 +1,6 @@
 # Lean Six Sigma Compass (Masa Tu 精實六標準差羅盤)
 
-[![Version](https://img.shields.io/badge/Version-v2.61-brightgreen?style=flat-square)](#)
+[![Version](https://img.shields.io/badge/Version-v2.62-brightgreen?style=flat-square)](#)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-brightgreen?style=flat-square&logo=github)](https://sinliongtoo.github.io/Lean-Six-Sigma-Compass/)
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-Live%20Mirror-F38020?style=flat-square&logo=cloudflare)](https://lean-six-sigma-compass.pages.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -62,7 +62,7 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
  ├── 20. 精實數位轉型與智慧製造 (Lean Digital Transformation & DX)
  ├── 21. 敏捷 Scrum 實戰與精實整合羅盤 (Agile Scrum Playbook, Lean vs 6σ vs Scrum Compass & DoD/DoR Quality Gates)
  ├── 22. 企業組織全景架構與跨部門升級求助板模 (Org Chart & Cross-Functional Escalation Playbook)
- ├── 23. 相關推薦書籍 (46 本跨領域經典精實書庫)
+ ├── 23. 相關推薦書籍 (46 本跨領域經典精實書庫 & Obsidian 風格知識關聯網絡圖)
  └── 24. 詞彙釋義 (Glossary - 65+ 條核心術語全景辭典)
 ```
 
@@ -136,9 +136,17 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
   - **Sprint Retrospective 敏捷回顧樣板**：支援 Sailboat 帆船法（風力/沉錨/暗礁/島嶼）、4Ls 模型與 Start-Stop-Continue，即時產出 Kaizen 行動計畫。
   - **Planning Poker 費氏數列估算速查**：深入破除「故事點 = 工時」的虛假精確迷思。
 
-### 9. 📚 相關推薦書籍 (46 本經典跨領域書庫)
-精選與精實六標準差、心智模型、數據檢驗、專注力、敏捷試錯、迎變世代與生成式 AI 深度結合的 46 本跨界經典著作：
-- 《迎變世代》、《專注力協定》、《別自個兒用餐》、《投資最重要的事》、《職場人的生成式AI工作法》、《寫下來，事情就會發生》、《當下的力量》、《我可能錯了》、《5秒法則》、《做自己的人生財務長》、《跨能致勝》、《給予》、《真確》、《刻意練習》、《精實創業》、《豐田模式》、《目標：限制理論》、《原子習慣》、《致富心態》、《深度工作力》、《窮查理的普通常識》、《聰明犯錯》、《卡內基溝通與人際關係》、《當我談跑步時我談些什麼》、《垃圾車法則》、《活出意義來》、《與成功有約》等。
+### 9. 📚 相關推薦書籍 (46 本經典跨領域書庫 & Obsidian 風格知識網絡圖)
+- **雙重視圖無縫切換 (Dual View Switcher)**：
+  - 提供 `📚 書單卡片列表 (Book Cards)` 與 `🕸️ 知識網絡關聯圖 (Obsidian Graph)` 分頁切換，書單收合/展開按鈕並列整合。
+- **Obsidian 雙鏈筆記風格星空關聯網絡 (Zero-Dependency Interactive Canvas Graph)**：
+  - **100% 零依賴純原生力導向引擎 (Force-Directed Physics Engine)**：純 HTML5 Canvas + 原生物理演算法（庫侖點電荷排斥、虎克彈簧拉力、柔和向心引力與空氣黏滯阻尼），全離線 0 外部 CDN 依賴，跨裝置極速 60 FPS 流暢運作。
+  - **7 大精實核心領域樞紐 (Theme Hubs)**：標準作業與防呆（Standard Work & 5S）、持續改善與精實（Kaizen & Flow）、變異統計與認知（Variation & MSA）、敏捷系統與反脆弱（Agile & Antifragile）、精實領導與人本（Lean Leadership）、消除浪費與專注（Waste & Focus）、個人精實與數位轉型（Personal Lean & DX）。
+  - **沉浸式互動手勢與子網絡聚焦 (Sub-graph Highlight)**：支援節點拖曳物理牽引、畫布平移拖拽、滑鼠滾輪/雙指縮放、節點懸停即時高亮相鄰子網絡（非關聯節點柔化透明度）。
+  - **Obsidian 節點檢視卡 (Inspector Card) 與一鍵穿梭跳轉**：點選節點即刻浮現書本中英書名、作者、LSS 實務關聯與關聯著作雙鏈晶片；點擊「📖 前往完整書卡」自動切換回卡片視圖、自動解除收合並平滑滾動至目標書卡觸發光暈脈衝動畫。
+  - **即時檢索與多維分類過濾膠囊**：提供關鍵字動態搜尋（自動對焦目標節點視野）與 7 大領域專屬過濾膠囊。
+- 精選與精實六標準差、心智模型、數據檢驗、專注力、敏捷試錯、迎變世代與生成式 AI 深度結合的 46 本跨界經典著作：
+  - 《迎變世代》、《專注力協定》、《別自個兒用餐》、《投資最重要的事》、《職場人的生成式AI工作法》、《寫下來，事情就會發生》、《當下的力量》、《我可能錯了》、《5秒法則》、《做自己的人生財務長》、《跨能致勝》、《給予》、《真確》、《刻意練習》、《精實創業》、《豐田模式》、《目標：限制理論》、《原子習慣》、《致富心態》、《深度工作力》、《窮查理的普通常識》、《聰明犯錯》、《卡內基溝通與人際關係》、《當我談跑步時我談些什麼》、《垃圾車法則》、《活出意義來》、《與成功有約》等。
 
 ### 10. 🧮 實用工程與管理運算工具箱 (Calculators)
 - **FMEA RPN 計算器**（嚴重度 S / 發生度 O / 難檢度 D）

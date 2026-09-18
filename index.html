@@ -3075,6 +3075,482 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
     z-index: 10;
   }
 
+
+  /* Books View Controls & Obsidian Connection Graph */
+  .books-view-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0 20px;
+  }
+  .books-view-tabs {
+    display: inline-flex;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+  }
+  .books-view-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    min-height: 40px;
+    touch-action: manipulation;
+    user-select: none;
+  }
+  .books-view-tab:hover {
+    color: var(--ink);
+    background: rgba(255,255,255,0.05);
+  }
+  [data-theme="light"] .books-view-tab:hover {
+    background: rgba(0,0,0,0.04);
+  }
+  .books-view-tab.active {
+    background: var(--primary, #2563eb);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.35);
+  }
+  .books-graph-wrap {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  }
+  .books-graph-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .books-graph-search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 240px;
+    max-width: 420px;
+  }
+  .books-graph-search-bar .search-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    pointer-events: none;
+  }
+  .books-graph-input {
+    width: 100%;
+    padding: 8px 32px 8px 34px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--panel-border);
+    border-radius: 20px;
+    color: var(--ink);
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  [data-theme="light"] .books-graph-input {
+    background: #f8fafc;
+  }
+  .books-graph-input:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(245,166,35,0.2);
+  }
+  .books-graph-clear-btn {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+  }
+  .books-graph-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .graph-tool-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--panel-border);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 36px;
+    touch-action: manipulation;
+  }
+  [data-theme="light"] .graph-tool-btn {
+    background: #f1f5f9;
+  }
+  .graph-tool-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(245,166,35,0.1);
+  }
+  .graph-tool-btn.active {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+  }
+  .books-graph-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .graph-filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 16px;
+    font-size: 11.5px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+    min-height: 30px;
+    touch-action: manipulation;
+  }
+  [data-theme="light"] .graph-filter-pill {
+    background: #f8fafc;
+  }
+  .graph-filter-pill:hover {
+    color: var(--ink);
+    border-color: rgba(245,166,35,0.4);
+  }
+  .graph-filter-pill.active {
+    background: rgba(245,166,35,0.15);
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .books-graph-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 620px;
+    min-height: 480px;
+    background: #090f1d;
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+  }
+  [data-theme="light"] .books-graph-canvas-container {
+    background: #f4f6f9;
+  }
+  .books-graph-canvas-container:active {
+    cursor: grabbing;
+  }
+  #booksGraphCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .books-graph-legend {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(15,27,45,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    pointer-events: none;
+    z-index: 5;
+    flex-wrap: wrap;
+  }
+  [data-theme="light"] .books-graph-legend {
+    background: rgba(255,255,255,0.9);
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .legend-dot.hub-dot {
+    background: #f59e0b;
+    box-shadow: 0 0 6px #f59e0b;
+  }
+  .legend-dot.book-dot {
+    background: #38bdf8;
+    box-shadow: 0 0 4px #38bdf8;
+  }
+  .legend-line {
+    width: 18px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    display: inline-block;
+  }
+  [data-theme="light"] .legend-line {
+    background: rgba(0,0,0,0.3);
+  }
+
+  /* Obsidian Inspector Card */
+  .books-graph-inspector {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 320px;
+    max-width: calc(100% - 28px);
+    background: rgba(17, 28, 46, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(245,166,35,0.35);
+    border-radius: 14px;
+    padding: 16px;
+    color: var(--ink);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+    z-index: 10;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
+    animation: inspectorFadeIn 0.25s ease;
+  }
+  [data-theme="light"] .books-graph-inspector {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    border-color: rgba(37,99,235,0.35);
+  }
+  @keyframes inspectorFadeIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .inspector-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .inspector-close-btn:hover {
+    color: var(--ink);
+    background: rgba(255,255,255,0.1);
+  }
+  .inspector-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .inspector-icon {
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .inspector-titles h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--amber);
+  }
+  .inspector-titles p {
+    margin: 2px 0 0;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .inspector-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .inspector-meta .chip {
+    font-size: 11px;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    color: var(--muted);
+  }
+  [data-theme="light"] .inspector-meta .chip {
+    background: #f1f5f9;
+  }
+  .inspector-mapping {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 12px;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border-left: 3px solid var(--amber);
+  }
+  [data-theme="light"] .inspector-mapping {
+    background: #f8fafc;
+  }
+  .inspector-links {
+    margin-bottom: 14px;
+  }
+  .inspector-links-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .inspector-links-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+  }
+  .inspector-link-chip {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  [data-theme="light"] .inspector-link-chip {
+    background: #e2e8f0;
+  }
+  .inspector-link-chip:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(245,166,35,0.15);
+  }
+  .inspector-jump-btn {
+    width: 100%;
+    padding: 9px 14px;
+    background: linear-gradient(135deg, var(--primary, #2563eb), #4338ca);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+  }
+  .inspector-jump-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8, #3730a3);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37,99,235,0.45);
+  }
+  .books-graph-empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(15,27,45,0.9);
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    .books-view-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .books-view-tabs {
+      width: 100%;
+    }
+    .books-view-tab {
+      flex: 1;
+      justify-content: center;
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+    .books-toggle-btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .books-graph-canvas-container {
+      height: 480px;
+    }
+    .books-graph-inspector {
+      top: auto;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      width: auto;
+      max-width: none;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .books-graph-legend {
+      display: none;
+    }
+  }
+
+
   .book-spine {
     position: absolute;
     left: 0;
@@ -7257,7 +7733,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.61 &nbsp;<span style="font-weight:400; opacity:0.75;">2026-09-17 11:35</span></span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.62 &nbsp; 2026-09-19 04:53</span>
         </div>
       </div>
     </div>
@@ -14460,10 +14936,23 @@ Then 系統在 5 秒內完成圖譜聚類並標記缺陷相似度高於 90% 的�
           <span class="zh">精選跨領域經典著作，協助您將精實六標準差與日常工作管理、醫療及高複雜度流程進行有機結合。</span>
           <span class="en">Curated classic books that bridge Lean Six Sigma with daily workflow organization and high-complexity error management.</span>
         </p>
-        <button class="books-toggle-btn" id="booksToggleBtn" onclick="toggleBooksGrid()">
-          <i class="toggle-icon">▼</i>
-          <span class="zh">收合書單</span><span class="en">Collapse Books</span>
-        </button>
+        <!-- Books View Switcher & Action Controls -->
+        <div class="books-view-controls">
+          <div class="books-view-tabs" role="tablist" aria-label="Books View Selector">
+            <button type="button" class="books-view-tab active" id="booksTabList" role="tab" aria-selected="true" onclick="switchBooksView('list')">
+              <span class="tab-icon">📚</span>
+              <span class="zh">書單卡片列表</span><span class="en">Book Cards</span>
+            </button>
+            <button type="button" class="books-view-tab" id="booksTabGraph" role="tab" aria-selected="false" onclick="switchBooksView('graph')">
+              <span class="tab-icon">🕸️</span>
+              <span class="zh">知識網絡關聯圖 (Obsidian Graph)</span><span class="en">Connection Graph</span>
+            </button>
+          </div>
+          <button class="books-toggle-btn" id="booksToggleBtn" type="button" onclick="toggleBooksGrid()">
+            <i class="toggle-icon">▼</i>
+            <span class="zh">收合書單</span><span class="en">Collapse Books</span>
+          </button>
+        </div>
 
         <div class="books-grid-wrap" id="booksGridWrap">
         <div class="books-grid">
@@ -15969,6 +16458,100 @@ Then 系統在 5 秒內完成圖譜聚類並標記缺陷相似度高於 90% 的�
           </div>
         </div><!-- /books-grid -->
         </div><!-- /books-grid-wrap -->
+
+        <!-- Obsidian-Style Knowledge Connection Graph -->
+        <div class="books-graph-wrap" id="booksGraphWrap" style="display:none;">
+          <div class="books-graph-header">
+            <div class="books-graph-search-bar">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="booksGraphSearch" class="books-graph-input" placeholder="搜尋書名、作者或主題關鍵字... / Search books, authors..." oninput="handleBooksGraphSearch(this.value)" autocomplete="off" />
+              <button type="button" id="booksGraphClearSearch" class="books-graph-clear-btn" onclick="clearBooksGraphSearch()" style="display:none;" title="清除搜尋">✕</button>
+            </div>
+            <div class="books-graph-actions">
+              <button type="button" class="graph-tool-btn" onclick="zoomBooksGraph(1.2)" title="放大 / Zoom In">➕</button>
+              <button type="button" class="graph-tool-btn" onclick="zoomBooksGraph(0.8)" title="縮小 / Zoom Out">➖</button>
+              <button type="button" class="graph-tool-btn" onclick="resetBooksGraphView()" title="重設視野 / Reset View">⤢ <span class="zh">視野復位</span><span class="en">Reset</span></button>
+              <button type="button" class="graph-tool-btn active" id="booksGraphLabelToggle" onclick="toggleBooksGraphLabels()" title="切換節點標籤 / Toggle Labels">🏷️ <span class="zh">全部標籤</span><span class="en">Labels</span></button>
+              <button type="button" class="graph-tool-btn" onclick="reheatBooksGraph()" title="重新散佈 / Re-simulate Physics">⚡ <span class="zh">物理重排</span><span class="en">Simulate</span></button>
+            </div>
+          </div>
+
+          <!-- Category Cluster Filter Pills -->
+          <div class="books-graph-filters" id="booksGraphFilters">
+            <button type="button" class="graph-filter-pill active" data-filter="all" onclick="filterBooksGraph('all')">
+              <span class="zh">🌌 全部節點 (46 本全景)</span><span class="en">🌌 All Nodes</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-std" onclick="filterBooksGraph('hub-std')">
+              <span class="pill-dot" style="background:#38bdf8;"></span>
+              <span class="zh">📋 標準作業與防呆</span><span class="en">📋 Standard Work & 5S</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-kaizen" onclick="filterBooksGraph('hub-kaizen')">
+              <span class="pill-dot" style="background:#4ade80;"></span>
+              <span class="zh">🔄 持續改善與精實</span><span class="en">🔄 Kaizen & Flow</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-var" onclick="filterBooksGraph('hub-var')">
+              <span class="pill-dot" style="background:#f59e0b;"></span>
+              <span class="zh">📊 變異、統計與認知</span><span class="en">📊 Variation & MSA</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-vuca" onclick="filterBooksGraph('hub-vuca')">
+              <span class="pill-dot" style="background:#a855f7;"></span>
+              <span class="zh">🛡️ 敏捷、系統與反脆弱</span><span class="en">🛡️ Agile & Antifragile</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-lead" onclick="filterBooksGraph('hub-lead')">
+              <span class="pill-dot" style="background:#ec4899;"></span>
+              <span class="zh">🤝 精實領導與人本</span><span class="en">🤝 Lean Leadership</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-waste" onclick="filterBooksGraph('hub-waste')">
+              <span class="pill-dot" style="background:#14b8a6;"></span>
+              <span class="zh">🎯 消除浪費與專注</span><span class="en">🎯 Waste & Focus</span>
+            </button>
+            <button type="button" class="graph-filter-pill" data-filter="hub-personal" onclick="filterBooksGraph('hub-personal')">
+              <span class="pill-dot" style="background:#f43f5e;"></span>
+              <span class="zh">🚀 個人精實與轉型</span><span class="en">🚀 Personal Lean & DX</span>
+            </button>
+          </div>
+
+          <!-- Canvas Graph Container -->
+          <div class="books-graph-canvas-container" id="booksGraphCanvasContainer">
+            <canvas id="booksGraphCanvas"></canvas>
+
+            <!-- Floating Legend -->
+            <div class="books-graph-legend">
+              <span class="legend-item"><span class="legend-dot hub-dot"></span><span class="zh">7 大核心精實樞紐</span><span class="en">7 Core Themes</span></span>
+              <span class="legend-item"><span class="legend-dot book-dot"></span><span class="zh">46 本經典著作</span><span class="en">46 Books</span></span>
+              <span class="legend-item"><span class="legend-line"></span><span class="zh">跨領域實踐雙鏈 (Obsidian Links)</span><span class="en">Cross-Domain Links</span></span>
+            </div>
+
+            <!-- Floating Node Inspector Tooltip / Card -->
+            <div class="books-graph-inspector" id="booksGraphInspector" style="display:none;">
+              <button type="button" class="inspector-close-btn" onclick="closeBooksGraphInspector()" title="關閉">✕</button>
+              <div class="inspector-header">
+                <div class="inspector-icon" id="inspectorIcon">📖</div>
+                <div class="inspector-titles">
+                  <h4 id="inspectorTitleZh">書名</h4>
+                  <p id="inspectorTitleEn">English Title</p>
+                </div>
+              </div>
+              <div class="inspector-meta">
+                <span class="chip" id="inspectorAuthor">作者</span>
+                <span class="chip" id="inspectorCategory">分類</span>
+              </div>
+              <p class="inspector-mapping" id="inspectorMapping">關聯：...</p>
+              <div class="inspector-links">
+                <div class="inspector-links-title">🔗 <span class="zh">關聯著作雙鏈</span><span class="en">Connected Books</span></div>
+                <div class="inspector-links-list" id="inspectorLinksList"></div>
+              </div>
+              <button type="button" class="inspector-jump-btn" id="inspectorJumpBtn" onclick="jumpToBookFromInspector()">
+                <span>📖</span> <span class="zh">前往完整書卡閱讀</span><span class="en">Jump to Book Card</span> ➔
+              </button>
+            </div>
+
+            <!-- Empty Notice -->
+            <div class="books-graph-empty" id="booksGraphEmpty" style="display:none;">
+              <p><span class="zh">無符合搜尋條件的書籍節點</span><span class="en">No matching book nodes found</span></p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="section" data-section="glossary">
@@ -17253,6 +17836,9 @@ function updateSidebarUI(){
 
 function scrollToBookCard(card) {
   if (!card) return;
+  if (typeof switchBooksView === 'function') {
+    switchBooksView('list');
+  }
   const wrap = document.getElementById('booksGridWrap');
   if (wrap && wrap.classList.contains('collapsed')) {
     const grid = wrap.querySelector('.books-grid');
@@ -17432,6 +18018,966 @@ if (document.readyState === 'loading') {
 } else {
   initBookCollapse();
 }
+
+
+/* ==========================================================================
+   Obsidian-Style Knowledge Connection Graph Engine (Zero-Dependency Vanilla JS)
+   ========================================================================== */
+
+(function() {
+  let booksGraphInitialized = false;
+  let canvas = null;
+  let ctx = null;
+  let container = null;
+  let animFrameId = null;
+
+  // Graph state
+  let nodes = [];
+  let edges = [];
+  let nodeMap = {};
+  let currentFilter = 'all';
+  let searchQuery = '';
+  let showAllLabels = true;
+  let hoveredNode = null;
+  let selectedNode = null;
+
+  // Physics params
+  let alpha = 1.0;
+  const alphaDecay = 0.992;
+  const alphaMin = 0.002;
+  const kRepulsion = 1800;
+  const kSpring = 0.045;
+  const kGravity = 0.025;
+  const damping = 0.88;
+
+  // Camera / Viewport transform
+  let camera = {
+    x: 0,
+    y: 0,
+    scale: 1,
+    targetX: 0,
+    targetY: 0,
+    targetScale: 1
+  };
+
+  // Dragging & Interaction state
+  let isDraggingCanvas = false;
+  let draggedNode = null;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let lastTouchDistance = 0;
+
+  // Hub definitions
+  const HUBS = [
+    { id: 'hub-std', labelZh: '標準作業與防呆', labelEn: 'Standard Work & 5S', color: '#38bdf8', icon: '📋' },
+    { id: 'hub-kaizen', labelZh: '持續改善與精實', labelEn: 'Kaizen & Flow', color: '#4ade80', icon: '🔄' },
+    { id: 'hub-var', labelZh: '變異、統計與認知', labelEn: 'Variation & MSA', color: '#f59e0b', icon: '📊' },
+    { id: 'hub-vuca', labelZh: '敏捷、系統與反脆弱', labelEn: 'Agile & Antifragile', color: '#a855f7', icon: '🛡️' },
+    { id: 'hub-lead', labelZh: '精實領導與人本', labelEn: 'Lean Leadership', color: '#ec4899', icon: '🤝' },
+    { id: 'hub-waste', labelZh: '消除浪費與專注', labelEn: 'Waste & Focus', color: '#14b8a6', icon: '🎯' },
+    { id: 'hub-personal', labelZh: '個人精實與轉型', labelEn: 'Personal Lean & DX', color: '#f43f5e', icon: '🚀' }
+  ];
+
+  const BOOK_HUB_MAP = {
+    'checklist-manifesto': ['hub-std'],
+    'work-clean': ['hub-std', 'hub-waste'],
+    'discipline-equals-freedom': ['hub-std', 'hub-kaizen'],
+    'the-compound-effect': ['hub-kaizen', 'hub-personal'],
+    'start-with-why': ['hub-lead', 'hub-personal'],
+    'atomic-habits': ['hub-kaizen', 'hub-personal'],
+    'algorithms-to-live-by': ['hub-var', 'hub-personal'],
+    'dividual': ['hub-lead'],
+    'humankind': ['hub-lead'],
+    'black-swan': ['hub-vuca', 'hub-var'],
+    'buddhism-system': ['hub-vuca', 'hub-waste'],
+    'effortless': ['hub-waste', 'hub-personal'],
+    'pareto-8020': ['hub-waste', 'hub-var'],
+    'minimalism': ['hub-waste'],
+    'principles': ['hub-var', 'hub-lead'],
+    'start-acuff': ['hub-kaizen'],
+    'finish-acuff': ['hub-kaizen', 'hub-personal'],
+    'meditations': ['hub-lead', 'hub-waste'],
+    'thinking-fast-slow': ['hub-var'],
+    'noise-book': ['hub-var'],
+    'antifragile': ['hub-vuca'],
+    'master-your-emotions': ['hub-lead'],
+    'winner-take-all': ['hub-waste', 'hub-lead'],
+    'ultralearning': ['hub-personal', 'hub-kaizen'],
+    'measure-your-life': ['hub-personal', 'hub-lead'],
+    'mans-search-meaning': ['hub-lead', 'hub-personal'],
+    'seven-habits': ['hub-personal', 'hub-lead'],
+    'garbage-truck': ['hub-waste', 'hub-lead'],
+    'right-kind-of-wrong': ['hub-vuca', 'hub-kaizen'],
+    'how-to-win-friends': ['hub-lead'],
+    'poor-charlie': ['hub-personal', 'hub-var'],
+    'running-murakami': ['hub-kaizen', 'hub-personal'],
+    'peak-deliberate-practice': ['hub-kaizen', 'hub-personal'],
+    'factfulness': ['hub-var'],
+    'give-and-take': ['hub-lead'],
+    'range': ['hub-vuca', 'hub-personal'],
+    'life-cfo': ['hub-personal', 'hub-waste'],
+    'five-second-rule': ['hub-kaizen', 'hub-personal'],
+    'i-may-be-wrong': ['hub-waste', 'hub-vuca'],
+    'power-of-now': ['hub-waste'],
+    'write-it-down': ['hub-personal', 'hub-std'],
+    'hbr-genai-work': ['hub-personal', 'hub-kaizen'],
+    'most-important-thing': ['hub-waste', 'hub-var', 'hub-vuca'],
+    'never-eat-alone': ['hub-lead'],
+    'indistractable': ['hub-std', 'hub-waste'],
+    'adapt-harford': ['hub-vuca', 'hub-kaizen']
+  };
+
+  const BOOK_COMPANION_PAIRS = [
+    ['checklist-manifesto', 'work-clean'],
+    ['checklist-manifesto', 'discipline-equals-freedom'],
+    ['work-clean', 'minimalism'],
+    ['the-compound-effect', 'atomic-habits'],
+    ['atomic-habits', 'five-second-rule'],
+    ['atomic-habits', 'finish-acuff'],
+    ['start-acuff', 'finish-acuff'],
+    ['start-with-why', 'mans-search-meaning'],
+    ['start-with-why', 'measure-your-life'],
+    ['measure-your-life', 'seven-habits'],
+    ['thinking-fast-slow', 'noise-book'],
+    ['thinking-fast-slow', 'factfulness'],
+    ['noise-book', 'algorithms-to-live-by'],
+    ['black-swan', 'antifragile'],
+    ['antifragile', 'adapt-harford'],
+    ['adapt-harford', 'right-kind-of-wrong'],
+    ['pareto-8020', 'minimalism'],
+    ['pareto-8020', 'most-important-thing'],
+    ['effortless', 'minimalism'],
+    ['effortless', 'power-of-now'],
+    ['buddhism-system', 'power-of-now'],
+    ['buddhism-system', 'i-may-be-wrong'],
+    ['meditations', 'i-may-be-wrong'],
+    ['humankind', 'dividual'],
+    ['humankind', 'how-to-win-friends'],
+    ['how-to-win-friends', 'never-eat-alone'],
+    ['give-and-take', 'never-eat-alone'],
+    ['poor-charlie', 'principles'],
+    ['poor-charlie', 'most-important-thing'],
+    ['running-murakami', 'peak-deliberate-practice'],
+    ['peak-deliberate-practice', 'ultralearning'],
+    ['ultralearning', 'range'],
+    ['hbr-genai-work', 'algorithms-to-live-by'],
+    ['hbr-genai-work', 'adapt-harford'],
+    ['write-it-down', 'life-cfo'],
+    ['write-it-down', 'checklist-manifesto'],
+    ['indistractable', 'atomic-habits'],
+    ['indistractable', 'work-clean'],
+    ['indistractable', 'garbage-truck'],
+    ['garbage-truck', 'master-your-emotions']
+  ];
+
+  // Initialize books graph data structures
+  function buildGraphData() {
+    nodes = [];
+    edges = [];
+    nodeMap = {};
+
+    // 1. Add Hub nodes in a circle
+    const hubCount = HUBS.length;
+    const hubRadius = 240;
+    HUBS.forEach((hub, idx) => {
+      const angle = (idx / hubCount) * Math.PI * 2 - Math.PI / 2;
+      const node = {
+        id: hub.id,
+        isHub: true,
+        labelZh: hub.labelZh,
+        labelEn: hub.labelEn,
+        color: hub.color,
+        icon: hub.icon,
+        radius: 20,
+        x: Math.cos(angle) * hubRadius + (Math.random() - 0.5) * 20,
+        y: Math.sin(angle) * hubRadius + (Math.random() - 0.5) * 20,
+        vx: 0,
+        vy: 0,
+        connections: []
+      };
+      nodes.push(node);
+      nodeMap[node.id] = node;
+    });
+
+    // 2. Parse books from page or metadata
+    const cards = document.querySelectorAll('.book-card');
+    cards.forEach((card, idx) => {
+      const cover = card.querySelector('.book-cover');
+      let slug = '';
+      if (cover) {
+        const classes = cover.className.split(/\s+/);
+        slug = classes.find(c => c !== 'book-cover') || '';
+      }
+      if (!slug) slug = 'book-' + (idx + 1);
+
+      const coverTitleZh = card.querySelector('.book-title-main');
+      const coverTitleEn = card.querySelector('.book-title-sub');
+      const h3zh = card.querySelector('.book-info h3 .zh');
+      const h3en = card.querySelector('.book-info h3 .en');
+      const authorEl = card.querySelector('.book-author') || card.querySelector('.chip .zh');
+      const mappingEl = card.querySelector('.book-meta .chip:nth-child(2) .zh');
+
+      const titleZh = coverTitleZh ? coverTitleZh.textContent.trim() : (h3zh ? h3zh.textContent.replace(/^[《]|》.*$/g, '').trim() : '書籍');
+      const titleEn = coverTitleEn ? coverTitleEn.textContent.trim() : (h3en ? h3en.textContent.trim() : 'Book');
+      const author = authorEl ? authorEl.textContent.replace(/^作者：/, '').trim() : '';
+      const mapping = mappingEl ? mappingEl.textContent.replace(/^關聯：/, '').trim() : '';
+
+      const hubsAssigned = BOOK_HUB_MAP[slug] || ['hub-std'];
+      const primaryHub = nodeMap[hubsAssigned[0]] || nodes[0];
+
+      // Initial position around primary hub
+      const spread = 70 + Math.random() * 80;
+      const angle = Math.random() * Math.PI * 2;
+
+      const node = {
+        id: slug,
+        num: idx + 1,
+        cardId: card.id || ('book-card-' + (idx + 1)),
+        cardEl: card,
+        isHub: false,
+        slug: slug,
+        labelZh: titleZh,
+        labelEn: titleEn,
+        author: author,
+        mapping: mapping,
+        color: primaryHub.color,
+        hubs: hubsAssigned,
+        radius: 9,
+        x: primaryHub.x + Math.cos(angle) * spread,
+        y: primaryHub.y + Math.sin(angle) * spread,
+        vx: (Math.random() - 0.5) * 2,
+        vy: (Math.random() - 0.5) * 2,
+        connections: []
+      };
+
+      nodes.push(node);
+      nodeMap[node.id] = node;
+    });
+
+    // 3. Connect Books to Hubs
+    nodes.filter(n => !n.isHub).forEach(bookNode => {
+      (bookNode.hubs || []).forEach(hubId => {
+        const hubNode = nodeMap[hubId];
+        if (hubNode) {
+          const edge = {
+            source: hubNode,
+            target: bookNode,
+            isHubEdge: true,
+            length: 110,
+            weight: 1.2
+          };
+          edges.push(edge);
+          hubNode.connections.push(bookNode);
+          bookNode.connections.push(hubNode);
+        }
+      });
+    });
+
+    // 4. Connect Cross-Book companion pairs
+    BOOK_COMPANION_PAIRS.forEach(([s1, s2]) => {
+      const n1 = nodeMap[s1];
+      const n2 = nodeMap[s2];
+      if (n1 && n2) {
+        const edge = {
+          source: n1,
+          target: n2,
+          isHubEdge: false,
+          length: 90,
+          weight: 1.0
+        };
+        edges.push(edge);
+        n1.connections.push(n2);
+        n2.connections.push(n1);
+      }
+    });
+
+    // Adjust radius based on degrees
+    nodes.forEach(n => {
+      if (!n.isHub) {
+        n.radius = Math.min(15, 8 + Math.sqrt(n.connections.length) * 2.2);
+      }
+    });
+  }
+
+  function reheat() {
+    alpha = 1.0;
+    if (!animFrameId) {
+      runSimulation();
+    }
+  }
+
+  function stepPhysics() {
+    if (alpha < alphaMin) {
+      alpha = 0;
+      return false;
+    }
+
+    const nodeCount = nodes.length;
+
+    // 1. Coulomb repulsion between all node pairs
+    for (let i = 0; i < nodeCount; i++) {
+      const u = nodes[i];
+      for (let j = i + 1; j < nodeCount; j++) {
+        const v = nodes[j];
+        let dx = v.x - u.x;
+        let dy = v.y - u.y;
+        let distSq = dx * dx + dy * dy;
+        if (distSq === 0) {
+          dx = (Math.random() - 0.5) * 2;
+          dy = (Math.random() - 0.5) * 2;
+          distSq = dx * dx + dy * dy;
+        }
+
+        const maxDist = 380;
+        if (distSq < maxDist * maxDist) {
+          const dist = Math.sqrt(distSq);
+          const repMultiplier = (u.isHub || v.isHub) ? 1.6 : 1.0;
+          const force = (kRepulsion * repMultiplier) / (distSq + 20);
+          const fx = (dx / dist) * force;
+          const fy = (dy / dist) * force;
+
+          u.vx -= fx;
+          u.vy -= fy;
+          v.vx += fx;
+          v.vy += fy;
+        }
+      }
+    }
+
+    // 2. Spring attraction along edges
+    for (let i = 0; i < edges.length; i++) {
+      const e = edges[i];
+      const u = e.source;
+      const v = e.target;
+      let dx = v.x - u.x;
+      let dy = v.y - u.y;
+      let dist = Math.sqrt(dx * dx + dy * dy) || 0.1;
+      const displacement = dist - e.length;
+      const force = displacement * kSpring * e.weight;
+      const fx = (dx / dist) * force;
+      const fy = (dy / dist) * force;
+
+      u.vx += fx;
+      u.vy += fy;
+      v.vx -= fx;
+      v.vy -= fy;
+    }
+
+    // 3. Centering gravity & position update
+    for (let i = 0; i < nodeCount; i++) {
+      const n = nodes[i];
+
+      // Soft center pull
+      n.vx -= n.x * kGravity;
+      n.vy -= n.y * kGravity;
+
+      // Damping
+      n.vx *= damping;
+      n.vy *= damping;
+
+      // Update position if not currently dragged
+      if (n !== draggedNode) {
+        n.x += n.vx * alpha;
+        n.y += n.vy * alpha;
+      }
+    }
+
+    alpha *= alphaDecay;
+    return true;
+  }
+
+  function resizeCanvas() {
+    if (!canvas || !container) return;
+    const rect = container.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const width = rect.width || 800;
+    const height = rect.height || 620;
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+  }
+
+  function draw() {
+    if (!ctx || !canvas || !container) return;
+
+    const rect = container.getBoundingClientRect();
+    const width = rect.width || 800;
+    const height = rect.height || 620;
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+
+    ctx.save();
+    ctx.clearRect(0, 0, width, height);
+
+    // Apply Camera Transform
+    ctx.translate(width / 2 + camera.x, height / 2 + camera.y);
+    ctx.scale(camera.scale, camera.scale);
+
+    // 1. Draw subtle background starry dots
+    drawConstellationGrid(ctx, width, height, isDark);
+
+    // Determine active highlight set
+    const activeNode = hoveredNode || selectedNode;
+    const highlightedNodes = new Set();
+    const highlightedEdges = new Set();
+
+    if (activeNode) {
+      highlightedNodes.add(activeNode);
+      activeNode.connections.forEach(conn => highlightedNodes.add(conn));
+      edges.forEach(e => {
+        if (e.source === activeNode || e.target === activeNode) {
+          highlightedEdges.add(e);
+        }
+      });
+    }
+
+    // 2. Draw Edges
+    for (let i = 0; i < edges.length; i++) {
+      const e = edges[i];
+      const isHighlighted = highlightedEdges.has(e);
+      const isFilteredOut = (currentFilter !== 'all' && !isNodeInFilter(e.source) && !isNodeInFilter(e.target)) ||
+                            (searchQuery && !isNodeInSearch(e.source) && !isNodeInSearch(e.target));
+
+      ctx.beginPath();
+      ctx.moveTo(e.source.x, e.source.y);
+      ctx.lineTo(e.target.x, e.target.y);
+
+      if (isHighlighted) {
+        ctx.strokeStyle = activeNode.color || (isDark ? '#F5A623' : '#2563eb');
+        ctx.lineWidth = 2.2 / camera.scale;
+        ctx.globalAlpha = 0.9;
+      } else if (isFilteredOut) {
+        ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)';
+        ctx.lineWidth = 0.8 / camera.scale;
+        ctx.globalAlpha = 0.15;
+      } else if (activeNode) {
+        ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+        ctx.lineWidth = 0.8 / camera.scale;
+        ctx.globalAlpha = 0.25;
+      } else {
+        ctx.strokeStyle = e.isHubEdge
+          ? (isDark ? 'rgba(255,255,255,0.14)' : 'rgba(30,58,95,0.14)')
+          : (isDark ? 'rgba(245,166,35,0.22)' : 'rgba(37,99,235,0.22)');
+        ctx.lineWidth = (e.isHubEdge ? 1.0 : 1.3) / camera.scale;
+        ctx.globalAlpha = 0.7;
+      }
+
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1.0;
+
+    // 3. Draw Nodes
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const isHighlighted = highlightedNodes.has(n);
+      const isSelected = (selectedNode === n);
+      const inFilter = isNodeInFilter(n);
+      const inSearch = isNodeInSearch(n);
+      const isDimmed = (activeNode && !isHighlighted) || !inFilter || !inSearch;
+
+      ctx.save();
+      ctx.globalAlpha = isDimmed ? 0.18 : 1.0;
+
+      // Outer glow for hubs or active nodes
+      if (isHighlighted || isSelected || n.isHub) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius + (isSelected ? 8 : (isHighlighted ? 6 : 4)), 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.globalAlpha = isDimmed ? 0.05 : (isSelected ? 0.35 : 0.2);
+        ctx.fill();
+        ctx.globalAlpha = isDimmed ? 0.18 : 1.0;
+      }
+
+      // Main Node Circle
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+
+      // Border ring
+      ctx.lineWidth = (isSelected ? 3.0 : (isHighlighted ? 2.2 : 1.5)) / camera.scale;
+      ctx.strokeStyle = isSelected ? '#ffffff' : (isDark ? 'rgba(255,255,255,0.85)' : 'rgba(15,23,42,0.85)');
+      ctx.stroke();
+
+      // Hub Icon / Inner Symbol
+      if (n.isHub && n.icon) {
+        ctx.font = Math.round(11 / camera.scale) + 'px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(n.icon, n.x, n.y);
+      }
+
+      // 4. Draw Label
+      const shouldDrawLabel = showAllLabels || isHighlighted || isSelected || n.isHub || (inSearch && searchQuery);
+      if (shouldDrawLabel && !isDimmed) {
+        drawNodeLabel(ctx, n, isDark, camera.scale);
+      }
+
+      ctx.restore();
+    }
+
+    ctx.restore();
+  }
+
+  function drawConstellationGrid(ctx, width, height, isDark) {
+    const spacing = 45;
+    const dotColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
+    const startX = Math.floor((-width / 2 - camera.x) / camera.scale / spacing) * spacing;
+    const endX = Math.ceil((width / 2 - camera.x) / camera.scale / spacing) * spacing;
+    const startY = Math.floor((-height / 2 - camera.y) / camera.scale / spacing) * spacing;
+    const endY = Math.ceil((height / 2 - camera.y) / camera.scale / spacing) * spacing;
+
+    ctx.fillStyle = dotColor;
+    for (let x = startX; x <= endX; x += spacing) {
+      for (let y = startY; y <= endY; y += spacing) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1.2 / camera.scale, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function drawNodeLabel(ctx, n, isDark, scale) {
+    const isZh = document.documentElement.lang !== 'en' && (!document.body.classList.contains('lang-en'));
+    const text = isZh ? n.labelZh : (n.labelEn || n.labelZh);
+    const fontSize = Math.max(9, Math.min(14, (n.isHub ? 13 : 11) / Math.sqrt(scale)));
+    ctx.font = (n.isHub ? 'bold ' : '500 ') + fontSize + 'px "Noto Sans TC", system-ui, sans-serif';
+
+    const textMetrics = ctx.measureText(text);
+    const textWidth = textMetrics.width;
+    const textHeight = fontSize;
+    const padX = 5;
+    const padY = 2;
+    const labelY = n.y + n.radius + fontSize / 2 + 5;
+
+    // Label pill background
+    ctx.fillStyle = isDark ? 'rgba(11,19,34,0.85)' : 'rgba(255,255,255,0.92)';
+    ctx.beginPath();
+    if (ctx.roundRect) { ctx.roundRect(n.x - textWidth / 2 - padX, labelY - textHeight / 2 - padY, textWidth + padX * 2, textHeight + padY * 2, 4); } else { ctx.rect(n.x - textWidth / 2 - padX, labelY - textHeight / 2 - padY, textWidth + padX * 2, textHeight + padY * 2); }
+    ctx.fill();
+
+    ctx.lineWidth = 1 / scale;
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)';
+    ctx.stroke();
+
+    // Label Text
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = n.isHub ? n.color : (isDark ? '#f8f4ed' : '#0f172a');
+    ctx.fillText(text, n.x, labelY);
+  }
+
+  function isNodeInFilter(n) {
+    if (currentFilter === 'all') return true;
+    if (n.isHub) return n.id === currentFilter;
+    return (n.hubs || []).includes(currentFilter);
+  }
+
+  function isNodeInSearch(n) {
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return (n.labelZh && n.labelZh.toLowerCase().includes(q)) ||
+           (n.labelEn && n.labelEn.toLowerCase().includes(q)) ||
+           (n.author && n.author.toLowerCase().includes(q)) ||
+           (n.mapping && n.mapping.toLowerCase().includes(q));
+  }
+
+  function runSimulation() {
+    const isMoving = stepPhysics();
+    draw();
+    if (isMoving || draggedNode || alpha >= alphaMin) {
+      animFrameId = requestAnimationFrame(runSimulation);
+    } else {
+      animFrameId = null;
+    }
+  }
+
+  // Coordinate Conversion
+  function getMouseWorldPos(clientX, clientY) {
+    const rect = container.getBoundingClientRect();
+    const screenX = clientX - rect.left - rect.width / 2;
+    const screenY = clientY - rect.top - rect.height / 2;
+    return {
+      x: (screenX - camera.x) / camera.scale,
+      y: (screenY - camera.y) / camera.scale
+    };
+  }
+
+  function findNodeAt(worldX, worldY) {
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const n = nodes[i];
+      const dx = worldX - n.x;
+      const dy = worldY - n.y;
+      const hitRadius = (n.radius + 6);
+      if (dx * dx + dy * dy <= hitRadius * hitRadius) {
+        return n;
+      }
+    }
+    return null;
+  }
+
+  // Setup Event Listeners
+  function attachCanvasEvents() {
+    if (!container || !canvas) return;
+
+    // Mouse Down
+    container.addEventListener('mousedown', function(e) {
+      if (e.button !== 0) return;
+      const worldPos = getMouseWorldPos(e.clientX, e.clientY);
+      const clicked = findNodeAt(worldPos.x, worldPos.y);
+
+      if (clicked) {
+        draggedNode = clicked;
+        reheat();
+      } else {
+        isDraggingCanvas = true;
+        dragStartX = e.clientX - camera.x;
+        dragStartY = e.clientY - camera.y;
+      }
+    });
+
+    // Mouse Move
+    window.addEventListener('mousemove', function(e) {
+      if (draggedNode) {
+        const worldPos = getMouseWorldPos(e.clientX, e.clientY);
+        draggedNode.x = worldPos.x;
+        draggedNode.y = worldPos.y;
+        draggedNode.vx = 0;
+        draggedNode.vy = 0;
+        reheat();
+      } else if (isDraggingCanvas) {
+        camera.x = e.clientX - dragStartX;
+        camera.y = e.clientY - dragStartY;
+        draw();
+      } else if (container.contains(e.target)) {
+        const worldPos = getMouseWorldPos(e.clientX, e.clientY);
+        const hovered = findNodeAt(worldPos.x, worldPos.y);
+        if (hovered !== hoveredNode) {
+          hoveredNode = hovered;
+          draw();
+        }
+      }
+    });
+
+    // Mouse Up
+    window.addEventListener('mouseup', function(e) {
+      if (draggedNode) {
+        if (!selectedNode || selectedNode !== draggedNode) {
+          selectNode(draggedNode);
+        }
+        draggedNode = null;
+      }
+      isDraggingCanvas = false;
+    });
+
+    // Wheel Zoom
+    container.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      const rect = container.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left - rect.width / 2;
+      const mouseY = e.clientY - rect.top - rect.height / 2;
+
+      const zoomFactor = e.deltaY < 0 ? 1.15 : 0.87;
+      const newScale = Math.max(0.35, Math.min(3.5, camera.scale * zoomFactor));
+
+      // Zoom towards cursor
+      camera.x -= (mouseX - camera.x) * (newScale / camera.scale - 1);
+      camera.y -= (mouseY - camera.y) * (newScale / camera.scale - 1);
+      camera.scale = newScale;
+
+      draw();
+    }, { passive: false });
+
+    // Touch Events for Mobile / Tablet
+    container.addEventListener('touchstart', function(e) {
+      if (e.touches.length === 1) {
+        const touch = e.touches[0];
+        const worldPos = getMouseWorldPos(touch.clientX, touch.clientY);
+        const clicked = findNodeAt(worldPos.x, worldPos.y);
+        if (clicked) {
+          draggedNode = clicked;
+          reheat();
+        } else {
+          isDraggingCanvas = true;
+          dragStartX = touch.clientX - camera.x;
+          dragStartY = touch.clientY - camera.y;
+        }
+      } else if (e.touches.length === 2) {
+        isDraggingCanvas = false;
+        draggedNode = null;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        lastTouchDistance = Math.hypot(dx, dy);
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchmove', function(e) {
+      if (e.touches.length === 1) {
+        const touch = e.touches[0];
+        if (draggedNode) {
+          const worldPos = getMouseWorldPos(touch.clientX, touch.clientY);
+          draggedNode.x = worldPos.x;
+          draggedNode.y = worldPos.y;
+          draggedNode.vx = 0;
+          draggedNode.vy = 0;
+          reheat();
+        } else if (isDraggingCanvas) {
+          camera.x = touch.clientX - dragStartX;
+          camera.y = touch.clientY - dragStartY;
+          draw();
+        }
+      } else if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.hypot(dx, dy);
+        if (lastTouchDistance > 0) {
+          const zoomFactor = dist / lastTouchDistance;
+          camera.scale = Math.max(0.35, Math.min(3.5, camera.scale * zoomFactor));
+          draw();
+        }
+        lastTouchDistance = dist;
+      }
+    }, { passive: true });
+
+    container.addEventListener('touchend', function(e) {
+      if (draggedNode) {
+        selectNode(draggedNode);
+        draggedNode = null;
+      }
+      isDraggingCanvas = false;
+      lastTouchDistance = 0;
+    }, { passive: true });
+  }
+
+  // Node Selection & Inspector
+  function selectNode(n) {
+    selectedNode = n;
+    draw();
+
+    const inspector = document.getElementById('booksGraphInspector');
+    if (!inspector) return;
+
+    if (!n) {
+      inspector.style.display = 'none';
+      return;
+    }
+
+    const titleZh = document.getElementById('inspectorTitleZh');
+    const titleEn = document.getElementById('inspectorTitleEn');
+    const author = document.getElementById('inspectorAuthor');
+    const category = document.getElementById('inspectorCategory');
+    const mapping = document.getElementById('inspectorMapping');
+    const icon = document.getElementById('inspectorIcon');
+    const linksList = document.getElementById('inspectorLinksList');
+    const jumpBtn = document.getElementById('inspectorJumpBtn');
+
+    if (titleZh) titleZh.textContent = n.labelZh || '';
+    if (titleEn) titleEn.textContent = n.labelEn || '';
+    if (icon) icon.textContent = n.isHub ? (n.icon || '📌') : '📖';
+    if (author) author.textContent = n.isHub ? '核心領域 (Theme Hub)' : ('作者：' + (n.author || '精選經典'));
+    if (category) category.textContent = n.isHub ? 'LSS 核心樞紐' : ('領域：' + (n.hubs ? n.hubs.map(h => (nodeMap[h] || {}).labelZh).join(', ') : ''));
+    if (mapping) mapping.innerHTML = n.isHub ? '<strong>領域定位：</strong> 串聯精實六標準差多維經典實踐網絡。' : ('<strong>實務關聯：</strong> ' + (n.mapping || '標準作業與持續改善'));
+
+    // Render Companion links chips
+    if (linksList) {
+      linksList.innerHTML = '';
+      const companionBooks = n.connections.filter(c => !c.isHub);
+      if (companionBooks.length === 0) {
+        linksList.innerHTML = '<span style="font-size:11px; color:var(--muted);">無其他直接書籍連線</span>';
+      } else {
+        companionBooks.forEach(comp => {
+          const chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'inspector-link-chip';
+          chip.textContent = '📖 ' + (comp.labelZh || comp.labelEn);
+          chip.onclick = function() {
+            focusNode(comp);
+          };
+          linksList.appendChild(chip);
+        });
+      }
+    }
+
+    // Jump button
+    if (jumpBtn) {
+      if (n.isHub) {
+        jumpBtn.style.display = 'none';
+      } else {
+        jumpBtn.style.display = 'flex';
+      }
+    }
+
+    inspector.style.display = 'block';
+  }
+
+  function focusNode(n) {
+    if (!n) return;
+    selectNode(n);
+    camera.x = -n.x * camera.scale;
+    camera.y = -n.y * camera.scale;
+    reheat();
+  }
+
+  // Public Actions
+  function switchBooksView(view) {
+    const listTab = document.getElementById('booksTabList');
+    const graphTab = document.getElementById('booksTabGraph');
+    const gridWrap = document.getElementById('booksGridWrap');
+    const graphWrap = document.getElementById('booksGraphWrap');
+    const toggleBtn = document.getElementById('booksToggleBtn');
+
+    if (view === 'graph') {
+      if (listTab) { listTab.classList.remove('active'); listTab.setAttribute('aria-selected', 'false'); }
+      if (graphTab) { graphTab.classList.add('active'); graphTab.setAttribute('aria-selected', 'true'); }
+      if (gridWrap) gridWrap.style.display = 'none';
+      if (graphWrap) graphWrap.style.display = 'block';
+      if (toggleBtn) toggleBtn.style.display = 'none';
+
+      if (!booksGraphInitialized) {
+        initBooksGraph();
+      } else {
+        resizeCanvas();
+        reheat();
+      }
+    } else {
+      if (listTab) { listTab.classList.add('active'); listTab.setAttribute('aria-selected', 'true'); }
+      if (graphTab) { graphTab.classList.remove('active'); graphTab.setAttribute('aria-selected', 'false'); }
+      if (gridWrap) gridWrap.style.display = '';
+      if (graphWrap) graphWrap.style.display = 'none';
+      if (toggleBtn) toggleBtn.style.display = '';
+    }
+  }
+
+  function filterBooksGraph(catId) {
+    currentFilter = catId;
+    document.querySelectorAll('.graph-filter-pill').forEach(pill => {
+      pill.classList.toggle('active', pill.dataset.filter === catId);
+    });
+
+    if (catId !== 'all') {
+      const hub = nodeMap[catId];
+      if (hub) focusNode(hub);
+    } else {
+      reheat();
+    }
+  }
+
+  function handleBooksGraphSearch(query) {
+    searchQuery = (query || '').trim();
+    const clearBtn = document.getElementById('booksGraphClearSearch');
+    if (clearBtn) clearBtn.style.display = searchQuery ? 'inline-block' : 'none';
+
+    const matching = nodes.filter(n => !n.isHub && isNodeInSearch(n));
+    const emptyNotice = document.getElementById('booksGraphEmpty');
+    if (emptyNotice) emptyNotice.style.display = (searchQuery && matching.length === 0) ? 'block' : 'none';
+
+    if (matching.length === 1) {
+      focusNode(matching[0]);
+    } else {
+      reheat();
+    }
+  }
+
+  function clearBooksGraphSearch() {
+    const input = document.getElementById('booksGraphSearch');
+    if (input) {
+      input.value = '';
+      handleBooksGraphSearch('');
+      input.focus();
+    }
+  }
+
+  function zoomBooksGraph(factor) {
+    camera.scale = Math.max(0.35, Math.min(3.5, camera.scale * factor));
+    draw();
+  }
+
+  function resetBooksGraphView() {
+    camera.x = 0;
+    camera.y = 0;
+    camera.scale = 1;
+    selectedNode = null;
+    closeBooksGraphInspector();
+    reheat();
+  }
+
+  function toggleBooksGraphLabels() {
+    showAllLabels = !showAllLabels;
+    const btn = document.getElementById('booksGraphLabelToggle');
+    if (btn) btn.classList.toggle('active', showAllLabels);
+    draw();
+  }
+
+  function reheatBooksGraph() {
+    reheat();
+  }
+
+  function closeBooksGraphInspector() {
+    const inspector = document.getElementById('booksGraphInspector');
+    if (inspector) inspector.style.display = 'none';
+    selectedNode = null;
+    draw();
+  }
+
+  function jumpToBookFromInspector() {
+    if (!selectedNode || selectedNode.isHub) return;
+    const cardEl = selectedNode.cardEl;
+    if (!cardEl) return;
+
+    // Switch view back to list
+    switchBooksView('list');
+
+    // Ensure list is uncollapsed
+    const wrap = document.getElementById('booksGridWrap');
+    if (wrap && wrap.classList.contains('collapsed')) {
+      toggleBooksGrid();
+    }
+
+    // Scroll to card
+    if (typeof scrollToBookCard === 'function') {
+      scrollToBookCard(cardEl);
+    }
+  }
+
+  function initBooksGraph() {
+    canvas = document.getElementById('booksGraphCanvas');
+    container = document.getElementById('booksGraphCanvasContainer');
+    if (!canvas || !container) return;
+
+    booksGraphInitialized = true;
+    buildGraphData();
+    resizeCanvas();
+    attachCanvasEvents();
+
+    window.addEventListener('resize', function() {
+      if (booksGraphInitialized && container.offsetParent !== null) {
+        resizeCanvas();
+        draw();
+      }
+    });
+
+    reheat();
+  }
+
+  // Export to window scope for inline onclick handlers & outside calls
+  window.switchBooksView = switchBooksView;
+  window.filterBooksGraph = filterBooksGraph;
+  window.handleBooksGraphSearch = handleBooksGraphSearch;
+  window.clearBooksGraphSearch = clearBooksGraphSearch;
+  window.zoomBooksGraph = zoomBooksGraph;
+  window.resetBooksGraphView = resetBooksGraphView;
+  window.toggleBooksGraphLabels = toggleBooksGraphLabels;
+  window.reheatBooksGraph = reheatBooksGraph;
+  window.closeBooksGraphInspector = closeBooksGraphInspector;
+  window.jumpToBookFromInspector = jumpToBookFromInspector;
+  window.initBooksGraph = initBooksGraph;
+})();
+
 
 function toggleSidebar(){
   const isPortraitPhone = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
