@@ -7741,7 +7741,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.63 &nbsp; 2026-09-19 06:55</span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.64 &nbsp; 2026-09-19 07:15</span>
         </div>
       </div>
     </div>
@@ -18143,13 +18143,13 @@ if (document.readyState === 'loading') {
 
   // Hub definitions
   const HUBS = [
-    { id: 'hub-std', labelZh: '標準作業與防呆', labelEn: 'Standard Work & 5S', color: '#38bdf8', icon: '📋' },
-    { id: 'hub-kaizen', labelZh: '持續改善與精實', labelEn: 'Kaizen & Flow', color: '#4ade80', icon: '🔄' },
-    { id: 'hub-var', labelZh: '變異、統計與認知', labelEn: 'Variation & MSA', color: '#f59e0b', icon: '📊' },
-    { id: 'hub-vuca', labelZh: '敏捷、系統與反脆弱', labelEn: 'Agile & Antifragile', color: '#a855f7', icon: '🛡️' },
-    { id: 'hub-lead', labelZh: '精實領導與人本', labelEn: 'Lean Leadership', color: '#ec4899', icon: '🤝' },
-    { id: 'hub-waste', labelZh: '消除浪費與專注', labelEn: 'Waste & Focus', color: '#14b8a6', icon: '🎯' },
-    { id: 'hub-personal', labelZh: '個人精實與轉型', labelEn: 'Personal Lean & DX', color: '#f43f5e', icon: '🚀' }
+    { id: 'hub-std', labelZh: '標準作業與防呆', labelEn: 'Standard Work & 5S', color: '#38bdf8', icon: '📋', descZh: '串聯標準化作業、防呆機制與 5S 現場紀律網絡。', descEn: 'Connecting standard work, Poka-Yoke error-proofing, and 5S operational discipline.' },
+    { id: 'hub-kaizen', labelZh: '持續改善與精實', labelEn: 'Kaizen & Flow', color: '#4ade80', icon: '🔄', descZh: '串聯 PDCA 改善循環、單件流與流暢價值流網絡。', descEn: 'Connecting PDCA cycles, one-piece flow, and smooth value streams.' },
+    { id: 'hub-var', labelZh: '變異、統計與認知', labelEn: 'Variation & MSA', color: '#f59e0b', icon: '📊', descZh: '串聯統計變異分析、量測系統分析 (MSA) 與認知偏差校準網絡。', descEn: 'Connecting statistical variation, MSA measurement systems, and cognitive bias calibration.' },
+    { id: 'hub-vuca', labelZh: '敏捷、系統與反脆弱', labelEn: 'Agile & Antifragile', color: '#a855f7', icon: '🛡️', descZh: '串聯 VUCA 動盪應對、複雜系統思考與反脆弱試錯網絡。', descEn: 'Connecting VUCA resilience, complex systems thinking, and antifragile experimentation.' },
+    { id: 'hub-lead', labelZh: '精實領導與人本', labelEn: 'Lean Leadership', color: '#ec4899', icon: '🤝', descZh: '串聯以人為本、教練型領導與跨職能協作信任網絡。', descEn: 'Connecting respect for people, servant leadership, and cross-functional trust.' },
+    { id: 'hub-waste', labelZh: '消除浪費與專注', labelEn: 'Waste & Focus', color: '#14b8a6', icon: '🎯', descZh: '串聯消除 8 大浪費、極簡專注與商業價值驅動網絡。', descEn: 'Connecting 8 Wastes elimination, deep focus, and business-driven value streams.' },
+    { id: 'hub-personal', labelZh: '個人精實與轉型', labelEn: 'Personal Lean & DX', color: '#f43f5e', icon: '🚀', descZh: '串聯個人高產能深度工作、數位轉型 (DX) 與原子習慣複利網絡。', descEn: 'Connecting personal deep work productivity, digital transformation (DX), and habit compounding.' }
   ];
 
   const BOOK_HUB_MAP = {
@@ -18267,6 +18267,8 @@ if (document.readyState === 'loading') {
         isHub: true,
         labelZh: hub.labelZh,
         labelEn: hub.labelEn,
+        descZh: hub.descZh,
+        descEn: hub.descEn,
         color: hub.color,
         icon: hub.icon,
         radius: 20,
@@ -18295,13 +18297,18 @@ if (document.readyState === 'loading') {
       const coverTitleEn = card.querySelector('.book-title-sub');
       const h3zh = card.querySelector('.book-info h3 .zh');
       const h3en = card.querySelector('.book-info h3 .en');
-      const authorEl = card.querySelector('.book-author') || card.querySelector('.chip .zh');
-      const mappingEl = card.querySelector('.book-meta .chip:nth-child(2) .zh');
+      const authorElZh = card.querySelector('.book-meta .chip:nth-child(1) .zh');
+      const authorElEn = card.querySelector('.book-meta .chip:nth-child(1) .en');
+      const mappingElZh = card.querySelector('.book-meta .chip:nth-child(2) .zh');
+      const mappingElEn = card.querySelector('.book-meta .chip:nth-child(2) .en');
+      const coverAuthor = card.querySelector('.book-author');
 
       const titleZh = coverTitleZh ? coverTitleZh.textContent.trim() : (h3zh ? h3zh.textContent.replace(/^[《]|》.*$/g, '').trim() : '書籍');
       const titleEn = coverTitleEn ? coverTitleEn.textContent.trim() : (h3en ? h3en.textContent.trim() : 'Book');
-      const author = authorEl ? authorEl.textContent.replace(/^作者：/, '').trim() : '';
-      const mapping = mappingEl ? mappingEl.textContent.replace(/^關聯：/, '').trim() : '';
+      const authorZh = authorElZh ? authorElZh.textContent.replace(/^作者：/, '').trim() : (coverAuthor ? coverAuthor.textContent.trim() : '');
+      const authorEn = authorElEn ? authorElEn.textContent.replace(/^Author:\s*/i, '').trim() : (coverAuthor ? coverAuthor.textContent.trim() : '');
+      const mappingZh = mappingElZh ? mappingElZh.textContent.replace(/^關聯：/, '').trim() : '';
+      const mappingEn = mappingElEn ? mappingElEn.textContent.replace(/^LSS Mapping:\s*/i, '').trim() : '';
 
       const hubsAssigned = BOOK_HUB_MAP[slug] || ['hub-std'];
       const primaryHub = nodeMap[hubsAssigned[0]] || nodes[0];
@@ -18319,8 +18326,12 @@ if (document.readyState === 'loading') {
         slug: slug,
         labelZh: titleZh,
         labelEn: titleEn,
-        author: author,
-        mapping: mapping,
+        author: authorZh,
+        authorZh: authorZh,
+        authorEn: authorEn,
+        mapping: mappingZh,
+        mappingZh: mappingZh,
+        mappingEn: mappingEn,
         color: primaryHub.color,
         hubs: hubsAssigned,
         radius: 9,
@@ -18489,7 +18500,7 @@ if (document.readyState === 'loading') {
     const rect = container.getBoundingClientRect();
     const width = rect.width || 800;
     const height = rect.height || 620;
-    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const isDark = (typeof state !== 'undefined' && state.theme) ? state.theme !== 'light' : (document.body.getAttribute('data-theme') !== 'light');
 
     ctx.save();
     ctx.clearRect(0, 0, width, height);
@@ -18623,8 +18634,15 @@ if (document.readyState === 'loading') {
     }
   }
 
+  function isGraphZh() {
+    if (typeof state !== 'undefined' && state.lang) {
+      return state.lang === 'zh';
+    }
+    return document.body.getAttribute('lang-mode') !== 'en';
+  }
+
   function drawNodeLabel(ctx, n, isDark, scale) {
-    const isZh = document.documentElement.lang !== 'en' && (!document.body.classList.contains('lang-en'));
+    const isZh = isGraphZh();
     const text = isZh ? n.labelZh : (n.labelEn || n.labelZh);
     const fontSize = Math.max(9, Math.min(14, (n.isHub ? 13 : 11) / Math.sqrt(scale)));
     ctx.font = (n.isHub ? 'bold ' : '500 ') + fontSize + 'px "Noto Sans TC", system-ui, sans-serif';
@@ -18664,7 +18682,11 @@ if (document.readyState === 'loading') {
     const q = searchQuery.toLowerCase();
     return (n.labelZh && n.labelZh.toLowerCase().includes(q)) ||
            (n.labelEn && n.labelEn.toLowerCase().includes(q)) ||
+           (n.authorZh && n.authorZh.toLowerCase().includes(q)) ||
+           (n.authorEn && n.authorEn.toLowerCase().includes(q)) ||
            (n.author && n.author.toLowerCase().includes(q)) ||
+           (n.mappingZh && n.mappingZh.toLowerCase().includes(q)) ||
+           (n.mappingEn && n.mappingEn.toLowerCase().includes(q)) ||
            (n.mapping && n.mapping.toLowerCase().includes(q));
   }
 
@@ -18848,6 +18870,7 @@ if (document.readyState === 'loading') {
       return;
     }
 
+    const isZh = isGraphZh();
     const titleZh = document.getElementById('inspectorTitleZh');
     const titleEn = document.getElementById('inspectorTitleEn');
     const author = document.getElementById('inspectorAuthor');
@@ -18857,25 +18880,55 @@ if (document.readyState === 'loading') {
     const linksList = document.getElementById('inspectorLinksList');
     const jumpBtn = document.getElementById('inspectorJumpBtn');
 
-    if (titleZh) titleZh.textContent = n.labelZh || '';
-    if (titleEn) titleEn.textContent = n.labelEn || '';
+    if (titleZh) titleZh.textContent = isZh ? (n.labelZh || '') : (n.labelEn || n.labelZh || '');
+    if (titleEn) titleEn.textContent = isZh ? (n.labelEn || '') : (n.labelZh || '');
     if (icon) icon.textContent = n.isHub ? (n.icon || '📌') : '📖';
-    if (author) author.textContent = n.isHub ? '核心領域 (Theme Hub)' : ('作者：' + (n.author || '精選經典'));
-    if (category) category.textContent = n.isHub ? 'LSS 核心樞紐' : ('領域：' + (n.hubs ? n.hubs.map(h => (nodeMap[h] || {}).labelZh).join(', ') : ''));
-    if (mapping) mapping.innerHTML = n.isHub ? '<strong>領域定位：</strong> 串聯精實六標準差多維經典實踐網絡。' : ('<strong>實務關聯：</strong> ' + (n.mapping || '標準作業與持續改善'));
+
+    if (author) {
+      if (n.isHub) {
+        author.textContent = isZh ? '核心領域 (Theme Hub)' : 'Theme Hub';
+      } else {
+        const authorText = isZh ? (n.authorZh || n.author || '精選經典') : (n.authorEn || n.author || 'Curated Classic');
+        author.textContent = (isZh ? '作者：' : 'Author: ') + authorText;
+      }
+    }
+
+    if (category) {
+      if (n.isHub) {
+        category.textContent = isZh ? 'LSS 核心樞紐' : 'LSS Core Hub';
+      } else {
+        const hubNames = (n.hubs || []).map(h => {
+          const hubObj = nodeMap[h] || {};
+          return isZh ? hubObj.labelZh : (hubObj.labelEn || hubObj.labelZh);
+        }).filter(Boolean);
+        category.textContent = (isZh ? '領域：' : 'Theme: ') + hubNames.join(', ');
+      }
+    }
+
+    if (mapping) {
+      if (n.isHub) {
+        const desc = isZh ? (n.descZh || '串聯精實六標準差多維經典實踐網絡。') : (n.descEn || 'Connecting multi-dimensional Lean Six Sigma classic practices.');
+        mapping.innerHTML = `<strong>${isZh ? '領域定位：' : 'Domain Scope: '}</strong> ${desc}`;
+      } else {
+        const mapText = isZh ? (n.mappingZh || n.mapping || '標準作業與持續改善') : (n.mappingEn || n.mapping || 'Standard Work & Continuous Improvement');
+        mapping.innerHTML = `<strong>${isZh ? '實務關聯：' : 'LSS Mapping: '}</strong> ${mapText}`;
+      }
+    }
 
     // Render Companion links chips
     if (linksList) {
       linksList.innerHTML = '';
       const companionBooks = n.connections.filter(c => !c.isHub);
       if (companionBooks.length === 0) {
-        linksList.innerHTML = '<span style="font-size:11px; color:var(--muted);">無其他直接書籍連線</span>';
+        linksList.innerHTML = `<span style="font-size:11px; color:var(--muted);">${isZh ? '無其他直接書籍連線' : 'No direct companion connections'}</span>`;
       } else {
         companionBooks.forEach(comp => {
           const chip = document.createElement('button');
           chip.type = 'button';
           chip.className = 'inspector-link-chip';
-          chip.textContent = '📖 ' + (comp.labelZh || comp.labelEn);
+          const compName = isZh ? (comp.labelZh || comp.labelEn) : (comp.labelEn || comp.labelZh);
+          chip.textContent = '📖 ' + compName;
+          chip.title = isZh ? (comp.labelEn || '') : (comp.labelZh || '');
           chip.onclick = function() {
             focusNode(comp);
           };
@@ -19045,6 +19098,14 @@ if (document.readyState === 'loading') {
     reheat();
   }
 
+  function updateBooksGraphLanguage() {
+    if (!booksGraphInitialized) return;
+    draw();
+    if (selectedNode) {
+      selectNode(selectedNode);
+    }
+  }
+
   // Export to window scope for inline onclick handlers & outside calls
   window.switchBooksView = switchBooksView;
   window.filterBooksGraph = filterBooksGraph;
@@ -19057,6 +19118,7 @@ if (document.readyState === 'loading') {
   window.closeBooksGraphInspector = closeBooksGraphInspector;
   window.jumpToBookFromInspector = jumpToBookFromInspector;
   window.initBooksGraph = initBooksGraph;
+  window.updateBooksGraphLanguage = updateBooksGraphLanguage;
 })();
 
 
@@ -19913,6 +19975,9 @@ function render(){
   }
   if (state.section === 'aitech' && typeof initAitechCompass === 'function') {
     initAitechCompass();
+  }
+  if (typeof updateBooksGraphLanguage === 'function') {
+    updateBooksGraphLanguage();
   }
 }
 
