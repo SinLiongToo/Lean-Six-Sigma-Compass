@@ -7771,7 +7771,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.67 &nbsp; 2026-10-02 08:45</span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.67 &nbsp; 2026-10-02 14:55</span>
         </div>
       </div>
     </div>
@@ -11963,15 +11963,15 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 </div>
               </div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <button type="button" class="ctrl-btn" onclick="loadOneWayPreset('etch_bias')" style="background:rgba(245,166,35,0.15); color:var(--amber); border:1px solid var(--amber); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                <button type="button" class="dt-case-btn active" id="btnOneWayPreset_etch_bias" onclick="loadOneWayPreset('etch_bias')">
                   <span class="zh">⚡ 案例一：乾蝕刻機台 CD 偏差 (p &lt; 0.05)</span>
                   <span class="en">⚡ Preset 1: Etch Chamber CD Bias</span>
                 </button>
-                <button type="button" class="ctrl-btn" onclick="loadOneWayPreset('scanner_uniform')" style="background:rgba(255,255,255,0.06); color:var(--ink); border:1px solid var(--line); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                <button type="button" class="dt-case-btn" id="btnOneWayPreset_scanner_uniform" onclick="loadOneWayPreset('scanner_uniform')">
                   <span class="zh">⚖️ 案例二：黃光曝光機良率無偏差 (p ≧ 0.05)</span>
                   <span class="en">⚖️ Preset 2: Scanner Yield Uniformity</span>
                 </button>
-                <button type="button" class="ctrl-btn" onclick="loadOneWayPreset('furnace_tubes')" style="background:rgba(255,255,255,0.06); color:var(--ink); border:1px solid var(--line); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                <button type="button" class="dt-case-btn" id="btnOneWayPreset_furnace_tubes" onclick="loadOneWayPreset('furnace_tubes')">
                   <span class="zh">🔥 案例三：擴散爐管四管區膜厚 (4組)</span>
                   <span class="en">🔥 Preset 3: Furnace 4-Tube Thickness</span>
                 </button>
@@ -12076,11 +12076,11 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 </div>
               </div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <button type="button" class="ctrl-btn" onclick="loadTwoWayPreset('cmp_synergy')" style="background:rgba(245,166,35,0.15); color:var(--amber); border:1px solid var(--amber); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                <button type="button" class="dt-case-btn active" id="btnTwoWayPreset_cmp_synergy" onclick="loadTwoWayPreset('cmp_synergy')">
                   <span class="zh">⚡ 案例一：CMP 拋光速率強交互作用 (p &lt; 0.05)</span>
                   <span class="en">⚡ Preset 1: CMP Removal Rate Synergy</span>
                 </button>
-                <button type="button" class="ctrl-btn" onclick="loadTwoWayPreset('etch_additive')" style="background:rgba(255,255,255,0.06); color:var(--ink); border:1px solid var(--line); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                <button type="button" class="dt-case-btn" id="btnTwoWayPreset_etch_additive" onclick="loadTwoWayPreset('etch_additive')">
                   <span class="zh">⚖️ 案例二：蝕刻速率純主效應無交互 (p ≧ 0.05)</span>
                   <span class="en">⚖️ Preset 2: Etch Rate Additive (No Synergy)</span>
                 </button>
@@ -33179,7 +33179,16 @@ let oneWayGroups = [
   { name: 'Chamber C (腔體 C)', raw: '45.1, 45.3, 44.9, 45.4, 45.2' }
 ];
 
+let activeOneWayPreset = 'etch_bias';
+
 function loadOneWayPreset(presetKey) {
+  activeOneWayPreset = presetKey;
+  const presets = ['etch_bias', 'scanner_uniform', 'furnace_tubes'];
+  presets.forEach(key => {
+    const btn = document.getElementById('btnOneWayPreset_' + key);
+    if (btn) btn.classList.toggle('active', key === presetKey);
+  });
+
   if (presetKey === 'etch_bias') {
     oneWayGroups = [
       { name: 'Chamber A (腔體 A)', raw: '45.2, 44.8, 45.5, 45.0, 44.9' },
@@ -33510,7 +33519,16 @@ let twoWayData = {
   ]
 };
 
+let activeTwoWayPreset = 'cmp_synergy';
+
 function loadTwoWayPreset(presetKey) {
+  activeTwoWayPreset = presetKey;
+  const presets = ['cmp_synergy', 'etch_additive'];
+  presets.forEach(key => {
+    const btn = document.getElementById('btnTwoWayPreset_' + key);
+    if (btn) btn.classList.toggle('active', key === presetKey);
+  });
+
   if (presetKey === 'cmp_synergy') {
     twoWayData = {
       aLevels: ['2 psi (低壓)', '4 psi (高壓)'],
