@@ -7771,7 +7771,7 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
           <span style="color: var(--line);">|</span>
           <span>🪙 <a href="https://my-priciple-card.pages.dev/" target="_blank" rel="noopener noreferrer" style="color: var(--amber); text-decoration: none; border-bottom: 1px dotted var(--amber);"><span class="zh">工作的管見 (工作原則卡牌)</span><span class="en">My Two Cents on Work (Principle Cards)</span></a></span>
           <span style="color: var(--line);">|</span>
-          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.66 &nbsp; 2026-09-19 07:35</span>
+          <span id="versionBadge" style="display:inline-flex; align-items:center; gap:5px; background:rgba(245,166,35,0.12); border:1px solid rgba(245,166,35,0.35); border-radius:12px; padding:2px 10px; font-size:11.5px; font-weight:700; color:var(--amber); white-space:nowrap; letter-spacing:0.02em;">🔖 v2.67 &nbsp; 2026-10-02 08:45</span>
         </div>
       </div>
     </div>
@@ -11582,8 +11582,8 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 <span class="zh">理論哲學淵源：查理·蒙格「人類誤判心理學」與逆向思考</span>
                 <span class="en">Foundational Philosophy: Charlie Munger's "Psychology of Human Misjudgment" & Inversion</span>
               </div>
-              <span class="zh">本章節所拆解的 17 大分析謬誤與認知陷阱，其理論核心與防禦哲學正奠基於<b>查理·蒙格</b>的多元心智模型、逆向思考（反過來想，總是反過來想）與 25 種人類誤判心理傾向。</span>
-              <span class="en">The 17 analytical fallacies analyzed below are grounded in <b>Charlie Munger's</b> latticework of mental models, inversion thinking ("Invert, always invert"), and psychological bias defense.</span>
+              <span class="zh">本章節所拆解的 19 大分析謬誤與認知陷阱，其理論核心與防禦哲學正奠基於<b>查理·蒙格</b>的多元心智模型、逆向思考（反過來想，總是反過來想）與 25 種人類誤判心理傾向。</span>
+              <span class="en">The 19 analytical fallacies analyzed below are grounded in <b>Charlie Munger's</b> latticework of mental models, inversion thinking ("Invert, always invert"), and psychological bias defense.</span>
             </div>
           </div>
           <button type="button" class="ctrl-btn" onclick="jumpTag({type:'book', key:'poor-charlie'})" style="background: var(--amber); color: var(--navy); border: none; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; white-space: nowrap;">
@@ -11835,6 +11835,29 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
                 </div>
               </div>
 
+              <!-- Card 19: The Illusion of Difference & Interaction Blindness Fallacy (ANOVA Defense) -->
+              <div class="fallacy-card">
+                <div class="fallacy-card-header">
+                  <h4><span class="zh">19. 均值錯覺與多因子忽視謬誤（群體差異誤判與交互作用盲區）</span><span class="en">19. The Illusion of Difference & Interaction Blindness Fallacy</span></h4>
+                  <span class="fallacy-badge error"><span class="zh">高發</span><span class="en">Common</span></span>
+                </div>
+                <div class="fallacy-card-body">
+                  <p><strong><span class="zh">表現形式：</span><span class="en">Manifestation:</span></strong> <span class="zh">在日常數據分析中，人們常犯兩大直覺盲區：(1)「單因子均值錯覺」——單憑抽樣平均數高低（如 機台 A 均值 45.1nm vs 機台 B 均值 46.8nm）便主觀斷定「機台間存在顯著優劣」，完全忽略組內隨機波動（Within-group variation）可能遠大於組間差異；(2)「多因子交互作用盲區」——在多因子製程中固守單因子輪替測試（OFAT - One Factor at a Time），誤認因子效應僅為線性獨立疊加，完全看不見多因子同時變動時產生的劇烈非線性協同效應（Synergistic Interaction）。</span><span class="en">Two prevalent cognitive blind spots: (1) The "Illusion of Difference"—arbitrarily declaring machine differences based solely on raw sample averages without accounting for within-group variation; (2) "Interaction Blindness"—clinging to One-Factor-at-a-Time (OFAT) testing and assuming additive linearity, completely blind to explosive nonlinear synergy when multiple factors interact simultaneously.</span></p>
+                  <p><strong><span class="zh">LSS 現場示例：</span><span class="en">LSS Example:</span></strong> <span class="zh">微影黃光區工程師抽檢三台 ASML 曝光機（Scanner 1, 2, 3）的關鍵尺寸 (CD)，直覺認定 Scanner 2 均值偏高而擅自停機調整配方，實質上 p = 0.22，該差異純屬背景隨機白雜訊；又如 CMP 研磨製程，工程師分別單獨測試研磨壓力（2 vs 4 psi）與盤面轉速（60 vs 90 rpm），未察覺在「高壓 + 高速」同時發生時，摩擦溫升與漿料流場觸發劇烈化學機械交互作用，移除速率暴增 50% 造成大量晶圓過度研磨穿透介電層報廢。</span><span class="en">A photolithography engineer stops Scanner 2 based on a small raw CD average spike, unaware that p = 0.22 (well within random noise); meanwhile in CMP planarization, engineers test pressure and speed in isolation, failing to detect that high-pressure + high-speed triggers an aggressive nonlinear chemical-mechanical interaction surging removal rate by 50% and punch-through scrapping.</span></p>
+                  <p><strong><span class="zh">VUCA 時代視角：</span><span class="en">VUCA Perspective:</span></strong> <span class="zh">現代半導體與先進製造屬於非線性動態複雜系統，因子交互作用是常態而非特例。憑直覺「以均值代全體」或「線性拆解多因子」，會讓決策者在 VUCA 雜訊中產生「偽確定感」而做出反效果的過度干預（Tampering）。精實六標準差的核心是「尊重變異、信噪比決策」，透過統計檢定嚴格分離信號與雜訊。</span><span class="en">Advanced semiconductor systems are nonlinear and complex; multi-factor interactions are ubiquitous. Relying on intuitive averages or linear OFAT models breeds dangerous illusions of control, prompting destructive process tampering. Lean Six Sigma mandates strict signal-to-noise ratio testing to decouple authentic signals from stochastic noise.</span></p>
+                  <p><strong><span class="zh">對應修正機制：</span><span class="en">Correction:</span></strong> <span class="zh">導入<b>變異數分析 (ANOVA: One-Way & Two-Way)</b>：利用 F 檢定（組間均方 / 組內均方）科學判斷組間差異是否顯著超越雜訊；在多因子條件下進行雙因子 ANOVA，並藉助交互作用折線圖（Interaction Plot）評估因子協同性。</span><span class="en">Implement <b>Analysis of Variance (ANOVA: One-Way & Two-Way with Interaction)</b>: Leverage F-tests (MS_between / MS_within) to verify if variance transcends random error, and evaluate synergy curves in interaction plots.</span></p>
+                  <div style="margin-top:12px;">
+                    <button type="button" class="ctrl-btn" onclick="jumpToAnovaWorkbench('oneway')" style="background:var(--amber); color:var(--navy); border:none; font-weight:700; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px; display:inline-flex; align-items:center; gap:6px;">
+                      <span>🔬</span>
+                      <span class="zh">前往下方 ANOVA 互動分析工作台</span>
+                      <span class="en">Launch ANOVA Interactive Workbench Below</span>
+                      <span>➔</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
           </div>
 
@@ -11894,6 +11917,401 @@ footer{text-align:center;margin-top:30px;font-size:11px;color:var(--muted);}
             </div>
           </div>
         </div>
+
+        <!-- Section 15 Tool: Interactive ANOVA Analysis Workbench -->
+        <div class="case-subhead" id="sec-anova-workbench" style="margin-top: 36px;">
+          <span class="zh">🔬 ANOVA 變異數分析實戰工作台 (單因子 One-Way & 雙因子 Two-Way 互動分析)</span>
+          <span class="en">🔬 ANOVA Analysis Workbench: One-Way & Two-Way Interactive Engine</span>
+          <div class="line"></div>
+        </div>
+        <p class="honesty-note">
+          <span class="zh">以科學統計 F 檢定與變異分解（SS）終結直覺偏誤中的「均值錯覺」與「多因子交互作用盲區」：支援半導體製程真實案例、動態參數試算、即時 F / p 值判定、組間散佈圖與交互作用折線圖。</span>
+          <span class="en">Conquer the "Illusion of Difference" and "Interaction Blindness" with rigorous F-tests and Sum of Squares decomposition. Features real semiconductor fab presets, dynamic sample calculation, instant p-value inference, and interactive SVG plots.</span>
+        </p>
+
+        <!-- Subtabs Navigation -->
+        <div class="calc-tabs" style="margin-bottom: 20px;">
+          <button type="button" class="calc-tab active" id="btnAnovaOneWay" onclick="switchAnovaTab('oneway')">
+            <span>📊</span>
+            <span class="zh">單因子 ANOVA (One-Way)</span>
+            <span class="en">One-Way ANOVA</span>
+          </button>
+          <button type="button" class="calc-tab" id="btnAnovaTwoWay" onclick="switchAnovaTab('twoway')">
+            <span>🧬</span>
+            <span class="zh">雙因子 ANOVA 含交互作用 (Two-Way)</span>
+            <span class="en">Two-Way ANOVA with Interaction</span>
+          </button>
+          <button type="button" class="calc-tab" id="btnAnovaTheory" onclick="switchAnovaTab('theory')">
+            <span>📐</span>
+            <span class="zh">統計假設前提、公式與事後檢定 (Theory & Post-Hoc)</span>
+            <span class="en">Assumptions, Formulas & Post-Hoc</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: One-Way ANOVA Panel -->
+        <div class="calc-panel active" id="panelAnovaOneWay">
+          <div class="calc-box">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:12px;">
+              <div>
+                <h3 style="margin:0 0 4px 0; font-size:16px;">
+                  <span class="zh">單因子變異數分析 (One-Way ANOVA)</span>
+                  <span class="en">One-Way Analysis of Variance</span>
+                </h3>
+                <div style="font-size:12px; color:var(--muted);">
+                  <span class="zh">檢驗 3 組或以上連續型資料的平均值是否具顯著統計差異，檢驗公式：<code>F = MS_between / MS_within</code></span>
+                  <span class="en">Tests whether means of 3+ groups differ significantly: <code>F = MS_between / MS_within</code></span>
+                </div>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="ctrl-btn" onclick="loadOneWayPreset('etch_bias')" style="background:rgba(245,166,35,0.15); color:var(--amber); border:1px solid var(--amber); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                  <span class="zh">⚡ 案例一：乾蝕刻機台 CD 偏差 (p &lt; 0.05)</span>
+                  <span class="en">⚡ Preset 1: Etch Chamber CD Bias</span>
+                </button>
+                <button type="button" class="ctrl-btn" onclick="loadOneWayPreset('scanner_uniform')" style="background:rgba(255,255,255,0.06); color:var(--ink); border:1px solid var(--line); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                  <span class="zh">⚖️ 案例二：黃光曝光機良率無偏差 (p ≧ 0.05)</span>
+                  <span class="en">⚖️ Preset 2: Scanner Yield Uniformity</span>
+                </button>
+                <button type="button" class="ctrl-btn" onclick="loadOneWayPreset('furnace_tubes')" style="background:rgba(255,255,255,0.06); color:var(--ink); border:1px solid var(--line); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                  <span class="zh">🔥 案例三：擴散爐管四管區膜厚 (4組)</span>
+                  <span class="en">🔥 Preset 3: Furnace 4-Tube Thickness</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- One-Way Input Area -->
+            <div style="margin-bottom:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <label style="font-weight:700; font-size:12.5px; color:var(--ink);">
+                  <span class="zh">組別與樣本數據 (以逗號分隔各數值，支援即時修改)：</span>
+                  <span class="en">Group Sample Data (comma-separated, editable):</span>
+                </label>
+                <div style="display:flex; gap:8px;">
+                  <button type="button" class="ctrl-btn" onclick="addOneWayGroup()" style="background:var(--primary); color:#fff; border:none; padding:4px 10px; border-radius:6px; font-size:11.5px; cursor:pointer;">
+                    <span class="zh">➕ 新增組別</span><span class="en">➕ Add Group</span>
+                  </button>
+                  <button type="button" class="ctrl-btn" onclick="calculateOneWayAnova()" style="background:var(--amber); color:var(--navy); border:none; padding:4px 12px; border-radius:6px; font-weight:700; font-size:11.5px; cursor:pointer;">
+                    <span class="zh">🔄 執行單因子計算</span><span class="en">🔄 Run One-Way</span>
+                  </button>
+                </div>
+              </div>
+              <div id="oneWayGroupsContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;"></div>
+            </div>
+
+            <!-- One-Way Results -->
+            <div id="oneWayResultsWrap" style="margin-top:20px;">
+              <div id="oneWaySummaryPills" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:16px;"></div>
+              
+              <div id="oneWayDecisionBadge" style="margin-bottom:16px;"></div>
+
+              <div class="fmea-table-wrap" style="margin-bottom:20px;">
+                <table class="fmea-table" id="oneWayAnovaTable" style="min-width:620px;">
+                  <thead>
+                    <tr>
+                      <th><span class="zh">變異來源 (Source)</span><span class="en">Source</span></th>
+                      <th><span class="zh">平方和 (SS)</span><span class="en">SS</span></th>
+                      <th><span class="zh">自由度 (DF)</span><span class="en">DF</span></th>
+                      <th><span class="zh">均方 (MS)</span><span class="en">MS</span></th>
+                      <th><span class="zh">F 統計量</span><span class="en">F Value</span></th>
+                      <th><span class="zh">p 值 (p-value)</span><span class="en">p-value</span></th>
+                      <th><span class="zh">統計決策</span><span class="en">Conclusion</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="oneWayAnovaTableBody"></tbody>
+                </table>
+              </div>
+
+              <!-- SVG Visual Chart for One-Way ANOVA -->
+              <div style="background:var(--bg); border:1px solid var(--panel-border); border-radius:10px; padding:16px; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                  <div style="font-weight:700; font-size:13px; color:var(--amber);">
+                    <span class="zh">📊 各組平均值與 ±1σ 誤差長條散佈圖 (Group Means &amp; Jittered Samples)</span>
+                    <span class="en">📊 Group Means &amp; ±1σ Error Bars with Jittered Samples</span>
+                  </div>
+                  <div style="font-size:11.5px; color:var(--muted);">
+                    <span class="zh">虛線為總平均值 (Grand Mean)</span>
+                    <span class="en">Dashed line indicates Grand Mean</span>
+                  </div>
+                </div>
+                <div id="oneWayChartContainer" style="width:100%; overflow-x:auto;"></div>
+              </div>
+
+              <!-- Tukey HSD Pairwise Breakdown -->
+              <div style="background:rgba(245,166,35,0.03); border:1px solid var(--panel-border); border-radius:10px; padding:14px;">
+                <div style="font-weight:700; font-size:12.5px; color:var(--ink); margin-bottom:8px;">
+                  <span class="zh">🔍 Tukey HSD 事後兩兩比較檢定 (Post-Hoc Pairwise Comparisons)</span>
+                  <span class="en">🔍 Tukey HSD Post-Hoc Pairwise Comparisons</span>
+                </div>
+                <div id="oneWayTukeyWrap" class="fmea-table-wrap">
+                  <table class="fmea-table" style="min-width:540px;">
+                    <thead>
+                      <tr>
+                        <th><span class="zh">組別對照 (Comparison)</span><span class="en">Comparison</span></th>
+                        <th><span class="zh">均值差 (Diff)</span><span class="en">Mean Diff</span></th>
+                        <th><span class="zh">標準誤差 (SE)</span><span class="en">Std Error</span></th>
+                        <th><span class="zh">q 統計量</span><span class="en">q Stat</span></th>
+                        <th><span class="zh">顯著性 (α=0.05)</span><span class="en">Sig (α=0.05)</span></th>
+                        <th><span class="zh">精實工程改善指引</span><span class="en">Engineering Action</span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="oneWayTukeyTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Two-Way ANOVA Panel -->
+        <div class="calc-panel" id="panelAnovaTwoWay">
+          <div class="calc-box">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:12px;">
+              <div>
+                <h3 style="margin:0 0 4px 0; font-size:16px;">
+                  <span class="zh">雙因子變異數分析含交互作用 (Two-Way ANOVA with Interaction)</span>
+                  <span class="en">Two-Way ANOVA with Interaction Effect (2 × 2 Factorial)</span>
+                </h3>
+                <div style="font-size:12px; color:var(--muted);">
+                  <span class="zh">同時檢驗兩大製程主因子 (Factor A &amp; Factor B) 及其交互作用 (A × B) 是否存在顯著非線性協同效應。</span>
+                  <span class="en">Simultaneously evaluates Factor A, Factor B, and Interaction (A × B) to detect non-linear synergies.</span>
+                </div>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="ctrl-btn" onclick="loadTwoWayPreset('cmp_synergy')" style="background:rgba(245,166,35,0.15); color:var(--amber); border:1px solid var(--amber); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                  <span class="zh">⚡ 案例一：CMP 拋光速率強交互作用 (p &lt; 0.05)</span>
+                  <span class="en">⚡ Preset 1: CMP Removal Rate Synergy</span>
+                </button>
+                <button type="button" class="ctrl-btn" onclick="loadTwoWayPreset('etch_additive')" style="background:rgba(255,255,255,0.06); color:var(--ink); border:1px solid var(--line); font-size:11.5px; padding:4px 10px; border-radius:6px; cursor:pointer;">
+                  <span class="zh">⚖️ 案例二：蝕刻速率純主效應無交互 (p ≧ 0.05)</span>
+                  <span class="en">⚖️ Preset 2: Etch Rate Additive (No Synergy)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Two-Way Matrix Input Area -->
+            <div style="margin-bottom:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <label style="font-weight:700; font-size:12.5px; color:var(--ink);">
+                  <span class="zh">2 × 2 因子設計數據矩陣 (每格重複試驗數值以逗號分隔)：</span>
+                  <span class="en">2 × 2 Factorial Data Matrix (replicate values comma-separated):</span>
+                </label>
+                <button type="button" class="ctrl-btn" onclick="calculateTwoWayAnova()" style="background:var(--amber); color:var(--navy); border:none; padding:4px 12px; border-radius:6px; font-weight:700; font-size:11.5px; cursor:pointer;">
+                  <span class="zh">🔄 執行雙因子計算</span><span class="en">🔄 Run Two-Way</span>
+                </button>
+              </div>
+
+              <!-- Matrix Form -->
+              <div class="fmea-table-wrap">
+                <table class="fmea-table" style="min-width:680px; text-align:center;">
+                  <thead>
+                    <tr>
+                      <th style="width:200px;"><span class="zh">因子 A \ 因子 B</span><span class="en">Factor A \ Factor B</span></th>
+                      <th>
+                        <input type="text" id="twB1Name" value="60 rpm (低速)" class="fmea-input" style="font-weight:700; text-align:center;">
+                      </th>
+                      <th>
+                        <input type="text" id="twB2Name" value="90 rpm (高速)" class="fmea-input" style="font-weight:700; text-align:center;">
+                      </th>
+                      <th style="width:130px;"><span class="zh">A 因子列平均</span><span class="en">Row Mean</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="text" id="twA1Name" value="2 psi (低壓)" class="fmea-input" style="font-weight:700;">
+                      </td>
+                      <td>
+                        <input type="text" id="twCell00" value="1200, 1220, 1190" class="fmea-input" style="font-family:monospace; text-align:center;">
+                        <div id="twCell00Mean" style="font-size:11px; color:var(--muted); margin-top:2px;">Mean: 1203.3</div>
+                      </td>
+                      <td>
+                        <input type="text" id="twCell01" value="1350, 1370, 1340" class="fmea-input" style="font-family:monospace; text-align:center;">
+                        <div id="twCell01Mean" style="font-size:11px; color:var(--muted); margin-top:2px;">Mean: 1353.3</div>
+                      </td>
+                      <td id="twRow0Mean" style="font-weight:700; color:var(--amber);">1278.3</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="text" id="twA2Name" value="4 psi (高壓)" class="fmea-input" style="font-weight:700;">
+                      </td>
+                      <td>
+                        <input type="text" id="twCell10" value="1420, 1400, 1430" class="fmea-input" style="font-family:monospace; text-align:center;">
+                        <div id="twCell10Mean" style="font-size:11px; color:var(--muted); margin-top:2px;">Mean: 1416.7</div>
+                      </td>
+                      <td>
+                        <input type="text" id="twCell11" value="2100, 2150, 2080" class="fmea-input" style="font-family:monospace; text-align:center;">
+                        <div id="twCell11Mean" style="font-size:11px; color:var(--muted); margin-top:2px;">Mean: 2110.0</div>
+                      </td>
+                      <td id="twRow1Mean" style="font-weight:700; color:var(--amber);">1763.3</td>
+                    </tr>
+                    <tr style="background:rgba(255,255,255,0.02);">
+                      <td style="font-weight:700;"><span class="zh">B 因子行平均</span><span class="en">Col Mean</span></td>
+                      <td id="twCol0Mean" style="font-weight:700; color:var(--amber);">1310.0</td>
+                      <td id="twCol1Mean" style="font-weight:700; color:var(--amber);">1731.7</td>
+                      <td id="twGrandMean" style="font-weight:800; color:#50e3c2;">Grand: 1520.8</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Two-Way Results Wrap -->
+            <div id="twoWayResultsWrap" style="margin-top:20px;">
+              <div id="twoWaySummaryPills" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:16px;"></div>
+
+              <div id="twoWayDecisionBadge" style="margin-bottom:16px;"></div>
+
+              <div class="fmea-table-wrap" style="margin-bottom:20px;">
+                <table class="fmea-table" id="twoWayAnovaTable" style="min-width:640px;">
+                  <thead>
+                    <tr>
+                      <th><span class="zh">變異來源 (Source)</span><span class="en">Source</span></th>
+                      <th><span class="zh">平方和 (SS)</span><span class="en">SS</span></th>
+                      <th><span class="zh">自由度 (DF)</span><span class="en">DF</span></th>
+                      <th><span class="zh">均方 (MS)</span><span class="en">MS</span></th>
+                      <th><span class="zh">F 統計量</span><span class="en">F Value</span></th>
+                      <th><span class="zh">p 值 (p-value)</span><span class="en">p-value</span></th>
+                      <th><span class="zh">統計決策</span><span class="en">Conclusion</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="twoWayAnovaTableBody"></tbody>
+                </table>
+              </div>
+
+              <!-- SVG Visual Chart for Two-Way Interaction Plot -->
+              <div style="background:var(--bg); border:1px solid var(--panel-border); border-radius:10px; padding:16px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                  <div style="font-weight:700; font-size:13px; color:var(--amber);">
+                    <span class="zh">📈 雙因子交互作用折線圖 (Two-Way Interaction Plot)</span>
+                    <span class="en">📈 Two-Way Interaction Plot</span>
+                  </div>
+                  <div id="twoWayPlotInterpretation" style="font-size:12px; font-weight:700;"></div>
+                </div>
+                <div id="twoWayChartContainer" style="width:100%; overflow-x:auto;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Theory & Assumptions Panel -->
+        <div class="calc-panel" id="panelAnovaTheory">
+          <div class="calc-box">
+            <h3 style="margin-top:0; font-size:16px; border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:16px;">
+              <span class="zh">變異數分析 (ANOVA) 核心統計理論、假設檢驗與現場防禦指引</span>
+              <span class="en">ANOVA Foundational Theory, Assumptions, and Practical Defense Guidelines</span>
+            </h3>
+
+            <!-- 3 Core Assumptions Grid -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:24px;">
+              <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:14px;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                  <span style="font-size:20px;">🔔</span>
+                  <div style="font-weight:700; color:var(--amber); font-size:13px;">
+                    <span class="zh">1. 常態性假定 (Normality)</span>
+                    <span class="en">1. Normality Assumption</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--muted); line-height:1.6; margin:0 0 8px 0;">
+                  <span class="zh">各組抽樣母體或模型殘差需服從常態分佈。常態性遭嚴重違反時，F 檢定之一型錯誤率 (Type I Error) 會失真。</span>
+                  <span class="en">Residuals within groups must follow a normal distribution. Severe violation inflates Type I Error.</span>
+                </p>
+                <div style="font-size:11.5px; color:var(--ink);">
+                  <span class="zh"><b>檢驗工具</b>：Shapiro-Wilk 檢定、Anderson-Darling 檢定、常態機率圖 (Normal Probability Plot)。若嚴重非常態，可考慮 Box-Cox 轉換或改採 <b>Kruskal-Wallis 無母數檢定</b>。</span>
+                  <span class="en"><b>Check with</b>: Shapiro-Wilk, Anderson-Darling, Normal Plot. If violated, apply Box-Cox or use <b>Kruskal-Wallis test</b>.</span>
+                </div>
+              </div>
+
+              <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:14px;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                  <span style="font-size:20px;">⚖️</span>
+                  <div style="font-weight:700; color:var(--amber); font-size:13px;">
+                    <span class="zh">2. 變異數同質性 (Homoscedasticity)</span>
+                    <span class="en">2. Homogeneity of Variance</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--muted); line-height:1.6; margin:0 0 8px 0;">
+                  <span class="zh">各組群體的母體變異數必須相等 (<code>σ₁² = σ₂² = ... = σₖ²</code>)。若各組變異數差異過大（尤其是組別樣本數不均等時），標準 ANOVA F 檢定不可信。</span>
+                  <span class="en">Variances across all groups must be equal. If violated with unequal group sizes, standard F-test is invalid.</span>
+                </p>
+                <div style="font-size:11.5px; color:var(--ink);">
+                  <span class="zh"><b>檢驗工具</b>：Levene's Test（對非常態耐受度高）、Bartlett's Test。若變異數不齊一，應採用 <b>Welch's ANOVA</b> 或 <b>Brown-Forsythe 檢定</b>。</span>
+                  <span class="en"><b>Check with</b>: Levene's Test, Bartlett's Test. If violated, use <b>Welch's ANOVA</b> or <b>Brown-Forsythe test</b>.</span>
+                </div>
+              </div>
+
+              <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:14px;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                  <span style="font-size:20px;">🎲</span>
+                  <div style="font-weight:700; color:var(--amber); font-size:13px;">
+                    <span class="zh">3. 獨立性假定 (Independence)</span>
+                    <span class="en">3. Independence of Observations</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--muted); line-height:1.6; margin:0 0 8px 0;">
+                  <span class="zh">各觀測值彼此獨立，不能存在時間序列自相關（Autocorrelation）或批次關聯。這是三項假設中對 F 檢定穩健度影響最嚴重的假設！</span>
+                  <span class="en">Observations must be independent without time-series autocorrelation. This is the most crucial assumption.</span>
+                </p>
+                <div style="font-size:11.5px; color:var(--ink);">
+                  <span class="zh"><b>現場防禦</b>：嚴格落實試驗隨機化 (Randomization)。檢視殘差對時間順序的散佈圖、Durbin-Watson 統計量。若為重複量測，需使用 <b>重複量測變異數分析 (Repeated Measures ANOVA)</b>。</span>
+                  <span class="en"><b>Fab Defense</b>: Enforce strict Randomization. Inspect residuals vs run order. Use <b>Repeated Measures ANOVA</b> for repeated runs.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FWER & Multiple Testing Explanation -->
+            <div style="background:rgba(245,166,35,0.04); border-left:4px solid var(--amber); padding:14px 18px; border-radius:0 8px 8px 0; margin-bottom:20px;">
+              <div style="font-weight:700; color:var(--amber); font-size:13.5px; margin-bottom:4px;">
+                <span class="zh">💡 為什麼不能直接做多次兩兩 t 檢定？（族群錯誤率膨脹效應 FWER）</span>
+                <span class="en">💡 Why Not Run Multiple Two-Sample t-tests? (FWER Inflation)</span>
+              </div>
+              <div style="font-size:12.5px; color:var(--ink); line-height:1.7;">
+                <span class="zh">若有 <code>k</code> 個組別，兩兩配對檢定的次數為 <code>m = k × (k - 1) / 2</code>。當每次檢定顯著水準 <code>α = 0.05</code> 時，整體犯下一型錯誤（型一錯誤：偽陽性，把無差異誤判為有差異）的累積機率為：<code>FWER = 1 - (1 - α)ᵐ</code>。
+                當 <code>k = 4</code> 時，<code>m = 6</code>，整體虛驚率暴增至 <code>1 - (0.95)⁶ ≈ 26.5%</code>！也就是超過 1/4 的機率會冤枉正常機台。ANOVA 透過單一總體 F 檢定（Omnibus Test）先在 5% 風險下把關，唯有整體 F 顯著時才執行事後檢定 (Tukey HSD / Bonferroni)，徹底消除偽陽性陷阱。</span>
+                <span class="en">For <code>k</code> groups, there are <code>m = k × (k - 1) / 2</code> pairwise tests. The Family-Wise Error Rate is <code>FWER = 1 - (1 - α)ᵐ</code>. For <code>k = 4</code>, <code>m = 6</code>, inflating false alarm rate to <code>1 - (0.95)⁶ ≈ 26.5%</code>! ANOVA controls the overall error at 5% via an omnibus F-test, triggering post-hoc Tukey HSD only when F is significant.</span>
+              </div>
+            </div>
+
+            <!-- Statistical Tools Spectrum Table -->
+            <div class="fmea-table-wrap">
+              <table class="fmea-table" style="min-width:680px;">
+                <thead>
+                  <tr>
+                    <th><span class="zh">工具架構</span><span class="en">Tool Architecture</span></th>
+                    <th><span class="zh">自變數 (X) 特性</span><span class="en">Input (X)</span></th>
+                    <th><span class="zh">應變數 (Y) 特性</span><span class="en">Output (Y)</span></th>
+                    <th><span class="zh">核心用途與半導體實戰範例</span><span class="en">Fab Application & Purpose</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight:700; color:var(--amber);"><span class="zh">雙樣本 t 檢定 (2-sample t)</span><span class="en">2-Sample t-test</span></td>
+                    <td><span class="zh">1 個因子，僅 2 個水準</span><span class="en">1 Factor, 2 Levels</span></td>
+                    <td><span class="zh">連續型 (Continuous)</span><span class="en">Continuous</span></td>
+                    <td><span class="zh">比對機台換配件前後 (Before/After) 均值是否有差異。</span><span class="en">Compare tool mean before vs after overhaul.</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:700; color:var(--amber);"><span class="zh">單因子 ANOVA (One-Way)</span><span class="en">One-Way ANOVA</span></td>
+                    <td><span class="zh">1 個因子，3 個或以上水準</span><span class="en">1 Factor, 3+ Levels</span></td>
+                    <td><span class="zh">連續型 (Continuous)</span><span class="en">Continuous</span></td>
+                    <td><span class="zh">比較 3~5 台曝光機 (Scanner) 或蝕刻腔體 (Chamber) 關鍵尺寸均值偏差。</span><span class="en">Compare CD means across 3-5 Scanners or Chambers.</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:700; color:var(--amber);"><span class="zh">雙因子 ANOVA (Two-Way)</span><span class="en">Two-Way ANOVA</span></td>
+                    <td><span class="zh">2 個因子，多水準 (含交互作用)</span><span class="en">2 Factors, Multi-Level</span></td>
+                    <td><span class="zh">連續型 (Continuous)</span><span class="en">Continuous</span></td>
+                    <td><span class="zh">分析 CMP 研磨壓力與轉速的主效應及非線性交互作用對研磨速率的影響。</span><span class="en">Analyze pressure and speed main effects & synergy on CMP rate.</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:700; color:var(--amber);"><span class="zh">實驗設計 (DOE - Full Factorial)</span><span class="en">Design of Experiments (DOE)</span></td>
+                    <td><span class="zh">多個因子 (k ≥ 2)，多水準</span><span class="en">Multi-Factor (k ≥ 2)</span></td>
+                    <td><span class="zh">多個連續型指標</span><span class="en">Continuous Responses</span></td>
+                    <td><span class="zh">全因子/部分因子製程最佳化尋優，繪製反應曲面 (Response Surface)。</span><span class="en">Multi-factor process optimization and Response Surface mapping.</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <section class="section" data-section="finance">
@@ -19834,6 +20252,33 @@ function renderDemoPanels(){
 }
 
 function getToolWidgetHTML(t) {
+  if (t.name.includes('ANOVA') || t.name.includes('變異數分析')) {
+    return `
+      <div class="x-matrix-explorer" style="border-color:var(--amber); margin-top:12px;">
+        <div class="x-matrix-title">
+          <span class="zh">🔬 ANOVA 變異數分析互動工作台 (單因子 One-Way & 雙因子 Two-Way 交互作用)</span>
+          <span class="en">🔬 ANOVA Analysis Interactive Engine & Fab Simulator</span>
+        </div>
+        <p style="font-size:12.5px; color:var(--muted); line-height:1.6; margin-bottom:12px;">
+          <span class="zh">破解「均值錯覺」與「多因子交互作用盲區」：變異數分析將總變異拆解為組間變異與組內雜訊，利用 F 檢定精確判定顯著性。本系統已於<b>第 15 章節</b>建置完整的互動計算工作台與 SVG 視覺化圖表。</span>
+          <span class="en">Conquer the illusion of difference and interaction blindness: ANOVA breaks down total variance into between-group and within-group error, using F-tests for scientific decision making. An interactive workbench with SVG plots is available in <b>Section 15</b>.</span>
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button type="button" class="demo-btn" onclick="jumpToAnovaWorkbench('oneway')" style="background:var(--amber); color:var(--navy); font-weight:700; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">
+            <span class="zh">🚀 前往第 15 章開啟單因子 ANOVA (One-Way)</span>
+            <span class="en">🚀 Open One-Way ANOVA in Ch. 15</span>
+            <span>➔</span>
+          </button>
+          <button type="button" class="demo-btn" onclick="jumpToAnovaWorkbench('twoway')" style="background:rgba(245,166,35,0.15); color:var(--amber); border:1px solid var(--amber); font-weight:700; padding:8px 16px; border-radius:6px; cursor:pointer;">
+            <span class="zh">🧬 開啟雙因子交互作用 ANOVA (Two-Way)</span>
+            <span class="en">🧬 Open Two-Way ANOVA in Ch. 15</span>
+            <span>➔</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
   if (t.name.includes('方針管理') || t.name.includes('Hoshin Kanri')) {
     return `
       <div class="x-matrix-explorer">
@@ -27645,6 +28090,8 @@ function init(){
   if(typeof initOrgChart === "function") initOrgChart();
   // Initialize Exam Engine
   initExamEngine();
+  // Initialize ANOVA Workbench
+  if(typeof initAnovaModule === "function") initAnovaModule();
 
   // Wire up calculator tabs
   const calcTabs = {
@@ -32630,6 +33077,788 @@ function toggleMarqueePlay() {
   wrap.classList.toggle('is-paused', marqueeIsPaused);
   btn.textContent = marqueeIsPaused ? '▶️' : '⏸️';
 }
+
+
+/* ==================== 15. ANOVA ANALYSIS WORKBENCH LOGIC ==================== */
+
+// F-Distribution probability calculation using regularized incomplete beta function
+function anovaLogGamma(z) {
+  const p = [
+    676.5203681218851, -1259.1392167224028, 771.32342877765313,
+    -176.61502916214059, 12.507343278686905, -0.138571095836524,
+    9.9843695780195716e-6, 1.5056327351493116e-7
+  ];
+  if (z < 0.5) return Math.log(Math.PI / Math.sin(Math.PI * z)) - anovaLogGamma(1 - z);
+  z -= 1;
+  let x = 0.99999999999980993;
+  for (let i = 0; i < p.length; i++) x += p[i] / (z + i + 1);
+  const t = z + p.length - 0.5;
+  return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
+}
+
+function anovaIncBeta(x, a, b) {
+  if (x <= 0) return 0;
+  if (x >= 1) return 1;
+  if (x > (a + 1) / (a + b + 2)) return 1 - anovaIncBeta(1 - x, b, a);
+  const lbeta = anovaLogGamma(a) + anovaLogGamma(b) - anovaLogGamma(a + b);
+  const front = Math.exp(a * Math.log(x) + b * Math.log(1 - x) - lbeta);
+  let c = 1, d = 1 - (a + b) * x / (a + 1);
+  if (Math.abs(d) < 1e-30) d = 1e-30;
+  d = 1 / d;
+  let f = d;
+  for (let m = 1; m <= 100; m++) {
+    let num = (m * (b - m) * x) / ((a + 2 * m - 1) * (a + 2 * m));
+    d = 1 + num * d;
+    if (Math.abs(d) < 1e-30) d = 1e-30;
+    c = 1 + num / c;
+    if (Math.abs(c) < 1e-30) c = 1e-30;
+    d = 1 / d;
+    f *= c * d;
+    num = -((a + m) * (a + b + m) * x) / ((a + 2 * m) * (a + 2 * m + 1));
+    d = 1 + num * d;
+    if (Math.abs(d) < 1e-30) d = 1e-30;
+    c = 1 + num / c;
+    if (Math.abs(c) < 1e-30) c = 1e-30;
+    d = 1 / d;
+    const delta = c * d;
+    f *= delta;
+    if (Math.abs(delta - 1) < 1e-12) break;
+  }
+  return (front / a) * f;
+}
+
+function anovaFProb(f, df1, df2) {
+  if (isNaN(f) || f <= 0 || isNaN(df1) || isNaN(df2) || df1 <= 0 || df2 <= 0) return 1.0;
+  const x = (df1 * f) / (df1 * f + df2);
+  const p = 1.0 - anovaIncBeta(x, df1 / 2, df2 / 2);
+  return Math.max(0, Math.min(1, p));
+}
+
+// Global active sub-tab state
+let activeAnovaTab = 'oneway';
+
+function switchAnovaTab(tab) {
+  activeAnovaTab = tab;
+  const tabs = ['oneway', 'twoway', 'theory'];
+  tabs.forEach(t => {
+    const btn = document.getElementById('btnAnova' + (t === 'oneway' ? 'OneWay' : (t === 'twoway' ? 'TwoWay' : 'Theory')));
+    const pnl = document.getElementById('panelAnova' + (t === 'oneway' ? 'OneWay' : (t === 'twoway' ? 'TwoWay' : 'Theory')));
+    if (btn) btn.classList.toggle('active', t === tab);
+    if (pnl) pnl.classList.toggle('active', t === tab);
+  });
+  if (tab === 'oneway') calculateOneWayAnova();
+  if (tab === 'twoway') calculateTwoWayAnova();
+}
+
+function jumpToAnovaWorkbench(tab) {
+  if (typeof switchSection === 'function') {
+    switchSection('fallacies');
+  } else {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const sec = document.querySelector('.section[data-section="fallacies"]');
+    if (sec) sec.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.toggle('active', item.dataset.target === 'fallacies');
+    });
+  }
+  if (tab) switchAnovaTab(tab);
+  setTimeout(() => {
+    const el = document.getElementById('sec-anova-workbench');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.classList.add('pulse-highlight');
+      setTimeout(() => el.classList.remove('pulse-highlight'), 2000);
+    }
+  }, 120);
+}
+
+/* ---------------- One-Way ANOVA Engine ---------------- */
+let oneWayGroups = [
+  { name: 'Chamber A (腔體 A)', raw: '45.2, 44.8, 45.5, 45.0, 44.9' },
+  { name: 'Chamber B (腔體 B)', raw: '46.8, 47.1, 46.5, 46.9, 47.2' },
+  { name: 'Chamber C (腔體 C)', raw: '45.1, 45.3, 44.9, 45.4, 45.2' }
+];
+
+function loadOneWayPreset(presetKey) {
+  if (presetKey === 'etch_bias') {
+    oneWayGroups = [
+      { name: 'Chamber A (腔體 A)', raw: '45.2, 44.8, 45.5, 45.0, 44.9' },
+      { name: 'Chamber B (腔體 B)', raw: '46.8, 47.1, 46.5, 46.9, 47.2' },
+      { name: 'Chamber C (腔體 C)', raw: '45.1, 45.3, 44.9, 45.4, 45.2' }
+    ];
+  } else if (presetKey === 'scanner_uniform') {
+    oneWayGroups = [
+      { name: 'Scanner 1 (微影機 1)', raw: '98.5, 97.9, 98.2, 98.6, 98.0' },
+      { name: 'Scanner 2 (微影機 2)', raw: '98.1, 98.4, 98.3, 97.8, 98.2' },
+      { name: 'Scanner 3 (微影機 3)', raw: '98.3, 98.0, 98.5, 98.2, 98.1' }
+    ];
+  } else if (presetKey === 'furnace_tubes') {
+    oneWayGroups = [
+      { name: 'Furnace Tube 1', raw: '102.1, 101.8, 102.5, 101.9, 102.0' },
+      { name: 'Furnace Tube 2', raw: '102.3, 102.1, 102.0, 102.4, 102.2' },
+      { name: 'Furnace Tube 3 (高溫異常)', raw: '105.8, 106.2, 105.5, 106.0, 105.9' },
+      { name: 'Furnace Tube 4', raw: '102.0, 101.7, 102.2, 102.3, 101.9' }
+    ];
+  }
+  renderOneWayGroups();
+  calculateOneWayAnova();
+}
+
+function renderOneWayGroups() {
+  const container = document.getElementById('oneWayGroupsContainer');
+  if (!container) return;
+  container.innerHTML = oneWayGroups.map((g, idx) => `
+    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <input type="text" value="${g.name}" class="fmea-input" style="font-weight:700; width:75%; padding:4px 8px; font-size:12px;" onchange="oneWayGroups[${idx}].name=this.value;">
+        ${oneWayGroups.length > 2 ? `<button type="button" onclick="removeOneWayGroup(${idx})" style="background:none; border:none; color:var(--muted); cursor:pointer; font-size:14px; padding:2px 6px;" title="刪除此組">✕</button>` : ''}
+      </div>
+      <input type="text" value="${g.raw}" class="fmea-input" style="font-family:monospace; font-size:12px; padding:6px 8px;" onchange="oneWayGroups[${idx}].raw=this.value; calculateOneWayAnova();">
+      <div id="oneWayGroupStat_${idx}" style="font-size:11px; color:var(--muted); margin-top:4px;"></div>
+    </div>
+  `).join('');
+}
+
+function addOneWayGroup() {
+  const nextNum = oneWayGroups.length + 1;
+  oneWayGroups.push({
+    name: 'Group ' + nextNum + ' (組別 ' + nextNum + ')',
+    raw: '45.0, 45.2, 45.1, 44.9, 45.3'
+  });
+  renderOneWayGroups();
+  calculateOneWayAnova();
+}
+
+function removeOneWayGroup(idx) {
+  if (oneWayGroups.length <= 2) return;
+  oneWayGroups.splice(idx, 1);
+  renderOneWayGroups();
+  calculateOneWayAnova();
+}
+
+function calculateOneWayAnova() {
+  const container = document.getElementById('oneWayGroupsContainer');
+  if (!container) return;
+
+  // Parse values from inputs
+  let allVals = [];
+  let k = oneWayGroups.length;
+  let totalN = 0;
+  let groupParsed = [];
+
+  for (let i = 0; i < k; i++) {
+    const rawStr = oneWayGroups[i].raw || '';
+    const nums = rawStr.split(/[,\s]+/).map(v => parseFloat(v)).filter(v => !isNaN(v));
+    const n = nums.length;
+    if (n < 2) {
+      alert('每組請至少輸入 2 個數值！');
+      return;
+    }
+    totalN += n;
+    const sum = nums.reduce((a, b) => a + b, 0);
+    const mean = sum / n;
+    const ss = nums.reduce((a, b) => a + Math.pow(b - mean, 2), 0);
+    const sd = Math.sqrt(ss / (n - 1));
+    allVals.push(...nums);
+    groupParsed.push({ name: oneWayGroups[i].name, n, mean, sd, sum, ss, vals: nums });
+
+    const statEl = document.getElementById('oneWayGroupStat_' + i);
+    if (statEl) {
+      statEl.innerHTML = 'n = ' + n + ' &nbsp;|&nbsp; 均值 x̄ = ' + mean.toFixed(2) + ' &nbsp;|&nbsp; 標準差 s = ' + sd.toFixed(2);
+    }
+  }
+
+  const grandSum = allVals.reduce((a, b) => a + b, 0);
+  const grandMean = grandSum / totalN;
+
+  // Sum of Squares
+  const ssBetween = groupParsed.reduce((acc, g) => acc + g.n * Math.pow(g.mean - grandMean, 2), 0);
+  const ssWithin = groupParsed.reduce((acc, g) => acc + g.ss, 0);
+  const ssTotal = ssBetween + ssWithin;
+
+  const dfBetween = k - 1;
+  const dfWithin = totalN - k;
+  const dfTotal = totalN - 1;
+
+  const msBetween = ssBetween / dfBetween;
+  const msWithin = dfWithin > 0 ? (ssWithin / dfWithin) : 0;
+
+  const fStat = msWithin > 0 ? (msBetween / msWithin) : 0;
+  const pVal = anovaFProb(fStat, dfBetween, dfWithin);
+  const etaSq = ssTotal > 0 ? (ssBetween / ssTotal) : 0;
+
+  const isSig = pVal < 0.05;
+
+  // Render Summary Pills
+  const pillsEl = document.getElementById('oneWaySummaryPills');
+  if (pillsEl) {
+    pillsEl.innerHTML = `
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:2px;"><span class="zh">F 統計量</span><span class="en">F-Statistic</span></div>
+        <div style="font-size:18px; font-weight:800; color:var(--amber);">${fStat.toFixed(3)}</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:2px;"><span class="zh">p 值 (p-value)</span><span class="en">p-value</span></div>
+        <div style="font-size:18px; font-weight:800; color:${isSig ? '#ff4d4f' : '#52c41a'};">${pVal < 0.0001 ? '< 0.0001' : pVal.toFixed(4)}</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:2px;"><span class="zh">效應量 η² (Eta²)</span><span class="en">Effect Size (η²)</span></div>
+        <div style="font-size:18px; font-weight:800; color:var(--ink);">${(etaSq * 100).toFixed(1)}%</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:2px;"><span class="zh">總平均值 (Grand)</span><span class="en">Grand Mean</span></div>
+        <div style="font-size:18px; font-weight:800; color:var(--ink);">${grandMean.toFixed(2)}</div>
+      </div>
+    `;
+  }
+
+  // Render Decision Badge
+  const badgeEl = document.getElementById('oneWayDecisionBadge');
+  if (badgeEl) {
+    if (isSig) {
+      badgeEl.innerHTML = `
+        <div style="background:rgba(255,77,79,0.1); border:1px solid rgba(255,77,79,0.3); border-left:4px solid #ff4d4f; border-radius:6px; padding:12px 14px; font-size:12.5px; line-height:1.6;">
+          <div style="font-weight:800; color:#ff4d4f; margin-bottom:2px;">
+            🚨 <span class="zh">拒絕虛無假設 H0 (p &lt; 0.05) — 機台/組別間存在顯著統計差異！</span>
+            <span class="en">Reject H0 (p &lt; 0.05) — Statistically Significant Difference Detected!</span>
+          </div>
+          <span class="zh">組間變異（MS_between = ${msBetween.toFixed(2)}）顯著超越隨機誤差雜訊（MS_within = ${msWithin.toFixed(2)}），變異並非來自隨機抖動。建議查閱下方 <b>Tukey HSD 事後檢定</b>，鎖定具顯著偏差的異常機台進行硬體校準。</span>
+          <span class="en">Between-group variance significantly exceeds random error noise. Review the <b>Tukey HSD Post-Hoc table</b> below to identify specific biased tools for calibration.</span>
+        </div>
+      `;
+    } else {
+      badgeEl.innerHTML = `
+        <div style="background:rgba(82,196,26,0.1); border:1px solid rgba(82,196,26,0.3); border-left:4px solid #52c41a; border-radius:6px; padding:12px 14px; font-size:12.5px; line-height:1.6;">
+          <div style="font-weight:800; color:#52c41a; margin-bottom:2px;">
+            ✅ <span class="zh">無法拒絕虛無假設 H0 (p ≧ 0.05) — 組間均值差異落於隨機雜訊範圍內</span>
+            <span class="en">Fail to Reject H0 (p ≧ 0.05) — Group Differences Fall Within Random Noise</span>
+          </div>
+          <span class="zh">抽樣數據顯示之均值差異純屬隨機抽樣波動。切勿憑藉直覺均值高低擅自停機調整配方，以防陷入過度干預 (Tampering) 造成製程波動人為放大。</span>
+          <span class="en">Observed mean discrepancies are attributable to random noise. Do not tamper with tool recipes based on intuitive raw averages alone.</span>
+        </div>
+      `;
+    }
+  }
+
+  // Render ANOVA Table
+  const tableBody = document.getElementById('oneWayAnovaTableBody');
+  if (tableBody) {
+    tableBody.innerHTML = `
+      <tr>
+        <td style="font-weight:700;"><span class="zh">組間變異 (Between Groups / Treatments)</span><span class="en">Between Groups</span></td>
+        <td>${ssBetween.toFixed(3)}</td>
+        <td>${dfBetween}</td>
+        <td>${msBetween.toFixed(3)}</td>
+        <td style="font-weight:700; color:var(--amber);">${fStat.toFixed(3)}</td>
+        <td style="font-weight:700; color:${isSig ? '#ff4d4f' : '#52c41a'};">${pVal < 0.0001 ? '< 0.0001' : pVal.toFixed(4)}</td>
+        <td><span class="fallacy-badge ${isSig ? 'error' : 'pass'}">${isSig ? '顯著 (Sig)' : '不顯著 (Non-Sig)'}</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700;"><span class="zh">組內變異 (Within Groups / Error)</span><span class="en">Within Groups / Error</span></td>
+        <td>${ssWithin.toFixed(3)}</td>
+        <td>${dfWithin}</td>
+        <td>${msWithin.toFixed(3)}</td>
+        <td>-</td>
+        <td>-</td>
+        <td style="color:var(--muted);"><span class="zh">隨機雜訊</span><span class="en">Random Error</span></td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.02); font-weight:700;">
+        <td><span class="zh">總計 (Total)</span><span class="en">Total</span></td>
+        <td>${ssTotal.toFixed(3)}</td>
+        <td>${dfTotal}</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    `;
+  }
+
+  // Render SVG Scatter + Error Bar Chart
+  renderOneWayChart(groupParsed, grandMean);
+
+  // Render Tukey HSD Table
+  renderOneWayTukey(groupParsed, msWithin, dfWithin);
+}
+
+function renderOneWayChart(groups, grandMean) {
+  const chartEl = document.getElementById('oneWayChartContainer');
+  if (!chartEl) return;
+
+  const w = 680, h = 260;
+  const padL = 60, padR = 40, padT = 30, padB = 45;
+
+  let allNums = [];
+  groups.forEach(g => {
+    allNums.push(...g.vals);
+    allNums.push(g.mean - g.sd);
+    allNums.push(g.mean + g.sd);
+  });
+  allNums.push(grandMean);
+
+  let minVal = Math.min(...allNums);
+  let maxVal = Math.max(...allNums);
+  let range = maxVal - minVal;
+  if (range <= 0) range = 1;
+  minVal -= range * 0.12;
+  maxVal += range * 0.12;
+  range = maxVal - minVal;
+
+  function getY(v) {
+    return padT + (maxVal - v) / range * (h - padT - padB);
+  }
+
+  const k = groups.length;
+  const colWidth = (w - padL - padR) / k;
+
+  let svgParts = [];
+
+  // Y-axis grid & labels
+  const steps = 4;
+  for (let s = 0; s <= steps; s++) {
+    const val = minVal + (s / steps) * range;
+    const y = getY(val);
+    svgParts.push(`<line x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}" stroke="var(--line)" stroke-dasharray="3,3" />`);
+    svgParts.push(`<text x="${padL - 8}" y="${y + 4}" fill="var(--muted)" font-size="10.5" text-anchor="end" font-family="sans-serif">${val.toFixed(1)}</text>`);
+  }
+
+  // Grand Mean reference line
+  const grandY = getY(grandMean);
+  svgParts.push(`<line x1="${padL}" y1="${grandY}" x2="${w - padR}" y2="${grandY}" stroke="#50e3c2" stroke-width="1.8" stroke-dasharray="5,4" />`);
+  svgParts.push(`<text x="${w - padR + 5}" y="${grandY + 3}" fill="#50e3c2" font-size="10" font-weight="bold">x̄̄=${grandMean.toFixed(1)}</text>`);
+
+  // Render each group
+  groups.forEach((g, i) => {
+    const cx = padL + i * colWidth + colWidth / 2;
+    const meanY = getY(g.mean);
+    const topY = getY(g.mean + g.sd);
+    const botY = getY(g.mean - g.sd);
+
+    // Jittered scatter points
+    g.vals.forEach((v, vi) => {
+      const jitter = ((vi % 3) - 1) * 14;
+      const vy = getY(v);
+      svgParts.push(`<circle cx="${cx + jitter}" cy="${vy}" r="4" fill="rgba(255,255,255,0.4)" stroke="var(--ink)" stroke-width="1" opacity="0.75" />`);
+    });
+
+    // Error Bar line
+    svgParts.push(`<line x1="${cx}" y1="${topY}" x2="${cx}" y2="${botY}" stroke="var(--amber)" stroke-width="2.5" />`);
+    svgParts.push(`<line x1="${cx - 10}" y1="${topY}" x2="${cx + 10}" y2="${topY}" stroke="var(--amber)" stroke-width="2" />`);
+    svgParts.push(`<line x1="${cx - 10}" y1="${botY}" x2="${cx + 10}" y2="${botY}" stroke="var(--amber)" stroke-width="2" />`);
+
+    // Mean Diamond Marker
+    svgParts.push(`<circle cx="${cx}" cy="${meanY}" r="6.5" fill="var(--amber)" stroke="var(--navy)" stroke-width="2" />`);
+    svgParts.push(`<text x="${cx}" y="${meanY - 10}" fill="var(--amber)" font-size="11" font-weight="bold" text-anchor="middle">${g.mean.toFixed(2)}</text>`);
+
+    // X-axis group label
+    const displayName = g.name.length > 15 ? g.name.slice(0, 15) + '…' : g.name;
+    svgParts.push(`<text x="${cx}" y="${h - padB + 18}" fill="var(--ink)" font-size="11.5" font-weight="600" text-anchor="middle">${displayName}</text>`);
+    svgParts.push(`<text x="${cx}" y="${h - padB + 32}" fill="var(--muted)" font-size="10" text-anchor="middle">s=${g.sd.toFixed(2)}</text>`);
+  });
+
+  chartEl.innerHTML = `<svg viewBox="0 0 ${w} ${h}" style="width:100%; height:auto; display:block; max-height:280px;">${svgParts.join('')}</svg>`;
+}
+
+function renderOneWayTukey(groups, msWithin, dfWithin) {
+  const tableBody = document.getElementById('oneWayTukeyTableBody');
+  if (!tableBody) return;
+
+  const k = groups.length;
+  let rows = [];
+
+  // q critical table approximation for alpha=0.05
+  // approx q_crit for df > 10 ranges around 3.0 to 4.5
+  const qCritApprox = k === 3 ? 3.77 : (k === 4 ? 4.05 : 4.3);
+
+  for (let i = 0; i < k; i++) {
+    for (let j = i + 1; j < k; j++) {
+      const g1 = groups[i];
+      const g2 = groups[j];
+      const diff = g1.mean - g2.mean;
+      const absDiff = Math.abs(diff);
+      const se = Math.sqrt((msWithin / 2) * (1 / g1.n + 1 / g2.n));
+      const q = se > 0 ? (absDiff / se) : 0;
+      const isPairSig = q >= qCritApprox;
+
+      rows.push(`
+        <tr>
+          <td style="font-weight:700;">${g1.name} vs. ${g2.name}</td>
+          <td style="font-weight:700; color:${diff > 0 ? '#ff4d4f' : (diff < 0 ? '#50e3c2' : 'var(--ink)')};">${diff > 0 ? '+' : ''}${diff.toFixed(2)}</td>
+          <td>${se.toFixed(3)}</td>
+          <td style="font-weight:700; color:var(--amber);">${q.toFixed(2)}</td>
+          <td>
+            <span class="fallacy-badge ${isPairSig ? 'error' : 'pass'}">${isPairSig ? '顯著差異 (Sig)' : '無顯著 (p > 0.05)'}</span>
+          </td>
+          <td style="font-size:11.5px; color:${isPairSig ? 'var(--amber)' : 'var(--muted)'};">
+            ${isPairSig ? '兩組間均值偏離顯著，需排查機台腔體或耗材批次差異。' : '差異在背景容許範圍內，維持現狀標準作業。'}
+          </td>
+        </tr>
+      `);
+    }
+  }
+
+  tableBody.innerHTML = rows.join('');
+}
+
+/* ---------------- Two-Way ANOVA Engine ---------------- */
+let twoWayData = {
+  aLevels: ['2 psi (低壓)', '4 psi (高壓)'],
+  bLevels: ['60 rpm (低速)', '90 rpm (高速)'],
+  cells: [
+    ['1200, 1220, 1190', '1350, 1370, 1340'],
+    ['1420, 1400, 1430', '2100, 2150, 2080']
+  ]
+};
+
+function loadTwoWayPreset(presetKey) {
+  if (presetKey === 'cmp_synergy') {
+    twoWayData = {
+      aLevels: ['2 psi (低壓)', '4 psi (高壓)'],
+      bLevels: ['60 rpm (低速)', '90 rpm (高速)'],
+      cells: [
+        ['1200, 1220, 1190', '1350, 1370, 1340'],
+        ['1420, 1400, 1430', '2100, 2150, 2080']
+      ]
+    };
+  } else if (presetKey === 'etch_additive') {
+    twoWayData = {
+      aLevels: ['500 W (低功率)', '800 W (高功率)'],
+      bLevels: ['10 mTorr (低壓)', '20 mTorr (高壓)'],
+      cells: [
+        ['320, 315, 325', '380, 385, 375'],
+        ['450, 455, 445', '510, 515, 505']
+      ]
+    };
+  }
+
+  // Populate input elements
+  document.getElementById('twA1Name').value = twoWayData.aLevels[0];
+  document.getElementById('twA2Name').value = twoWayData.aLevels[1];
+  document.getElementById('twB1Name').value = twoWayData.bLevels[0];
+  document.getElementById('twB2Name').value = twoWayData.bLevels[1];
+
+  document.getElementById('twCell00').value = twoWayData.cells[0][0];
+  document.getElementById('twCell01').value = twoWayData.cells[0][1];
+  document.getElementById('twCell10').value = twoWayData.cells[1][0];
+  document.getElementById('twCell11').value = twoWayData.cells[1][1];
+
+  calculateTwoWayAnova();
+}
+
+function calculateTwoWayAnova() {
+  const aLevels = [
+    document.getElementById('twA1Name').value || 'Factor A1',
+    document.getElementById('twA2Name').value || 'Factor A2'
+  ];
+  const bLevels = [
+    document.getElementById('twB1Name').value || 'Factor B1',
+    document.getElementById('twB2Name').value || 'Factor B2'
+  ];
+
+  const cellInputs = [
+    [document.getElementById('twCell00').value, document.getElementById('twCell01').value],
+    [document.getElementById('twCell10').value, document.getElementById('twCell11').value]
+  ];
+
+  const a = 2, b = 2;
+  let parsedCells = [[], []];
+  let cellMeans = [[0, 0], [0, 0]];
+  let cellSums = [[0, 0], [0, 0]];
+  let allVals = [];
+
+  let rCounts = [];
+
+  for (let i = 0; i < a; i++) {
+    for (let j = 0; j < b; j++) {
+      const raw = cellInputs[i][j] || '';
+      const nums = raw.split(/[,\s]+/).map(v => parseFloat(v)).filter(v => !isNaN(v));
+      if (nums.length < 2) {
+        alert('請在每個 2x2 格子中至少輸入 2 個重複測試數據！');
+        return;
+      }
+      rCounts.push(nums.length);
+      parsedCells[i][j] = nums;
+      const sum = nums.reduce((acc, v) => acc + v, 0);
+      cellSums[i][j] = sum;
+      cellMeans[i][j] = sum / nums.length;
+      allVals.push(...nums);
+
+      const meanEl = document.getElementById('twCell' + i + j + 'Mean');
+      if (meanEl) meanEl.textContent = 'Mean: ' + cellMeans[i][j].toFixed(1);
+    }
+  }
+
+  // Check balanced design r
+  const r = rCounts[0];
+  const isBalanced = rCounts.every(cnt => cnt === r);
+  if (!isBalanced) {
+    alert('為了雙因子變異數分析計算準確性，請保持 2x2 各格的重複試驗筆數相等 (例如皆為 3 筆)！');
+    return;
+  }
+
+  const N = a * b * r;
+  const grandSum = allVals.reduce((acc, v) => acc + v, 0);
+  const grandMean = grandSum / N;
+
+  const row0Mean = (cellMeans[0][0] + cellMeans[0][1]) / 2;
+  const row1Mean = (cellMeans[1][0] + cellMeans[1][1]) / 2;
+  const col0Mean = (cellMeans[0][0] + cellMeans[1][0]) / 2;
+  const col1Mean = (cellMeans[0][1] + cellMeans[1][1]) / 2;
+
+  document.getElementById('twRow0Mean').textContent = row0Mean.toFixed(1);
+  document.getElementById('twRow1Mean').textContent = row1Mean.toFixed(1);
+  document.getElementById('twCol0Mean').textContent = col0Mean.toFixed(1);
+  document.getElementById('twCol1Mean').textContent = col1Mean.toFixed(1);
+  document.getElementById('twGrandMean').textContent = 'Grand: ' + grandMean.toFixed(1);
+
+  // Sum of Squares
+  const ssTotal = allVals.reduce((acc, v) => acc + Math.pow(v - grandMean, 2), 0);
+
+  const sumA0 = cellSums[0][0] + cellSums[0][1];
+  const sumA1 = cellSums[1][0] + cellSums[1][1];
+  const ssA = ((Math.pow(sumA0, 2) + Math.pow(sumA1, 2)) / (b * r)) - (Math.pow(grandSum, 2) / N);
+
+  const sumB0 = cellSums[0][0] + cellSums[1][0];
+  const sumB1 = cellSums[0][1] + cellSums[1][1];
+  const ssB = ((Math.pow(sumB0, 2) + Math.pow(sumB1, 2)) / (a * r)) - (Math.pow(grandSum, 2) / N);
+
+  let sumCellSq = 0;
+  for (let i = 0; i < a; i++) {
+    for (let j = 0; j < b; j++) {
+      sumCellSq += Math.pow(cellSums[i][j], 2);
+    }
+  }
+  const ssSubtotal = (sumCellSq / r) - (Math.pow(grandSum, 2) / N);
+  const ssAB = Math.max(0, ssSubtotal - ssA - ssB);
+  const ssE = Math.max(0, ssTotal - ssSubtotal);
+
+  const dfA = a - 1; // 1
+  const dfB = b - 1; // 1
+  const dfAB = (a - 1) * (b - 1); // 1
+  const dfE = a * b * (r - 1); // 4 * (r - 1)
+  const dfTotal = N - 1;
+
+  const msA = ssA / dfA;
+  const msB = ssB / dfB;
+  const msAB = ssAB / dfAB;
+  const msE = dfE > 0 ? (ssE / dfE) : 0;
+
+  const fA = msE > 0 ? (msA / msE) : 0;
+  const fB = msE > 0 ? (msB / msE) : 0;
+  const fAB = msE > 0 ? (msAB / msE) : 0;
+
+  const pA = anovaFProb(fA, dfA, dfE);
+  const pB = anovaFProb(fB, dfB, dfE);
+  const pAB = anovaFProb(fAB, dfAB, dfE);
+
+  const isSigA = pA < 0.05;
+  const isSigB = pB < 0.05;
+  const isSigAB = pAB < 0.05;
+
+  // Render 3 Pills
+  const pillsEl = document.getElementById('twoWaySummaryPills');
+  if (pillsEl) {
+    pillsEl.innerHTML = `
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:2px;"><span class="zh">主效應 A: ${aLevels[0].split(' ')[0]}</span><span class="en">Factor A Main Effect</span></div>
+        <div style="font-size:16px; font-weight:800; color:var(--ink);">F=${fA.toFixed(2)} &nbsp;<span style="color:${isSigA ? '#ff4d4f' : '#52c41a'}; font-size:13px;">(p=${pA < 0.0001 ? '<0.0001' : pA.toFixed(4)})</span></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:2px;"><span class="zh">主效應 B: ${bLevels[0].split(' ')[0]}</span><span class="en">Factor B Main Effect</span></div>
+        <div style="font-size:16px; font-weight:800; color:var(--ink);">F=${fB.toFixed(2)} &nbsp;<span style="color:${isSigB ? '#ff4d4f' : '#52c41a'}; font-size:13px;">(p=${pB < 0.0001 ? '<0.0001' : pB.toFixed(4)})</span></div>
+      </div>
+      <div style="background:${isSigAB ? 'rgba(245,166,35,0.1)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${isSigAB ? 'var(--amber)' : 'var(--panel-border)'}; border-radius:8px; padding:10px 12px; text-align:center;">
+        <div style="font-size:11px; color:${isSigAB ? 'var(--amber)' : 'var(--muted)'}; margin-bottom:2px; font-weight:700;"><span class="zh">⚡ 交互作用效應 (A × B)</span><span class="en">Interaction Effect (A × B)</span></div>
+        <div style="font-size:16px; font-weight:800; color:${isSigAB ? 'var(--amber)' : 'var(--ink)'};">F=${fAB.toFixed(2)} &nbsp;<span style="color:${isSigAB ? '#ff4d4f' : '#52c41a'}; font-size:13px;">(p=${pAB < 0.0001 ? '<0.0001' : pAB.toFixed(4)})</span></div>
+      </div>
+    `;
+  }
+
+  // Render Decision Badge
+  const badgeEl = document.getElementById('twoWayDecisionBadge');
+  if (badgeEl) {
+    if (isSigAB) {
+      badgeEl.innerHTML = `
+        <div style="background:rgba(245,166,35,0.08); border:1px solid var(--amber); border-left:4px solid var(--amber); border-radius:6px; padding:12px 14px; font-size:12.5px; line-height:1.6;">
+          <div style="font-weight:800; color:var(--amber); margin-bottom:2px;">
+            ⚠️ <span class="zh">檢測到顯著交互作用 (Significant Interaction A × B, p &lt; 0.05)！</span>
+            <span class="en">Significant Interaction Detected (p &lt; 0.05)!</span>
+          </div>
+          <span class="zh"><b>現場指引（破除 OFAT 盲區）</b>：當因子 A 與 B 存在交互作用時，兩因子的效果並非單純獨立相加，而是產生協同激增或抑制效應。嚴禁單獨依照因子 A 或 B 的主效應做決策！請依據下方<b>交互作用折線圖</b>選定兩因子的最佳組合 Recipe。</span>
+          <span class="en"><b>Engineering Warning (Countering OFAT)</b>: Factors A and B interact nonlinearly. Never optimize Factor A or B in isolation. Determine optimal recipe using the interaction curve synergy.</span>
+        </div>
+      `;
+    } else {
+      badgeEl.innerHTML = `
+        <div style="background:rgba(82,196,26,0.08); border:1px solid rgba(82,196,26,0.3); border-left:4px solid #52c41a; border-radius:6px; padding:12px 14px; font-size:12.5px; line-height:1.6;">
+          <div style="font-weight:800; color:#52c41a; margin-bottom:2px;">
+            ✅ <span class="zh">無顯著交互作用 (p_AB ≧ 0.05) — 兩因子效應呈線性獨立相加</span>
+            <span class="en">No Significant Interaction (p_AB ≧ 0.05) — Effects Are Additive</span>
+          </div>
+          <span class="zh">兩因子對反應變數之影響彼此獨立，交互作用折線圖中兩條線近乎平行。製程工程師可分別針對因子 A 與因子 B 獨立調優，主效應分析結果完全可靠。</span>
+          <span class="en">The effects of Factor A and B are independent and additive. The curves are parallel; individual factor tuning is statistically valid.</span>
+        </div>
+      `;
+    }
+  }
+
+  // Render Two-Way Table
+  const tableBody = document.getElementById('twoWayAnovaTableBody');
+  if (tableBody) {
+    tableBody.innerHTML = `
+      <tr>
+        <td style="font-weight:700;">${aLevels[0].split(' ')[0]} / A 主效應</td>
+        <td>${ssA.toFixed(2)}</td>
+        <td>${dfA}</td>
+        <td>${msA.toFixed(2)}</td>
+        <td style="font-weight:700; color:var(--amber);">${fA.toFixed(2)}</td>
+        <td style="font-weight:700; color:${isSigA ? '#ff4d4f' : '#52c41a'};">${pA < 0.0001 ? '< 0.0001' : pA.toFixed(4)}</td>
+        <td><span class="fallacy-badge ${isSigA ? 'error' : 'pass'}">${isSigA ? '顯著 (p < 0.05)' : '不顯著'}</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700;">${bLevels[0].split(' ')[0]} / B 主效應</td>
+        <td>${ssB.toFixed(2)}</td>
+        <td>${dfB}</td>
+        <td>${msB.toFixed(2)}</td>
+        <td style="font-weight:700; color:var(--amber);">${fB.toFixed(2)}</td>
+        <td style="font-weight:700; color:${isSigB ? '#ff4d4f' : '#52c41a'};">${pB < 0.0001 ? '< 0.0001' : pB.toFixed(4)}</td>
+        <td><span class="fallacy-badge ${isSigB ? 'error' : 'pass'}">${isSigB ? '顯著 (p < 0.05)' : '不顯著'}</span></td>
+      </tr>
+      <tr style="background:rgba(245,166,35,0.04);">
+        <td style="font-weight:700; color:var(--amber);">交互作用 (Interaction A × B)</td>
+        <td>${ssAB.toFixed(2)}</td>
+        <td>${dfAB}</td>
+        <td>${msAB.toFixed(2)}</td>
+        <td style="font-weight:700; color:var(--amber);">${fAB.toFixed(2)}</td>
+        <td style="font-weight:700; color:${isSigAB ? '#ff4d4f' : '#52c41a'};">${pAB < 0.0001 ? '< 0.0001' : pAB.toFixed(4)}</td>
+        <td><span class="fallacy-badge ${isSigAB ? 'error' : 'pass'}">${isSigAB ? '⚡ 強烈交互作用' : '無交互作用'}</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700;"><span class="zh">殘差/組內誤差 (Error)</span><span class="en">Error</span></td>
+        <td>${ssE.toFixed(2)}</td>
+        <td>${dfE}</td>
+        <td>${msE.toFixed(2)}</td>
+        <td>-</td>
+        <td>-</td>
+        <td style="color:var(--muted);"><span class="zh">實驗隨機誤差</span><span class="en">Random Error</span></td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.02); font-weight:700;">
+        <td><span class="zh">總計 (Total)</span><span class="en">Total</span></td>
+        <td>${ssTotal.toFixed(2)}</td>
+        <td>${dfTotal}</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    `;
+  }
+
+  // Render Two-Way Interaction Plot
+  renderTwoWayChart(aLevels, bLevels, cellMeans, isSigAB);
+}
+
+function renderTwoWayChart(aLevels, bLevels, cellMeans, isSigAB) {
+  const chartEl = document.getElementById('twoWayChartContainer');
+  const interpEl = document.getElementById('twoWayPlotInterpretation');
+  if (!chartEl) return;
+
+  if (interpEl) {
+    if (isSigAB) {
+      interpEl.innerHTML = '<span style="color:var(--amber);">⚡ 兩線非平行/劇烈發散 → 證實交互作用顯著存在</span>';
+    } else {
+      interpEl.innerHTML = '<span style="color:#52c41a;">✅ 兩線近乎平行 → 主效應獨立相加，無交互作用</span>';
+    }
+  }
+
+  const w = 680, h = 260;
+  const padL = 70, padR = 150, padT = 30, padB = 45;
+
+  const yVals = [cellMeans[0][0], cellMeans[0][1], cellMeans[1][0], cellMeans[1][1]];
+  let minVal = Math.min(...yVals);
+  let maxVal = Math.max(...yVals);
+  let range = maxVal - minVal;
+  if (range <= 0) range = 1;
+  minVal -= range * 0.15;
+  maxVal += range * 0.15;
+  range = maxVal - minVal;
+
+  function getY(v) {
+    return padT + (maxVal - v) / range * (h - padT - padB);
+  }
+
+  const x0 = padL + 120;
+  const x1 = w - padR - 80;
+
+  let svgParts = [];
+
+  // Y-axis grid
+  const steps = 4;
+  for (let s = 0; s <= steps; s++) {
+    const val = minVal + (s / steps) * range;
+    const y = getY(val);
+    svgParts.push(`<line x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}" stroke="var(--line)" stroke-dasharray="3,3" />`);
+    svgParts.push(`<text x="${padL - 10}" y="${y + 4}" fill="var(--muted)" font-size="10.5" text-anchor="end" font-family="sans-serif">${val.toFixed(0)}</text>`);
+  }
+
+  // Points for Line 1 (Factor A Level 1, e.g. Low Pressure)
+  const yA0B0 = getY(cellMeans[0][0]);
+  const yA0B1 = getY(cellMeans[0][1]);
+
+  // Points for Line 2 (Factor A Level 2, e.g. High Pressure)
+  const yA1B0 = getY(cellMeans[1][0]);
+  const yA1B1 = getY(cellMeans[1][1]);
+
+  // Line 1: Blue / Cyan
+  svgParts.push(`<line x1="${x0}" y1="${yA0B0}" x2="${x1}" y2="${yA0B1}" stroke="#4daaff" stroke-width="3" />`);
+  svgParts.push(`<circle cx="${x0}" cy="${yA0B0}" r="6" fill="#4daaff" stroke="var(--navy)" stroke-width="2" />`);
+  svgParts.push(`<circle cx="${x1}" cy="${yA0B1}" r="6" fill="#4daaff" stroke="var(--navy)" stroke-width="2" />`);
+  svgParts.push(`<text x="${x0}" y="${yA0B0 - 10}" fill="#4daaff" font-size="11" font-weight="bold" text-anchor="middle">${cellMeans[0][0].toFixed(1)}</text>`);
+  svgParts.push(`<text x="${x1}" y="${yA0B1 - 10}" fill="#4daaff" font-size="11" font-weight="bold" text-anchor="middle">${cellMeans[0][1].toFixed(1)}</text>`);
+
+  // Line 2: Amber
+  svgParts.push(`<line x1="${x0}" y1="${yA1B0}" x2="${x1}" y2="${yA1B1}" stroke="var(--amber)" stroke-width="3" />`);
+  svgParts.push(`<rect x="${x0 - 5}" y="${yA1B0 - 5}" width="10" height="10" fill="var(--amber)" stroke="var(--navy)" stroke-width="2" />`);
+  svgParts.push(`<rect x="${x1 - 5}" y="${yA1B1 - 5}" width="10" height="10" fill="var(--amber)" stroke="var(--navy)" stroke-width="2" />`);
+  svgParts.push(`<text x="${x0}" y="${yA1B0 + 20}" fill="var(--amber)" font-size="11" font-weight="bold" text-anchor="middle">${cellMeans[1][0].toFixed(1)}</text>`);
+  svgParts.push(`<text x="${x1}" y="${yA1B1 - 10}" fill="var(--amber)" font-size="11" font-weight="bold" text-anchor="middle">${cellMeans[1][1].toFixed(1)}</text>`);
+
+  // X-axis ticks & labels (Factor B)
+  svgParts.push(`<text x="${x0}" y="${h - padB + 20}" fill="var(--ink)" font-size="12" font-weight="700" text-anchor="middle">${bLevels[0]}</text>`);
+  svgParts.push(`<text x="${x1}" y="${h - padB + 20}" fill="var(--ink)" font-size="12" font-weight="700" text-anchor="middle">${bLevels[1]}</text>`);
+
+  // Legends on the right
+  const legX = w - padR + 20;
+  // Legend 1
+  svgParts.push(`<line x1="${legX}" y1="50" x2="${legX + 24}" y2="50" stroke="#4daaff" stroke-width="3" />`);
+  svgParts.push(`<circle cx="${legX + 12}" cy="50" r="5" fill="#4daaff" />`);
+  svgParts.push(`<text x="${legX + 32}" y="54" fill="var(--ink)" font-size="11" font-weight="600">${aLevels[0]}</text>`);
+
+  // Legend 2
+  svgParts.push(`<line x1="${legX}" y1="80" x2="${legX + 24}" y2="80" stroke="var(--amber)" stroke-width="3" />`);
+  svgParts.push(`<rect x="${legX + 7}" y="75" width="10" height="10" fill="var(--amber)" />`);
+  svgParts.push(`<text x="${legX + 32}" y="84" fill="var(--ink)" font-size="11" font-weight="600">${aLevels[1]}</text>`);
+
+  chartEl.innerHTML = `<svg viewBox="0 0 ${w} ${h}" style="width:100%; height:auto; display:block; max-height:280px;">${svgParts.join('')}</svg>`;
+}
+
+function initAnovaModule() {
+  renderOneWayGroups();
+  calculateOneWayAnova();
+  calculateTwoWayAnova();
+}
+
+// Global scope export for RWD compliance and inline event handlers
+window.switchAnovaTab = switchAnovaTab;
+window.loadOneWayPreset = loadOneWayPreset;
+window.addOneWayGroup = addOneWayGroup;
+window.removeOneWayGroup = removeOneWayGroup;
+window.calculateOneWayAnova = calculateOneWayAnova;
+window.loadTwoWayPreset = loadTwoWayPreset;
+window.calculateTwoWayAnova = calculateTwoWayAnova;
+window.jumpToAnovaWorkbench = jumpToAnovaWorkbench;
+window.initAnovaModule = initAnovaModule;
+
 
 // Initialize everything once DOM is ready
 if (document.readyState === 'loading') {

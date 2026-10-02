@@ -54,7 +54,7 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
  ├── 12. 精實會議與高階簡報表達藝術 (STAR vs. CARL Frameworks)
  ├── 13. 職場說不的藝術與防禦手冊 (Art of Saying No: Workplace Defense Playbook - 14 大實戰防身神功)
  ├── 14. 職場面對衝突的藝術與防禦手冊 (Workplace Conflict Resolution & Defense)
- ├── 15. 常見分析與認知謬誤 (Common Analytical & Cognitive Fallacies - 18 大思維陷阱與防禦機制)
+ ├── 15. 常見分析與認知謬誤與 ANOVA 變異數分析實戰工作台 (Common Analytical & Cognitive Fallacies - 19 大思維陷阱、單因子與雙因子互動工作台)
  ├── 16. 財務分析與精實機會 (Financial Analysis & Lean Opportunities)
  ├── 17. 團隊腦力激盪與視覺化工具 (Team Brainstorming & Visual Tools: Mind Map & KJ Board)
  ├── 18. 價值流程圖 VSM 互動產生器 (Value Stream Mapping Interactive Builder)
@@ -174,6 +174,24 @@ Masa Tu 精實六標準差羅盤 (共 24 大核心模組)
 - **預設案例庫與匯出**：
   - 內建「SaaS 軟體產品與數位轉型 DX」與「半導體晶圓廠良率改善與機台 Kaizen」兩大經典情境。
   - 支援排序切換（RICE 分數、價值、付出、名稱）、卡片複製、編輯、以及一鍵匯出高管決策分析 Markdown 報告。
+
+### 12. 🔬 常見分析與認知謬誤 & ANOVA 變異數分析實戰工作台 (Common Fallacies & ANOVA Workbench)
+- **19 大思維陷阱與查理·蒙格心理學防禦**：
+  - 深度解析規劃謬誤、確認偏誤、倖存者偏差、因果混淆、後見之明、以及新增之「第 19 條：均值錯覺與多因子忽視謬誤（群體差異誤判與交互作用盲區）」。
+  - 系統化對抗直覺誤判：同儕審查 (Peer Review)、標準化與 SOP 防呆、歷史基準對照、敏捷試錯與 OKR 里程碑。
+- **變異數分析 (ANOVA) 雙引擎互動工作台**：
+  - **單因子變異數分析 (One-Way ANOVA)**：
+    - 內建半導體真實情境：乾蝕刻機台 CD 偏差（顯著差異 p < 0.05 拒絕 H0）、黃光曝光機 Scanner 良率均勻性（無偏差 p ≧ 0.05 無法拒絕 H0）、擴散爐管四管區膜厚。
+    - 即時計算：組別均值、標準差、變異分解（$SS_{Between}, SS_{Within}, SS_{Total}$）、自由度、$F$ 統計量、高精度 $p$-value 與效應量 $\eta^2$。
+    - 互動 SVG 圖表：各組平均值鑽石標記、$\pm 1\sigma$ 誤差長條、抖動散佈點 (Jittered Samples) 與總平均值水平基準線。
+    - Tukey HSD 事後檢定 (Post-Hoc)：自動兩兩配對比對均值差、標準誤差與顯著性，精準鎖定異常機台。
+  - **雙因子變異數分析含交互作用 (Two-Way ANOVA with Interaction Effect)**：
+    - 支援 2 × 2 因子設計：CMP 晶圓研磨速率（下壓力 2 vs 4 psi × 研磨盤轉速 60 vs 90 rpm，強烈非線性交互作用）、乾蝕刻速率（功率 × 腔體壓力，純主效應無交互）。
+    - 變異數分解矩陣：因子 A 主效應、因子 B 主效應、交互作用 $A \times B$、隨機誤差與總平方和。
+    - 互動 SVG 交互作用折線圖 (Interaction Plot)：以兩條折線即時呈現因子 B 在各因子 A 水準下的斜率。若折線平行代表主效應獨立相加；若折線交叉或劇烈發散代表強烈交互作用，破除傳統單因子輪替測試 (OFAT) 盲區。
+  - **核心統計前提與現場指引**：
+    - 詳解常態性 (Normality)、變異數齊一性 (Homoscedasticity / Levene 檢定)、獨立性 (Independence) 三大前提與無母數替代檢定 (Kruskal-Wallis、Friedman)。
+    - 解析多次兩兩 t 檢定引發之族群錯誤率膨脹效應 ($FWER = 1 - (1-\alpha)^m$)，闡明以 ANOVA 總體 F 檢定控管型一錯誤之必要性。
 
 ---
 
